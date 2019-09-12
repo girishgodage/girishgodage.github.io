@@ -8,6 +8,7 @@
     <meta name="keywords" content="Girish Godage, Girish Godage007, girish godage, girish, godage, girish godage, girish godage github blog, girish godage yt">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
+    <link rel="canonical" href="https://girishgodage.github.io/index.html">
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="sitejs/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
@@ -20,15 +21,14 @@
     <!-- animate.css-->
     <link rel="stylesheet" href="sitejs/animate.css/animate.css">
     <!-- theme stylesheet-->
-    <!--link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet"-->
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/logo-big.png">
     <!-- Fab Icon-->
     <link rel="stylesheet" href="sitejs/font-mfizz-2.4.1/font-mfizz.css">
-    <!-- Hamburger -->
-    <link rel="stylesheet" href="css/hamburgers.css">
+    <!-- Typed.js DONT TOUCHHHHHHHHHHHHH!-->
+    <script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>
   </head>
   <body>
     <!-- Reference item-->
@@ -52,9 +52,7 @@
     <section id="intro" style="background: url(img/intro.jpg) center center no-repeat; background-size: cover;" class="intro-section pb-2">
       <div class="container text-center">
         <div data-animate="fadeInDown" class="logo"><img src="img/logo-big.png" alt="logo" width="310"></div>
-        <h2 data-animate="fadeInUp" class="text-shadow mb-5" >Girish Godage</h2>
-        <h1 data-animate="fadeInDown" class="text-shadow mb-5">Hello, Bonjour, नमस्ते !</h1>
-        <p data-animate="slideInUp" class="h3 text-shadow text-400">Passionate Leader With Imagination</p>
+        <h2 data-animate="fadeInDown" class="text-shadow mb-5"><span id="typed"></span></h2>
       </div>
     </section>
     <!-- About-->
@@ -127,6 +125,26 @@
 	<p class="text-center, text-shadow"> Hosted On <a href="https://pages.github.com/"><b>GitHub<b> Pages</a></p>
 </div>
  </footer>
+  <!-- Typed.js DONT TOUCH THIS! --> 
+  <div id="typed-strings">
+</div>
+
+<script>
+   var typed = new Typed('#typed',{
+                  strings:["Hello, Bonjour, नमस्ते !","I am <b>Girish Godage<b> ",
+                  "I am a <b>Passionate<b> Leader!",
+                  "I am a <b>Creative<b> Designer & Innovatie!",
+                  "And, a <b>Passionate Leader With Imagination<b>",
+                  "I am Girish Godage."],
+                  backSpeed: 30,
+                  smartBackspace: true,
+                  backDelay: 1200,
+                  startDelay: 1000,
+                  typeSpeed: 30,
+                  loop: true,
+                });
+  </script>
+
 
     <!-- JavaScript files-->
     <script src="sitejs/jquery/jquery.js"></script>
@@ -139,5 +157,6 @@
     <script src="js/front.js"></script>
     <script src="js/dark.js"></script>
     <script async src="https://static.addtoany.com/menu/page.js"></script>
+    <script src="js/typed.js"></script>
   </body>
 </html>
