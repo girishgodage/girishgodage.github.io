@@ -19,6 +19,7 @@
     <!-- Bootstrap CSS-->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- Google fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
@@ -51,6 +52,15 @@
     <!-- Typed.js DONT TOUCHHHHHHHHHHHHH!-->
     <!--<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.9/typed.min.js"></script>
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+      </script>
 </head>
 
 <body>
@@ -76,7 +86,38 @@
             <div class="row">
                 
 <div style="font-family: 'Poppins', sans-serif;" id="card-main" class="col-lg-4 col-md-6 col-sm-6">
-    <a style="text-decoration: none;" href="http://localhost:4000/2019/01/07/hi.html">
+    <a style="text-decoration: none;" href="http://localhost:4000/blog/AngularInstall">
+        <!-- Card -->
+        <div class="card">
+            <!-- Card image -->
+            <img class="card-img" src="https://girishgodage.github.io/img/logo.jpg"
+                onError="this.onerror=null;this.src='http://localhost:4000/images/meta.jpg';"
+                alt="Card image cap" />
+            <!-- Card image -->
+            <!-- Card content -->
+            <div class="text-center card-body">
+                <!-- Title -->
+                <p class="card-title">
+                    <h3>Angular installation</h3>
+                </p>
+                <!-- Title -->
+                <hr>
+                <!-- Text -->
+                <p class="card-text">Goal     The goal of the following tutorial is to guide you on how to install all software required to start our journey        with Angular. If have yo...</p>
+                <!-- Use this to fetch content from post. <section class="tutorial">
+    <h2>Goal</h2>
+    <p> The goal of the following tutorial is to guide you on how to install all software required to start our ... -->
+                <!-- Text -->
+                <!-- Card content -->
+            </div>
+        </div>
+        <!-- Card -->
+    </a>
+    <br>
+</div>
+
+<div style="font-family: 'Poppins', sans-serif;" id="card-main" class="col-lg-4 col-md-6 col-sm-6">
+    <a style="text-decoration: none;" href="http://localhost:4000/blog/hi">
         <!-- Card -->
         <div class="card">
             <!-- Card image -->
@@ -93,7 +134,7 @@
                 <!-- Title -->
                 <hr>
                 <!-- Text -->
-                <p class="card-text">Hello everyone, I am Girish. I am  an 46-year-old guy,who has a ** good command in technology &amp; Management.I worked on .net,...</p>
+                <p class="card-text">Hello everyone, I am Girish. I am  an 46-year-old guy,who has a good command i...</p>
                 <!-- Use this to fetch content from post. <p>Hello everyone, I am <a href="https://www.instagram.com/girishgodage_007" target="_blank"><strong>Girish</strong></a>. I am  an <strong>46</strong>-year-o... -->
                 <!-- Text -->
                 <!-- Card content -->
