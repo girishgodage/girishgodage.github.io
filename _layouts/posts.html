@@ -8,6 +8,7 @@
 
 <body>
     {% include header.html%}
+    
     <div style="background-color:Gray;">
         <div style="padding:0;min-height:95.05vh;display:flex;font-family: Poppins, sans-serif;margin-top: 5rem;"
             class="container">
@@ -28,12 +29,16 @@
                     <br>
                     {{page.content}}
                 </div>
-                  
-                  
-               
-                {% include talkyard-comments.html %}
+
+                <!-- START OF RELEVANT PART -->
+                <div class="just-comments" data-allowguests="true" data-apikey="cf38e753-2912-4109-85bd-0dfe10e5228f">
+                </div>
+                <!-- END OF RELEVANT PART -->
+
+
+
             </div>
-        </div>        
+        </div>
     </div>
     {% include footer.html %}
     <!-- Typed.js DONT TOUCH THIS! -->
