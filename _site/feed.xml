@@ -1,4 +1,174 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-09-21T20:58:53+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">Angular installation</title><link href="http://localhost:4000/blog/AngularInstall" rel="alternate" type="text/html" title="Angular installation" /><published>2019-09-20T00:00:00+05:30</published><updated>2019-09-20T00:00:00+05:30</updated><id>http://localhost:4000/blog/AngularInstall</id><content type="html" xml:base="http://localhost:4000/blog/AngularInstall">&lt;section class=&quot;tutorial&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-09-22T06:27:55+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">Agenda App Overview</title><link href="http://localhost:4000/blog/AgendaApp" rel="alternate" type="text/html" title="Agenda App Overview" /><published>2019-09-22T00:00:00+05:30</published><updated>2019-09-22T00:00:00+05:30</updated><id>http://localhost:4000/blog/AgendaApp</id><content type="html" xml:base="http://localhost:4000/blog/AgendaApp">&lt;section class=&quot;tutorial&quot;&gt;
+
+    &lt;div class=&quot;angular-tutorial tutorial&quot;&gt;
+        &lt;h2&gt;1. App goals and overview&lt;/h2&gt;
+        &lt;p&gt;Now when we know the basic concept behind how Angular works let's build a real App! I am going to show you
+            the final result first and then quickly analyze it. After that, &lt;strong&gt;I will show you how to build this
+                app from scratch&lt;/strong&gt;.&lt;/p&gt;
+        &lt;p&gt;So, let's don't waste more time and start working.&lt;/p&gt;
+        &lt;h2&gt;2. Run the app &lt;/h2&gt;
+        &lt;p&gt;Within the tutorial files you will find a final application code, let's use it to run our app:&lt;/p&gt;
+        &lt;ol&gt;
+            &lt;li&gt;Open a terminal&lt;/li&gt;
+            &lt;li&gt;Navigate to the &lt;code&gt;agenda-app/final/&lt;/code&gt; folder&lt;/li&gt;
+            &lt;li&gt;Install the dependencies using &lt;code&gt;npm install&lt;/code&gt;
+            &lt;/li&gt;
+            &lt;li&gt;Run the app using &lt;code&gt;npm start&lt;/code&gt;
+            &lt;/li&gt;
+            &lt;li&gt;See the results in a browser:&lt;/li&gt;
+        &lt;/ol&gt;
+        &lt;img class=&quot;img-fluid&quot;
+            src=&quot;http://localhost:4000/img/angular/tutorials/agenda-app/img/image_1.png&quot;
+            alt=&quot;App preview&quot;&gt;
+        &lt;p&gt;&lt;strong&gt;Voila! Our app is running&lt;/strong&gt;.&lt;/p&gt;
+        &lt;h2&gt;3. Test the app&lt;/h2&gt;
+        &lt;p&gt;The application which we are about to build is a &lt;strong&gt;daily agenda app&lt;/strong&gt;. It allows us to display a
+            list of events planned for today including time, title, location and description. We can add new Events as
+            well as remove existing ones. The app also displays a weather forecast.&lt;/p&gt;
+        &lt;p&gt;Now &lt;strong&gt;take some time to play with the app&lt;/strong&gt;. Note that whenever you are adding/removing events,
+            &lt;strong&gt;the counter in the right column is changing&lt;/strong&gt;.&lt;/p&gt;
+        &lt;img class=&quot;img-fluid&quot;
+            src=&quot;http://localhost:4000/img/angular/tutorials/agenda-app/img/appReview.render.gif&quot;
+            alt=&quot;App behavior&quot;&gt;
+        &lt;h2&gt;4. Responsiveness&lt;/h2&gt;
+        &lt;p&gt;Our application is also &lt;strong&gt;responsive by default&lt;/strong&gt;. Just change the size of the browser to see
+            how it displays on different screen size:&lt;/p&gt;
+        &lt;img class=&quot;img-fluid&quot;
+            src=&quot;http://localhost:4000/img/angular/tutorials/agenda-app/img/appResponsive.render.gif&quot;
+            alt=&quot;App Responsiveness&quot;&gt;
+        &lt;p&gt;Now when we know what we are about to build let's not waste more time and start building our app!&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr&gt;
+    &lt;div class=&quot;row&quot; &gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot; href=&quot;https://girishgodage.github.io/blog/Installer-lesson-2&quot;
+                role=&quot;button&quot;&gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot; &gt;
+            &lt;a class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;
+                href=&quot;&quot; role=&quot;button&quot;&gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/angular/tutorials/agenda-app/img/image_1.png" /></entry><entry><title type="html">Angular and Command Line Interface</title><link href="http://localhost:4000/blog/Installer-lesson-2" rel="alternate" type="text/html" title="Angular and Command Line Interface" /><published>2019-09-21T00:00:00+05:30</published><updated>2019-09-21T00:00:00+05:30</updated><id>http://localhost:4000/blog/Installer-lesson-2</id><content type="html" xml:base="http://localhost:4000/blog/Installer-lesson-2">&lt;!--Section: Tutorial content--&gt;
+&lt;section class=&quot;tutorial&quot;&gt;
+    &lt;h2&gt;Goal&lt;/h2&gt;
+    &lt;p&gt; The goal of following tutorial is to guide you on how to install Angular on your local machine. This require
+        Node.js and npm installed on your machine. If you don't have it or don't know if you have, please check &lt;a
+            href=&quot;https://girishgodage.github.io/blog/AngularInstall&quot;&gt;previous tutorial&lt;/a&gt;. If you
+        already have it we can start installing Angular! &lt;/p&gt;
+    &lt;h2&gt;Angular and Angular CLI&lt;/h2&gt;
+    &lt;p&gt;Angular is a TypeScript-based open-source front-end web application platform led by the Angular Team at Google
+        and by a community of individuals and corporations. Angular Command Line Interface (CLI) is a tool which helps
+        you to scaffold and build angular apps using modules. It also handles all common tedious task for you. We will
+        show it on the example but first - let's install.&lt;/p&gt;
+    &lt;h2&gt;1. Installation &lt;/h2&gt;
+    &lt;p&gt;Open terminal/comand prompt and run:&lt;/p&gt;
+    &lt;div class=&quot;code-toolbar&quot;&gt;
+        &lt;pre
+            class=&quot;code-toolbar language-typescript&quot;&gt;&lt;code class=&quot; language-typescript&quot;&gt;npm install &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;g @angular&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;cli&lt;/code&gt;&lt;/pre&gt;
+        &lt;div class=&quot;toolbar&quot;&gt;
+            
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Next we will install Typescript - type script is a superset of JS, we will learn more about that in next lessons,
+        for now just note that it's required by Angular&lt;/p&gt;
+    &lt;div class=&quot;code-toolbar&quot;&gt;
+        &lt;pre
+            class=&quot;code-toolbar language-typescript&quot;&gt;&lt;code class=&quot; language-typescript&quot;&gt;npm i &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;g typescript&lt;/code&gt;&lt;/pre&gt;
+        &lt;div class=&quot;toolbar&quot;&gt;
+            
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;h2&gt;2. Verify installation &lt;/h2&gt;
+    &lt;p&gt;Run following command in comand prompt: &lt;/p&gt;
+    &lt;div class=&quot;code-toolbar&quot;&gt;
+        &lt;pre
+            class=&quot;code-toolbar language-typescript&quot;&gt;&lt;code class=&quot; language-typescript&quot;&gt;ng &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;version&lt;/code&gt;&lt;/pre&gt;
+        &lt;div class=&quot;toolbar&quot;&gt;
+            
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p&gt;You should see current version of Angular, CLI and Typescript:&lt;/p&gt;
+    &lt;img class=&quot;img-fluid&quot;
+        src=&quot;http://localhost:4000/img/angular/tutorials/angular-cli/img/01.png&quot;
+        alt=&quot;hello world&quot;&gt;
+    &lt;h2&gt;3. First Angular app &lt;/h2&gt;
+    &lt;p&gt;Since everything is ready we are ready to create our first Angular app. Open &lt;command&gt; prompt and run following command:
+    &lt;/p&gt;
+    &lt;div class=&quot;code-toolbar&quot;&gt;
+        &lt;pre
+            class=&quot;code-toolbar language-typescript&quot;&gt;&lt;code class=&quot; language-typescript&quot;&gt;ng &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;world&lt;/code&gt;&lt;/pre&gt;
+        &lt;div class=&quot;toolbar&quot;&gt;
+            
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Expected output:&lt;/p&gt;
+    &lt;img class=&quot;img-fluid&quot;
+        src=&quot;http://localhost:4000/img/angular/tutorials/angular-cli/img/02.png&quot;
+        alt=&quot;new new cli&quot;&gt;
+    &lt;p&gt;Now let's navigate to our new project:&lt;/p&gt;
+    &lt;div class=&quot;code-toolbar&quot;&gt;
+        &lt;pre
+            class=&quot;code-toolbar language-typescript&quot;&gt;&lt;code class=&quot; language-typescript&quot;&gt;cd hello&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;world&lt;/code&gt;&lt;/pre&gt;
+        &lt;div class=&quot;toolbar&quot;&gt;
+            
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p&gt;and run:&lt;/p&gt;
+    &lt;div class=&quot;code-toolbar&quot;&gt;
+        &lt;pre
+            class=&quot;code-toolbar language-typescript&quot;&gt;&lt;code class=&quot; language-typescript&quot;&gt;ng serve &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;o&lt;/code&gt;&lt;/pre&gt;
+        &lt;div class=&quot;toolbar&quot;&gt;
+            
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p&gt;Expected output:&lt;/p&gt;
+    &lt;img class=&quot;img-fluid&quot;
+        src=&quot;http://localhost:4000/img/angular/tutorials/angular-cli/img/03.png&quot;
+        alt=&quot;new serve&quot;&gt;
+    &lt;p&gt;Our browser should automatically open (cause we added &lt;code&gt;-o&lt;/code&gt; option) new window/card in our default web
+        browser and display following content. If that didn't happen, open a browser manually and navigate to &lt;/p&gt;
+    &lt;div class=&quot;code-toolbar&quot;&gt;
+        &lt;pre
+            class=&quot;code-toolbar language-typescript&quot;&gt;&lt;code class=&quot; language-typescript&quot;&gt;http&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token regex&quot;&gt;/localhost:4200/&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+        &lt;div class=&quot;toolbar&quot;&gt;
+          &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;img class=&quot;img-fluid&quot;
+        src=&quot;http://localhost:4000/img/angular/tutorials/angular-cli/img/04.png&quot;
+        alt=&quot;new serve&quot;&gt;
+    &lt;p&gt;Now let's get back to our current project.&lt;strong&gt;Click NEXT LESSON&lt;/strong&gt; button to proceed further.&lt;/p&gt;
+&lt;/section&gt;
+&lt;!--Section: Tutorial content--&gt;
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr&gt;
+    &lt;div class=&quot;row&quot; &gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot; href=&quot;https://girishgodage.github.io/blog/AngularInstall&quot;
+                role=&quot;button&quot;&gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot; &gt;
+            &lt;a class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;
+                href=&quot;&quot; role=&quot;button&quot;&gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><summary type="html">Goal The goal of following tutorial is to guide you on how to install Angular on your local machine. This require Node.js and npm installed on your machine. If you don't have it or don't know if you have, please check previous tutorial. If you already have it we can start installing Angular! Angular and Angular CLI Angular is a TypeScript-based open-source front-end web application platform led by the Angular Team at Google and by a community of individuals and corporations. Angular Command Line Interface (CLI) is a tool which helps you to scaffold and build angular apps using modules. It also handles all common tedious task for you. We will show it on the example but first - let's install. 1. Installation Open terminal/comand prompt and run: npm install -g @angular/cli Next we will install Typescript - type script is a superset of JS, we will learn more about that in next lessons, for now just note that it's required by Angular npm i -g typescript 2. Verify installation Run following command in comand prompt: ng --version You should see current version of Angular, CLI and Typescript: 3. First Angular app Since everything is ready we are ready to create our first Angular app. Open prompt and run following command: ng new hello-world Expected output: Now let's navigate to our new project: cd hello-world and run: ng serve -o Expected output: Our browser should automatically open (cause we added -o option) new window/card in our default web browser and display following content. If that didn't happen, open a browser manually and navigate to http://localhost:4200/ Now let's get back to our current project.Click NEXT LESSON button to proceed further. Previous Lesson Next Lesson</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/angular_logo.png" /></entry><entry><title type="html">Angular installation</title><link href="http://localhost:4000/blog/AngularInstall" rel="alternate" type="text/html" title="Angular installation" /><published>2019-09-20T00:00:00+05:30</published><updated>2019-09-20T00:00:00+05:30</updated><id>http://localhost:4000/blog/AngularInstall</id><content type="html" xml:base="http://localhost:4000/blog/AngularInstall">&lt;section class=&quot;tutorial&quot;&gt;
     &lt;h2&gt;Goal&lt;/h2&gt;
     &lt;p&gt; The goal of the following tutorial is to guide you on how to install all software required to start our journey
         with Angular. If have your environment ready, you can skip to &lt;a

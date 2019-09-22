@@ -85,140 +85,146 @@
         </div>        
     </nav>
   </header>
-    <!-- Blog Container Starts -->
-    <div class="container-fluid blog-section">
-        <div class="blog-holder">
-            <div class="row">
+    
+    <div style="background-color:Gray;">
+        <div style="padding:0;min-height:95.05vh;display:flex;font-family: Poppins, sans-serif;margin-top: 5rem;"
+            class="container">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <p class="post-title">
+                    <h1><a href="/blog/Installer-lesson-2">Angular and Command Line Interface</a></h1>
+                </p>
                 
-<div style="font-family: 'Poppins', sans-serif;" id="card-main" class="col-sm-3 col-lg-4 col-md-6 col-sm-6">
-    <a style="text-decoration: none;" href="http://localhost:4000/blog/AgendaApp">
-        <!-- Card -->
-        <div class="card">
-            <!-- Card image -->
-            <img class="card-img" height="240" src="https://girishgodage.github.io/img/angular/tutorials/agenda-app/img/image_1.png"
-                onError="this.onerror=null;this.src='http://localhost:4000/images/meta.jpg';"
-                alt="Card image cap" />
-            <!-- Card image -->
-            <!-- Card content -->
-            <div class="text-center card-body">
-                <!-- Title -->
-                <p class="card-title">
-                    <h3>Agenda App Overview</h3>
-                </p>
-                <!-- Title -->
+                <span class="post-date"><span style="font-weight:600">September 21, 2019 Saturday</span> by
+                    <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">Girish Godage</a>
+                </span>
+                
                 <hr>
-                <!-- Text -->
-                <p class="card-text">1. App goals and overview        Now when we know the basic concept behind how Angular works let's build...</p>
-                <!-- Use this to fetch content from post. <section class="tutorial">
-
-    <div class="angular-tutorial tutorial">
-        <h2>1. App goals and overview</h2>
-        <p>Now when we know the basic conc... -->
-                <!-- Text -->
-                <!-- Card content -->
-            </div>
-        </div>
-        <!-- Card -->
-    </a>
-    <br>
-</div>
-
-<div style="font-family: 'Poppins', sans-serif;" id="card-main" class="col-sm-3 col-lg-4 col-md-6 col-sm-6">
-    <a style="text-decoration: none;" href="http://localhost:4000/blog/Installer-lesson-2">
-        <!-- Card -->
-        <div class="card">
-            <!-- Card image -->
-            <img class="card-img" height="240" src="https://girishgodage.github.io/img/angular_logo.png"
-                onError="this.onerror=null;this.src='http://localhost:4000/images/meta.jpg';"
-                alt="Card image cap" />
-            <!-- Card image -->
-            <!-- Card content -->
-            <div class="text-center card-body">
-                <!-- Title -->
-                <p class="card-title">
-                    <h3>Angular and Command Line Interface</h3>
-                </p>
-                <!-- Title -->
-                <hr>
-                <!-- Text -->
-                <p class="card-text">Goal     The goal of following tutorial is to guide you on how to install Angular on your local machine. This require  ...</p>
-                <!-- Use this to fetch content from post. <!--Section: Tutorial content-->
+                <div><img class="post-image" src="https://girishgodage.github.io/img/angular_logo.png" alt="Angular and Command Line Interface" height="250" /></div>
+                <div class="post-content">
+                    <br>
+                    <!--Section: Tutorial content-->
 <section class="tutorial">
     <h2>Goal</h2>
-    <p> The goal of following tutorial is to guide you on how to install Angula... -->
-                <!-- Text -->
-                <!-- Card content -->
-            </div>
+    <p> The goal of following tutorial is to guide you on how to install Angular on your local machine. This require
+        Node.js and npm installed on your machine. If you don't have it or don't know if you have, please check <a
+            href="https://girishgodage.github.io/blog/AngularInstall">previous tutorial</a>. If you
+        already have it we can start installing Angular! </p>
+    <h2>Angular and Angular CLI</h2>
+    <p>Angular is a TypeScript-based open-source front-end web application platform led by the Angular Team at Google
+        and by a community of individuals and corporations. Angular Command Line Interface (CLI) is a tool which helps
+        you to scaffold and build angular apps using modules. It also handles all common tedious task for you. We will
+        show it on the example but first - let's install.</p>
+    <h2>1. Installation </h2>
+    <p>Open terminal/comand prompt and run:</p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-typescript"><code class=" language-typescript">npm install <span class="token operator">-</span>g @angular<span class="token operator">/</span>cli</code></pre>
+        <div class="toolbar">
+            
         </div>
-        <!-- Card -->
-    </a>
-    <br>
-</div>
+    </div>
+    <p>Next we will install Typescript - type script is a superset of JS, we will learn more about that in next lessons,
+        for now just note that it's required by Angular</p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-typescript"><code class=" language-typescript">npm i <span class="token operator">-</span>g typescript</code></pre>
+        <div class="toolbar">
+            
+        </div>
+    </div>
+    <h2>2. Verify installation </h2>
+    <p>Run following command in comand prompt: </p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-typescript"><code class=" language-typescript">ng <span class="token operator">--</span>version</code></pre>
+        <div class="toolbar">
+            
+        </div>
+    </div>
+    <p>You should see current version of Angular, CLI and Typescript:</p>
+    <img class="img-fluid"
+        src="http://localhost:4000/img/angular/tutorials/angular-cli/img/01.png"
+        alt="hello world">
+    <h2>3. First Angular app </h2>
+    <p>Since everything is ready we are ready to create our first Angular app. Open <command> prompt and run following command:
+    </p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-typescript"><code class=" language-typescript">ng <span class="token keyword">new</span> <span class="token class-name">hello</span><span class="token operator">-</span>world</code></pre>
+        <div class="toolbar">
+            
+        </div>
+    </div>
+    <p>Expected output:</p>
+    <img class="img-fluid"
+        src="http://localhost:4000/img/angular/tutorials/angular-cli/img/02.png"
+        alt="new new cli">
+    <p>Now let's navigate to our new project:</p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-typescript"><code class=" language-typescript">cd hello<span class="token operator">-</span>world</code></pre>
+        <div class="toolbar">
+            
+        </div>
+    </div>
+    <p>and run:</p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-typescript"><code class=" language-typescript">ng serve <span class="token operator">-</span>o</code></pre>
+        <div class="toolbar">
+            
+        </div>
+    </div>
+    <p>Expected output:</p>
+    <img class="img-fluid"
+        src="http://localhost:4000/img/angular/tutorials/angular-cli/img/03.png"
+        alt="new serve">
+    <p>Our browser should automatically open (cause we added <code>-o</code> option) new window/card in our default web
+        browser and display following content. If that didn't happen, open a browser manually and navigate to </p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-typescript"><code class=" language-typescript">http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token regex">/localhost:4200/</span></code></pre>
+        <div class="toolbar">
+          </div>
+    </div>
+    <img class="img-fluid"
+        src="http://localhost:4000/img/angular/tutorials/angular-cli/img/04.png"
+        alt="new serve">
+    <p>Now let's get back to our current project.<strong>Click NEXT LESSON</strong> button to proceed further.</p>
+</section>
+<!--Section: Tutorial content-->
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr>
+    <div class="row" >
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a class="btn  btn-sm" id="round-button" href="https://girishgodage.github.io/blog/AngularInstall"
+                role="button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6" >
+            <a class="btn btn-sm" id="round-button"
+                href="" role="button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </div>
 
-<div style="font-family: 'Poppins', sans-serif;" id="card-main" class="col-sm-3 col-lg-4 col-md-6 col-sm-6">
-    <a style="text-decoration: none;" href="http://localhost:4000/blog/AngularInstall">
-        <!-- Card -->
-        <div class="card">
-            <!-- Card image -->
-            <img class="card-img" height="240" src="https://girishgodage.github.io/img/angular_logo.png"
-                onError="this.onerror=null;this.src='http://localhost:4000/images/meta.jpg';"
-                alt="Card image cap" />
-            <!-- Card image -->
-            <!-- Card content -->
-            <div class="text-center card-body">
-                <!-- Title -->
-                <p class="card-title">
-                    <h3>Angular installation</h3>
-                </p>
-                <!-- Title -->
-                <hr>
-                <!-- Text -->
-                <p class="card-text">Goal     The goal of the following tutorial is to guide you on how to install all software required to start our journey        with Angular. If have yo...</p>
-                <!-- Use this to fetch content from post. <section class="tutorial">
-    <h2>Goal</h2>
-    <p> The goal of the following tutorial is to guide you on how to install all software required to start our ... -->
-                <!-- Text -->
-                <!-- Card content -->
-            </div>
-        </div>
-        <!-- Card -->
-    </a>
-    <br>
-</div>
+</section>
+                </div>
 
-<div style="font-family: 'Poppins', sans-serif;" id="card-main" class="col-sm-3 col-lg-4 col-md-6 col-sm-6">
-    <a style="text-decoration: none;" href="http://localhost:4000/blog/hi">
-        <!-- Card -->
-        <div class="card">
-            <!-- Card image -->
-            <img class="card-img" height="240" src="https://girishgodage.github.io/img/logo.jpg"
-                onError="this.onerror=null;this.src='http://localhost:4000/images/meta.jpg';"
-                alt="Card image cap" />
-            <!-- Card image -->
-            <!-- Card content -->
-            <div class="text-center card-body">
-                <!-- Title -->
-                <p class="card-title">
-                    <h3>Hello World</h3>
-                </p>
-                <!-- Title -->
-                <hr>
-                <!-- Text -->
-                <p class="card-text">Hello everyone, I am Girish. I am  an 46-year-old guy,who has a good command i...</p>
-                <!-- Use this to fetch content from post. <p>Hello everyone, I am <a href="https://www.instagram.com/girishgodage_007" target="_blank"><strong>Girish</strong></a>. I am  an <strong>46</strong>-year-o... -->
-                <!-- Text -->
-                <!-- Card content -->
-            </div>
-        </div>
-        <!-- Card -->
-    </a>
-    <br>
-</div>
+                <!-- START OF RELEVANT PART -->
+                <div class="just-comments" data-allowguests="true" data-apikey="cf38e753-2912-4109-85bd-0dfe10e5228f">
+                </div>
+                <!-- END OF RELEVANT PART -->
+
+
 
             </div>
         </div>
     </div>
-    <!-- Blog Container Ends -->
     <!-- Footer-->
 <footer class="main-footer">
     <div class="text-center">
