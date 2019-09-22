@@ -1,108 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+title: 7.Using Bootstrap in Angular
+image: https://girishgodage.github.io/img/angular/tutorials/agenda-app/1/image_1.png
+author: Girish Godage
+layout: posts
+prevurl: https://girishgodage.github.io/blog/AgendaApp
+nextutl: https://girishgodage.github.io/blog/AgendaApp2
+discussion_id: 2019-09-23-AgendaApp2
+---
 
-<head>
-    <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<!-- Chrome, Firefox OS and Opera -->
-<meta name="theme-color" content="#2A80EE">
-<!-- Windows Phone -->
-<meta name="msapplication-navbutton-color" content="#2A80EE">
-<!-- iOS Safari -->
-<meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
-<title>Girish Godage | Passionate Leader, who has a good command in technology & Management</title>
-<meta name="description" content="I am a passionate Leader, who has a good command in technology & Mangement. Also, I am a creative designer and an innovatie techie.">
-<meta name="keywords" content="Girish Godage, Girish Godage007, girish godage, girish, godage, girish godage, girish godage github blog, girish godage yt">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="all,follow">
-    <link rel="canonical" href="https://girishgodage.github.io/index.html">
-    <!-- Bootstrap CSS-->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <!-- Google fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-   
-    <!-- owl carousel-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" >
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
-    
-    <!-- animate.css-->
-    <link rel="stylesheet" href="http://localhost:4000/sitejs/animate.css/animate.css">
-    <!-- theme stylesheet-->
-    <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="http://localhost:4000/css/custom.css" as="style">
-    <link rel="stylesheet" href="http://localhost:4000/css/comments.css" as="style">
-    <!-- Favicon-->
-    <link rel="shortcut icon" href="http://localhost:4000/img/logo-big.png">
-    <!-- Fab Icon-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130164763-2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-         gtag('config', 'UA-130164763-2');
-    </script>
-    <!-- Typed.js DONT TOUCHHHHHHHHHHHHH!-->
-    <!--<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.9/typed.min.js"></script>
-    <script>
-        function copyToClipboard(element) {
-            var $temp = $("<input>");
-            $("body").append($temp);
-            $temp.val($(element).text()).select();
-            document.execCommand("copy");
-            $temp.remove();
-        }
-      </script>
-      
-      <!-- START OF RELEVANT PART -->
-    <script async src="https://just-comments.com/w2.js"></script>
-    <!-- END OF RELEVANT PART -->
-</head>
-
-<body>
-    <!-- navbar-->
-<header class="header">
-    <nav class="navbar navbar-expand-lg fixed-top">
-      <a class="navbar-brand" href="http://localhost:4000"><img src="http://localhost:4000/img/logo-big.png" width="50" height="50" class="d-inline-block align-center" alt="logo"> <img src="http://localhost:4000/img/girish_logo.png" height="30"  alt="girilogo"></a>
-        <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span class="fa fa-bars" style="color: white" ></span></button>
-        <div id="navbarcollapse" class="collapse navbar-collapse">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a href="http://localhost:4000#home" class="nav-link link-scroll">Home</a></li>
-            <li class="nav-item"><a href="http://localhost:4000#about" class="nav-link link-scroll">About</a></li>
-            <li class="nav-item"><a href="http://localhost:4000#services" class="nav-link link-scroll">Skills</a></li>
-            <li class="nav-item"><a href="http://localhost:4000#contact" class="nav-link link-scroll">Contact</a></li>
-            <li class="nav-item"><a href="http://localhost:4000/blog" class="nav-link link-scroll">Blog</a></li>
-          </ul>
-        </div>        
-    </nav>
-  </header>
-    
-    <div style="background-color:Gray;">
-        <div style="padding:0;min-height:95.05vh;display:flex;font-family: Poppins, sans-serif;margin-top: 5rem;"
-            class="container">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <p class="post-title">
-                    <h1><a href="/blog/AgendaApp2">4.Using Bootstrap in Angular</a></h1>
-                </p>
-                
-                <span class="post-date"><span style="font-weight:600">September 22, 2019 Sunday</span> by
-                    <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">Girish Godage</a>
-                </span>
-                
-                <hr>
-                <div><img class="post-image" src="https://girishgodage.github.io/img/angular/tutorials/agenda-app/1/image_1.png" alt="4.Using Bootstrap in Angular" height="250" /></div>
-                <div class="post-content">
-                    <br>
-                    <section class="tutorial">
+<section class="tutorial">
 
     <div class="angular-tutorial tutorial">
         <p>We will start building our app by <strong>setting up the two column structure of our app</strong>. As you can
@@ -180,7 +86,7 @@ div<span class="token punctuation">[</span><span class="token keyword">class</sp
         <p>Currently, our app has two equal-sized columns which are placed next to each other on a large screen. When we
             resize our browser window <strong>they will nest one beneath the other</strong>:</p>
         <img class="img-fluid"
-            src="http://localhost:4000/img/angular/tutorials/agenda-app/2/appResponsive.render.gif"
+            src="{{site.url}}{{site.baseurl}}/img/angular/tutorials/agenda-app/2/appResponsive.render.gif"
             alt="Bootstrap columns">
         <br>
         <p><strong>What is the Bootstrap Grid? </strong>
@@ -188,16 +94,16 @@ div<span class="token punctuation">[</span><span class="token keyword">class</sp
         <p>In nutshell, it's a mechanism which allows us to create a responsive website. The Bootstrap grid allows us
             define rows, and each row consists of up to 12 columns.</p>
         <img class="img-fluid"
-            src="http://localhost:4000/img/angular/tutorials/agenda-app/2/image_1.png"
+            src="{{site.url}}{{site.baseurl}}/img/angular/tutorials/agenda-app/2/image_1.png"
             alt="12 bootstrap columns">
         <p>You can<strong> either use one column which will be 12 blocks long or use multiple smaller blocks</strong>.
             The only rule is that <strong>you cannot exceed more than 12 blocks in a row</strong>. The blocks don't have
             to be equal in size:&nbsp;</p>
         <img class="img-fluid"
-            src="http://localhost:4000/img/angular/tutorials/agenda-app/2/image_3.png">
+            src="{{site.url}}{{site.baseurl}}/img/angular/tutorials/agenda-app/2/image_3.png">
         <p>And you can skip some of the columns, as well as align them horizontally:</p>
         <img class="img-fluid"
-            src="http://localhost:4000/img/angular/tutorials/agenda-app/2/image_2.png">
+            src="{{site.url}}{{site.baseurl}}/img/angular/tutorials/agenda-app/2/image_2.png">
         <p>For more advanced usage you can check our&nbsp;<a
                 href="https://mdbootstrap.com/docs/angular/layout/overview/">docs:</a>
         </p>
@@ -210,7 +116,7 @@ div<span class="token punctuation">[</span><span class="token keyword">class</sp
             (<b>default</b>), small (<b>sm</b>), medium (<b>md</b>), large (<b>lg</b>)&nbsp; and extra large
             (<b>xl</b>).&nbsp; Each size has a breaking point defined according to the table below:</p>
         <img class="img-fluid"
-            src="http://localhost:4000/img/angular/tutorials/agenda-app/2/image.png">
+            src="{{site.url}}{{site.baseurl}}/img/angular/tutorials/agenda-app/2/image.png">
           
             <br>
         <span class="small mx-auto">Bootstrap responsive breakpoints table</span>
@@ -257,7 +163,7 @@ div<span class="token punctuation">[</span><span class="token keyword">class</sp
         <!-- /.mdbsnippet -->
         <p>Run the app and resize the browser size:</p>
         <img class="img-fluid"
-            src="http://localhost:4000/img/angular/tutorials/agenda-app/2/colsize.gif"
+            src="{{site.url}}{{site.baseurl}}/img/angular/tutorials/agenda-app/2/colsize.gif"
             alt="Bootstrap columns size">
         <p>I hope that you now you can understand how easy it is to build responsive components using Bootstrap. Let's
             get back to our app. We want to create a two-column layout that will be visible on the desktop (extra large
@@ -304,61 +210,4 @@ div<span class="token punctuation">[</span><span class="token keyword">class</sp
     <hr>
     
 </section>
-<!--Section: Lesson UI-->
-<section class="text-center">
-    <hr>
-    <div class="row" >
-        <div class="col-lg-4 col-md-6 col-sm-6">
-            <a class="btn  btn-sm" id="round-button" href="https://girishgodage.github.io/blog/AgendaApp2"
-                role="button">
-                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
-            </a>
-        </div>
-     
-        <div class="col-lg-4 col-md-6 col-sm-6" >
-            <a class="btn btn-sm" id="round-button"
-                href="" role="button">Next Lesson
-                <i class="fas fa-arrow-right ml-2"></i>
-            </a>
-        </div>
-    </div>
-
-</section>
-                </div>
-
-                <!-- START OF RELEVANT PART -->
-                <div class="just-comments" data-allowguests="true" data-apikey="cf38e753-2912-4109-85bd-0dfe10e5228f">
-                </div>
-                <!-- END OF RELEVANT PART -->
-
-
-
-            </div>
-        </div>
-    </div>
-    <!-- Footer-->
-<footer class="main-footer">
-    <div class="text-center">
-        <p> <b>©</b>2019 Girish Godage </p>
-        <p class="text-center, text-shadow"> Hosted On <a href="https://pages.github.com/">GitHub Pages</a></p>
-    </div>
-</footer>
-    <!-- Typed.js DONT TOUCH THIS! -->
-    <div id="typed-strings">
-    </div>
-
-        <!-- JavaScript files-->
-    <script src="http://localhost:4000/sitejs/jquery/jquery.min.js"></script>
-    <script src="http://localhost:4000/sitejs/popper.js/umd/popper.min.js"> </script>
-    <script src="http://localhost:4000/sitejs/bootstrap/js/bootstrap.min.js"></script>
-    <script src="http://localhost:4000/sitejs/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="http://localhost:4000/sitejs/owl.carousel/owl.carousel.min.js"></script>
-    <script src="http://localhost:4000/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
-    <script src="http://localhost:4000/sitejs/jquery.counterup/jquery.counterup.js"></script>
-    <script src="http://localhost:4000/js/front.js"></script>
-    <script src="http://localhost:4000/js/comment.js"></script>
-
-
-</body>
-
-</html>
+{% include blogslide.html %}

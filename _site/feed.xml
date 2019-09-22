@@ -1,211 +1,363 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-09-22T17:13:13+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">4.Using Bootstrap in Angular</title><link href="http://localhost:4000/blog/AgendaApp2" rel="alternate" type="text/html" title="4.Using Bootstrap in Angular" /><published>2019-09-22T00:00:00+05:30</published><updated>2019-09-22T00:00:00+05:30</updated><id>http://localhost:4000/blog/AgendaApp2</id><content type="html" xml:base="http://localhost:4000/blog/AgendaApp2">&lt;section class=&quot;tutorial&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-09-22T19:26:03+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">5.Create Component</title><link href="http://localhost:4000/blog/GettingStarted3" rel="alternate" type="text/html" title="5.Create Component" /><published>2019-09-22T00:00:00+05:30</published><updated>2019-09-22T00:00:00+05:30</updated><id>http://localhost:4000/blog/GettingStarted3</id><content type="html" xml:base="http://localhost:4000/blog/GettingStarted3">&lt;section class=&quot;tutorial5&quot;&gt;
 
-    &lt;div class=&quot;angular-tutorial tutorial&quot;&gt;
-        &lt;p&gt;We will start building our app by &lt;strong&gt;setting up the two column structure of our app&lt;/strong&gt;. As you can
-            see in the demo app our app consists of two columns: the first, on the left and wider, which lists all the
-            daily events; and the right hand one - which shows the events counter as well as the weather forecast.&lt;/p&gt;
-        &lt;p&gt;As you also noticed our app will be responsive. This is thanks to Bootstrap 4. In this lesson, &lt;strong&gt;we
-                will learn how to use a Bootstrap grid in Angular&lt;/strong&gt;.&lt;/p&gt;
-        &lt;p class=&quot;note note-warning&quot;&gt;&lt;strong&gt;Disclaimer:&lt;/strong&gt; I will explain the key concepts and basic usage here.
-            If you want to master Bootstrap usage I strongly suggest to finish &lt;a
-                href=&quot;https://mdbootstrap.com/education/bootstrap/&quot;&gt;this course&lt;/a&gt; first and come back here.&lt;/p&gt;
-        &lt;h2&gt;1. Open the project&lt;/h2&gt;
-        &lt;p&gt;In order to start building our project let's open a boilerplate which I have prepared for you in Tutorial
-            files which you downloaded before.&lt;/p&gt;
+
+    &lt;div class=&quot;react-tutorial tutorial&quot;&gt;
+
+        &lt;p&gt;Among other advantages, Angular gained incredible momentum within last year thanks to reactive and composable
+            components. Components are reusable Angular instances with a name. We can use this component as a custom
+            element inside a root.&lt;/p&gt;
+
+        &lt;p&gt;In this lesson, we will learn how to create, use and organize components.&lt;/p&gt;
+
+        &lt;h2&gt;1. Create and export component&lt;/h2&gt;
+
+
         &lt;ol&gt;
-            &lt;li&gt;Open the &lt;code&gt;agenda-app/start-here&lt;/code&gt; project in code editor&lt;/li&gt;
-            &lt;li&gt;Replace the content of the &lt;code&gt;src/app.component.html&lt;/code&gt; and &lt;code&gt;src/app.component.scss&lt;/code&gt;
-                file with the following code:&lt;/li&gt;
+            &lt;li&gt;Create a new folder and call it &lt;code&gt;components&lt;/code&gt; inside the &lt;code&gt;src&lt;/code&gt; folder:&lt;/li&gt;
+            &lt;img class=&quot;img-fluid&quot;
+                src=&quot;http://localhost:4000/img/angular/tutorials/getting-started/3/components.gif&quot;
+                alt=&quot;Create components folder&quot;&gt;
+            &lt;li&gt;Create a new folder and call it &lt;code&gt;hello-world&lt;/code&gt; inside the &lt;code&gt;components&lt;/code&gt; folder:&lt;/li&gt;
+            &lt;img class=&quot;img-fluid&quot;
+                src=&quot;http://localhost:4000/img/angular/tutorials/getting-started/3/hello-world.gif&quot;
+                alt=&quot;Create hello-world folder&quot;&gt;
+
+            &lt;li&gt;Create a new file called &lt;code&gt;hello-world.component.html&lt;/code&gt; inside &lt;code&gt;hello-world/&lt;/code&gt;
+                folder:&lt;/li&gt;
+            &lt;img class=&quot;img-fluid&quot;
+                src=&quot;http://localhost:4000/img/angular/tutorials/getting-started/3/hello-world-html.gif&quot;
+                alt=&quot;Create hello-world.component.html file&quot;&gt;
+
+            &lt;li&gt;Open &lt;code&gt;hello-world.component.html&lt;/code&gt; file and add the following code:&lt;/li&gt;
             &lt;!-- mdbsnippet --&gt;
             &lt;div class=&quot;docs-pills&quot;&gt;
                 &lt;div class=&quot;d-flex justify-content-between&quot;&gt;
-                    &lt;ul class=&quot;nav nav-tabs&quot;&gt;
+                    &lt;ul class=&quot;nav md-pills pills-grey&quot;&gt;
                         &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link active show&quot; data-toggle=&quot;tab&quot;
-                                href=&quot;#tab1&quot; role=&quot;tab&quot;&gt;app.component.html&lt;/a&gt;
-                        &lt;/li&gt;
-                        &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link &quot; data-toggle=&quot;tab&quot;
-                                href=&quot;#tab2&quot; role=&quot;tab&quot;&gt;app.component.scss&lt;/a&gt;
+                                href=&quot;#mdb3462049a1ca12ee1f811c3fa6615b456&quot; role=&quot;tab&quot;&gt;hello-world.component.html&lt;/a&gt;
                         &lt;/li&gt;
                     &lt;/ul&gt;
                 &lt;/div&gt;
-                &lt;div class=&quot;tab-content&quot; style=&quot;background-color: black;color:white&quot;&gt;
-                    &lt;div class=&quot;tab-pane fade active show&quot; id=&quot;tab1&quot; role=&quot;tabpanel&quot;&gt;
+                &lt;div class=&quot;tab-content&quot;&gt;
+                    &lt;div class=&quot;tab-pane fade active show&quot; id=&quot;mdb3462049a1ca12ee1f811c3fa6615b456&quot; role=&quot;tabpanel&quot;&gt;
                         &lt;div class=&quot;code-toolbar&quot;&gt;
                             &lt;pre
-                                class=&quot;px-3 mb-0 line-numbers  language-js&quot;&gt;&lt;code class=&quot; language-js&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;container&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;row mt-3&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;col-md-6&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-      Left column
-    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;col-md-6&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-      Right column
-    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-                            &lt;div class=&quot;toolbar&quot;&gt;
-                                
-                            &lt;/div&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                    &lt;div class=&quot;tab-pane fade &quot; id=&quot;tab2&quot; role=&quot;tabpanel&quot;&gt;
-                        &lt;div class=&quot;code-toolbar&quot;&gt;
-                            &lt;pre
-                                class=&quot;px-3 mb-0 line-numbers  language-js&quot;&gt;&lt;code class=&quot; language-js&quot;&gt;div&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;^=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;col&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-div&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot; col&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-  border&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;px dotted black&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+                                class=&quot;grey lighten-3 px-3 mb-0 line-numbers  language-js&quot;&gt;&lt;code class=&quot; language-js&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;h1&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;Hello Angular World&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;h1&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
                             &lt;div class=&quot;toolbar&quot;&gt;
                                 
                             &lt;/div&gt;
                         &lt;/div&gt;
                     &lt;/div&gt;
                 &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;!-- /.mdbsnippet --&gt;
+            &lt;/div&gt;&lt;!-- /.mdbsnippet --&gt;
+
+            &lt;li&gt;Create a new file called &lt;code&gt;hello-world.component.ts&lt;/code&gt; inside &lt;code&gt;hello-world/&lt;/code&gt; folder.
+            &lt;/li&gt;
+
+            &lt;li&gt;Add following code to the &lt;code&gt;hello-world.component.ts&lt;/code&gt; file:&lt;/li&gt;
+
+            &lt;!-- mdbsnippet --&gt;
+            &lt;div class=&quot;docs-pills&quot;&gt;
+                &lt;div class=&quot;d-flex justify-content-between&quot;&gt;
+                    &lt;ul class=&quot;nav md-pills pills-grey&quot;&gt;
+                        &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link active show&quot; data-toggle=&quot;tab&quot;
+                                href=&quot;#mdb9c5fdc593a6c6e404a14e097f7109890&quot; role=&quot;tab&quot;&gt;hello-world.component.ts&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;tab-content&quot;&gt;
+                    &lt;div class=&quot;tab-pane fade active show&quot; id=&quot;mdb9c5fdc593a6c6e404a14e097f7109890&quot; role=&quot;tabpanel&quot;&gt;
+                        &lt;div class=&quot;code-toolbar&quot;&gt;
+                            &lt;pre
+                                class=&quot;grey lighten-3 px-3 mb-0 line-numbers  language-js&quot;&gt;&lt;code class=&quot; language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;Component&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;'@angular/core'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+            
+            @&lt;span class=&quot;token function&quot;&gt;Component&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+              selector&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;'hello-world'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+              templateUrl&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;'./hello-world.component.html'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;HelloWorld&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+                            &lt;div class=&quot;toolbar&quot;&gt;
+                                
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;&lt;!-- /.mdbsnippet --&gt;
+
+            &lt;p&gt;As you already know from a previous lesson, within the &lt;code&gt;metadata&lt;/code&gt;
+                (&lt;mark&gt;@Component{...}&lt;/mark&gt; we have defined a component selector and below, we have exported a
+                &lt;mark&gt;HelloWorld&lt;/mark&gt; component. &lt;/p&gt;
+
+            &lt;p class=&quot;note note-danger&quot;&gt;&lt;strong&gt;Important:&lt;/strong&gt;&lt;br&gt;
+                Instead of providing the path to the external file with HTML template like w just did: &lt;br&gt;&lt;br&gt;
+                &lt;mark&gt;templateUrl: './hello-world.component.html'&lt;/mark&gt; &lt;br&gt; &lt;br&gt;
+                we could use &lt;code&gt;template:&lt;/code&gt; atribute (instead of &lt;code&gt;templateUrl:&lt;/code&gt;) and write and HTML
+                code directly inside the &lt;code&gt;.component.ts&lt;/code&gt; file like below: &lt;br&gt;&lt;br&gt;
+                &lt;mark&gt;template: '&amp;lt;h1&amp;gt; Hello World &amp;lt;/h1&amp;gt;'&lt;/mark&gt; &lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+                It is important for you to remember that &lt;strong&gt;&lt;code&gt;component.ts&lt;/code&gt; file is the only file
+                    required to create a component&lt;/strong&gt;. However, when you create more complex components it's
+                &lt;strong&gt;highly recommended&lt;/strong&gt; to use separate files for template, styles and tests.
+            &lt;/p&gt;
+
+            &lt;p&gt;Now when our component is already exported we are ready to import it withiin the &lt;mark&gt;App&lt;/mark&gt;
+                component.&lt;/p&gt;
+
+            &lt;h2&gt;2. Import component into module&lt;/h2&gt;
+
+            &lt;p&gt;In order to import component within our &lt;code&gt;App&lt;/code&gt; component we have to: &lt;/p&gt;
+
+            &lt;ol&gt;
+                &lt;li&gt;Import new component within the &lt;code&gt;app.module.ts&lt;/code&gt; file:&lt;/li&gt;
+
+                &lt;ol&gt;
+                    &lt;li&gt;Add following import line:&lt;/li&gt;
+                    &lt;!-- mdbsnippet --&gt;
+                    &lt;div class=&quot;docs-pills&quot;&gt;
+                        &lt;div class=&quot;d-flex justify-content-between&quot;&gt;
+                            &lt;ul class=&quot;nav md-pills pills-grey&quot;&gt;
+                                &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link active show&quot; data-toggle=&quot;tab&quot;
+                                        href=&quot;#mdb507ecd47a22a38c5dfb87523af5594dd&quot; role=&quot;tab&quot;&gt;app.module.ts&lt;/a&gt;&lt;/li&gt;
+                            &lt;/ul&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;tab-content&quot;&gt;
+                            &lt;div class=&quot;tab-pane fade active show&quot; id=&quot;mdb507ecd47a22a38c5dfb87523af5594dd&quot;
+                                role=&quot;tabpanel&quot;&gt;
+                                &lt;div class=&quot;code-toolbar&quot;&gt;
+                                    &lt;pre
+                                        class=&quot;grey lighten-3 px-3 mb-0 line-numbers  language-js&quot;&gt;&lt;code class=&quot; language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; HelloWorld &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;'./components/hello-world/hello-world.component'&lt;/span&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+                                    &lt;div class=&quot;toolbar&quot;&gt;
+                                        
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;&lt;!-- /.mdbsnippet --&gt;
+                    &lt;li&gt;Add &lt;mark&gt;HelloWorld&lt;/mark&gt; into &lt;mark&gt;declarations[]&lt;/mark&gt; array.&lt;/li&gt;
+
+                &lt;/ol&gt;
+                &lt;img class=&quot;img-fluid&quot;
+                    src=&quot;http://localhost:4000/img/angular/tutorials/getting-started/3/app-module.png&quot;
+                    alt=&quot;Import into AppModule&quot;&gt;
+
+
+            &lt;/ol&gt;
+
+
+
+
+            &lt;h2&gt;3. Use component&lt;/h2&gt;
+
+            &lt;p&gt;Now we are ready to use our component. Open &lt;code&gt;app.component.html&lt;/code&gt; and paste
+                &lt;mark&gt;&amp;lt;hello-world&amp;gt;&amp;lt;/hello-world&amp;gt;&lt;/mark&gt;. &lt;/p&gt;
+
+            &lt;img class=&quot;img-fluid&quot;
+                src=&quot;http://localhost:4000/img/angular/tutorials/getting-started/3/template.png&quot;
+                alt=&quot;Use component in template file&quot;&gt;
+
+
+            &lt;p&gt;Save the file and run the project.&lt;/p&gt;
+
+            &lt;img class=&quot;img-fluid&quot;
+                src=&quot;http://localhost:4000/img/angular/tutorials/getting-started/3/preview.png&quot;
+                alt=&quot;Use component in template file&quot;&gt;
+
+
+
+            &lt;p&gt;Now you know how to create, export and import components. Before we start building real application I
+                want to show you one more important thing. &lt;/p&gt;
+
+            &lt;h1&gt;4. Import component into another component&lt;/h1&gt;
+
+            &lt;p&gt;In our previous example our &lt;code&gt;HelloWorld&lt;/code&gt; component contained only a HTML markup, without any
+                logic. Let's add some logic to our &lt;code&gt;HelloWorld&lt;/code&gt; component. &lt;/p&gt;
+
+            &lt;ol&gt;
+                &lt;li&gt;Update &lt;code&gt;hello-world.component.ts&lt;/code&gt; and &lt;code&gt;hello-world.component.html&lt;/code&gt; with
+                    following code:&lt;/li&gt;
+
+                &lt;p class=&quot;note note-warning&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;br&gt;
+                    Below code markup contains 2 tabs (&lt;code&gt;component.html&lt;/code&gt; and &lt;code&gt;component.ts&lt;/code&gt;). You
+                    can switch between them. In some components you find different tabs i.e. including styles for given
+                    component.
+                &lt;/p&gt;
+
+                &lt;!-- mdbsnippet --&gt;
+                &lt;div class=&quot;docs-pills&quot;&gt;
+                    &lt;div class=&quot;d-flex justify-content-between&quot;&gt;
+                        &lt;ul class=&quot;nav md-pills pills-grey&quot;&gt;
+                            &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link active show&quot; data-toggle=&quot;tab&quot;
+                                    href=&quot;#mdb1609a6184c7943c5d6039e842ada885f&quot;
+                                    role=&quot;tab&quot;&gt;hello-world.component.html&lt;/a&gt;&lt;/li&gt;
+                            &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link &quot; data-toggle=&quot;tab&quot;
+                                    href=&quot;#mdb9482e2a034164167c4fca5076ce30111&quot; role=&quot;tab&quot;&gt;hello-world.component.ts&lt;/a&gt;
+                            &lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;tab-content&quot;&gt;
+                        &lt;div class=&quot;tab-pane fade active show&quot; id=&quot;mdb1609a6184c7943c5d6039e842ada885f&quot; role=&quot;tabpanel&quot;&gt;
+                            &lt;div class=&quot;code-toolbar&quot;&gt;
+                                &lt;pre
+                                    class=&quot;grey lighten-3 px-3 mb-0 line-numbers  language-js&quot;&gt;&lt;code class=&quot; language-js&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;h1&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;Hello World Component&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;h1&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;p&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;Hello World counter &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;counter&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;p&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;p&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;button&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;click&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;increaseCounter()&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;Increase Hello World counter&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;button&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;p&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+                                &lt;div class=&quot;toolbar&quot;&gt;
+                                    
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;tab-pane fade &quot; id=&quot;mdb9482e2a034164167c4fca5076ce30111&quot; role=&quot;tabpanel&quot;&gt;
+                            &lt;div class=&quot;code-toolbar&quot;&gt;
+                                &lt;pre
+                                    class=&quot;grey lighten-3 px-3 mb-0 line-numbers  language-js&quot;&gt;&lt;code class=&quot; language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;Component&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;'@angular/core'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+            
+            @&lt;span class=&quot;token function&quot;&gt;Component&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+              selector&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;'hello-world'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+              templateUrl&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;'./hello-world.component.html'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;HelloWorld&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+              counter &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+            
+              &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;increaseCounter&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;counter&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+              &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+            
+              &lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;getCounter&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;counter&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+              &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+                                &lt;div class=&quot;toolbar&quot;&gt;
+                                   
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;&lt;!-- /.mdbsnippet --&gt;
+
+
+                &lt;li&gt;Update &lt;code&gt;app.component.ts&lt;/code&gt; and &lt;code&gt;app.component.html&lt;/code&gt; with following code:&lt;/li&gt;
+
+                &lt;!-- mdbsnippet --&gt;
+                &lt;div class=&quot;docs-pills&quot;&gt;
+                    &lt;div class=&quot;d-flex justify-content-between&quot;&gt;
+                        &lt;ul class=&quot;nav md-pills pills-grey&quot;&gt;
+                            &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link active show&quot; data-toggle=&quot;tab&quot;
+                                    href=&quot;#mdb1031ae9acedcc4a02a5cc0089cb72b8a&quot; role=&quot;tab&quot;&gt;app.component.html&lt;/a&gt;&lt;/li&gt;
+                            &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link &quot; data-toggle=&quot;tab&quot;
+                                    href=&quot;#mdb292c8df8946bc6647c03d9bb89187a91&quot; role=&quot;tab&quot;&gt;app.component.ts&lt;/a&gt;&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;tab-content&quot;&gt;
+                        &lt;div class=&quot;tab-pane fade active show&quot; id=&quot;mdb1031ae9acedcc4a02a5cc0089cb72b8a&quot; role=&quot;tabpanel&quot;&gt;
+                            &lt;div class=&quot;code-toolbar&quot;&gt;
+                                &lt;pre
+                                    class=&quot;grey lighten-3 px-3 mb-0 line-numbers  language-js&quot;&gt;&lt;code class=&quot; language-js&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;hello&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;world&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;hello&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;world&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
+            
+            &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;hr&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;h1&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;This is AppComponent&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;h1&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;p&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;App component counter &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;counter&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;p&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;p&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;button&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;click&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;increaseCounter()&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;Increase App Component counter&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;button&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;p&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;button&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;click&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;getHelloWorldCounterValue()&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;Get Hello World Counter &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;button&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+                                &lt;div class=&quot;toolbar&quot;&gt;
+                                    
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;tab-pane fade &quot; id=&quot;mdb292c8df8946bc6647c03d9bb89187a91&quot; role=&quot;tabpanel&quot;&gt;
+                            &lt;div class=&quot;code-toolbar&quot;&gt;
+                                &lt;pre
+                                    class=&quot;grey lighten-3 px-3 mb-0 line-numbers  language-js&quot;&gt;&lt;code class=&quot; language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; Component&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; OnInit&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; ViewChild &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;'@angular/core'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; HelloWorld &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;'./components/hello-world/hello-world.component'&lt;/span&gt;
+            
+            @&lt;span class=&quot;token function&quot;&gt;Component&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+              selector&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;'app-root'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+              templateUrl&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;'./app.component.html'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+              styleUrls&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;'./app.component.scss'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+            
+            &lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;AppComponent&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;OnInit&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+              @&lt;span class=&quot;token function&quot;&gt;ViewChild&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;HelloWorld &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; child&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; HelloWorld &lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+            
+              &lt;span class=&quot;token function&quot;&gt;ngOnInit&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+              &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+              counter &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+            
+              &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;increaseCounter&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;counter&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+              &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+              &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;getHelloWorldCounterValue&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+             &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;counter &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;child&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getCounter&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+                                &lt;div class=&quot;toolbar&quot;&gt;
+                                    
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;&lt;!-- /.mdbsnippet --&gt;
+
+                &lt;p&gt;We have created two counters, one within each component. Each component has also a button which
+                    increase counter by one. Each counter works impedently - doesn't affect the other counter. Let's
+                    check it:&lt;/p&gt;
+
+                &lt;li&gt;Run the app.&lt;/li&gt;
+
+                &lt;img class=&quot;img-fluid&quot;
+                    src=&quot;http://localhost:4000/img/angular/tutorials/getting-started/3/counters.gif&quot;
+                    alt=&quot;Counters&quot;&gt;
+
+                &lt;p&gt;What is important, is that our &lt;code&gt;HelloWorld&lt;/code&gt; component has a logic now. Except for
+                    &lt;mark&gt;increaseCounter()&lt;/mark&gt; function which allows us to increase the counter, it has also another
+                    function called &lt;mark&gt;getCounter()&lt;/mark&gt;. This functions returns the current value of the
+                    &lt;code&gt;HelloWorld&lt;/code&gt; counter. &lt;/p&gt;
+
+
+                &lt;p&gt;Now when our &lt;code&gt;HelloWorld&lt;/code&gt; component has not only template but also a logic, it's not
+                    sufficient to import it only in &lt;code&gt;app.module.ts&lt;/code&gt; file. In order to use it's function
+                    within &lt;code&gt;App&lt;/code&gt; we have to import it within the &lt;code&gt;app.component.ts&lt;/code&gt; file as it
+                    shown below:&lt;/p&gt;
+
+                &lt;img class=&quot;img-fluid&quot;
+                    src=&quot;http://localhost:4000/img/angular/tutorials/getting-started/3/import.png&quot;
+                    alt=&quot;Import component&quot;&gt;
+
+
+                &lt;p&gt;We used some new functions here like &lt;mark&gt;@ViewChild&lt;/mark&gt;, &lt;mark&gt;ngOnInit()&lt;/mark&gt; and others. We
+                    will learn about them in next lessons. For now I want you to rember one thing:&lt;/p&gt;
+
+                &lt;p class=&quot;note note-warning&quot;&gt;&lt;strong&gt;Remember:&lt;/strong&gt;&lt;br&gt;
+                    Whenever you want to use component without logic it's sufficient to import it into your module file
+                    (step 2). &lt;br&gt; &lt;br&gt;
+                    If you want to use functions exposed in other component you have to also import it within the
+                    &lt;code&gt;component.ts&lt;/code&gt; file (step 4).
+                &lt;/p&gt;
+
+
+                &lt;p&gt;Thanks to that, when we press the second button (&lt;i&gt;Get Hello World Counter&lt;/i&gt;) we can call
+                    &lt;mark&gt;getCounter&lt;/mark&gt; from &lt;code&gt;App&lt;/code&gt; component, and align &lt;code&gt;App&lt;/code&gt; counter with
+                    &lt;code&gt;HelloWorld&lt;/code&gt; counter value.&lt;/p&gt;
+
+                &lt;img class=&quot;img-fluid&quot;
+                    src=&quot;http://localhost:4000/img/angular/tutorials/getting-started/3/align.gif&quot;
+                    alt=&quot;Counters&quot;&gt;
+
+
+                &lt;p&gt;Now when we know how to create, export and import components it's a high time to build some real
+                    application!&lt;/p&gt;
+
+            &lt;/ol&gt;
+
+
         &lt;/ol&gt;
-        &lt;ul&gt;
-            &lt;p&gt;What we did:&lt;/p&gt;
-            &lt;li&gt;Added a container, with a row and two columns inside within
-                &lt;mark&gt;app.component.html&lt;/mark&gt;
-            &lt;/li&gt;
-            &lt;li&gt;Added a style to make our grid borders visible inside the
-                &lt;mark&gt;app.component.scss&lt;/mark&gt;
-            &lt;/li&gt;
-        &lt;/ul&gt;
-        &lt;h2&gt;1. The concept of the grid&lt;/h2&gt;
-        &lt;p&gt;Currently, our app has two equal-sized columns which are placed next to each other on a large screen. When we
-            resize our browser window &lt;strong&gt;they will nest one beneath the other&lt;/strong&gt;:&lt;/p&gt;
-        &lt;img class=&quot;img-fluid&quot;
-            src=&quot;http://localhost:4000/img/angular/tutorials/agenda-app/2/appResponsive.render.gif&quot;
-            alt=&quot;Bootstrap columns&quot;&gt;
-        &lt;br&gt;
-        &lt;p&gt;&lt;strong&gt;What is the Bootstrap Grid? &lt;/strong&gt;
-        &lt;/p&gt;
-        &lt;p&gt;In nutshell, it's a mechanism which allows us to create a responsive website. The Bootstrap grid allows us
-            define rows, and each row consists of up to 12 columns.&lt;/p&gt;
-        &lt;img class=&quot;img-fluid&quot;
-            src=&quot;http://localhost:4000/img/angular/tutorials/agenda-app/2/image_1.png&quot;
-            alt=&quot;12 bootstrap columns&quot;&gt;
-        &lt;p&gt;You can&lt;strong&gt; either use one column which will be 12 blocks long or use multiple smaller blocks&lt;/strong&gt;.
-            The only rule is that &lt;strong&gt;you cannot exceed more than 12 blocks in a row&lt;/strong&gt;. The blocks don't have
-            to be equal in size:&amp;nbsp;&lt;/p&gt;
-        &lt;img class=&quot;img-fluid&quot;
-            src=&quot;http://localhost:4000/img/angular/tutorials/agenda-app/2/image_3.png&quot;&gt;
-        &lt;p&gt;And you can skip some of the columns, as well as align them horizontally:&lt;/p&gt;
-        &lt;img class=&quot;img-fluid&quot;
-            src=&quot;http://localhost:4000/img/angular/tutorials/agenda-app/2/image_2.png&quot;&gt;
-        &lt;p&gt;For more advanced usage you can check our&amp;nbsp;&lt;a
-                href=&quot;https://mdbootstrap.com/docs/angular/layout/overview/&quot;&gt;docs:&lt;/a&gt;
-        &lt;/p&gt;
-        &lt;h2&gt;3. Responsive breakpoints&lt;/h2&gt;
-        &lt;p&gt;Bootstrap is developed to be &lt;strong&gt;mobile first&lt;/strong&gt; - it uses a handful of media queries to create
-            sensible breakpoints for our layouts. These &lt;strong&gt; breakpoints are mostly based on minimum viewport
-                widths&lt;/strong&gt; and allow you to scale up elements as the viewport changes.&lt;/p&gt;
-        &lt;p&gt;This is one of the most important features - in other words:&amp;nbsp;&lt;strong&gt;you can define a different column
-                size for different screen sizes&lt;/strong&gt;.&amp;nbsp;Bootstrap lists five different screen sizes, extra small
-            (&lt;b&gt;default&lt;/b&gt;), small (&lt;b&gt;sm&lt;/b&gt;), medium (&lt;b&gt;md&lt;/b&gt;), large (&lt;b&gt;lg&lt;/b&gt;)&amp;nbsp; and extra large
-            (&lt;b&gt;xl&lt;/b&gt;).&amp;nbsp; Each size has a breaking point defined according to the table below:&lt;/p&gt;
-        &lt;img class=&quot;img-fluid&quot;
-            src=&quot;http://localhost:4000/img/angular/tutorials/agenda-app/2/image.png&quot;&gt;
-          
-            &lt;br&gt;
-        &lt;span class=&quot;small mx-auto&quot;&gt;Bootstrap responsive breakpoints table&lt;/span&gt;
-        
-        &lt;br&gt;
-        &lt;p&gt;Coming to the conclusion - &lt;strong&gt;this super handy tool allows us to create content which will automatically
-                adjust to the screen size&lt;/strong&gt;. Let's try the following code:&lt;/p&gt;
-        &lt;!-- mdbsnippet --&gt;
-        &lt;div class=&quot;docs-pills&quot;&gt;
-            &lt;div class=&quot;d-flex justify-content-between&quot;&gt;
-                &lt;ul class=&quot;nav nav-tabs&quot;&gt;
-                    &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link active show&quot; data-toggle=&quot;tab&quot;
-                            href=&quot;#mdb8c944992124e0441e844ea398ab386c2&quot; role=&quot;tab&quot;&gt;app.component.html&lt;/a&gt;
-                    &lt;/li&gt;
-                &lt;/ul&gt;
-            &lt;/div&gt;
-            &lt;div class=&quot;tab-content&quot;&gt;
-                &lt;div class=&quot;tab-pane fade active show&quot; id=&quot;mdb8c944992124e0441e844ea398ab386c2&quot; role=&quot;tabpanel&quot;&gt;
-                    &lt;div class=&quot;code-toolbar&quot;&gt;
-                        &lt;pre
-                            class=&quot;px-3 mb-0 line-numbers  language-js&quot;&gt;&lt;code class=&quot; language-js&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;container&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;row&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;col-xl-1 col-lg-2 col-md-4 col-sm-6 col-xs-12&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;xl&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; lg&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt; md&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt; sm&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt; xs&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;col-xl-1 col-lg-2 col-md-4 col-sm-6 col-xs-12&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;xl&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; lg&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt; md&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt; sm&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt; xs&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;col-xl-1 col-lg-2 col-md-4 col-sm-6 col-xs-12&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;xl&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; lg&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt; md&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt; sm&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt; xs&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;col-xl-1 col-lg-2 col-md-4 col-sm-6 col-xs-12&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;xl&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; lg&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt; md&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt; sm&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt; xs&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;col-xl-1 col-lg-2 col-md-4 col-sm-6 col-xs-12&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;xl&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; lg&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt; md&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt; sm&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt; xs&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;col-xl-1 col-lg-2 col-md-4 col-sm-6 col-xs-12&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;xl&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; lg&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt; md&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt; sm&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt; xs&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;col-xl-1 col-lg-2 col-md-4 col-sm-6 col-xs-12&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;xl&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; lg&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt; md&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt; sm&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt; xs&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;col-xl-1 col-lg-2 col-md-4 col-sm-6 col-xs-12&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;xl&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; lg&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt; md&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt; sm&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt; xs&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;col-xl-1 col-lg-2 col-md-4 col-sm-6 col-xs-12&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;xl&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; lg&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt; md&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt; sm&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt; xs&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;col-xl-1 col-lg-2 col-md-4 col-sm-6 col-xs-12&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;xl&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; lg&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt; md&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt; sm&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt; xs&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;col-xl-1 col-lg-2 col-md-4 col-sm-6 col-xs-12&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;xl&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; lg&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt; md&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt; sm&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt; xs&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;col-xl-1 col-lg-2 col-md-4 col-sm-6 col-xs-12&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;xl&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; lg&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt; md&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt; sm&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt; xs&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-                        &lt;div class=&quot;toolbar&quot;&gt;
-                            
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;!-- /.mdbsnippet --&gt;
-        &lt;p&gt;Run the app and resize the browser size:&lt;/p&gt;
-        &lt;img class=&quot;img-fluid&quot;
-            src=&quot;http://localhost:4000/img/angular/tutorials/agenda-app/2/colsize.gif&quot;
-            alt=&quot;Bootstrap columns size&quot;&gt;
-        &lt;p&gt;I hope that you now you can understand how easy it is to build responsive components using Bootstrap. Let's
-            get back to our app. We want to create a two-column layout that will be visible on the desktop (extra large
-            and large) as well as tablets in horizontal aspect (medium). For smaller screen size we want our columns to
-            nest one below the other.&lt;/p&gt;
-        &lt;h2&gt;4. Responsive grid of our Calendar App&lt;/h2&gt;
-        &lt;p&gt;Replace the template of our &lt;code&gt;app.component.html&lt;/code&gt; file with following code:&lt;/p&gt;
-        &lt;!-- mdbsnippet --&gt;
-        &lt;div class=&quot;docs-pills&quot;&gt;
-            &lt;div class=&quot;d-flex justify-content-between&quot;&gt;
-                &lt;ul class=&quot;nav nav-tabs&quot;&gt;
-                    &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link active show&quot; data-toggle=&quot;tab&quot;
-                            href=&quot;#mdb0192146b456731393dcfe5ccea121991&quot; role=&quot;tab&quot;&gt;app.component.html&lt;/a&gt;
-                    &lt;/li&gt;
-                &lt;/ul&gt;
-            &lt;/div&gt;
-            &lt;div class=&quot;tab-content&quot;&gt;
-                &lt;div class=&quot;tab-pane fade active show&quot; id=&quot;mdb0192146b456731393dcfe5ccea121991&quot; role=&quot;tabpanel&quot;&gt;
-                    &lt;div class=&quot;code-toolbar&quot;&gt;
-                        &lt;pre
-                            class=&quot;px-3 mb-0 line-numbers  language-js&quot;&gt;&lt;code class=&quot; language-js&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;container&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;row&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;col-md-9&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-      Left column
-    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;col-md-3&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-      Right column
-    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-                        &lt;div class=&quot;toolbar&quot;&gt;
-                            
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;!-- /.mdbsnippet --&gt;
-        &lt;p&gt;This will render the expected result. note that we have provided only a medium breaking point. Bootstrap by
-            default assumes that we want 9/3 ratio &lt;strong&gt;not only for medium screen but also for bigger
-                screens&lt;/strong&gt;, as well as that we want everything which is lower than md to display on full 12 width.
-        &lt;/p&gt;
     &lt;/div&gt;
-    &lt;hr&gt;
-    
 &lt;/section&gt;
 &lt;!--Section: Lesson UI--&gt;
 &lt;section class=&quot;text-center&quot;&gt;
     &lt;hr&gt;
     &lt;div class=&quot;row&quot; &gt;
         &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot; href=&quot;https://girishgodage.github.io/blog/AgendaApp2&quot;
+            &lt;a class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot; href=&quot;https://girishgodage.github.io/blog/GettingStarted2&quot;
                 role=&quot;button&quot;&gt;
                 &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
             &lt;/a&gt;
@@ -219,45 +371,431 @@ div&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=
         &lt;/div&gt;
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/angular/tutorials/agenda-app/1/image_1.png" /></entry><entry><title type="html">3.Agenda App Overview</title><link href="http://localhost:4000/blog/AgendaApp" rel="alternate" type="text/html" title="3.Agenda App Overview" /><published>2019-09-22T00:00:00+05:30</published><updated>2019-09-22T00:00:00+05:30</updated><id>http://localhost:4000/blog/AgendaApp</id><content type="html" xml:base="http://localhost:4000/blog/AgendaApp">&lt;section class=&quot;tutorial&quot;&gt;
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/angular/tutorials/getting-started/3/components.gif" /></entry><entry><title type="html">4.Components Overview</title><link href="http://localhost:4000/blog/GettingStarted2" rel="alternate" type="text/html" title="4.Components Overview" /><published>2019-09-22T00:00:00+05:30</published><updated>2019-09-22T00:00:00+05:30</updated><id>http://localhost:4000/blog/GettingStarted2</id><content type="html" xml:base="http://localhost:4000/blog/GettingStarted2">&lt;section class=&quot;tutorial4&quot;&gt;
 
-    &lt;div class=&quot;angular-tutorial tutorial&quot;&gt;
-        &lt;h2&gt;1. App goals and overview&lt;/h2&gt;
-        &lt;p&gt;Now when we know the basic concept behind how Angular works let's build a real App! I am going to show you
-            the final result first and then quickly analyze it. After that, &lt;strong&gt;I will show you how to build this
-                app from scratch&lt;/strong&gt;.&lt;/p&gt;
-        &lt;p&gt;So, let's don't waste more time and start working.&lt;/p&gt;
-        &lt;h2&gt;2. Run the app &lt;/h2&gt;
-        &lt;p&gt;Within the tutorial files you will find a final application code, let's use it to run our app:&lt;/p&gt;
+
+    &lt;div class=&quot;react-tutorial tutorial&quot;&gt;
+
+        &lt;h2&gt;1. Overview&lt;/h2&gt;
+
+        &lt;p&gt;Within the last lesson we went through the most important file within our project. Now we will focus on the
+            components. &lt;/p&gt;
+
+        &lt;p&gt;Among other advantages, Angular &lt;strong&gt;gained its position thanks to components-based architecture&lt;/strong&gt;.
+        &lt;/p&gt;
+
+        &lt;p&gt;Components can be thought of as &lt;strong&gt;small pieces of an interface that are independent of each
+                other&lt;/strong&gt;. Imagine that you have a simple application with a list of items and a corresponding
+            search box to retrieve the items by word matches. The box with listed names, the search box, and the main
+            sheet where the other two boxes are placed &lt;strong&gt;are all considered separate components in
+                Angular&lt;/strong&gt;.&lt;/p&gt;
+
+        &lt;img class=&quot;img-fluid&quot;
+            src=&quot;http://localhost:4000/img/angular/tutorials/getting-started/2/list.png&quot;
+            alt=&quot;Sample list&quot;&gt;
+
+        &lt;p&gt;Components of a similar nature are &lt;strong&gt;well encapsulated, in other words, self-sufficient&lt;/strong&gt;.
+            &lt;strong&gt;Developers can reuse them across different parts of an application.&lt;/strong&gt; This is particularly
+            useful in enterprise-scope applications where different systems converge but may have many similar elements
+            like search boxes, date pickers, sorting lists, etc.&lt;/p&gt;
+
+        &lt;p&gt;Let's have a look how components are build within Angular code &lt;/p&gt;
+
+        &lt;img class=&quot;img-fluid&quot;
+            src=&quot;http://localhost:4000/img/angular/tutorials/getting-started/2/file_structure.png&quot;
+            alt=&quot;Angule project file strcuture&quot;&gt;
+
+        &lt;p&gt;As you can see within a &lt;code&gt;src/&lt;/code&gt; location, there is a folder called &lt;code&gt;app&lt;/code&gt; containing a
+            few files starting with &lt;code&gt;app.*&lt;/code&gt; name inside. The &lt;code&gt;app&lt;/code&gt; represents &lt;strong&gt;App&lt;/strong&gt;
+            component. &lt;/p&gt;
+
+        &lt;p&gt; Usually &lt;strong&gt;components are organised within a folders &lt;/strong&gt; (1 component = 1 folder). Each Angular
+            project has to contain at least 1 component. Each component consist of few files:&lt;/p&gt;
+
+
+
+        &lt;h2&gt;2. Component logic (&lt;code&gt;.ts&lt;/code&gt; file)&lt;/h2&gt;
+
+        &lt;p&gt;Let's open file located in &lt;code&gt;/src/app/app.component.ts&lt;/code&gt;. You will se the following
+            content&amp;nbsp;&amp;nbsp;&lt;/p&gt;
+
+        &lt;img class=&quot;img-fluid&quot;
+            src=&quot;http://localhost:4000/img/angular/tutorials/getting-started/2/app_component_ts.png&quot;
+            alt=&quot;App.component.ts file&quot;&gt;
+
+
+
+        &lt;p&gt;The &lt;code&gt;app.component.ts&lt;/code&gt; file consist of few parts:&lt;/p&gt;
+
+        &lt;h4&gt;1. Imports&lt;/h4&gt;
+
+        &lt;p&gt;At the begining of the component's &lt;code&gt;.ts&lt;/code&gt; file we have to import a &lt;mark&gt;Component&lt;/mark&gt; from the
+            Angular library. This is required to make our component working. Component is a &lt;code&gt;Decorator&lt;/code&gt;
+            (don't have to bother what does it mean for now) - it provides a configuration metadata that determines how
+            the component should be processed, initialized and used in a runtime.&lt;/p&gt;
+
+        &lt;p&gt;Whenever we want to use other components within another component we also have to import it in that place.
+            (we will learn how to do that in a next lesson). &lt;/p&gt;
+
+        &lt;h4&gt;2. Metadata&lt;/h4&gt;
+
+        &lt;p&gt;The &lt;code&gt;@Component&lt;/code&gt; decorator which we imported in a first line allows us to specify a
+            &lt;code&gt;matadata&lt;/code&gt; for our component. The metadata contains few parameters:
+
+        &lt;/p&gt;
+        &lt;ul&gt;
+            &lt;li&gt;The &lt;code&gt;selector&lt;/code&gt; contains the name of the tag that can be used to create this component.&lt;/li&gt;
+            &lt;li&gt;The &lt;code&gt;templateUrl&lt;/code&gt; contains the relative URL/path to the HTML template &lt;code&gt;template&lt;/code&gt;
+                (&lt;code&gt;app.component.html&lt;/code&gt; file)&lt;/li&gt;
+            &lt;li&gt;The &lt;code&gt;styleUrls&lt;/code&gt; contains the array of CSS styles to be used for styling the component
+                &lt;strong&gt;or&lt;/strong&gt; a path to the external file (&lt;code&gt;app.component.scss&lt;/code&gt; file)&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;p&gt;&lt;/p&gt;
+
+        &lt;p&gt;You might noticed from a previous lesson, that we have used a &lt;mark&gt;&amp;lt;app-root&amp;gt;&amp;lt;/app-root&amp;gt;&lt;/mark&gt;
+            in the &lt;code&gt;index.html&lt;/code&gt; file.&lt;/p&gt;
+
+        &lt;p&gt;Our component can be called in your HTML code just like any standard HTML tag, i.e:&lt;/p&gt;
+
+        &lt;img class=&quot;img-fluid&quot;
+            src=&quot;http://localhost:4000/img/angular/tutorials/getting-started/2/selector.png&quot;
+            alt=&quot;App-root selector&quot;&gt;
+
+
+        &lt;h4&gt;3. Class&lt;/h4&gt;
+
+        &lt;p&gt;The last part of our component is a Component Class which contains atributes and functions. This is the place
+            where entire logic of given component is stored. In a next lesson we will fill this component with some
+            functions to make our application working. &lt;/p&gt;
+
+
+        &lt;h2&gt;3. Component template (&lt;code&gt;.html)&lt;/code&gt; file)&lt;/h2&gt;
+
+        &lt;p&gt;The template file which is responsible for view of our component. A template looks like regular HTML, except
+            that it also contains Angular template syntax. Our template can use &lt;i&gt;data binding&lt;/i&gt; which allows us to
+            synchronize data between our Application and DOM. &lt;/p&gt;
+
+
+        &lt;h2&gt;4. Component styles (&lt;code&gt;.scss&lt;/code&gt; file)&lt;/h2&gt;
+
+
+
+        &lt;p&gt;This file contains all the styles for our component. &lt;/p&gt;
+
+        &lt;!-- TODO explain how to style components
+--&gt;
+        &lt;h2&gt;5. Component tests (&lt;code&gt;.spec.ts&lt;/code&gt; file)&lt;/h2&gt;
+
+        &lt;p&gt;Within this file we will create a tests of our component. Tests are important for each application, using
+            them help us avoid breaking components logic while making some updates/enhances in it.&lt;/p&gt;
+
+        &lt;h2&gt;6. App.module code (&lt;code&gt;.module.ts&lt;/code&gt; file)&lt;/h2&gt;
+
+        &lt;p&gt;As we mentioned before - Angular application &lt;strong&gt;has to contain at least one component&lt;/strong&gt;. This
+            first component is called a &lt;strong&gt;root component.&lt;/strong&gt;. A root component is the first Angular
+            component that gets bootstrapped when the application runs. Two things are special about this component:&lt;/p&gt;
+
+        &lt;p&gt;First, if you open the application module file src/app/app.module.ts:&lt;/p&gt;
+        &lt;img class=&quot;img-fluid&quot;
+            src=&quot;http://localhost:4000/img/angular/tutorials/getting-started/2/root_component.png&quot;
+            alt=&quot;Root component&quot;&gt;
+
+        &lt;p&gt;You'll notice that, it's added to the bootstrap array of the module definition.&lt;/p&gt;
+
+        &lt;p&gt;Second, if you open the src/index.html file (the first file that gets rendered when you visit the application
+            URL) of the application. You'll notice that, it's called inside the document tag. &lt;/p&gt;
+
+        &lt;p class=&quot;note note-warning&quot;&gt;&lt;strong&gt;Important:&lt;/strong&gt;&lt;br&gt;
+            &lt;code&gt;app.module.ts&lt;/code&gt; file is only required for our App component (root component). All other
+            components which we will use inside our application wont require &lt;code&gt;module.ts&lt;/code&gt; file to work. &lt;/p&gt;
+
+    &lt;/div&gt;
+&lt;/section&gt;
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr&gt;
+    &lt;div class=&quot;row&quot; &gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot; href=&quot;https://girishgodage.github.io/blog/GettingStarted&quot;
+                role=&quot;button&quot;&gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot; &gt;
+            &lt;a class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;
+                href=&quot;&quot; role=&quot;button&quot;&gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/angular/tutorials/getting-started/2/list.png" /></entry><entry><title type="html">3.Getting started</title><link href="http://localhost:4000/blog/GettingStarted" rel="alternate" type="text/html" title="3.Getting started" /><published>2019-09-22T00:00:00+05:30</published><updated>2019-09-22T00:00:00+05:30</updated><id>http://localhost:4000/blog/GettingStarted</id><content type="html" xml:base="http://localhost:4000/blog/GettingStarted">&lt;section class=&quot;tutorial3&quot;&gt;
+    &lt;div class=&quot;react-tutorial tutorial3&quot;&gt;
+
+        &lt;h2&gt;1. Download project files&lt;/h2&gt;
+        &lt;p&gt;Once we have our environment ready (i.e. npm installed). Let's download the working files. We can do it in
+            two ways:&lt;/p&gt;
+
+        &lt;h2&gt;1.1 GIT repository &lt;/h2&gt;
+
+        &lt;p&gt;In order to download the working files, open a console and type:&lt;/p&gt;
+
+        &lt;!-- mdbsnippet --&gt;
+        &lt;div class=&quot;docs-pills&quot;&gt;
+            &lt;div class=&quot;d-flex justify-content-between&quot;&gt;
+                &lt;ul class=&quot;nav md-pills pills-grey&quot;&gt;
+                    &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link active show&quot; data-toggle=&quot;tab&quot;
+                            href=&quot;#mdbf403de2b6ed2c41e7e4a3429a20b9d13&quot; role=&quot;tab&quot;&gt;shell&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;tab-content&quot;&gt;
+                &lt;div class=&quot;tab-pane fade active show&quot; id=&quot;mdbf403de2b6ed2c41e7e4a3429a20b9d13&quot; role=&quot;tabpanel&quot;&gt;
+                    &lt;div class=&quot;code-toolbar&quot;&gt;
+                        &lt;pre
+                            class=&quot;grey lighten-3 px-3 mb-0 line-numbers  language-php&quot;&gt;&lt;code class=&quot; language-php&quot;&gt;git clone https&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;//github.com/girishgodage/AngularTutorialAgendaApp.git&lt;/span&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+                        &lt;div class=&quot;toolbar&quot;&gt;
+                            
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;&lt;!-- /.mdbsnippet --&gt;
+
+        &lt;h2&gt;1.2 ZIP file&lt;/h2&gt;
+
+
+        &lt;p&gt;If for some reason you don't want to use Git directly, you can simply download as zip file and
+            extract it.&lt;/p&gt;
+
+        &lt;p class=&quot;note note-primary&quot;&gt;&lt;strong&gt;Info:&lt;/strong&gt;&lt;br&gt;
+            The working directory contains multiple folders for each section (getting-started, agenda-app) and inside
+            those are other folders called lesson-x where x is the number of the lesson. Each of the folders contains
+            the final code from a given lesson. In case of facing issues you can always refer to the corresponding
+            lesson folder, check final code and compare with yours to spot the difference. &lt;/p&gt;
+
+
+        &lt;h2&gt;2. Open project &lt;/h2&gt;
+
+        &lt;p&gt;Open a project in your favorite editor. I use and recommend &lt;a href=&quot;https://code.visualstudio.com/Download&quot;
+                rel=&quot;nofollow&quot;&gt;Visual Studio Code (VSC)&lt;/a&gt; from Microsoft&lt;/p&gt;
+
+
+        &lt;p&gt;In order to open a project using VSC:&lt;/p&gt;
+
         &lt;ol&gt;
-            &lt;li&gt;Open a terminal&lt;/li&gt;
-            &lt;li&gt;Navigate to the &lt;code&gt;agenda-app/final/&lt;/code&gt; folder&lt;/li&gt;
-            &lt;li&gt;Install the dependencies using &lt;code&gt;npm install&lt;/code&gt;
-            &lt;/li&gt;
-            &lt;li&gt;Run the app using &lt;code&gt;npm start&lt;/code&gt;
-            &lt;/li&gt;
-            &lt;li&gt;See the results in a browser:&lt;/li&gt;
+            &lt;li&gt;Open VSC&lt;/li&gt;
+            &lt;li&gt;&lt;code&gt;File&lt;/code&gt; &amp;gt; &lt;code&gt;Open Folder&lt;/code&gt;&lt;/li&gt;
+            &lt;li&gt;Navigate to &lt;code&gt;getting-started/start-here&lt;/code&gt; folder&lt;/li&gt;
+            &lt;li&gt;Click on &lt;code&gt;Select Folder&lt;/code&gt;&lt;/li&gt;
         &lt;/ol&gt;
         &lt;img class=&quot;img-fluid&quot;
-            src=&quot;http://localhost:4000/img/angular/tutorials/agenda-app/1/image_1.png&quot;
-            alt=&quot;App preview&quot;&gt;
-        &lt;p&gt;&lt;strong&gt;Voila! Our app is running&lt;/strong&gt;.&lt;/p&gt;
-        &lt;h2&gt;3. Test the app&lt;/h2&gt;
-        &lt;p&gt;The application which we are about to build is a &lt;strong&gt;daily agenda app&lt;/strong&gt;. It allows us to display a
-            list of events planned for today including time, title, location and description. We can add new Events as
-            well as remove existing ones. The app also displays a weather forecast.&lt;/p&gt;
-        &lt;p&gt;Now &lt;strong&gt;take some time to play with the app&lt;/strong&gt;. Note that whenever you are adding/removing events,
-            &lt;strong&gt;the counter in the right column is changing&lt;/strong&gt;.&lt;/p&gt;
+            src=&quot;http://localhost:4000/img/angular/tutorials/getting-started/1/openProject.gif&quot;
+            alt=&quot;Open project in VSC&quot;&gt;
+        &lt;h3&gt;3. Start project&lt;/h3&gt;
+        &lt;p&gt;In order to start a project we will use &lt;code&gt;Node Package Manager (npm)&lt;/code&gt;. &lt;strong&gt;Make sure you have
+                npm installed&lt;/strong&gt; in order to verify that you can open a default terminal/command line: &lt;/p&gt;
+        &lt;ol&gt;
+            &lt;li&gt;Open Command line (below instruction how to open it for Windows, MacOS and Linux)&lt;/li&gt;
+
+
+
+            &lt;!-- Nav tabs --&gt;
+            &lt;div class=&quot;classic-tabs&quot;&gt;
+                &lt;div class=&quot;tabs-wrapper&quot;&gt;
+                    &lt;ul class=&quot;nav nav-tabs&quot; role=&quot;tablist&quot;&gt;
+                        &lt;li class=&quot;nav-item&quot;&gt;
+                            &lt;a class=&quot;nav-link waves-light active waves-effect waves-light&quot; data-toggle=&quot;tab&quot;
+                                href=&quot;#panel11&quot; role=&quot;tab&quot;&gt;&lt;i class=&quot;fab fa-windows fa-2x&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;br&gt;
+                                Windows&lt;/a&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;nav-item&quot;&gt;
+                            &lt;a class=&quot;nav-link waves-light waves-effect waves-light&quot; data-toggle=&quot;tab&quot; href=&quot;#panel12&quot;
+                                role=&quot;tab&quot;&gt;&lt;i class=&quot;fab fa-apple fa-2x&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;br&gt; macOS&lt;/a&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;nav-item&quot;&gt;
+                            &lt;a class=&quot;nav-link waves-light waves-effect waves-light&quot; data-toggle=&quot;tab&quot; href=&quot;#panel13&quot;
+                                role=&quot;tab&quot;&gt;&lt;i class=&quot;fab fa-linux fa-2x&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;br&gt; Linux&lt;/a&gt;
+                        &lt;/li&gt;
+
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Tab panels --&gt;
+                &lt;div class=&quot;tab-content card&quot;&gt;
+
+                    &lt;!--Panel 1--&gt;
+                    &lt;div class=&quot;tab-pane fade in show active&quot; id=&quot;panel11&quot; role=&quot;tabpanel&quot;&gt;
+                        &lt;h4&gt;How to run command line? &lt;/h4&gt;
+                        &lt;h6&gt;Keyboard shortcut: &lt;/h6&gt;
+                        &lt;p&gt;On your keyboard press: &lt;kbd&gt;&lt;i class=&quot;fab fa-windows&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/kbd&gt; + &lt;kbd&gt;
+                                R &lt;/kbd&gt;. You will see &lt;code&gt;Run&lt;/code&gt; windows. Type &lt;code&gt;cmd&lt;/code&gt; and click OK or
+                            press &lt;kbd&gt;Enter&lt;/kbd&gt;&lt;/p&gt;
+                        &lt;img class=&quot;img-fluid&quot;
+                            src=&quot;http://localhost:4000/img/angular/tutorials/environment/img/1.png&quot;
+                            alt=&quot;Run window&quot;&gt;
+                        &lt;p&gt;You will see a screen like below: &lt;/p&gt;
+                        &lt;img class=&quot;img-fluid&quot;
+                            src=&quot;http://localhost:4000/img/angular/tutorials/environment/img/2.jpg&quot;
+                            alt=&quot;Windows command line&quot;&gt;
+
+                        &lt;p&gt;That's it. You can now use a command line, however, please keep in mind that Windows Command
+                            Line is - frankly speaking - a crappy tool. That's why we strongly encourage you to use some
+                            alternative such as GitBash (installation guide &lt;a
+                                href=&quot;https://mdbootstrap.com/education/bootstrap/gulp-installation/&quot;
+                                target=&quot;_blank&quot;&gt;here&lt;/a&gt;). It has more Unix-like commands that are more user-friendly
+                            than built in windows commands. &lt;/p&gt;
+                    &lt;/div&gt;
+                    &lt;!--/.Panel 1--&gt;
+
+                    &lt;!--Panel 2--&gt;
+                    &lt;div class=&quot;tab-pane fade&quot; id=&quot;panel12&quot; role=&quot;tabpanel&quot;&gt;
+                        &lt;h4&gt;How to run command line? &lt;/h4&gt;
+                        &lt;h6&gt;Keyboard shortcut: &lt;/h6&gt;
+
+                        &lt;p&gt;Press &lt;kbd&gt;cmd ⌘&lt;/kbd&gt; + &lt;kbd&gt;space&lt;/kbd&gt; to open Spotlight search, then type
+                            &lt;code&gt;terminal&lt;/code&gt; and hit &lt;kbd&gt;Enter ⏎&lt;/kbd&gt; &lt;/p&gt;
+                        &lt;img src=&quot;http://localhost:4000/img/angular/tutorials/environment/img/3.png&quot;
+                            alt=&quot;Spotlight search&quot;&gt;
+                        &lt;p&gt;You will see a screen lke below:&lt;/p&gt;
+                        &lt;img src=&quot;http://localhost:4000/img/angular/tutorials/environment/img/4.png&quot;
+                            alt=&quot;macOS terminal&quot;&gt;
+
+                    &lt;/div&gt;
+                    &lt;!--/.Panel 2--&gt;
+
+                    &lt;!--Panel 3--&gt;
+                    &lt;div class=&quot;tab-pane fade&quot; id=&quot;panel13&quot; role=&quot;tabpanel&quot;&gt;
+                        &lt;p&gt;Unix unlike Windows or macOS, doesn't necessarily have a Graphic User Interface (GUI),
+                            therefore in some distributions like RedHat, CentOS, Debian, and Ubuntu Server the terminal
+                            will launch immediately after bootin up the machine. &lt;/p&gt;
+
+                        &lt;p&gt;In case you use a GUI, they may look different. However in most cases you they will have
+                            Windows-like &quot;Start&quot; button which will open the search menu that allow you to find
+                            &lt;code&gt;terminal&lt;/code&gt; app. &lt;/p&gt;
+
+                        &lt;p&gt;Sample start screen on Ubuntu:&lt;/p&gt;
+                        &lt;img class=&quot;img-fluid&quot;
+                            src=&quot;http://localhost:4000/img/angular/tutorials/environment/img/15.png&quot;
+                            alt=&quot;Ubuntu Home&quot;&gt;
+                        &lt;p&gt;Also terminal windows and colors may vary depending on the distribution, - here is a sample
+                            Ubuntu terminal: &lt;/p&gt;
+                        &lt;img class=&quot;img-fluid&quot;
+                            src=&quot;http://localhost:4000/img/angular/tutorials/environment/img/16.jpg&quot;
+                            alt=&quot;Ubuntu terminal&quot;&gt;
+
+
+                    &lt;/div&gt;
+                    &lt;!--/.Panel 3--&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;br&gt;
+            &lt;li&gt;Type &lt;code&gt;npm -v&lt;/code&gt; and press &lt;kbd&gt;Enter&lt;/kbd&gt;&lt;/li&gt;
+            &lt;p&gt;If you can see the version of npm we can start the project (go to the next step).
+                Otherwise you have to install npm first. &lt;a
+                    href=&quot;https://girishgodage.github.io/blog/AngularInstall/&quot;&gt;Here&lt;/a&gt; you can find the
+                guide on how to do it. &lt;/p&gt;
+            &lt;li&gt;Navigate to the project location using the command &lt;code&gt;cd&lt;/code&gt; (the location on your computer will
+                be different):&lt;/li&gt;
+            &lt;p&gt;&lt;code&gt;cd C:\Users\Dawid\angulartutorial\agenda-app\start-here&amp;gt;&lt;/code&gt;&lt;/p&gt;
+            &lt;li&gt;Install dependencies using the &lt;code&gt;npm install&lt;/code&gt; command&lt;/li&gt;
+            &lt;li&gt;Start the project using the &lt;code&gt;npm start&lt;/code&gt; command&lt;/li&gt;
+            &lt;img class=&quot;img-fluid&quot;
+                src=&quot;http://localhost:4000/img/angular/tutorials/getting-started/1/npm_start.gif&quot;
+                alt=&quot;Start project&quot;&gt;
+
+            &lt;p class=&quot;note note-primary&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;br&gt;
+                When you run &lt;code&gt;npm start&lt;/code&gt; command npm will invoke another command underneath:
+                &lt;code&gt;ng serve&lt;/code&gt; &lt;br&gt; &lt;br&gt;
+                &lt;code&gt;ng serve&lt;/code&gt; is an Angular CLI command so you can use it directly to run your project instead
+                of &lt;code&gt;npm start&lt;/code&gt;&lt;/p&gt;
+
+
+            &lt;li&gt;Open a web browser and navigate to &lt;a href=&quot;http://localhost:4200&quot;&gt;http://localhost:4200&lt;/a&gt; &lt;/li&gt;
+        &lt;/ol&gt;
+        &lt;!-- TODO other OS --&gt;
+
+        &lt;h2&gt;4. Hello World!&lt;/h2&gt;
+        &lt;ol&gt;
+            &lt;li&gt;Open the &lt;code&gt;src/app/app.component.html&lt;/code&gt; file.&lt;/li&gt;
+            &lt;li&gt;Replace the content of the file with &lt;mark&gt;Hello World&lt;/mark&gt;.&lt;/li&gt;
+            &lt;img class=&quot;img-fluid&quot;
+                src=&quot;http://localhost:4000/img/angular/tutorials/getting-started/1/hello_world.png&quot;
+                alt=&quot;Hello World&quot;&gt;
+            &lt;li&gt;Check the result in a browser:&lt;/li&gt;
+            &lt;img class=&quot;img-fluid&quot;
+                src=&quot;http://localhost:4000/img/angular/tutorials/getting-started/1/hello_world_preview.png&quot;
+                alt=&quot;Hello World Preview&quot;&gt;
+
+            &lt;p&gt;&lt;strong&gt;Voila! Our application is running&lt;/strong&gt;. That was easy, wasn't it? Now let's have a closer
+                look at our project structure to understand how Angular project works.&lt;/p&gt;
+        &lt;/ol&gt;
+
+
+        &lt;h2&gt;5. Project structure&lt;/h2&gt;
+
+
+
+        &lt;p&gt;Let's have a look at the files within our project. There are multiple folders and files and each is
+            responsible for a variety of functionalities, however &lt;strong&gt;you don't have to know all of them&lt;/strong&gt;,
+            for now, I will introduce you to the key files and directories within our project.&lt;/p&gt;
+
         &lt;img class=&quot;img-fluid&quot;
-            src=&quot;http://localhost:4000/img/angular/tutorials/agenda-app/1/appReview.render.gif&quot;
-            alt=&quot;App behavior&quot;&gt;
-        &lt;h2&gt;4. Responsiveness&lt;/h2&gt;
-        &lt;p&gt;Our application is also &lt;strong&gt;responsive by default&lt;/strong&gt;. Just change the size of the browser to see
-            how it displays on different screen size:&lt;/p&gt;
-        &lt;img class=&quot;img-fluid&quot;
-            src=&quot;http://localhost:4000/img/angular/tutorials/agenda-app/1/appResponsive.render.gif&quot;
-            alt=&quot;App Responsiveness&quot;&gt;
-        &lt;p&gt;Now when we know what we are about to build let's not waste more time and start building our app!&lt;/p&gt;
+            src=&quot;http://localhost:4000/img/angular/tutorials/getting-started/1/file_structure_explained.png&quot;&gt;
+
+
+
+        &lt;ol&gt;
+            &lt;li&gt;The &lt;code&gt;node_modules&lt;/code&gt; directory is where all of the libraries we need to build Angular are
+                stored.&lt;/li&gt;
+            &lt;li&gt;In the &lt;code&gt;src&lt;/code&gt; directory, is placed the source code of your application.&lt;/li&gt;
+            &lt;li&gt;The &lt;code&gt;app/&lt;/code&gt; folder contains file related to our initial App component:&lt;/li&gt;
+            &lt;li&gt;The &lt;code&gt;app.component.html&lt;/code&gt; contains template of the component&lt;/li&gt;
+            &lt;li&gt;The &lt;code&gt;app.component.scss&lt;/code&gt; contains the CSS styles for the component&lt;/li&gt;
+            &lt;li&gt;The &lt;code&gt;app.component.spec.ts&lt;/code&gt; contains the tests of our component&lt;/li&gt;
+            &lt;li&gt;The &lt;code&gt;app.component.ts&lt;/code&gt; contains a TypeScript code (logic) of the component&lt;/li&gt;
+            &lt;li&gt;The &lt;code&gt;app.module.ts&lt;/code&gt; contains the configuration of the App module&lt;/li&gt;
+            &lt;li&gt;In the &lt;code&gt;assets&lt;/code&gt; directory, you place any static assets like images or icons.&lt;/li&gt;
+            &lt;li&gt;&lt;code&gt;index.html&lt;/code&gt; is the main file of our app.&lt;/li&gt;
+            &lt;p&gt;If we peek inside our &lt;code&gt;index.html&lt;/code&gt; file, we can see there’s a element
+                &lt;mark&gt;&amp;lt;app-root&amp;gt;&amp;lt;/app-root&amp;gt;&lt;/mark&gt;, which will generate (render) our App component in the
+                following place.&lt;/p&gt;
+            &lt;img class=&quot;img-fluid&quot;
+                src=&quot;http://localhost:4000/img/angular/tutorials/getting-started/1/index.png&quot;
+                alt=&quot;Index.html &quot;&gt;
+            &lt;li&gt;The &lt;code&gt;styles.scss&lt;/code&gt; contains the global styles for our application&lt;/li&gt;
+
+            &lt;p class=&quot;note note-warning&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;br&gt;
+                Within the project you can either use CSS, SASS, Less and Stylus. In case of CSS you would see the
+                &lt;code&gt;style.css&lt;/code&gt; file within your project. Since we are using SASS (the more powerfull CSS), there
+                is &lt;code&gt;style.scss&lt;/code&gt; file (note different extension). &lt;br&gt; &lt;br&gt;
+
+                The configuration whether project uses CSS or SASS is kept in &lt;code&gt;angular.json&lt;/code&gt; file. We will
+                learn how to switch between both in a future lesson. You can learn more about SASS &lt;a
+                    href=&quot;https://sass-lang.com/&quot; rel=&quot;nofollow&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+            &lt;li&gt;The &lt;code&gt;angular.json&lt;/code&gt; file contains the configuration of our app.&lt;/li&gt;
+
+
+        &lt;/ol&gt;
+
+        &lt;p&gt;In the next lesson, we will learn how to use build sample components.&lt;/p&gt;
+
+        &lt;p class=&quot;note note-warning&quot;&gt;&lt;strong&gt;Important!&lt;/strong&gt; &lt;br&gt;
+            I am very happy that you reached this far. I would like to thank you and &lt;strong&gt;ask you for a small
+                favor&lt;/strong&gt;. Please rate this lesson &lt;strong&gt;using he stars below&lt;/strong&gt;. &lt;br&gt; &lt;br&gt;
+
+            &lt;strong&gt;Your feedback is very important to us!&lt;/strong&gt; Once you vote (&lt;strong&gt;it's just a single
+                click!&lt;/strong&gt;) there will be an optional form which let you leave comment to us. Please let us know
+            what you liked and what you didn't like to help us make later tutorials better and better!
+
+
+            &lt;br&gt; &lt;br&gt;
+            It would be awesome if after each lesson you would be so kind and gie a click to rate every lesson. I would
+            appreciate that! Thanks!
+        &lt;/p&gt;
+
+
     &lt;/div&gt;
 &lt;/section&gt;
 &lt;!--Section: Lesson UI--&gt;
@@ -279,7 +817,7 @@ div&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=
         &lt;/div&gt;
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/angular/tutorials/agenda-app/1/image_1.png" /></entry><entry><title type="html">2.Angular and CLI</title><link href="http://localhost:4000/blog/Installerlesson2" rel="alternate" type="text/html" title="2.Angular and CLI" /><published>2019-09-21T00:00:00+05:30</published><updated>2019-09-21T00:00:00+05:30</updated><id>http://localhost:4000/blog/Installerlesson2</id><content type="html" xml:base="http://localhost:4000/blog/Installerlesson2">&lt;section class=&quot;tutorial1&quot;&gt;
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/angular_logo.png" /></entry><entry><title type="html">2.Angular and CLI</title><link href="http://localhost:4000/blog/Installerlesson2" rel="alternate" type="text/html" title="2.Angular and CLI" /><published>2019-09-21T00:00:00+05:30</published><updated>2019-09-21T00:00:00+05:30</updated><id>http://localhost:4000/blog/Installerlesson2</id><content type="html" xml:base="http://localhost:4000/blog/Installerlesson2">&lt;section class=&quot;tutorial1&quot;&gt;
         &lt;h2&gt;Goal&lt;/h2&gt;
         &lt;p&gt; The goal of following tutorial is to guide you on how to install Angular on your local machine.
                 This require Node.js and npm installed on your machine. If you don't have it or don't know if you have, please
@@ -364,7 +902,27 @@ div&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=
                 &lt;img class=&quot;img-fluid&quot; src=&quot;http://localhost:4000/img/angular/tutorials/angular-cli/img/04.png&quot;
                     alt=&quot;new serve&quot;&gt;
                 &lt;p&gt;Now let's get back to our current project.&lt;strong&gt;Click NEXT LESSON&lt;/strong&gt; button to proceed further.&lt;/p&gt;
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><summary type="html">Goal The goal of following tutorial is to guide you on how to install Angular on your local machine. This require Node.js and npm installed on your machine. If you don't have it or don't know if you have, please check previous tutorial. If you already have it we can start installing Angular! Angular and Angular CLI Angular is a TypeScript-based open-source front-end web application platform led by the Angular Team at Google and by a community of individuals and corporations. Angular Command Line Interface (CLI) is a tool which helps you to scaffold and build angular apps using modules. It also handles all common tedious task for you. We will show it on the example but first - let's install. 1. Installation Open terminal/comand prompt and run: npm install -g @angular/cli Next we will install Typescript - type script is a superset of JS, we will learn more about that in next lessons, for now just note that it's required by Angular npm i -g typescript 2. Verify installation Run following command in comand prompt: ng --version You should see current version of Angular, CLI and Typescript: 3. First Angular app Since everything is ready we are ready to create our first Angular app. Open prompt and run following command: ng new hello-world Expected output: Now let's navigate to our new project: cd hello-world and run: ng serve -o Expected output: Our browser should automatically open (cause we added -o option) new window/card in our default web browser and display following content. If that didn't happen, open a browser manually and navigate to http://localhost:4200/ Now let's get back to our current project.Click NEXT LESSON button to proceed further.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/angular_logo.png" /></entry><entry><title type="html">1.Angular installation</title><link href="http://localhost:4000/blog/AngularInstall" rel="alternate" type="text/html" title="1.Angular installation" /><published>2019-09-20T00:00:00+05:30</published><updated>2019-09-20T00:00:00+05:30</updated><id>http://localhost:4000/blog/AngularInstall</id><content type="html" xml:base="http://localhost:4000/blog/AngularInstall">&lt;section class=&quot;tutorial&quot;&gt;
+&lt;/section&gt;
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr&gt;
+    &lt;div class=&quot;row&quot; &gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot; href=&quot;https://girishgodage.github.io/blog/AngularInstall&quot;
+                role=&quot;button&quot;&gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot; &gt;
+            &lt;a class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;
+                href=&quot;&quot; role=&quot;button&quot;&gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><summary type="html">Goal The goal of following tutorial is to guide you on how to install Angular on your local machine. This require Node.js and npm installed on your machine. If you don't have it or don't know if you have, please check previous tutorial. If you already have it we can start installing Angular! Angular and Angular CLI Angular is a TypeScript-based open-source front-end web application platform led by the Angular Team at Google and by a community of individuals and corporations. Angular Command Line Interface (CLI) is a tool which helps you to scaffold and build angular apps using modules. It also handles all common tedious task for you. We will show it on the example but first - let's install. 1. Installation Open terminal/comand prompt and run: npm install -g @angular/cli Next we will install Typescript - type script is a superset of JS, we will learn more about that in next lessons, for now just note that it's required by Angular npm i -g typescript 2. Verify installation Run following command in comand prompt: ng --version You should see current version of Angular, CLI and Typescript: 3. First Angular app Since everything is ready we are ready to create our first Angular app. Open prompt and run following command: ng new hello-world Expected output: Now let's navigate to our new project: cd hello-world and run: ng serve -o Expected output: Our browser should automatically open (cause we added -o option) new window/card in our default web browser and display following content. If that didn't happen, open a browser manually and navigate to http://localhost:4200/ Now let's get back to our current project.Click NEXT LESSON button to proceed further. Previous Lesson Next Lesson</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/angular_logo.png" /></entry><entry><title type="html">1.Angular installation</title><link href="http://localhost:4000/blog/AngularInstall" rel="alternate" type="text/html" title="1.Angular installation" /><published>2019-09-20T00:00:00+05:30</published><updated>2019-09-20T00:00:00+05:30</updated><id>http://localhost:4000/blog/AngularInstall</id><content type="html" xml:base="http://localhost:4000/blog/AngularInstall">&lt;section class=&quot;tutorial&quot;&gt;
     &lt;h2&gt;Goal&lt;/h2&gt;
     &lt;p&gt; The goal of the following tutorial is to guide you on how to install all software required to start our journey
         with Angular. If have your environment ready, you can skip to &lt;a
