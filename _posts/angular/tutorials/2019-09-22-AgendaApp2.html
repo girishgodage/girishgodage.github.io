@@ -1,0 +1,252 @@
+---
+title: Using Bootstrap in Angular
+image: https://girishgodage.github.io/img/angular/tutorials/agenda-app/img/image_1.png
+author: Girish Godage
+layout: posts
+prevurl: https://girishgodage.github.io/blog/AgendaApp2
+nextutl: https://girishgodage.github.io/blog/AgendaApp2
+discussion_id: 2019-09-20-AngularInstall
+---
+
+<section class="tutorial">
+
+    <div class="angular-tutorial tutorial">
+        <p>We will start building our app by <strong>setting up the two column structure of our app</strong>. As you can
+            see in the demo app our app consists of two columns: the first, on the left and wider, which lists all the
+            daily events; and the right hand one - which shows the events counter as well as the weather forecast.</p>
+        <p>As you also noticed our app will be responsive. This is thanks to Bootstrap 4. In this lesson, <strong>we
+                will learn how to use a Bootstrap grid in Angular</strong>.</p>
+        <p class="note note-warning"><strong>Disclaimer:</strong> I will explain the key concepts and basic usage here.
+            If you want to master Bootstrap usage I strongly suggest to finish <a
+                href="https://mdbootstrap.com/education/bootstrap/">this course</a> first and come back here.</p>
+        <h2>1. Open the project</h2>
+        <p>In order to start building our project let's open a boilerplate which I have prepared for you in Tutorial
+            files which you downloaded before.</p>
+        <ol>
+            <li>Open the <code>agenda-app/start-here</code> project in code editor</li>
+            <li>Replace the content of the <code>src/app.component.html</code> and <code>src/app.component.scss</code>
+                file with the following code:</li>
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdbeedd9d0ebd5f368a31ce023fa25851b4" role="tab">app.component.html</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link " data-toggle="tab"
+                                href="#mdb2fbc9e549f7b30cd9c8b77836239b94b" role="tab">app.component.scss</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdbeedd9d0ebd5f368a31ce023fa25851b4" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"container"</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"row mt-3"</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-md-6"</span><span class="token operator">&gt;</span>
+      Left column
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-md-6"</span><span class="token operator">&gt;</span>
+      Right column
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                            <div class="toolbar">
+                                <div class="toolbar-item">
+                                    <button class="btn-copy-code btn btn-outline-grey btn-sm px-2 waves-effect"><i
+                                            class="fa fa-copy mr-1"></i> Copy code</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade " id="mdb2fbc9e549f7b30cd9c8b77836239b94b" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js">div<span class="token punctuation">[</span><span class="token keyword">class</span><span class="token operator">^=</span><span class="token string">"col"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+div<span class="token punctuation">[</span><span class="token keyword">class</span><span class="token operator">*=</span><span class="token string">" col"</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
+  border<span class="token punctuation">:</span> <span class="token number">1</span>px dotted black<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+                            <div class="toolbar">
+                                <div class="toolbar-item">
+                                    <button class="btn-copy-code btn btn-outline-grey btn-sm px-2 waves-effect"><i
+                                            class="fa fa-copy mr-1"></i> Copy code</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.mdbsnippet -->
+        </ol>
+        <ul>
+            <p>What we did:</p>
+            <li>Added a container, with a row and two columns inside within
+                <mark>app.component.html</mark>
+            </li>
+            <li>Added a style to make our grid borders visible inside the
+                <mark>app.component.scss</mark>
+            </li>
+        </ul>
+        <h2>1. The concept of the grid</h2>
+        <p>Currently, our app has two equal-sized columns which are placed next to each other on a large screen. When we
+            resize our browser window <strong>they will nest one beneath the other</strong>:</p>
+        <img class="img-fluid"
+            src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/content/angular/tutorials/agenda-app/2/appResponsive.render.gif"
+            alt="Bootstrap columns">
+        <br>
+        <p><strong>What is the Bootstrap Grid? </strong>
+        </p>
+        <p>In nutshell, it's a mechanism which allows us to create a responsive website. The Bootstrap grid allows us
+            define rows, and each row consists of up to 12 columns.</p>
+        <img class="img-fluid"
+            src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/content/angular/tutorials/agenda-app/2/image_1.png"
+            alt="12 bootstrap columns">
+        <p>You can<strong> either use one column which will be 12 blocks long or use multiple smaller blocks</strong>.
+            The only rule is that <strong>you cannot exceed more than 12 blocks in a row</strong>. The blocks don't have
+            to be equal in size:&nbsp;</p>
+        <img class="img-fluid"
+            src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/content/angular/tutorials/agenda-app/2/image_3.png">
+        <p>And you can skip some of the columns, as well as align them horizontally:</p>
+        <img class="img-fluid"
+            src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/content/angular/tutorials/agenda-app/2/image_2.png">
+        <p>For more advanced usage you can check our&nbsp;<a
+                href="https://mdbootstrap.com/docs/angular/layout/overview/">docs:</a>
+        </p>
+        <h2>3. Responsive breakpoints</h2>
+        <p>Bootstrap is developed to be <strong>mobile first</strong> - it uses a handful of media queries to create
+            sensible breakpoints for our layouts. These <strong> breakpoints are mostly based on minimum viewport
+                widths</strong> and allow you to scale up elements as the viewport changes.</p>
+        <p>This is one of the most important features - in other words:&nbsp;<strong>you can define a different column
+                size for different screen sizes</strong>.&nbsp;Bootstrap lists five different screen sizes, extra small
+            (<b>default</b>), small (<b>sm</b>), medium (<b>md</b>), large (<b>lg</b>)&nbsp; and extra large
+            (<b>xl</b>).&nbsp; Each size has a breaking point defined according to the table below:</p>
+        <img class="img-fluid"
+            src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/content/angular/tutorials/agenda-app/2/image.png">
+        <span class="small mx-auto">Bootstrap responsive breakpoints table</span>
+        <br>
+        <br>
+        <p>Coming to the conclusion - <strong>this super handy tool allows us to create content which will automatically
+                adjust to the screen size</strong>. Let's try the following code:</p>
+        <!-- mdbsnippet -->
+        <div class="docs-pills">
+            <div class="d-flex justify-content-between">
+                <ul class="nav md-pills pills-grey">
+                    <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                            href="#mdb8c944992124e0441e844ea398ab386c2" role="tab">app.component.html</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade active show" id="mdb8c944992124e0441e844ea398ab386c2" role="tabpanel">
+                    <div class="code-toolbar">
+                        <pre
+                            class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"container"</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"row"</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-xl-1 col-lg-2 col-md-4 col-sm-6 col-xs-12"</span><span class="token operator">&gt;</span>xl<span class="token operator">=</span><span class="token number">1</span> lg<span class="token operator">=</span><span class="token number">2</span> md<span class="token operator">=</span><span class="token number">4</span> sm<span class="token operator">=</span><span class="token number">6</span> xs<span class="token operator">=</span><span class="token number">12</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-xl-1 col-lg-2 col-md-4 col-sm-6 col-xs-12"</span><span class="token operator">&gt;</span>xl<span class="token operator">=</span><span class="token number">1</span> lg<span class="token operator">=</span><span class="token number">2</span> md<span class="token operator">=</span><span class="token number">4</span> sm<span class="token operator">=</span><span class="token number">6</span> xs<span class="token operator">=</span><span class="token number">12</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-xl-1 col-lg-2 col-md-4 col-sm-6 col-xs-12"</span><span class="token operator">&gt;</span>xl<span class="token operator">=</span><span class="token number">1</span> lg<span class="token operator">=</span><span class="token number">2</span> md<span class="token operator">=</span><span class="token number">4</span> sm<span class="token operator">=</span><span class="token number">6</span> xs<span class="token operator">=</span><span class="token number">12</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-xl-1 col-lg-2 col-md-4 col-sm-6 col-xs-12"</span><span class="token operator">&gt;</span>xl<span class="token operator">=</span><span class="token number">1</span> lg<span class="token operator">=</span><span class="token number">2</span> md<span class="token operator">=</span><span class="token number">4</span> sm<span class="token operator">=</span><span class="token number">6</span> xs<span class="token operator">=</span><span class="token number">12</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-xl-1 col-lg-2 col-md-4 col-sm-6 col-xs-12"</span><span class="token operator">&gt;</span>xl<span class="token operator">=</span><span class="token number">1</span> lg<span class="token operator">=</span><span class="token number">2</span> md<span class="token operator">=</span><span class="token number">4</span> sm<span class="token operator">=</span><span class="token number">6</span> xs<span class="token operator">=</span><span class="token number">12</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-xl-1 col-lg-2 col-md-4 col-sm-6 col-xs-12"</span><span class="token operator">&gt;</span>xl<span class="token operator">=</span><span class="token number">1</span> lg<span class="token operator">=</span><span class="token number">2</span> md<span class="token operator">=</span><span class="token number">4</span> sm<span class="token operator">=</span><span class="token number">6</span> xs<span class="token operator">=</span><span class="token number">12</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-xl-1 col-lg-2 col-md-4 col-sm-6 col-xs-12"</span><span class="token operator">&gt;</span>xl<span class="token operator">=</span><span class="token number">1</span> lg<span class="token operator">=</span><span class="token number">2</span> md<span class="token operator">=</span><span class="token number">4</span> sm<span class="token operator">=</span><span class="token number">6</span> xs<span class="token operator">=</span><span class="token number">12</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-xl-1 col-lg-2 col-md-4 col-sm-6 col-xs-12"</span><span class="token operator">&gt;</span>xl<span class="token operator">=</span><span class="token number">1</span> lg<span class="token operator">=</span><span class="token number">2</span> md<span class="token operator">=</span><span class="token number">4</span> sm<span class="token operator">=</span><span class="token number">6</span> xs<span class="token operator">=</span><span class="token number">12</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-xl-1 col-lg-2 col-md-4 col-sm-6 col-xs-12"</span><span class="token operator">&gt;</span>xl<span class="token operator">=</span><span class="token number">1</span> lg<span class="token operator">=</span><span class="token number">2</span> md<span class="token operator">=</span><span class="token number">4</span> sm<span class="token operator">=</span><span class="token number">6</span> xs<span class="token operator">=</span><span class="token number">12</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-xl-1 col-lg-2 col-md-4 col-sm-6 col-xs-12"</span><span class="token operator">&gt;</span>xl<span class="token operator">=</span><span class="token number">1</span> lg<span class="token operator">=</span><span class="token number">2</span> md<span class="token operator">=</span><span class="token number">4</span> sm<span class="token operator">=</span><span class="token number">6</span> xs<span class="token operator">=</span><span class="token number">12</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-xl-1 col-lg-2 col-md-4 col-sm-6 col-xs-12"</span><span class="token operator">&gt;</span>xl<span class="token operator">=</span><span class="token number">1</span> lg<span class="token operator">=</span><span class="token number">2</span> md<span class="token operator">=</span><span class="token number">4</span> sm<span class="token operator">=</span><span class="token number">6</span> xs<span class="token operator">=</span><span class="token number">12</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-xl-1 col-lg-2 col-md-4 col-sm-6 col-xs-12"</span><span class="token operator">&gt;</span>xl<span class="token operator">=</span><span class="token number">1</span> lg<span class="token operator">=</span><span class="token number">2</span> md<span class="token operator">=</span><span class="token number">4</span> sm<span class="token operator">=</span><span class="token number">6</span> xs<span class="token operator">=</span><span class="token number">12</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                        <div class="toolbar">
+                            <div class="toolbar-item">
+                                <button class="btn-copy-code btn btn-outline-grey btn-sm px-2 waves-effect"><i
+                                        class="fa fa-copy mr-1"></i> Copy code</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.mdbsnippet -->
+        <p>Run the app and resize the browser size:</p>
+        <img class="img-fluid"
+            src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/content/angular/tutorials/agenda-app/2/colsize.gif"
+            alt="Bootstrap columns size">
+        <p>I hope that you now you can understand how easy it is to build responsive components using Bootstrap. Let's
+            get back to our app. We want to create a two-column layout that will be visible on the desktop (extra large
+            and large) as well as tablets in horizontal aspect (medium). For smaller screen size we want our columns to
+            nest one below the other.</p>
+        <h2>4. Responsive grid of our Calendar App</h2>
+        <p>Replace the template of our <code>app.component.html</code> file with following code:</p>
+        <!-- mdbsnippet -->
+        <div class="docs-pills">
+            <div class="d-flex justify-content-between">
+                <ul class="nav md-pills pills-grey">
+                    <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                            href="#mdb0192146b456731393dcfe5ccea121991" role="tab">app.component.html</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade active show" id="mdb0192146b456731393dcfe5ccea121991" role="tabpanel">
+                    <div class="code-toolbar">
+                        <pre
+                            class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"container"</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"row"</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-md-9"</span><span class="token operator">&gt;</span>
+      Left column
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-md-3"</span><span class="token operator">&gt;</span>
+      Right column
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                        <div class="toolbar">
+                            <div class="toolbar-item">
+                                <button class="btn-copy-code btn btn-outline-grey btn-sm px-2 waves-effect"><i
+                                        class="fa fa-copy mr-1"></i> Copy code</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.mdbsnippet -->
+        <p>This will render the expected result. note that we have provided only a medium breaking point. Bootstrap by
+            default assumes that we want 9/3 ratio <strong>not only for medium screen but also for bigger
+                screens</strong>, as well as that we want everything which is lower than md to display on full 12 width.
+        </p>
+    </div>
+    <hr>
+    <div class="d-flex justify-content-center"> <span class="mt-1 mr-2">Rate this lesson</span>
+        <span class="popover-form-container" id="rateTooltip" data-page-id="85951">
+
+            <i class="fas fa-star stars fa-sm py-2 px-1 popovers" data-page-template="tutorial" data-index="0"
+                data-title="setPopoverTitle()" style="cursor: pointer" data-html="true" data-toggle="popover"
+                data-placement="top"
+                data-content="<div class='md-form my-0 py-0'> <textarea type='text' style='font-size: 0.78rem' class='md-textarea form-control vote-description-input py-0' placeholder='Write us what can we improve' rows='3'></textarea> <button type='submit' class='btn btn-sm btn-primary vote-submit-button'>Submit!</button> <button class='btn btn-flat btn-sm close-popover-button'>Close</button>  </div>"
+                title="" data-original-title=""></i>
+            <i class="fas fa-star stars fa-sm py-2 px-1 popovers" data-page-template="tutorial" data-index="1"
+                data-title="setPopoverTitle()" style="cursor: pointer" data-html="true" data-toggle="popover"
+                data-placement="top"
+                data-content="<div class='md-form my-0 py-0'> <textarea type='text' style='font-size: 0.78rem' class='md-textarea form-control vote-description-input py-0' placeholder='Write us what can we improve' rows='3'></textarea> <button type='submit' class='btn btn-sm btn-primary vote-submit-button'>Submit!</button> <button class='btn btn-flat btn-sm close-popover-button'>Close</button>  </div>"
+                title="" data-original-title=""></i>
+            <i class="fas fa-star stars fa-sm py-2 px-1 popovers" data-page-template="tutorial" data-index="2"
+                data-title="setPopoverTitle()" style="cursor: pointer" data-html="true" data-toggle="popover"
+                data-placement="top"
+                data-content="<div class='md-form my-0 py-0'> <textarea type='text' style='font-size: 0.78rem' class='md-textarea form-control vote-description-input py-0' placeholder='Write us what can we improve' rows='3'></textarea> <button type='submit' class='btn btn-sm btn-primary vote-submit-button'>Submit!</button> <button class='btn btn-flat btn-sm close-popover-button'>Close</button>  </div>"
+                title="" data-original-title=""></i>
+            <i class="fas fa-star stars fa-sm py-2 px-1 popovers" data-page-template="tutorial" data-index="3"
+                data-title="setPopoverTitle()" style="cursor: pointer" data-html="true" data-toggle="popover"
+                data-placement="top"
+                data-content="<div class='md-form my-0 py-0'> <textarea type='text' style='font-size: 0.78rem' class='md-textarea form-control vote-description-input py-0' placeholder='Write us what can we improve' rows='3'></textarea> <button type='submit' class='btn btn-sm btn-primary vote-submit-button'>Submit!</button> <button class='btn btn-flat btn-sm close-popover-button'>Close</button>  </div>"
+                title="" data-original-title=""></i>
+            <i class="fas fa-star stars fa-sm py-2 px-1 popovers" data-page-template="tutorial" data-index="4"
+                data-title="setPopoverTitle()" style="cursor: pointer" data-html="true" data-toggle="popover"
+                data-placement="top"
+                data-content="<div class='md-form my-0 py-0'> <textarea type='text' style='font-size: 0.78rem' class='md-textarea form-control vote-description-input py-0' placeholder='Write us what can we improve' rows='3'></textarea> <button type='submit' class='btn btn-sm btn-primary vote-submit-button'>Submit!</button> <button class='btn btn-flat btn-sm close-popover-button'>Close</button>  </div>"
+                title="" data-original-title=""></i>
+        </span>
+    </div>
+</section>
+{% include blogslide.html %}
