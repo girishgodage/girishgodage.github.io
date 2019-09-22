@@ -1,15 +1,16 @@
+<div class="row">
 {% for post in site.posts %}
 <div style="font-family: 'Poppins', sans-serif;" id="card-main" class="col-sm-3 col-lg-4 col-md-6 col-sm-6">
     <a style="text-decoration: none;" href="{{site.url}}{{site.baseurl}}{{post.url}}">
         <!-- Card -->
         <div class="card">
             <!-- Card image -->
-            <img class="card-img" height="240" src="{{post.image}}"
+            <img class="card-img img-fluid" height="240" src="{{post.image}}"
                 onError="this.onerror=null;this.src='{{site.url}}{{site.baseurl}}/images/meta.jpg';"
                 alt="Card image cap" />
             <!-- Card image -->
             <!-- Card content -->
-            <div class="text-center card-body">
+            <div class="text-center card-body h-50">
                 <!-- Title -->
                 <p class="card-title">
                     <h3>{{post.title | truncate: 50 | strip_html | strip_newlines | strip}}</h3>
@@ -28,3 +29,4 @@
     <br>
 </div>
 {% endfor %}
+</div>
