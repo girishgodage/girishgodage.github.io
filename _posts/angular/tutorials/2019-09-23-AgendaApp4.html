@@ -1,0 +1,364 @@
+---
+title: 9.Passing data to components
+image: https://girishgodage.github.io/img/angular/tutorials/agenda-app/1/image_1.png
+author: Girish Godage
+layout: posts
+prevurl: https://girishgodage.github.io/blog/AgendaApp3
+nextutl: https://girishgodage.github.io/blog/AgendaApp5
+discussion_id: 2019-09-23-AgendaApp4
+---
+
+<section class="tutorial9">
+
+    <div class="angular-tutorial tutorial">
+
+
+        <p>Earlier, we learned how to create the Event component. The problem is, that this <strong>component won’t be
+                useful unless you can pass data to it</strong>, such as the time, title, location and description of the
+            specific event we want to display. <strong>That's where inputs come into the picture</strong>. </p>
+
+        <p>In this lesson we will learn 2 different ways on how we can pass data to our component.</p>
+
+        <h2>1. Passing Data using <code>&lt;ng-content&gt;</code></h2>
+
+
+        <p>The first way you pass data to our object is to use <mark>&lt;ng-content&gt;</mark> which allows us to render
+            content between the tags.</p>
+
+        <ol>
+            <li>Update <code>event.component.html</code> with the following code:</li>
+
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdb872fb809f882ec895b2f95af224289e2" role="tab">event.component.html</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdb872fb809f882ec895b2f95af224289e2" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>ng<span class="token operator">-</span>content<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>ng<span class="token operator">-</span>content<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                            <div class="toolbar">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.mdbsnippet -->
+
+            <li>Add some data in between <mark>&lt;app-event&gt;&lt;/app-event&gt;</mark> tags in
+                <code>app.component.html</code> file:</li>
+
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdb258ce1c2ab7899551dc56a843c1632e9" role="tab">app.component.html</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdb258ce1c2ab7899551dc56a843c1632e9" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"container"</span><span class="token operator">&gt;</span>
+                  <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"row"</span><span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-md-9"</span><span class="token operator">&gt;</span>
+                      <span class="token operator">&lt;</span>app<span class="token operator">-</span>event<span class="token operator">&gt;</span>Event <span class="token number">1</span><span class="token operator">&lt;</span><span class="token operator">/</span>app<span class="token operator">-</span>event<span class="token operator">&gt;</span>
+                      <span class="token operator">&lt;</span>app<span class="token operator">-</span>event<span class="token operator">&gt;</span>Event <span class="token number">2</span><span class="token operator">&lt;</span><span class="token operator">/</span>app<span class="token operator">-</span>event<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-md-3"</span><span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+                  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                            <div class="toolbar">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.mdbsnippet -->
+
+
+            <li>Save the file and run the app</li>
+            <img class="img-fluid"
+                src="{{site.url}}{{site.baseurl}}/img/angular/tutorials/agenda-app/4/ng_content.png"
+                alt="ng-content">
+
+            <p>Great! But what if we want to pass more varied data? Let's learn how to pass multiple data to our
+                component.</p>
+
+        </ol>
+
+        <h2>1. Passing Data using <code>@Input</code></h2>
+
+        <h4>Child component (<code>Event Component</code>)</h4>
+        <ol>
+            <li> Import <code>Input</code> in <code>event.component.ts</code> (before we were importing only
+                <code>Component</code>)</li>
+
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdba180088119a12f63a611dd5e2c091e3b" role="tab">event.component.ts</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdba180088119a12f63a611dd5e2c091e3b" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>Component<span class="token punctuation">,</span> Input<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/core'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                            <div class="toolbar">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.mdbsnippet -->
+
+            <li>Define new <code>@Input()</code> variable within <mark>EventComponent class:</mark></li>
+
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdbfa714d97908f21bcb0e88473850cfdd4" role="tab">event.component.ts</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdbfa714d97908f21bcb0e88473850cfdd4" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">EventComponent</span> <span class="token punctuation">{</span>
+                  @<span class="token function">Input</span><span class="token punctuation">(</span><span class="token punctuation">)</span> value<span class="token punctuation">:</span> any<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+                            <div class="toolbar">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.mdbsnippet -->
+
+            <li>Update the component template (<code>event.component.html</code>) to display our <code>value</code>
+                variable:</li>
+
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdb20a254cb3fed9994eb9024e5c0bcda0d" role="tab">event.component.html</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdb20a254cb3fed9994eb9024e5c0bcda0d" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>p<span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token punctuation">{</span> value <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                            <div class="toolbar">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.mdbsnippet -->
+
+        </ol>
+
+        <h4>Parent component (<code>App Component</code>)</h4>
+        <ol>
+            <li>Update the App template (<code>app.component.html</code>): </li>
+
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdb712b93b9cf70196333d33fe2c9634c00" role="tab">app.component.html</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdb712b93b9cf70196333d33fe2c9634c00" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"container"</span><span class="token operator">&gt;</span>
+                  <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"row"</span><span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-md-9"</span><span class="token operator">&gt;</span>
+                      <span class="token operator">&lt;</span>app<span class="token operator">-</span>event  <span class="token punctuation">[</span>value<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"5"</span> <span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>app<span class="token operator">-</span>event<span class="token operator">&gt;</span>
+                      <span class="token operator">&lt;</span>app<span class="token operator">-</span>event <span class="token punctuation">[</span>value<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"'string'"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>app<span class="token operator">-</span>event<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-md-3"</span><span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+                  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                            <div class="toolbar">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.mdbsnippet -->
+
+            <li>Save the files and run the project</li>
+
+            <img class="img-fluid"
+                src="{{site.url}}{{site.baseurl}}/img/angular/tutorials/agenda-app/4/preview.png"
+                alt="Preview">
+
+
+            <p>Using this method <strong>we can pass as many parameters as we need</strong>. </p>
+
+            <p>Note that the way we pass data from parent to the child component also matters. </p>
+
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdbf86a85941146e1f9cdcaecfbdbb81f13" role="tab">app.component.html</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdbf86a85941146e1f9cdcaecfbdbb81f13" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token punctuation">[</span>value<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"5"</span> <span class="token comment">// Value will be number</span>
+                <span class="token punctuation">[</span>value<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"'string'"</span> <span class="token comment">// Value will be string</span>
+                <span class="token punctuation">[</span>value<span class="token operator">=</span><span class="token string">"'5'"</span><span class="token punctuation">]</span> <span class="token comment">// This also will be string (note '' )</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+                            <div class="toolbar">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.mdbsnippet -->
+
+        </ol>
+
+        <p>We can als use <code>@Input</code> to pass more complex structure.</p>
+
+
+        <p class="note note-warning"><strong>Important:</strong> <br>
+            Keep in mind that using the <code>@Input</code> allows us to pass data only in one direction - from the
+            <code>Parent</code> to the <code>Child</code> component.
+        </p>
+
+
+        <h2>3. Passing complex objects</h2>
+
+        <ol>
+            <li>Add initial event object to the <code>app.component.ts</code></li>
+
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdb05ad7a7e1f2bcc79908116e57550d633" role="tab">app.component.ts</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdb05ad7a7e1f2bcc79908116e57550d633" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Component <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@angular/core"</span><span class="token punctuation">;</span>
+                
+                @<span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                  selector<span class="token punctuation">:</span> <span class="token string">"app-root"</span><span class="token punctuation">,</span>
+                  templateUrl<span class="token punctuation">:</span> <span class="token string">"./app.component.html"</span><span class="token punctuation">,</span>
+                  styleUrls<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"./app.component.scss"</span><span class="token punctuation">]</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AppComponent</span> <span class="token punctuation">{</span>
+                  event<span class="token punctuation">:</span> any <span class="token operator">=</span>
+                    <span class="token punctuation">{</span>
+                      time<span class="token punctuation">:</span> <span class="token string">"08:00"</span><span class="token punctuation">,</span>
+                      subject<span class="token punctuation">:</span> <span class="token string">"Breakfast with Simon"</span><span class="token punctuation">,</span>
+                      location<span class="token punctuation">:</span> <span class="token string">"Lounge Caffe"</span><span class="token punctuation">,</span>
+                      description<span class="token punctuation">:</span> <span class="token string">"Discuss Q3 targets"</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                            <div class="toolbar">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.mdbsnippet -->
+            <li>Update the <code>App</code> template:</li>
+
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdb01f04dc4d10ca07b0f633ee0c6e4674f" role="tab">app.component.html</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdb01f04dc4d10ca07b0f633ee0c6e4674f" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"container"</span><span class="token operator">&gt;</span>
+                  <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"row"</span><span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-md-9"</span><span class="token operator">&gt;</span>
+                      <span class="token operator">&lt;</span>app<span class="token operator">-</span>event <span class="token punctuation">[</span>value<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"event"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>app<span class="token operator">-</span>event<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-md-3"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+                  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                            <div class="toolbar">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.mdbsnippet -->
+
+            <li>Update the <code>Event</code> template:</li>
+
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdb6597c286dcf1a4eb9cf1199d52eb45b6" role="tab">event.component.html</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdb6597c286dcf1a4eb9cf1199d52eb45b6" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>h1<span class="token operator">&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">{</span>value<span class="token punctuation">.</span>time<span class="token punctuation">}</span><span class="token punctuation">}</span> <span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">{</span>value<span class="token punctuation">.</span>location<span class="token punctuation">}</span><span class="token punctuation">}</span> <span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>p<span class="token operator">&gt;</span> Location<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">{</span>value<span class="token punctuation">.</span>location<span class="token punctuation">}</span><span class="token punctuation">}</span> <span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>p<span class="token operator">&gt;</span> Description<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">{</span>value<span class="token punctuation">.</span>description<span class="token punctuation">}</span><span class="token punctuation">}</span> <span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+                            <div class="toolbar">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.mdbsnippet -->
+
+            <li>Save the files and rune the project:</li>
+
+
+            <img class="img-fluid"
+                src="{{site.url}}{{site.baseurl}}/img/angular/tutorials/agenda-app/4/complex.png"
+                alt="Passing complex objects">
+
+            <p>As you can see, it's very easy to pass even a complex objects using</p>
+
+        </ol>
+
+
+    </div>
+
+</section>
+{% include blogslide.html %}

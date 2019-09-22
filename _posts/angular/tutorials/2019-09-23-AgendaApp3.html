@@ -1,0 +1,225 @@
+---
+title: 8.Child Component
+image: https://girishgodage.github.io/img/angular/tutorials/agenda-app/1/image_1.png
+author: Girish Godage
+layout: posts
+prevurl: https://girishgodage.github.io/blog/AgendaApp2
+nextutl: https://girishgodage.github.io/blog/AgendaApp4
+discussion_id: 2019-09-23-AgendaApp3
+---
+
+<section class="tutorial8">
+
+    <div class="angular-tutorial tutorial">
+
+        <h2>1. Event component</h2>
+
+        <p>Our app will consist of two components. The main one - the App component, which will be responsible for
+            layout and the Event component - a sub-component which will render a single event entity. </p>
+
+
+        <ol>
+            <li>Create a new <code>components</code> folder under <code>src/app</code></li>
+            <li>Create a new <code>event</code> folder under <code>src/src/app/components/</code></li>
+            <li>Create a new <code>event.component.html</code> file</li>
+            <li>Paste the initial Event code </li>
+
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdb0fa43b8c4dffc28a110fa44fd323f9dd" role="tab">event.component.html</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdb0fa43b8c4dffc28a110fa44fd323f9dd" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>h3<span class="token operator">&gt;</span><span class="token number">9</span><span class="token punctuation">:</span><span class="token number">00</span> <span class="token operator">-</span> Title<span class="token operator">&lt;</span><span class="token operator">/</span>h3<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                            <div class="toolbar">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.mdbsnippet -->
+
+            <li>Create a new <code>event.component.ts</code> file</li>
+            <li>Paste initial Event code </li>
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdb4eca8738524e2fd8fbc4a40ca13b4a2e" role="tab">event.component.ts</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdb4eca8738524e2fd8fbc4a40ca13b4a2e" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>Component<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/core'</span><span class="token punctuation">;</span>
+                
+                @<span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                  selector<span class="token punctuation">:</span> <span class="token string">'app-event'</span><span class="token punctuation">,</span>
+                  templateUrl<span class="token punctuation">:</span> <span class="token string">'./event.component.html'</span><span class="token punctuation">,</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">EventComponent</span> <span class="token punctuation">{</span>
+                
+                <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                            <div class="toolbar">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.mdbsnippet -->
+        </ol>
+
+        <img class="img-fluid"
+            src="{{site.url}}{{site.baseurl}}/img/angular/tutorials/agenda-app/3/files.png"
+            alt="New files structure">
+
+
+
+        <p>Most of the people will simply call Event a <strong>component</strong>. This is perfectly fine, however,
+            there is the one important thing that I want you to remember if you didn't have any experience with Object
+            Oriented Programming in the past.</p>
+
+        <p><strong>Our class is just a definition of the component</strong>. It describes how our component will look
+            and behave but <strong>it doesn't create an instance of the component yet</strong>.</p>
+
+        <h2>2. Import and render EventComponent</h2>
+
+        <ol>
+            <li>Open the<code>app.module.ts</code> file</li>
+            <li>Import <mark>EventComponent</mark></li>
+
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdbda98984636bc5bed0a56f14ac938fed3" role="tab">app.component.ts</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdbda98984636bc5bed0a56f14ac938fed3" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> BrowserModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/platform-browser'</span><span class="token punctuation">;</span>
+                <span class="token keyword">import</span> <span class="token punctuation">{</span> NgModule<span class="token punctuation">,</span> <span class="token constant">NO_ERRORS_SCHEMA</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/core'</span><span class="token punctuation">;</span>
+                <span class="token keyword">import</span> <span class="token punctuation">{</span> BrowserAnimationsModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/platform-browser/animations'</span><span class="token punctuation">;</span>
+                <span class="token keyword">import</span> <span class="token punctuation">{</span> AppComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./app.component'</span><span class="token punctuation">;</span>
+                <span class="token keyword">import</span> <span class="token punctuation">{</span> MDBBootstrapModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'angular-bootstrap-md'</span><span class="token punctuation">;</span>
+                <span class="token keyword">import</span> <span class="token punctuation">{</span> EventComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./components/event/event.component'</span>
+                
+                @<span class="token function">NgModule</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                  declarations<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                    AppComponent<span class="token punctuation">,</span>
+                    EventComponent
+                  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                  imports<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                    BrowserModule<span class="token punctuation">,</span>
+                    BrowserAnimationsModule<span class="token punctuation">,</span>
+                    MDBBootstrapModule<span class="token punctuation">.</span><span class="token function">forRoot</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                  providers<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                  bootstrap<span class="token punctuation">:</span> <span class="token punctuation">[</span>AppComponent<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                  schemas<span class="token punctuation">:</span> <span class="token punctuation">[</span> <span class="token constant">NO_ERRORS_SCHEMA</span> <span class="token punctuation">]</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AppModule</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                            <div class="toolbar">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.mdbsnippet -->
+
+            <li>Render the <mark>EventComponent</mark> component in the <mark>app.component.html</mark> file:</li>
+
+
+
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdb1e68d70821005455713413de3e566236" role="tab">app.component.html</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdb1e68d70821005455713413de3e566236" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"container"</span><span class="token operator">&gt;</span>
+                  <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"row"</span><span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-md-9"</span><span class="token operator">&gt;</span>
+                      <span class="token operator">&lt;</span>app<span class="token operator">-</span>event<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>app<span class="token operator">-</span>event<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-md-3"</span><span class="token operator">&gt;</span>
+                      Right column
+                    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+                  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                            <div class="toolbar">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.mdbsnippet -->
+
+            <img class="img-fluid"
+                src="{{site.url}}{{site.baseurl}}/img/angular/tutorials/agenda-app/3/preview.png"
+                alt="App preview">
+
+
+            <p>As we mentioned before, since our <mark>EventComponent</mark> component is a definition, we can render
+                multiple instances of the same component.</p>
+
+
+            <li>Add the second instance of the <mark>EventComponent</mark> in the left column</li>
+            <li>Remove the text from the right column</li>
+
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdbb6d6aff8b9b1830088e9a5bfbc91a56d" role="tab">app.component.html</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdbb6d6aff8b9b1830088e9a5bfbc91a56d" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"container"</span><span class="token operator">&gt;</span>
+                  <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"row"</span><span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-md-9"</span><span class="token operator">&gt;</span>
+                      <span class="token operator">&lt;</span>app<span class="token operator">-</span>event<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>app<span class="token operator">-</span>event<span class="token operator">&gt;</span>
+                      <span class="token operator">&lt;</span>app<span class="token operator">-</span>event<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>app<span class="token operator">-</span>event<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-md-3"</span><span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+                  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                            <div class="toolbar">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.mdbsnippet -->
+
+            <p>Now when we know how to create an instance of our <mark>Event</mark> component let's learn how to make it
+                more dynamic and pass some data into it.</p>
+
+        </ol>
+
+    </div>
+
+</section>
+{% include blogslide.html %}
