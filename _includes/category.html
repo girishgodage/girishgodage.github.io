@@ -1,0 +1,7 @@
+{% for category in site.categories %}
+<div class="site-category">
+    <a href="#{{category[0]}}" title="{{category[0]}}"> {{category[0]}}
+        <span>{{ category[1].size }}</span>
+    </a>
+</div>
+{% endfor %}

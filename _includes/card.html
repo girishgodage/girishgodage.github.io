@@ -1,6 +1,10 @@
-<div class="container-fluid content-row my-2">
+{% for category in site.categories %}
+
+<section id="{{ category[0] }}">
+<h3 class="category-head">{{ category[0] }}</h3>
+<br>
 <div class="row">
-{% for post in site.posts %}
+{% for post in category[1] %}
 <div style="font-family: 'Poppins', sans-serif;" id="card-main" class="col-sm-3">
     <a style="text-decoration: none;" href="{{site.url}}{{site.baseurl}}{{post.url}}">
         <!-- Card -->
@@ -31,4 +35,6 @@
 </div>
 {% endfor %}
 </div>
-</div>
+</section>
+<hr>
+{% endfor %}

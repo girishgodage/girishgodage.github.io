@@ -8,8 +8,16 @@
 
 <body>
     {% include header.html%}
+
+
     <!-- Blog Container Starts -->
     <div class="container-fluid blog-section">
+        <div class="category-holder">
+            <div class="row">
+                {% include category.html %}
+            </div>
+        </div>
+        <hr>
         <div class="blog-holder">
             <div class="row">
                 {% include card.html %}
