@@ -1,0 +1,345 @@
+---
+title: 13.Using modals in Angular
+image: https://girishgodage.github.io/img/angular/tutorials/agenda-app/8/preview.gif
+author: Girish Godage
+layout: posts
+prevurl: https://girishgodage.github.io/blog/AgendaApp7
+nextutl: https://girishgodage.github.io/blog/AgendaApp9
+discussion_id: 2019-09-23-AgendaApp8
+---
+
+<section class="tutorial13">
+    <div class="angular-tutorial tutorial">
+        <p>In this lesson, we will learn how to use modals in our projects. </p>
+
+        <p class="note note-primary"><strong>Note:</strong> <br> Modals are small pop up windows which are really handy
+            when you want to display to user extra content, configuration or consent request.</p>
+
+        <p>To use modals, follow the steps below.</p>
+
+
+        <ol>
+
+            <li>1. Import the required <code>ViewChild</code> and <code>Modal</code> directives in
+                <code>app.component.ts</code></li>
+
+
+
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdb3a47a84f725f60b43c2585289fb6dadf" role="tab">app.component.ts</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdb3a47a84f725f60b43c2585289fb6dadf" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>Component<span class="token punctuation">,</span> ViewChild<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/core'</span><span class="token punctuation">;</span>
+        <span class="token keyword">import</span> <span class="token punctuation">{</span>ModalDirective<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'angular-bootstrap-md'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+                            <div class="toolbar">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.mdbsnippet -->
+
+            <li>Define the <code>@ViewChild</code> element within the <mark>AppComponent</mark> class</li>
+
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdb756c5b1106ec4696adf06da3f984e7a0" role="tab">app.component.ts</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdb756c5b1106ec4696adf06da3f984e7a0" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AppComponent</span> <span class="token punctuation">{</span>
+          @<span class="token function">ViewChild</span><span class="token punctuation">(</span>ModalDirective<span class="token punctuation">)</span> modal<span class="token punctuation">:</span> ModalDirective<span class="token punctuation">;</span>
+        <span class="token operator">...</span>
+        <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+                            <div class="toolbar">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.mdbsnippet -->
+
+            <li>Add a modal template at the end of the <code>app.component.html</code> file:</li>
+
+
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdb84fe0e315e3b3b97b4c54aad79365f7c" role="tab">app.component.html</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdb84fe0e315e3b3b97b4c54aad79365f7c" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>Modal<span class="token operator">--</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>div
+          mdbModal
+          #frame<span class="token operator">=</span><span class="token string">"mdbModal"</span>
+          <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"modal fade top"</span>
+          id<span class="token operator">=</span><span class="token string">"frameModalTop"</span>
+          tabindex<span class="token operator">=</span><span class="token string">"-1"</span>
+          role<span class="token operator">=</span><span class="token string">"dialog"</span>
+          aria<span class="token operator">-</span>labelledby<span class="token operator">=</span><span class="token string">"myModalLabel"</span>
+          aria<span class="token operator">-</span>hidden<span class="token operator">=</span><span class="token string">"true"</span>
+          style<span class="token operator">=</span><span class="token string">"overflow-y: auto"</span>
+        <span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>Dialog<span class="token operator">--</span><span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"modal-dialog modal-notify modal-info"</span> role<span class="token operator">=</span><span class="token string">"document"</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>Content<span class="token operator">--</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"modal-content"</span><span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>Header<span class="token operator">--</span><span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"modal-header text-center"</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>h4 <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"modal-title white-text w-100 font-weight-bold py-2"</span><span class="token operator">&gt;</span>
+                  Schedule appointment
+                <span class="token operator">&lt;</span><span class="token operator">/</span>h4<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>button
+                  type<span class="token operator">=</span><span class="token string">"button"</span>
+                  <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"close"</span>
+                  data<span class="token operator">-</span>dismiss<span class="token operator">=</span><span class="token string">"modal"</span>
+                  aria<span class="token operator">-</span>label<span class="token operator">=</span><span class="token string">"Close"</span>
+                  <span class="token punctuation">(</span>click<span class="token punctuation">)</span><span class="token operator">=</span><span class="token string">"frame.hide()"</span>
+                <span class="token operator">&gt;</span>
+                  <span class="token operator">&lt;</span>span aria<span class="token operator">-</span>hidden<span class="token operator">=</span><span class="token string">"true"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"white-text"</span><span class="token operator">&gt;</span><span class="token operator">&amp;</span>times<span class="token punctuation">;</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        
+              <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>Body<span class="token operator">--</span><span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"modal-body"</span><span class="token operator">&gt;</span>
+                Modal Body
+              <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span><span class="token operator">/</span><span class="token punctuation">.</span>Body<span class="token operator">--</span><span class="token operator">&gt;</span>
+        
+              <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>Footer<span class="token operator">--</span><span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"modal-footer justify-content-center"</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>button
+                  type<span class="token operator">=</span><span class="token string">"button"</span>
+                  mdbBtn
+                  color<span class="token operator">=</span><span class="token string">"info"</span>
+                  <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"waves-effect"</span>
+                  mdbWavesEffect
+                <span class="token operator">&gt;</span>
+                  Add
+                <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>Footer<span class="token operator">--</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span><span class="token operator">/</span><span class="token punctuation">.</span>Content<span class="token operator">--</span><span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span><span class="token operator">/</span><span class="token punctuation">.</span>Dialog<span class="token operator">--</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span><span class="token operator">/</span><span class="token punctuation">.</span>Modal<span class="token operator">--</span><span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                            <div class="toolbar">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.mdbsnippet -->
+
+            <p>Our modal is almost ready, the last thing we have to do is to display it. In order to do that we will use
+                <mark>frame.show()</mark> function (which comes with <code>ModalDirective</code>) and bind it to the Add
+                event button using <mark>(click)</mark> binding.</p>
+
+            <li>Update the <i>Add event</i> button with modal call:</li>
+
+
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdb2e2d16edb66c15ba014a7877047bb946" role="tab">app.component.html</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdb2e2d16edb66c15ba014a7877047bb946" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>a
+          type<span class="token operator">=</span><span class="token string">"button"</span>
+          mdbBtn
+          color<span class="token operator">=</span><span class="token string">"info"</span>
+          <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"waves-effect mb-4"</span>
+          <span class="token punctuation">(</span>click<span class="token punctuation">)</span><span class="token operator">=</span><span class="token string">"frame.show()"</span>
+          mdbWavesEffect
+          <span class="token operator">&gt;</span>Add event
+        <span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                            <div class="toolbar">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.mdbsnippet -->
+
+            <p>That how your <code>app.component.html</code> file should looks like:</p>
+
+
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdb12bb56314ec9c77887bb72de312dd1d7" role="tab">app.component.html</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdb12bb56314ec9c77887bb72de312dd1d7" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"container mt-3"</span><span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"row "</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-md-9"</span><span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span>div <span class="token operator">*</span>ngFor<span class="token operator">=</span><span class="token string">"let event of events"</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>app<span class="token operator">-</span>event
+                  <span class="token punctuation">[</span>value<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"event"</span>
+                  <span class="token punctuation">(</span>deleteEventInstanceEvent<span class="token punctuation">)</span><span class="token operator">=</span><span class="token string">"deleteEvent($event)"</span>
+                <span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>app<span class="token operator">-</span>event<span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"text-center"</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>a
+                  type<span class="token operator">=</span><span class="token string">"button"</span>
+                  mdbBtn
+                  color<span class="token operator">=</span><span class="token string">"info"</span>
+                  <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"waves-effect mb-4"</span>
+                  <span class="token punctuation">(</span>click<span class="token punctuation">)</span><span class="token operator">=</span><span class="token string">"frame.show()"</span>
+                  mdbWavesEffect
+                  <span class="token operator">&gt;</span>Add event
+                <span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-md-3"</span><span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span>h3 <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"text-uppercase"</span><span class="token operator">&gt;</span>Schedule<span class="token operator">&lt;</span><span class="token operator">/</span>h3<span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span>h6 <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"my-3"</span><span class="token operator">&gt;</span>
+                It's going to be busy that today<span class="token punctuation">.</span> You have
+                <span class="token operator">&lt;</span>b<span class="token operator">&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">{</span> events<span class="token punctuation">.</span>length <span class="token punctuation">}</span><span class="token punctuation">}</span> events <span class="token operator">&lt;</span><span class="token operator">/</span>b<span class="token operator">&gt;</span> today<span class="token punctuation">.</span>
+              <span class="token operator">&lt;</span><span class="token operator">/</span>h6<span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span>h1 <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"my-3"</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"row"</span><span class="token operator">&gt;</span>
+                  <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-3 text-center"</span><span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>mdb<span class="token operator">-</span>icon fas icon<span class="token operator">=</span><span class="token string">"sun"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>mdb<span class="token operator">-</span>icon<span class="token operator">&gt;</span>
+                  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+                  <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-9 "</span><span class="token operator">&gt;</span>Sunny<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"row"</span><span class="token operator">&gt;</span>
+                  <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-3 text-center"</span><span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>mdb<span class="token operator">-</span>icon fas icon<span class="token operator">=</span><span class="token string">"thermometer-three-quarters"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>mdb<span class="token operator">-</span>icon<span class="token operator">&gt;</span>
+                  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+                  <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-3 "</span><span class="token operator">&gt;</span><span class="token number">23</span>°<span class="token constant">C</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span>p<span class="token operator">&gt;</span>
+                Don't forget your sunglasses<span class="token punctuation">.</span> Today will dry and sunny<span class="token punctuation">,</span> becoming warm <span class="token keyword">in</span>
+                the afternoon <span class="token keyword">with</span> temperatures <span class="token keyword">of</span> between <span class="token number">20</span> and <span class="token number">25</span> degrees<span class="token punctuation">.</span>
+              <span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        
+        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>Modal<span class="token operator">--</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>div
+          mdbModal
+          #frame<span class="token operator">=</span><span class="token string">"mdbModal"</span>
+          <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"modal fade top"</span>
+          id<span class="token operator">=</span><span class="token string">"frameModalTop"</span>
+          tabindex<span class="token operator">=</span><span class="token string">"-1"</span>
+          role<span class="token operator">=</span><span class="token string">"dialog"</span>
+          aria<span class="token operator">-</span>labelledby<span class="token operator">=</span><span class="token string">"myModalLabel"</span>
+          aria<span class="token operator">-</span>hidden<span class="token operator">=</span><span class="token string">"true"</span>
+          style<span class="token operator">=</span><span class="token string">"overflow-y: auto"</span>
+        <span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>Dialog<span class="token operator">--</span><span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"modal-dialog modal-notify modal-info"</span> role<span class="token operator">=</span><span class="token string">"document"</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>Content<span class="token operator">--</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"modal-content"</span><span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>Header<span class="token operator">--</span><span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"modal-header text-center"</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>h4 <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"modal-title white-text w-100 font-weight-bold py-2"</span><span class="token operator">&gt;</span>
+                  Add Event
+                <span class="token operator">&lt;</span><span class="token operator">/</span>h4<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>button
+                  type<span class="token operator">=</span><span class="token string">"button"</span>
+                  <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"close"</span>
+                  data<span class="token operator">-</span>dismiss<span class="token operator">=</span><span class="token string">"modal"</span>
+                  aria<span class="token operator">-</span>label<span class="token operator">=</span><span class="token string">"Close"</span>
+                  <span class="token punctuation">(</span>click<span class="token punctuation">)</span><span class="token operator">=</span><span class="token string">"frame.hide()"</span>
+                <span class="token operator">&gt;</span>
+                  <span class="token operator">&lt;</span>span aria<span class="token operator">-</span>hidden<span class="token operator">=</span><span class="token string">"true"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"white-text"</span><span class="token operator">&gt;</span><span class="token operator">&amp;</span>times<span class="token punctuation">;</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        
+              <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>Body<span class="token operator">--</span><span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"modal-body"</span><span class="token operator">&gt;</span>
+                Modal Body
+              <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        
+              <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>Footer<span class="token operator">--</span><span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"modal-footer justify-content-center"</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>button
+                  type<span class="token operator">=</span><span class="token string">"button"</span>
+                  mdbBtn
+                  color<span class="token operator">=</span><span class="token string">"info"</span>
+                  <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"waves-effect"</span>
+                  mdbWavesEffect
+                <span class="token operator">&gt;</span>
+                  Add
+                <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>Footer<span class="token operator">--</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span><span class="token operator">/</span><span class="token punctuation">.</span>Content<span class="token operator">--</span><span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span><span class="token operator">/</span><span class="token punctuation">.</span>Dialog<span class="token operator">--</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span><span class="token operator">/</span><span class="token punctuation">.</span>Modal<span class="token operator">--</span><span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                            <div class="toolbar">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.mdbsnippet -->
+
+
+            <li>Run and test the app</li>
+
+            <img class="img-fluid"
+                src="{{site.url}}{{site.baseurl}}/img/angular/tutorials/agenda-app/8/preview.gif"
+                alt="Modal Demo">
+
+
+
+            <p class="note note-primary"><strong>Note:</strong> <br>
+                Modals are great tools and they can be customized in various ways. Most probably you will use them to
+                get user consent for using cookies or to accept a privacy policy on a website, display a
+                registration/login form or some extra details like map and/or contact form.
+                <br><br>
+                You can find dozens of predefined modal templates in our <a
+                    href="https://mdbootstrap.com/docs/angular/modals/additional/">docs</a>. <br>
+                You may also wish to check out our <a
+                    href="https://mdbootstrap.com/docs/angular/modals/generator/">modal generator</a>.
+            </p>
+
+        </ol>
+    </div>
+
+
+</section>
+{% include blogslide.html %}

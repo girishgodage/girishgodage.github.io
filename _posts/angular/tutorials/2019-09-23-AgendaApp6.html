@@ -1,0 +1,419 @@
+---
+title: 11.Conditional rendering using ngIf
+image: https://girishgodage.github.io/img/angular/tutorials/agenda-app/6/preview.png
+author: Girish Godage
+layout: posts
+prevurl: https://girishgodage.github.io/blog/AgendaApp5
+nextutl: https://girishgodage.github.io/blog/AgendaApp7
+discussion_id: 2019-09-23-AgendaApp6
+---
+
+<section class="tutorial11">
+
+    <div class="angular-tutorial tutorial">
+
+        <p>Since we know how to dynamically render <mark>Events</mark> from an array, let's give some shape to our app.
+        </p>
+
+        <h2>1. Style Event component</h2>
+
+        <ol>
+            <li>Update the <code>event.component.html</code> template with the following code</li>
+
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdbdc8d1f8a4e6c533d464b045a410a8e93" role="tab">event.component.html</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdbdc8d1f8a4e6c533d464b045a410a8e93" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"media"</span><span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>h3 <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"h3-responsive font-weight-bold mr-3"</span><span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token punctuation">{</span> value<span class="token punctuation">.</span>time <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>h3<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"media-body mb-3"</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>mdb<span class="token operator">-</span>badge danger<span class="token operator">=</span><span class="token string">"true"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"text-center float-right"</span><span class="token operator">&gt;</span><span class="token operator">-</span><span class="token operator">&lt;</span><span class="token operator">/</span>mdb<span class="token operator">-</span>badge<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>h6 <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"mt-0 font-weight-bold"</span><span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token punctuation">{</span> value<span class="token punctuation">.</span>subject <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>h6<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>hr <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"hr-bold mb-0 my-2"</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>p <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"mb-0"</span><span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span>mdb<span class="token operator">-</span>icon fas icon<span class="token operator">=</span><span class="token string">"location-arrow"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>mdb<span class="token operator">-</span>icon<span class="token operator">&gt;</span>
+              <span class="token punctuation">{</span><span class="token punctuation">{</span> value<span class="token punctuation">.</span>location <span class="token punctuation">}</span><span class="token punctuation">}</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>p <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"p-3 blue-grey lighten-5 blue-grey lighten-5"</span><span class="token operator">&gt;</span>
+          <span class="token punctuation">{</span><span class="token punctuation">{</span> value<span class="token punctuation">.</span>description <span class="token punctuation">}</span><span class="token punctuation">}</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                            <div class="toolbar">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.mdbsnippet -->
+
+            <li>Save and run project</li>
+
+            <img class="img-fluid"
+                src="{{site.url}}{{site.baseurl}}/img/angular/tutorials/agenda-app/6/preview.png"
+                alt="Preview">
+
+
+            <p>Our project starts looking good. However, we have some empty parts. <strong>Some of our events don't have
+                    decsription or/nor location</strong>. This is a perfect use case to use <strong>conditional
+                    rendering</strong>. </p>
+        </ol>
+
+        <h2><code>2. ngIf</code></h2>
+
+        <p>One of the reasons why Angular has grown so fast recently is the fact that <strong>it comes with a variety of
+                predefined directives</strong> like <mark>ngFor</mark> which you already know. In this lesson, we will
+            learn how to use <mark>ngIf</mark>.</p>
+
+
+
+        <p>Let's have a look at our description paragraph:</p>
+
+        <!-- mdbsnippet -->
+        <div class="docs-pills">
+            <div class="d-flex justify-content-between">
+                <ul class="nav md-pills pills-grey">
+                    <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                            href="#mdb089391a40cffede032ec2cd5d92b17a2" role="tab">event.component.html</a></li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade active show" id="mdb089391a40cffede032ec2cd5d92b17a2" role="tabpanel">
+                    <div class="code-toolbar">
+                        <pre
+                            class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>p <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"p-3 blue-grey lighten-5 blue-grey lighten-5"</span> <span class="token operator">&gt;</span>
+          <span class="token punctuation">{</span><span class="token punctuation">{</span> value<span class="token punctuation">.</span>description <span class="token punctuation">}</span><span class="token punctuation">}</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+                        <div class="toolbar">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.mdbsnippet -->
+
+
+        <p>We can easily define whether we want to render entire paragraph using simple if condition:</p>
+
+
+        <!-- mdbsnippet -->
+        <div class="docs-pills">
+            <div class="d-flex justify-content-between">
+                <ul class="nav md-pills pills-grey">
+                    <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                            href="#mdb0e759276a09b53fad7e9abdf16f627c7" role="tab">event.component.html</a></li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade active show" id="mdb0e759276a09b53fad7e9abdf16f627c7" role="tabpanel">
+                    <div class="code-toolbar">
+                        <pre
+                            class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>p <span class="token operator">*</span>ngIf<span class="token operator">=</span><span class="token string">"true"</span><span class="token operator">&gt;</span> <span class="token constant">I</span> am rendered<span class="token operator">!</span> <span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>p <span class="token operator">*</span>ngIf<span class="token operator">=</span><span class="token string">"false"</span><span class="token operator">&gt;</span> <span class="token constant">I</span> am not <span class="token punctuation">:</span><span class="token punctuation">(</span> <span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+                        <div class="toolbar">
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.mdbsnippet -->
+
+        <p>Of course we don't want to set it globally, instead we want to <strong>display paragraph depending on whether
+                <mark>description</mark> exists</strong>. In order to do that we can simply provide it as an argument to
+            the <mark>ngIf</mark> directive: </p>
+
+        <!-- mdbsnippet -->
+        <div class="docs-pills">
+            <div class="d-flex justify-content-between">
+                <ul class="nav md-pills pills-grey">
+                    <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                            href="#mdb23a1b8b5c6f566663754ac4ba5d85bc4" role="tab">event.component.html</a></li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade active show" id="mdb23a1b8b5c6f566663754ac4ba5d85bc4" role="tabpanel">
+                    <div class="code-toolbar">
+                        <pre
+                            class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>p <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"p-3 blue-grey lighten-5 blue-grey lighten-5"</span> <span class="token operator">*</span>ngIf<span class="token operator">=</span><span class="token string">"value.description"</span><span class="token operator">&gt;</span>
+          <span class="token punctuation">{</span><span class="token punctuation">{</span> value<span class="token punctuation">.</span>description <span class="token punctuation">}</span><span class="token punctuation">}</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+                        <div class="toolbar">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.mdbsnippet -->
+
+        <p>The empty description paragraph is gone now</p>
+
+
+        <p>Now let's do the same with paragraph including location</p>
+
+        <!-- mdbsnippet -->
+        <div class="docs-pills">
+            <div class="d-flex justify-content-between">
+                <ul class="nav md-pills pills-grey">
+                    <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                            href="#mdbc49b25278282d2d46e3c5c39fd349819" role="tab">event.component.html</a></li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade active show" id="mdbc49b25278282d2d46e3c5c39fd349819" role="tabpanel">
+                    <div class="code-toolbar">
+                        <pre
+                            class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"media"</span><span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>h3 <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"h3-responsive font-weight-bold mr-3"</span><span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token punctuation">{</span> value<span class="token punctuation">.</span>time <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>h3<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"media-body mb-3 "</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>mdb<span class="token operator">-</span>badge danger<span class="token operator">=</span><span class="token string">"true"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"text-center float-right"</span><span class="token operator">&gt;</span><span class="token operator">-</span><span class="token operator">&lt;</span><span class="token operator">/</span>mdb<span class="token operator">-</span>badge<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>h6 <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"mt-0 font-weight-bold"</span><span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token punctuation">{</span> value<span class="token punctuation">.</span>subject <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>h6<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>hr <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"hr-bold mb-0 my-2"</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>p <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"mb-0"</span> <span class="token operator">*</span>ngIf<span class="token operator">=</span><span class="token string">"value.location"</span><span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span>mdb<span class="token operator">-</span>icon fas icon<span class="token operator">=</span><span class="token string">"location-arrow"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>mdb<span class="token operator">-</span>icon<span class="token operator">&gt;</span>
+              <span class="token punctuation">{</span><span class="token punctuation">{</span> value<span class="token punctuation">.</span>location <span class="token punctuation">}</span><span class="token punctuation">}</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>p <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"p-3 blue-grey lighten-5 blue-grey lighten-5"</span> <span class="token operator">*</span>ngIf<span class="token operator">=</span><span class="token string">"value.description"</span><span class="token operator">&gt;</span>
+          <span class="token punctuation">{</span><span class="token punctuation">{</span> value<span class="token punctuation">.</span>description <span class="token punctuation">}</span><span class="token punctuation">}</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                        <div class="toolbar">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.mdbsnippet -->
+
+        <p>Which solves our original issue:</p>
+
+
+        <img class="img-fluid"
+            src="{{site.url}}{{site.baseurl}}/img/angular/tutorials/agenda-app/6/final.png"
+            alt="Preview">
+
+
+
+        <h2>3. If-else </h2>
+
+        <h4>3.1 Angular templates (<code>&lt;ng-template&gt;</code>) </h4>
+        <p>In a previous lesson we have mentioned about templates within Angular. In order to understand how the
+            <mark>else</mark> condtition works we have to start with understanding what templates are.</p>
+
+
+        <p>Like the name indicates, the <code>&lt;ng-template&gt;</code> directive represents an Angular template: this
+            means that the content of this tag will contain part of a template, that can be composed together with other
+            templates in order to form the final component template.</p>
+
+        <p><code>&lt;ng-template&gt;</code> is a template element that Angular uses with structural directives (*ngIf,
+            *ngFor, [ngSwitch] and custom directives).</p>
+
+        <p>Let's get started learning <code>&lt;ng-template&gt;</code> with an example</p>
+
+        <!-- mdbsnippet -->
+        <div class="docs-pills">
+            <div class="d-flex justify-content-between">
+                <ul class="nav md-pills pills-grey">
+                    <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                            href="#mdb7ac232d2112c87613a64659918a60280" role="tab">event.component.html</a></li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade active show" id="mdb7ac232d2112c87613a64659918a60280" role="tabpanel">
+                    <div class="code-toolbar">
+                        <pre
+                            class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>div <span class="token operator">*</span>ngIf<span class="token operator">=</span><span class="token string">"isLogged; else loggedOut"</span><span class="token operator">&gt;</span>
+            Welcome back<span class="token punctuation">,</span> friend<span class="token punctuation">.</span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        
+          <span class="token operator">&lt;</span>ng<span class="token operator">-</span>template #loggedOut<span class="token operator">&gt;</span>
+            Please friend<span class="token punctuation">,</span> login<span class="token punctuation">.</span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>ng<span class="token operator">-</span>template<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>p <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"p-3 blue-grey lighten-5 blue-grey lighten-5"</span> <span class="token operator">*</span>ngIf<span class="token operator">=</span><span class="token string">"value.description"</span><span class="token operator">&gt;</span>
+          <span class="token punctuation">{</span><span class="token punctuation">{</span> value<span class="token punctuation">.</span>description <span class="token punctuation">}</span><span class="token punctuation">}</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                        <div class="toolbar">
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.mdbsnippet -->
+
+        <p>The main two things worth noticing here are the template reference variable (the <mark>#loggedOut</mark> -
+            which you can call whatever you like) and also the <code>&lt;ng-template&gt;</code>. We use the
+            <code>&lt;ng-template&gt;</code> because much like it’s HTML5 counterpart <code>&lt;template&gt;</code>,
+            it’s also considered “virtual”.
+
+        </p>
+
+        <p>Being “virtual” means the <ng-template> contents won’t actually exist in the compiled DOM, until it’s needed.
+                When it’s needed (for example the “else” expression kicks into play), Angular will grab the contents of
+                the <ng-template> tag, and replace the *ngIf contents with it.
+
+                </ng-template>
+            </ng-template>
+        </p>
+
+        <p>That’s it. It’s just a virtual container that won’t render any contents until it’s ready.
+        </p>
+
+        <p>So, before we continue, where does this * asterisk come from?</p>
+
+        <p>It’s all about sugar syntax. When we do this:
+
+        </p>
+
+
+        <!-- mdbsnippet -->
+        <div class="docs-pills">
+            <div class="d-flex justify-content-between">
+                <ul class="nav md-pills pills-grey">
+                    <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                            href="#mdb06aa80e7ffc8b5c165d91fc7da92f242" role="tab">component.html (*ngIf)</a></li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade active show" id="mdb06aa80e7ffc8b5c165d91fc7da92f242" role="tabpanel">
+                    <div class="code-toolbar">
+                        <pre
+                            class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>div <span class="token operator">*</span>ngIf<span class="token operator">=</span><span class="token string">"isLoggedIn"</span><span class="token operator">&gt;</span>
+          Welcome back<span class="token punctuation">,</span> friend<span class="token punctuation">.</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+                        <div class="toolbar">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.mdbsnippet -->
+
+        <p>With our new found knowledge, we can now understand that it’s equivalent to this:</p>
+
+        <!-- mdbsnippet -->
+        <div class="docs-pills">
+            <div class="d-flex justify-content-between">
+                <ul class="nav md-pills pills-grey">
+                    <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                            href="#mdb22375b8bd009d9162a5f77523703b1db" role="tab">component.html (ngIf)</a></li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade active show" id="mdb22375b8bd009d9162a5f77523703b1db" role="tabpanel">
+                    <div class="code-toolbar">
+                        <pre
+                            class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>ng<span class="token operator">-</span>template <span class="token punctuation">[</span>ngIf<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"isLoggedIn"</span><span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+            Welcome back<span class="token punctuation">,</span> friend<span class="token punctuation">.</span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>ng<span class="token operator">-</span>template<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                        <div class="toolbar">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.mdbsnippet -->
+
+        <p>Angular will convert our *ngIf syntax across to the above, which I’m sure you’ll agree isn’t quite as fast to
+            work with. It does however tell us more about what’s happening with [ngIf], which is the directive being
+            bound with a property binding syntax.
+
+            Yes, this does mean, we can supply ngIf, ngIfElse (and ngIfThen) the same way.</p>
+
+        <h4>3.2 If-else</h4>
+
+        <p>Let's get back to our use case</p>
+
+
+        <!-- mdbsnippet -->
+        <div class="docs-pills">
+            <div class="d-flex justify-content-between">
+                <ul class="nav md-pills pills-grey">
+                    <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                            href="#mdb7ac232d2112c87613a64659918a60280" role="tab">event.component.html</a></li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade active show" id="mdb7ac232d2112c87613a64659918a60280" role="tabpanel">
+                    <div class="code-toolbar">
+                        <pre
+                            class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>div <span class="token operator">*</span>ngIf<span class="token operator">=</span><span class="token string">"isLogged; else loggedOut"</span><span class="token operator">&gt;</span>
+            Welcome back<span class="token punctuation">,</span> friend<span class="token punctuation">.</span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        
+          <span class="token operator">&lt;</span>ng<span class="token operator">-</span>template #loggedOut<span class="token operator">&gt;</span>
+            Please friend<span class="token punctuation">,</span> login<span class="token punctuation">.</span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>ng<span class="token operator">-</span>template<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>p <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"p-3 blue-grey lighten-5 blue-grey lighten-5"</span> <span class="token operator">*</span>ngIf<span class="token operator">=</span><span class="token string">"value.description"</span><span class="token operator">&gt;</span>
+          <span class="token punctuation">{</span><span class="token punctuation">{</span> value<span class="token punctuation">.</span>description <span class="token punctuation">}</span><span class="token punctuation">}</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                        <div class="toolbar">
+                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.mdbsnippet -->
+
+        <p>As you can expect, if <mark>isLogged</mark> variable will evaluate to <cpde>true</cpde>, Angular will render
+            <br> <i>Welcome back, friend.</i> <br> message. However, in case of <mark>isLogged</mark> beeing
+            <code>false</code> (or not existing at all), it will print <br> <i>Please friend, login.</i> </p>
+
+        <p>You could optionally adopt this approach to create a more descriptive if/then/else block. Again, use cases
+            and preferences.</p>
+
+        <!-- mdbsnippet -->
+        <div class="docs-pills">
+            <div class="d-flex justify-content-between">
+                <ul class="nav md-pills pills-grey">
+                    <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                            href="#mdbad36f651174edd62275d0e69d63c777d" role="tab">event.component.html</a></li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade active show" id="mdbad36f651174edd62275d0e69d63c777d" role="tabpanel">
+                    <div class="code-toolbar">
+                        <pre
+                            class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>ng<span class="token operator">-</span>container
+          <span class="token operator">*</span>ngIf<span class="token operator">=</span><span class="token string">"isLoggedIn; then loggedIn; else loggedOut"</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>ng<span class="token operator">-</span>container<span class="token operator">&gt;</span>
+        
+        <span class="token operator">&lt;</span>ng<span class="token operator">-</span>template #loggedIn<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+            Welcome back<span class="token punctuation">,</span> friend<span class="token punctuation">.</span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>ng<span class="token operator">-</span>template<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>ng<span class="token operator">-</span>template #loggedOut<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+            Please friend<span class="token punctuation">,</span> login<span class="token punctuation">.</span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>ng<span class="token operator">-</span>template<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                        <div class="toolbar">
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.mdbsnippet -->
+
+
+        <p class="note note-warning"><strong>Warning:</strong> <br>
+            It is important to remember that <strong> it is impossible to</strong> use two structural directive (i.e.
+            <mark>ngFor</mark> and <mark>ngIf</mark>) within a single tag at the same time!
+        </p>
+
+
+
+    </div>
+
+</section>
+{% include blogslide.html %}

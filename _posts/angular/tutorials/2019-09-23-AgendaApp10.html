@@ -1,0 +1,119 @@
+---
+title: 15.Add new Event
+image: https://girishgodage.github.io/img/angular/tutorials/agenda-app/10/final.gif
+author: Girish Godage
+layout: posts
+prevurl: https://girishgodage.github.io/blog/AgendaApp9
+nextutl: https://girishgodage.github.io/blog/AgendaApp11
+discussion_id: 2019-09-23-AgendaApp10
+---
+
+<section class="tutorial15">
+
+    <div class="angular-tutorial tutorial">
+
+
+        <h2>Add new Event</h2>
+
+        <p>Finally, the last thing we have to do is to handle our form on submit and add new event to the list.</p>
+
+        <ol>
+            <li>Add new function to <code>app.component.ts</code></li>
+
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdb79feea82146939d545fda76b9e905910" role="tab">app.component.ts</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdb79feea82146939d545fda76b9e905910" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token function">addNewEvent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">const</span> newEvent<span class="token punctuation">:</span> any <span class="token operator">=</span> <span class="token punctuation">{</span>
+            time<span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>timeInput<span class="token punctuation">.</span>value<span class="token punctuation">,</span>
+            subject<span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>subjectInput<span class="token punctuation">.</span>value<span class="token punctuation">,</span>
+            location<span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>locationInput<span class="token punctuation">.</span>value<span class="token punctuation">,</span>
+            description<span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>descriptionInput<span class="token punctuation">.</span>value
+          <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        
+          <span class="token keyword">this</span><span class="token punctuation">.</span>events<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>newEvent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+          <span class="token keyword">this</span><span class="token punctuation">.</span>timeInput<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>subjectInput<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>locationInput<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>descriptionInput<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+          <span class="token keyword">this</span><span class="token punctuation">.</span>modal<span class="token punctuation">.</span><span class="token function">hide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                            <div class="toolbar">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.mdbsnippet -->
+
+            <p>As you probably already see our new functions does four things
+
+            </p>
+            <ol>
+                <li>Creates a <mark>newEvent</mark> object with values from the form</li>
+                <li>Adds the new object to the <mark>events</mark> array </li>
+                <li>Clears the form's inputs</li>
+                <li>Hides modal</li>
+
+            </ol>
+
+            <p></p>
+
+            <li>Update the button in a Modal Footer with call to <mark>addNewEvent()</mark></li>
+
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdb53cad2dc0b560f4dce03be8100b3be8a" role="tab">app.component.html</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdb53cad2dc0b560f4dce03be8100b3be8a" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>button
+          type<span class="token operator">=</span><span class="token string">"button"</span>
+          mdbBtn
+          color<span class="token operator">=</span><span class="token string">"info"</span>
+          <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"waves-effect"</span>
+          <span class="token punctuation">(</span>click<span class="token punctuation">)</span><span class="token operator">=</span><span class="token string">"addNewEvent()"</span>
+          mdbWavesEffect
+        <span class="token operator">&gt;</span>
+          Add
+        <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                            <div class="toolbar">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.mdbsnippet -->
+
+            <li>Save and test the app</li>
+
+            <img class="img-fluid"
+                src="{{site.url}}{{site.baseurl}}/img/angular/tutorials/agenda-app/10/final.gif"
+                alt="Add new event"><br>
+
+
+
+        </ol>
+
+
+    </div>
+
+</section>
+{% include blogslide.html %}
