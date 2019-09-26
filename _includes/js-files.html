@@ -8,3 +8,14 @@
     <script src="{{site.url}}{{site.baseurl}}/sitejs/jquery.counterup/jquery.counterup.js"></script>
     <script src="{{site.url}}{{site.baseurl}}/js/front.js"></script>
     <script src="{{site.url}}{{site.baseurl}}/js/comment.js"></script>
+       <!-- Script pointing to search-script.js -->
+    <script src="{{site.url}}{{site.baseurl}}/js/search-script.js" type="text/javascript"></script>
+
+    <!-- Configuration -->
+    <script>
+    SimpleJekyllSearch({
+    searchInput: document.getElementById('search-input'),
+    resultsContainer: document.getElementById('results-container'),
+    json: '/search.json'
+    })
+    </script>
