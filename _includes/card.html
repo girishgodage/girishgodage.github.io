@@ -12,9 +12,9 @@
     </div>
     {% if forloop.index == 7 %}
     <div class="col my-2">
-        <center> <button  class="arrow-down" data-toggle="collapse" data-target="#demo" onclick="this.classList.toggle('active')"></button></center>
+        <center> <button  class="arrow-down" data-toggle="collapse" data-target="#demo{{ category[0] }}" onclick="this.classList.toggle('active')"></button></center>
      </div>
-     <div id="demo" class="collapse">
+     <div id="demo{{ category[0] }}" class="collapse">
     {% endif %}
     <div class="row my-3">
 {% endif %}

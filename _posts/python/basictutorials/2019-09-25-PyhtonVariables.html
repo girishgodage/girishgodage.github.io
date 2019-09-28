@@ -1,0 +1,212 @@
+---
+title: 7. Variables in Python
+image: https://girishgodage.github.io/img/python/tutorial/6/Python4_1.png
+author: Girish Godage
+layout: posts
+prevurl: https://girishgodage.github.io/blog/PythonMainFunction
+nexturl: https://girishgodage.github.io/blog/PyhtonStrings
+discussion_id: 2019-09-25-PythonVariables
+categories: PythonTutorial
+tags: ['learning', 'Installation']
+
+---
+
+
+<section class="Ptutorial7">
+   <div class="item-page" itemscope="" itemtype="https://schema.org/Article">
+      <meta itemprop="inLanguage" content="en-GB">
+      <div class="page-header">
+         <h2 itemprop="headline"> Python Variables: Declare, Concatenate, Global &amp; Local </h2>
+      </div>
+      <div itemprop="articleBody">
+         <h2> What is a Variable in Python? </h2>
+         <p>A Python variable is a reserved memory location to store values. In other words, a variable in a python
+            program gives data to the computer for processing. </p>
+         <p>Every value in Python has a datatype. Different data types in Python are Numbers, List, Tuple, Strings,
+            Dictionary, etc. Variables can be declared by any name or even alphabets like a, aa, abc, etc. </p>
+         <p>In this tutorial, we will learn, </p>
+         <ul>
+            <li><a href="#1">How to Declare and use a Variable </a></li>
+            <li><a href="#2">Re-declare a Variable </a></li>
+            <li><a href="#3">Concatenate Variables </a></li>
+            <li><a href="#4">Local &amp; Global Variables </a></li>
+            <li><a href="#5">Delete a variable </a></li>
+         </ul>
+         <div>
+            <h2><a id="1"></a>How to Declare and use a Variable</h2>
+            <p>Let see an example. We will declare variable "a" and print it. </p>
+            <pre class="code-toolbar">
+               a=100 
+               print a
+            </pre>
+            <h2><a id="2"></a>Re-declare a Variable</h2>
+            <p>You can re-declare the variable even after you have declared it once. </p>
+            <p>Here we have variable initialized to f=0. </p>
+            <p>Later, we re-assign the variable f to value "guru99" </p>
+            <p style="text-align: center;"><a class="modal"
+                  href="{{site.url}}{{site.baseurl}}/img/python/tutorial/7/Python5.1.png"></a><a href="{{site.url}}{{site.baseurl}}/img/python/tutorial/7/Python5.1.png"
+                  class="jh-image-popup-colorbox cboxElement"><img title="Variables in Python"
+                     src="{{site.url}}{{site.baseurl}}/img/python/tutorial/7/Python5.1.png" alt="Variables in Python"></a> </p>
+            <p><b>Python 2 Example</b> </p>
+            <pre class="code-toolbar">
+               # Declare a variable and initialize it
+               f = 0
+               print f
+               # re-declaring the variable works
+               f = 'guru99'
+               print f
+            </pre>
+            <p><b>Python 3 Example</b> </p>
+            <pre class="code-toolbar">
+               # Declare a variable and initialize it
+               f = 0
+               print(f)
+               # re-declaring the variable works
+               f = 'guru99'
+               print(f)
+            </pre>
+            <h2><a id="3"></a>Concatenate Variables</h2>
+            <p>Let's see whether you can concatenate different data types like string and number together. For example,
+               we will concatenate "Guru" with the number "99". </p>
+            <p>Unlike Java, which concatenates number with string without declaring number as string, Python requires
+               declaring the number as string otherwise it will show a TypeError</p>
+            
+            <p style="text-align: center;"><a class="modal"
+                  href="{{site.url}}{{site.baseurl}}/img/python/tutorial/7/Python5.2.png"></a><a href="{{site.url}}{{site.baseurl}}/img/python/tutorial/7/Python5.2.png"
+                  class="jh-image-popup-colorbox cboxElement"><img title="Variables in Python"
+                     src="{{site.url}}{{site.baseurl}}/img/python/tutorial/7/Python5.2.png" alt="Variables in Python"></a> </p>
+            <p>For the following code, you will get undefined output - </p>
+            <pre class="code-toolbar">
+               a="Guru"
+               b = 99
+               print a+b
+            </pre>
+            <p>Once the integer is declared as string, it can concatenate both "Guru" + <strong>str</strong>("99")=
+               "Guru99" in the output. </p>
+            <pre class="code-toolbar">
+               a="Guru"
+               b = 99
+               print(a+str(b))
+            </pre>
+            <h2><a id="4"></a>Local &amp; Global Variables</h2>
+            <p>In Python when you want to use the same variable for rest of your program or module you declare it a
+               global variable, while if you want to use the variable in a specific function or method, you use a local
+               variable. </p>
+            <p>Let's understand this difference between local and global variable with the below program. </p>
+            <ol>
+               <li>Variable "f" is <strong>global</strong> in scope and is assigned value 101 which is printed in output
+               </li>
+               <li>Variable f is again declared in function and assumes <strong>local</strong> scope. It is assigned
+                  value "I am learning Python." which is printed out as an output. This variable is different from the
+                  global variable "f" define earlier</li>
+               <li>Once the function call is over, the local variable f is destroyed. At line 12, when we again, print
+                  the value of "f" is it displays the value of global variable f=101</li>
+            </ol>
+            <p style="text-align: center;"><a class="modal"
+                  href="{{site.url}}{{site.baseurl}}/img/python/tutorial/7/Python5.3.png"></a><a href="{{site.url}}{{site.baseurl}}/img/python/tutorial/7/Python5.3.png"
+                  class="jh-image-popup-colorbox cboxElement"><img title="Variables in Python"
+                     src="{{site.url}}{{site.baseurl}}/img/python/tutorial/7/Python5.3.png" alt="Variables in Python"></a> </p>
+            <p><b>Python 2 Example</b> </p>
+            <pre class="code-toolbar">
+               # Declare a variable and initialize it
+               f = 101
+               print f
+               # Global vs. local variables in functions
+               def someFunction():
+               # global f
+                  f = 'I am learning Python'
+                  print f
+               someFunction()
+               print f
+            </pre>
+            <p><b>Python 3 Example</b> </p>
+            <pre class="code-toolbar">
+               # Declare a variable and initialize it
+               f = 101
+               print(f)
+               # Global vs. local variables in functions
+               def someFunction():
+               # global f
+                  f = 'I am learning Python'
+                  print(f)
+               someFunction()
+               print(f)
+            </pre>
+            <p>Using the keyword <strong>global, </strong>you can reference the global variable inside a function.</p>
+            
+            <ol>
+               <li>Variable "f" is <strong>global</strong> in scope and is assigned value 101 which is printed in output
+               </li>
+               <li>Variable f is declared using the keyword <strong>global</strong>. This is <strong>NOT</strong> a
+                  <strong>local variable</strong>, but the same global variable declared earlier. Hence when we print
+                  its value, the output is 101</li>
+               <li>
+                  <div>We changed the value of "f" inside the function. Once the function call is over, the changed
+                     value of the variable "f" persists. At line 12, when we again, print the value of "f" is it
+                     displays the value "changing global variable"</div>
+               </li>
+            </ol>
+            <p style="text-align: center;"><a class="modal"
+                  href="{{site.url}}{{site.baseurl}}/img/python/tutorial/7/Python5.4.png"></a><a href="{{site.url}}{{site.baseurl}}/img/python/tutorial/7/Python5.4.png"
+                  class="jh-image-popup-colorbox cboxElement"><img title="Variables in Python"
+                     src="{{site.url}}{{site.baseurl}}/img/python/tutorial/7/Python5.4.png" alt="Variables in Python"></a> </p>
+            <p><b>Python 2 Example</b> </p>
+            <pre class="code-toolbar">
+               f = 101;
+               print f
+               # Global vs.local variables in functions
+               def someFunction():
+               global f
+               print f
+               f = "changing global variable"
+               someFunction()
+               print f
+            </pre>
+            <p><b>Python 3 Example</b> </p>
+            <pre class="code-toolbar">
+               f = 101;
+               print(f)
+               # Global vs.local variables in functions
+               def someFunction():
+               global f
+               print(f)
+               f = "changing global variable"
+               someFunction()
+               print(f)
+            </pre>
+            <h2><a id="5"></a>Delete a variable</h2>
+            <p>You can also delete variable using the command <strong>del</strong> "variable name". </p>
+            <p>In the example below, we deleted variable f, and when we proceed to print it, we get error
+               "<strong>variable name is not defined</strong>" which means you have deleted the variable. </p>
+            <p style="text-align: center;"><a class="modal"
+                  href="{{site.url}}{{site.baseurl}}/img/python/tutorial/7/Python5.5.png"></a><a href="{{site.url}}{{site.baseurl}}/img/python/tutorial/7/Python5.5.png"
+                  class="jh-image-popup-colorbox cboxElement"><img title="Variables in Python"
+                     src="{{site.url}}{{site.baseurl}}/img/python/tutorial/7/Python5.5.png" alt="Variables in Python"></a> </p>
+            <pre class="code-toolbar">
+               f = 11;
+               print(f)
+               del f
+               print(f)
+            </pre>
+            <h2>Summary:</h2>
+            <ul>
+               <li>Variables are referred to "envelop" or "buckets" where information can be maintained and referenced.
+                  Like any other programming language Python also uses a variable to store the information.</li>
+               <li>Variables can be declared by any name or even alphabets like a, aa, abc, etc.</li>
+               <li>Variables can be re-declared even after you have declared them for once</li>
+               <li>In Python you cannot concatenate string with number directly, you need to declare them as a separate
+                  variable, and after that, you can concatenate number with string</li>
+               <li>Declare local variable when you want to use it for current function</li>
+               <li>Declare Global variable when you want to use the same variable for rest of the program</li>
+               <li>
+                  <div>To delete a variable, it uses keyword "del".</div>
+               </li>
+            </ul>
+
+         </div>
+
+      </div>
+   </div>
+
+</section>
+{% include blogslide.html %}
