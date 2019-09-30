@@ -1,186 +1,230 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-09-30T22:33:54+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">18. Calendar in Python</title><link href="http://localhost:4000/blog/PythonCalendar" rel="alternate" type="text/html" title="18. Calendar in Python" /><published>2019-09-30T00:00:00+05:30</published><updated>2019-09-30T00:00:00+05:30</updated><id>http://localhost:4000/blog/PythonCalendar</id><content type="html" xml:base="http://localhost:4000/blog/PythonCalendar">&lt;section class=&quot;Ptutorial18&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-09-30T22:37:05+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">15. Class in Python</title><link href="http://localhost:4000/blog/PythonClass" rel="alternate" type="text/html" title="15. Class in Python" /><published>2019-09-30T05:30:00+05:30</published><updated>2019-09-30T05:30:00+05:30</updated><id>http://localhost:4000/blog/PythonClass</id><content type="html" xml:base="http://localhost:4000/blog/PythonClass">&lt;section class=&quot;Ptutorial15&quot;&gt;
     &lt;div class=&quot;item-page&quot; itemscope=&quot;&quot; itemtype=&quot;https://schema.org/Article&quot;&gt;
         &lt;meta itemprop=&quot;inLanguage&quot; content=&quot;en-GB&quot;&gt;
         &lt;div class=&quot;page-header&quot;&gt;
-            &lt;h2 itemprop=&quot;headline&quot;&gt; Python CALENDAR Tutorial with Example &lt;/h2&gt;
+            &lt;h2 itemprop=&quot;headline&quot;&gt; Python OOPs: Class, Object, Inheritance and Constructor with Example &lt;/h2&gt;
         &lt;/div&gt;
 
         &lt;div itemprop=&quot;articleBody&quot;&gt;
 
-            &lt;p&gt;Calendar module in Python has the calendar class that allows the calculations for various task based on
-                date, month, and year. On top of it, the TextCalendar and HTMLCalendar class in Python allows you to
-                edit the calendar and use as per your requirement. &lt;/p&gt;
-            &lt;p&gt;Let see what we can do with Python Calendar. &lt;/p&gt;
-            &lt;p&gt;&lt;strong&gt;Step1)&lt;/strong&gt; Run the code. &lt;/p&gt;
-            &lt;p style=&quot;text-align: center; &quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/tutorial/18/Python16.1.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img title=&quot;Calendar in Python&quot;
-                        alt=&quot;Python CALENDAR Tutorial with Example&quot; src=&quot;http://localhost:4000/img/python/tutorial/18/Python16.1.png&quot;&gt;&lt;/a&gt; &lt;/p&gt;
+            &lt;h3&gt;What is a Class?&lt;/h3&gt;
+            &lt;p&gt;A Class is a logical grouping of data and functions. It gives the freedom to create data structures that
+                contains arbitrary content and hence easily accessible. &lt;/p&gt;
+            &lt;p&gt;For example, for any bank employee who want to fetch the customer details online would go to
+                &lt;strong&gt;customer class&lt;/strong&gt;, where all its attributes like transaction details, withdrawal and
+                deposit details, outstanding debt, etc. would be listed out. &lt;/p&gt;
+            &lt;p&gt;In this tutorial, we will learn, &lt;/p&gt;
             &lt;ul&gt;
-                &lt;li&gt;Code Line # 1: We begin with &quot;import calendar&quot; which will import all the classes of this module.
-                &lt;/li&gt;
-                &lt;li&gt;Code Line # 3: c= calendar.TextCalendar(calendar.SUNDAY) tells the interpreter to create a text
-                    calendar. Start of the month will be Sunday. In Python, you can format the calendar as you can
-                    change the day of the month to begin with&lt;/li&gt;
-                &lt;li&gt;Code Line # 4: str= c.formatmonth(2025,1) We are creating calendar for the year 2025, Month 1 –
-                    January&lt;/li&gt;
-                &lt;li&gt;Code Line # 5: print str will print the output.&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#2&quot;&gt;How to define Python classes &lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#3&quot;&gt;How Inheritance works &lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#4&quot;&gt;Python Constructors &lt;/a&gt;&lt;/li&gt;
             &lt;/ul&gt;
-            &lt;p&gt;Let's quickly change the value from Sunday to Thursday and check the output &lt;/p&gt;
-            &lt;p style=&quot;text-align: center; &quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/tutorial/18/Python16.2.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img title=&quot;Calendar in Python&quot;
-                        alt=&quot;Python CALENDAR Tutorial with Example&quot; src=&quot;http://localhost:4000/img/python/tutorial/18/Python16.2.png&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;p&gt;&lt;strong&gt;Step 2)&lt;/strong&gt; You can also print out the Calendar in HTML format, this feature is helpful for
-                developer if they want to make any changes in the look and feel of calendar &lt;/p&gt;
-            &lt;p style=&quot;text-align: center; &quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/tutorial/18/Python16.3.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img title=&quot;Calendar in Python&quot;
-                        alt=&quot;Python CALENDAR Tutorial with Example&quot; src=&quot;http://localhost:4000/img/python/tutorial/18/Python16.3.png&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;p&gt;&lt;strong&gt;Step 3)&lt;/strong&gt; Loops over the days of a month by using c.itermonthday (2025,4), it will fetch
-                the total number of days for that month.&lt;/p&gt;
-
-            &lt;p style=&quot;text-align: center; &quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/tutorial/18/Python16.4.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img title=&quot;Calendar in Python&quot;
-                        alt=&quot;Python CALENDAR Tutorial with Example&quot; src=&quot;http://localhost:4000/img/python/tutorial/18/Python16.4.png&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;When you execute the code to get the total number of days for a specific month say &quot;April&quot; then you
-                    will get 30 days in the output but you will also see some zeros along with these days at the
-                    beginning and sometimes at the end of it. &lt;/li&gt;
-                &lt;li&gt;Zeros in the output mean that the day of the week is in an overlapping month, which means it does
-                    not belong to that month.&lt;/li&gt;
-                &lt;li&gt;These zeros appears in output because, in your code you have mentioned day (Thursday), so when you
-                    call function &quot;c.itermonthdays&quot;, it will start counting days from Thursday and your Thursday may not
-                    start with date 1&lt;sup&gt;st&lt;/sup&gt; of April it might be 28&lt;sup&gt;th &lt;/sup&gt;or 29&lt;sup&gt;th&lt;/sup&gt; of March, so
-                    when you execute the code it will start counting days from 28&lt;sup&gt;th&lt;/sup&gt; of march and any days
-                    after that till 1&lt;sup&gt;st&lt;/sup&gt; of April. These days will be counted as zero and in the output you
-                    will see these zeroes and same is applicable to the end of the month.&lt;/li&gt;
-                &lt;li&gt;So except date 1-30 all the dates from previous as well as post month will appear in the output as
-                    zeroes. &lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;p&gt;&lt;strong&gt;Step 4)&lt;/strong&gt; You can fetch the data from the local system, like months or weekdays, etc &lt;/p&gt;
-            &lt;p style=&quot;text-align: center; &quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/tutorial/18/Python16.5.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img title=&quot;Calendar in Python&quot;
-                        alt=&quot;Python CALENDAR Tutorial with Example&quot; src=&quot;http://localhost:4000/img/python/tutorial/18/Python16.5.png&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;The output over here shows that we have printed out the months name from the local system. Likewise,
-                    you can also fetch the weekdays name as shown below&lt;/li&gt;
-                &lt;li&gt;
-                    &lt;div&gt;The output will depend on the local system, suppose if your local system is some other
-                        countries then it will give the output as per the local settings of that country. Here we have
-                        months so it won't be a difference but if it is a week or day, it will certainly differ.&lt;/div&gt;
-                    &lt;p&gt; &lt;/p&gt;
-                &lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;p style=&quot;text-align: center; &quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/tutorial/18/Python16.6.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img title=&quot;Calendar in Python&quot;
-                        alt=&quot;Python CALENDAR Tutorial with Example&quot; src=&quot;http://localhost:4000/img/python/tutorial/18/Python16.6.png&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;p&gt;&lt;strong&gt;Step 5)&lt;/strong&gt; You can fetch the list of the specific day for a whole year. For example, there
-                is an audit day on every first Monday of a week. You want to know the date of first Monday for each
-                month. You can use this code&lt;/p&gt;
-
-            &lt;p style=&quot;text-align: center; &quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/tutorial/18/Python16.7.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img title=&quot;Calendar in Python&quot;
-                        alt=&quot;Python CALENDAR Tutorial with Example&quot; src=&quot;http://localhost:4000/img/python/tutorial/18/Python16.7.png&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;mycal = calendar.monthcalendar(2025, month) will create calendar for the month&lt;/li&gt;
-                &lt;li&gt;Set variables week1 and week2 to the First and second week of the calendar&lt;/li&gt;
-                &lt;li&gt;Check if Week 1 contains Monday, set audit day&lt;/li&gt;
-                &lt;li&gt;Else set audit day as the first Monday in week 2&lt;/li&gt;
-                &lt;li&gt;The output shows the date for the first Monday that falls in that month. &lt;/li&gt;
-                &lt;li&gt;The length of this Cal object is going to be a certain length, based on how many weeks there in the
-                    month. In our case, it's going to be one or two as such first Monday of the week will be in the
-                    first week most often but if not then consider the second week. Let see in detail why we also
-                    consider the second week.&lt;/li&gt;
-                &lt;li&gt;Here we are using the calendar's constant Monday, the calendar object gives you constants that
-                    represent Sunday, Monday, Tuesday, so on, so forth. We've seen these previously. So, if in week one
-                    the day represented by the Monday constant is not equal to 0, remember zeros means days that belong
-                    to another month. So, in this case, if it's zero, it's going to be a Monday that belongs to the
-                    previous month. But if the first Monday is not equal to 0, that means that my audit day will be
-                    within the week one. Otherwise, if that is 0, then the first Monday isn't in the first week of the
-                    month, it's gotta be in the second. &lt;/li&gt;
-                &lt;li&gt;So, then I say okay, set my audit day variable to be the Monday represented by Week two. So, audit
-                    day is going to come back with whatever the day is for either the first or second week. &lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;p&gt;Here is the complete code &lt;/p&gt;
-            &lt;p&gt;&lt;b&gt;Python 2 Example&lt;/b&gt; &lt;/p&gt;
+            &lt;h2&gt;&lt;a id=&quot;2&quot;&gt;&lt;/a&gt;How to define Python classes&lt;/h2&gt;
+            &lt;p&gt;To define class you need to consider following points&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Step 1)&lt;/strong&gt; In Python, classes are defined by the &lt;strong&gt;&quot;Class&quot; &lt;/strong&gt;keyword &lt;/p&gt;
             &lt;pre class=&quot;code-toolbar&quot;&gt;
-     import calendar
-     # Create a plain text calendar
-     c = calendar.TextCalendar(calendar.THURSDAY)
-     str = c.formatmonth(2025, 1, 0, 0)
-     print str
-     
-     # Create an HTML formatted calendar
-     hc = calendar.HTMLCalendar(calendar.THURSDAY)
-     str = hc.formatmonth(2025, 1)
-     print str
-     # loop over the days of a month
-     # zeroes indicate that the day of the week is in a next month or overlapping month
-     for i in c.itermonthdays(2025, 4):
-         print i
-     
-         # The calendar can give info based on local such a names of days and months (full and abbreviated forms)
-         for name in calendar.month_name:
-             print name
-         for day in calendar.day_name:
-             print day
-         # calculate days based on a rule: For instance an audit day on the second Monday of every month
-         # Figure out what days that would be for each month, we can use the script as shown here
-         for month in range(1, 13):
-             # It retrieves a list of weeks that represent the month
-             mycal = calendar.monthcalendar(2025, month)
-             # The first MONDAY has to be within the first two weeks
-             week1 = mycal[1]
-             week2 = mycal[2]
-             if week1[calendar.MONDAY] != 0:
-                 auditday = week1[calendar.MONDAY]
-             else:
-             # if the first MONDAY isn't in the first week, it must be in the second week
-             auditday = week2[calendar.MONDAY]
-         print &quot;%10s %2d&quot; % (calendar.month_name[month], auditday)
-            &lt;/pre&gt;
-            &lt;p&gt;&lt;b&gt;Python 3 Example&lt;/b&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-     import calendar
-     # Create a plain text calendar
-     c = calendar.TextCalendar(calendar.THURSDAY)
-     str = c.formatmonth(2025, 1, 0, 0)
-     print(str)
-     
-     # Create an HTML formatted calendar
-     hc = calendar.HTMLCalendar(calendar.THURSDAY)
-     str = hc.formatmonth(2025, 1)
-     print(str)
-     # loop over the days of a month
-     # zeroes indicate that the day of the week is in a next month or overlapping month
-     for i in c.itermonthdays(2025, 4):
-         print(i)
-     
-         # The calendar can give info based on local such a names of days and months (full and abbreviated forms)
-         for name in calendar.month_name:
-             print(name)
-         for day in calendar.day_name:
-             print(day)
-         # calculate days based on a rule: For instance an audit day on the second Monday of every month
-         # Figure out what days that would be for each month, we can use the script as shown here
-         for month in range(1, 13):
-             # It retrieves a list of weeks that represent the month
-             mycal = calendar.monthcalendar(2025, month)
-             # The first MONDAY has to be within the first two weeks
-             week1 = mycal[1]
-             week2 = mycal[2]
-             if week1[calendar.MONDAY] != 0:
-                 auditday = week1[calendar.MONDAY]
-             else:
-             # if the first MONDAY isn't in the first week, it must be in the second week
-             auditday = week2[calendar.MONDAY]
-         print(&quot;%10s %2d&quot; % (calendar.month_name[month], auditday))
+         class myClass():
              &lt;/pre&gt;
-            &lt;p&gt;&lt;strong&gt;Summary:&lt;/strong&gt; &lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Step 2)&lt;/strong&gt; Inside classes, you can define functions or methods that are part of this class
+            &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+         def method1 (self):
+            print &quot;Guru99&quot;
+         def method2 (self,someString): 
+            print &quot;Software Testing:&quot; + someString
+         &lt;/pre&gt;
             &lt;ul&gt;
-                &lt;li&gt;In Python, you can format the calendar the way you want as you can change the day of the month to
-                    begin&lt;/li&gt;
-                &lt;li&gt;Print out the Calendar in HTML format&lt;/li&gt;
-                &lt;li&gt;Fetch the data from the local system, like months or weekdays&lt;/li&gt;
-                &lt;li&gt;Fetch the list of the specific day for a whole year&lt;/li&gt;
+                &lt;li&gt;Here we have defined method1 that prints &quot;Guru99.&quot;&lt;/li&gt;
+                &lt;li&gt;Another method we have defined is method2 that prints &quot;Software Testing&quot;+ SomeString. SomeString is
+                    the variable supplied by the calling method&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;p&gt;&lt;strong&gt;Step 3)&lt;/strong&gt; Everything in a class is indented, just like the code in the function, loop, if
+                statement, etc. Anything not indented is not in the class &lt;/p&gt;
+            &lt;p style=&quot;text-align: center; &quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/tutorial/15/071515_1030_PythonClass1.png&quot;
+                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img
+                        title=&quot;Python Class &amp;amp; Objects: Object Oriented Programming (OOP’s)&quot;
+                        alt=&quot;Python Class &amp;amp; Objects: Define Class, Inheritance - OOP Tutorial&quot;
+                        src=&quot;http://localhost:4000/img/python/tutorial/15/071515_1030_PythonClass1.png&quot;&gt;&lt;/a&gt; &lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: About using &quot;self&quot; in Python &lt;/p&gt;
+            &lt;ul&gt;
+                &lt;li&gt;The self-argument refers to the object itself. Hence the use of the word self. So inside this
+                    method, self will refer to the specific instance of this object that's being operated on.&lt;/li&gt;
+                &lt;li&gt;Self is the name preferred by convention by Pythons to indicate the first parameter of instance
+                    methods in Python. It is part of the Python syntax to access members of objects&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;p&gt;&lt;strong&gt;Step 4)&lt;/strong&gt; To make an object of the class &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+         c = myClass()
+         &lt;/pre&gt;
+            &lt;p&gt;&lt;strong&gt;Step 5)&lt;/strong&gt; To call a method in a class &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;    c.method1()
+             c.method2(&quot; Testing is fun&quot;)
+         &lt;/pre&gt;
+            &lt;ul&gt;
+                &lt;li&gt;Notice that when we call the method1 or method2, we don't have to supply the self-keyword. That's
+                    automatically handled for us by the Python runtime. &lt;/li&gt;
+                &lt;li&gt;Python runtime will pass &quot;self&quot; value when you call an instance method on in instance, whether you
+                    provide it deliberately or not&lt;/li&gt;
+                &lt;li&gt;You just have to care about the non-self arguments&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;p&gt;&lt;strong&gt;Step 6) &lt;/strong&gt;Here is the complete code &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+         # Example file for working with classes
+         class myClass():
+           def method1(self):
+               print(&quot;Guru99&quot;)
+                 
+           def method2(self,someString):    
+               print(&quot;Software Testing:&quot; + someString)
+           
+               
+         def main():           
+           # exercise the class methods
+           c = myClass ()
+           c.method1()
+           c.method2(&quot; Testing is fun&quot;)
+           
+         if __name__== &quot;__main__&quot;:
+           main()&lt;/pre&gt;
+            &lt;h2&gt;&lt;a id=&quot;3&quot;&gt;&lt;/a&gt;How Inheritance works&lt;/h2&gt;
+            &lt;p&gt;Inheritance is a feature used in object-oriented programming; it refers to defining a new class with less
+                or no modification to an existing class. The new class is called &lt;strong&gt;derived class&lt;/strong&gt; and from
+                one which it inherits is called the &lt;strong&gt;base&lt;/strong&gt;. Python supports inheritance; it also supports
+                &lt;strong&gt;multiple inheritances&lt;/strong&gt;. A class can inherit attributes and behavior methods from another
+                class called subclass or heir class. &lt;/p&gt;
+            &lt;p style=&quot;text-align: center; &quot;&gt;&lt;a href=&quot;/http://localhost:4000/img/python/tutorial/15/071515_1030_PythonClass2.png&quot;
+                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img
+                        title=&quot;Python Class &amp;amp; Objects: Object Oriented Programming (OOP’s)&quot;
+                        alt=&quot;Python Class &amp;amp; Objects: Define Class, Inheritance - OOP Tutorial&quot;
+                        src=&quot;http://localhost:4000/img/python/tutorial/15//071515_1030_PythonClass2.png&quot;&gt;&lt;/a&gt; &lt;/p&gt;
+
+            &lt;p&gt;&lt;strong&gt;Python Inheritance Syntax&lt;/strong&gt; &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+         class DerivedClass(BaseClass):
+             body_of_derived_class
+         &lt;/pre&gt;
+            &lt;p&gt;&lt;strong&gt;Step 1)&lt;/strong&gt; Run the following code &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+         # Example file for working with classes
+         class myClass():
+           def method1(self):
+               print(&quot;Guru99&quot;)
+                 
+           
+         class childClass(myClass):
+           #def method1(self):
+                 #myClass.method1(self);
+                 #print (&quot;childClass Method1&quot;)
+                 
+           def method2(self):
+                 print(&quot;childClass method2&quot;)     
+                  
+         def main():           
+           # exercise the class methods
+           c2 = childClass()
+           c2.method1()
+           #c2.method2()
+         
+         if __name__== &quot;__main__&quot;:
+           main()
+         &lt;/pre&gt;
+            &lt;p&gt;Notice that the in childClass, method1 is not defined but it is derived from the parent myClass. The
+                output is &quot;Guru99.&quot; &lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Step 2)&lt;/strong&gt; Uncomment Line # 8 &amp;amp; 10. Run the code &lt;/p&gt;
+            &lt;p&gt;Now, the method 1 is defined in the childClass and output &quot;childClass Method1&quot; is correctly shown. &lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Step 3)&lt;/strong&gt; Uncomment Line #9. Run the code &lt;/p&gt;
+            &lt;p&gt;You can a method of the parent class using the syntax &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;	ParentClassName.MethodName(self)
+         &lt;/pre&gt;
+            &lt;p&gt;In our case, we call, myClass.method1(self) and Guru99 is printed as expected &lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Step 4&lt;/strong&gt;) Uncomment Line #19. Run the code. &lt;/p&gt;
+            &lt;p&gt;Method 2 of the child class is called and &quot;childClass method2&quot; is printed as expected.&lt;/p&gt;
+
+            &lt;h2&gt;&lt;a id=&quot;4&quot;&gt;&lt;/a&gt;Python Constructors&lt;/h2&gt;
+            &lt;p&gt;A constructor is a class function that instantiates an object to predefined values. &lt;/p&gt;
+            &lt;p&gt;It begins with a double underscore (_). It __init__() method &lt;/p&gt;
+            &lt;p&gt;In below example we are taking name of the user using constructor. &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+         class User:
+             name = &quot;&quot;
+         
+             def __init__(self, name):
+                 self.name = name
+         
+             def sayHello(self):
+                 print(&quot;Welcome to Guru99, &quot; + self.name)
+         
+         User1 = User(&quot;Alex&quot;)
+         User1.sayHello()
+         &lt;/pre&gt;
+            &lt;p&gt;Output will be: &lt;/p&gt;
+            &lt;p&gt;Welcome to Guru99, Alex &lt;/p&gt;
+            &lt;p&gt;&lt;b&gt;Python 2 Example&lt;/b&gt; &lt;/p&gt;
+            &lt;p&gt;Above codes are Python 3 examples, If you want to run in Python 2 please consider following code. &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+         # How to define Python classes
+         # Example file for working with classes
+         class myClass():
+           def method1(self):
+               print &quot;Guru99&quot;
+                 
+           def method2(self,someString):    
+               print &quot;Software Testing:&quot; + someString
+               
+            
+               
+         def main():           
+           # exercise the class methods
+           c = myClass ()
+           c.method1()
+           c.method2(&quot; Testing is fun&quot;)
+           
+         if __name__== &quot;__main__&quot;:
+           main()
+         
+         
+         #How Inheritance works
+         # Example file for working with classes
+         class myClass():
+           def method1(self):
+               print &quot;Guru99&quot;
+                 
+               
+         class childClass(myClass):
+           #def method1(self):
+                 #myClass.method1(self);
+                 #print &quot;childClass Method1&quot; 
+                 
+           def method2(self):
+                 print &quot;childClass method2&quot;     
+                  
+         def main():           
+           # exercise the class methods
+           c2 = childClass()
+           c2.method1()
+           #c2.method2()
+         
+         if __name__== &quot;__main__&quot;:
+           main()
+         &lt;/pre&gt;
+            &lt;h3&gt;Summary:&lt;/h3&gt;
+            &lt;p&gt;&quot;Class&quot; is a logical grouping of functions and data. Python class provides all the standard features of
+                Object Oriented Programming. &lt;/p&gt;
+            &lt;ul&gt;
+                &lt;li&gt;Class inheritance mechanism&lt;/li&gt;
+                &lt;li&gt;A derived class that override any method of its base class&lt;/li&gt;
+                &lt;li&gt;A method can call the method of a base class with the same name&lt;/li&gt;
+                &lt;li&gt;Python Classes are defined by keyword &lt;strong&gt;&quot;class&quot;&lt;/strong&gt; itself&lt;/li&gt;
+                &lt;li&gt;Inside classes, you can define functions or methods that are part of the class&lt;/li&gt;
+                &lt;li&gt;Everything in a class is indented, just like the code in the function, loop, if statement, etc.&lt;/li&gt;
+                &lt;li&gt;The self argument in Python refers to the object itself. Self is the name preferred by convention by
+                    Pythons to indicate the first parameter of instance methods in Python&lt;/li&gt;
+                &lt;li&gt;
+                    &lt;div&gt;Python runtime will pass &quot;self&quot; value automatically when you call an instance method on in
+                        instance, whether you provide it deliberately or not&lt;/div&gt;
+                &lt;/li&gt;
+                &lt;li&gt;In Python, a class can inherit attributes and behavior methods from another class called subclass or
+                    heir class. &lt;/li&gt;
             &lt;/ul&gt;
 
         &lt;/div&gt;
@@ -193,21 +237,21 @@
    
     &lt;div class=&quot;row&quot; &gt;
         &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/PythonDateTime&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot; 
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/PythonClass&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot; 
                 &gt;
                 &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
             &lt;/a&gt;
         &lt;/div&gt;
      
         &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot; &gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/PythonList&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/PythonExpressions&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;
                  &gt;Next Lesson
                 &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
             &lt;/a&gt;
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python CALENDAR Tutorial with Example</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry><entry><title type="html">14. Loop in Python</title><link href="http://localhost:4000/blog/PythonLoop" rel="alternate" type="text/html" title="14. Loop in Python" /><published>2019-09-30T00:00:00+05:30</published><updated>2019-09-30T00:00:00+05:30</updated><id>http://localhost:4000/blog/PythonLoop</id><content type="html" xml:base="http://localhost:4000/blog/PythonLoop">&lt;section class=&quot;Ptutorial14&quot;&gt;
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python OOPs: Class, Object, Inheritance and Constructor with Example</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry><entry><title type="html">14. Loop in Python</title><link href="http://localhost:4000/blog/PythonLoop" rel="alternate" type="text/html" title="14. Loop in Python" /><published>2019-09-30T05:30:00+05:30</published><updated>2019-09-30T05:30:00+05:30</updated><id>http://localhost:4000/blog/PythonLoop</id><content type="html" xml:base="http://localhost:4000/blog/PythonLoop">&lt;section class=&quot;Ptutorial14&quot;&gt;
     &lt;div class=&quot;item-page&quot; itemscope=&quot;&quot; itemtype=&quot;https://schema.org/Article&quot;&gt;
         &lt;meta itemprop=&quot;inLanguage&quot; content=&quot;en-GB&quot;&gt;
         &lt;div class=&quot;page-header&quot;&gt;
@@ -680,489 +724,7 @@
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python For &amp;amp; While Loops: Enumerate, Break, Continue Statement</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry><entry><title type="html">19. List in Python</title><link href="http://localhost:4000/blog/PythonList" rel="alternate" type="text/html" title="19. List in Python" /><published>2019-09-30T00:00:00+05:30</published><updated>2019-09-30T00:00:00+05:30</updated><id>http://localhost:4000/blog/PythonList</id><content type="html" xml:base="http://localhost:4000/blog/PythonList">&lt;section class=&quot;Ptutorial19&quot;&gt;
-    &lt;div class=&quot;item-page&quot; itemscope=&quot;&quot; itemtype=&quot;https://schema.org/Article&quot;&gt;
-        &lt;meta itemprop=&quot;inLanguage&quot; content=&quot;en-GB&quot;&gt;
-        &lt;div class=&quot;page-header&quot;&gt;
-            &lt;h2 itemprop=&quot;headline&quot;&gt; Python List: Comprehension, Apend, Sort, Length, Reverse EXAMPLES &lt;/h2&gt;
-        &lt;/div&gt;
-
-        &lt;div itemprop=&quot;articleBody&quot;&gt;
-            &lt;h2&gt;&lt;a id=&quot;1&quot;&gt;&lt;/a&gt;What is a Python List?&lt;/h2&gt;
-            &lt;p&gt;A list is exactly what it sounds like, a container that contains different Python objects, which could be
-                integers, words, values, etc. It is the equivalent of an array in other programming languages. It is
-                represented by square brackets (and this is one of the attributes that differentiates it from tuples,
-                which are separated by parentheses). It is also mutable, that is, it can be modified or updated; unlike
-                tuples, which are immutable. &lt;/p&gt;
-            &lt;p&gt;In this python tutorial, you will learn: &lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;a href=&quot;#1&quot;&gt;What is a Python List? &lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#2&quot;&gt;Examples of Python lists: &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#3&quot;&gt;Accessing values within lists &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#4&quot;&gt;List slicing &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#5&quot;&gt;Updating lists &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#6&quot;&gt;Deleting list elements &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#7&quot;&gt;Appending list elements &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#8&quot;&gt;List built-in functions (methods) &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#9&quot;&gt;Looping through lists &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#10&quot;&gt;List comprehensions &lt;/a&gt; &lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;h2&gt;&lt;a id=&quot;2&quot;&gt;&lt;/a&gt;Examples of Python lists:&lt;/h2&gt;
-            &lt;p&gt;Python lists can be homogeneous, meaning that they can contain the same type of objects; or
-                heterogeneous, including different types of objects. &lt;/p&gt;
-            &lt;p&gt;Examples of homogeneous lists include: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         list of integers =  [1, 2, 3, 8, 33]
-         list of animals = ['dog', 'cat', 'goat']
-         list of names = ['John', 'Travis', 'Sheila']
-         list of floating numbers = [2.2, 4.5, 9.8, 10.4]
-         &lt;/pre&gt;
-            &lt;p&gt;Examples of heterogeneous lists include: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         [2, 'cat', 34.33, 'Travis']
-         [2.22, 33, 'pen']
-         &lt;/pre&gt;
-            &lt;h2&gt;&lt;a id=&quot;3&quot;&gt;&lt;/a&gt;Accessing values within lists&lt;/h2&gt;
-            &lt;p&gt;To access values within lists, the index of the objects inside the lists can be used. An index in Python
-                lists refers to the position of an element within an ordered list. For example: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         list = [3, 22, 30, 5.3, 20]
-         &lt;/pre&gt;
-            &lt;ul&gt;
-                &lt;li&gt;The first value in the list above, 3, has an index of 0&lt;/li&gt;
-                &lt;li&gt;The second value, 22, has an index of 1&lt;/li&gt;
-                &lt;li&gt;The third value, 30, has an index of 2&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;p&gt;and so on. To access each of the values from the list, you would use: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         list[0] to access 3
-         list[1] to access 22
-         list[2] to access 30
-         list[3] to access 5.3
-         list[4] to access 20
-         &lt;/pre&gt;
-            &lt;p&gt;The last member of a list can also be accessed by using the index -1. For example, &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;list[-1] = 20
-         &lt;/pre&gt;
-            &lt;h2&gt;&lt;a id=&quot;4&quot;&gt;&lt;/a&gt;List slicing&lt;/h2&gt;
-            &lt;p&gt;List slicing is the method of splitting a subset of a list, and the indices of the list objects are also
-                used for this. For example, using the same list example above; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         list[:] = [3, 22, 30, 5.3, 20] (all the members of the list];
-         list[1:3] = [22, 30] (members of the list from index 1 to index 3, without the member at index 3);
-         list[:4] = [3, 22, 30, 5.3] (members of the list from index 0 to index 4, without the member at index 4)
-         list[2:-1] = [30, 5.3] (members of the list from index 2, which is the third element, to the second to the last element in the list, which is 5.3).
-         &lt;/pre&gt;
-            &lt;p&gt;Python lists are upper-bound exclusive, and this means that the last index during list slicing is usually
-                ignored. That is why &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         list[2:-1] = [30, 5.3] &lt;/pre&gt;
-            , and not [30, 5.3, 20]. The same goes for all the other list slicing examples given above.
-            &lt;h2&gt;&lt;a id=&quot;5&quot;&gt;&lt;/a&gt;Updating lists&lt;/h2&gt;
-            &lt;p&gt;Let's say you have a list = [physics, chemistry, mathematics], and you want to change the list to
-                [biology, chemistry, mathematics], effectively changing the member at index 0. That can easily be done
-                by assigning that index to the new member you want. &lt;/p&gt;
-            &lt;p&gt;That is, &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         list = [physics, chemistry, mathematics]
-         list[0] = biology
-         print(list)
-            &lt;/pre&gt;
-            &lt;p&gt;Output: [biology, chemistry, mathematics] &lt;/p&gt;
-            &lt;p&gt;This replaces the member at index 0 (physics) with the new value you want (chemistry). This can be done
-                for any member or subset of the list you want to change. &lt;/p&gt;
-            &lt;p&gt;To give another example; let's say you have a list called integers and containing the numbers [2, 5, 9,
-                20, 27]. To replace 5 in that list with 10, you can do that with: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         integers = [2, 5, 9, 20, 27]
-         integers[1] = 10
-         print(integers)
-         
-         &amp;gt;&amp;gt;&amp;gt; [2, 10, 9, 20, 27]
-         &lt;/pre&gt;
-            &lt;p&gt;To replace the last member of the list of integers, which is 27, with a free number like 30.5, you would
-                use: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         integers = [2, 5, 9, 20, 27]
-         integers[-1] = 30.5
-         print(integers)
-         
-         &amp;gt;&amp;gt;&amp;gt; [2, 5, 9, 20, 30.5]
-         &lt;/pre&gt;
-            &lt;h2&gt;&lt;a id=&quot;6&quot;&gt;&lt;/a&gt;Deleting list elements&lt;/h2&gt;
-            &lt;p&gt;There are 3 Python methods for deleting list elements: list.remove(), list.pop(), and del operator.
-                Remove method takes the particular element to be removed as an argument while pop and del take the index
-                of the element to be removed as an argument. For example: &lt;/p&gt;
-            &lt;p&gt; list = [3, 5, 7, 8, 9, 20] &lt;/p&gt;
-            &lt;p&gt;To delete 3 (the 1st element) from the list, you could use:&lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt; list.remove(3) or&lt;/li&gt;
-                &lt;li&gt; list.pop[0], or&lt;/li&gt;
-                &lt;li&gt; del list[0]&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;p&gt;To delete 8, the item at index 3, from the list, you could use: &lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt; list.remove(8), or&lt;/li&gt;
-                &lt;li&gt; list.pop[3]&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;h2&gt;&lt;a id=&quot;7&quot;&gt;&lt;/a&gt;Appending list elements&lt;/h2&gt;
-            &lt;p&gt;To append elements to a list, the append method is used, and this adds the element to the end of the
-                list. &lt;/p&gt;
-            &lt;p&gt;For example: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-             list_1 = [3, 5, 7, 8, 9, 20]
-             list_1.append(3.33)
-             print(list_1)
-         
-             &amp;gt;&amp;gt;&amp;gt; list_1 = [3, 5, 7, 8, 9, 20, 3.33]
-         
-             list_1.append(&quot;cats&quot;)
-             print(list_1)
-             &amp;gt;&amp;gt;&amp;gt; list_1 = [3, 5, 7, 8, 9, 20, 3.33, &quot;cats&quot;]
-         &lt;/pre&gt;
-            &lt;h2&gt;&lt;a id=&quot;8&quot;&gt;&lt;/a&gt;List built-in functions (methods)&lt;/h2&gt;
-            &lt;p&gt;The following is a list of list built-in functions and methods with their descriptions: &lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;strong&gt;len(list):&lt;/strong&gt; this gives the length of the list as output. For example:&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;numbers = [2, 5, 7, 9]
-         print(len(numbers))
-         &amp;gt;&amp;gt;&amp;gt; 4
-         &lt;/pre&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;strong&gt;max(list):&lt;/strong&gt; returns the item in the list with the maximum value. For example:&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;numbers = [2, 5, 7, 9]
-         print(max(numbers))
-         &amp;gt;&amp;gt;&amp;gt; 9
-         &lt;/pre&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;strong&gt;min(list):&lt;/strong&gt; returns the item in the list with the maximum value. For example:&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;numbers = [2, 5, 7, 9]
-         print(min(numbers))
-         &amp;gt;&amp;gt;&amp;gt; 2
-         &lt;/pre&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;strong&gt;list(tuple):&lt;/strong&gt; converts a tuple object a list. For example;&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;animals = (cat, dog, fish, cow)
-         print(list(animals))
-         &amp;gt;&amp;gt;&amp;gt; [cat, dog, fish, cow]
-         &lt;/pre&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;strong&gt;list.append&lt;/strong&gt;(element): appends the element to the list. For example;&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;numbers = [2, 5, 7, 9]
-         numbers.append(15)
-         print(numbers)
-         &amp;gt;&amp;gt;&amp;gt; [2, 5, 7, 9, 15]
-         &lt;/pre&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;strong&gt;list.pop&lt;/strong&gt;(index): removes the element at the specified index from the list. For
-                    example;&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;numbers = [2, 5, 7, 9, 15]
-         numbers.pop(2)
-         print(numbers)
-         &amp;gt;&amp;gt;&amp;gt; [2, 5, 9, 15]
-         &lt;/pre&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;strong&gt;list.remove&lt;/strong&gt;(element):deletes the element from the list.For example;&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;values = [2, 5, 7, 9]
-         values.remove(2)
-         print(values)
-         &amp;gt;&amp;gt;&amp;gt; [5, 7, 9]
-         &lt;/pre&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;strong&gt;list.reverse&lt;/strong&gt;(): reverses the objects of the list. For example;&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;values = [2, 5, 7, 10]
-         values.reverse()
-         print(values)
-         &amp;gt;&amp;gt;&amp;gt; [10, 7, 5, 2]
-         &lt;/pre&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;strong&gt;list.index&lt;/strong&gt;(element): to get the index value of an element within the list. For
-                    example;&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;animals = ['cat', 'dog', 'fish', 'cow', 'goat']
-         fish_index = animals.index('fish')
-         print(fish_index)
-         &amp;gt;&amp;gt;&amp;gt; 2
-         &lt;/pre&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;strong&gt;sum&lt;/strong&gt;(list): to get the sum of all the values in the list, if the values are all
-                    numbers (integers or decimals). For example;&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;values = [2, 5, 10]
-         sum_of_values = sum(values)
-         print(sum_of_values)
-         
-         &amp;gt;&amp;gt;&amp;gt; 17
-         &lt;/pre&gt;
-            &lt;p&gt;If the list contains any element that is not a number, such as a string, the sum method would not work.
-                You would get an error saying: &quot;&lt;strong&gt;TypeError&lt;/strong&gt;: unsupported operand type(s) for +: 'int' and
-                'str'&quot; &lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;list.sort(): to arrange a list of integers, floating point numbers, or strings, in ascending or
-                    descending order. For example: &lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;values = [1, 7, 9, 3, 5]
-         # To sort the values in ascending order:
-         values.sort()
-         print(values)
-         
-         &amp;gt;&amp;gt;&amp;gt; [1, 3, 5, 7, 9]
-         &lt;/pre&gt;
-            &lt;p&gt;Another example: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         values = [2, 10, 7, 14, 50]
-         # To sort the values in descending order:
-         values.sort(reverse = True)
-         print(values)
-         
-         &amp;gt;&amp;gt;&amp;gt; [50, 14, 10, 7, 2]
-         &lt;/pre&gt;
-            &lt;p&gt;A list of strings can also be sorted, either alphabetically, or by length of the strings. For example;
-            &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         # to sort the list by length of the elements
-         strings = ['cat', 'mammal', 'goat', 'is']
-         sort_by_alphabet = strings.sort()
-         sort_by_length = strings.sort(key = len)
-         print(sort_by_alphabet)
-         print(sort_by_length)
-         
-         &amp;gt;&amp;gt;&amp;gt; ['cat', 'goat', 'is', 'mammal']
-                 ['is', 'cat', 'goat', 'mammal']
-         &lt;/pre&gt;
-            &lt;p&gt;We can sort the same list alphabetically by using 'strings. &lt;/p&gt;
-            &lt;h2&gt;&lt;a id=&quot;9&quot;&gt;&lt;/a&gt;Looping through lists&lt;/h2&gt;
-            &lt;p&gt;Looping through lists can be done in just the same way as any other looping function in Python. This way,
-                a method can be performed on multiple elements of a list at the same time. For example: &lt;/p&gt;
-            &lt;p&gt;list = [10, 20, 30, 40, 50, 60, 70]. &lt;/p&gt;
-            &lt;p&gt;To loop through all the elements of this list, and let's say, add 10 to each element: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-                 for elem in list:
-                 elem = elem + 5
-                 print(elem)
-             
-             &amp;gt;&amp;gt;&amp;gt;&amp;gt;15
-                 25
-                 35
-                 45
-                 55
-                 65
-                 75
-         &lt;/pre&gt;
-            &lt;p&gt;To loop through the first three elements of the list, and delete all of them; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-             for elem in list[:3]:
-             list.remove(elem)
-         
-             &amp;gt;&amp;gt;&amp;gt;list = [40, 50, 60, 70]
-         &lt;/pre&gt;
-            &lt;p&gt;To loop through the 3&lt;sup&gt;rd&lt;/sup&gt; (index 2) to last element on the list, and append them to a new list
-                called new_list: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-             new_list = []	
-             for elem in list[2:]:
-                 new_list.append(elem)
-                 print(“New List: {}”.format(new_list))
-             
-            Output:
-             New List: [30, 40, 50, 60, 70]
-         &lt;/pre&gt;
-            &lt;p&gt;In this way, any or method or function can be applied to the members of a list to perform a particular
-                operation. You can either loop through all the members of the list, or loop through a subset of the list
-                by using list slicing. &lt;/p&gt;
-            &lt;h2&gt;&lt;a id=&quot;10&quot;&gt;&lt;/a&gt;List Comprehensions&lt;/h2&gt;
-            &lt;p&gt;List comprehensions are Python functions that are used for creating new sequences (such as lists,
-                dictionaries, etc.) using sequences that have already been created. They help to reduce longer loops and
-                make your code easier to read and maintain. &lt;/p&gt;
-            &lt;p&gt;For example; let's say you wanted to create a list which contains the squares of all the numbers from 1
-                to 9: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-             list_of squares = []
-             for int in range(1, 10):
-                 square = int ** 2
-                 list_of_squares.append(square)
-         
-             print(list_of_squares)
-         
-         List_of_squares using for loop:
-         
-             [1, 4, 9, 16, 25, 36, 49, 64, 81]
-         &lt;/pre&gt;
-            &lt;p&gt;To do the same thing with list comprehensions: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-             list_of_squares_2 = [int**2 for int in range(1, 10)]
-         
-             print('List of squares using list comprehension: {}'.format(list_of_squares_2))
-         
-         Output using list comprehension:
-         
-             [1, 4, 9, 16, 25, 36, 49, 64, 81]
-         &lt;/pre&gt;
-            &lt;p&gt;As seen above, writing the code using list comprehensions is much shorter than using traditional for
-                loops, and is also faster. This is just one example of using list comprehensions in place of for loops,
-                but this can be replicated and used in a lot of places where for loops can also be used. Sometimes,
-                going with a for loop is the better option, especially if the code is complex, but in many cases, list
-                comprehensions will make your coding easier and faster. &lt;/p&gt;
-            &lt;p&gt;Below is a table containing some list functions and methods, and their descriptions. &lt;/p&gt;
-            &lt;h3&gt;Built-in Functions&lt;/h3&gt;
-            &lt;table class=&quot;table table-striped table-bordered&quot;&gt;
-                &lt;tbody&gt;
-                    &lt;tr&gt;
-                        &lt;td width=&quot;50%&quot;&gt;FUNCTION &lt;/td&gt;
-                        &lt;td&gt;DESCRIPTION &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Round() &lt;/td&gt;
-                        &lt;td&gt;Rounds off the number passed as an argument to a specified number of digits and returns the
-                            floating point value &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Min() &lt;/td&gt;
-                        &lt;td&gt;return minimum element of a given list &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Max() &lt;/td&gt;
-                        &lt;td&gt;return maximum element of a given list &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;len() &lt;/td&gt;
-                        &lt;td&gt;Returns the length of the list &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Enumerate() &lt;/td&gt;
-                        &lt;td&gt;This built-in function generates both the values and indexes of items in an iterable, so we
-                            don't need to count manually &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Filter() &lt;/td&gt;
-                        &lt;td&gt;tests if each element of a list true or not &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Lambda &lt;/td&gt;
-                        &lt;td&gt;An expression that can appear in places where a def (for creating functions) is not
-                            syntactic, inside a list literal or a function's call arguments &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Map() &lt;/td&gt;
-                        &lt;td&gt;returns a list of the results after applying the given function to each item of a given
-                            iterable &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Accumulate() &lt;/td&gt;
-                        &lt;td&gt;apply a particular function passed in its argument to all of the list elements returns a
-                            list containing the intermediate results &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Sum() &lt;/td&gt;
-                        &lt;td&gt;Returns the sum of all the numbers in the list &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Cmp() &lt;/td&gt;
-                        &lt;td&gt;This is used for comparing two lists and returns 1 if the first list is greater than the
-                            second list. &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Insert &lt;/td&gt;
-                        &lt;td&gt;Insert element to list at particular position &lt;/td&gt;
-                    &lt;/tr&gt;
-                &lt;/tbody&gt;
-            &lt;/table&gt;
-            &lt;h3&gt;List Methods&lt;/h3&gt;
-            &lt;table class=&quot;table table-striped table-bordered&quot;&gt;
-                &lt;tbody&gt;
-                    &lt;tr&gt;
-                        &lt;td width=&quot;50%&quot;&gt;FUNCTION &lt;/td&gt;
-                        &lt;td&gt;DESCRIPTION &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Append() &lt;/td&gt;
-                        &lt;td&gt;Adds a new item to the end of the list &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Clear() &lt;/td&gt;
-                        &lt;td&gt;Removes all items from the list &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Copy() &lt;/td&gt;
-                        &lt;td&gt;Returns a copy of the original list &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Extend() &lt;/td&gt;
-                        &lt;td&gt;Add many items to the end of the list &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Count() &lt;/td&gt;
-                        &lt;td&gt;Returns the number of occurrences of a particular item in a list &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Index() &lt;/td&gt;
-                        &lt;td&gt;Returns the index of a specific element of a list &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Pop() &lt;/td&gt;
-                        &lt;td&gt;Deletes item from the list at particular index (delete by position) &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Remove() &lt;/td&gt;
-                        &lt;td&gt;Deletes specified item from the list (delete by value) &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Reverse() &lt;/td&gt;
-                        &lt;td&gt;In-place reversal method which reverses the order of the elements of the list &lt;/td&gt;
-                    &lt;/tr&gt;
-                &lt;/tbody&gt;
-            &lt;/table&gt;
-            &lt;h2&gt;Summary&lt;/h2&gt;
-            &lt;ul&gt;
-                &lt;li&gt;A list is exactly what it sounds like, a container that contains different Python objects, which
-                    could be integers, words, values, etc.&lt;/li&gt;
-                &lt;li&gt;Python lists can be homogeneous, means they can contain the same type of objects; or heterogeneous,
-                    containing different types of objects.&lt;/li&gt;
-                &lt;li&gt;To access values within lists, the index of the objects inside the lists can be used.&lt;/li&gt;
-                &lt;li&gt;List slicing is the method of splitting a subset of a list, and the indices of the list objects are
-                    also used for this.&lt;/li&gt;
-                &lt;li&gt;Three methods for deleting list elements are : 1)list.remove(), 2)list.pop(), and 3)del operator
-                &lt;/li&gt;
-                &lt;li&gt;Append method is used to append elements. This adds the element to the end of the list. &lt;/li&gt;
-                &lt;li&gt;Looping method of Python program can be performed on multiple elements of a data list at the same
-                    time. &lt;/li&gt;
-                &lt;li&gt;List comprehensions are Python functions that are used for creating new sequences (such as lists,
-                    dictionaries, etc.) using sequences that have already been created. &lt;/li&gt;
-            &lt;/ul&gt;
-
-        &lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/section&gt;
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr&gt;
-   
-    &lt;div class=&quot;row&quot; &gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/PythonCalendar&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot; 
-                &gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot; &gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/PythonReadNWriteFile&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;
-                 &gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python List: Comprehension, Apend, Sort, Length, Reverse EXAMPLES</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry><entry><title type="html">13. IF in Python</title><link href="http://localhost:4000/blog/PythonIf" rel="alternate" type="text/html" title="13. IF in Python" /><published>2019-09-30T00:00:00+05:30</published><updated>2019-09-30T00:00:00+05:30</updated><id>http://localhost:4000/blog/PythonIf</id><content type="html" xml:base="http://localhost:4000/blog/PythonIf">&lt;section class=&quot;Ptutorial13&quot;&gt;
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python For &amp;amp; While Loops: Enumerate, Break, Continue Statement</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry><entry><title type="html">13. IF in Python</title><link href="http://localhost:4000/blog/PythonIf" rel="alternate" type="text/html" title="13. IF in Python" /><published>2019-09-30T05:30:00+05:30</published><updated>2019-09-30T05:30:00+05:30</updated><id>http://localhost:4000/blog/PythonIf</id><content type="html" xml:base="http://localhost:4000/blog/PythonIf">&lt;section class=&quot;Ptutorial13&quot;&gt;
     &lt;div class=&quot;item-page&quot; itemscope=&quot;&quot; itemtype=&quot;https://schema.org/Article&quot;&gt;
         &lt;meta itemprop=&quot;inLanguage&quot; content=&quot;en-GB&quot;&gt;
         &lt;div class=&quot;page-header&quot;&gt;
@@ -1583,7 +1145,7 @@ if __name__ == &quot;__main__&quot;:
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python IF, ELSE, ELIF, Nested IF &amp;amp; Switch Case Statement What are Conditional Statements? Conditional Statement in Python perform different computations or actions depending on whether a specific Boolean constraint evaluates to true or false. Conditional statements are handled by IF statements in Python. In this tutorial, we will see how to apply conditional statements in Python. What is If Statement? How to Use it? What happen when &quot;if condition&quot; does not meet How to use &quot;else condition&quot; When &quot;else condition&quot; does not work How to use &quot;elif&quot; condition How to execute conditional statement with minimal code Nested IF Statement Switch Statement What is If Statement? How to Use it? In Python, If Statement is used for decision making. It will run the body of code only when IF statement is true. When you want to justify one condition while the other condition is not true, then you use &quot;if statement&quot;. Syntax: if expression Statement else Statement Let see an example- # #Example file for working with conditional statement # def main(): x,y =2,8 if(x &amp;lt; y): st= &quot;x is less than y&quot; print(st) if __name__ == &quot;__main__&quot;: main() Code Line 5: We define two variables x, y = 2, 8 Code Line 7: The if Statement checks for condition x&amp;lt;y which is True in this case Code Line 8: The variable st is set to &quot;x is less than y.&quot; Code Line 9: The line print st will output the value of variable st which is &quot;x is less than y&quot;, What happen when &quot;if condition&quot; does not meet In this step, we will see what happens when your &quot;if condition&quot; does not meet. Code Line 5: We define two variables x, y = 8, 4 Code Line 7: The if Statement checks for condition x&amp;lt;y which is False in this case Code Line 8: The variable st is NOT set to &quot; x is less than y.&quot; Code Line 9: The line print st - is trying to print the value of a variable that was never declared. Hence, we get an error. How to use &quot;else condition&quot; The &quot;else condition&quot; is usually used when you have to judge one statement on the basis of other. If one condition goes wrong, then there should be another condition that should justify the statement or logic. Example: # #Example file for working with conditional statement # def main(): x,y =8,4</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry><entry><title type="html">16. Expressions in Python</title><link href="http://localhost:4000/blog/PythonExpressions" rel="alternate" type="text/html" title="16. Expressions in Python" /><published>2019-09-30T00:00:00+05:30</published><updated>2019-09-30T00:00:00+05:30</updated><id>http://localhost:4000/blog/PythonExpressions</id><content type="html" xml:base="http://localhost:4000/blog/PythonExpressions">&lt;section class=&quot;Ptutorial16&quot;&gt;
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python IF, ELSE, ELIF, Nested IF &amp;amp; Switch Case Statement What are Conditional Statements? Conditional Statement in Python perform different computations or actions depending on whether a specific Boolean constraint evaluates to true or false. Conditional statements are handled by IF statements in Python. In this tutorial, we will see how to apply conditional statements in Python. What is If Statement? How to Use it? What happen when &quot;if condition&quot; does not meet How to use &quot;else condition&quot; When &quot;else condition&quot; does not work How to use &quot;elif&quot; condition How to execute conditional statement with minimal code Nested IF Statement Switch Statement What is If Statement? How to Use it? In Python, If Statement is used for decision making. It will run the body of code only when IF statement is true. When you want to justify one condition while the other condition is not true, then you use &quot;if statement&quot;. Syntax: if expression Statement else Statement Let see an example- # #Example file for working with conditional statement # def main(): x,y =2,8 if(x &amp;lt; y): st= &quot;x is less than y&quot; print(st) if __name__ == &quot;__main__&quot;: main() Code Line 5: We define two variables x, y = 2, 8 Code Line 7: The if Statement checks for condition x&amp;lt;y which is True in this case Code Line 8: The variable st is set to &quot;x is less than y.&quot; Code Line 9: The line print st will output the value of variable st which is &quot;x is less than y&quot;, What happen when &quot;if condition&quot; does not meet In this step, we will see what happens when your &quot;if condition&quot; does not meet. Code Line 5: We define two variables x, y = 8, 4 Code Line 7: The if Statement checks for condition x&amp;lt;y which is False in this case Code Line 8: The variable st is NOT set to &quot; x is less than y.&quot; Code Line 9: The line print st - is trying to print the value of a variable that was never declared. Hence, we get an error. How to use &quot;else condition&quot; The &quot;else condition&quot; is usually used when you have to judge one statement on the basis of other. If one condition goes wrong, then there should be another condition that should justify the statement or logic. Example: # #Example file for working with conditional statement # def main(): x,y =8,4</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry><entry><title type="html">16. Expressions in Python</title><link href="http://localhost:4000/blog/PythonExpressions" rel="alternate" type="text/html" title="16. Expressions in Python" /><published>2019-09-30T05:30:00+05:30</published><updated>2019-09-30T05:30:00+05:30</updated><id>http://localhost:4000/blog/PythonExpressions</id><content type="html" xml:base="http://localhost:4000/blog/PythonExpressions">&lt;section class=&quot;Ptutorial16&quot;&gt;
     &lt;div class=&quot;item-page&quot; itemscope=&quot;&quot; itemtype=&quot;https://schema.org/Article&quot;&gt;
         &lt;meta itemprop=&quot;inLanguage&quot; content=&quot;en-GB&quot;&gt;
         &lt;div class=&quot;page-header&quot;&gt;
@@ -1982,7 +1544,7 @@ if __name__ == &quot;__main__&quot;:
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python Regex: re.match(), re.search(), re.findall() with Example What is Regular Expression? A regular expression in a programming language is a special text string used for describing a search pattern. It is extremely useful for extracting information from text such as code, files, log, spreadsheets or even documents. While using the regular expression the first thing is to recognize is that everything is essentially a character, and we are writing patterns to match a specific sequence of characters also referred as string. Ascii or latin letters are those that are on your keyboards and Unicode is used to match the foreign text. It includes digits and punctuation and all special characters like $#@!%, etc. In this tutorial, we will learn- Regular Expression Syntax Example of w+ and ^ Expression Example of \s expression in re.split function Using regular expression methods Using re.match() Finding Pattern in Text (re.search()) Using re.findall for text Python Flags Example of re.M or Multiline Flags For instance, a regular expression could tell a program to search for specific text from the string and then to print out the result accordingly. Expression can include Text matching Repetition Branching Pattern-composition etc. In Python, a regular expression is denoted as RE (REs, regexes or regex pattern) are imported through re module. Python supports regular expression through libraries. In Python regular expression supports various things like Modifiers, Identifiers, and White space characters. Identifiers Modifiers White space characters Escape required \d= any number (a digit) \d represents a digit.Ex: \d{1,5} it will declare digit between 1,5 like 424,444,545 etc. \n = new line . + * ? [] $ ^ () {} | \ \D= anything but a number (a non-digit) + = matches 1 or more \s= space \s = space (tab,space,newline etc.) ? = matches 0 or 1 \t =tab \S= anything but a space * = 0 or more \e = escape \w = letters ( Match alphanumeric character, including &quot;_&quot;) $ match end of a string \r = carriage return \W =anything but letters ( Matches a non-alphanumeric character excluding &quot;_&quot;) ^ match start of a string \f= form feed . = anything but letters (periods) | matches either or x/y ----------------- \b = any character except for new line [] = range or &quot;variance&quot; ---------------- \. {x} = this amount of preceding code ----------------- Regular Expression Syntax RE import re &quot;re&quot; module included with Python primarily used for string searching and manipulation Also used frequently for web page &quot;Scraping&quot; (extract large amount of data from websites) We will begin the expression tutorial with this simple exercise by using the expressions (w+) and (^). Example of w+ and ^ Expression &quot;^&quot;: This expression matches the start of a string &quot;w+&quot;: This expression matches the alphanumeric character in the string Here we will see an example of how we can use w+ and ^ expression in our code. We cover re.findall function later in this tutorial but for a while we simply focus on \w+ and \^ expression. For example, for our string &quot;guru99, education is fun&quot; if we execute the code with w+ and^, it will give the output &quot;guru99&quot;. import re xx = &quot;guru99,education is fun&quot; r1 = re.findall(r&quot;^\w+&quot;,xx) print(r1) Remember, if you remove +sign from the w+, the output will change, and it will only give the first character of the first letter, i.e., [g] Example of \s expression in re.split function &quot;s&quot;: This expression is used for creating a space in the string To understand how this regular expression works in Python, we begin with a simple example of a split function. In the example, we have split each word using the &quot;re.split&quot; function and at the same time we have used expression \s that allows to parse each word in the string separately. When you execute this code it will give you the output ['we', 'are', 'splitting', 'the', 'words']. Now, let see what happens if you remove &quot;\&quot; from s. There is no 's' alphabet in the output, this is because we have removed '\' from the string, and it evaluates &quot;s&quot; as a regular character and thus split the words wherever it finds &quot;s&quot; in the string. Similarly, there are series of other regular expressions in Python that you can use in various ways in Python like \d,\D,$,\.,\b, etc. Here is the complete code import re xx = &quot;guru99,education is fun&quot; r1 = re.findall(r&quot;^\w+&quot;, xx) print((re.split(r'\s','we are splitting the words'))) print((re.split(r's','split the words'))) Next, we will going to see the types of methods that are used with regular expressions. Using regular expression methods The &quot;re&quot; package provides several methods to actually perform queries on an input string. The method we going to see are</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry><entry><title type="html">17. DateTime in Python</title><link href="http://localhost:4000/blog/PythonDateTime" rel="alternate" type="text/html" title="17. DateTime in Python" /><published>2019-09-30T00:00:00+05:30</published><updated>2019-09-30T00:00:00+05:30</updated><id>http://localhost:4000/blog/PythonDateTime</id><content type="html" xml:base="http://localhost:4000/blog/PythonDateTime">&lt;section class=&quot;Ptutorial17&quot;&gt;
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python Regex: re.match(), re.search(), re.findall() with Example What is Regular Expression? A regular expression in a programming language is a special text string used for describing a search pattern. It is extremely useful for extracting information from text such as code, files, log, spreadsheets or even documents. While using the regular expression the first thing is to recognize is that everything is essentially a character, and we are writing patterns to match a specific sequence of characters also referred as string. Ascii or latin letters are those that are on your keyboards and Unicode is used to match the foreign text. It includes digits and punctuation and all special characters like $#@!%, etc. In this tutorial, we will learn- Regular Expression Syntax Example of w+ and ^ Expression Example of \s expression in re.split function Using regular expression methods Using re.match() Finding Pattern in Text (re.search()) Using re.findall for text Python Flags Example of re.M or Multiline Flags For instance, a regular expression could tell a program to search for specific text from the string and then to print out the result accordingly. Expression can include Text matching Repetition Branching Pattern-composition etc. In Python, a regular expression is denoted as RE (REs, regexes or regex pattern) are imported through re module. Python supports regular expression through libraries. In Python regular expression supports various things like Modifiers, Identifiers, and White space characters. Identifiers Modifiers White space characters Escape required \d= any number (a digit) \d represents a digit.Ex: \d{1,5} it will declare digit between 1,5 like 424,444,545 etc. \n = new line . + * ? [] $ ^ () {} | \ \D= anything but a number (a non-digit) + = matches 1 or more \s= space \s = space (tab,space,newline etc.) ? = matches 0 or 1 \t =tab \S= anything but a space * = 0 or more \e = escape \w = letters ( Match alphanumeric character, including &quot;_&quot;) $ match end of a string \r = carriage return \W =anything but letters ( Matches a non-alphanumeric character excluding &quot;_&quot;) ^ match start of a string \f= form feed . = anything but letters (periods) | matches either or x/y ----------------- \b = any character except for new line [] = range or &quot;variance&quot; ---------------- \. {x} = this amount of preceding code ----------------- Regular Expression Syntax RE import re &quot;re&quot; module included with Python primarily used for string searching and manipulation Also used frequently for web page &quot;Scraping&quot; (extract large amount of data from websites) We will begin the expression tutorial with this simple exercise by using the expressions (w+) and (^). Example of w+ and ^ Expression &quot;^&quot;: This expression matches the start of a string &quot;w+&quot;: This expression matches the alphanumeric character in the string Here we will see an example of how we can use w+ and ^ expression in our code. We cover re.findall function later in this tutorial but for a while we simply focus on \w+ and \^ expression. For example, for our string &quot;guru99, education is fun&quot; if we execute the code with w+ and^, it will give the output &quot;guru99&quot;. import re xx = &quot;guru99,education is fun&quot; r1 = re.findall(r&quot;^\w+&quot;,xx) print(r1) Remember, if you remove +sign from the w+, the output will change, and it will only give the first character of the first letter, i.e., [g] Example of \s expression in re.split function &quot;s&quot;: This expression is used for creating a space in the string To understand how this regular expression works in Python, we begin with a simple example of a split function. In the example, we have split each word using the &quot;re.split&quot; function and at the same time we have used expression \s that allows to parse each word in the string separately. When you execute this code it will give you the output ['we', 'are', 'splitting', 'the', 'words']. Now, let see what happens if you remove &quot;\&quot; from s. There is no 's' alphabet in the output, this is because we have removed '\' from the string, and it evaluates &quot;s&quot; as a regular character and thus split the words wherever it finds &quot;s&quot; in the string. Similarly, there are series of other regular expressions in Python that you can use in various ways in Python like \d,\D,$,\.,\b, etc. Here is the complete code import re xx = &quot;guru99,education is fun&quot; r1 = re.findall(r&quot;^\w+&quot;, xx) print((re.split(r'\s','we are splitting the words'))) print((re.split(r's','split the words'))) Next, we will going to see the types of methods that are used with regular expressions. Using regular expression methods The &quot;re&quot; package provides several methods to actually perform queries on an input string. The method we going to see are</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry><entry><title type="html">17. DateTime in Python</title><link href="http://localhost:4000/blog/PythonDateTime" rel="alternate" type="text/html" title="17. DateTime in Python" /><published>2019-09-30T05:30:00+05:30</published><updated>2019-09-30T05:30:00+05:30</updated><id>http://localhost:4000/blog/PythonDateTime</id><content type="html" xml:base="http://localhost:4000/blog/PythonDateTime">&lt;section class=&quot;Ptutorial17&quot;&gt;
     &lt;div class=&quot;item-page&quot; itemscope=&quot;&quot; itemtype=&quot;https://schema.org/Article&quot;&gt;
         &lt;meta itemprop=&quot;inLanguage&quot; content=&quot;en-GB&quot;&gt;
         &lt;div class=&quot;page-header&quot;&gt;
@@ -2473,233 +2035,189 @@ if __name__ == &quot;__main__&quot;:
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python DateTime, TimeDelta, Strftime(Format) with Examples In Python, date, time and datetime classes provides a number of function to deal with dates, times and time intervals. Date and datetime are an object in Python, so when you manipulate them, you are actually manipulating objects and not string or timestamps. Whenever you manipulate dates or time, you need to import datetime function. The datetime classes in Python are categorized into main 5 classes. date – Manipulate just date ( Month, day, year) time – Time independent of the day (Hour, minute, second, microsecond) datetime – Combination of time and date (Month, day, year, hour, second, microsecond) timedelta— A duration of time used for manipulating dates tzinfo— An abstract class for dealing with time zones In this tutorial, we will learn- How to Use Date &amp;amp; DateTime Class Print Date using date.today() Python Current Date and Time: now() today() How to Format Date and Time Output with Strftime() How to use Timedelta Objects How to Use Date &amp;amp; DateTime Class Step 1) Before you run the code for datetime, it is important that you import the date time modules as shown in the screenshot below. These import statements are pre-defined pieces of functionality in the Python library that let you manipulates dates and times, without writing any code. Consider the following points before executing the datetime code from datetime import date This line tells the Python interpreter that from the datetime module import the date class We are not writing the code for this date functionality alas just importing it for our use Step 2) Next, we create an instance of the date object. Step 3) Next, we print the date and run the code. The output is as expected. Print Date using date.today() date.today function has several properties associated with it. We can print individual day/month/year and many other things Let's see an example Today's Weekday Number The date.today() function also gives you the weekday number. Here is the Weekday Table which start with Monday as 0 and Sunday as 6 Day WeekDay Number Monday 0 Tuesday 1 Wednesday 2 Thursday 3 Friday 4 Saturday 5 Sunday 6 Weekday Number is useful for arrays whose index is dependent on the Day of the week. Python Current Date and Time: now() today() Step 1) Like Date Objects, we can also use &quot;DATETIME OBJECTS&quot; in Python. It gives date along with time in hours, minutes, seconds and milliseconds.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry><entry><title type="html">15. Class in Python</title><link href="http://localhost:4000/blog/PythonClass" rel="alternate" type="text/html" title="15. Class in Python" /><published>2019-09-30T00:00:00+05:30</published><updated>2019-09-30T00:00:00+05:30</updated><id>http://localhost:4000/blog/PythonClass</id><content type="html" xml:base="http://localhost:4000/blog/PythonClass">&lt;section class=&quot;Ptutorial15&quot;&gt;
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python DateTime, TimeDelta, Strftime(Format) with Examples In Python, date, time and datetime classes provides a number of function to deal with dates, times and time intervals. Date and datetime are an object in Python, so when you manipulate them, you are actually manipulating objects and not string or timestamps. Whenever you manipulate dates or time, you need to import datetime function. The datetime classes in Python are categorized into main 5 classes. date – Manipulate just date ( Month, day, year) time – Time independent of the day (Hour, minute, second, microsecond) datetime – Combination of time and date (Month, day, year, hour, second, microsecond) timedelta— A duration of time used for manipulating dates tzinfo— An abstract class for dealing with time zones In this tutorial, we will learn- How to Use Date &amp;amp; DateTime Class Print Date using date.today() Python Current Date and Time: now() today() How to Format Date and Time Output with Strftime() How to use Timedelta Objects How to Use Date &amp;amp; DateTime Class Step 1) Before you run the code for datetime, it is important that you import the date time modules as shown in the screenshot below. These import statements are pre-defined pieces of functionality in the Python library that let you manipulates dates and times, without writing any code. Consider the following points before executing the datetime code from datetime import date This line tells the Python interpreter that from the datetime module import the date class We are not writing the code for this date functionality alas just importing it for our use Step 2) Next, we create an instance of the date object. Step 3) Next, we print the date and run the code. The output is as expected. Print Date using date.today() date.today function has several properties associated with it. We can print individual day/month/year and many other things Let's see an example Today's Weekday Number The date.today() function also gives you the weekday number. Here is the Weekday Table which start with Monday as 0 and Sunday as 6 Day WeekDay Number Monday 0 Tuesday 1 Wednesday 2 Thursday 3 Friday 4 Saturday 5 Sunday 6 Weekday Number is useful for arrays whose index is dependent on the Day of the week. Python Current Date and Time: now() today() Step 1) Like Date Objects, we can also use &quot;DATETIME OBJECTS&quot; in Python. It gives date along with time in hours, minutes, seconds and milliseconds.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry><entry><title type="html">18. Calendar in Python</title><link href="http://localhost:4000/blog/PythonCalendar" rel="alternate" type="text/html" title="18. Calendar in Python" /><published>2019-09-30T00:00:00+05:30</published><updated>2019-09-30T00:00:00+05:30</updated><id>http://localhost:4000/blog/PythonCalendar</id><content type="html" xml:base="http://localhost:4000/blog/PythonCalendar">&lt;section class=&quot;Ptutorial18&quot;&gt;
     &lt;div class=&quot;item-page&quot; itemscope=&quot;&quot; itemtype=&quot;https://schema.org/Article&quot;&gt;
         &lt;meta itemprop=&quot;inLanguage&quot; content=&quot;en-GB&quot;&gt;
         &lt;div class=&quot;page-header&quot;&gt;
-            &lt;h2 itemprop=&quot;headline&quot;&gt; Python OOPs: Class, Object, Inheritance and Constructor with Example &lt;/h2&gt;
+            &lt;h2 itemprop=&quot;headline&quot;&gt; Python CALENDAR Tutorial with Example &lt;/h2&gt;
         &lt;/div&gt;
 
         &lt;div itemprop=&quot;articleBody&quot;&gt;
 
-            &lt;h3&gt;What is a Class?&lt;/h3&gt;
-            &lt;p&gt;A Class is a logical grouping of data and functions. It gives the freedom to create data structures that
-                contains arbitrary content and hence easily accessible. &lt;/p&gt;
-            &lt;p&gt;For example, for any bank employee who want to fetch the customer details online would go to
-                &lt;strong&gt;customer class&lt;/strong&gt;, where all its attributes like transaction details, withdrawal and
-                deposit details, outstanding debt, etc. would be listed out. &lt;/p&gt;
-            &lt;p&gt;In this tutorial, we will learn, &lt;/p&gt;
+            &lt;p&gt;Calendar module in Python has the calendar class that allows the calculations for various task based on
+                date, month, and year. On top of it, the TextCalendar and HTMLCalendar class in Python allows you to
+                edit the calendar and use as per your requirement. &lt;/p&gt;
+            &lt;p&gt;Let see what we can do with Python Calendar. &lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Step1)&lt;/strong&gt; Run the code. &lt;/p&gt;
+            &lt;p style=&quot;text-align: center; &quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/tutorial/18/Python16.1.png&quot;
+                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img title=&quot;Calendar in Python&quot;
+                        alt=&quot;Python CALENDAR Tutorial with Example&quot; src=&quot;http://localhost:4000/img/python/tutorial/18/Python16.1.png&quot;&gt;&lt;/a&gt; &lt;/p&gt;
             &lt;ul&gt;
-                &lt;li&gt;&lt;a href=&quot;#2&quot;&gt;How to define Python classes &lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#3&quot;&gt;How Inheritance works &lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#4&quot;&gt;Python Constructors &lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;h2&gt;&lt;a id=&quot;2&quot;&gt;&lt;/a&gt;How to define Python classes&lt;/h2&gt;
-            &lt;p&gt;To define class you need to consider following points&lt;/p&gt;
-            &lt;p&gt;&lt;strong&gt;Step 1)&lt;/strong&gt; In Python, classes are defined by the &lt;strong&gt;&quot;Class&quot; &lt;/strong&gt;keyword &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         class myClass():
-             &lt;/pre&gt;
-            &lt;p&gt;&lt;strong&gt;Step 2)&lt;/strong&gt; Inside classes, you can define functions or methods that are part of this class
-            &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         def method1 (self):
-            print &quot;Guru99&quot;
-         def method2 (self,someString): 
-            print &quot;Software Testing:&quot; + someString
-         &lt;/pre&gt;
-            &lt;ul&gt;
-                &lt;li&gt;Here we have defined method1 that prints &quot;Guru99.&quot;&lt;/li&gt;
-                &lt;li&gt;Another method we have defined is method2 that prints &quot;Software Testing&quot;+ SomeString. SomeString is
-                    the variable supplied by the calling method&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;p&gt;&lt;strong&gt;Step 3)&lt;/strong&gt; Everything in a class is indented, just like the code in the function, loop, if
-                statement, etc. Anything not indented is not in the class &lt;/p&gt;
-            &lt;p style=&quot;text-align: center; &quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/tutorial/15/071515_1030_PythonClass1.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img
-                        title=&quot;Python Class &amp;amp; Objects: Object Oriented Programming (OOP’s)&quot;
-                        alt=&quot;Python Class &amp;amp; Objects: Define Class, Inheritance - OOP Tutorial&quot;
-                        src=&quot;http://localhost:4000/img/python/tutorial/15/071515_1030_PythonClass1.png&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: About using &quot;self&quot; in Python &lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;The self-argument refers to the object itself. Hence the use of the word self. So inside this
-                    method, self will refer to the specific instance of this object that's being operated on.&lt;/li&gt;
-                &lt;li&gt;Self is the name preferred by convention by Pythons to indicate the first parameter of instance
-                    methods in Python. It is part of the Python syntax to access members of objects&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;p&gt;&lt;strong&gt;Step 4)&lt;/strong&gt; To make an object of the class &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         c = myClass()
-         &lt;/pre&gt;
-            &lt;p&gt;&lt;strong&gt;Step 5)&lt;/strong&gt; To call a method in a class &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;    c.method1()
-             c.method2(&quot; Testing is fun&quot;)
-         &lt;/pre&gt;
-            &lt;ul&gt;
-                &lt;li&gt;Notice that when we call the method1 or method2, we don't have to supply the self-keyword. That's
-                    automatically handled for us by the Python runtime. &lt;/li&gt;
-                &lt;li&gt;Python runtime will pass &quot;self&quot; value when you call an instance method on in instance, whether you
-                    provide it deliberately or not&lt;/li&gt;
-                &lt;li&gt;You just have to care about the non-self arguments&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;p&gt;&lt;strong&gt;Step 6) &lt;/strong&gt;Here is the complete code &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         # Example file for working with classes
-         class myClass():
-           def method1(self):
-               print(&quot;Guru99&quot;)
-                 
-           def method2(self,someString):    
-               print(&quot;Software Testing:&quot; + someString)
-           
-               
-         def main():           
-           # exercise the class methods
-           c = myClass ()
-           c.method1()
-           c.method2(&quot; Testing is fun&quot;)
-           
-         if __name__== &quot;__main__&quot;:
-           main()&lt;/pre&gt;
-            &lt;h2&gt;&lt;a id=&quot;3&quot;&gt;&lt;/a&gt;How Inheritance works&lt;/h2&gt;
-            &lt;p&gt;Inheritance is a feature used in object-oriented programming; it refers to defining a new class with less
-                or no modification to an existing class. The new class is called &lt;strong&gt;derived class&lt;/strong&gt; and from
-                one which it inherits is called the &lt;strong&gt;base&lt;/strong&gt;. Python supports inheritance; it also supports
-                &lt;strong&gt;multiple inheritances&lt;/strong&gt;. A class can inherit attributes and behavior methods from another
-                class called subclass or heir class. &lt;/p&gt;
-            &lt;p style=&quot;text-align: center; &quot;&gt;&lt;a href=&quot;/http://localhost:4000/img/python/tutorial/15/071515_1030_PythonClass2.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img
-                        title=&quot;Python Class &amp;amp; Objects: Object Oriented Programming (OOP’s)&quot;
-                        alt=&quot;Python Class &amp;amp; Objects: Define Class, Inheritance - OOP Tutorial&quot;
-                        src=&quot;http://localhost:4000/img/python/tutorial/15//071515_1030_PythonClass2.png&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-
-            &lt;p&gt;&lt;strong&gt;Python Inheritance Syntax&lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         class DerivedClass(BaseClass):
-             body_of_derived_class
-         &lt;/pre&gt;
-            &lt;p&gt;&lt;strong&gt;Step 1)&lt;/strong&gt; Run the following code &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         # Example file for working with classes
-         class myClass():
-           def method1(self):
-               print(&quot;Guru99&quot;)
-                 
-           
-         class childClass(myClass):
-           #def method1(self):
-                 #myClass.method1(self);
-                 #print (&quot;childClass Method1&quot;)
-                 
-           def method2(self):
-                 print(&quot;childClass method2&quot;)     
-                  
-         def main():           
-           # exercise the class methods
-           c2 = childClass()
-           c2.method1()
-           #c2.method2()
-         
-         if __name__== &quot;__main__&quot;:
-           main()
-         &lt;/pre&gt;
-            &lt;p&gt;Notice that the in childClass, method1 is not defined but it is derived from the parent myClass. The
-                output is &quot;Guru99.&quot; &lt;/p&gt;
-            &lt;p&gt;&lt;strong&gt;Step 2)&lt;/strong&gt; Uncomment Line # 8 &amp;amp; 10. Run the code &lt;/p&gt;
-            &lt;p&gt;Now, the method 1 is defined in the childClass and output &quot;childClass Method1&quot; is correctly shown. &lt;/p&gt;
-            &lt;p&gt;&lt;strong&gt;Step 3)&lt;/strong&gt; Uncomment Line #9. Run the code &lt;/p&gt;
-            &lt;p&gt;You can a method of the parent class using the syntax &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;	ParentClassName.MethodName(self)
-         &lt;/pre&gt;
-            &lt;p&gt;In our case, we call, myClass.method1(self) and Guru99 is printed as expected &lt;/p&gt;
-            &lt;p&gt;&lt;strong&gt;Step 4&lt;/strong&gt;) Uncomment Line #19. Run the code. &lt;/p&gt;
-            &lt;p&gt;Method 2 of the child class is called and &quot;childClass method2&quot; is printed as expected.&lt;/p&gt;
-
-            &lt;h2&gt;&lt;a id=&quot;4&quot;&gt;&lt;/a&gt;Python Constructors&lt;/h2&gt;
-            &lt;p&gt;A constructor is a class function that instantiates an object to predefined values. &lt;/p&gt;
-            &lt;p&gt;It begins with a double underscore (_). It __init__() method &lt;/p&gt;
-            &lt;p&gt;In below example we are taking name of the user using constructor. &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         class User:
-             name = &quot;&quot;
-         
-             def __init__(self, name):
-                 self.name = name
-         
-             def sayHello(self):
-                 print(&quot;Welcome to Guru99, &quot; + self.name)
-         
-         User1 = User(&quot;Alex&quot;)
-         User1.sayHello()
-         &lt;/pre&gt;
-            &lt;p&gt;Output will be: &lt;/p&gt;
-            &lt;p&gt;Welcome to Guru99, Alex &lt;/p&gt;
-            &lt;p&gt;&lt;b&gt;Python 2 Example&lt;/b&gt; &lt;/p&gt;
-            &lt;p&gt;Above codes are Python 3 examples, If you want to run in Python 2 please consider following code. &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         # How to define Python classes
-         # Example file for working with classes
-         class myClass():
-           def method1(self):
-               print &quot;Guru99&quot;
-                 
-           def method2(self,someString):    
-               print &quot;Software Testing:&quot; + someString
-               
-            
-               
-         def main():           
-           # exercise the class methods
-           c = myClass ()
-           c.method1()
-           c.method2(&quot; Testing is fun&quot;)
-           
-         if __name__== &quot;__main__&quot;:
-           main()
-         
-         
-         #How Inheritance works
-         # Example file for working with classes
-         class myClass():
-           def method1(self):
-               print &quot;Guru99&quot;
-                 
-               
-         class childClass(myClass):
-           #def method1(self):
-                 #myClass.method1(self);
-                 #print &quot;childClass Method1&quot; 
-                 
-           def method2(self):
-                 print &quot;childClass method2&quot;     
-                  
-         def main():           
-           # exercise the class methods
-           c2 = childClass()
-           c2.method1()
-           #c2.method2()
-         
-         if __name__== &quot;__main__&quot;:
-           main()
-         &lt;/pre&gt;
-            &lt;h3&gt;Summary:&lt;/h3&gt;
-            &lt;p&gt;&quot;Class&quot; is a logical grouping of functions and data. Python class provides all the standard features of
-                Object Oriented Programming. &lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;Class inheritance mechanism&lt;/li&gt;
-                &lt;li&gt;A derived class that override any method of its base class&lt;/li&gt;
-                &lt;li&gt;A method can call the method of a base class with the same name&lt;/li&gt;
-                &lt;li&gt;Python Classes are defined by keyword &lt;strong&gt;&quot;class&quot;&lt;/strong&gt; itself&lt;/li&gt;
-                &lt;li&gt;Inside classes, you can define functions or methods that are part of the class&lt;/li&gt;
-                &lt;li&gt;Everything in a class is indented, just like the code in the function, loop, if statement, etc.&lt;/li&gt;
-                &lt;li&gt;The self argument in Python refers to the object itself. Self is the name preferred by convention by
-                    Pythons to indicate the first parameter of instance methods in Python&lt;/li&gt;
-                &lt;li&gt;
-                    &lt;div&gt;Python runtime will pass &quot;self&quot; value automatically when you call an instance method on in
-                        instance, whether you provide it deliberately or not&lt;/div&gt;
+                &lt;li&gt;Code Line # 1: We begin with &quot;import calendar&quot; which will import all the classes of this module.
                 &lt;/li&gt;
-                &lt;li&gt;In Python, a class can inherit attributes and behavior methods from another class called subclass or
-                    heir class. &lt;/li&gt;
+                &lt;li&gt;Code Line # 3: c= calendar.TextCalendar(calendar.SUNDAY) tells the interpreter to create a text
+                    calendar. Start of the month will be Sunday. In Python, you can format the calendar as you can
+                    change the day of the month to begin with&lt;/li&gt;
+                &lt;li&gt;Code Line # 4: str= c.formatmonth(2025,1) We are creating calendar for the year 2025, Month 1 –
+                    January&lt;/li&gt;
+                &lt;li&gt;Code Line # 5: print str will print the output.&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;p&gt;Let's quickly change the value from Sunday to Thursday and check the output &lt;/p&gt;
+            &lt;p style=&quot;text-align: center; &quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/tutorial/18/Python16.2.png&quot;
+                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img title=&quot;Calendar in Python&quot;
+                        alt=&quot;Python CALENDAR Tutorial with Example&quot; src=&quot;http://localhost:4000/img/python/tutorial/18/Python16.2.png&quot;&gt;&lt;/a&gt; &lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Step 2)&lt;/strong&gt; You can also print out the Calendar in HTML format, this feature is helpful for
+                developer if they want to make any changes in the look and feel of calendar &lt;/p&gt;
+            &lt;p style=&quot;text-align: center; &quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/tutorial/18/Python16.3.png&quot;
+                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img title=&quot;Calendar in Python&quot;
+                        alt=&quot;Python CALENDAR Tutorial with Example&quot; src=&quot;http://localhost:4000/img/python/tutorial/18/Python16.3.png&quot;&gt;&lt;/a&gt; &lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Step 3)&lt;/strong&gt; Loops over the days of a month by using c.itermonthday (2025,4), it will fetch
+                the total number of days for that month.&lt;/p&gt;
+
+            &lt;p style=&quot;text-align: center; &quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/tutorial/18/Python16.4.png&quot;
+                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img title=&quot;Calendar in Python&quot;
+                        alt=&quot;Python CALENDAR Tutorial with Example&quot; src=&quot;http://localhost:4000/img/python/tutorial/18/Python16.4.png&quot;&gt;&lt;/a&gt; &lt;/p&gt;
+            &lt;ul&gt;
+                &lt;li&gt;When you execute the code to get the total number of days for a specific month say &quot;April&quot; then you
+                    will get 30 days in the output but you will also see some zeros along with these days at the
+                    beginning and sometimes at the end of it. &lt;/li&gt;
+                &lt;li&gt;Zeros in the output mean that the day of the week is in an overlapping month, which means it does
+                    not belong to that month.&lt;/li&gt;
+                &lt;li&gt;These zeros appears in output because, in your code you have mentioned day (Thursday), so when you
+                    call function &quot;c.itermonthdays&quot;, it will start counting days from Thursday and your Thursday may not
+                    start with date 1&lt;sup&gt;st&lt;/sup&gt; of April it might be 28&lt;sup&gt;th &lt;/sup&gt;or 29&lt;sup&gt;th&lt;/sup&gt; of March, so
+                    when you execute the code it will start counting days from 28&lt;sup&gt;th&lt;/sup&gt; of march and any days
+                    after that till 1&lt;sup&gt;st&lt;/sup&gt; of April. These days will be counted as zero and in the output you
+                    will see these zeroes and same is applicable to the end of the month.&lt;/li&gt;
+                &lt;li&gt;So except date 1-30 all the dates from previous as well as post month will appear in the output as
+                    zeroes. &lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;p&gt;&lt;strong&gt;Step 4)&lt;/strong&gt; You can fetch the data from the local system, like months or weekdays, etc &lt;/p&gt;
+            &lt;p style=&quot;text-align: center; &quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/tutorial/18/Python16.5.png&quot;
+                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img title=&quot;Calendar in Python&quot;
+                        alt=&quot;Python CALENDAR Tutorial with Example&quot; src=&quot;http://localhost:4000/img/python/tutorial/18/Python16.5.png&quot;&gt;&lt;/a&gt; &lt;/p&gt;
+            &lt;ul&gt;
+                &lt;li&gt;The output over here shows that we have printed out the months name from the local system. Likewise,
+                    you can also fetch the weekdays name as shown below&lt;/li&gt;
+                &lt;li&gt;
+                    &lt;div&gt;The output will depend on the local system, suppose if your local system is some other
+                        countries then it will give the output as per the local settings of that country. Here we have
+                        months so it won't be a difference but if it is a week or day, it will certainly differ.&lt;/div&gt;
+                    &lt;p&gt; &lt;/p&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;p style=&quot;text-align: center; &quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/tutorial/18/Python16.6.png&quot;
+                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img title=&quot;Calendar in Python&quot;
+                        alt=&quot;Python CALENDAR Tutorial with Example&quot; src=&quot;http://localhost:4000/img/python/tutorial/18/Python16.6.png&quot;&gt;&lt;/a&gt; &lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Step 5)&lt;/strong&gt; You can fetch the list of the specific day for a whole year. For example, there
+                is an audit day on every first Monday of a week. You want to know the date of first Monday for each
+                month. You can use this code&lt;/p&gt;
+
+            &lt;p style=&quot;text-align: center; &quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/tutorial/18/Python16.7.png&quot;
+                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img title=&quot;Calendar in Python&quot;
+                        alt=&quot;Python CALENDAR Tutorial with Example&quot; src=&quot;http://localhost:4000/img/python/tutorial/18/Python16.7.png&quot;&gt;&lt;/a&gt; &lt;/p&gt;
+            &lt;ul&gt;
+                &lt;li&gt;mycal = calendar.monthcalendar(2025, month) will create calendar for the month&lt;/li&gt;
+                &lt;li&gt;Set variables week1 and week2 to the First and second week of the calendar&lt;/li&gt;
+                &lt;li&gt;Check if Week 1 contains Monday, set audit day&lt;/li&gt;
+                &lt;li&gt;Else set audit day as the first Monday in week 2&lt;/li&gt;
+                &lt;li&gt;The output shows the date for the first Monday that falls in that month. &lt;/li&gt;
+                &lt;li&gt;The length of this Cal object is going to be a certain length, based on how many weeks there in the
+                    month. In our case, it's going to be one or two as such first Monday of the week will be in the
+                    first week most often but if not then consider the second week. Let see in detail why we also
+                    consider the second week.&lt;/li&gt;
+                &lt;li&gt;Here we are using the calendar's constant Monday, the calendar object gives you constants that
+                    represent Sunday, Monday, Tuesday, so on, so forth. We've seen these previously. So, if in week one
+                    the day represented by the Monday constant is not equal to 0, remember zeros means days that belong
+                    to another month. So, in this case, if it's zero, it's going to be a Monday that belongs to the
+                    previous month. But if the first Monday is not equal to 0, that means that my audit day will be
+                    within the week one. Otherwise, if that is 0, then the first Monday isn't in the first week of the
+                    month, it's gotta be in the second. &lt;/li&gt;
+                &lt;li&gt;So, then I say okay, set my audit day variable to be the Monday represented by Week two. So, audit
+                    day is going to come back with whatever the day is for either the first or second week. &lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;p&gt;Here is the complete code &lt;/p&gt;
+            &lt;p&gt;&lt;b&gt;Python 2 Example&lt;/b&gt; &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+     import calendar
+     # Create a plain text calendar
+     c = calendar.TextCalendar(calendar.THURSDAY)
+     str = c.formatmonth(2025, 1, 0, 0)
+     print str
+     
+     # Create an HTML formatted calendar
+     hc = calendar.HTMLCalendar(calendar.THURSDAY)
+     str = hc.formatmonth(2025, 1)
+     print str
+     # loop over the days of a month
+     # zeroes indicate that the day of the week is in a next month or overlapping month
+     for i in c.itermonthdays(2025, 4):
+         print i
+     
+         # The calendar can give info based on local such a names of days and months (full and abbreviated forms)
+         for name in calendar.month_name:
+             print name
+         for day in calendar.day_name:
+             print day
+         # calculate days based on a rule: For instance an audit day on the second Monday of every month
+         # Figure out what days that would be for each month, we can use the script as shown here
+         for month in range(1, 13):
+             # It retrieves a list of weeks that represent the month
+             mycal = calendar.monthcalendar(2025, month)
+             # The first MONDAY has to be within the first two weeks
+             week1 = mycal[1]
+             week2 = mycal[2]
+             if week1[calendar.MONDAY] != 0:
+                 auditday = week1[calendar.MONDAY]
+             else:
+             # if the first MONDAY isn't in the first week, it must be in the second week
+             auditday = week2[calendar.MONDAY]
+         print &quot;%10s %2d&quot; % (calendar.month_name[month], auditday)
+            &lt;/pre&gt;
+            &lt;p&gt;&lt;b&gt;Python 3 Example&lt;/b&gt; &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+     import calendar
+     # Create a plain text calendar
+     c = calendar.TextCalendar(calendar.THURSDAY)
+     str = c.formatmonth(2025, 1, 0, 0)
+     print(str)
+     
+     # Create an HTML formatted calendar
+     hc = calendar.HTMLCalendar(calendar.THURSDAY)
+     str = hc.formatmonth(2025, 1)
+     print(str)
+     # loop over the days of a month
+     # zeroes indicate that the day of the week is in a next month or overlapping month
+     for i in c.itermonthdays(2025, 4):
+         print(i)
+     
+         # The calendar can give info based on local such a names of days and months (full and abbreviated forms)
+         for name in calendar.month_name:
+             print(name)
+         for day in calendar.day_name:
+             print(day)
+         # calculate days based on a rule: For instance an audit day on the second Monday of every month
+         # Figure out what days that would be for each month, we can use the script as shown here
+         for month in range(1, 13):
+             # It retrieves a list of weeks that represent the month
+             mycal = calendar.monthcalendar(2025, month)
+             # The first MONDAY has to be within the first two weeks
+             week1 = mycal[1]
+             week2 = mycal[2]
+             if week1[calendar.MONDAY] != 0:
+                 auditday = week1[calendar.MONDAY]
+             else:
+             # if the first MONDAY isn't in the first week, it must be in the second week
+             auditday = week2[calendar.MONDAY]
+         print(&quot;%10s %2d&quot; % (calendar.month_name[month], auditday))
+             &lt;/pre&gt;
+            &lt;p&gt;&lt;strong&gt;Summary:&lt;/strong&gt; &lt;/p&gt;
+            &lt;ul&gt;
+                &lt;li&gt;In Python, you can format the calendar the way you want as you can change the day of the month to
+                    begin&lt;/li&gt;
+                &lt;li&gt;Print out the Calendar in HTML format&lt;/li&gt;
+                &lt;li&gt;Fetch the data from the local system, like months or weekdays&lt;/li&gt;
+                &lt;li&gt;Fetch the list of the specific day for a whole year&lt;/li&gt;
             &lt;/ul&gt;
 
         &lt;/div&gt;
@@ -2712,21 +2230,503 @@ if __name__ == &quot;__main__&quot;:
    
     &lt;div class=&quot;row&quot; &gt;
         &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/PythonClass&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot; 
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/PythonDateTime&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot; 
                 &gt;
                 &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
             &lt;/a&gt;
         &lt;/div&gt;
      
         &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot; &gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/PythonExpressions&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/PythonList&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;
                  &gt;Next Lesson
                 &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
             &lt;/a&gt;
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python OOPs: Class, Object, Inheritance and Constructor with Example</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry><entry><title type="html">11. Operatos in Python</title><link href="http://localhost:4000/blog/PyhtonOperators" rel="alternate" type="text/html" title="11. Operatos in Python" /><published>2019-09-28T00:00:00+05:30</published><updated>2019-09-28T00:00:00+05:30</updated><id>http://localhost:4000/blog/PyhtonOperators</id><content type="html" xml:base="http://localhost:4000/blog/PyhtonOperators">&lt;section class=&quot;Ptutorial11&quot;&gt;
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python CALENDAR Tutorial with Example</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry><entry><title type="html">19. List in Python</title><link href="http://localhost:4000/blog/PythonList" rel="alternate" type="text/html" title="19. List in Python" /><published>2019-09-30T00:00:00+05:30</published><updated>2019-09-30T00:00:00+05:30</updated><id>http://localhost:4000/blog/PythonList</id><content type="html" xml:base="http://localhost:4000/blog/PythonList">&lt;section class=&quot;Ptutorial19&quot;&gt;
+    &lt;div class=&quot;item-page&quot; itemscope=&quot;&quot; itemtype=&quot;https://schema.org/Article&quot;&gt;
+        &lt;meta itemprop=&quot;inLanguage&quot; content=&quot;en-GB&quot;&gt;
+        &lt;div class=&quot;page-header&quot;&gt;
+            &lt;h2 itemprop=&quot;headline&quot;&gt; Python List: Comprehension, Apend, Sort, Length, Reverse EXAMPLES &lt;/h2&gt;
+        &lt;/div&gt;
+
+        &lt;div itemprop=&quot;articleBody&quot;&gt;
+            &lt;h2&gt;&lt;a id=&quot;1&quot;&gt;&lt;/a&gt;What is a Python List?&lt;/h2&gt;
+            &lt;p&gt;A list is exactly what it sounds like, a container that contains different Python objects, which could be
+                integers, words, values, etc. It is the equivalent of an array in other programming languages. It is
+                represented by square brackets (and this is one of the attributes that differentiates it from tuples,
+                which are separated by parentheses). It is also mutable, that is, it can be modified or updated; unlike
+                tuples, which are immutable. &lt;/p&gt;
+            &lt;p&gt;In this python tutorial, you will learn: &lt;/p&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;#1&quot;&gt;What is a Python List? &lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#2&quot;&gt;Examples of Python lists: &lt;/a&gt; &lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#3&quot;&gt;Accessing values within lists &lt;/a&gt; &lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#4&quot;&gt;List slicing &lt;/a&gt; &lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#5&quot;&gt;Updating lists &lt;/a&gt; &lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#6&quot;&gt;Deleting list elements &lt;/a&gt; &lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#7&quot;&gt;Appending list elements &lt;/a&gt; &lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#8&quot;&gt;List built-in functions (methods) &lt;/a&gt; &lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#9&quot;&gt;Looping through lists &lt;/a&gt; &lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#10&quot;&gt;List comprehensions &lt;/a&gt; &lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;h2&gt;&lt;a id=&quot;2&quot;&gt;&lt;/a&gt;Examples of Python lists:&lt;/h2&gt;
+            &lt;p&gt;Python lists can be homogeneous, meaning that they can contain the same type of objects; or
+                heterogeneous, including different types of objects. &lt;/p&gt;
+            &lt;p&gt;Examples of homogeneous lists include: &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+         list of integers =  [1, 2, 3, 8, 33]
+         list of animals = ['dog', 'cat', 'goat']
+         list of names = ['John', 'Travis', 'Sheila']
+         list of floating numbers = [2.2, 4.5, 9.8, 10.4]
+         &lt;/pre&gt;
+            &lt;p&gt;Examples of heterogeneous lists include: &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+         [2, 'cat', 34.33, 'Travis']
+         [2.22, 33, 'pen']
+         &lt;/pre&gt;
+            &lt;h2&gt;&lt;a id=&quot;3&quot;&gt;&lt;/a&gt;Accessing values within lists&lt;/h2&gt;
+            &lt;p&gt;To access values within lists, the index of the objects inside the lists can be used. An index in Python
+                lists refers to the position of an element within an ordered list. For example: &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+         list = [3, 22, 30, 5.3, 20]
+         &lt;/pre&gt;
+            &lt;ul&gt;
+                &lt;li&gt;The first value in the list above, 3, has an index of 0&lt;/li&gt;
+                &lt;li&gt;The second value, 22, has an index of 1&lt;/li&gt;
+                &lt;li&gt;The third value, 30, has an index of 2&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;p&gt;and so on. To access each of the values from the list, you would use: &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+         list[0] to access 3
+         list[1] to access 22
+         list[2] to access 30
+         list[3] to access 5.3
+         list[4] to access 20
+         &lt;/pre&gt;
+            &lt;p&gt;The last member of a list can also be accessed by using the index -1. For example, &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;list[-1] = 20
+         &lt;/pre&gt;
+            &lt;h2&gt;&lt;a id=&quot;4&quot;&gt;&lt;/a&gt;List slicing&lt;/h2&gt;
+            &lt;p&gt;List slicing is the method of splitting a subset of a list, and the indices of the list objects are also
+                used for this. For example, using the same list example above; &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+         list[:] = [3, 22, 30, 5.3, 20] (all the members of the list];
+         list[1:3] = [22, 30] (members of the list from index 1 to index 3, without the member at index 3);
+         list[:4] = [3, 22, 30, 5.3] (members of the list from index 0 to index 4, without the member at index 4)
+         list[2:-1] = [30, 5.3] (members of the list from index 2, which is the third element, to the second to the last element in the list, which is 5.3).
+         &lt;/pre&gt;
+            &lt;p&gt;Python lists are upper-bound exclusive, and this means that the last index during list slicing is usually
+                ignored. That is why &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+         list[2:-1] = [30, 5.3] &lt;/pre&gt;
+            , and not [30, 5.3, 20]. The same goes for all the other list slicing examples given above.
+            &lt;h2&gt;&lt;a id=&quot;5&quot;&gt;&lt;/a&gt;Updating lists&lt;/h2&gt;
+            &lt;p&gt;Let's say you have a list = [physics, chemistry, mathematics], and you want to change the list to
+                [biology, chemistry, mathematics], effectively changing the member at index 0. That can easily be done
+                by assigning that index to the new member you want. &lt;/p&gt;
+            &lt;p&gt;That is, &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+         list = [physics, chemistry, mathematics]
+         list[0] = biology
+         print(list)
+            &lt;/pre&gt;
+            &lt;p&gt;Output: [biology, chemistry, mathematics] &lt;/p&gt;
+            &lt;p&gt;This replaces the member at index 0 (physics) with the new value you want (chemistry). This can be done
+                for any member or subset of the list you want to change. &lt;/p&gt;
+            &lt;p&gt;To give another example; let's say you have a list called integers and containing the numbers [2, 5, 9,
+                20, 27]. To replace 5 in that list with 10, you can do that with: &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+         integers = [2, 5, 9, 20, 27]
+         integers[1] = 10
+         print(integers)
+         
+         &amp;gt;&amp;gt;&amp;gt; [2, 10, 9, 20, 27]
+         &lt;/pre&gt;
+            &lt;p&gt;To replace the last member of the list of integers, which is 27, with a free number like 30.5, you would
+                use: &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+         integers = [2, 5, 9, 20, 27]
+         integers[-1] = 30.5
+         print(integers)
+         
+         &amp;gt;&amp;gt;&amp;gt; [2, 5, 9, 20, 30.5]
+         &lt;/pre&gt;
+            &lt;h2&gt;&lt;a id=&quot;6&quot;&gt;&lt;/a&gt;Deleting list elements&lt;/h2&gt;
+            &lt;p&gt;There are 3 Python methods for deleting list elements: list.remove(), list.pop(), and del operator.
+                Remove method takes the particular element to be removed as an argument while pop and del take the index
+                of the element to be removed as an argument. For example: &lt;/p&gt;
+            &lt;p&gt; list = [3, 5, 7, 8, 9, 20] &lt;/p&gt;
+            &lt;p&gt;To delete 3 (the 1st element) from the list, you could use:&lt;/p&gt;
+            &lt;ul&gt;
+                &lt;li&gt; list.remove(3) or&lt;/li&gt;
+                &lt;li&gt; list.pop[0], or&lt;/li&gt;
+                &lt;li&gt; del list[0]&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;p&gt;To delete 8, the item at index 3, from the list, you could use: &lt;/p&gt;
+            &lt;ul&gt;
+                &lt;li&gt; list.remove(8), or&lt;/li&gt;
+                &lt;li&gt; list.pop[3]&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;h2&gt;&lt;a id=&quot;7&quot;&gt;&lt;/a&gt;Appending list elements&lt;/h2&gt;
+            &lt;p&gt;To append elements to a list, the append method is used, and this adds the element to the end of the
+                list. &lt;/p&gt;
+            &lt;p&gt;For example: &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+             list_1 = [3, 5, 7, 8, 9, 20]
+             list_1.append(3.33)
+             print(list_1)
+         
+             &amp;gt;&amp;gt;&amp;gt; list_1 = [3, 5, 7, 8, 9, 20, 3.33]
+         
+             list_1.append(&quot;cats&quot;)
+             print(list_1)
+             &amp;gt;&amp;gt;&amp;gt; list_1 = [3, 5, 7, 8, 9, 20, 3.33, &quot;cats&quot;]
+         &lt;/pre&gt;
+            &lt;h2&gt;&lt;a id=&quot;8&quot;&gt;&lt;/a&gt;List built-in functions (methods)&lt;/h2&gt;
+            &lt;p&gt;The following is a list of list built-in functions and methods with their descriptions: &lt;/p&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;strong&gt;len(list):&lt;/strong&gt; this gives the length of the list as output. For example:&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;numbers = [2, 5, 7, 9]
+         print(len(numbers))
+         &amp;gt;&amp;gt;&amp;gt; 4
+         &lt;/pre&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;strong&gt;max(list):&lt;/strong&gt; returns the item in the list with the maximum value. For example:&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;numbers = [2, 5, 7, 9]
+         print(max(numbers))
+         &amp;gt;&amp;gt;&amp;gt; 9
+         &lt;/pre&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;strong&gt;min(list):&lt;/strong&gt; returns the item in the list with the maximum value. For example:&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;numbers = [2, 5, 7, 9]
+         print(min(numbers))
+         &amp;gt;&amp;gt;&amp;gt; 2
+         &lt;/pre&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;strong&gt;list(tuple):&lt;/strong&gt; converts a tuple object a list. For example;&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;animals = (cat, dog, fish, cow)
+         print(list(animals))
+         &amp;gt;&amp;gt;&amp;gt; [cat, dog, fish, cow]
+         &lt;/pre&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;strong&gt;list.append&lt;/strong&gt;(element): appends the element to the list. For example;&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;numbers = [2, 5, 7, 9]
+         numbers.append(15)
+         print(numbers)
+         &amp;gt;&amp;gt;&amp;gt; [2, 5, 7, 9, 15]
+         &lt;/pre&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;strong&gt;list.pop&lt;/strong&gt;(index): removes the element at the specified index from the list. For
+                    example;&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;numbers = [2, 5, 7, 9, 15]
+         numbers.pop(2)
+         print(numbers)
+         &amp;gt;&amp;gt;&amp;gt; [2, 5, 9, 15]
+         &lt;/pre&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;strong&gt;list.remove&lt;/strong&gt;(element):deletes the element from the list.For example;&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;values = [2, 5, 7, 9]
+         values.remove(2)
+         print(values)
+         &amp;gt;&amp;gt;&amp;gt; [5, 7, 9]
+         &lt;/pre&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;strong&gt;list.reverse&lt;/strong&gt;(): reverses the objects of the list. For example;&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;values = [2, 5, 7, 10]
+         values.reverse()
+         print(values)
+         &amp;gt;&amp;gt;&amp;gt; [10, 7, 5, 2]
+         &lt;/pre&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;strong&gt;list.index&lt;/strong&gt;(element): to get the index value of an element within the list. For
+                    example;&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;animals = ['cat', 'dog', 'fish', 'cow', 'goat']
+         fish_index = animals.index('fish')
+         print(fish_index)
+         &amp;gt;&amp;gt;&amp;gt; 2
+         &lt;/pre&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;strong&gt;sum&lt;/strong&gt;(list): to get the sum of all the values in the list, if the values are all
+                    numbers (integers or decimals). For example;&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;values = [2, 5, 10]
+         sum_of_values = sum(values)
+         print(sum_of_values)
+         
+         &amp;gt;&amp;gt;&amp;gt; 17
+         &lt;/pre&gt;
+            &lt;p&gt;If the list contains any element that is not a number, such as a string, the sum method would not work.
+                You would get an error saying: &quot;&lt;strong&gt;TypeError&lt;/strong&gt;: unsupported operand type(s) for +: 'int' and
+                'str'&quot; &lt;/p&gt;
+            &lt;ul&gt;
+                &lt;li&gt;list.sort(): to arrange a list of integers, floating point numbers, or strings, in ascending or
+                    descending order. For example: &lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;values = [1, 7, 9, 3, 5]
+         # To sort the values in ascending order:
+         values.sort()
+         print(values)
+         
+         &amp;gt;&amp;gt;&amp;gt; [1, 3, 5, 7, 9]
+         &lt;/pre&gt;
+            &lt;p&gt;Another example: &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+         values = [2, 10, 7, 14, 50]
+         # To sort the values in descending order:
+         values.sort(reverse = True)
+         print(values)
+         
+         &amp;gt;&amp;gt;&amp;gt; [50, 14, 10, 7, 2]
+         &lt;/pre&gt;
+            &lt;p&gt;A list of strings can also be sorted, either alphabetically, or by length of the strings. For example;
+            &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+         # to sort the list by length of the elements
+         strings = ['cat', 'mammal', 'goat', 'is']
+         sort_by_alphabet = strings.sort()
+         sort_by_length = strings.sort(key = len)
+         print(sort_by_alphabet)
+         print(sort_by_length)
+         
+         &amp;gt;&amp;gt;&amp;gt; ['cat', 'goat', 'is', 'mammal']
+                 ['is', 'cat', 'goat', 'mammal']
+         &lt;/pre&gt;
+            &lt;p&gt;We can sort the same list alphabetically by using 'strings. &lt;/p&gt;
+            &lt;h2&gt;&lt;a id=&quot;9&quot;&gt;&lt;/a&gt;Looping through lists&lt;/h2&gt;
+            &lt;p&gt;Looping through lists can be done in just the same way as any other looping function in Python. This way,
+                a method can be performed on multiple elements of a list at the same time. For example: &lt;/p&gt;
+            &lt;p&gt;list = [10, 20, 30, 40, 50, 60, 70]. &lt;/p&gt;
+            &lt;p&gt;To loop through all the elements of this list, and let's say, add 10 to each element: &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+                 for elem in list:
+                 elem = elem + 5
+                 print(elem)
+             
+             &amp;gt;&amp;gt;&amp;gt;&amp;gt;15
+                 25
+                 35
+                 45
+                 55
+                 65
+                 75
+         &lt;/pre&gt;
+            &lt;p&gt;To loop through the first three elements of the list, and delete all of them; &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+             for elem in list[:3]:
+             list.remove(elem)
+         
+             &amp;gt;&amp;gt;&amp;gt;list = [40, 50, 60, 70]
+         &lt;/pre&gt;
+            &lt;p&gt;To loop through the 3&lt;sup&gt;rd&lt;/sup&gt; (index 2) to last element on the list, and append them to a new list
+                called new_list: &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+             new_list = []	
+             for elem in list[2:]:
+                 new_list.append(elem)
+                 print(“New List: {}”.format(new_list))
+             
+            Output:
+             New List: [30, 40, 50, 60, 70]
+         &lt;/pre&gt;
+            &lt;p&gt;In this way, any or method or function can be applied to the members of a list to perform a particular
+                operation. You can either loop through all the members of the list, or loop through a subset of the list
+                by using list slicing. &lt;/p&gt;
+            &lt;h2&gt;&lt;a id=&quot;10&quot;&gt;&lt;/a&gt;List Comprehensions&lt;/h2&gt;
+            &lt;p&gt;List comprehensions are Python functions that are used for creating new sequences (such as lists,
+                dictionaries, etc.) using sequences that have already been created. They help to reduce longer loops and
+                make your code easier to read and maintain. &lt;/p&gt;
+            &lt;p&gt;For example; let's say you wanted to create a list which contains the squares of all the numbers from 1
+                to 9: &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+             list_of squares = []
+             for int in range(1, 10):
+                 square = int ** 2
+                 list_of_squares.append(square)
+         
+             print(list_of_squares)
+         
+         List_of_squares using for loop:
+         
+             [1, 4, 9, 16, 25, 36, 49, 64, 81]
+         &lt;/pre&gt;
+            &lt;p&gt;To do the same thing with list comprehensions: &lt;/p&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;
+             list_of_squares_2 = [int**2 for int in range(1, 10)]
+         
+             print('List of squares using list comprehension: {}'.format(list_of_squares_2))
+         
+         Output using list comprehension:
+         
+             [1, 4, 9, 16, 25, 36, 49, 64, 81]
+         &lt;/pre&gt;
+            &lt;p&gt;As seen above, writing the code using list comprehensions is much shorter than using traditional for
+                loops, and is also faster. This is just one example of using list comprehensions in place of for loops,
+                but this can be replicated and used in a lot of places where for loops can also be used. Sometimes,
+                going with a for loop is the better option, especially if the code is complex, but in many cases, list
+                comprehensions will make your coding easier and faster. &lt;/p&gt;
+            &lt;p&gt;Below is a table containing some list functions and methods, and their descriptions. &lt;/p&gt;
+            &lt;h3&gt;Built-in Functions&lt;/h3&gt;
+            &lt;table class=&quot;table table-striped table-bordered&quot;&gt;
+                &lt;tbody&gt;
+                    &lt;tr&gt;
+                        &lt;td width=&quot;50%&quot;&gt;FUNCTION &lt;/td&gt;
+                        &lt;td&gt;DESCRIPTION &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Round() &lt;/td&gt;
+                        &lt;td&gt;Rounds off the number passed as an argument to a specified number of digits and returns the
+                            floating point value &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Min() &lt;/td&gt;
+                        &lt;td&gt;return minimum element of a given list &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Max() &lt;/td&gt;
+                        &lt;td&gt;return maximum element of a given list &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;len() &lt;/td&gt;
+                        &lt;td&gt;Returns the length of the list &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Enumerate() &lt;/td&gt;
+                        &lt;td&gt;This built-in function generates both the values and indexes of items in an iterable, so we
+                            don't need to count manually &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Filter() &lt;/td&gt;
+                        &lt;td&gt;tests if each element of a list true or not &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Lambda &lt;/td&gt;
+                        &lt;td&gt;An expression that can appear in places where a def (for creating functions) is not
+                            syntactic, inside a list literal or a function's call arguments &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Map() &lt;/td&gt;
+                        &lt;td&gt;returns a list of the results after applying the given function to each item of a given
+                            iterable &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Accumulate() &lt;/td&gt;
+                        &lt;td&gt;apply a particular function passed in its argument to all of the list elements returns a
+                            list containing the intermediate results &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Sum() &lt;/td&gt;
+                        &lt;td&gt;Returns the sum of all the numbers in the list &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Cmp() &lt;/td&gt;
+                        &lt;td&gt;This is used for comparing two lists and returns 1 if the first list is greater than the
+                            second list. &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Insert &lt;/td&gt;
+                        &lt;td&gt;Insert element to list at particular position &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+            &lt;h3&gt;List Methods&lt;/h3&gt;
+            &lt;table class=&quot;table table-striped table-bordered&quot;&gt;
+                &lt;tbody&gt;
+                    &lt;tr&gt;
+                        &lt;td width=&quot;50%&quot;&gt;FUNCTION &lt;/td&gt;
+                        &lt;td&gt;DESCRIPTION &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Append() &lt;/td&gt;
+                        &lt;td&gt;Adds a new item to the end of the list &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Clear() &lt;/td&gt;
+                        &lt;td&gt;Removes all items from the list &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Copy() &lt;/td&gt;
+                        &lt;td&gt;Returns a copy of the original list &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Extend() &lt;/td&gt;
+                        &lt;td&gt;Add many items to the end of the list &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Count() &lt;/td&gt;
+                        &lt;td&gt;Returns the number of occurrences of a particular item in a list &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Index() &lt;/td&gt;
+                        &lt;td&gt;Returns the index of a specific element of a list &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Pop() &lt;/td&gt;
+                        &lt;td&gt;Deletes item from the list at particular index (delete by position) &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Remove() &lt;/td&gt;
+                        &lt;td&gt;Deletes specified item from the list (delete by value) &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Reverse() &lt;/td&gt;
+                        &lt;td&gt;In-place reversal method which reverses the order of the elements of the list &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+            &lt;h2&gt;Summary&lt;/h2&gt;
+            &lt;ul&gt;
+                &lt;li&gt;A list is exactly what it sounds like, a container that contains different Python objects, which
+                    could be integers, words, values, etc.&lt;/li&gt;
+                &lt;li&gt;Python lists can be homogeneous, means they can contain the same type of objects; or heterogeneous,
+                    containing different types of objects.&lt;/li&gt;
+                &lt;li&gt;To access values within lists, the index of the objects inside the lists can be used.&lt;/li&gt;
+                &lt;li&gt;List slicing is the method of splitting a subset of a list, and the indices of the list objects are
+                    also used for this.&lt;/li&gt;
+                &lt;li&gt;Three methods for deleting list elements are : 1)list.remove(), 2)list.pop(), and 3)del operator
+                &lt;/li&gt;
+                &lt;li&gt;Append method is used to append elements. This adds the element to the end of the list. &lt;/li&gt;
+                &lt;li&gt;Looping method of Python program can be performed on multiple elements of a data list at the same
+                    time. &lt;/li&gt;
+                &lt;li&gt;List comprehensions are Python functions that are used for creating new sequences (such as lists,
+                    dictionaries, etc.) using sequences that have already been created. &lt;/li&gt;
+            &lt;/ul&gt;
+
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/section&gt;
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr&gt;
+   
+    &lt;div class=&quot;row&quot; &gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/PythonCalendar&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot; 
+                &gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot; &gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/PythonReadNWriteFile&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;
+                 &gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;       
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python List: Comprehension, Apend, Sort, Length, Reverse EXAMPLES</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry><entry><title type="html">11. Operatos in Python</title><link href="http://localhost:4000/blog/PyhtonOperators" rel="alternate" type="text/html" title="11. Operatos in Python" /><published>2019-09-28T05:30:00+05:30</published><updated>2019-09-28T05:30:00+05:30</updated><id>http://localhost:4000/blog/PyhtonOperators</id><content type="html" xml:base="http://localhost:4000/blog/PyhtonOperators">&lt;section class=&quot;Ptutorial11&quot;&gt;
    &lt;div class=&quot;item-page&quot; itemscope=&quot;&quot; itemtype=&quot;https://schema.org/Article&quot;&gt;
       &lt;meta itemprop=&quot;inLanguage&quot; content=&quot;en-GB&quot;&gt;
       &lt;div class=&quot;page-header&quot;&gt;
@@ -3030,7 +3030,7 @@ if __name__ == &quot;__main__&quot;:
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python Operators: Arithmetic, Logical, Comparison, Assignment, Bitwise &amp;amp; Precedence</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry><entry><title type="html">12. Function in Python</title><link href="http://localhost:4000/blog/PyhtonFunctions" rel="alternate" type="text/html" title="12. Function in Python" /><published>2019-09-28T00:00:00+05:30</published><updated>2019-09-28T00:00:00+05:30</updated><id>http://localhost:4000/blog/PyhtonFunctions</id><content type="html" xml:base="http://localhost:4000/blog/PyhtonFunctions">&lt;section class=&quot;Ptutorial12&quot;&gt;
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python Operators: Arithmetic, Logical, Comparison, Assignment, Bitwise &amp;amp; Precedence</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry><entry><title type="html">12. Function in Python</title><link href="http://localhost:4000/blog/PyhtonFunctions" rel="alternate" type="text/html" title="12. Function in Python" /><published>2019-09-28T05:30:00+05:30</published><updated>2019-09-28T05:30:00+05:30</updated><id>http://localhost:4000/blog/PyhtonFunctions</id><content type="html" xml:base="http://localhost:4000/blog/PyhtonFunctions">&lt;section class=&quot;Ptutorial12&quot;&gt;
     &lt;div class=&quot;item-page&quot; itemscope=&quot;&quot; itemtype=&quot;https://schema.org/Article&quot;&gt;
         &lt;meta itemprop=&quot;inLanguage&quot; content=&quot;en-GB&quot;&gt;
         &lt;div class=&quot;page-header&quot;&gt;
@@ -3283,7 +3283,7 @@ if __name__ == &quot;__main__&quot;:
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python Functions Examples: Call, Indentation, Arguments &amp;amp; Return Values What is a Function in Python? A Functions in Python are used to utilize the code in more than one place in a program, sometimes also called method or procedures. Python provides you many inbuilt functions like print(), but it also gives freedom to create your own functions. In this tutorial, we will learn How to define and call a function in Python Significance of Indentation (Space) in Python How Function Return Value? Arguments in Functions How to define and call a function in Python Function in Python is defined by the &quot;def &quot; statement followed by the function name and parentheses ( () ) Example: Let us define a function by using the command &quot; def func1():&quot; and call the function. The output of the function will be &quot;I am learning Python function&quot;. The function print func1() calls our def func1(): and print the command &quot; I am learning Python function None.&quot; There are set of rules in Python to define a function. Any args or input parameters should be placed within these parentheses The function first statement can be an optional statement- docstring or the documentation string of the function The code within every function starts with a colon (:) and should be indented (space) The statement return (expression) exits a function, optionally passing back a value to the caller. A return statement with no args is the same as return None. Significance of Indentation (Space) in Python Before we get familiarize with Python functions, it is important that we understand the indentation rule to declare Python functions and these rules are applicable to other elements of Python as well like declaring conditions, loops or variable. Python follows a particular style of indentation to define the code, since Python functions don't have any explicit begin or end like curly braces to indicate the start and stop for the function, they have to rely on this indentation. Here we take a simple example with &quot;print&quot; command. When we write &quot;print&quot; function right below the def func 1 (): It will show an &quot;indentation error: expected an indented block&quot;. Now, when you add the indent (space) in front of &quot;print&quot; function, it should print as expected. At least, one indent is enough to make your code work successfully. But as a best practice it is advisable to leave about 3-4 indent to call your function. It is also necessary that while declaring indentation, you have to maintain the same indent for the rest of your code. For example, in below screen shot when we call another statement &quot;still in func1&quot; and when it is not declared right below the first print statement it will show an indentation error &quot;unindent does not match any other indentation level.&quot; Now, when we apply same indentation for both the statements and align them in the same line, it gives the expected output. How Function Return Value? Return command in Python specifies what value to give back to the caller of the function. Let's understand this with the following example</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry><entry><title type="html">10. Dictionary in Python</title><link href="http://localhost:4000/blog/PyhtonDictionary" rel="alternate" type="text/html" title="10. Dictionary in Python" /><published>2019-09-28T00:00:00+05:30</published><updated>2019-09-28T00:00:00+05:30</updated><id>http://localhost:4000/blog/PyhtonDictionary</id><content type="html" xml:base="http://localhost:4000/blog/PyhtonDictionary">&lt;section class=&quot;Ptutorial10&quot;&gt;
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python Functions Examples: Call, Indentation, Arguments &amp;amp; Return Values What is a Function in Python? A Functions in Python are used to utilize the code in more than one place in a program, sometimes also called method or procedures. Python provides you many inbuilt functions like print(), but it also gives freedom to create your own functions. In this tutorial, we will learn How to define and call a function in Python Significance of Indentation (Space) in Python How Function Return Value? Arguments in Functions How to define and call a function in Python Function in Python is defined by the &quot;def &quot; statement followed by the function name and parentheses ( () ) Example: Let us define a function by using the command &quot; def func1():&quot; and call the function. The output of the function will be &quot;I am learning Python function&quot;. The function print func1() calls our def func1(): and print the command &quot; I am learning Python function None.&quot; There are set of rules in Python to define a function. Any args or input parameters should be placed within these parentheses The function first statement can be an optional statement- docstring or the documentation string of the function The code within every function starts with a colon (:) and should be indented (space) The statement return (expression) exits a function, optionally passing back a value to the caller. A return statement with no args is the same as return None. Significance of Indentation (Space) in Python Before we get familiarize with Python functions, it is important that we understand the indentation rule to declare Python functions and these rules are applicable to other elements of Python as well like declaring conditions, loops or variable. Python follows a particular style of indentation to define the code, since Python functions don't have any explicit begin or end like curly braces to indicate the start and stop for the function, they have to rely on this indentation. Here we take a simple example with &quot;print&quot; command. When we write &quot;print&quot; function right below the def func 1 (): It will show an &quot;indentation error: expected an indented block&quot;. Now, when you add the indent (space) in front of &quot;print&quot; function, it should print as expected. At least, one indent is enough to make your code work successfully. But as a best practice it is advisable to leave about 3-4 indent to call your function. It is also necessary that while declaring indentation, you have to maintain the same indent for the rest of your code. For example, in below screen shot when we call another statement &quot;still in func1&quot; and when it is not declared right below the first print statement it will show an indentation error &quot;unindent does not match any other indentation level.&quot; Now, when we apply same indentation for both the statements and align them in the same line, it gives the expected output. How Function Return Value? Return command in Python specifies what value to give back to the caller of the function. Let's understand this with the following example</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry><entry><title type="html">10. Dictionary in Python</title><link href="http://localhost:4000/blog/PyhtonDictionary" rel="alternate" type="text/html" title="10. Dictionary in Python" /><published>2019-09-28T05:30:00+05:30</published><updated>2019-09-28T05:30:00+05:30</updated><id>http://localhost:4000/blog/PyhtonDictionary</id><content type="html" xml:base="http://localhost:4000/blog/PyhtonDictionary">&lt;section class=&quot;Ptutorial10&quot;&gt;
    &lt;div class=&quot;item-page&quot; itemscope=&quot;&quot; itemtype=&quot;https://schema.org/Article&quot;&gt;
       &lt;meta itemprop=&quot;inLanguage&quot; content=&quot;en-GB&quot;&gt;
       &lt;div class=&quot;page-header&quot;&gt;
