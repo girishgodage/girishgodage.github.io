@@ -1,37 +1,39 @@
-markdown: kramdown
-
-exclude:
-  - Gemfile
-
+---
 title: Girish Godage
-tagline: Passionate Leader, who has a good command in technology & Management
-description: I am a passionate Leader, who has a good command in technology & Mangement. Also, I am a creative designer and an innovatie techie.
-keywords: Girish Godage, Girish Godage007, girish godage, girish, godage, girish godage, girish godage github blog, girish godage yt
-
-
-author: Girish Godage
-
-permalink: 'blog/:title'
-
-plugins:
-  - jekyll-feed
-  - jekyll-admin
-
+timezone: UTC
+collections:
+  posts:
+    title: Posts
+    output: true
+  uploads:
+    title: Uploads
+    output: true
 defaults:
-  -
-    scope:
-      path: ""
-      type: 'posts'
-    values:
-      image: ""
-      author: ""
-      layout: posts
-      prevurl: ""
-      nexturl: ""
-  -
-    scope:
-      path: ""
-      type: 'pages'
-    values:
-      image: ""
-      layout: page
+- scope:
+    path: ''
+    type: posts
+  values:
+    image: ''
+    author: ''
+    layout: posts
+    prevurl: ''
+    nexturl: ''
+- scope:
+    path: ''
+    type: pages
+  values:
+    image: ''
+    layout: page
+markdown: kramdown
+exclude:
+- Gemfile
+tagline: Passionate Leader, who has a good command in technology & Management
+description: I am a passionate Leader, who has a good command in technology & Mangement.
+  Also, I am a creative designer and an innovatie techie.
+keywords: Girish Godage, Girish Godage007, girish godage, girish, godage, girish godage,
+  girish godage github blog, girish godage yt
+author: Girish Godage
+permalink: blog/:title
+plugins:
+- jekyll-feed
+- jekyll-admin
