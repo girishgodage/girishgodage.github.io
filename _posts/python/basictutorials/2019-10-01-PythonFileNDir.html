@@ -1,0 +1,137 @@
+---
+title: 21. If File or Directory Exists in Python
+date: 2019-10-01 00:00:00 Z
+categories:
+- PythonTutorial
+tags:
+- learning
+- Installation
+image: https://girishgodage.github.io/img/Python_logo.png
+author: Girish Godage
+layout: posts
+prevurl: https://girishgodage.github.io/blog/PythonReadNWriteFile
+nexturl: https://girishgodage.github.io/blog/PythonCopy
+discussion_id: 2019-09-30-PythonReadNWriteFile
+---
+
+<section class="Ptutorial21">
+    <div class="item-page" itemscope="" itemtype="https://schema.org/Article">
+        <meta itemprop="inLanguage" content="en-GB">
+        <div class="page-header">
+            <h2 itemprop="headline"> Python Check If File or Directory Exists </h2>
+        </div>
+
+        <div itemprop="articleBody">
+
+            <p>In this tutorial, we will learn how to determine whether a file (or directory) exists using Python. To
+                check this, we use Built-in library functions. </p>
+            <p>There are different ways to verify a file or directory exists, using functions as listed below. </p>
+            <ul>
+                <li><a href="#1">os.path.exists()</a></li>
+                <li><a href="#2">os.path.isfile()</a></li>
+                <li><a href="#3">os.path.isdir()</a></li>
+                <li><a href="#4">pathlibPath.exists()</a></li>
+            </ul>
+            <h2><a id="1"></a>os.path.exists()</h2>
+            <p>Using path.exists you can quickly check that a file or directory exists. Here are the steps </p>
+            <p><strong>Steps 1)</strong> Before you run the code, it is important that you import the os.path module.
+            </p>
+            <pre class="code-toolbar">
+         import os.path
+         from os import path</pre>
+            <p><strong>Steps 2)</strong> Now, use the path.exists() function to check whether a File Exists. </p>
+            <pre class="code-toolbar">path.exists("guru99.txt")</pre>
+            <p><strong>Steps 3)</strong> Here is the complete code </p>
+            <pre class="code-toolbar">
+         import os.path
+         from os import path
+         
+         def main():
+         
+            print ("file exist:"+str(path.exists('guru99.txt')))
+            print ("File exists:" + str(path.exists('career.guru99.txt')))
+            print ("directory exists:" + str(path.exists('myDirectory')))
+         
+         if __name__== "__main__":
+            main()</pre>
+            <p> In our case only file guru99.txt is created in the working directory </p>
+            <p><strong>Output:</strong> </p>
+            <p>File exists: True<br> File exists: False<br>
+                directory exists: False
+            </p>
+            <h2><a id="2"></a>os.path.isfile()</h2>
+            <p>We can use the isfile command to check whether a given input is a file or directory. </p>
+            <pre class="code-toolbar">
+         import os.path
+         from os import path
+         
+         def main():
+         
+             print ("Is it File?" + str(path.isfile('guru99.txt')))
+             print ("Is it File?" + str(path.isfile('myDirectory')))
+         if __name__== "__main__":
+             main()</pre>
+            <p><strong>Output:</strong> </p>
+            <p>Is it File? True<br> Is it File? False</p>
+
+            <h2><a id="3"></a>os.path.isdir()</h2>
+            <p>If we want to confirm that a given path points to a directory, we can use the os.path.dir() function </p>
+            <pre class="code-toolbar">import os.path
+         from os import path
+         
+         def main():
+         
+            print ("Is it Directory?" + str(path.isdir('guru99.txt')))
+            print ("Is it Directory?" + str(path.isdir('myDirectory')))
+         
+         if __name__== "__main__":
+            main()</pre>
+            <p><strong>Output:</strong> </p>
+            <p>Is it Directory? False<br> Is it Directory? True </p>
+            <h2><a id="4"></a> pathlibPath.exists() For Python 3.4</h2>
+            <p> Python 3.4 and above versions have pathlib Module for handling with file system path. It used
+                object-oriented approach to check if file exist or not. </p>
+            <pre class="code-toolbar">
+         import pathlib
+         file = pathlib.Path("guru99.txt")
+         if file.exists ():
+             print ("File exist")
+         else:
+             print ("File not exist")
+         
+         </pre>
+            <p><strong>Output:</strong> </p>
+            <p>File exist </p>
+            <p><strong>Complete Code</strong> </p>
+            <p>Here is the complete code </p>
+            <pre class="code-toolbar">
+         import os
+         from os import path
+         
+         def main():
+             # Print the name of the OS
+             print(os.name)
+         #Check for item existence and type
+         print("Item exists:" + str(path.exists("guru99.txt")))
+         print("Item is a file: " + str(path.isfile("guru99.txt")))
+         print("Item is a directory: " + str(path.isdir("guru99.txt")))
+         
+         if __name__ == "__main__":
+             main()
+         </pre>
+            <p><strong>Output:</strong> </p>
+            <p>Item exists: True<br> Item is a file: True<br>
+                Item is a directory: False
+            </p>
+            <p><strong>Summary:</strong> </p>
+            <ul>
+                <li> Use path.exists to check whether a File Exists </li>
+                <li> Use path.isfile and path.isdir to check whether a path is File or Directory respectively </li>
+                <li> In Python 3.4 and above versions use pathlib Module to check a file exists. </li>
+            </ul>
+
+        </div>
+
+    </div>
+</section>
+{% include blogslide.html %}
