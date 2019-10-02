@@ -1,0 +1,113 @@
+---
+title: 1.Python Internet Access
+date: 2019-10-02 00:00:00 Z
+categories:
+- PythonExtra
+tags:
+- learning
+- Installation
+image: https://girishgodage.github.io/img/Python_logo.png
+author: Girish Godage
+layout: posts
+prevurl: https://girishgodage.github.io/blog/PythonIntetnetAccess
+nexturl: https://girishgodage.github.io/blog/PythonXMLParser
+discussion_id: 2019-10-02-PyhonIntetnetAccess
+---
+
+<section class="Ptutorial26">
+    <div class="item-page" itemscope="" itemtype="https://schema.org/Article">
+        <meta itemprop="inLanguage" content="en-GB">
+        <div class="page-header">
+            <h2 itemprop="headline"> Python Internet Access using Urllib.Request and urlopen() </h2>
+        </div>
+        <div itemprop="articleBody">
+
+            <h3><b> What is urllib? </b></h3>
+            <p>urllib is a Python module that can be used for opening URLs. It defines functions and classes to help in
+                URL actions. </p>
+            <p>With Python you can also access and retrieve data from the internet like XML, HTML, JSON, etc. You can
+                also use Python to work with this data directly. In this tutorial we are going to see how we can
+                retrieve data from the web. For example, here we used a guru99 video URL, and we are going to access
+                this video URL using Python as well as print HTML file of this URL. </p>
+            <p>In this tutorial we will learn </p>
+            <ul>
+                <li><a href="#1">How to Open URL using Urllib</a></li>
+                <li><a href="#2">How to read HTML file for your URL in Python </a></li>
+            </ul>
+            <h2><a id="1"></a>How to Open URL using Urllib</h2>
+            <p>Before we run the code to connect to Internet data, we need to import statement for URL library module or
+                "urllib". </p>
+            <p style="text-align: center; "><a href="{{site.url}}{{site.baseurl}}/img/python/tutorial/25/python19_1.png"
+                    class="jh-image-popup-colorbox cboxElement"><img title="Accessing Internet Data with Python"
+                        alt="Internet Access with Python Tutorial: Open, Parse &amp; Read URL"
+                        src="{{site.url}}{{site.baseurl}}/img/python/tutorial/25/python19_1.png" width="90%"></a> </p>
+
+            <ul>
+                <li>Import urllib</li>
+                <li>Define your main function</li>
+                <li>Declare the variable webUrl</li>
+                <li>Then call the urlopen function on the URL lib library</li>
+                <li>The URL we are opening is guru99 tutorial on youtube</li>
+                <li>Next, we going to print the result code</li>
+                <li>Result code is retrieved by calling the getcode function on the webUrl variable we have created
+                </li>
+                <li>We going to convert that to a string, so that it can be concatenated with our string "result code"
+                </li>
+                <li>This will be a regular HTTP code "200", indicating http request is processed successfully </li>
+            </ul>
+            <h2><a id="2"></a>How to get HTML file form URL in Python</h2>
+            <p>You can also read the HTML file by using the "read function" in Python, and when you run the code, the
+                HTML file will appear in the console. </p>
+            <p style="text-align: center; "><a href="{{site.url}}{{site.baseurl}}/img/python/tutorial/25/python19_2.png"
+                    class="jh-image-popup-colorbox cboxElement"><img title="Accessing Internet Data with Python"
+                        alt="Internet Access with Python Tutorial: Open, Parse &amp; Read URL"
+                        src="{{site.url}}{{site.baseurl}}/img/python/tutorial/25/python19_2.png" width="90%"></a> </p>
+            <ul>
+                <li>Call the read function on the webURL variable</li>
+                <li>Read variable allows to read the contents of data files</li>
+                <li>Read the entire content of the URL into a variable called data</li>
+                <li>Run the code- It will print the data into HTML format</li>
+            </ul>
+            <p>Here is the complete code </p>
+            <p><b>Python 2 Example</b> </p>
+            <pre class="code-toolbar">
+         #  
+         # read the data from the URL and print it
+         #
+         import urllib2
+         
+         def main():
+         # open a connection to a URL using urllib2
+            webUrl = urllib2.urlopen("https://www.youtube.com/user/guru99com")
+           
+         #get the result code and print it
+            print "result code: " + str(webUrl.getcode()) 
+           
+         # read the data from the URL and print it
+            data = webUrl.read()
+            print data
+          
+         if __name__ == "__main__":
+           main()</pre>
+            <p><b>Python 3 Example</b> </p>
+            <pre class="code-toolbar">
+         #
+         # read the data from the URL and print it
+         #
+         import urllib.request
+         # open a connection to a URL using urllib
+         webUrl  = urllib.request.urlopen('https://www.youtube.com/user/guru99com')
+         
+         #get the result code and print it
+         print ("result code: " + str(webUrl.getcode()))
+         
+         # read the data from the URL and print it
+         data = webUrl.read()
+         print (data)</pre>
+
+        </div>
+
+    </div>
+
+</section>
+{% include blogslide.html %}

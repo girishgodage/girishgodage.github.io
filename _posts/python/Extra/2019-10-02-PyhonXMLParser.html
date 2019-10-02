@@ -1,0 +1,230 @@
+---
+title: 2.Python XML Parser
+date: 2019-10-02 00:00:00 Z
+categories:
+- PythonExtra
+tags:
+- learning
+- Installation
+image: https://girishgodage.github.io/img/Python_logo.png
+author: Girish Godage
+layout: posts
+prevurl: https://girishgodage.github.io/blog/PythonIntenetAccess
+nexturl: https://girishgodage.github.io/blog/PythonLambda
+discussion_id: 2019-10-02-PythonXMLParser
+---
+
+<section class="Ptutorial26">
+    <div class="item-page" itemscope="" itemtype="https://schema.org/Article">
+        <meta itemprop="inLanguage" content="en-GB">
+        <div class="page-header">
+            <h2 itemprop="headline"> Python XML Parser Tutorial: Read xml file example(Minidom, ElementTree) </h2>
+        </div>
+
+        <div itemprop="articleBody">
+
+            <h3>What is XML?</h3>
+            <p>XML stands for eXtensible Markup Language. It was designed to store and transport small to medium amounts
+                of data and is widely used for sharing structured information. </p>
+            <p>Python enables you to parse and modify XML document. In order to parse XML document you need to have the
+                entire XML document in memory. In this tutorial, we will see how we can use XML minidom class in Python
+                to load and parse XML file. </p>
+            <p>In this tutorial, we will learn- </p>
+            <ul>
+                <li><a href="#1">How to Parse XML using minidom </a></li>
+                <li><a href="#2">How to Create XML Node </a></li>
+                <li><a href="#3">How to Parse XML using ElementTree</a></li>
+            </ul>
+            <br>
+            <h2><a id="1"></a>How to Parse XML using minidom</h2>
+            <p>We have created a sample XML file that we are going to parse. </p>
+            <p><strong>Step 1)</strong> Inside file, we can see first name, last name, home and the area of expertise
+                (SQL, Python, Testing and Business) </p>
+            <p style="text-align: center; "><a href="{{site.url}}{{site.baseurl}}/img/python/tutorial/26/Python20.1.png"
+                    class="jh-image-popup-colorbox cboxElement"><img title="Manipulating XML with Python"
+                        alt="Python XML Parser Tutorial: Create &amp; Read XML with Examples"
+                        src="{{site.url}}{{site.baseurl}}/img/python/tutorial/26/Python20.1.png"></a> </p>
+            <p><strong>Step 2)</strong> Once we have parsed the document, we will print out the <strong>"node
+                    name"</strong> of the root of the document and the "<strong>firstchild tagname"</strong>. Tagname
+                and nodename are the standard properties of the XML file. </p>
+            <p style="text-align: center; "><a href="{{site.url}}{{site.baseurl}}/img/python/tutorial/26/Python20.2.png"
+                    class="jh-image-popup-colorbox cboxElement"><img title="Manipulating XML with Python"
+                        alt="Python XML Parser Tutorial: Create &amp; Read XML with Examples"
+                        src="{{site.url}}{{site.baseurl}}/img/python/tutorial/26/Python20.2.png"></a> </p>
+            <ul>
+                <li>Import the xml.dom.minidom module and declare file that has to be parsed (myxml.xml)</li>
+                <li>This file carries some basic information about employee like first name, last name, home, expertise,
+                    etc.</li>
+                <li>We use the parse function on the XML minidom to load and parse the XML file</li>
+                <li>We have variable doc and doc gets the result of the parse function</li>
+                <li>We want to print the nodename and child tagname from the file, so we declare it in print function
+                </li>
+                <li>Run the code- It prints out the nodename (#document) from the XML file and the first child tagname
+                    (employee) from the XML file</li>
+            </ul>
+            <p><strong>Note</strong>: </p>
+            <p>Nodename and child tagname are the standard names or properties of an XML dom. In case if you are not
+                familiar with these type of naming conventions.</p>
+
+            <p><strong>Step 3)</strong> We can also call the list of XML tags from the XML document and printed out.
+                Here we printed out the set of skills like SQL, Python,<a href="/software-testing.html"
+                    onclick="ga('send', 'event', 'internal_linking', 'Python XML Parser Tutorial: Create &amp; Read XML with Examples', 'Python XML Parser Tutorial: Create &amp; Read XML with Examples');">
+                    Testing </a>and Business. </p>
+            <p style="text-align: center; "><a href="{{site.url}}{{site.baseurl}}/img/python/tutorial/26/Python20.3.png"
+                    class="jh-image-popup-colorbox cboxElement"><img title="Manipulating XML with Python"
+                        alt="Python XML Parser Tutorial: Create &amp; Read XML with Examples"
+                        src="{{site.url}}{{site.baseurl}}/img/python/tutorial/26/Python20.3.png"></a> </p>
+            <ul>
+                <li>Declare the variable expertise, from which we going to extract all the expertise name employee is
+                    having</li>
+                <li>Use the dom standard function called "getElementsByTagName"</li>
+                <li>This will get all the elements named skill </li>
+                <li>Declare loop over each one of the skill tags </li>
+                <li>Run the code- It will give list of four skills </li>
+            </ul>
+            <h2><a id="2"></a>How to Create XML Node</h2>
+            <p>We can create a new attribute by using "createElement" function and then append this new attribute or tag
+                to the existing XML tags. We added a new tag "BigData" in our XML file. </p>
+            <ol>
+                <li>You have to code to add the new attribute (BigData) to the existing XML tag</li>
+                <li>Then you have to print out the XML tag with new attributes appended with existing XML tag</li>
+            </ol>
+            <p style="text-align: center; "><a href="{{site.url}}{{site.baseurl}}/img/python/tutorial/26/Python20.4.png"
+                    class="jh-image-popup-colorbox cboxElement"><img title="Manipulating XML with Python"
+                        alt="Python XML Parser Tutorial: Create &amp; Read XML with Examples"
+                        src="{{site.url}}{{site.baseurl}}/img/python/tutorial/26/Python20.4.png"></a> </p>
+            <ul>
+                <li>To add a new XML and add it to the document, we use code "doc.create elements"</li>
+                <li>This code will create a new skill tag for our new attribute "Big-data"</li>
+                <li>Add this skill tag into the document first child (employee)</li>
+                <li>Run the code- the new tag "big data" will appear with the other list of expertise</li>
+            </ul>
+            <h3>XML Parser Example</h3>
+            <p><b>Python 2 Example</b> </p>
+            <pre class="code-toolbar">
+         import xml.dom.minidom
+         
+         def main():
+         # use the parse() function to load and parse an XML file
+            doc = xml.dom.minidom.parse("Myxml.xml");
+           
+         # print out the document node and the name of the first child tag
+            print doc.nodeName
+            print doc.firstChild.tagName
+           
+         # get a list of XML tags from the document and print each one
+            expertise = doc.getElementsByTagName("expertise")
+            print "%d expertise:" % expertise.length
+            for skill in expertise:
+              print skill.getAttribute("name")
+             
+         # create a new XML tag and add it into the document
+            newexpertise = doc.createElement("expertise")
+            newexpertise.setAttribute("name", "BigData")
+            doc.firstChild.appendChild(newexpertise)
+            print " "
+         
+            expertise = doc.getElementsByTagName("expertise")
+            print "%d expertise:" % expertise.length
+            for skill in expertise:
+              print skill.getAttribute("name")
+             
+         if name == "__main__":
+           main();</pre>
+            <p><b>Python 3 Example</b> </p>
+            <pre class="code-toolbar">
+         import xml.dom.minidom
+         
+         def main():
+             # use the parse() function to load and parse an XML file
+             doc = xml.dom.minidom.parse("Myxml.xml");
+         
+             # print out the document node and the name of the first child tag
+             print (doc.nodeName)
+             print (doc.firstChild.tagName)
+             # get a list of XML tags from the document and print each one
+             expertise = doc.getElementsByTagName("expertise")
+             print ("%d expertise:" % expertise.length)
+             for skill in expertise:
+                 print (skill.getAttribute("name"))
+         
+             # create a new XML tag and add it into the document
+             newexpertise = doc.createElement("expertise")
+             newexpertise.setAttribute("name", "BigData")
+             doc.firstChild.appendChild(newexpertise)
+             print (" ")
+         
+             expertise = doc.getElementsByTagName("expertise")
+             print ("%d expertise:" % expertise.length)
+             for skill in expertise:
+                 print (skill.getAttribute("name"))
+         
+         if __name__ == "__main__":
+             main();</pre>
+            <h2><a id="3"></a>How to Parse XML using ElementTree</h2>
+            <p>ElementTree is an API for manipulating XML. ElementTree is the easy way to process XML files. </p>
+
+            <p>We are using the following XML document as the sample data: </p>
+            <pre class="code-toolbar">
+            &lt;data&gt;
+            &lt;items&gt;
+               &lt;item name="expertise1"&gt;SQL&lt;/item&gt;
+               &lt;item name="expertise2"&gt;Python&lt;/item&gt;
+            &lt;/items&gt;
+         &lt;/data&gt;
+         </pre>
+            <p><b>Reading XML using ElementTree:</b> </p>
+            <p>we must first import the xml.etree.ElementTree module. </p>
+            <pre class="code-toolbar">import xml.etree.ElementTree as ET
+         </pre>
+            <p>Now let's fetch the root element: </p>
+            <pre class="code-toolbar">root = tree.getroot()
+         </pre>
+            <p>Following is the complete code for reading above xml data </p>
+            <pre class="code-toolbar">
+         import xml.etree.ElementTree as ET
+         tree = ET.parse('items.xml')
+         root = tree.getroot()
+         
+         # all items data
+         print('Expertise Data:')
+         
+         for elem in root:
+            for subelem in elem:
+               print(subelem.text)
+         </pre>
+            <b>output:</b>
+            <pre class="code-toolbar">
+         Expertise Data:
+         SQL
+         Python
+         </pre>
+            <h3>Summary:</h3>
+            <p>Python enables you to parse the entire XML document at one go and not just one line at a time. In order
+                to parse XML document you need to have the entire document in memory.</p>
+            <ul>
+                <li>
+                    <div>To parse XML document</div>
+                    <ul>
+                        <li>Import xml.dom.minidom</li>
+                        <li>Use the function "parse" to parse the document ( doc=xml.dom.minidom.parse (file name);</li>
+                        <li>Call the list of XML tags from the XML document using code (=doc.getElementsByTagName( "name
+                            of xml tags")</li>
+                    </ul>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <div>To create and add new attribute in XML document</div>
+                    <ul>
+                        <li>Use function "createElement"</li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+{% include blogslide.html %}
