@@ -1,0 +1,217 @@
+---
+title: 4.Python MySQL
+date: 2019-10-03 00:00:00 Z
+categories:
+- PythonDataScience
+tags:
+- learning
+- Installation
+image: https://girishgodage.github.io/img/Python_logo.png
+author: Girish Godage
+layout: posts
+prevurl: https://girishgodage.github.io/blog/PythonJSON
+nexturl: https://girishgodage.github.io/blog/PythonKeyDiff
+discussion_id: 2019-10-03-PythonMySQL
+---
+
+<section class="Ptutorial32">
+    <div class="item-page" itemscope="" itemtype="https://schema.org/Article">
+        <meta itemprop="inLanguage" content="en-GB">
+        <div class="page-header">
+            <h2 itemprop="headline"> Python with MySQL: Connect, Create Database, Table, Insert [Examples] </h2>
+        </div>
+
+        <div itemprop="articleBody">
+            <p>Before diving deep, let's understand </p>
+            <h2>What is MySQL?</h2>
+            <p>MySQL is an Open-Source database and one of the best type of RDBMS (Relational Database Management
+                System). Co-founder of MySQLdb is Michael Widenius's, and also MySQL name derives from the daughter of
+                Michael. </p>
+            <h2>How to Install MySQL</h2>
+            <p><strong>Install MySQL in Linux/Unix:</strong> </p>
+            <p>Download RPM package for Linux/Unix from Official site: <a
+                    href="https://www.mysql.com/downloads/">https://www.mysql.com/downloads/</a> </p>
+            <p>In terminal use following command </p>
+            <pre class="code-toolbar">rpm  -i &lt;Package_name&gt;</pre>
+            <pre class="code-toolbar">Example   rpm -i MySQL-5.0.9.0.i386.rpm
+         </pre>
+            <p>To check in Linux <strong> </strong> </p>
+            <pre class="code-toolbar">mysql --version</pre>
+            <p><strong>Install MySQL in Windows</strong> </p>
+            <p> Download MySQL database exe from <a href="https://www.mysql.com/downloads/">official site</a> and
+                install as usual normal installation of software in Windows. Refer this <a
+                    href="https://www.guru99.com/introduction-to-mysql-workbench.html">tutorial</a>, for a step by step
+                guide<strong> </strong> </p>
+            <h2>Install MySQL Connector Library for Python</h2>
+            <p>For Python 2.7 or lower install using pip as: </p>
+            <pre class="code-toolbar">pip install mysql-connector
+         </pre>
+            <p>For Python 3 or higher version install using pip3 as:<strong> </strong> </p>
+            <pre class="code-toolbar">pip3 install mysql-connector </pre>
+            <h2> Test the MySQL Database connection with Python</h2>
+            <p>To test database connection here we use pre-installed MySQL connector and pass credentials into
+                <strong>connect()</strong> function like host, username and password. </p>
+            <p>Syntax to access MySQL with Python: </p>
+            <pre class="code-toolbar">
+             import mysql.connector
+             db_connection = mysql.connector.connect(
+               host="hostname",
+               user="username",
+               passwd="password"
+             )
+         </pre>
+            <p>Example, </p>
+            <pre class="code-toolbar">
+         import mysql.connector
+         db_connection = mysql.connector.connect(
+           host="localhost",
+           user="root",
+           passwd="root"
+         )
+         print(db_connection)
+         </pre>
+            <p>Output: </p>
+            <pre
+                class="code-toolbar">&lt;mysql.connector.connection.MySQLConnection object at 0x000002338A4C6B00&gt;</pre>
+            <p> Here output shows the connection created successfully. </p>
+            <h2>Creating Database in MySQL using Python</h2>
+            <p>Syntax to Create new database in SQL is </p>
+            <pre class="code-toolbar">CREATE DATABASE "database_name"
+         </pre>
+            <p>Now we create database using Python in MySQL<strong> </strong> </p>
+            <pre class="code-toolbar">
+           import mysql.connector
+           db_connection = mysql.connector.connect(
+           host= "localhost",
+           user= "root",
+           passwd= "root"
+           )
+         # creating database_cursor to perform SQL operation
+         db_cursor = db_connection.cursor()
+         # executing cursor with execute method and pass SQL query
+         db_cursor.execute("CREATE DATABASE my_first_db")
+         # get list of all databases
+         db_cursor.execute("SHOW DATABASES")
+         #print all databases
+         for db in db_cursor:
+             print(db)
+         </pre>
+            <p>Output: </p>
+            <p style="text-align: center;"><a
+                    href="{{site.url}}{{site.baseurl}}/img/python/datascience/img/4/030819_0707_PythonwithM1.png"
+                    class="jh-image-popup-colorbox cboxElement"><img
+                        src="{{site.url}}{{site.baseurl}}/img/python/datascience/img/4/030819_0707_PythonwithM1.png"
+                        alt=""></a> </p>
+
+            <p>Here above image shows the <strong>my_first_db</strong> database is created </p>
+            <h2>Create a Table in MySQL with Python</h2>
+            <p>Let's create a simple table "student" which has two columns. </p>
+            <p>SQL Syntax: </p>
+            <pre class="code-toolbar">CREATE  TABLE student (id INT, name VARCHAR(255))
+         </pre>
+            <p><strong>Example:</strong> </p>
+            <pre class="code-toolbar">
+           import mysql.connector
+           db_connection = mysql.connector.connect(
+           host="localhost",
+           user="root",
+           passwd="root",
+           database="my_first_db"
+           )
+         db_cursor = db_connection.cursor()
+         #Here creating database table as student'
+         db_cursor.execute("CREATE TABLE student (id INT, name VARCHAR(255))")
+         #Get database table'
+         db_cursor.execute("SHOW TABLES")
+         for table in db_cursor:
+             print(table)
+         </pre>
+            <p>Output: </p>
+            <pre class="code-toolbar"> ('student',) </pre>
+            <h2>Create a Table with Primary Key</h2>
+            <p>Let's create an <strong>Employee</strong> table with three different columns. We will add a primary key
+                in <strong>id</strong> column with AUTO_INCREMENT constraint </p>
+            <p>SQL Syntax, </p>
+            <pre class="code-toolbar">CREATE TABLE employee(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), salary INT(6))
+         </pre>
+            <p>Example,<strong> </strong> </p>
+            <pre class="code-toolbar">
+           import mysql.connector
+           db_connection = mysql.connector.connect(
+           host="localhost",
+           user="root",
+           passwd="root",
+           database="my_first_db"
+           )
+         db_cursor = db_connection.cursor()
+         #Here creating database table as employee with primary key
+         db_cursor.execute("CREATE TABLE employee(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), salary INT(6))")
+         #Get database table
+         db_cursor.execute("SHOW TABLES")
+         for table in db_cursor:
+             print(table)	
+         </pre>
+            <p> Output: </p>
+            <pre class="code-toolbar">('employee',) ('student',)</pre>
+            <h2>ALTER table in MySQL with Python</h2>
+            <p>Alter command is used for modification of Table structure in SQL. Here we will alter <strong>Student
+                </strong>table and add a primary key to the <strong>id</strong> field. </p>
+            <p>SQL Syntax, </p>
+            <pre class="code-toolbar">ALTER TABLE student MODIFY id INT PRIMARY KEY
+         </pre>
+            <p>Example, </p>
+            <pre class="code-toolbar">
+           import mysql.connector
+           db_connection = mysql.connector.connect(
+           host="localhost",
+           user="root",
+           passwd="root",
+           database="my_first_db"
+           )
+         db_cursor = db_connection.cursor()
+         #Here we modify existing column id
+         db_cursor.execute("ALTER TABLE student MODIFY id INT PRIMARY KEY")
+         </pre>
+            <p> Output: </p>
+            <p> Here below you can see the <strong>id </strong>column is modified. </p>
+            <p style="text-align:center;"><a
+                    href="{{site.url}}{{site.baseurl}}/img/python/datascience/img/4/030819_0707_PythonwithM2.png"
+                    class="jh-image-popup-colorbox cboxElement"><img
+                        src="{{site.url}}{{site.baseurl}}/img/python/datascience/img/4/030819_0707_PythonwithM2.png"
+                        alt=""></a> </p>
+            <h2>Insert Operation with MySQL in Python:</h2>
+            <p>Let's perform insertion operation in MySQL Database table which we already create. We will insert data oi
+                STUDENT table and EMPLOYEE table. </p>
+            <p>SQL Syntax, </p>
+            <pre class="code-toolbar">
+         INSERT INTO student (id, name) VALUES (01, "John")
+         INSERT INTO employee (id, name, salary) VALUES(01, "John", 10000)
+         </pre>
+            <p>Example,<strong> </strong> </p>
+            <pre class="code-toolbar">
+           import mysql.connector
+           db_connection = mysql.connector.connect(
+           host="localhost",
+           user="root",
+           passwd="root",
+           database="my_first_db"
+           )
+         db_cursor = db_connection.cursor()
+         student_sql_query = "INSERT INTO student(id,name) VALUES(01, 'John')"
+         employee_sql_query = " INSERT INTO employee (id, name, salary) VALUES (01, 'John', 10000)"
+         #Execute cursor and pass query as well as student data
+         db_cursor.execute(student_sql_query)
+         #Execute cursor and pass query of employee and data of employee
+             db_cursor.execute(employee_sql_query)
+         db_connection.commit()
+         print(db_cursor.rowcount, "Record Inserted")
+         </pre>
+            <p>Output: </p>
+            <pre class="code-toolbar"> 2 Record Inserted </pre>
+
+
+        </div>
+
+    </div>
+</section>
+{% include blogslide.html %}
