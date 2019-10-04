@@ -6,11 +6,11 @@
 <div class="row">
 {% for post in category[1] reversed %}
 
-{% assign loopmod = forloop.index | modulo: 4 %}
+{% assign loopmod = forloop.index | modulo: 3 %}
 
 {% if forloop.index > 1 and  loopmod == 1 %}
     </div>
-    {% if forloop.index == 9 %}
+    {% if forloop.index == 7 %}
     <div class="col my-2">
         <center> <button  class="arrow-down" data-toggle="collapse" data-target="#demo{{ category[0] }}" onclick="this.classList.toggle('active')"></button></center>
      </div>
@@ -20,7 +20,7 @@
 {% endif %}
 
 
-<div style="font-family: 'Poppins', sans-serif;" id="card-main" class="col-sm-3">
+<div style="font-family: 'Poppins', sans-serif;" id="card-main" class="col-lg-4 col-md-6 col-sm-6">
     <a style="text-decoration: none;" href="{{site.url}}{{site.baseurl}}{{post.url}}">
         <!-- Card -->
         <div class="card h-100" >
@@ -52,7 +52,7 @@
 
 
 
-{% if forloop.index > 9  and forloop.index == {{ category[1].size }} %} 
+{% if forloop.index > 7  and forloop.index == {{ category[1].size }} %} 
         </div>
     </div>
 {% endif %}
