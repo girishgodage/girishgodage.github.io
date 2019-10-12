@@ -1,0 +1,47 @@
+---
+title: 7.Typescript type assertion
+date: 2019-10-12 00:00:00 Z
+categories:
+- TypescriptTutorial
+tags:
+- learning
+- Installation
+image: https://girishgodage.github.io/img/typescipt_logo.png
+author: Girish Godage
+layout: posts
+prevurl: https://girishgodage.github.io/blog/Lesson6
+nexturl: https://girishgodage.github.io/blog/Lesson8
+discussion_id: 2019-10-12-Typescript_type_assertion
+youtubeId:
+---
+
+<section class="ts_tutorial7">
+    <p>During application development, it may happen that you deal with a situation where you will know more about the
+        value than TypeScript does. Most often in a situation, where you know that the type of a certain entity could be
+        more specific than it is now.</p>
+    <p>Type assertion is a way to explicitly inform the compiler that you want to treat the entity as it would have a
+        different type. This allows you to treat <code>any</code> as a <code>number</code>, or a <code>number</code> as
+        a <code>string</code>. Let's have a look at the following example:</p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-typescript"><code class=" language-typescript"><span class="token keyword">let</span> someValue<span class="token punctuation">:</span> <span class="token builtin">any</span> <span class="token operator">=</span> <span class="token string">"I am sure I am a string"</span><span class="token punctuation">;</span></code></pre>
+
+    </div>
+    <p>Although, we are sure that someValue contains a string, for the compiler it still has a type of <code>any</code>.
+        As result, you won't be able to use methods like <code>length()</code> which is a default method for a string
+        type variable. What you can do is to inform the compiler to treat it as a <code>string</code>. You can do this
+        in two ways:</p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-typescript"><code class=" language-typescript"><span class="token keyword">let</span> strLength<span class="token punctuation">:</span> <span class="token builtin">number</span> <span class="token operator">=</span> <span class="token punctuation">(</span>someValue<span class="token punctuation">)</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span></code></pre>
+
+    </div>
+    <p>Or using the <code>as</code> syntax: </p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-typescript"><code class=" language-typescript"><span class="token keyword">let</span> strLength<span class="token punctuation">:</span> <span class="token builtin">number</span> <span class="token operator">=</span> <span class="token punctuation">(</span>someValue <span class="token keyword">as</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span></code></pre>
+
+    </div>
+
+</section>
+{% include blogslide.html %}

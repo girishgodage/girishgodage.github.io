@@ -1,0 +1,213 @@
+---
+title: 9.Typescript arrow functions
+date: 2019-10-12 00:00:00 Z
+categories:
+- TypescriptTutorial
+tags:
+- learning
+- Installation
+image: https://girishgodage.github.io/img/typescipt_logo.png
+author: Girish Godage
+layout: posts
+prevurl: https://girishgodage.github.io/blog/Lesson8
+nexturl: https://girishgodage.github.io/blog/Lesson9
+discussion_id: 2019-10-12-TypescriptArrowFunctions
+youtubeId:
+---
+
+<section class="tstutorial9">
+
+    <p>Since you already know how to use <code>Named functions</code> and <code>Anonymous functions</code> let me show
+        you another type of function which you will be dealing with while building Angular Applications</p>
+    <p>Let's have a look at the following sample:</p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-javascript"><code class=" language-javascript"><span class="token comment">// Named function</span>
+<span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Call named function</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+    </div>
+    <p>You can write the same using <code>arrow functions</code> (sometimes also called <strong>fat arrow</strong>
+        functions):</p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-javascript"><code class=" language-javascript"><span class="token keyword">var</span> <span class="token function-variable function">add</span> <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> x<span class="token operator">+</span>y<span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+    </div>
+    <p>As you can see they are not that fat :) They are actually, shorter and less verbose than traditional function
+        expressions. Arrow functions have two huge advantages, the first one you already know: </p>
+    <h4>1. Shorter syntax:</h4>
+    <p>Arrow functions are <strong>always anonymous</strong> and turn: </p>
+    <div class="code-toolbar">
+        <pre class="code-toolbar language-javascript"><code class=" language-javascript"><span class="token punctuation">(</span>parameters<span class="token punctuation">)</span> <span class="token punctuation">{</span> expression <span class="token punctuation">}</span>
+
+<span class="token comment">// Example:</span>
+<span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+
+    </div>
+    <p>into:</p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-javascript"><code class=" language-javascript"><span class="token punctuation">(</span>parameters<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>expression<span class="token punctuation">}</span>
+
+<span class="token comment">// Example:</span>
+<span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>x<span class="token operator">+</span>y<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+
+    </div>
+    <p>In the case that your function doesn't use any input parameters, you can use even shorter syntax:</p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-javascript"><code class=" language-javascript"><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>expression<span class="token punctuation">}</span>
+
+<span class="token comment">// Example:</span>
+<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Doing some math...'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre>
+
+    </div>
+    <p>When you only have one parameter, the opening parentheses are optional:</p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-javascript"><code class=" language-javascript">parameters <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> expression <span class="token punctuation">}</span>
+
+<span class="token comment">// Example:</span>
+z <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> z<span class="token operator">*</span>z<span class="token punctuation">}</span></code></pre>
+
+    </div>
+    <p>Finally, if you are returning an expression, you can <strong> remove the brackets and return statement</strong>:
+    </p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-javascript"><code class=" language-javascript"><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> expression
+
+<span class="token comment">// Example:</span>
+z <span class="token operator">=&gt;</span> z<span class="token operator">*</span>z<span class="token punctuation">;</span></code></pre>
+
+    </div>
+    <h4>2. Handling `this` </h4>
+    <!-- Before we move on, you should have a good understanding of the keyword this and how it works. If you want to learn, or need a refresher, read my post on the subject before continuing. -->
+    <p>A function's this keyword behaves a little differently in JavaScript compared to other languages. It also has
+        some differences between strict mode and non-strict mode.</p>
+    <p>
+        Arrow functions do not have
+        <console>this</console>
+        , arguments or other special names bound at all — when the object is being created the name this is found in the
+        enclosing scope, not the person object.
+    </p>
+    <p>Consider the following example:</p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-javascript"><code class=" language-javascript"><span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">"david"</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> person <span class="token operator">=</span> <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">"john"</span><span class="token punctuation">,</span>
+
+    shout<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"my name is "</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    shout2<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"my name is "</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+person<span class="token punctuation">.</span><span class="token function">shout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// "john"</span>
+person<span class="token punctuation">.</span><span class="token function">shout2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "david"</span></code></pre>
+
+    </div>
+    <p>As you can see, when we are using normal functions <code>this</code> corresponds to the name: <code>john</code>
+        (the closest object), while in case of arrow function, this refers to the global scope: <code>david</code></p>
+    <p><strong>Why is it important?</strong> </p>
+    <p>Functions always have their own <code>this</code>. But that prevents you from accessing the <code>this</code> of,
+        e.g., a surrounding method from inside a callback:</p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-javascript"><code class=" language-javascript"><span class="token keyword">function</span> <span class="token function">Prefixer</span><span class="token punctuation">(</span>prefix<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>prefix <span class="token operator">=</span> prefix<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+Prefixer<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">prefixArray</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>arr<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// (A)</span>
+    <span class="token string">'use strict'</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> arr<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// (B)</span>
+        <span class="token comment">// Doesn’t work:</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>prefix <span class="token operator">+</span> x<span class="token punctuation">;</span> <span class="token comment">// (C)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> pre <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Prefixer</span><span class="token punctuation">(</span><span class="token string">'Hi '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>pre<span class="token punctuation">.</span><span class="token function">prefixArray</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'Joe'</span><span class="token punctuation">,</span> <span class="token string">'Alex'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+    </div>
+    <p>This will generate an error: </p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-javascript"><code class=" language-javascript">TypeError<span class="token punctuation">:</span> Cannot read property <span class="token string">'prefix'</span> <span class="token keyword">of</span> undefined</code></pre>
+
+    </div>
+    <p>This is because, in line C, we’d like to access this.prefix, but can’t, because the <code>this</code> of the
+        function from line B shadows the <code>this</code> of the method from line A. In strict mode, this is undefined
+        in non-method functions, which is why we get an error if we use Prefixer.</p>
+    <p>There is a workaround which we can use: </p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-javascript"><code class=" language-javascript"><span class="token keyword">function</span> <span class="token function">Prefixer</span><span class="token punctuation">(</span>prefix<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>prefix <span class="token operator">=</span> prefix<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+Prefixer<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">prefixArray</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>arr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> that <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span> <span class="token comment">// (A)</span>
+    <span class="token keyword">return</span> arr<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> that<span class="token punctuation">.</span>prefix <span class="token operator">+</span> x<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> pre <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Prefixer</span><span class="token punctuation">(</span><span class="token string">'Hi '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>pre<span class="token punctuation">.</span><span class="token function">prefixArray</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'Joe'</span><span class="token punctuation">,</span> <span class="token string">'Alex'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+    </div>
+    <p>But this is tricky and makes code more complex, while using an arrow function solves the issue:</p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-javascript"><code class=" language-javascript"><span class="token keyword">function</span> <span class="token function">Prefixer</span><span class="token punctuation">(</span>prefix<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>prefix <span class="token operator">=</span> prefix<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+Prefixer<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">prefixArray</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>arr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> arr<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>prefix <span class="token operator">+</span> x<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> pre <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Prefixer</span><span class="token punctuation">(</span><span class="token string">'Hi '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>pre<span class="token punctuation">.</span><span class="token function">prefixArray</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'Joe'</span><span class="token punctuation">,</span> <span class="token string">'Alex'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+    </div>
+    <blockquote class="blockquote bq-primary">
+        <p class="bq-title">Lesson summary:</p>
+        <p>Since ES6, you can use arrow functions to make your code less verbose: </p>
+        <div class="code-toolbar">
+            <pre
+                class="code-toolbar language-javascript"><code class=" language-javascript"><span class="token comment">//Multiple input parameters =&gt; mixed output</span>
+<span class="token punctuation">(</span>param1<span class="token punctuation">,</span> param2<span class="token punctuation">,</span> …<span class="token punctuation">,</span> paramN<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> statements <span class="token punctuation">}</span>
+<span class="token punctuation">(</span>param1<span class="token punctuation">,</span> param2<span class="token punctuation">,</span> …<span class="token punctuation">,</span> paramN<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">expression</span>
+<span class="token punctuation">(</span>param1<span class="token punctuation">,</span> param2<span class="token punctuation">,</span> …<span class="token punctuation">,</span> paramN<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> expression<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+<span class="token comment">// Single input (parenthesis are optional)</span>
+<span class="token punctuation">(</span>singleParam<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> statements <span class="token punctuation">}</span>
+singleParam <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> statements <span class="token punctuation">}</span>
+singleParam <span class="token operator">=&gt;</span> expression
+
+
+<span class="token comment">// Empty list of parameters</span>
+<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> statements <span class="token punctuation">}</span></code></pre>
+
+        </div>
+    </blockquote>
+    <p>As a disclaimer, there is more to arrow functions than what was explained in this article. But this should give
+        you a great base for further learning! As always, leave a comment if you have any great resources on the subject
+        for others to explore.</p>
+
+
+
+</section>
+{% include blogslide.html %}

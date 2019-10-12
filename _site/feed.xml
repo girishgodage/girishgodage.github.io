@@ -1,4 +1,485 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-10-12T08:59:58+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">5.Variable Scope</title><link href="http://localhost:4000/blog/Lesson5" rel="alternate" type="text/html" title="5.Variable Scope" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson5</id><content type="html" xml:base="http://localhost:4000/blog/Lesson5">&lt;section class=&quot;ts_tutorial5&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-10-12T10:01:24+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">9.Typescript arrow functions</title><link href="http://localhost:4000/blog/Lesson9" rel="alternate" type="text/html" title="9.Typescript arrow functions" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson9</id><content type="html" xml:base="http://localhost:4000/blog/Lesson9">&lt;section class=&quot;tstutorial9&quot;&gt;
+
+    &lt;p&gt;Since you already know how to use &lt;code&gt;Named functions&lt;/code&gt; and &lt;code&gt;Anonymous functions&lt;/code&gt; let me show
+        you another type of function which you will be dealing with while building Angular Applications&lt;/p&gt;
+    &lt;p&gt;Let's have a look at the following sample:&lt;/p&gt;
+    &lt;div class=&quot;code-toolbar&quot;&gt;
+        &lt;pre
+            class=&quot;code-toolbar language-javascript&quot;&gt;&lt;code class=&quot; language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Named function&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; y&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; x &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; y&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// Call named function&lt;/span&gt;
+console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+    &lt;/div&gt;
+    &lt;p&gt;You can write the same using &lt;code&gt;arrow functions&lt;/code&gt; (sometimes also called &lt;strong&gt;fat arrow&lt;/strong&gt;
+        functions):&lt;/p&gt;
+    &lt;div class=&quot;code-toolbar&quot;&gt;
+        &lt;pre
+            class=&quot;code-toolbar language-javascript&quot;&gt;&lt;code class=&quot; language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;y&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&amp;gt;&lt;/span&gt; x&lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;y&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+    &lt;/div&gt;
+    &lt;p&gt;As you can see they are not that fat :) They are actually, shorter and less verbose than traditional function
+        expressions. Arrow functions have two huge advantages, the first one you already know: &lt;/p&gt;
+    &lt;h4&gt;1. Shorter syntax:&lt;/h4&gt;
+    &lt;p&gt;Arrow functions are &lt;strong&gt;always anonymous&lt;/strong&gt; and turn: &lt;/p&gt;
+    &lt;div class=&quot;code-toolbar&quot;&gt;
+        &lt;pre class=&quot;code-toolbar language-javascript&quot;&gt;&lt;code class=&quot; language-javascript&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;parameters&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; expression &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// Example:&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; y&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; x &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; y&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+    &lt;/div&gt;
+    &lt;p&gt;into:&lt;/p&gt;
+    &lt;div class=&quot;code-toolbar&quot;&gt;
+        &lt;pre
+            class=&quot;code-toolbar language-javascript&quot;&gt;&lt;code class=&quot; language-javascript&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;parameters&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;expression&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// Example:&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;y&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;x&lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;y&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+    &lt;/div&gt;
+    &lt;p&gt;In the case that your function doesn't use any input parameters, you can use even shorter syntax:&lt;/p&gt;
+    &lt;div class=&quot;code-toolbar&quot;&gt;
+        &lt;pre
+            class=&quot;code-toolbar language-javascript&quot;&gt;&lt;code class=&quot; language-javascript&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;expression&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// Example:&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;'Doing some math...'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+    &lt;/div&gt;
+    &lt;p&gt;When you only have one parameter, the opening parentheses are optional:&lt;/p&gt;
+    &lt;div class=&quot;code-toolbar&quot;&gt;
+        &lt;pre
+            class=&quot;code-toolbar language-javascript&quot;&gt;&lt;code class=&quot; language-javascript&quot;&gt;parameters &lt;span class=&quot;token operator&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; expression &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// Example:&lt;/span&gt;
+z &lt;span class=&quot;token operator&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; z&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;z&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+    &lt;/div&gt;
+    &lt;p&gt;Finally, if you are returning an expression, you can &lt;strong&gt; remove the brackets and return statement&lt;/strong&gt;:
+    &lt;/p&gt;
+    &lt;div class=&quot;code-toolbar&quot;&gt;
+        &lt;pre
+            class=&quot;code-toolbar language-javascript&quot;&gt;&lt;code class=&quot; language-javascript&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&amp;gt;&lt;/span&gt; expression
+
+&lt;span class=&quot;token comment&quot;&gt;// Example:&lt;/span&gt;
+z &lt;span class=&quot;token operator&quot;&gt;=&amp;gt;&lt;/span&gt; z&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;z&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+    &lt;/div&gt;
+    &lt;h4&gt;2. Handling `this` &lt;/h4&gt;
+    &lt;!-- Before we move on, you should have a good understanding of the keyword this and how it works. If you want to learn, or need a refresher, read my post on the subject before continuing. --&gt;
+    &lt;p&gt;A function's this keyword behaves a little differently in JavaScript compared to other languages. It also has
+        some differences between strict mode and non-strict mode.&lt;/p&gt;
+    &lt;p&gt;
+        Arrow functions do not have
+        &lt;console&gt;this&lt;/console&gt;
+        , arguments or other special names bound at all — when the object is being created the name this is found in the
+        enclosing scope, not the person object.
+    &lt;/p&gt;
+    &lt;p&gt;Consider the following example:&lt;/p&gt;
+    &lt;div class=&quot;code-toolbar&quot;&gt;
+        &lt;pre
+            class=&quot;code-toolbar language-javascript&quot;&gt;&lt;code class=&quot; language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; name &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;david&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; person &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    name&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;john&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+
+    shout&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;my name is &quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;name&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    shout2&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;my name is &quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;name&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+person&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;shout&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// &quot;john&quot;&lt;/span&gt;
+person&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;shout2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// &quot;david&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+    &lt;/div&gt;
+    &lt;p&gt;As you can see, when we are using normal functions &lt;code&gt;this&lt;/code&gt; corresponds to the name: &lt;code&gt;john&lt;/code&gt;
+        (the closest object), while in case of arrow function, this refers to the global scope: &lt;code&gt;david&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Why is it important?&lt;/strong&gt; &lt;/p&gt;
+    &lt;p&gt;Functions always have their own &lt;code&gt;this&lt;/code&gt;. But that prevents you from accessing the &lt;code&gt;this&lt;/code&gt; of,
+        e.g., a surrounding method from inside a callback:&lt;/p&gt;
+    &lt;div class=&quot;code-toolbar&quot;&gt;
+        &lt;pre
+            class=&quot;code-toolbar language-javascript&quot;&gt;&lt;code class=&quot; language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;Prefixer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;prefix&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;prefix &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; prefix&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+Prefixer&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;prototype&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function-variable function&quot;&gt;prefixArray&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;arr&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// (A)&lt;/span&gt;
+    &lt;span class=&quot;token string&quot;&gt;'use strict'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; arr&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// (B)&lt;/span&gt;
+        &lt;span class=&quot;token comment&quot;&gt;// Doesn’t work:&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;prefix &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; x&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// (C)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; pre &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Prefixer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;'Hi '&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pre&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;prefixArray&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;'Joe'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;'Alex'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+    &lt;/div&gt;
+    &lt;p&gt;This will generate an error: &lt;/p&gt;
+    &lt;div class=&quot;code-toolbar&quot;&gt;
+        &lt;pre
+            class=&quot;code-toolbar language-javascript&quot;&gt;&lt;code class=&quot; language-javascript&quot;&gt;TypeError&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Cannot read property &lt;span class=&quot;token string&quot;&gt;'prefix'&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;of&lt;/span&gt; undefined&lt;/code&gt;&lt;/pre&gt;
+
+    &lt;/div&gt;
+    &lt;p&gt;This is because, in line C, we’d like to access this.prefix, but can’t, because the &lt;code&gt;this&lt;/code&gt; of the
+        function from line B shadows the &lt;code&gt;this&lt;/code&gt; of the method from line A. In strict mode, this is undefined
+        in non-method functions, which is why we get an error if we use Prefixer.&lt;/p&gt;
+    &lt;p&gt;There is a workaround which we can use: &lt;/p&gt;
+    &lt;div class=&quot;code-toolbar&quot;&gt;
+        &lt;pre
+            class=&quot;code-toolbar language-javascript&quot;&gt;&lt;code class=&quot; language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;Prefixer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;prefix&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;prefix &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; prefix&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+Prefixer&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;prototype&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function-variable function&quot;&gt;prefixArray&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;arr&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; that &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// (A)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; arr&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; that&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;prefix &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; x&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; pre &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Prefixer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;'Hi '&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pre&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;prefixArray&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;'Joe'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;'Alex'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+    &lt;/div&gt;
+    &lt;p&gt;But this is tricky and makes code more complex, while using an arrow function solves the issue:&lt;/p&gt;
+    &lt;div class=&quot;code-toolbar&quot;&gt;
+        &lt;pre
+            class=&quot;code-toolbar language-javascript&quot;&gt;&lt;code class=&quot; language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;Prefixer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;prefix&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;prefix &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; prefix&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+Prefixer&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;prototype&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function-variable function&quot;&gt;prefixArray&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;arr&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; arr&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;prefix &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; x&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; pre &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Prefixer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;'Hi '&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pre&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;prefixArray&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;'Joe'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;'Alex'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+    &lt;/div&gt;
+    &lt;blockquote class=&quot;blockquote bq-primary&quot;&gt;
+        &lt;p class=&quot;bq-title&quot;&gt;Lesson summary:&lt;/p&gt;
+        &lt;p&gt;Since ES6, you can use arrow functions to make your code less verbose: &lt;/p&gt;
+        &lt;div class=&quot;code-toolbar&quot;&gt;
+            &lt;pre
+                class=&quot;code-toolbar language-javascript&quot;&gt;&lt;code class=&quot; language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;//Multiple input parameters =&amp;gt; mixed output&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;param1&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; param2&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; …&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; paramN&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; statements &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;param1&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; param2&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; …&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; paramN&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;expression&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;param1&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; param2&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; …&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; paramN&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; expression&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// Single input (parenthesis are optional)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;singleParam&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; statements &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+singleParam &lt;span class=&quot;token operator&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; statements &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+singleParam &lt;span class=&quot;token operator&quot;&gt;=&amp;gt;&lt;/span&gt; expression
+
+
+&lt;span class=&quot;token comment&quot;&gt;// Empty list of parameters&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; statements &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+        &lt;/div&gt;
+    &lt;/blockquote&gt;
+    &lt;p&gt;As a disclaimer, there is more to arrow functions than what was explained in this article. But this should give
+        you a great base for further learning! As always, leave a comment if you have any great resources on the subject
+        for others to explore.&lt;/p&gt;
+
+
+
+&lt;/section&gt;
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr&gt;
+   
+    &lt;div class=&quot;row&quot; &gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Lesson8&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot; 
+                &gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot; &gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Lesson9&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;
+                 &gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;       
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/typescipt_logo.png" /></entry><entry><title type="html">7.Typescript type assertion</title><link href="http://localhost:4000/blog/Lesson7" rel="alternate" type="text/html" title="7.Typescript type assertion" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson7</id><content type="html" xml:base="http://localhost:4000/blog/Lesson7">&lt;section class=&quot;ts_tutorial7&quot;&gt;
+    &lt;p&gt;During application development, it may happen that you deal with a situation where you will know more about the
+        value than TypeScript does. Most often in a situation, where you know that the type of a certain entity could be
+        more specific than it is now.&lt;/p&gt;
+    &lt;p&gt;Type assertion is a way to explicitly inform the compiler that you want to treat the entity as it would have a
+        different type. This allows you to treat &lt;code&gt;any&lt;/code&gt; as a &lt;code&gt;number&lt;/code&gt;, or a &lt;code&gt;number&lt;/code&gt; as
+        a &lt;code&gt;string&lt;/code&gt;. Let's have a look at the following example:&lt;/p&gt;
+    &lt;div class=&quot;code-toolbar&quot;&gt;
+        &lt;pre
+            class=&quot;code-toolbar language-typescript&quot;&gt;&lt;code class=&quot; language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; someValue&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;any&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;I am sure I am a string&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+    &lt;/div&gt;
+    &lt;p&gt;Although, we are sure that someValue contains a string, for the compiler it still has a type of &lt;code&gt;any&lt;/code&gt;.
+        As result, you won't be able to use methods like &lt;code&gt;length()&lt;/code&gt; which is a default method for a string
+        type variable. What you can do is to inform the compiler to treat it as a &lt;code&gt;string&lt;/code&gt;. You can do this
+        in two ways:&lt;/p&gt;
+    &lt;div class=&quot;code-toolbar&quot;&gt;
+        &lt;pre
+            class=&quot;code-toolbar language-typescript&quot;&gt;&lt;code class=&quot; language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; strLength&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;someValue&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+    &lt;/div&gt;
+    &lt;p&gt;Or using the &lt;code&gt;as&lt;/code&gt; syntax: &lt;/p&gt;
+    &lt;div class=&quot;code-toolbar&quot;&gt;
+        &lt;pre
+            class=&quot;code-toolbar language-typescript&quot;&gt;&lt;code class=&quot; language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; strLength&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;someValue &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+    &lt;/div&gt;
+
+&lt;/section&gt;
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr&gt;
+   
+    &lt;div class=&quot;row&quot; &gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Lesson6&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot; 
+                &gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot; &gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Lesson8&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;
+                 &gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;       
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">During application development, it may happen that you deal with a situation where you will know more about the value than TypeScript does. Most often in a situation, where you know that the type of a certain entity could be more specific than it is now. Type assertion is a way to explicitly inform the compiler that you want to treat the entity as it would have a different type. This allows you to treat any as a number, or a number as a string. Let's have a look at the following example: let someValue: any = &quot;I am sure I am a string&quot;;</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/typescipt_logo.png" /></entry><entry><title type="html">6.Default Methods</title><link href="http://localhost:4000/blog/Lesson6" rel="alternate" type="text/html" title="6.Default Methods" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson6</id><content type="html" xml:base="http://localhost:4000/blog/Lesson6">&lt;section class=&quot;ts_tutorial6&quot;&gt;
+
+    &lt;p&gt;As we learned in a previous lesson, TypeScript allows us to use static typing and use different type of
+        variables. Each variable defines a certain set of functions which can be used along with them. For instance:&lt;/p&gt;
+    &lt;ol&gt;
+        &lt;li&gt;Declare the following variables in &lt;code&gt;app.components.ts&lt;/code&gt;:&lt;/li&gt;
+        &lt;div class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar language-markup&quot;&gt;&lt;code class=&quot; language-markup&quot;&gt;let a: number;                    //numeric type
+     let b: string;                    //string
+     let c: boolean;                   //true or false
+     let d: any;                       //any (dynamic)
+     let e: number[] = [1,2,3];        //array of numbers
+     let f: string[] = ['a','b','c'];  //array of strings
+     let g: any[] = [true, 1, 'a'];    //array of any&lt;/code&gt;&lt;/pre&gt;
+
+        &lt;/div&gt;
+        &lt;li&gt;In a new line, type each of the variables, followed by dot (ie. &lt;code&gt;a.&lt;/code&gt;) and observe the result:
+        &lt;/li&gt;
+        &lt;img class=&quot;img-fluid&quot; src=&quot;http://localhost:4000/img/typescript/6/img/01.gif&quot; alt=&quot;Any type&quot;&gt;
+        &lt;p&gt;As you may notice, Visual Studio suggests functions which can be used along with each variable type. &lt;/p&gt;
+    &lt;/ol&gt;
+    &lt;h4&gt;Numeric type methods:&lt;/h4&gt;
+    &lt;table class=&quot;table&quot;&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;#&lt;/th&gt;
+                &lt;th&gt;Method&lt;/th&gt;
+                &lt;th&gt;Description&lt;/th&gt;
+                &lt;th&gt;Result&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;th scope=&quot;row&quot;&gt;1&lt;/th&gt;
+                &lt;td&gt;&lt;strong&gt;a = 5.56789;&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;Basic assignment&lt;/td&gt;
+                &lt;td&gt;&lt;strong&gt;5.56789&lt;/strong&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;th scope=&quot;row&quot;&gt;2&lt;/th&gt;
+                &lt;td&gt;a.toExponential()&lt;/td&gt;
+                &lt;td&gt;Convert a number into an exponential notation:&lt;/td&gt;
+                &lt;td&gt;5.56789e+0&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;th scope=&quot;row&quot;&gt;3a&lt;/th&gt;
+                &lt;td&gt;a.toFixed()&lt;/td&gt;
+                &lt;td rowspan=&quot;2&quot; style=&quot;vertical-align: middle;&quot;&gt;Converts a number to a string keeping a specified number
+                    of decimals.&lt;/td&gt;
+                &lt;td&gt;6&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;th scope=&quot;row&quot;&gt;3b&lt;/th&gt;
+                &lt;td&gt;a.toFixed(2)&lt;/td&gt;
+                &lt;td&gt;5.57&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;th scope=&quot;row&quot;&gt;4&lt;/th&gt;
+                &lt;td&gt;a.toLocaleString('ar-EG')&lt;/td&gt;
+                &lt;td&gt;Returns a string with a language sensitive representation of this number.&lt;/td&gt;
+                &lt;td&gt;٥٫٥٦٨&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;th scope=&quot;row&quot;&gt;5&lt;/th&gt;
+                &lt;td&gt;a.toPrecision(2)&lt;/td&gt;
+                &lt;td&gt;Returns a string representing the Number object to a specified precision. &lt;br&gt;While toFixed(n)
+                    provides n length after the decimal point; toPrecision(x) provides x total length.&lt;/td&gt;
+                &lt;td&gt;5.6&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;th scope=&quot;row&quot;&gt;6&lt;/th&gt;
+                &lt;td&gt;a.toString()&lt;/td&gt;
+                &lt;td&gt;Returns a string representing the Number object.&lt;/td&gt;
+                &lt;td&gt;5.56789&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;th scope=&quot;row&quot;&gt;7&lt;/th&gt;
+                &lt;td&gt;a.valueOf()&lt;/td&gt;
+                &lt;td&gt;The valueOf() method returns the wrapped primitive value of a Number object.&lt;/td&gt;
+                &lt;td&gt;5.56789&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+    &lt;h4&gt;String type methods:&lt;/h4&gt;
+    &lt;blockquote class=&quot;blockquote bq-warning&quot;&gt;
+        &lt;p class=&quot;bq-title&quot;&gt;Warning&lt;/p&gt;
+        &lt;p&gt;The string prototype in TypeScript offers more default methods than described below, however, they are marked
+            as &lt;code&gt;deprecated&lt;/code&gt;. That means, that they will be removed in the future so you should avoid using
+            them. Some browsers may still support them, though.&lt;/p&gt;
+    &lt;/blockquote&gt;
+    &lt;table class=&quot;table&quot;&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;#&lt;/th&gt;
+                &lt;th&gt;Method&lt;/th&gt;
+                &lt;th&gt;Description&lt;/th&gt;
+                &lt;th&gt;Result&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;th scope=&quot;row&quot;&gt;1&lt;/th&gt;
+                &lt;td&gt;&lt;strong&gt;b = 'Hello MDB World';&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;Basic assignment&lt;/td&gt;
+                &lt;td&gt;&lt;strong&gt;Hello MDB World&lt;/strong&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;th scope=&quot;row&quot;&gt;2&lt;/th&gt;
+                &lt;td&gt;b.charAt(6)&lt;/td&gt;
+                &lt;td&gt;The String object's charAt() method returns a new string consisting of the single UTF-16 code unit
+                    located at the specified offset into the string.&lt;/td&gt;
+                &lt;td&gt;M&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;th scope=&quot;row&quot;&gt;3a&lt;/th&gt;
+                &lt;td&gt;b.charCodeAt(6)&lt;/td&gt;
+                &lt;td&gt;The charCodeAt() method returns an integer between 0 and 65535 representing the UTF-16 code unit at
+                    the given index.&lt;/td&gt;
+                &lt;td&gt;77&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;th scope=&quot;row&quot;&gt;3b&lt;/th&gt;
+                &lt;td&gt;b.concat('. It is nice to meet you.');&lt;/td&gt;
+                &lt;td&gt;The concat() method combines the text of one or more strings and returns a new string.&lt;/td&gt;
+                &lt;td&gt;Hello MDB Wolrd. It is nice to meet you.&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;th scope=&quot;row&quot;&gt;4&lt;/th&gt;
+                &lt;td&gt;b.endsWith('d')&lt;/td&gt;
+                &lt;td&gt;The endsWith() method determines whether a string ends with the characters of a specified string,
+                    returning true or false as appropriate.&lt;/td&gt;
+                &lt;td&gt;true&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;th scope=&quot;row&quot;&gt;5.1&lt;/th&gt;
+                &lt;td&gt;b.includes('B');&lt;/td&gt;
+                &lt;td rowspan=&quot;2&quot; style=&quot;vertical-align: middle;&quot;&gt;The includes() method determines whether one string may
+                    be found within another string, returning true or false as appropriate.&lt;/td&gt;
+                &lt;td&gt;true&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;th scope=&quot;row&quot;&gt;5.2&lt;/th&gt;
+                &lt;td&gt;b.includes('b');&lt;/td&gt;
+                &lt;td&gt;false&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;th scope=&quot;row&quot;&gt;6&lt;/th&gt;
+                &lt;td&gt;a.indexOf('M')&lt;/td&gt;
+                &lt;td&gt;The indexOf() method returns the index within the calling String object of the first occurrence of
+                    the specified value, starting the search at fromIndex. Returns -1 if the value is not found.&lt;/td&gt;
+                &lt;td&gt;6&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;th scope=&quot;row&quot;&gt;7&lt;/th&gt;
+                &lt;td&gt;a.lastIndexOf('l')&lt;/td&gt;
+                &lt;td&gt;The lastIndexOf() method returns the index within the calling String object of the last occurrence
+                    of the specified value, searching backwards from fromIndex. Returns -1 if the value is not found.
+                &lt;/td&gt;
+                &lt;td&gt;12&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+    &lt;p&gt;Coming soon:&lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;b.localeCompare()&lt;/li&gt;
+        &lt;li&gt;b.match()&lt;/li&gt;
+        &lt;li&gt;b.normalize()&lt;/li&gt;
+        &lt;li&gt;b.padEnd()&lt;/li&gt;
+        &lt;li&gt;b.padStart()&lt;/li&gt;
+        &lt;li&gt;b.repeat()&lt;/li&gt;
+        &lt;li&gt;b.replace()&lt;/li&gt;
+        &lt;li&gt;b.search()&lt;/li&gt;
+        &lt;li&gt;b.slice()&lt;/li&gt;
+        &lt;li&gt;b.split()&lt;/li&gt;
+        &lt;li&gt;b.startsWith()&lt;/li&gt;
+        &lt;li&gt;b.substr()&lt;/li&gt;
+        &lt;li&gt;b.substring()&lt;/li&gt;
+        &lt;li&gt;b.toLocaleLowerCase()&lt;/li&gt;
+        &lt;li&gt;b.toLocaleUpperCase()&lt;/li&gt;
+        &lt;li&gt;b.toLowerCase()&lt;/li&gt;
+        &lt;li&gt;b.toString()&lt;/li&gt;
+        &lt;li&gt;b.toUpperCase()&lt;/li&gt;
+        &lt;li&gt;b.trim()&lt;/li&gt;
+        &lt;li&gt;b.trimLeft()&lt;/li&gt;
+        &lt;li&gt;b.trimRight()&lt;/li&gt;
+        &lt;li&gt;b.valueOf()&lt;/li&gt;
+        &lt;li&gt;b.[@@iterator]()&lt;/li&gt;
+        &lt;li&gt;b.raw()&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;h4&gt;Any and boolean&lt;/h4&gt;
+    &lt;p&gt;The any type doesn't offer any predefined methods. Boolean offers two basic methods — &lt;code&gt;toString&lt;/code&gt; which
+        returns a string of either 'true' or 'false, as well as &lt;code&gt;valueOf&lt;/code&gt; which returns the primitive value
+        of the Boolean object.&lt;/p&gt;
+
+&lt;/section&gt;
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr&gt;
+   
+    &lt;div class=&quot;row&quot; &gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Lesson5&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot; 
+                &gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot; &gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Lesson7&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;
+                 &gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;       
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html"></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/typescipt_logo.png" /></entry><entry><title type="html">5.Variable Scope</title><link href="http://localhost:4000/blog/Lesson5" rel="alternate" type="text/html" title="5.Variable Scope" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson5</id><content type="html" xml:base="http://localhost:4000/blog/Lesson5">&lt;section class=&quot;ts_tutorial5&quot;&gt;
     &lt;p&gt;In this lesson, we will cover a different type of variables and scopes.&lt;/p&gt;
     &lt;ol&gt;
         &lt;li&gt;Replace the content of the &lt;code&gt;onStartup()&lt;/code&gt; function:&lt;/li&gt;
@@ -74,7 +555,7 @@
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">In this lesson, we will cover a different type of variables and scopes. Replace the content of the onStartup() function: onStartup(){ function count(){ for (var i = 0; i &amp;lt; 9; i++){ console.log(i); } console.log('Counted: ' , i); } count();} }</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/angular_logo.png" /></entry><entry><title type="html">4.Type Any</title><link href="http://localhost:4000/blog/Lesson4" rel="alternate" type="text/html" title="4.Type Any" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson4</id><content type="html" xml:base="http://localhost:4000/blog/Lesson4">&lt;section class=&quot;ts_tutorial4&quot;&gt;
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">In this lesson, we will cover a different type of variables and scopes. Replace the content of the onStartup() function: onStartup(){ function count(){ for (var i = 0; i &amp;lt; 9; i++){ console.log(i); } console.log('Counted: ' , i); } count();} }</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/typescipt_logo.png" /></entry><entry><title type="html">4.Type Any</title><link href="http://localhost:4000/blog/Lesson4" rel="alternate" type="text/html" title="4.Type Any" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson4</id><content type="html" xml:base="http://localhost:4000/blog/Lesson4">&lt;section class=&quot;ts_tutorial4&quot;&gt;
     &lt;h3&gt;Type: any&lt;/h3&gt;
     &lt;p&gt;You could ask — what if I don't know what kind of value my variable will have?&lt;/p&gt;
     &lt;ol&gt;
@@ -149,8 +630,9 @@
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Type: any You could ask — what if I don't know what kind of value my variable will have? Let's flush our function code and type ine the following: let myVar; myVar = 1; //number myVar = true; //boolean myVar = 'mdb'; //string The TypeScript compiler doesn't complain. Why!? Hover over the myVar declaration, what do you see? TypeScript allows you to use a special type any. It allows you to use dynamic typing but importantly — it requires you to use it consciously. What is actually type of the variable myVar? Let's check it: myVar = 1; //number console.log(typeof(myVar)); myVar = true; //boolean console.log(typeof(myVar)); myVar = 'mdb'; //string console.log(typeof(myVar)); The output: Now let's add an explicit type, cast after the var declaration: let myVar: number; Immediately, the compiler will show two errors regarding the second, and third assignments Other types: We used already four different types of variables (number, string, boolean and any). Are there any others? Yes, there are. let a: number; //numeric type let b: string; //string let c: boolean; //true or false let d: any; //any (dynamic) let e: number[] = [1,2,3]; //array of numbers let f: string[] = ['a','b','c']; //array of strings let g: any[] = [true, 1, 'a']; //array of any As you can see, except for basic types which we already covered you can also create arrays of different types including the any type. There is also one more type of variable — enum but we will cover it in the future. Previous Lesson Next Lesson</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/angular_logo.png" /></entry><entry><title type="html">3.Static vs dynamic typing</title><link href="http://localhost:4000/blog/Lesson3" rel="alternate" type="text/html" title="3.Static vs dynamic typing" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson3</id><content type="html" xml:base="http://localhost:4000/blog/Lesson3">&lt;section class=&quot;ts_tutorial3&quot;&gt;
-    &lt;h3&gt;Static vs dynamic typing&lt;/h3&gt;
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Type: any You could ask — what if I don't know what kind of value my variable will have? Let's flush our function code and type ine the following: let myVar; myVar = 1; //number myVar = true; //boolean myVar = 'mdb'; //string The TypeScript compiler doesn't complain. Why!? Hover over the myVar declaration, what do you see? TypeScript allows you to use a special type any. It allows you to use dynamic typing but importantly — it requires you to use it consciously. What is actually type of the variable myVar? Let's check it: myVar = 1; //number console.log(typeof(myVar)); myVar = true; //boolean console.log(typeof(myVar)); myVar = 'mdb'; //string console.log(typeof(myVar)); The output: Now let's add an explicit type, cast after the var declaration: let myVar: number; Immediately, the compiler will show two errors regarding the second, and third assignments Other types: We used already four different types of variables (number, string, boolean and any). Are there any others? Yes, there are. let a: number; //numeric type let b: string; //string let c: boolean; //true or false let d: any; //any (dynamic) let e: number[] = [1,2,3]; //array of numbers let f: string[] = ['a','b','c']; //array of strings let g: any[] = [true, 1, 'a']; //array of any As you can see, except for basic types which we already covered you can also create arrays of different types including the any type. There is also one more type of variable — enum but we will cover it in the future. Previous Lesson Next Lesson</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/typescipt_logo.png" /></entry><entry><title type="html">3.Static vs dynamic typing</title><link href="http://localhost:4000/blog/Lesson3" rel="alternate" type="text/html" title="3.Static vs dynamic typing" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson3</id><content type="html" xml:base="http://localhost:4000/blog/Lesson3">&lt;section class=&quot;tstutorial3&quot;&gt;
+    &lt;h2&gt;Static vs dynamic typing&lt;/h2&gt;
+
     &lt;ol&gt;
         &lt;li&gt;First, let's replace the content of the &lt;code&gt;onStartup&lt;/code&gt; function:&lt;/li&gt;
         &lt;div class=&quot;code-toolbar&quot;&gt;
@@ -222,7 +704,7 @@ test &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Static vs dynamic typing First, let's replace the content of the onStartup function: onStartup(){ let test = 'mdb'; test = 5; }</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/angular_logo.png" /></entry><entry><title type="html">2.Our first TypeScript code</title><link href="http://localhost:4000/blog/Lesson2" rel="alternate" type="text/html" title="2.Our first TypeScript code" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson2</id><content type="html" xml:base="http://localhost:4000/blog/Lesson2">&lt;section class=&quot;ts_tutorial2&quot;&gt;
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Static vs dynamic typing</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/typescipt_logo.png" /></entry><entry><title type="html">2.Our first TypeScript code</title><link href="http://localhost:4000/blog/Lesson2" rel="alternate" type="text/html" title="2.Our first TypeScript code" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson2</id><content type="html" xml:base="http://localhost:4000/blog/Lesson2">&lt;section class=&quot;ts_tutorial2&quot;&gt;
     &lt;h3&gt;Our first TypeScript code&lt;/h3&gt;
     &lt;blockquote class=&quot;blockquote bq-warning&quot;&gt;
         &lt;p class=&quot;bq-title&quot;&gt;Before you start:&lt;/p&gt;
@@ -266,9 +748,7 @@ test &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=
 
         &lt;/div&gt;
         &lt;p&gt;And again step by step:&lt;/p&gt;
-        &lt;img class=&quot;img-fluid&quot;
-            src=&quot;http://localhost:4000/img/typescript/2/img/01.gif&quot;
-            alt=&quot;TS superset of JS&quot;&gt;
+        &lt;img class=&quot;img-fluid&quot; src=&quot;http://localhost:4000/img/typescript/2/img/01.gif&quot; alt=&quot;TS superset of JS&quot;&gt;
         &lt;p&gt;That confirms what we I have stated before:&lt;/p&gt;
         &lt;blockquote class=&quot;blockquote bq-primary&quot;&gt;
             &lt;p&gt;Any valid JavaScript code is also a valid TypeScript code.&lt;/p&gt;
@@ -310,9 +790,7 @@ test &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=
         &lt;/div&gt;
         &lt;li&gt;Save the file, then run &lt;code&gt;ng serve -o&lt;/code&gt;. When the CLI opens a new tab/window with our project, open
             the developer console. You will see:&lt;/li&gt;
-        &lt;img class=&quot;img-fluid&quot;
-            src=&quot;http://localhost:4000/img/typescript/2/img/02.png&quot;
-            alt=&quot;Console .log&quot;&gt;
+        &lt;img class=&quot;img-fluid&quot; src=&quot;http://localhost:4000/img/typescript/2/img/02.png&quot; alt=&quot;Console .log&quot;&gt;
         &lt;p&gt;As you noticed we have created a function — &lt;code&gt;onStartup()&lt;/code&gt; — and added it to the constructor of our
             &lt;code&gt;AppComponent&lt;/code&gt;. Whenever an instance of our component is created, it will call our
             &lt;code&gt;onStartup&lt;/code&gt; function.&lt;/p&gt;
@@ -338,7 +816,7 @@ test &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Our first TypeScript code Before you start: Make sure that you have installed TypeScript — if you haven't check this lesson first. Let's write our first line of TypeScript code. Before we will do it let me clarify one thing. TypeScript is independent of Angular, therefore you can use TypeScript without using Angular. Let's see how to do that. Open a terminal and create a file main.ts: console.log(&quot;Hello TS World&quot;);</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/angular_logo.png" /></entry><entry><title type="html">1.TypeScript Fundamental</title><link href="http://localhost:4000/blog/Lesson1" rel="alternate" type="text/html" title="1.TypeScript Fundamental" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson1</id><content type="html" xml:base="http://localhost:4000/blog/Lesson1">&lt;section class=&quot;ts_tutorial&quot;&gt;
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Our first TypeScript code Before you start: Make sure that you have installed TypeScript — if you haven't check this lesson first. Let's write our first line of TypeScript code. Before we will do it let me clarify one thing. TypeScript is independent of Angular, therefore you can use TypeScript without using Angular. Let's see how to do that. Open a terminal and create a file main.ts: console.log(&quot;Hello TS World&quot;);</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/typescipt_logo.png" /></entry><entry><title type="html">1.TypeScript Fundamental</title><link href="http://localhost:4000/blog/Lesson1" rel="alternate" type="text/html" title="1.TypeScript Fundamental" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson1</id><content type="html" xml:base="http://localhost:4000/blog/Lesson1">&lt;section class=&quot;ts_tutorial&quot;&gt;
     &lt;h2&gt;Fundamentals&lt;/h2&gt;
     &lt;p&gt;In order to create Angular apps, you have to know Typescript. Within thenext few lessons I will teach you its
         basic concepts, by covering the following subjects: &lt;/p&gt;
@@ -358,9 +836,7 @@ test &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=
     &lt;p&gt;At a first glance you might confuse TypeScript with JavaScript. Especially that any valid JavaScript code is also
         a valid TypeScript code, however, it doesn't work another way around. TypeScript is a superset of JavaScript.
     &lt;/p&gt;
-    &lt;img class=&quot;img-fluid&quot;
-        src=&quot;http://localhost:4000/img/typescript/1/img/01.png&quot;
-        alt=&quot;TS superset of JS&quot;&gt;
+    &lt;img class=&quot;img-fluid&quot; src=&quot;http://localhost:4000/img/typescript/1/img/01.png&quot; alt=&quot;TS superset of JS&quot;&gt;
     &lt;p&gt;&lt;i&gt;Image taken from https://angular2buch.de&lt;/i&gt;&lt;/p&gt;
     &lt;blockquote class=&quot;blockquote bq-primary&quot;&gt;
         &lt;p class=&quot;bq-title&quot;&gt;Remember:&lt;/p&gt;
@@ -377,7 +853,7 @@ test &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=
         &lt;pre class=&quot;code-toolbar language-markup&quot;&gt;&lt;code class=&quot; language-markup&quot;&gt;var foo = 42;    // foo is now a Number
 var foo = 'bar'; // foo is now a String
 var foo = true;  // foo is now a Boolean&lt;/code&gt;&lt;/pre&gt;
-        
+
     &lt;/div&gt;
     &lt;p&gt;In a weakly typed language, the type of a &lt;strong&gt;value depends on how it is used&lt;/strong&gt;. For example, if I can
         pass a string to the addition operator and it will AutoMagically be interpreted as a number &lt;strong&gt;or cause an
@@ -390,7 +866,7 @@ var foo = true;  // foo is now a Boolean&lt;/code&gt;&lt;/pre&gt;
         &lt;pre
             class=&quot;code-toolbar language-typescript&quot;&gt;&lt;code class=&quot; language-typescript&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;ts&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; Subsequent variable declarations must have the same &lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;
 Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &lt;span class=&quot;token keyword&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;'number'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; but here has &lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;'boolean'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-        
+
     &lt;/div&gt;
     &lt;p&gt;The advantage of a strongly typed language is that &lt;strong&gt;you are forced to make the behavior of your program
             explicit&lt;/strong&gt;. If you want to add a number and a string your code, you must translate the string into a
@@ -454,7 +930,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Fundamentals In order to create Angular apps, you have to know Typescript. Within thenext few lessons I will teach you its basic concepts, by covering the following subjects: Type annotations Arrow functions Interfaces Classes Constructors Access modifiers Properties Modules If you are familiar with these concepts you can skip this tutorial and navigate to the next part, however if you are new to TypeScript then follow it carefully. What is TypeScript? At a first glance you might confuse TypeScript with JavaScript. Especially that any valid JavaScript code is also a valid TypeScript code, however, it doesn't work another way around. TypeScript is a superset of JavaScript. Image taken from https://angular2buch.de Remember: TypeScript is a superset of JavaScript That means that TypeScript extends JavaScript with extra functionality which is not present in the current version of JavaScript supported by most browsers. So what are those features? Strong typing If you are familiar with languages like Java or C# you probably know that each variable requires a type and this type has to be declared upfront. JavaScript is a loosely typed or a dynamically typed language. Variables in JavaScript are not directly associated with any particular value type, and any variable can be assigned (and re-assigned) values of all types: var foo = 42; // foo is now a Number var foo = 'bar'; // foo is now a String var foo = true; // foo is now a Boolean In a weakly typed language, the type of a value depends on how it is used. For example, if I can pass a string to the addition operator and it will AutoMagically be interpreted as a number or cause an error if the contents of the string cannot be translated into a number. Similarly, I can concatenate strings and numbers or use strings as booleans, etc. In a strongly typed language, a variable has a type and that type cannot change. What you can do to a variable depends on its type. If we try to compile the above code in TypeScript we will get the sfollowing error: [ts] Subsequent variable declarations must have the same type. Variable 'foo' must be of type 'number', but here has type 'boolean'. The advantage of a strongly typed language is that you are forced to make the behavior of your program explicit. If you want to add a number and a string your code, you must translate the string into a number to be used as an operand of the addition operator. This makes code easier to understand because there is no (or less) hidden behavior. This also makes your code more verbose. Remember: Strong typing is optional in TypeScript but using this feature makes your application more predictable and make it easier to debug so you should definitely make use of it. Object-oriented Object-oriented programming (OOP) is an old concept used by multiple languages like Java or C# to help developer associate together data and methods within one &quot;object&quot;. In OOP object are created and are able to interact with each other using one another's public facing methods. JavaScript itself is not an object-oriented language in the way that C++, C#, or Java are. TypeScript, on the other hand, can be treated as an object-oriented language because of the language constructs it introduces on top of JavaScript closures. TypeScript brings many object-oriented features which we missed in JavaScript for a very long time. We have explicit concepts of: Classes Interfaces Constructors Access modifiers (public and private) We will learn all of that in the later sections. Compile-time error Let me explain first what run-time error is as this is a common case. We are talking about the run-time error when we face any issue while using our application. In other words — if you make a mistake when you create your website and write some code, you will see it only while using the application/website. For example, if you make a typo in an webpage file your browser console will show you an error when you load that page. Due to weak typing in JavaScript, it often happens that we try to perform operations on a variable with a different type. If our application logic is complex we might not spot that we are trying to assign elements of a different type to each other. In JavaScript, we will get to know about the error only when someone triggers code and it fails. In contrast, TypeScript can provide us with compile-time errors, which means, it can spot errors while compiling code to JavaScript, and fix it before deploying to production. Of course it won't catch them all, but still a lot. Awesome tool-set I won't write much about this. Along with this course you will see how many useful tools come with Angular. Let's don't waste time and start coding!</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/angular_logo.png" /></entry><entry><title type="html">3.Python JSON</title><link href="http://localhost:4000/blog/PythonJSON" rel="alternate" type="text/html" title="3.Python JSON" /><published>2019-10-03T00:00:00+00:00</published><updated>2019-10-03T00:00:00+00:00</updated><id>http://localhost:4000/blog/PythonJSON</id><content type="html" xml:base="http://localhost:4000/blog/PythonJSON">&lt;section class=&quot;Ptutorial31&quot;&gt;
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Fundamentals In order to create Angular apps, you have to know Typescript. Within thenext few lessons I will teach you its basic concepts, by covering the following subjects: Type annotations Arrow functions Interfaces Classes Constructors Access modifiers Properties Modules If you are familiar with these concepts you can skip this tutorial and navigate to the next part, however if you are new to TypeScript then follow it carefully. What is TypeScript? At a first glance you might confuse TypeScript with JavaScript. Especially that any valid JavaScript code is also a valid TypeScript code, however, it doesn't work another way around. TypeScript is a superset of JavaScript. Image taken from https://angular2buch.de Remember: TypeScript is a superset of JavaScript That means that TypeScript extends JavaScript with extra functionality which is not present in the current version of JavaScript supported by most browsers. So what are those features? Strong typing If you are familiar with languages like Java or C# you probably know that each variable requires a type and this type has to be declared upfront. JavaScript is a loosely typed or a dynamically typed language. Variables in JavaScript are not directly associated with any particular value type, and any variable can be assigned (and re-assigned) values of all types: var foo = 42; // foo is now a Number var foo = 'bar'; // foo is now a String var foo = true; // foo is now a Boolean</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/typescipt_logo.png" /></entry><entry><title type="html">3.Python JSON</title><link href="http://localhost:4000/blog/PythonJSON" rel="alternate" type="text/html" title="3.Python JSON" /><published>2019-10-03T00:00:00+00:00</published><updated>2019-10-03T00:00:00+00:00</updated><id>http://localhost:4000/blog/PythonJSON</id><content type="html" xml:base="http://localhost:4000/blog/PythonJSON">&lt;section class=&quot;Ptutorial31&quot;&gt;
     &lt;div class=&quot;item-page&quot; itemscope=&quot;&quot; itemtype=&quot;https://schema.org/Article&quot;&gt;
         &lt;meta itemprop=&quot;inLanguage&quot; content=&quot;en-GB&quot;&gt;
         &lt;div class=&quot;page-header&quot;&gt;
@@ -1806,685 +2282,4 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python SciPy Tutorial: Learn with Example</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry><entry><title type="html">2.Reading and Writing CSV Files</title><link href="http://localhost:4000/blog/PythonReadWriteCSV" rel="alternate" type="text/html" title="2.Reading and Writing CSV Files" /><published>2019-10-03T00:00:00+00:00</published><updated>2019-10-03T00:00:00+00:00</updated><id>http://localhost:4000/blog/PythonReadWriteCSV</id><content type="html" xml:base="http://localhost:4000/blog/PythonReadWriteCSV">&lt;section class=&quot;Ptutorial30&quot;&gt;
-    &lt;div class=&quot;item-page&quot; itemscope=&quot;&quot; itemtype=&quot;https://schema.org/Article&quot;&gt;
-        &lt;meta itemprop=&quot;inLanguage&quot; content=&quot;en-GB&quot;&gt;
-        &lt;div class=&quot;page-header&quot;&gt;
-            &lt;h2 itemprop=&quot;headline&quot;&gt; Reading and Writing CSV Files in Python using CSV Module &amp;amp; Pandas &lt;/h2&gt;
-        &lt;/div&gt;
-
-        &lt;div itemprop=&quot;articleBody&quot;&gt;
-
-            &lt;h2&gt;&lt;a id=&quot;1&quot;&gt;&lt;/a&gt;What is a CSV file? &lt;/h2&gt;
-            &lt;p&gt;A CSV file is a type of plain text file that uses specific structuring to arrange tabular data. CSV is a
-                common format for data interchange as it's compact, simple and general. Many online services allow its
-                users to export tabular data from the website into a CSV file. Files of CSV will open into Excel, and
-                nearly all databases have a tool to allow import from CSV file. The standard format is defined by rows
-                and columns data. Moreover, each row is terminated by a newline to begin the next row. Also within the
-                row, each column is separated by a comma. &lt;/p&gt;
-            &lt;p&gt;In this tutorial, you will learn: &lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;a href=&quot;#1&quot;&gt;What is a CSV file? &lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#2&quot;&gt;CSV Sample File. &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#3&quot;&gt;Python CSV Module &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#4&quot;&gt;CSV Module Functions &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#5&quot;&gt;Reading CSV Files &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#6&quot;&gt;Reading as a Dictionary &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#7&quot;&gt;Writing to CSV Files &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#8&quot;&gt;Reading CSV Files with Pandas &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#9&quot;&gt;Writing to CSV Files with Pandas &lt;/a&gt; &lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;h2&gt;&lt;a id=&quot;2&quot;&gt;&lt;/a&gt;CSV Sample File.&lt;/h2&gt;
-            &lt;p&gt;Data in the form of tables is also called CSV (comma separated values) - literally &quot;comma-separated
-                values.&quot; This is a text format intended for the presentation of tabular data. Each line of the file is
-                one line of the table. The values of individual columns are separated by a separator symbol - a comma
-                (,), a semicolon (;) or another symbol. CSV can be easily read and processed by Python. &lt;/p&gt;
-            &lt;p&gt;Consider the following Tabe &lt;/p&gt;
-            &lt;p&gt;&lt;strong&gt;Table Data&lt;/strong&gt; &lt;/p&gt;
-            &lt;table class=&quot;table table-striped table-bordered&quot;&gt;
-                &lt;tbody&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Programming language &lt;/td&gt;
-                        &lt;td&gt;Designed by &lt;/td&gt;
-                        &lt;td&gt;Appeared &lt;/td&gt;
-                        &lt;td&gt;Extension &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Python &lt;/td&gt;
-                        &lt;td&gt;Guido van Rossum &lt;/td&gt;
-                        &lt;td&gt;1991 &lt;/td&gt;
-                        &lt;td&gt;.py &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Java &lt;/td&gt;
-                        &lt;td&gt;James Gosling &lt;/td&gt;
-                        &lt;td&gt;1995 &lt;/td&gt;
-                        &lt;td&gt;.java &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;C++ &lt;/td&gt;
-                        &lt;td&gt;Bjarne Stroustrup &lt;/td&gt;
-                        &lt;td&gt;1983 &lt;/td&gt;
-                        &lt;td&gt;.cpp &lt;/td&gt;
-                    &lt;/tr&gt;
-                &lt;/tbody&gt;
-            &lt;/table&gt;
-            &lt;p&gt;You can represent this table in csv as below.&lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
-            &lt;p&gt;&lt;strong&gt;CSV Data&lt;/strong&gt; &lt;/p&gt;
-            &lt;p&gt;Programming language, Designed by, Appeared, Extension &lt;/p&gt;
-            &lt;p&gt;Python, Guido van Rossum, 1991, .py &lt;/p&gt;
-            &lt;p&gt;Java, James Gosling, 1995, .java &lt;/p&gt;
-            &lt;p&gt;C++, Bjarne Stroustrup,1983,.cpp &lt;/p&gt;
-            &lt;p&gt;As you can see each row is a new line, and each column is separated with a comma. This is an example of
-                how a CSV file looks like. &lt;/p&gt;
-            &lt;p class=&quot;alert alert-error&quot; style=&quot;text-align: center;&quot;&gt;&lt;a
-                    href=&quot;https://drive.google.com/uc?export=download&amp;amp;id=1e4zXe62E41RqLexYusECd5RSvN5aVZGI&quot;
-                    onclick=&quot;ga('send', 'event', 'download', 'Python CSV File', 'Python CSV File');&quot;&gt; Download CSV
-                    Data&lt;/a&gt; &lt;/p&gt;
-            &lt;h2&gt;&lt;a id=&quot;3&quot;&gt;&lt;/a&gt;Python CSV Module&lt;/h2&gt;
-            &lt;p&gt;Python provides a CSV module to handle CSV files. To read/write data, you need to loop through rows of
-                the CSV. You need to use the split method to get data from specified columns. &lt;/p&gt;
-            &lt;h2&gt;&lt;a id=&quot;4&quot;&gt;&lt;/a&gt;CSV Module Functions&lt;/h2&gt;
-            &lt;p&gt;In CSV module documentation you can find following functions: &lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;csv.field_size_limit – return maximum field size&lt;/li&gt;
-                &lt;li&gt;csv.get_dialect – get the dialect which is associated with the name&lt;/li&gt;
-                &lt;li&gt;csv.list_dialects – show all registered dialects&lt;/li&gt;
-                &lt;li&gt;csv.reader – read data from a csv file&lt;/li&gt;
-                &lt;li&gt;csv.register_dialect - associate dialect with name&lt;/li&gt;
-                &lt;li&gt;csv.writer – write data to a csv file&lt;/li&gt;
-                &lt;li&gt;csv.unregister_dialect - delete the dialect associated with the name the dialect registry &lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;csv.QUOTE_ALL&lt;/strong&gt; - Quote everything, regardless of type.&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;csv.QUOTE_MINIMAL&lt;/strong&gt; - Quote fields with special characters&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;csv.QUOTE_NONNUMERIC&lt;/strong&gt; - Quote all fields that aren't numbers value&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;csv.QUOTE_NONE&lt;/strong&gt; – Don't quote anything in output &lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;p&gt;In this tutorial, we are going to focus only on the reader and writer functions which allow you to edit,
-                modify, and manipulate the data in a CSV file. &lt;/p&gt;
-            &lt;h2&gt;&lt;a id=&quot;5&quot;&gt;&lt;/a&gt;How to Read a CSV File&lt;strong&gt; &lt;/strong&gt;&lt;/h2&gt;
-            &lt;p&gt;To read data from CSV files, you must use the reader function to generate a reader object. &lt;/p&gt;
-            &lt;p&gt;The reader function is developed to take each row of the file and make a list of all columns. Then, you
-                have to choose the column you want the variable data for. &lt;/p&gt;
-            &lt;p&gt;It sounds a lot more intricate than it is. Let's take a look at this example, and we will find out that
-                working with csv file isn't so hard. &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         #import necessary modules
-         import csv
-         with open('X:\data.csv','rt')as f:
-           data = csv.reader(f)
-           for row in data:
-                 print(row)
-         &lt;/pre&gt;
-            &lt;p&gt;When you execute the program above, the output will be:&lt;/p&gt;
-
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         ['Programming language; Designed by; Appeared; Extension']
-         ['Python; Guido van Rossum; 1991; .py']
-         ['Java; James Gosling; 1995; .java']
-         ['C++; Bjarne Stroustrup;1983;.cpp']
-         &lt;/pre&gt;
-            &lt;h2&gt;&lt;a id=&quot;6&quot;&gt;&lt;/a&gt;How to Read a CSV as a Dictionary&lt;/h2&gt;
-            &lt;p&gt;You can also you use DictReader to read CSV files. The results are interpreted as a dictionary where the
-                header row is the key, and other rows are values. &lt;/p&gt;
-            &lt;p&gt;Consider the following code &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         #import necessary modules
-         import csv
-         
-         reader = csv.DictReader(open(&quot;file2.csv&quot;))
-         for raw in reader:
-             print(raw)
-         &lt;/pre&gt;
-            &lt;p&gt;The result of this code is: &lt;/p&gt;
-            &lt;pre
-                class=&quot;code-toolbar&quot;&gt;
-         OrderedDict([('Programming language', 'Python'), ('Designed by', 'Guido van Rossum'), (' Appeared', ' 1991'), (' Extension', ' .py')])
-         OrderedDict([('Programming language', 'Java'), ('Designed by', 'James Gosling'), (' Appeared', ' 1995'), (' Extension', ' .java')])
-         OrderedDict([('Programming language', 'C++'), ('Designed by', ' Bjarne Stroustrup'), (' Appeared', ' 1985'), (' Extension', ' .cpp')])&lt;/pre&gt;
-            &lt;p style=&quot;text-align: center;&quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/datascience/img/2/122118_0714_ReadingandW1.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img src=&quot;http://localhost:4000/img/python/datascience/img/2/122118_0714_ReadingandW1.png&quot;
-                        alt=&quot;&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;p&gt;And this way to read data from CSV file is much easier than earlier method. However, this is not isn't
-                the best way to read data. &lt;/p&gt;
-            &lt;h2&gt;&lt;a id=&quot;7&quot;&gt;&lt;/a&gt;How to write CSV File&lt;/h2&gt;
-            &lt;p&gt;When you have a set of data that you would like to store in a CSV file you have to use writer() function.
-                To iterate the data over the rows(lines), you have to use the writerow() function. &lt;/p&gt;
-            &lt;p&gt;Consider the following example. We write data into a file &quot;writeData.csv&quot; where the delimiter is an
-                apostrophe. &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         #import necessary modules
-         import csv
-         
-         with open('X:\writeData.csv', mode='w') as file:
-             writer = csv.writer(file, delimiter=',', quotechar='&quot;', quoting=csv.QUOTE_MINIMAL)
-         
-             #way to write to csv file
-             writer.writerow(['Programming language', 'Designed by', 'Appeared', 'Extension'])
-             writer.writerow(['Python', 'Guido van Rossum', '1991', '.py'])
-             writer.writerow(['Java', 'James Gosling', '1995', '.java'])
-             writer.writerow(['C++', 'Bjarne Stroustrup', '1985', '.cpp'])
-         &lt;/pre&gt;
-            &lt;p&gt;Result in csv file is: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         Programming language, Designed by, Appeared, Extension 
-         Python, Guido van Rossum, 1991, .py
-         Java, James Gosling, 1995, .java
-         C++, Bjarne Stroustrup,1983,.cpp&lt;/pre&gt;
-            &lt;p style=&quot;text-align: center;&quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/datascience/img/2/122118_0714_ReadingandW2.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img src=&quot;http://localhost:4000/img/python/datascience/img/2/122118_0714_ReadingandW2.png&quot;
-                        alt=&quot;&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;h2&gt;&lt;a id=&quot;8&quot;&gt;&lt;/a&gt;Reading CSV Files with Pandas&lt;/h2&gt;
-            &lt;p&gt;Pandas is an opensource library that allows to you perform data manipulation in Python. Pandas provide an
-                easy way to create, manipulate and delete the data. &lt;/p&gt;
-            &lt;p&gt;You must install pandas library with command &amp;lt;code&amp;gt;pip install pandas&amp;lt;/code&amp;gt;. In windows, you
-                will execute this command in Command Prompt while in Linux in the Terminal. &lt;/p&gt;
-            &lt;p&gt;Reading the CSV into a pandas DataFrame is very quick and easy: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         #import necessary modules
-         import pandas
-         result = pandas.read_csv('X:\data.csv')
-         print(result)
-         &lt;/pre&gt;
-            &lt;p&gt;Result: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         Programming language, Designed by, Appeared, Extension 
-         0    Python, Guido van Rossum, 1991, .py
-         1    Java, James Gosling, 1995, .java
-         2    C++, Bjarne Stroustrup,1983,.cpp	&lt;/pre&gt;
-            &lt;p&gt;Very useful library. In just three lines of code you the same result as earlier. Pandas know that the
-                first line of the CSV contained column names, and it will use them automatically. &lt;/p&gt;
-            &lt;h2&gt;&lt;a id=&quot;9&quot;&gt;&lt;/a&gt;Writing to CSV Files with Pandas&lt;/h2&gt;
-            &lt;p&gt;Writing to CSV file with Pandas is as easy as reading. Here you can convince in it. First you must create
-                DataFrame based on the following code. &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         from pandas import DataFrame
-         C = {'Programming language': ['Python','Java', 'C++'],
-                 'Designed by': ['Guido van Rossum', 'James Gosling', 'Bjarne Stroustrup'],
-                 'Appeared': ['1991', '1995', '1985'],
-                 'Extension': ['.py', '.java', '.cpp'],
-             }
-         df = DataFrame(C, columns= ['Programming language', 'Designed by', 'Appeared', 'Extension'])
-         export_csv = df.to_csv (r'X:\pandaresult.csv', index = None, header=True) # here you have to write path, where result file will be stored
-         print (df)
-         &lt;/pre&gt;
-            &lt;p&gt;Here is the output &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;Programming language, Designed by, Appeared, Extension
-         0    Python, Guido van Rossum, 1991, .py
-         1    Java, James Gosling, 1995, .java
-         2    C++, Bjarne Stroustrup,1983,.cpp&lt;/pre&gt;
-            &lt;p&gt;And CSV file is created at the specified location. &lt;/p&gt;
-            &lt;p style=&quot;text-align: center;&quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/datascience/img/2/122118_0714_ReadingandW3.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img src=&quot;http://localhost:4000/img/python/datascience/img/2/122118_0714_ReadingandW3.png&quot;
-                        alt=&quot;&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;p&gt;&lt;strong&gt;Conclusion&lt;/strong&gt; &lt;/p&gt;
-            &lt;p&gt;So, now you know how use method 'csv' and also read and write data in CSV format. CSV files are widely
-                used in software applications because they are easy to read and manage, and their small size makes them
-                relatively fast for processing and transmission. &lt;/p&gt;
-            &lt;p&gt;The csv module provides various functions and classes which allow you to read and write easily. You can
-                look at the official Python documentation and find some more interesting tips and modules. CSV is the
-                best way for saving, viewing, and sending data. Actually, it isn't so hard to learn as it seems at the
-                beginning. But with a little practice, you'll master it. &lt;/p&gt;
-            &lt;p&gt;Pandas is a great alternative to read CSV files. &lt;/p&gt;
-            &lt;p&gt;Also, there are other ways to parse text files with libraries like ANTLR, PLY, and PlyPlus. They can all
-                handle heavy-duty parsing, and if simple String manipulation doesn't work, there are regular expressions
-                which you can use. &lt;/p&gt;
-
-
-        &lt;/div&gt;
-
-    &lt;/div&gt;
-
-&lt;/section&gt;
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr&gt;
-   
-    &lt;div class=&quot;row&quot; &gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/PythonSciPy&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot; 
-                &gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot; &gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/PythonJSON&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;
-                 &gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Reading and Writing CSV Files in Python using CSV Module &amp;amp; Pandas</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry><entry><title type="html">4.Python MySQL</title><link href="http://localhost:4000/blog/PythonMySQL" rel="alternate" type="text/html" title="4.Python MySQL" /><published>2019-10-03T00:00:00+00:00</published><updated>2019-10-03T00:00:00+00:00</updated><id>http://localhost:4000/blog/PythonMySQL</id><content type="html" xml:base="http://localhost:4000/blog/PythonMySQL">&lt;section class=&quot;Ptutorial32&quot;&gt;
-    &lt;div class=&quot;item-page&quot; itemscope=&quot;&quot; itemtype=&quot;https://schema.org/Article&quot;&gt;
-        &lt;meta itemprop=&quot;inLanguage&quot; content=&quot;en-GB&quot;&gt;
-        &lt;div class=&quot;page-header&quot;&gt;
-            &lt;h2 itemprop=&quot;headline&quot;&gt; Python with MySQL: Connect, Create Database, Table, Insert [Examples] &lt;/h2&gt;
-        &lt;/div&gt;
-
-        &lt;div itemprop=&quot;articleBody&quot;&gt;
-            &lt;p&gt;Before diving deep, let's understand &lt;/p&gt;
-            &lt;h2&gt;What is MySQL?&lt;/h2&gt;
-            &lt;p&gt;MySQL is an Open-Source database and one of the best type of RDBMS (Relational Database Management
-                System). Co-founder of MySQLdb is Michael Widenius's, and also MySQL name derives from the daughter of
-                Michael. &lt;/p&gt;
-            &lt;h2&gt;How to Install MySQL&lt;/h2&gt;
-            &lt;p&gt;&lt;strong&gt;Install MySQL in Linux/Unix:&lt;/strong&gt; &lt;/p&gt;
-            &lt;p&gt;Download RPM package for Linux/Unix from Official site: &lt;a
-                    href=&quot;https://www.mysql.com/downloads/&quot;&gt;https://www.mysql.com/downloads/&lt;/a&gt; &lt;/p&gt;
-            &lt;p&gt;In terminal use following command &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;rpm  -i &amp;lt;Package_name&amp;gt;&lt;/pre&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;Example   rpm -i MySQL-5.0.9.0.i386.rpm
-         &lt;/pre&gt;
-            &lt;p&gt;To check in Linux &lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;mysql --version&lt;/pre&gt;
-            &lt;p&gt;&lt;strong&gt;Install MySQL in Windows&lt;/strong&gt; &lt;/p&gt;
-            &lt;p&gt; Download MySQL database exe from &lt;a href=&quot;https://www.mysql.com/downloads/&quot;&gt;official site&lt;/a&gt; and
-                install as usual normal installation of software in Windows. Refer this &lt;a
-                    href=&quot;https://www.guru99.com/introduction-to-mysql-workbench.html&quot;&gt;tutorial&lt;/a&gt;, for a step by step
-                guide&lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
-            &lt;h2&gt;Install MySQL Connector Library for Python&lt;/h2&gt;
-            &lt;p&gt;For Python 2.7 or lower install using pip as: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;pip install mysql-connector
-         &lt;/pre&gt;
-            &lt;p&gt;For Python 3 or higher version install using pip3 as:&lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;pip3 install mysql-connector &lt;/pre&gt;
-            &lt;h2&gt; Test the MySQL Database connection with Python&lt;/h2&gt;
-            &lt;p&gt;To test database connection here we use pre-installed MySQL connector and pass credentials into
-                &lt;strong&gt;connect()&lt;/strong&gt; function like host, username and password. &lt;/p&gt;
-            &lt;p&gt;Syntax to access MySQL with Python: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-             import mysql.connector
-             db_connection = mysql.connector.connect(
-               host=&quot;hostname&quot;,
-               user=&quot;username&quot;,
-               passwd=&quot;password&quot;
-             )
-         &lt;/pre&gt;
-            &lt;p&gt;Example, &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         import mysql.connector
-         db_connection = mysql.connector.connect(
-           host=&quot;localhost&quot;,
-           user=&quot;root&quot;,
-           passwd=&quot;root&quot;
-         )
-         print(db_connection)
-         &lt;/pre&gt;
-            &lt;p&gt;Output: &lt;/p&gt;
-            &lt;pre
-                class=&quot;code-toolbar&quot;&gt;&amp;lt;mysql.connector.connection.MySQLConnection object at 0x000002338A4C6B00&amp;gt;&lt;/pre&gt;
-            &lt;p&gt; Here output shows the connection created successfully. &lt;/p&gt;
-            &lt;h2&gt;Creating Database in MySQL using Python&lt;/h2&gt;
-            &lt;p&gt;Syntax to Create new database in SQL is &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;CREATE DATABASE &quot;database_name&quot;
-         &lt;/pre&gt;
-            &lt;p&gt;Now we create database using Python in MySQL&lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-           import mysql.connector
-           db_connection = mysql.connector.connect(
-           host= &quot;localhost&quot;,
-           user= &quot;root&quot;,
-           passwd= &quot;root&quot;
-           )
-         # creating database_cursor to perform SQL operation
-         db_cursor = db_connection.cursor()
-         # executing cursor with execute method and pass SQL query
-         db_cursor.execute(&quot;CREATE DATABASE my_first_db&quot;)
-         # get list of all databases
-         db_cursor.execute(&quot;SHOW DATABASES&quot;)
-         #print all databases
-         for db in db_cursor:
-             print(db)
-         &lt;/pre&gt;
-            &lt;p&gt;Output: &lt;/p&gt;
-            &lt;p style=&quot;text-align: center;&quot;&gt;&lt;a
-                    href=&quot;http://localhost:4000/img/python/datascience/img/4/030819_0707_PythonwithM1.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img
-                        src=&quot;http://localhost:4000/img/python/datascience/img/4/030819_0707_PythonwithM1.png&quot;
-                        alt=&quot;&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-
-            &lt;p&gt;Here above image shows the &lt;strong&gt;my_first_db&lt;/strong&gt; database is created &lt;/p&gt;
-            &lt;h2&gt;Create a Table in MySQL with Python&lt;/h2&gt;
-            &lt;p&gt;Let's create a simple table &quot;student&quot; which has two columns. &lt;/p&gt;
-            &lt;p&gt;SQL Syntax: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;CREATE  TABLE student (id INT, name VARCHAR(255))
-         &lt;/pre&gt;
-            &lt;p&gt;&lt;strong&gt;Example:&lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-           import mysql.connector
-           db_connection = mysql.connector.connect(
-           host=&quot;localhost&quot;,
-           user=&quot;root&quot;,
-           passwd=&quot;root&quot;,
-           database=&quot;my_first_db&quot;
-           )
-         db_cursor = db_connection.cursor()
-         #Here creating database table as student'
-         db_cursor.execute(&quot;CREATE TABLE student (id INT, name VARCHAR(255))&quot;)
-         #Get database table'
-         db_cursor.execute(&quot;SHOW TABLES&quot;)
-         for table in db_cursor:
-             print(table)
-         &lt;/pre&gt;
-            &lt;p&gt;Output: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt; ('student',) &lt;/pre&gt;
-            &lt;h2&gt;Create a Table with Primary Key&lt;/h2&gt;
-            &lt;p&gt;Let's create an &lt;strong&gt;Employee&lt;/strong&gt; table with three different columns. We will add a primary key
-                in &lt;strong&gt;id&lt;/strong&gt; column with AUTO_INCREMENT constraint &lt;/p&gt;
-            &lt;p&gt;SQL Syntax, &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;CREATE TABLE employee(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), salary INT(6))
-         &lt;/pre&gt;
-            &lt;p&gt;Example,&lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-           import mysql.connector
-           db_connection = mysql.connector.connect(
-           host=&quot;localhost&quot;,
-           user=&quot;root&quot;,
-           passwd=&quot;root&quot;,
-           database=&quot;my_first_db&quot;
-           )
-         db_cursor = db_connection.cursor()
-         #Here creating database table as employee with primary key
-         db_cursor.execute(&quot;CREATE TABLE employee(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), salary INT(6))&quot;)
-         #Get database table
-         db_cursor.execute(&quot;SHOW TABLES&quot;)
-         for table in db_cursor:
-             print(table)	
-         &lt;/pre&gt;
-            &lt;p&gt; Output: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;('employee',) ('student',)&lt;/pre&gt;
-            &lt;h2&gt;ALTER table in MySQL with Python&lt;/h2&gt;
-            &lt;p&gt;Alter command is used for modification of Table structure in SQL. Here we will alter &lt;strong&gt;Student
-                &lt;/strong&gt;table and add a primary key to the &lt;strong&gt;id&lt;/strong&gt; field. &lt;/p&gt;
-            &lt;p&gt;SQL Syntax, &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;ALTER TABLE student MODIFY id INT PRIMARY KEY
-         &lt;/pre&gt;
-            &lt;p&gt;Example, &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-           import mysql.connector
-           db_connection = mysql.connector.connect(
-           host=&quot;localhost&quot;,
-           user=&quot;root&quot;,
-           passwd=&quot;root&quot;,
-           database=&quot;my_first_db&quot;
-           )
-         db_cursor = db_connection.cursor()
-         #Here we modify existing column id
-         db_cursor.execute(&quot;ALTER TABLE student MODIFY id INT PRIMARY KEY&quot;)
-         &lt;/pre&gt;
-            &lt;p&gt; Output: &lt;/p&gt;
-            &lt;p&gt; Here below you can see the &lt;strong&gt;id &lt;/strong&gt;column is modified. &lt;/p&gt;
-            &lt;p style=&quot;text-align:center;&quot;&gt;&lt;a
-                    href=&quot;http://localhost:4000/img/python/datascience/img/4/030819_0707_PythonwithM2.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img
-                        src=&quot;http://localhost:4000/img/python/datascience/img/4/030819_0707_PythonwithM2.png&quot;
-                        alt=&quot;&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;h2&gt;Insert Operation with MySQL in Python:&lt;/h2&gt;
-            &lt;p&gt;Let's perform insertion operation in MySQL Database table which we already create. We will insert data oi
-                STUDENT table and EMPLOYEE table. &lt;/p&gt;
-            &lt;p&gt;SQL Syntax, &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         INSERT INTO student (id, name) VALUES (01, &quot;John&quot;)
-         INSERT INTO employee (id, name, salary) VALUES(01, &quot;John&quot;, 10000)
-         &lt;/pre&gt;
-            &lt;p&gt;Example,&lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-           import mysql.connector
-           db_connection = mysql.connector.connect(
-           host=&quot;localhost&quot;,
-           user=&quot;root&quot;,
-           passwd=&quot;root&quot;,
-           database=&quot;my_first_db&quot;
-           )
-         db_cursor = db_connection.cursor()
-         student_sql_query = &quot;INSERT INTO student(id,name) VALUES(01, 'John')&quot;
-         employee_sql_query = &quot; INSERT INTO employee (id, name, salary) VALUES (01, 'John', 10000)&quot;
-         #Execute cursor and pass query as well as student data
-         db_cursor.execute(student_sql_query)
-         #Execute cursor and pass query of employee and data of employee
-             db_cursor.execute(employee_sql_query)
-         db_connection.commit()
-         print(db_cursor.rowcount, &quot;Record Inserted&quot;)
-         &lt;/pre&gt;
-            &lt;p&gt;Output: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt; 2 Record Inserted &lt;/pre&gt;
-
-
-        &lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/section&gt;
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr&gt;
-   
-    &lt;div class=&quot;row&quot; &gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/PythonJSON&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot; 
-                &gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot; &gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/PythonKeyDiff&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;
-                 &gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python with MySQL: Connect, Create Database, Table, Insert [Examples]</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry><entry><title type="html">5.Python 2 vs Python 3 - Key Differences</title><link href="http://localhost:4000/blog/PythonKeyDiff" rel="alternate" type="text/html" title="5.Python 2 vs Python 3 - Key Differences" /><published>2019-10-03T00:00:00+00:00</published><updated>2019-10-03T00:00:00+00:00</updated><id>http://localhost:4000/blog/PythonKeyDiff</id><content type="html" xml:base="http://localhost:4000/blog/PythonKeyDiff">&lt;section class=&quot;Ptutorial32&quot;&gt;
-    &lt;div class=&quot;item-page&quot; itemscope=&quot;&quot; itemtype=&quot;https://schema.org/Article&quot;&gt;
-        &lt;meta itemprop=&quot;inLanguage&quot; content=&quot;en-GB&quot;&gt;
-        &lt;div class=&quot;page-header&quot;&gt;
-            &lt;h2 itemprop=&quot;headline&quot;&gt; Python 2 vs Python 3: Key Differences &lt;/h2&gt;
-        &lt;/div&gt;
-
-        &lt;div itemprop=&quot;articleBody&quot;&gt;
-            &lt;h2&gt;&lt;a id=&quot;1&quot;&gt;&lt;/a&gt;What is Python 2?&lt;/h2&gt;
-            &lt;p&gt;Python 2 made code development process easier than earlier versions. It implemented technical details of
-                Python Enhancement Proposal (PEP). Python 2.7 (last version in 2.x ) is no longer under development and
-                in 2020 will be discontinued. &lt;/p&gt;
-            &lt;p&gt;In this tutorial, you will learn, &lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;a href=&quot;#1&quot;&gt;What is Python 2? &lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#2&quot;&gt;What is Python 3? &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#3&quot;&gt;Why should you learn Python 2? &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#4&quot;&gt;Why should you use Python 3? &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#5&quot;&gt;History of Python 2 &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#6&quot;&gt;History of Python 3 &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#7&quot;&gt;Key Differences Between Python 2 and Python 3 &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#8&quot;&gt;Python 2 vs. Python 3 Example Code &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#9&quot;&gt;Which Python Version to Use? &lt;/a&gt; &lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;h2&gt;&lt;a id=&quot;2&quot;&gt;&lt;/a&gt;What is Python 3?&lt;/h2&gt;
-            &lt;p&gt;On December 2008, Python released version 3.0. This version was mainly released to fix problems which
-                exist in Python 2. The nature of these change is such that Python 3 was incompatible with Python 2. It
-                is &lt;strong&gt;backward incompatible&lt;/strong&gt; Some features of Python 3 have been backported to Python 2.x
-                versions to make the migration process easy in Python 3. &lt;/p&gt;
-            &lt;p&gt;As a result, for any organization who was using Python 2.x version, migrating their project to 3.x needed
-                lots of changes. These changes not only relate to projects and applications but also all the libraries
-                that form part of the Python ecosystem. &lt;/p&gt;
-            &lt;h2&gt;&lt;a id=&quot;3&quot;&gt;&lt;/a&gt;Why should you learn Python 2?&lt;/h2&gt;
-            &lt;figure style=&quot;margin-left: auto;margin-right: auto;&quot;&gt;
-                &lt;center&gt;
-                    &lt;a href=&quot;http://localhost:4000/img/python/datascience/img/5/032219_1004_Python2vsPy1.png&quot;
-                        class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img
-                            src=&quot;http://localhost:4000/img/python/datascience/img/5/032219_1004_Python2vsPy1.png&quot;
-                            alt=&quot;&quot;&gt;&lt;/a&gt;
-                    &lt;figcaption style=&quot;display: table;&quot;&gt;Google Trends Python 2 vs. Python 3&lt;/figcaption&gt;
-                &lt;/center&gt;
-            &lt;/figure&gt;
-            &lt;p&gt;Although, Python 2 is an old open source version here are where you still need to learn Python 2: &lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;To become a DevOps engineer and you need to work with configurations management tools like puppet or
-                    ansible. Here, you need to work with both of these versions. &lt;/li&gt;
-                &lt;li&gt;If your company's code written in Python 2, you will require to learn to work with that &lt;/li&gt;
-                &lt;li&gt;If your development team is working on a project that depends on specific third-party libraries or
-                    software which you are not able to port to Python 3, then Python 2 is the only option available for
-                    you. &lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;h2&gt;&lt;a id=&quot;4&quot;&gt;&lt;/a&gt;Why should you use Python 3?&lt;/h2&gt;
-            &lt;figure style=&quot;margin-left: auto;margin-right: auto;&quot;&gt;
-                &lt;center&gt;
-                    &lt;a href=&quot;http://localhost:4000/img/python/datascience/img/5/032219_1004_Python2vsPy2.png&quot;
-                        class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img
-                            src=&quot;http://localhost:4000/img/python/datascience/img/5/032219_1004_Python2vsPy2.png&quot;
-                            alt=&quot;&quot;&gt;&lt;/a&gt;
-                    &lt;figcaption style=&quot;display: table;&quot;&gt;Stack Overflow Questions Python 2 vs. Python 3&lt;/figcaption&gt;
-                &lt;/center&gt;
-            &lt;/figure&gt;
-            &lt;p&gt;Here, are prime reasons for using Python 3.x versions: &lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;Python 3 supports modern techniques like AI, machine learning, and data science&lt;/li&gt;
-                &lt;li&gt;Python 3 is supported by a large Python developer's community. Getting support is easy.&lt;/li&gt;
-                &lt;li&gt;Its easier to learn Python language compared to earlier versions.&lt;/li&gt;
-                &lt;li&gt;Offers Powerful toolkit and libraries&lt;/li&gt;
-                &lt;li&gt;Mixable with other languages&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;h2&gt;&lt;a id=&quot;5&quot;&gt;&lt;/a&gt;History of Python 2&lt;/h2&gt;
-            &lt;ul&gt;
-                &lt;li&gt;Python 2.0 - October 16, 2000 &lt;/li&gt;
-                &lt;li&gt;Python 2.1 - April 17, 2001 &lt;/li&gt;
-                &lt;li&gt;Python 2.2 - December 21, 2001 &lt;/li&gt;
-                &lt;li&gt;Python 2.3 - July 29, 2003 &lt;/li&gt;
-                &lt;li&gt;Python 2.4 - November 30, 2004 &lt;/li&gt;
-                &lt;li&gt;Python 2.5 - September 19, 2006 &lt;/li&gt;
-                &lt;li&gt;Python 2.6 - October 1, 2008 &lt;/li&gt;
-                &lt;li&gt;Python 2.7-July 3, 2010&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;h2&gt;&lt;a id=&quot;6&quot;&gt;&lt;/a&gt;History of Python 3&lt;/h2&gt;
-            &lt;ul&gt;
-                &lt;li&gt;Python 3.0 - December 3, 2008 &lt;/li&gt;
-                &lt;li&gt;Python 3.1 - June 27, 2009 &lt;/li&gt;
-                &lt;li&gt;Python 3.2 - February 20, 2011 &lt;/li&gt;
-                &lt;li&gt;Python 3.3 - September 29, 2012 &lt;/li&gt;
-                &lt;li&gt;Python 3.4-March 16, 2014 &lt;/li&gt;
-                &lt;li&gt;Python 3.5 - September 13, 2015&lt;/li&gt;
-                &lt;li&gt;Python 3.6- October 2016&lt;/li&gt;
-                &lt;li&gt;Python 3.7- June 2018.&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;h2&gt;&lt;a id=&quot;7&quot;&gt;&lt;/a&gt;Key Differences Between Python 2 and Python 3&lt;/h2&gt;
-            &lt;p style=&quot;text-align: center;&quot;&gt;&lt;a
-                    href=&quot;http://localhost:4000/img/python/datascience/img/5/032219_1004_Python2vsPy3.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img
-                        src=&quot;http://localhost:4000/img/python/datascience/img/5/032219_1004_Python2vsPy3.png&quot;
-                        alt=&quot;&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;table class=&quot;table1 table-striped table-bordered&quot;&gt;
-                &lt;thead&gt;
-                    &lt;tr&gt;
-                        &lt;th&gt;&lt;strong&gt;Basis of comparison&lt;/strong&gt; &lt;/th&gt;
-                        &lt;th&gt;&lt;strong&gt;Python 3&lt;/strong&gt; &lt;/th&gt;
-                        &lt;th&gt;&lt;strong&gt;Python 2&lt;/strong&gt; &lt;/th&gt;
-                    &lt;/tr&gt;
-                &lt;/thead&gt;
-                &lt;tbody&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Release Date&lt;br&gt;&lt;br&gt; &lt;/td&gt;
-                        &lt;td&gt;2008 &lt;/td&gt;
-                        &lt;td&gt;2000 &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Function print&lt;br&gt;&lt;br&gt; &lt;/td&gt;
-                        &lt;td&gt;print (&quot;hello&quot;) &lt;/td&gt;
-                        &lt;td&gt;print &quot;hello&quot; &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Division of Integers &lt;/td&gt;
-                        &lt;td&gt;Whenever two integers are divided, you get a float value &lt;/td&gt;
-                        &lt;td&gt;When two integers are divided, you always provide integer value. &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Unicode&lt;br&gt;&lt;br&gt; &lt;/td&gt;
-                        &lt;td&gt;In Python 3, default storing of strings is Unicode. &lt;/td&gt;
-                        &lt;td&gt;To store Unicode string value, you require to define them with &quot;u&quot;. &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Syntax &lt;br&gt;&lt;br&gt; &lt;/td&gt;
-                        &lt;td&gt;The syntax is simpler and easily understandable. &lt;/td&gt;
-                        &lt;td&gt;The syntax of Python 2 was comparatively difficult to understand. &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Rules of ordering Comparisons &lt;/td&gt;
-                        &lt;td&gt;In this version, Rules of ordering comparisons have been simplified. &lt;/td&gt;
-                        &lt;td&gt;Rules of ordering comparison are very complex. &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Iteration&lt;br&gt;&lt;br&gt; &lt;/td&gt;
-                        &lt;td&gt;The new Range() function introduced to perform iterations. &lt;/td&gt;
-                        &lt;td&gt;In Python 2, the xrange() is used for iterations. &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Exceptions&lt;br&gt;&lt;br&gt; &lt;/td&gt;
-                        &lt;td&gt;It should be enclosed in parenthesis. &lt;/td&gt;
-                        &lt;td&gt;It should be enclosed in notations. &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Leak of variables&lt;br&gt;&lt;br&gt; &lt;/td&gt;
-                        &lt;td&gt;The value of variables never changes. &lt;/td&gt;
-                        &lt;td&gt;The value of the global variable will change while using it inside for-loop. &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Backward compatibility &lt;/td&gt;
-                        &lt;td&gt;Not difficult to port python 2 to python 3 but it is never reliable. &lt;/td&gt;
-                        &lt;td&gt;Python version 3 is not backwardly compatible with Python 2. &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Library&lt;br&gt;&lt;br&gt; &lt;/td&gt;
-                        &lt;td&gt;Many recent developers are creating libraries which you can only use with Python 3. &lt;/td&gt;
-                        &lt;td&gt;Many older libraries created for Python 2 is not forward-compatible. &lt;/td&gt;
-                    &lt;/tr&gt;
-                &lt;/tbody&gt;
-            &lt;/table&gt;
-            &lt;h2&gt;&lt;a id=&quot;8&quot;&gt;&lt;/a&gt;Python 2 vs. Python 3 Example Code&lt;/h2&gt;
-            &lt;p&gt;&lt;strong&gt;Python 3&lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         def main():
-           print(&quot;Hello World!&quot;)
-           
-         if __name__== &quot;__main__&quot;:
-           main()
-         &lt;/pre&gt;
-            &lt;p&gt;&lt;strong&gt;Python 2&lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
-         def main():
-           print &quot;Hello World!&quot;
-           
-         if __name__== &quot;__main__&quot;:
-           main()
-         &lt;/pre&gt;
-            &lt;h2&gt;&lt;a id=&quot;9&quot;&gt;&lt;/a&gt;Which Python Version to Use?&lt;/h2&gt;
-            &lt;p&gt;When it comes to Python version 2 vs. 3 today, Python 3 is the outright winner. That's because Python 2
-                won't be available after 2020. Mass Python 3 adoption is the clear direction of the future. &lt;/p&gt;
-            &lt;p&gt;After considering declining support for Python 2 programming language and added benefits from upgrades to
-                Python 3, it is always advisable for a new developer to select Python version 3. However, if a job
-                demands Python 2 capabilities, that would be an only compelling reason to use this version. &lt;/p&gt;
-
-
-        &lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/section&gt;
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr&gt;
-   
-    &lt;div class=&quot;row&quot; &gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/PythonMySQL&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot; 
-                &gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot; &gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/PythonKeyDiff&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;
-                 &gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python 2 vs Python 3: Key Differences</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry></feed>
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python SciPy Tutorial: Learn with Example</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry></feed>
