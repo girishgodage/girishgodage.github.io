@@ -145,7 +145,61 @@
             class="code-toolbar language-typescript"><code class=" language-typescript"><span class="token keyword">let</span> strLength<span class="token punctuation">:</span> <span class="token builtin">number</span> <span class="token operator">=</span> <span class="token punctuation">(</span>someValue <span class="token keyword">as</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span></code></pre>
 
     </div>
+    <p>Probably you already know that in JavaScript you can define functions like the one below: </p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-javascript"><code class=" language-javascript"><span class="token comment">// Named function</span>
+<span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ <span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
+<span class="token comment">// Call named function</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+    </div>
+    <p>which are so-called <code> Named functions</code>. You can also use <code>Anonymous functions</code>:</p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-javascript"><code class=" language-javascript"><span class="token comment">// Anonymous function</span>
+<span class="token keyword">let</span> <span class="token function-variable function">myAdd</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// You can call it like this</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">myAdd</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// But definitely more common</span>
+console<span class="token punctuation">.</span><span class="token function">log</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>x <span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+    </div>
+    <p>An anonymous function is a function that was declared without any named identifier to refer to it. As such, an
+        anonymous function is usually not accessible after its initial creation.</p>
+    <p>One common use for Anonymous functions is as arguments to other functions. Another common use is as a closure,
+        for which see also the Closures chapter. Below shows its use as an argument to other functions:</p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-javascript"><code class=" language-javascript"><span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+    </div>
+    <p>Or call it with parameter: </p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-javascript"><code class=" language-javascript"><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token function">alert</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+    </div>
+
+    <p>So basically, you want to use Anonymous functions in all places where you have to <strong>use a function as an
+            argument to other function</strong> or as a <strong>closure</strong> (we will learn about closures in later
+        lessons). </p>
+    <p>In those cases you use the function only once, therefore you don't want to name it (like you would for a
+        <code>Named function</code>) just to use it in a single line.</p>
+    <p>Anonymous functions might look confusing at the start, however, once you start using them you will find them very
+        handy. But there is something else, another type of the function called an <code>arrow function</code> which we
+        will learn about in the next lesson.</p>
 </section>
 <!--Section: Lesson UI-->
 <section class="text-center">
