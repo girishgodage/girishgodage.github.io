@@ -1,41 +1,50 @@
 <!-- Contact-->
 <section id="contact" class="bg-gradient contact-section contact">
     <div class="center">
-        <header class="text-center" data-animate="fadeInLeft">
+        <header class="text-center" >
             <h2 class="title">How To Contact ?</h2>
 
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                  <!-- <form id="contact-form" method="post" action="https://formspree.io/mlqoaoax"> -->
-                  <form id="contact-form" method="post" action="https://formspree.io/girishgodage@gmail.com">
-                    <div class="messages"></div>
-                    <div class="controls">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <input type="text" name="name" placeholder="Your firstname *" required="required" class="form-control">
+                    <form id="contactForm" action="">
+                        <!-- <form id="contact-form" method="post" action="https://formspree.io/girishgodage@gmail.com"> -->
+                        <div class="messages"></div>
+                        <div class="controls">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" id="name" name="name" placeholder="Your firstname *"
+                                        required="required" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" id="surname" name="surname" placeholder="Your lastname *"
+                                        required="required" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" id="email" name="email" placeholder="Your email *"
+                                        required="required" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" id="phone" name="phone" placeholder="Your phone"
+                                        class="form-control">
+                                </div>
+                                <div class="col-md-12">
+                                    <textarea id="message" name="message" placeholder="Message for me *" rows="4"
+                                        required="required" class="form-control"></textarea>
+                                </div>
+                                <!-- <div>
+                                    <input id="sendForm" name="sendForm" type="submit" value="Send message"></input>
+                                </div> -->
+                                <div class="col-md-12 text-center">
+                                    <button id="sendForm" name="sendForm" type="submit"
+                                        class="btn btn-outline-primary">Send message</button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                          <input type="text" name="surname" placeholder="Your lastname *" required="required" class="form-control">
-                        </div>
-                        <div class="col-md-6">
-                          <input type="text" name="email" placeholder="Your email *" required="required" class="form-control">
-                        </div>
-                        <div class="col-md-6">
-                          <input type="text" name="phone" placeholder="Your phone" class="form-control">
-                        </div>
-                        <div class="col-md-12">
-                          <textarea name="message" placeholder="Message for me *" rows="4" required="required" class="form-control"></textarea>
-                        </div>
-                        <div class="col-md-12 text-center">
-                          <button type="submit" class="btn btn-outline-primary">Send message</button>
-                        </div>
-                      </div>
-                    </div>
-                  </form>
+                    </form>
                 </div>
-              </div>
+            </div>
 
-           
+
         </header>
     </div>
 </section>
