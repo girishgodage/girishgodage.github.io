@@ -139,10 +139,10 @@
                         <h4 class="heading my-5"><strong>FrontEnd</strong></h4>
 
                         <ul class="skills-list list-unstyled">
-                            <li class="mb-2 text-left"><i class="fa fa-check"></i>Angular</li>
+                            <li class="mb-2 text-left"><i class="fa fa-check"></i>Angular,Blazor,Asp.net MVC,Razor</li>
                             <li class="mb-2 text-left"><i class="fa fa-check"></i>EJS</li>
                             <li class="mb-2 text-left"><i class="fa fa-check"></i>Javascript</li>
-                            <li class="mb-2 text-left"><i class="fa fa-check"></i>HTML/CSS/SASS</li>
+                            <li class="mb-2 text-left"><i class="fa fa-check"></i>HTML/CSS/SASS,Jekyll</li>
                         </ul>
                     </div>
                     <div data-animate="fadeInUp" id="rcorner" class="col-lg-4 border border-white" style="background-color: rgb(58, 57, 57)">
@@ -154,9 +154,9 @@
                         <h4 class="heading my-5"><strong>BackeEnd</strong></h4>
 
                         <ul class="skills-list list-unstyled">
-                            <li class="mb-2 text-left"><i class="fa fa-check"></i>NodeJS,Python</li>
-                            <li class="mb-2 text-left"><i class="fa fa-check"></i>C#,Java</li>
-                            <li class="mb-2 text-left"><i class="fa fa-check"></i>SQL Server,MySQL,PostgreSql</li>
+                            <li class="mb-2 text-left"><i class="fa fa-check"></i>NodeJS</li>
+                            <li class="mb-2 text-left"><i class="fa fa-check"></i>.Net,Java,Python,Ruby</li>
+                            <li class="mb-2 text-left"><i class="fa fa-check"></i>SQL Server,Oracle,MySQL,PostgreSql</li>
                             <li class="mb-2 text-left"><i class="fa fa-check"></i>MongoDB,Sqlite3</li>
                         </ul>
                     </div>
@@ -169,10 +169,10 @@
                         <h4 class="heading my-5"><strong>Others</strong></h4>
 
                         <ul class="skills-list list-unstyled">
-                            <li class="mb-2 text-left"><i class="fa fa-check"></i>Machine Learning</li>
-                            <li class="mb-2 text-left"><i class="fa fa-check"></i>Micro-services</li>
+                            <li class="mb-2 text-left"><i class="fa fa-check"></i>AI,Machine Learning</li>
+                            <li class="mb-2 text-left"><i class="fa fa-check"></i>SOA,Micro-services</li>
                             <li class="mb-2 text-left"><i class="fa fa-check"></i>AWS, Microsoft Azure, Heroku</li>
-                            <li class="mb-2 text-left"><i class="fa fa-check"></i>Version Control - Git, BitBucket</li>
+                            <li class="mb-2 text-left"><i class="fa fa-check"></i>Version Control - TFS,Git, BitBucket</li>
                         </ul>
                     </div>
 
@@ -224,18 +224,27 @@
             <div data-animate="fadeInUp" class="col-lg-4">
               <div class="icon"><i class="fa fa-search"></i></div>
               <h3 class="heading mb-3 text-400">Consulting</h3>
-              <p class="text-left description">IT consulting services,are the advisory services that help you to assess different technology strategies and, in doing so, align your technology strategies with your business or process strategies.</p>
-            </div>
-            
+              <p class="text-left description">
+                  Many businesses spend thousands of dollars on websites and Mobile apps only to find out 
+                  later that their goals aren’t being met and their business hasn’t grown as expected.
+                  I’ll help you identify the business goals behind your project and deliver a solution that not only looks great,
+                  but helps your business grow beyond what you invest. through my consultancy services.</p>
+            </div>            
             <div data-animate="fadeInUp" class="col-lg-4">
               <div class="icon"><i class="fa fa-code"></i></div>
-              <h3 class="heading mb-3 text-400">Web Application Development</h3>
-              <p class="text-left description">I can help you to build a robust scalabale web applications to suit you or your business needs.</p>
+              <h3 class="heading mb-3 text-400">App Development</h3>
+              <p class="text-left description">Your Web app ,Mobile app or system is fundamental to the success of your business.
+                  Whether it’s an internal software tool that empowers your employees to do their job effectively or
+                  the platform your users engage with on a daily basis, your product can help your business grow toward 
+                  success or decline into failure.A strategically designed product can save your employees hours of time each week by making tasks more efficient,
+                   help your platform grow by engaging more users, or simplify tasks that make the users work easier and more intuitive.</p>
             </div>
             <div data-animate="fadeInUp" class="col-lg-4">
               <div class="icon"><i class="fa fa-wrench"></i></div>
-              <h3 class="heading mb-3 text-400">Optimization and Maintenance</h3>
-              <p class="text-left description">If you currently own a website and you need to further improve the site's ability to drive your business goals.</p>
+              <h3 class="heading mb-3 text-400">Maintenance</h3>
+              <p class="text-left description">We provides professional Software Maintenance & Support for our Custom Software Solutions as well as for most software systems and applications
+                  developed by third parties. We have evolved a mature and well-defined application support and maintenance process that allows us to effectively 
+                  and efficiently capture the application environment as well as the business activity.</p>
             </div>
           </div>
           <hr data-animate="fadeInUp">
@@ -500,12 +509,12 @@
 </section>
     <!-- Contact-->
 <section id="contact" class="bg-gradient contact-section contact">
-    <div class="center">
+      <div class="container center">
         <header class="text-center" >
             <h2 class="title">How To Contact ?</h2>
 
             <div class="row">
-                <div class="col-lg-8 mx-auto">
+                <div id="form-wrapper" class="col-lg-8 mx-auto">
                     <form id="contactForm" action="">
                         <!-- <form id="contact-form" method="post" action="https://formspree.io/girishgodage@gmail.com"> -->
                         <div class="messages"></div>
@@ -542,6 +551,7 @@
                         </div>
                     </form>
                 </div>
+                <div class="text-center" id="form-success-message" style="display:none;"><h2>Thanks!  Our team will be in contact with you in a few business days.</h2></div>
             </div>
 
 
@@ -700,8 +710,8 @@
             if (err) {
                 alert("Data no go");
             }else{
-
-				alert("Thank you for your message.");
+            $("#form-wrapper").slideToggle();
+            $('#form-success-message').slideToggle();
 			}
         });
 
