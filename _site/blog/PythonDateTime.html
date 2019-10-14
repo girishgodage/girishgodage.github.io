@@ -155,7 +155,7 @@
             <p>These import statements are pre-defined pieces of functionality in the Python library that let you
                 manipulates dates and times, without writing any code. </p>
             <p>Consider the following points before executing the datetime code </p>
-            <pre class="code-toolbar">from datetime import date</pre>
+            <pre class="code-toolbar"><code>from datetime import date</code></pre>
             <p>This line tells the Python interpreter that from the datetime module import the date class We are not
                 writing the code for this date functionality alas just importing it for our use </p>
             <p><strong>Step 2</strong>) Next, we create an instance of the date object. </p>
@@ -284,8 +284,8 @@
             <p>When we execute the code for datetime, it gives the output with current date and time. </p>
             <p><strong>Step 2)</strong> With "DATETIME OBJECT", you can also call time class. </p>
             <p>Suppose we want to print just the current time without the date. </p>
-            <pre class="code-toolbar">t = datetime.time(datetime.now())
-         </pre>
+            <pre class="code-toolbar"><code>t = datetime.time(datetime.now())
+         </code></pre>
             <ul>
                 <li>We had imported the time class. We will be assigning it the current value of time using
                     datetime.now()</li>
@@ -312,7 +312,7 @@
                         src="http://localhost:4000/img/python/tutorial/17/Python15.8.png"></a> </p>
             <p>Here is the complete code to get current date and time using datetime now </p>
             <p><b>Here is the complete code to get current date and time using datetime now </b> </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          from datetime import date
          from datetime import time
          from datetime import datetime
@@ -332,7 +332,7 @@
              print("which is a " + days[wd])
          
          if __name__== "__main__":
-             main()</pre>
+             main()</code></pre>
             <h2><a id="4"></a>How to Format Date and Time Output with Strftime()</h2>
             <p>As of now we have learned, how to use datetime and date object in Python. We will advance a step further
                 and learn how to use a formatting function to format Time and Date. </p>
@@ -393,7 +393,7 @@
             <p><strong>24 hours </strong>time is declared [print now.strftime("%H:%M")] </p>
             <p><b>Here is the complete code to convert datetime to String object.</b></p>
 
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          #
          #Example file for formatting time and date output
          #
@@ -412,7 +412,7 @@
                print(now.strftime("%H:%M")) # 24-Hour:Minute
          
          if __name__== "__main__":
-             main()</pre>
+             main()</code></pre>
             <h2><a id="5"></a>How to use Timedelta Objects</h2>
             <p><strong>With timedelta objects, you can estimate the time for both future and the past.</strong> In other
                 words, it is a timespan to predict any special day, date or time. </p>
@@ -466,7 +466,7 @@
                         src="http://localhost:4000/img/python/tutorial/17/Python15.19.png"></a> </p>
             <p>The output shows that "New Year Day already went by 11 days ago." </p>
             <p><b>Here is the complete working code</b> </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          #
          # Example file for working with timedelta objects
          #
@@ -489,9 +489,9 @@
          # use date comparison to see if New Year Day has already gone for this year
          # if it has, use the replace() function to get the date for next year
          if nyd &lt; today:
-             print ("New Year day is already went by %d days ago" % ((today - nyd).days))</pre>
+             print ("New Year day is already went by %d days ago" % ((today - nyd).days))</code></pre>
             <h2>Python 2 Example</h2>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          from datetime import date
          from datetime import time
          from datetime import datetime
@@ -511,8 +511,8 @@
                  print "which is a " + days[wd]
          
          if __name__== "__main__":
-             main()</pre>
-            <pre class="code-toolbar">
+             main()</code></pre>
+            <pre class="code-toolbar"><code>
          #
          #Example file for formatting time and date output
          #
@@ -531,8 +531,8 @@
                print now.strftime("%H:%M") # 24-Hour:Minute   
          
          if __name__== "__main__":
-             main()</pre>
-            <pre class="code-toolbar">
+             main()</code></pre>
+            <pre class="code-toolbar"><code>
          #
          # Example file for working with timedelta objects
          #
@@ -555,7 +555,7 @@
          # use date comparison to see if New Year Day has already gone for this year
          # if it has, use the replace() function to get the date for next year
          if nyd &lt; today:
-             print "New Year day is already went by %d days ago" % ((today - nyd).days)</pre>
+             print "New Year day is already went by %d days ago" % ((today - nyd).days)</code></pre>
             <h3>Summary</h3>
             <p>For manipulating dates and times in both simple and complex ways datetime module supplies different
                 classes or categories like </p>
@@ -784,6 +784,52 @@
    
     
 })
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
 </script>
 
     

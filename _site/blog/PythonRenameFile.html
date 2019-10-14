@@ -131,14 +131,14 @@
                 syntax. </p>
             <h3>Syntax </h3>
             <p>This is the syntax for os.rename() method </p>
-            <pre class="code-toolbar">os.rename(src, dst)</pre>
+            <pre class="code-toolbar"><code>os.rename(src, dst)</code></pre>
             <h3>Parameters</h3>
             <p><strong>src:</strong> Source is the name of the file or directory. It should must already exist. </p>
             <p><strong>dst:</strong> Destination is the new name of the file or directory you want to change. </p>
             <p><strong>Example:</strong> </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          import os  
-         os.rename('guru99.txt','career.guru99.txt') </pre>
+         os.rename('guru99.txt','career.guru99.txt') </code></pre>
             <p> Let's look at example in detail </p>
             <p>You can rename the original file, we have changed the file name from "Guru99.txt" to "Career.guru99.txt."
             </p>
@@ -152,7 +152,7 @@
                     right side of the panel, which we renamed for our original file. </li>
             </ul>
             <p>Here is the complete code </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
         import os
          import shutil
          from os import path
@@ -168,7 +168,7 @@
                  
          if __name__ == "__main__":
              main()
-         </pre>
+         </code></pre>
 
 
         </div>
@@ -370,6 +370,52 @@
    
     
 })
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
 </script>
 
     

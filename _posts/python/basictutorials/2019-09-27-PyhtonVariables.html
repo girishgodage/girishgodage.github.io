@@ -37,10 +37,10 @@ discussion_id: 2019-09-25-PythonVariables
          <div>
             <h2><a id="1"></a>How to Declare and use a Variable</h2>
             <p>Let see an example. We will declare variable "a" and print it. </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
                a=100 
                print a
-            </pre>
+            </code></pre>
             <h2><a id="2"></a>Re-declare a Variable</h2>
             <p>You can re-declare the variable even after you have declared it once. </p>
             <p>Here we have variable initialized to f=0. </p>
@@ -50,23 +50,23 @@ discussion_id: 2019-09-25-PythonVariables
                   class="jh-image-popup-colorbox cboxElement"><img title="Variables in Python"
                      src="{{site.url}}{{site.baseurl}}/img/python/tutorial/7/Python5.1.png" alt="Variables in Python"></a> </p>
             <p><b>Python 2 Example</b> </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
                # Declare a variable and initialize it
                f = 0
                print f
                # re-declaring the variable works
                f = 'guru99'
                print f
-            </pre>
+            </code></pre>
             <p><b>Python 3 Example</b> </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
                # Declare a variable and initialize it
                f = 0
                print(f)
                # re-declaring the variable works
                f = 'guru99'
                print(f)
-            </pre>
+            </code></pre>
             <h2><a id="3"></a>Concatenate Variables</h2>
             <p>Let's see whether you can concatenate different data types like string and number together. For example,
                we will concatenate "Guru" with the number "99". </p>
@@ -78,18 +78,18 @@ discussion_id: 2019-09-25-PythonVariables
                   class="jh-image-popup-colorbox cboxElement"><img title="Variables in Python"
                      src="{{site.url}}{{site.baseurl}}/img/python/tutorial/7/Python5.2.png" alt="Variables in Python"></a> </p>
             <p>For the following code, you will get undefined output - </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
                a="Guru"
                b = 99
                print a+b
-            </pre>
+            </code></pre>
             <p>Once the integer is declared as string, it can concatenate both "Guru" + <strong>str</strong>("99")=
                "Guru99" in the output. </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
                a="Guru"
                b = 99
                print(a+str(b))
-            </pre>
+            </code></pre>
             <h2><a id="4"></a>Local &amp; Global Variables</h2>
             <p>In Python when you want to use the same variable for rest of your program or module you declare it a
                global variable, while if you want to use the variable in a specific function or method, you use a local
@@ -109,7 +109,7 @@ discussion_id: 2019-09-25-PythonVariables
                   class="jh-image-popup-colorbox cboxElement"><img title="Variables in Python"
                      src="{{site.url}}{{site.baseurl}}/img/python/tutorial/7/Python5.3.png" alt="Variables in Python"></a> </p>
             <p><b>Python 2 Example</b> </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
                # Declare a variable and initialize it
                f = 101
                print f
@@ -120,9 +120,9 @@ discussion_id: 2019-09-25-PythonVariables
                   print f
                someFunction()
                print f
-            </pre>
+            </code></pre>
             <p><b>Python 3 Example</b> </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
                # Declare a variable and initialize it
                f = 101
                print(f)
@@ -133,7 +133,7 @@ discussion_id: 2019-09-25-PythonVariables
                   print(f)
                someFunction()
                print(f)
-            </pre>
+            </code></pre>
             <p>Using the keyword <strong>global, </strong>you can reference the global variable inside a function.</p>
             
             <ol>
@@ -153,7 +153,7 @@ discussion_id: 2019-09-25-PythonVariables
                   class="jh-image-popup-colorbox cboxElement"><img title="Variables in Python"
                      src="{{site.url}}{{site.baseurl}}/img/python/tutorial/7/Python5.4.png" alt="Variables in Python"></a> </p>
             <p><b>Python 2 Example</b> </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
                f = 101;
                print f
                # Global vs.local variables in functions
@@ -163,9 +163,9 @@ discussion_id: 2019-09-25-PythonVariables
                f = "changing global variable"
                someFunction()
                print f
-            </pre>
+            </code></pre>
             <p><b>Python 3 Example</b> </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
                f = 101;
                print(f)
                # Global vs.local variables in functions
@@ -175,7 +175,7 @@ discussion_id: 2019-09-25-PythonVariables
                f = "changing global variable"
                someFunction()
                print(f)
-            </pre>
+            </code></pre>
             <h2><a id="5"></a>Delete a variable</h2>
             <p>You can also delete variable using the command <strong>del</strong> "variable name". </p>
             <p>In the example below, we deleted variable f, and when we proceed to print it, we get error
@@ -184,12 +184,12 @@ discussion_id: 2019-09-25-PythonVariables
                   href="{{site.url}}{{site.baseurl}}/img/python/tutorial/7/Python5.5.png"></a><a href="{{site.url}}{{site.baseurl}}/img/python/tutorial/7/Python5.5.png"
                   class="jh-image-popup-colorbox cboxElement"><img title="Variables in Python"
                      src="{{site.url}}{{site.baseurl}}/img/python/tutorial/7/Python5.5.png" alt="Variables in Python"></a> </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
                f = 11;
                print(f)
                del f
                print(f)
-            </pre>
+            </code></pre>
             <h2>Summary:</h2>
             <ul>
                <li>Variables are referred to "envelop" or "buckets" where information can be maintained and referenced.

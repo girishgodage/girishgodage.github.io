@@ -283,21 +283,21 @@
             </table>
             <h2><a id="8"></a>Python 2 vs. Python 3 Example Code</h2>
             <p><strong>Python 3</strong> </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          def main():
            print("Hello World!")
            
          if __name__== "__main__":
            main()
-         </pre>
+         </code></pre>
             <p><strong>Python 2</strong> </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          def main():
            print "Hello World!"
            
          if __name__== "__main__":
            main()
-         </pre>
+         </code></pre>
             <h2><a id="9"></a>Which Python Version to Use?</h2>
             <p>When it comes to Python version 2 vs. 3 today, Python 3 is the outright winner. That's because Python 2
                 won't be available after 2020. Mass Python 3 adoption is the clear direction of the future. </p>
@@ -505,6 +505,52 @@
    
     
 })
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
 </script>
 
     

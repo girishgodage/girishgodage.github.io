@@ -28,12 +28,14 @@ discussion_id: 2019-10-03-PythonJSON
                 JSON is in string or text format. <strong>JSON </strong>stands for<strong>
                     J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation. </p>
             <p>The syntax of JSON: JSON is written as key and value pair. </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
+                
          {
                  "Key":  "Value",
                  "Key":  "Value",
          } 
-         </pre>
+        
+         </code></pre>
             <p>JSON is very similar to<strong> </strong>Python dictionary. Python supports JSON, and it has an inbuilt
                 library as a JSON. </p>
             <h2><a id="2"></a>JSON Library in Python </h2>
@@ -41,8 +43,8 @@ discussion_id: 2019-10-03-PythonJSON
                 <strong>JSON</strong> library. To perform JSON related operations like encoding and decoding in Python
                 you need first to <strong>import </strong>JSON library and for that in your <strong>.py</strong> file,
             </p>
-            <pre class="code-toolbar">import json
-         </pre>
+            <pre class="code-toolbar"><code>import json
+         </code></pre>
             <p>Following methods are available in the JSON module </p>
             <table class="table table-striped table-bordered">
                 <tbody>
@@ -147,7 +149,7 @@ discussion_id: 2019-10-03-PythonJSON
                 library method – <strong>dumps()</strong> </p>
             <p><strong>dumps() </strong>method converts dictionary object of python into JSON string data format. </p>
             <p>Now lets we perform our first encoding example with Python. </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          import json
          
          x = {
@@ -164,17 +166,17 @@ discussion_id: 2019-10-03-PythonJSON
          # sorting result in asscending order by keys:
          sorted_string = json.dumps(x, indent=4, sort_keys=True)
          print(sorted_string)
-         </pre>
+         </code></pre>
             <p>Output: </p>
-            <pre class="code-toolbar">{"person": {"name": "Kenn", "sex": "male", "age": 28}})
-         </pre>
+            <pre class="code-toolbar"><code>{"person": {"name": "Kenn", "sex": "male", "age": 28}})
+         </code></pre>
             <p>Let's create a JSON file of the dictionary using the same function <strong>dump() </strong> </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          # here we create new data_file.json file with write mode using file i/o operation 
          with open('json_file.json', "w") as file_write:
          # write json data into file
          json.dump(person_data, file_write)
-         </pre>
+         </code></pre>
             <p>Output: </p>
             <p> Nothing to show…In your system json_file.json is created you can check that file. </p>
             <p style="text-align: center;"><a
@@ -228,7 +230,7 @@ discussion_id: 2019-10-03-PythonJSON
             </table>
             <p>Let's see a basic example of decoding in Python with the help of <strong>json.loads()</strong> function,
             </p>
-            <pre class="code-toolbar">import json  # json library imported
+            <pre class="code-toolbar"><code>import json  # json library imported
          # json data string
          person_data = '{  "person":  { "name":  "Kenn",  "sex":  "male",  "age":  28}}'
          # Decoding or converting JSON format in dictionary using loads()
@@ -238,13 +240,13 @@ discussion_id: 2019-10-03-PythonJSON
          print("Type of dict_obj", type(dict_obj))
          # get human object details
          print("Person......",  dict_obj.get('person'))
-         </pre>
+         </code></pre>
             <p><strong>Output:</strong> </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          {'person': {'name': 'Kenn', 'sex': 'male', 'age': 28}}
          Type of dict_obj &lt;class 'dict'&gt;
          Person...... {'name': 'John', 'sex': 'male'}
-         </pre>
+         </code></pre>
             <p style="text-align: center;"><a
                     href="{{site.url}}{{site.baseurl}}/img/python/datascience/img/3/122818_1014_PythonJSONE2.png"
                     class="jh-image-popup-colorbox cboxElement"><img
@@ -256,16 +258,16 @@ discussion_id: 2019-10-03-PythonJSON
             </p>
             <p>Example,</p>
 
-            <pre class="code-toolbar">import json
+            <pre class="code-toolbar"><code>import json
          #File I/O Open function for read data from JSON File
          with open('X:/json_file.json') as file_object:
                  # store file data in object
                  data = json.load(file_object)
          print(data)
-         </pre>
+         </code></pre>
             <p><strong>Here data</strong> is a dictionary object of Python. </p>
             <p>Output: </p>
-            <pre class="code-toolbar">{'person': {'name': 'Kenn', 'sex': 'male', 'age': 28}}</pre>
+            <pre class="code-toolbar"><code>{'person': {'name': 'Kenn', 'sex': 'male', 'age': 28}}</code></pre>
             <p style="text-align: center;"><a
                     href="{{site.url}}{{site.baseurl}}/img/python/datascience/img/3/122818_1014_PythonJSONE3.png"
                     class="jh-image-popup-colorbox cboxElement"><img
@@ -274,7 +276,7 @@ discussion_id: 2019-10-03-PythonJSON
             <h3><a id="6"></a>Compact Encoding in Python</h3>
             <p>When you need to reduce the size of your JSON file, you can use compact encoding in Python. </p>
             <p>Example, </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          import json
          # Create a List that contains dictionary
          lst = ['a', 'b', 'c',{'4': 5, '6': 7}]
@@ -283,31 +285,31 @@ discussion_id: 2019-10-03-PythonJSON
          # Use of ':' to identify key and value in dictionary
          compact_obj = json.dumps(lst, separators=(',', ':'))
          print(compact_obj)
-         </pre>
+         </code></pre>
             <p><strong>Output:</strong> </p>
             <pre
                 class="code-toolbar">'["a", "b", "c", {"4": 5, "6": 7}]'
          
-         ** Here output of JSON is represented in a single line which is the most compact representation by removing the space character from compact_obj **  </pre>
+         ** Here output of JSON is represented in a single line which is the most compact representation by removing the space character from compact_obj **  </code></pre>
             <h3><a id="7"></a>Format JSON code (Pretty print)</h3>
             <ul>
                 <li>The aim is to write well-formatted code for human understanding. With the help of pretty printing,
                     anyone can easily understand the code.<strong> </strong></li>
                 <li>Example,</li>
             </ul>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          import json
          dic = { 'a': 4, 'b': 5 }
          ''' To format the code use of indent and 4 shows number of space and use of separator is not necessary but standard way to write code of particular function. '''
          formatted_obj = json.dumps(dic, indent=4, separators=(',', ': '))
          print(formatted_obj)
-         </pre>
+         </code></pre>
             <p>Output: </p>
-            <pre class="code-toolbar">{
+            <pre class="code-toolbar"><code>{
             "a" : 4,
             "b" : 5
          }
-         </pre>
+         </code></pre>
             <p style="text-align: center;"><a
                     href="{{site.url}}{{site.baseurl}}/img/python/datascience/img/3/122818_1014_PythonJSONE4.png"
                     class="jh-image-popup-colorbox cboxElement"><img
@@ -324,7 +326,7 @@ discussion_id: 2019-10-03-PythonJSON
                 ascending order. The sort_keys argument is a Boolean attribute. When it's true sorting is allowed
                 otherwise not </p>
             <p>Example, </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          import json
          
          x = {
@@ -341,9 +343,9 @@ discussion_id: 2019-10-03-PythonJSON
          # sorting result in asscending order by keys:
          sorted_string = json.dumps(x, indent=4, sort_keys=True)
          print(sorted_string)
-         </pre>
+         </code></pre>
             <p><strong>Output:</strong> </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          {
              "age": 45,
              "cars": [ {
@@ -364,7 +366,7 @@ discussion_id: 2019-10-03-PythonJSON
                  "Dog"
              ]
          }
-         </pre>
+         </code></pre>
             <p>As you may observe the keys age, cars, children, etc are arranged in ascending order. </p>
             <h2><a id="8"></a>Complex Object encoding of Python</h2>
             <p>A Complex object has two different parts that is </p>
@@ -383,7 +385,7 @@ discussion_id: 2019-10-03-PythonJSON
 
             <p>Let's create the specific function for check object is complex or eligible for encoding.<strong>
                 </strong> </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          import json
          
          # create function to check instance is complex or not
@@ -398,13 +400,13 @@ discussion_id: 2019-10-03-PythonJSON
          # perform json encoding by passing parameter
          complex_obj = json.dumps(4 + 5j, default=complex_encode)
          print(complex_obj)
-         </pre>
+         </code></pre>
             <p><strong>Output:</strong> </p>
-            <pre class="code-toolbar">'[4.0, 5.0]'</pre>
+            <pre class="code-toolbar"><code>'[4.0, 5.0]'</code></pre>
             <h2><a id="9"></a>Complex JSON object decoding in Python</h2>
             <p>To decode complex object in JSON, use an object_hook parameter which checks JSON string contains the
                 complex object or not. Example, </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          import json
            # function check JSON string contains complex object
            def is_complex(objct):
@@ -418,12 +420,12 @@ discussion_id: 2019-10-03-PythonJSON
            simple_object =json.loads('{"real": 6, "img": 7}', object_hook = is_complex)
            print("Complex_object......",complex_object)
            print("Without_complex_object......",simple_object)
-         </pre>
+         </code></pre>
             <p> Output: </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          Complex_object...... (4+5j)
          Without_complex_object...... {'real': 6, 'img': 7}
-         </pre>
+         </code></pre>
             <h2><a id="10"></a>Overview of JSON Serialization class JSONEncoder</h2>
             <p>JSONEncoder class is used for serialization of any Python object while performing encoding. It contains
                 three different methods of encoding which are <strong> </strong> </p>
@@ -437,14 +439,14 @@ discussion_id: 2019-10-03-PythonJSON
             </ul>
             <p>With the help of encode() method of JSONEncoder class, we can also encode any Python object.<strong>
                 </strong> </p>
-            <pre class="code-toolbar"># import JSONEncoder class from json
+            <pre class="code-toolbar"><code># import JSONEncoder class from json
          from json.encoder import JSONEncoder
          colour_dict = { "colour": ["red", "yellow", "green" ]}
          # directly called encode method of JSON
          JSONEncoder().encode(colour_dict)
-         </pre>
+         </code></pre>
             <p><strong>Output:</strong> </p>
-            <pre class="code-toolbar">'{"colour": ["red", "yellow", "green"]}'</pre>
+            <pre class="code-toolbar"><code>'{"colour": ["red", "yellow", "green"]}'</code></pre>
             <h2><a id="11"></a>Overview of JSON Deserialization class JSONDecoder </h2>
             <p>JSONDecoder class is used for deserialization of any Python object while performing decoding. It contains
                 three different methods of decoding which are <strong> </strong> </p>
@@ -458,16 +460,16 @@ discussion_id: 2019-10-03-PythonJSON
             </ul>
             <p>With the help of decode() method of JSONDecoder class, we can also decode JSON string.<strong> </strong>
             </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          import json
          # import JSONDecoder class from json
          from json.decoder import JSONDecoder
          colour_string = '{ "colour": ["red", "yellow"]}'
          # directly called decode method of JSON
          JSONDecoder().decode(colour_string)
-         </pre>
+         </code></pre>
             <p><strong> Output:</strong> </p>
-            <pre class="code-toolbar">{'colour': ['red', 'yellow']}</pre>
+            <pre class="code-toolbar"><code>{'colour': ['red', 'yellow']}</code></pre>
             <h3><a id="12"></a>Decoding JSON data from URL: Real Life Example</h3>
             <p>We will fetch data of CityBike NYC (Bike Sharing System) from specified URL(<a
                     href="https://feeds.citibikenyc.com/stations/stations.json">https://feeds.citibikenyc.com/stations/stations.json</a>)
@@ -478,7 +480,7 @@ discussion_id: 2019-10-03-PythonJSON
             <ul>
                 <li> (For Python 3 or above) <strong>pip3 install requests</strong> </li>
             </ul>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          import json
          import requests
          
@@ -492,9 +494,9 @@ discussion_id: 2019-10-03-PythonJSON
          print(type(bike_dict))
          # now get stationBeanList key data from dict
          print(bike_dict['stationBeanList'][0]) 
-         </pre>
+         </code></pre>
             <p><strong>Output:</strong> </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          &lt;class 'str'&gt;
          &lt;class 'dict'&gt;
          {
@@ -516,7 +518,7 @@ discussion_id: 2019-10-03-PythonJSON
              'testStation': False, 
              'lastCommunicationTime': '2018-12-11 10:59:09 PM', 'landMark': ''
          }
-         </pre>
+         </code></pre>
             <h2><a id="13"></a>Exceptions Related to JSON Library in Python:</h2>
             <ul>
                 <li>Class <strong>json.JSONDecoderError</strong> handles the exception related to decoding operation.
@@ -534,7 +536,7 @@ discussion_id: 2019-10-03-PythonJSON
                 </li>
             </ul>
             <p>Example, </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          import json
          #File I/O Open function for read data from JSON File
          data = {} #Define Empty Dictionary Object
@@ -543,7 +545,7 @@ discussion_id: 2019-10-03-PythonJSON
                          data = json.load(file_object)
          except ValueError:
               print("Bad JSON file format,  Change JSON File")
-         </pre>
+         </code></pre>
             <p style="text-align: center;"><a
                     href="{{site.url}}{{site.baseurl}}/img/python/datascience/img/3/122818_1014_PythonJSONE7.png"
                     class="jh-image-popup-colorbox cboxElement"><img
@@ -554,7 +556,7 @@ discussion_id: 2019-10-03-PythonJSON
                 is no restriction in Python- JSON Library to perform Infinite and Nan Value related operation. If JSON
                 gets INFINITE and Nan datatype than it's converted it into literal. </p>
             <p>Example, </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          import json
          # pass float Infinite value
          infinite_json = json.dumps(float('inf'))
@@ -568,16 +570,16 @@ discussion_id: 2019-10-03-PythonJSON
          print(infinite)
          # check type of Infinity
          print(type(infinite))
-         </pre>
+         </code></pre>
             <p>Output:</p>
 
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          Infinity
          &lt;class 'str'&gt;
          NaN
          inf
          &lt;class 'float'&gt;	
-         </pre>
+         </code></pre>
             <h2><a id="15"></a>Repeated key in JSON String </h2>
             <p>RFC specifies the key name should be unique in a JSON object, but it's not mandatory. Python JSON library
                 does not raise an exception of repeated objects in JSON. It ignores all repeated key-value pair and
@@ -585,13 +587,13 @@ discussion_id: 2019-10-03-PythonJSON
             <ul>
                 <li>Example,</li>
             </ul>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          import json
          repeat_pair = '{"a":  1, "a":  2, "a":  3}'
          json.loads(repeat_pair)
-         </pre>
+         </code></pre>
             <p>Output: </p>
-            <pre class="code-toolbar">{'a': 3}</pre>
+            <pre class="code-toolbar"><code>{'a': 3}</code></pre>
             <h2><a id="16"></a>CLI (Command Line Interface) with JSON in Python</h2>
             <p><strong>json.tool </strong>provides the command line interface to validate JSON pretty-print syntax.
                 Let's see an example of CLI<strong> </strong> </p>
@@ -600,13 +602,13 @@ discussion_id: 2019-10-03-PythonJSON
                     class="jh-image-popup-colorbox cboxElement"><img
                         src="{{site.url}}{{site.baseurl}}/img/python/datascience/img/3/122818_1014_PythonJSONE8.png"
                         alt=""></a><strong> </strong> </p>
-            <pre class="code-toolbar">$ echo '{"name" : "Kings Authur" }' | python3 -m json.tool</pre>
+            <pre class="code-toolbar"><code>$ echo '{"name" : "Kings Authur" }' | python3 -m json.tool</code></pre>
             <p>Output: </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
         {
              "name": " Kings Authur "
          }
-         </pre>
+         </code></pre>
             <h2><a id="17"></a>Advantages of JSON in Python</h2>
             <ul>
                 <li>Easy to move back between container and value (JSON to Python and Python to JSON)</li>

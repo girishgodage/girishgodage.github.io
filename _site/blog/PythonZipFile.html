@@ -128,9 +128,9 @@
         <div itemprop="articleBody">
             <p>Python allows you to quickly create zip/tar archives. </p>
             <p>Following command will zip entire directory </p>
-            <pre class="code-toolbar">shutil.make_archive(output_filename, 'zip', dir_name)</pre>
+            <pre class="code-toolbar"><code>shutil.make_archive(output_filename, 'zip', dir_name)</code></pre>
             <p>Following command gives you control on the files you want to archive </p>
-            <pre class="code-toolbar">ZipFile.write(filename)</pre>
+            <pre class="code-toolbar"><code>ZipFile.write(filename)</code></pre>
             <p> Here are the steps to create Zip File in Python </p>
             <p><strong>Step 1)</strong> To create an archive file from Python, make sure you have your import statement
                 correct and in order. Here the import statement for the archive is
@@ -222,7 +222,7 @@
                             src="http://localhost:4000/img/python/tutorial/24/Python18.16.png"></a> </p>
                 <p>Here is the complete code </p>
                 <p><b>Python 2 Example</b> </p>
-                <pre class="code-toolbar">
+                <pre class="code-toolbar"><code>
          import os
          import shutil
          from zipfile import ZipFile
@@ -244,9 +244,9 @@
              newzip.write("guru99.txt")
                  newzip.write("guru99.txt.bak")
          if __name__== "__main__":
-               main()</pre>
+               main()</code></pre>
                 <p><b>Python 3 Example</b> </p>
-                <pre class="code-toolbar">import os
+                <pre class="code-toolbar"><code>import os
          import shutil
          from zipfile import ZipFile
          from os import path
@@ -264,7 +264,7 @@
              # more fine-grained control over ZIP files
                  with ZipFile("testguru99.zip", "w") as newzip:
                      newzip.write("guru99.txt")
-                     newzip.write("guru99.txt.bak")</pre>
+                     newzip.write("guru99.txt.bak")</code></pre>
                 <p><strong>Summary</strong> </p>
                 <ul>
                     <li>To zip entire directory use command "shutil.make_archive("name","zip", root_dir)</li>
@@ -471,6 +471,52 @@
    
     
 })
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
 </script>
 
     

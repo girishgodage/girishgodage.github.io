@@ -99,39 +99,39 @@ discussion_id: 2019-10-03-PythonSciPy
             </ul>
             <h2><a id="4"></a>SciPy - Installation and Environment Setup</h2>
             <p>You can also install SciPy in Windows via pip </p>
-            <pre class="code-toolbar">Python3 -m pip install --user numpy scipy 
-         </pre>
+            <pre class="code-toolbar"><code>Python3 -m pip install --user numpy scipy 
+         </code></pre>
             <p>Install Scipy on Linux </p>
-            <pre class="code-toolbar">sudo apt-get install  python-scipy python-numpy
-         </pre>
+            <pre class="code-toolbar"><code>sudo apt-get install  python-scipy python-numpy
+         </code></pre>
             <p>Install SciPy in Mac </p>
-            <pre class="code-toolbar">sudo port install py35-scipy py35-numpy
-         </pre>
+            <pre class="code-toolbar"><code>sudo port install py35-scipy py35-numpy
+         </code></pre>
             <p>Before start to learning SciPy, you need to know basic functionality as well as different types of an
                 array of <a href="https://www.guru99.com/numpy-tutorial.html">NumPy</a> </p>
             <p>The standard way of import infSciPy modules and Numpy: </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          from scipy import special   #same for other modules
          import numpy as np
-         </pre>
+         </code></pre>
             <h2><a id="5"></a>File Input / Output package:</h2>
             <p>Scipy, I/O package, has a wide range of functions for work with different files format which are Matlab,
                 Arff, Wave, Matrix Market, IDL, NetCDF, TXT, CSV and binary format. </p>
             <p>Let's we take one file format example as which are regularly use of MatLab: </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
           import numpy as np
           from scipy import io as sio
           array = np.ones((4, 4))
           sio.savemat('example.mat', {'ar': array}) 
           data = sio.loadmat(‘example.mat', struct_as_record=True)
           data['array']
-         </pre>
+         </code></pre>
             <p>Output: </p>
-            <pre class="code-toolbar">array([[ 1., 1., 1., 1.],
+            <pre class="code-toolbar"><code>array([[ 1., 1., 1., 1.],
                     [ 1., 1., 1., 1.],
                     [ 1., 1., 1., 1.],
                     [ 1., 1., 1., 1.]])
-         </pre>
+         </code></pre>
             <p>Code Explanation </p>
             <ul>
                 <li><strong>Line 1 &amp; 2: </strong> Import the essential library scipy with i/o package and Numpy.
@@ -149,7 +149,7 @@ discussion_id: 2019-10-03-PythonSciPy
                     Exponential, etc.. </li>
                 <li>For one line description all of these function, type in Python console: </li>
             </ul>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          help(scipy.special)	
          Output : 
          NAME
@@ -164,64 +164,64 @@ discussion_id: 2019-10-03-PythonSciPy
               
              Nearly all of the functions below are universal functions and follow
              broadcasting and automatic array-looping rules. Exceptions are noted.
-         </pre>
+         </code></pre>
             <h3>Cubic Root Function:</h3>
             <p>Cubic Root function finds the cube root of values. </p>
             <p>Syntax: </p>
-            <pre class="code-toolbar">scipy.special.cbrt(x)
-         </pre>
+            <pre class="code-toolbar"><code>scipy.special.cbrt(x)
+         </code></pre>
             <p>Example: </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          from scipy.special import cbrt
          #Find cubic root of 27 &amp; 64 using cbrt() function
          cb = cbrt([27, 64])
          #print value of cb
          print(cb)
-         </pre>
+         </code></pre>
             <p>Output: array([3., 4.]) </p>
             <h3>Exponential Function:</h3>
             <p>Exponential function computes the 10**x element-wise.</p>
 
             <p>Example: </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          from scipy.special import exp10
          #define exp10 function and pass value in its
          exp = exp10([1,10])
          print(exp)
-         </pre>
+         </code></pre>
             <p>Output: [1.e+01 1.e+10] </p>
             <h3>Permutations &amp; Combinations:</h3>
             <p>SciPy also gives functionality to calculate Permutations and Combinations. </p>
             <p><strong>Combinations - </strong> scipy.special.comb(N,k<strong>)</strong> </p>
             <p>Example: </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          from scipy.special import comb
          #find combinations of 5, 2 values using comb(N, k)
          com = comb(5, 2, exact = False, repetition=True)
          print(com)
-         </pre>
+         </code></pre>
             <p>Output: 15.0 </p>
             <p> <strong>Permutations – </strong> </p>
-            <pre class="code-toolbar">scipy.special.perm(N,k)
-         </pre>
+            <pre class="code-toolbar"><code>scipy.special.perm(N,k)
+         </code></pre>
             <p>Example: </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          from scipy.special import perm
          #find permutation of 5, 2 using perm (N, k) function
          per = perm(5, 2, exact = True)
          print(per)
-         </pre>
+         </code></pre>
             <p>Output: 20 </p>
             <h3>Log Sum Exponential Function </h3>
             <p>Log Sum Exponential computes the log of sum exponential input element. </p>
             <p>Syntax : </p>
-            <pre class="code-toolbar">scipy.special.logsumexp(x) 
-         </pre>
+            <pre class="code-toolbar"><code>scipy.special.logsumexp(x) 
+         </code></pre>
             <h3> Bessel Function </h3>
             <p>Nth integer order calculation function </p>
             <p>Syntax : </p>
-            <pre class="code-toolbar">scipy.special.jn()
-         </pre>
+            <pre class="code-toolbar"><code>scipy.special.jn()
+         </code></pre>
             <h2><a id="7"></a>Linear Algebra with SciPy</h2>
             <ul>
                 <li>Linear Algebra of SciPy is an implementation of BLAS and ATLAS LAPACK libraries. </li>
@@ -231,33 +231,33 @@ discussion_id: 2019-10-03-PythonSciPy
             </ul>
             <p>Now let's do some test with <strong>scipy.linalg,</strong> </p>
             <p>Calculating <strong>determinant</strong> of a two-dimensional matrix, </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          from scipy import linalg
          import numpy as np
          #define square matrix
          two_d_array = np.array([ [4,5], [3,2] ])
          #pass values to det() function
          linalg.det( two_d_array )
-         </pre>
+         </code></pre>
             <p>Output: -7.0 </p>
             <p><strong>Inverse Matrix – </strong> </p>
-            <pre class="code-toolbar">scipy.linalg.inv()</pre>
+            <pre class="code-toolbar"><code>scipy.linalg.inv()</code></pre>
             <p>Inverse Matrix of Scipy calculates the inverse of any square matrix. </p>
             <p> Let's see,</p>
 
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          from scipy import linalg
          import numpy as np
          # define square matrix
          two_d_array = np.array([ [4,5], [3,2] ])
          #pass value to function inv()
          linalg.inv( two_d_array )
-         </pre>
+         </code></pre>
             <p>Output: </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
                 array( [[-0.28571429,  0.71428571],
                 [ 0.42857143, -0.57142857]] )
-         </pre>
+         </code></pre>
             <p> <strong>Eigenvalues and Eigenvector – </strong>scipy.linalg.eig() </p>
             <ul>
                 <li>The most common problem in linear algebra is eigenvalues and eigenvector which can be easily solved
@@ -266,7 +266,7 @@ discussion_id: 2019-10-03-PythonSciPy
                     two-dimensional square matrix.</li>
             </ul>
             <p>Example, </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          from scipy import linalg
          import numpy as np
          #define two dimensional array
@@ -277,13 +277,13 @@ discussion_id: 2019-10-03-PythonSciPy
          print(eg_val)
          #get eigenvectors
          print(eg_vect)
-         </pre>
+         </code></pre>
             <p>Output: </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          [ 9.+0.j -1.+0.j] #eigenvalues
           [ [ 0.70710678 -0.5547002 ] #eigenvectors
             [ 0.70710678  0.83205029] ]
-         </pre>
+         </code></pre>
             <h2><a id="8"></a>Discrete Fourier Transform – scipy.fftpack</h2>
             <ul>
                 <li>DFT is a mathematical technique which is used in converting spatial data into frequency data.</li>
@@ -293,7 +293,7 @@ discussion_id: 2019-10-03-PythonSciPy
             </ul>
             <p>Example: Take a wave and show using Matplotlib library. we take simple periodic function example of
                 sin(20 × 2πt) </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          %matplotlib inline
          from matplotlib import pyplot as plt
          import numpy as np 
@@ -309,7 +309,7 @@ discussion_id: 2019-10-03-PythonSciPy
          axis.set_xlabel ('Time (s)')
          axis.set_ylabel ('Signal amplitude')
          plt.show()
-         </pre>
+         </code></pre>
             <p>Output : </p>
             <p style="text-align:center;"><a href="{{site.url}}{{site.baseurl}}/img/python/datascience/img/1/120518_0746_PythonSciPy1.png"
                     class="jh-image-popup-colorbox cboxElement"><img src="{{site.url}}{{site.baseurl}}/img/python/datascience/img/1/120518_0746_PythonSciPy1.png"
@@ -317,7 +317,7 @@ discussion_id: 2019-10-03-PythonSciPy
             <p>You can see this. Frequency is 5 Hz and its signal repeats in 1/5 seconds – it's call as a particular
                 time period. </p>
             <p>Now let us use this sinusoid wave with the help of DFT application. </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          from scipy import fftpack
          
          A = fftpack.fft(a)
@@ -330,7 +330,7 @@ discussion_id: 2019-10-03-PythonSciPy
          axis.set_xlim(-fre_samp / 2, fre_samp/ 2)
          axis.set_ylim(-5, 110)
          plt.show()
-         </pre>
+         </code></pre>
             <p>Output: </p>
             <p style="text-align: center;"><a href="{{site.url}}{{site.baseurl}}/img/python/datascience/img/1/120518_0746_PythonSciPy2.png"
                     class="jh-image-popup-colorbox cboxElement"><img src="{{site.url}}{{site.baseurl}}/img/python/datascience/img/1/120518_0746_PythonSciPy2.png"
@@ -347,7 +347,7 @@ discussion_id: 2019-10-03-PythonSciPy
                 <li>Let's take an example of <strong>a Scalar Function, </strong>to find minimum scalar
                     function<strong>.</strong> </li>
             </ul>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          %matplotlib inline
          import matplotlib.pyplot as plt
          from scipy import optimize
@@ -359,7 +359,7 @@ discussion_id: 2019-10-03-PythonSciPy
          plt.show()
          #use BFGS algorithm for optimization
          optimize.fmin_bfgs(function, 0) 
-         </pre>
+         </code></pre>
             <p>Output: </p>
             <p style="text-align: center;"><a href="{{site.url}}{{site.baseurl}}/img/python/datascience/img/1/120518_0746_PythonSciPy3.png"
                     class="jh-image-popup-colorbox cboxElement"><img src="{{site.url}}{{site.baseurl}}/img/python/datascience/img/1/120518_0746_PythonSciPy3.png"
@@ -380,7 +380,7 @@ discussion_id: 2019-10-03-PythonSciPy
             </ul>
             <p><strong>optimize.basinhopping(function, 0)</strong> </p>
             <p>Output: </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
           fun: -23.241676238045315
           lowest_optimization_result:
                fun: -23.241676238045315
@@ -399,7 +399,7 @@ discussion_id: 2019-10-03-PythonSciPy
                                  nit: 100
                                 njev: 510
                         x: array([-1.67096375])
-         </pre>
+         </code></pre>
             <h2><a id="10"></a>Nelder –Mead Algorithm:</h2>
             <ul>
                 <li>Nelder-Mead algorithm selects through method parameter.</li>
@@ -407,7 +407,7 @@ discussion_id: 2019-10-03-PythonSciPy
                 <li>Nelder – Mead algorithm is not used for gradient evaluations because it may take a longer time to
                     find the solution. </li>
             </ul>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          import numpy as np
          from scipy.optimize import minimize
          #define function f(x)
@@ -415,9 +415,9 @@ discussion_id: 2019-10-03-PythonSciPy
              return .4*(1 - x[0])**2
            
          optimize.minimize(f, [2, -1], method="Nelder-Mead")
-         </pre>
+         </code></pre>
             <p>Output: </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
                 final_simplex: (array([[ 1.        , -1.27109375],
                 [ 1.        , -1.27118835],
                 [ 1.        , -1.27113762]]), array([0., 0., 0.]))
@@ -428,7 +428,7 @@ discussion_id: 2019-10-03-PythonSciPy
                  status: 0
                 success: True
                       x: array([ 1.        , -1.27109375])
-         </pre>
+         </code></pre>
             <h2><a id="11"></a>Image Processing with SciPy – scipy.ndimage</h2>
             <ul>
                 <li>scipy.ndimage is a submodule of SciPy which is mostly used for performing an image related operation
@@ -441,7 +441,7 @@ discussion_id: 2019-10-03-PythonSciPy
                     manipulation task </li>
             </ul>
             <p>Example: Let's take a geometric transformation example of images </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          from scipy import misc
          from matplotlib import pyplot as plt
          import numpy as np
@@ -450,24 +450,24 @@ discussion_id: 2019-10-03-PythonSciPy
          #plot or show image of face
          plt.imshow( panda )
          plt.show()
-         </pre>
+         </code></pre>
             <p> Output: </p>
             <p style="text-align:center;"><a href="{{site.url}}{{site.baseurl}}/img/python/datascience/img/1/120518_0746_PythonSciPy4.png"
                     class="jh-image-popup-colorbox cboxElement"><img src="{{site.url}}{{site.baseurl}}/img/python/datascience/img/1/120518_0746_PythonSciPy4.png"
                         alt=""></a> </p>
             <p>Now we <strong>Flip-down</strong> current image: </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          #Flip Down using scipy misc.face image  
          flip_down = np.flipud(misc.face())
          plt.imshow(flip_down)
          plt.show()
-         </pre>
+         </code></pre>
             <p>Output:<strong> </strong> </p>
             <p style="text-align: center;"><a href="{{site.url}}{{site.baseurl}}/img/python/datascience/img/1/120518_0746_PythonSciPy5.png"
                     class="jh-image-popup-colorbox cboxElement"><img src="{{site.url}}{{site.baseurl}}/img/python/datascience/img/1/120518_0746_PythonSciPy5.png"
                         alt=""></a><strong> </strong> </p>
             <p>Example<strong>: Rotation of Image using Scipy,</strong> </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          from scipy import ndimage, misc
          from matplotlib import pyplot as plt
          panda = misc.face()
@@ -475,7 +475,7 @@ discussion_id: 2019-10-03-PythonSciPy
          panda_rotate = ndimage.rotate(panda, 135)
          plt.imshow(panda_rotate)
          plt.show()
-         </pre>
+         </code></pre>
             <p>Output: </p>
             <p style="text-align:center;"><a href="{{site.url}}{{site.baseurl}}/img/python/datascience/img/1/120518_0746_PythonSciPy6.png"
                     class="jh-image-popup-colorbox cboxElement"><img src="{{site.url}}{{site.baseurl}}/img/python/datascience/img/1/120518_0746_PythonSciPy6.png"
@@ -493,14 +493,14 @@ discussion_id: 2019-10-03-PythonSciPy
                     class="jh-image-popup-colorbox cboxElement"><img src="{{site.url}}{{site.baseurl}}/img/python/datascience/img/1/120518_0746_PythonSciPy7.jpg"
                         alt=""></a> </p>
             <p>Here <strong>a</strong> is the upper limit and <strong>b</strong> is the lower limit </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          from scipy import integrate
          # take f(x) function as f
          f = lambda x : x**2
          #single integration with a = 0 &amp; b = 1  
          integration = integrate.quad(f, 0 , 1)
          print(integration)
-         </pre>
+         </code></pre>
             <p>Output: </p>
             <p>(0.33333333333333337, 3.700743415417189e-15) </p>
             <p>Here function returns two values, in which the first value is integration and second value is estimated
@@ -510,7 +510,7 @@ discussion_id: 2019-10-03-PythonSciPy
             <p style="text-align:center;"><a href="{{site.url}}{{site.baseurl}}/img/python/datascience/img/1/120518_0746_PythonSciPy8.jpg"
                     class="jh-image-popup-colorbox cboxElement"><img src="{{site.url}}{{site.baseurl}}/img/python/datascience/img/1/120518_0746_PythonSciPy8.jpg"
                         alt=""></a> </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          from scipy import integrate
          import numpy as np
          #import square root function from math lib
@@ -524,7 +524,7 @@ discussion_id: 2019-10-03-PythonSciPy
          # perform double integration
          integration = integrate.dblquad(f , 0 , 2/4,  p, q)
          print(integration)
-         </pre>
+         </code></pre>
             <p>Output: </p>
             <p><strong> </strong>(3.0, 9.657432734515774e-14)<strong> </strong> </p>
             <p> You have seen that above output as same previous one. </p>

@@ -219,40 +219,40 @@
                 have to choose the column you want the variable data for. </p>
             <p>It sounds a lot more intricate than it is. Let's take a look at this example, and we will find out that
                 working with csv file isn't so hard. </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          #import necessary modules
          import csv
          with open('X:\data.csv','rt')as f:
            data = csv.reader(f)
            for row in data:
                  print(row)
-         </pre>
+         </code></pre>
             <p>When you execute the program above, the output will be:</p>
 
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          ['Programming language; Designed by; Appeared; Extension']
          ['Python; Guido van Rossum; 1991; .py']
          ['Java; James Gosling; 1995; .java']
          ['C++; Bjarne Stroustrup;1983;.cpp']
-         </pre>
+         </code></pre>
             <h2><a id="6"></a>How to Read a CSV as a Dictionary</h2>
             <p>You can also you use DictReader to read CSV files. The results are interpreted as a dictionary where the
                 header row is the key, and other rows are values. </p>
             <p>Consider the following code </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          #import necessary modules
          import csv
          
          reader = csv.DictReader(open("file2.csv"))
          for raw in reader:
              print(raw)
-         </pre>
+         </code></pre>
             <p>The result of this code is: </p>
             <pre
                 class="code-toolbar">
          OrderedDict([('Programming language', 'Python'), ('Designed by', 'Guido van Rossum'), (' Appeared', ' 1991'), (' Extension', ' .py')])
          OrderedDict([('Programming language', 'Java'), ('Designed by', 'James Gosling'), (' Appeared', ' 1995'), (' Extension', ' .java')])
-         OrderedDict([('Programming language', 'C++'), ('Designed by', ' Bjarne Stroustrup'), (' Appeared', ' 1985'), (' Extension', ' .cpp')])</pre>
+         OrderedDict([('Programming language', 'C++'), ('Designed by', ' Bjarne Stroustrup'), (' Appeared', ' 1985'), (' Extension', ' .cpp')])</code></pre>
             <p style="text-align: center;"><a href="http://localhost:4000/img/python/datascience/img/2/122118_0714_ReadingandW1.png"
                     class="jh-image-popup-colorbox cboxElement"><img src="http://localhost:4000/img/python/datascience/img/2/122118_0714_ReadingandW1.png"
                         alt=""></a> </p>
@@ -263,7 +263,7 @@
                 To iterate the data over the rows(lines), you have to use the writerow() function. </p>
             <p>Consider the following example. We write data into a file "writeData.csv" where the delimiter is an
                 apostrophe. </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          #import necessary modules
          import csv
          
@@ -275,13 +275,13 @@
              writer.writerow(['Python', 'Guido van Rossum', '1991', '.py'])
              writer.writerow(['Java', 'James Gosling', '1995', '.java'])
              writer.writerow(['C++', 'Bjarne Stroustrup', '1985', '.cpp'])
-         </pre>
+         </code></pre>
             <p>Result in csv file is: </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          Programming language, Designed by, Appeared, Extension 
          Python, Guido van Rossum, 1991, .py
          Java, James Gosling, 1995, .java
-         C++, Bjarne Stroustrup,1983,.cpp</pre>
+         C++, Bjarne Stroustrup,1983,.cpp</code></pre>
             <p style="text-align: center;"><a href="http://localhost:4000/img/python/datascience/img/2/122118_0714_ReadingandW2.png"
                     class="jh-image-popup-colorbox cboxElement"><img src="http://localhost:4000/img/python/datascience/img/2/122118_0714_ReadingandW2.png"
                         alt=""></a> </p>
@@ -291,24 +291,24 @@
             <p>You must install pandas library with command &lt;code&gt;pip install pandas&lt;/code&gt;. In windows, you
                 will execute this command in Command Prompt while in Linux in the Terminal. </p>
             <p>Reading the CSV into a pandas DataFrame is very quick and easy: </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          #import necessary modules
          import pandas
          result = pandas.read_csv('X:\data.csv')
          print(result)
-         </pre>
+         </code></pre>
             <p>Result: </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          Programming language, Designed by, Appeared, Extension 
          0    Python, Guido van Rossum, 1991, .py
          1    Java, James Gosling, 1995, .java
-         2    C++, Bjarne Stroustrup,1983,.cpp	</pre>
+         2    C++, Bjarne Stroustrup,1983,.cpp	</code></pre>
             <p>Very useful library. In just three lines of code you the same result as earlier. Pandas know that the
                 first line of the CSV contained column names, and it will use them automatically. </p>
             <h2><a id="9"></a>Writing to CSV Files with Pandas</h2>
             <p>Writing to CSV file with Pandas is as easy as reading. Here you can convince in it. First you must create
                 DataFrame based on the following code. </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          from pandas import DataFrame
          C = {'Programming language': ['Python','Java', 'C++'],
                  'Designed by': ['Guido van Rossum', 'James Gosling', 'Bjarne Stroustrup'],
@@ -318,12 +318,12 @@
          df = DataFrame(C, columns= ['Programming language', 'Designed by', 'Appeared', 'Extension'])
          export_csv = df.to_csv (r'X:\pandaresult.csv', index = None, header=True) # here you have to write path, where result file will be stored
          print (df)
-         </pre>
+         </code></pre>
             <p>Here is the output </p>
-            <pre class="code-toolbar">Programming language, Designed by, Appeared, Extension
+            <pre class="code-toolbar"><code>Programming language, Designed by, Appeared, Extension
          0    Python, Guido van Rossum, 1991, .py
          1    Java, James Gosling, 1995, .java
-         2    C++, Bjarne Stroustrup,1983,.cpp</pre>
+         2    C++, Bjarne Stroustrup,1983,.cpp</code></pre>
             <p>And CSV file is created at the specified location. </p>
             <p style="text-align: center;"><a href="http://localhost:4000/img/python/datascience/img/2/122118_0714_ReadingandW3.png"
                     class="jh-image-popup-colorbox cboxElement"><img src="http://localhost:4000/img/python/datascience/img/2/122118_0714_ReadingandW3.png"
@@ -542,6 +542,52 @@
    
     
 })
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
 </script>
 
     

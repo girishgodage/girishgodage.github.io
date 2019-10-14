@@ -175,6 +175,7 @@
             <p>Here is the complete code </p>
             <p><b>Python 2 Example</b> </p>
             <pre class="code-toolbar">
+                <code>
          #  
          # read the data from the URL and print it
          #
@@ -192,9 +193,12 @@
             print data
           
          if __name__ == "__main__":
-           main()</pre>
+           main()
+        </code>
+        </pre>
             <p><b>Python 3 Example</b> </p>
             <pre class="code-toolbar">
+                <code>
          #
          # read the data from the URL and print it
          #
@@ -207,7 +211,9 @@
          
          # read the data from the URL and print it
          data = webUrl.read()
-         print (data)</pre>
+         print (data)
+        </code>
+        </pre>
 
         </div>
 
@@ -409,6 +415,52 @@
    
     
 })
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
 </script>
 
     

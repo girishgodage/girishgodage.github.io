@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-10-14T04:22:35+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">8.Typescript arrow functions</title><link href="http://localhost:4000/blog/Lesson8" rel="alternate" type="text/html" title="8.Typescript arrow functions" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson8</id><content type="html" xml:base="http://localhost:4000/blog/Lesson8">&lt;section class=&quot;tstutorial8&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-10-14T06:34:03+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">8.Typescript arrow functions</title><link href="http://localhost:4000/blog/Lesson8" rel="alternate" type="text/html" title="8.Typescript arrow functions" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson8</id><content type="html" xml:base="http://localhost:4000/blog/Lesson8">&lt;section class=&quot;tstutorial8&quot;&gt;
     &lt;p&gt;Since you already know how to use &lt;code&gt;Named functions&lt;/code&gt; and &lt;code&gt;Anonymous functions&lt;/code&gt; let me show
         you another type of function which you will be dealing with while building Angular Applications&lt;/p&gt;
     &lt;p&gt;Let's have a look at the following sample:&lt;/p&gt;
@@ -994,12 +994,14 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
                 JSON is in string or text format. &lt;strong&gt;JSON &lt;/strong&gt;stands for&lt;strong&gt;
                     J&lt;/strong&gt;ava&lt;strong&gt;S&lt;/strong&gt;cript &lt;strong&gt;O&lt;/strong&gt;bject &lt;strong&gt;N&lt;/strong&gt;otation. &lt;/p&gt;
             &lt;p&gt;The syntax of JSON: JSON is written as key and value pair. &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
+                
          {
                  &quot;Key&quot;:  &quot;Value&quot;,
                  &quot;Key&quot;:  &quot;Value&quot;,
          } 
-         &lt;/pre&gt;
+        
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;JSON is very similar to&lt;strong&gt; &lt;/strong&gt;Python dictionary. Python supports JSON, and it has an inbuilt
                 library as a JSON. &lt;/p&gt;
             &lt;h2&gt;&lt;a id=&quot;2&quot;&gt;&lt;/a&gt;JSON Library in Python &lt;/h2&gt;
@@ -1007,8 +1009,8 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
                 &lt;strong&gt;JSON&lt;/strong&gt; library. To perform JSON related operations like encoding and decoding in Python
                 you need first to &lt;strong&gt;import &lt;/strong&gt;JSON library and for that in your &lt;strong&gt;.py&lt;/strong&gt; file,
             &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;import json
-         &lt;/pre&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;import json
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Following methods are available in the JSON module &lt;/p&gt;
             &lt;table class=&quot;table table-striped table-bordered&quot;&gt;
                 &lt;tbody&gt;
@@ -1113,7 +1115,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
                 library method – &lt;strong&gt;dumps()&lt;/strong&gt; &lt;/p&gt;
             &lt;p&gt;&lt;strong&gt;dumps() &lt;/strong&gt;method converts dictionary object of python into JSON string data format. &lt;/p&gt;
             &lt;p&gt;Now lets we perform our first encoding example with Python. &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          import json
          
          x = {
@@ -1130,17 +1132,17 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
          # sorting result in asscending order by keys:
          sorted_string = json.dumps(x, indent=4, sort_keys=True)
          print(sorted_string)
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Output: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;{&quot;person&quot;: {&quot;name&quot;: &quot;Kenn&quot;, &quot;sex&quot;: &quot;male&quot;, &quot;age&quot;: 28}})
-         &lt;/pre&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;{&quot;person&quot;: {&quot;name&quot;: &quot;Kenn&quot;, &quot;sex&quot;: &quot;male&quot;, &quot;age&quot;: 28}})
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Let's create a JSON file of the dictionary using the same function &lt;strong&gt;dump() &lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          # here we create new data_file.json file with write mode using file i/o operation 
          with open('json_file.json', &quot;w&quot;) as file_write:
          # write json data into file
          json.dump(person_data, file_write)
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Output: &lt;/p&gt;
             &lt;p&gt; Nothing to show…In your system json_file.json is created you can check that file. &lt;/p&gt;
             &lt;p style=&quot;text-align: center;&quot;&gt;&lt;a
@@ -1194,7 +1196,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
             &lt;/table&gt;
             &lt;p&gt;Let's see a basic example of decoding in Python with the help of &lt;strong&gt;json.loads()&lt;/strong&gt; function,
             &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;import json  # json library imported
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;import json  # json library imported
          # json data string
          person_data = '{  &quot;person&quot;:  { &quot;name&quot;:  &quot;Kenn&quot;,  &quot;sex&quot;:  &quot;male&quot;,  &quot;age&quot;:  28}}'
          # Decoding or converting JSON format in dictionary using loads()
@@ -1204,13 +1206,13 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
          print(&quot;Type of dict_obj&quot;, type(dict_obj))
          # get human object details
          print(&quot;Person......&quot;,  dict_obj.get('person'))
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          {'person': {'name': 'Kenn', 'sex': 'male', 'age': 28}}
          Type of dict_obj &amp;lt;class 'dict'&amp;gt;
          Person...... {'name': 'John', 'sex': 'male'}
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p style=&quot;text-align: center;&quot;&gt;&lt;a
                     href=&quot;http://localhost:4000/img/python/datascience/img/3/122818_1014_PythonJSONE2.png&quot;
                     class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img
@@ -1222,16 +1224,16 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
             &lt;/p&gt;
             &lt;p&gt;Example,&lt;/p&gt;
 
-            &lt;pre class=&quot;code-toolbar&quot;&gt;import json
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;import json
          #File I/O Open function for read data from JSON File
          with open('X:/json_file.json') as file_object:
                  # store file data in object
                  data = json.load(file_object)
          print(data)
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;&lt;strong&gt;Here data&lt;/strong&gt; is a dictionary object of Python. &lt;/p&gt;
             &lt;p&gt;Output: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;{'person': {'name': 'Kenn', 'sex': 'male', 'age': 28}}&lt;/pre&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;{'person': {'name': 'Kenn', 'sex': 'male', 'age': 28}}&lt;/code&gt;&lt;/pre&gt;
             &lt;p style=&quot;text-align: center;&quot;&gt;&lt;a
                     href=&quot;http://localhost:4000/img/python/datascience/img/3/122818_1014_PythonJSONE3.png&quot;
                     class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img
@@ -1240,7 +1242,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
             &lt;h3&gt;&lt;a id=&quot;6&quot;&gt;&lt;/a&gt;Compact Encoding in Python&lt;/h3&gt;
             &lt;p&gt;When you need to reduce the size of your JSON file, you can use compact encoding in Python. &lt;/p&gt;
             &lt;p&gt;Example, &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          import json
          # Create a List that contains dictionary
          lst = ['a', 'b', 'c',{'4': 5, '6': 7}]
@@ -1249,31 +1251,31 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
          # Use of ':' to identify key and value in dictionary
          compact_obj = json.dumps(lst, separators=(',', ':'))
          print(compact_obj)
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt; &lt;/p&gt;
             &lt;pre
                 class=&quot;code-toolbar&quot;&gt;'[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, {&quot;4&quot;: 5, &quot;6&quot;: 7}]'
          
-         ** Here output of JSON is represented in a single line which is the most compact representation by removing the space character from compact_obj **  &lt;/pre&gt;
+         ** Here output of JSON is represented in a single line which is the most compact representation by removing the space character from compact_obj **  &lt;/code&gt;&lt;/pre&gt;
             &lt;h3&gt;&lt;a id=&quot;7&quot;&gt;&lt;/a&gt;Format JSON code (Pretty print)&lt;/h3&gt;
             &lt;ul&gt;
                 &lt;li&gt;The aim is to write well-formatted code for human understanding. With the help of pretty printing,
                     anyone can easily understand the code.&lt;strong&gt; &lt;/strong&gt;&lt;/li&gt;
                 &lt;li&gt;Example,&lt;/li&gt;
             &lt;/ul&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          import json
          dic = { 'a': 4, 'b': 5 }
          ''' To format the code use of indent and 4 shows number of space and use of separator is not necessary but standard way to write code of particular function. '''
          formatted_obj = json.dumps(dic, indent=4, separators=(',', ': '))
          print(formatted_obj)
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Output: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;{
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;{
             &quot;a&quot; : 4,
             &quot;b&quot; : 5
          }
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p style=&quot;text-align: center;&quot;&gt;&lt;a
                     href=&quot;http://localhost:4000/img/python/datascience/img/3/122818_1014_PythonJSONE4.png&quot;
                     class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img
@@ -1290,7 +1292,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
                 ascending order. The sort_keys argument is a Boolean attribute. When it's true sorting is allowed
                 otherwise not &lt;/p&gt;
             &lt;p&gt;Example, &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          import json
          
          x = {
@@ -1307,9 +1309,9 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
          # sorting result in asscending order by keys:
          sorted_string = json.dumps(x, indent=4, sort_keys=True)
          print(sorted_string)
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          {
              &quot;age&quot;: 45,
              &quot;cars&quot;: [ {
@@ -1330,7 +1332,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
                  &quot;Dog&quot;
              ]
          }
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;As you may observe the keys age, cars, children, etc are arranged in ascending order. &lt;/p&gt;
             &lt;h2&gt;&lt;a id=&quot;8&quot;&gt;&lt;/a&gt;Complex Object encoding of Python&lt;/h2&gt;
             &lt;p&gt;A Complex object has two different parts that is &lt;/p&gt;
@@ -1349,7 +1351,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
 
             &lt;p&gt;Let's create the specific function for check object is complex or eligible for encoding.&lt;strong&gt;
                 &lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          import json
          
          # create function to check instance is complex or not
@@ -1364,13 +1366,13 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
          # perform json encoding by passing parameter
          complex_obj = json.dumps(4 + 5j, default=complex_encode)
          print(complex_obj)
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;'[4.0, 5.0]'&lt;/pre&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;'[4.0, 5.0]'&lt;/code&gt;&lt;/pre&gt;
             &lt;h2&gt;&lt;a id=&quot;9&quot;&gt;&lt;/a&gt;Complex JSON object decoding in Python&lt;/h2&gt;
             &lt;p&gt;To decode complex object in JSON, use an object_hook parameter which checks JSON string contains the
                 complex object or not. Example, &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          import json
            # function check JSON string contains complex object
            def is_complex(objct):
@@ -1384,12 +1386,12 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
            simple_object =json.loads('{&quot;real&quot;: 6, &quot;img&quot;: 7}', object_hook = is_complex)
            print(&quot;Complex_object......&quot;,complex_object)
            print(&quot;Without_complex_object......&quot;,simple_object)
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt; Output: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          Complex_object...... (4+5j)
          Without_complex_object...... {'real': 6, 'img': 7}
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;h2&gt;&lt;a id=&quot;10&quot;&gt;&lt;/a&gt;Overview of JSON Serialization class JSONEncoder&lt;/h2&gt;
             &lt;p&gt;JSONEncoder class is used for serialization of any Python object while performing encoding. It contains
                 three different methods of encoding which are &lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
@@ -1403,14 +1405,14 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
             &lt;/ul&gt;
             &lt;p&gt;With the help of encode() method of JSONEncoder class, we can also encode any Python object.&lt;strong&gt;
                 &lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;# import JSONEncoder class from json
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;# import JSONEncoder class from json
          from json.encoder import JSONEncoder
          colour_dict = { &quot;colour&quot;: [&quot;red&quot;, &quot;yellow&quot;, &quot;green&quot; ]}
          # directly called encode method of JSON
          JSONEncoder().encode(colour_dict)
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;'{&quot;colour&quot;: [&quot;red&quot;, &quot;yellow&quot;, &quot;green&quot;]}'&lt;/pre&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;'{&quot;colour&quot;: [&quot;red&quot;, &quot;yellow&quot;, &quot;green&quot;]}'&lt;/code&gt;&lt;/pre&gt;
             &lt;h2&gt;&lt;a id=&quot;11&quot;&gt;&lt;/a&gt;Overview of JSON Deserialization class JSONDecoder &lt;/h2&gt;
             &lt;p&gt;JSONDecoder class is used for deserialization of any Python object while performing decoding. It contains
                 three different methods of decoding which are &lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
@@ -1424,16 +1426,16 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
             &lt;/ul&gt;
             &lt;p&gt;With the help of decode() method of JSONDecoder class, we can also decode JSON string.&lt;strong&gt; &lt;/strong&gt;
             &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          import json
          # import JSONDecoder class from json
          from json.decoder import JSONDecoder
          colour_string = '{ &quot;colour&quot;: [&quot;red&quot;, &quot;yellow&quot;]}'
          # directly called decode method of JSON
          JSONDecoder().decode(colour_string)
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;&lt;strong&gt; Output:&lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;{'colour': ['red', 'yellow']}&lt;/pre&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;{'colour': ['red', 'yellow']}&lt;/code&gt;&lt;/pre&gt;
             &lt;h3&gt;&lt;a id=&quot;12&quot;&gt;&lt;/a&gt;Decoding JSON data from URL: Real Life Example&lt;/h3&gt;
             &lt;p&gt;We will fetch data of CityBike NYC (Bike Sharing System) from specified URL(&lt;a
                     href=&quot;https://feeds.citibikenyc.com/stations/stations.json&quot;&gt;https://feeds.citibikenyc.com/stations/stations.json&lt;/a&gt;)
@@ -1444,7 +1446,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
             &lt;ul&gt;
                 &lt;li&gt; (For Python 3 or above) &lt;strong&gt;pip3 install requests&lt;/strong&gt; &lt;/li&gt;
             &lt;/ul&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          import json
          import requests
          
@@ -1458,9 +1460,9 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
          print(type(bike_dict))
          # now get stationBeanList key data from dict
          print(bike_dict['stationBeanList'][0]) 
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          &amp;lt;class 'str'&amp;gt;
          &amp;lt;class 'dict'&amp;gt;
          {
@@ -1482,7 +1484,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
              'testStation': False, 
              'lastCommunicationTime': '2018-12-11 10:59:09 PM', 'landMark': ''
          }
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;h2&gt;&lt;a id=&quot;13&quot;&gt;&lt;/a&gt;Exceptions Related to JSON Library in Python:&lt;/h2&gt;
             &lt;ul&gt;
                 &lt;li&gt;Class &lt;strong&gt;json.JSONDecoderError&lt;/strong&gt; handles the exception related to decoding operation.
@@ -1500,7 +1502,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
                 &lt;/li&gt;
             &lt;/ul&gt;
             &lt;p&gt;Example, &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          import json
          #File I/O Open function for read data from JSON File
          data = {} #Define Empty Dictionary Object
@@ -1509,7 +1511,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
                          data = json.load(file_object)
          except ValueError:
               print(&quot;Bad JSON file format,  Change JSON File&quot;)
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p style=&quot;text-align: center;&quot;&gt;&lt;a
                     href=&quot;http://localhost:4000/img/python/datascience/img/3/122818_1014_PythonJSONE7.png&quot;
                     class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img
@@ -1520,7 +1522,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
                 is no restriction in Python- JSON Library to perform Infinite and Nan Value related operation. If JSON
                 gets INFINITE and Nan datatype than it's converted it into literal. &lt;/p&gt;
             &lt;p&gt;Example, &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          import json
          # pass float Infinite value
          infinite_json = json.dumps(float('inf'))
@@ -1534,16 +1536,16 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
          print(infinite)
          # check type of Infinity
          print(type(infinite))
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Output:&lt;/p&gt;
 
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          Infinity
          &amp;lt;class 'str'&amp;gt;
          NaN
          inf
          &amp;lt;class 'float'&amp;gt;	
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;h2&gt;&lt;a id=&quot;15&quot;&gt;&lt;/a&gt;Repeated key in JSON String &lt;/h2&gt;
             &lt;p&gt;RFC specifies the key name should be unique in a JSON object, but it's not mandatory. Python JSON library
                 does not raise an exception of repeated objects in JSON. It ignores all repeated key-value pair and
@@ -1551,13 +1553,13 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
             &lt;ul&gt;
                 &lt;li&gt;Example,&lt;/li&gt;
             &lt;/ul&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          import json
          repeat_pair = '{&quot;a&quot;:  1, &quot;a&quot;:  2, &quot;a&quot;:  3}'
          json.loads(repeat_pair)
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Output: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;{'a': 3}&lt;/pre&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;{'a': 3}&lt;/code&gt;&lt;/pre&gt;
             &lt;h2&gt;&lt;a id=&quot;16&quot;&gt;&lt;/a&gt;CLI (Command Line Interface) with JSON in Python&lt;/h2&gt;
             &lt;p&gt;&lt;strong&gt;json.tool &lt;/strong&gt;provides the command line interface to validate JSON pretty-print syntax.
                 Let's see an example of CLI&lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
@@ -1566,13 +1568,13 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
                     class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img
                         src=&quot;http://localhost:4000/img/python/datascience/img/3/122818_1014_PythonJSONE8.png&quot;
                         alt=&quot;&quot;&gt;&lt;/a&gt;&lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;$ echo '{&quot;name&quot; : &quot;Kings Authur&quot; }' | python3 -m json.tool&lt;/pre&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;$ echo '{&quot;name&quot; : &quot;Kings Authur&quot; }' | python3 -m json.tool&lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Output: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
         {
              &quot;name&quot;: &quot; Kings Authur &quot;
          }
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;h2&gt;&lt;a id=&quot;17&quot;&gt;&lt;/a&gt;Advantages of JSON in Python&lt;/h2&gt;
             &lt;ul&gt;
                 &lt;li&gt;Easy to move back between container and value (JSON to Python and Python to JSON)&lt;/li&gt;
@@ -1781,39 +1783,39 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
             &lt;/ul&gt;
             &lt;h2&gt;&lt;a id=&quot;4&quot;&gt;&lt;/a&gt;SciPy - Installation and Environment Setup&lt;/h2&gt;
             &lt;p&gt;You can also install SciPy in Windows via pip &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;Python3 -m pip install --user numpy scipy 
-         &lt;/pre&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;Python3 -m pip install --user numpy scipy 
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Install Scipy on Linux &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;sudo apt-get install  python-scipy python-numpy
-         &lt;/pre&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;sudo apt-get install  python-scipy python-numpy
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Install SciPy in Mac &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;sudo port install py35-scipy py35-numpy
-         &lt;/pre&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;sudo port install py35-scipy py35-numpy
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Before start to learning SciPy, you need to know basic functionality as well as different types of an
                 array of &lt;a href=&quot;https://www.guru99.com/numpy-tutorial.html&quot;&gt;NumPy&lt;/a&gt; &lt;/p&gt;
             &lt;p&gt;The standard way of import infSciPy modules and Numpy: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          from scipy import special   #same for other modules
          import numpy as np
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;h2&gt;&lt;a id=&quot;5&quot;&gt;&lt;/a&gt;File Input / Output package:&lt;/h2&gt;
             &lt;p&gt;Scipy, I/O package, has a wide range of functions for work with different files format which are Matlab,
                 Arff, Wave, Matrix Market, IDL, NetCDF, TXT, CSV and binary format. &lt;/p&gt;
             &lt;p&gt;Let's we take one file format example as which are regularly use of MatLab: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
           import numpy as np
           from scipy import io as sio
           array = np.ones((4, 4))
           sio.savemat('example.mat', {'ar': array}) 
           data = sio.loadmat(‘example.mat', struct_as_record=True)
           data['array']
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Output: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;array([[ 1., 1., 1., 1.],
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;array([[ 1., 1., 1., 1.],
                     [ 1., 1., 1., 1.],
                     [ 1., 1., 1., 1.],
                     [ 1., 1., 1., 1.]])
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Code Explanation &lt;/p&gt;
             &lt;ul&gt;
                 &lt;li&gt;&lt;strong&gt;Line 1 &amp;amp; 2: &lt;/strong&gt; Import the essential library scipy with i/o package and Numpy.
@@ -1831,7 +1833,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
                     Exponential, etc.. &lt;/li&gt;
                 &lt;li&gt;For one line description all of these function, type in Python console: &lt;/li&gt;
             &lt;/ul&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          help(scipy.special)	
          Output : 
          NAME
@@ -1846,64 +1848,64 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
               
              Nearly all of the functions below are universal functions and follow
              broadcasting and automatic array-looping rules. Exceptions are noted.
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;h3&gt;Cubic Root Function:&lt;/h3&gt;
             &lt;p&gt;Cubic Root function finds the cube root of values. &lt;/p&gt;
             &lt;p&gt;Syntax: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;scipy.special.cbrt(x)
-         &lt;/pre&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;scipy.special.cbrt(x)
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Example: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          from scipy.special import cbrt
          #Find cubic root of 27 &amp;amp; 64 using cbrt() function
          cb = cbrt([27, 64])
          #print value of cb
          print(cb)
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Output: array([3., 4.]) &lt;/p&gt;
             &lt;h3&gt;Exponential Function:&lt;/h3&gt;
             &lt;p&gt;Exponential function computes the 10**x element-wise.&lt;/p&gt;
 
             &lt;p&gt;Example: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          from scipy.special import exp10
          #define exp10 function and pass value in its
          exp = exp10([1,10])
          print(exp)
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Output: [1.e+01 1.e+10] &lt;/p&gt;
             &lt;h3&gt;Permutations &amp;amp; Combinations:&lt;/h3&gt;
             &lt;p&gt;SciPy also gives functionality to calculate Permutations and Combinations. &lt;/p&gt;
             &lt;p&gt;&lt;strong&gt;Combinations - &lt;/strong&gt; scipy.special.comb(N,k&lt;strong&gt;)&lt;/strong&gt; &lt;/p&gt;
             &lt;p&gt;Example: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          from scipy.special import comb
          #find combinations of 5, 2 values using comb(N, k)
          com = comb(5, 2, exact = False, repetition=True)
          print(com)
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Output: 15.0 &lt;/p&gt;
             &lt;p&gt; &lt;strong&gt;Permutations – &lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;scipy.special.perm(N,k)
-         &lt;/pre&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;scipy.special.perm(N,k)
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Example: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          from scipy.special import perm
          #find permutation of 5, 2 using perm (N, k) function
          per = perm(5, 2, exact = True)
          print(per)
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Output: 20 &lt;/p&gt;
             &lt;h3&gt;Log Sum Exponential Function &lt;/h3&gt;
             &lt;p&gt;Log Sum Exponential computes the log of sum exponential input element. &lt;/p&gt;
             &lt;p&gt;Syntax : &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;scipy.special.logsumexp(x) 
-         &lt;/pre&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;scipy.special.logsumexp(x) 
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;h3&gt; Bessel Function &lt;/h3&gt;
             &lt;p&gt;Nth integer order calculation function &lt;/p&gt;
             &lt;p&gt;Syntax : &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;scipy.special.jn()
-         &lt;/pre&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;scipy.special.jn()
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;h2&gt;&lt;a id=&quot;7&quot;&gt;&lt;/a&gt;Linear Algebra with SciPy&lt;/h2&gt;
             &lt;ul&gt;
                 &lt;li&gt;Linear Algebra of SciPy is an implementation of BLAS and ATLAS LAPACK libraries. &lt;/li&gt;
@@ -1913,33 +1915,33 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
             &lt;/ul&gt;
             &lt;p&gt;Now let's do some test with &lt;strong&gt;scipy.linalg,&lt;/strong&gt; &lt;/p&gt;
             &lt;p&gt;Calculating &lt;strong&gt;determinant&lt;/strong&gt; of a two-dimensional matrix, &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          from scipy import linalg
          import numpy as np
          #define square matrix
          two_d_array = np.array([ [4,5], [3,2] ])
          #pass values to det() function
          linalg.det( two_d_array )
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Output: -7.0 &lt;/p&gt;
             &lt;p&gt;&lt;strong&gt;Inverse Matrix – &lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;scipy.linalg.inv()&lt;/pre&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;scipy.linalg.inv()&lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Inverse Matrix of Scipy calculates the inverse of any square matrix. &lt;/p&gt;
             &lt;p&gt; Let's see,&lt;/p&gt;
 
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          from scipy import linalg
          import numpy as np
          # define square matrix
          two_d_array = np.array([ [4,5], [3,2] ])
          #pass value to function inv()
          linalg.inv( two_d_array )
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Output: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
                 array( [[-0.28571429,  0.71428571],
                 [ 0.42857143, -0.57142857]] )
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt; &lt;strong&gt;Eigenvalues and Eigenvector – &lt;/strong&gt;scipy.linalg.eig() &lt;/p&gt;
             &lt;ul&gt;
                 &lt;li&gt;The most common problem in linear algebra is eigenvalues and eigenvector which can be easily solved
@@ -1948,7 +1950,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
                     two-dimensional square matrix.&lt;/li&gt;
             &lt;/ul&gt;
             &lt;p&gt;Example, &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          from scipy import linalg
          import numpy as np
          #define two dimensional array
@@ -1959,13 +1961,13 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
          print(eg_val)
          #get eigenvectors
          print(eg_vect)
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Output: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          [ 9.+0.j -1.+0.j] #eigenvalues
           [ [ 0.70710678 -0.5547002 ] #eigenvectors
             [ 0.70710678  0.83205029] ]
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;h2&gt;&lt;a id=&quot;8&quot;&gt;&lt;/a&gt;Discrete Fourier Transform – scipy.fftpack&lt;/h2&gt;
             &lt;ul&gt;
                 &lt;li&gt;DFT is a mathematical technique which is used in converting spatial data into frequency data.&lt;/li&gt;
@@ -1975,7 +1977,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
             &lt;/ul&gt;
             &lt;p&gt;Example: Take a wave and show using Matplotlib library. we take simple periodic function example of
                 sin(20 × 2πt) &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          %matplotlib inline
          from matplotlib import pyplot as plt
          import numpy as np 
@@ -1991,7 +1993,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
          axis.set_xlabel ('Time (s)')
          axis.set_ylabel ('Signal amplitude')
          plt.show()
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Output : &lt;/p&gt;
             &lt;p style=&quot;text-align:center;&quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy1.png&quot;
                     class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img src=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy1.png&quot;
@@ -1999,7 +2001,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
             &lt;p&gt;You can see this. Frequency is 5 Hz and its signal repeats in 1/5 seconds – it's call as a particular
                 time period. &lt;/p&gt;
             &lt;p&gt;Now let us use this sinusoid wave with the help of DFT application. &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          from scipy import fftpack
          
          A = fftpack.fft(a)
@@ -2012,7 +2014,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
          axis.set_xlim(-fre_samp / 2, fre_samp/ 2)
          axis.set_ylim(-5, 110)
          plt.show()
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Output: &lt;/p&gt;
             &lt;p style=&quot;text-align: center;&quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy2.png&quot;
                     class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img src=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy2.png&quot;
@@ -2029,7 +2031,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
                 &lt;li&gt;Let's take an example of &lt;strong&gt;a Scalar Function, &lt;/strong&gt;to find minimum scalar
                     function&lt;strong&gt;.&lt;/strong&gt; &lt;/li&gt;
             &lt;/ul&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          %matplotlib inline
          import matplotlib.pyplot as plt
          from scipy import optimize
@@ -2041,7 +2043,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
          plt.show()
          #use BFGS algorithm for optimization
          optimize.fmin_bfgs(function, 0) 
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Output: &lt;/p&gt;
             &lt;p style=&quot;text-align: center;&quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy3.png&quot;
                     class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img src=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy3.png&quot;
@@ -2062,7 +2064,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
             &lt;/ul&gt;
             &lt;p&gt;&lt;strong&gt;optimize.basinhopping(function, 0)&lt;/strong&gt; &lt;/p&gt;
             &lt;p&gt;Output: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
           fun: -23.241676238045315
           lowest_optimization_result:
                fun: -23.241676238045315
@@ -2081,7 +2083,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
                                  nit: 100
                                 njev: 510
                         x: array([-1.67096375])
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;h2&gt;&lt;a id=&quot;10&quot;&gt;&lt;/a&gt;Nelder –Mead Algorithm:&lt;/h2&gt;
             &lt;ul&gt;
                 &lt;li&gt;Nelder-Mead algorithm selects through method parameter.&lt;/li&gt;
@@ -2089,7 +2091,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
                 &lt;li&gt;Nelder – Mead algorithm is not used for gradient evaluations because it may take a longer time to
                     find the solution. &lt;/li&gt;
             &lt;/ul&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          import numpy as np
          from scipy.optimize import minimize
          #define function f(x)
@@ -2097,9 +2099,9 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
              return .4*(1 - x[0])**2
            
          optimize.minimize(f, [2, -1], method=&quot;Nelder-Mead&quot;)
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Output: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
                 final_simplex: (array([[ 1.        , -1.27109375],
                 [ 1.        , -1.27118835],
                 [ 1.        , -1.27113762]]), array([0., 0., 0.]))
@@ -2110,7 +2112,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
                  status: 0
                 success: True
                       x: array([ 1.        , -1.27109375])
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;h2&gt;&lt;a id=&quot;11&quot;&gt;&lt;/a&gt;Image Processing with SciPy – scipy.ndimage&lt;/h2&gt;
             &lt;ul&gt;
                 &lt;li&gt;scipy.ndimage is a submodule of SciPy which is mostly used for performing an image related operation
@@ -2123,7 +2125,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
                     manipulation task &lt;/li&gt;
             &lt;/ul&gt;
             &lt;p&gt;Example: Let's take a geometric transformation example of images &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          from scipy import misc
          from matplotlib import pyplot as plt
          import numpy as np
@@ -2132,24 +2134,24 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
          #plot or show image of face
          plt.imshow( panda )
          plt.show()
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt; Output: &lt;/p&gt;
             &lt;p style=&quot;text-align:center;&quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy4.png&quot;
                     class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img src=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy4.png&quot;
                         alt=&quot;&quot;&gt;&lt;/a&gt; &lt;/p&gt;
             &lt;p&gt;Now we &lt;strong&gt;Flip-down&lt;/strong&gt; current image: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          #Flip Down using scipy misc.face image  
          flip_down = np.flipud(misc.face())
          plt.imshow(flip_down)
          plt.show()
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Output:&lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
             &lt;p style=&quot;text-align: center;&quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy5.png&quot;
                     class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img src=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy5.png&quot;
                         alt=&quot;&quot;&gt;&lt;/a&gt;&lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
             &lt;p&gt;Example&lt;strong&gt;: Rotation of Image using Scipy,&lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          from scipy import ndimage, misc
          from matplotlib import pyplot as plt
          panda = misc.face()
@@ -2157,7 +2159,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
          panda_rotate = ndimage.rotate(panda, 135)
          plt.imshow(panda_rotate)
          plt.show()
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Output: &lt;/p&gt;
             &lt;p style=&quot;text-align:center;&quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy6.png&quot;
                     class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img src=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy6.png&quot;
@@ -2175,14 +2177,14 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
                     class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img src=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy7.jpg&quot;
                         alt=&quot;&quot;&gt;&lt;/a&gt; &lt;/p&gt;
             &lt;p&gt;Here &lt;strong&gt;a&lt;/strong&gt; is the upper limit and &lt;strong&gt;b&lt;/strong&gt; is the lower limit &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          from scipy import integrate
          # take f(x) function as f
          f = lambda x : x**2
          #single integration with a = 0 &amp;amp; b = 1  
          integration = integrate.quad(f, 0 , 1)
          print(integration)
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Output: &lt;/p&gt;
             &lt;p&gt;(0.33333333333333337, 3.700743415417189e-15) &lt;/p&gt;
             &lt;p&gt;Here function returns two values, in which the first value is integration and second value is estimated
@@ -2192,7 +2194,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
             &lt;p style=&quot;text-align:center;&quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy8.jpg&quot;
                     class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img src=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy8.jpg&quot;
                         alt=&quot;&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;
+            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
          from scipy import integrate
          import numpy as np
          #import square root function from math lib
@@ -2206,7 +2208,7 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
          # perform double integration
          integration = integrate.dblquad(f , 0 , 2/4,  p, q)
          print(integration)
-         &lt;/pre&gt;
+         &lt;/code&gt;&lt;/pre&gt;
             &lt;p&gt;Output: &lt;/p&gt;
             &lt;p&gt;&lt;strong&gt; &lt;/strong&gt;(3.0, 9.657432734515774e-14)&lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
             &lt;p&gt; You have seen that above output as same previous one. &lt;/p&gt;

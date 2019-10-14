@@ -403,7 +403,7 @@
     <h3>Script from the Command-line</h3>
     <p>A Python script can be executed at command line by invoking the interpreter on your application, as in the
         following −</p>
-    <pre class="code-toolbar">
+    <pre class="code-toolbar"><code>
         $python script.py # Unix/Linux
         
         or
@@ -413,7 +413,7 @@
         or 
         
         C: &gt;python script.py # Windows/DOS
-        </pre>
+    </code> </pre>
     <p><b>Note</b> − Be sure the file permission mode allows execution.</p>
     <h3>Integrated Development Environment</h3>
     <p>You can run Python from a Graphical User Interface (GUI) environment as well, if you have a GUI application on
@@ -633,6 +633,52 @@
    
     
 })
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
 </script>
 
     

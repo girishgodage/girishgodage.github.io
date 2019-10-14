@@ -141,7 +141,7 @@
             <p>With Python you can create a .text files (guru99.txt) by using the code, we have demonstrated here how
                 you can do this </p>
             <p><strong>Step 1) </strong> </p>
-            <pre class="code-toolbar">	f= open("guru99.txt","w+")</pre>
+            <pre class="code-toolbar"><code>	f= open("guru99.txt","w+")</code></pre>
             <ul>
                 <li>We declared the variable f to open a file named textfile.txt. Open takes 2 arguments, the file that
                     we want to open and a string that represents the kinds of permission or operation we want to do on
@@ -152,8 +152,8 @@
                     there then create it</li>
             </ul>
             <p><strong>Step 2) </strong> </p>
-            <pre class="code-toolbar">for i in range(10):
-          f.write("This is line %d\r\n" % (i+1))</pre>
+            <pre class="code-toolbar"><code>for i in range(10):
+          f.write("This is line %d\r\n" % (i+1))</code></pre>
             <ul>
                 <li>We have a for loop that runs over a range of 10 numbers.</li>
                 <li>Using the <strong>write</strong> function to enter data into the file.</li>
@@ -163,7 +163,7 @@
                     return and a new line character</li>
             </ul>
             <p><strong>Step 3) </strong> </p>
-            <pre class="code-toolbar">	f.close() </pre>
+            <pre class="code-toolbar"><code>	f.close() </code></pre>
             <ul>
                 <li>This will close the instance of the file guru99.txt stored</li>
             </ul>
@@ -180,15 +180,15 @@
             <h2><a id="2"></a>How to Append Data to a File</h2>
             <p>You can also append a new text to the already existing file or the new file. </p>
             <p><strong>Step 1) </strong> </p>
-            <pre class="code-toolbar">f=open("guru99.txt", "a+")</pre>
+            <pre class="code-toolbar"><code>f=open("guru99.txt", "a+")</code></pre>
             <p>Once again if you could see a plus sign in the code, it indicates that it will create a new file if it
                 does not exist. But in our case we already have the file, so we are not required to create a new file.
             </p>
             <p><strong>Step 2) </strong></p>
 
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          for i in range(2):
-          f.write("Appended line %d\r\n" % (i+1))</pre>
+          f.write("Appended line %d\r\n" % (i+1))</code></pre>
             <p>This will write data into the file in append mode. </p>
             <p style="text-align: center; "><a href="http://localhost:4000/img/python/tutorial/20/Python17.3.jpg"
                     class="jh-image-popup-colorbox cboxElement"><img title="Reading and Writing Files in Python"
@@ -203,12 +203,12 @@
             <h2><a id="3"></a>How to Read a File</h2>
             <p>Not only you can create .txt file from Python but you can also call .txt file in a "read mode"(r). </p>
             <p><strong>Step 1)</strong> Open the file in Read mode </p>
-            <pre class="code-toolbar">	f=open("guru99.txt", "r")</pre>
+            <pre class="code-toolbar"><code>	f=open("guru99.txt", "r")</code></pre>
             <p><strong>Step 2)</strong> We use the mode function in the code to check that the file is in open mode. If
                 yes, we proceed ahead </p>
-            <pre class="code-toolbar">	if f.mode == 'r':</pre>
+            <pre class="code-toolbar"><code>	if f.mode == 'r':</code></pre>
             <p><strong>Step 3)</strong> Use f.read to read file data and store it in variable content </p>
-            <pre class="code-toolbar">	contents =f.read()</pre>
+            <pre class="code-toolbar"><code>	contents =f.read()</code></pre>
             <p><strong>Step 4) </strong>print contents</p>
             <p>Here is the output</p>
 
@@ -268,7 +268,7 @@
             <br>
             <p>Here is the complete code </p>
             <p><b>Python 2 Example</b> </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          def main():
           f= open("guru99.txt","w+")
           #f=open("guru99.txt","a+")
@@ -285,9 +285,9 @@
           #for x in fl:
           #print x
      if __name__== "__main__":
-       main()</pre>
+       main()</code></pre>
             <p><b>Python 3 Example</b> </p>
-            <pre class="code-toolbar">def main():
+            <pre class="code-toolbar"><code>def main():
          f= open("guru99.txt","w+")
          #f=open("guru99.txt","a+")
          for i in range(10):
@@ -303,7 +303,7 @@
          #for x in fl:
          #print(x)
      if __name__== "__main__":
-       main()</pre>
+       main()</code></pre>
             <p><strong>Summary</strong> </p>
             <ul>
                 <li>Python allows you to read, write and delete files</li>
@@ -513,6 +513,52 @@
    
     
 })
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
 </script>
 
     

@@ -132,12 +132,12 @@
                parentheses</strong> and cannot be changed. However, you can take portions of existing tuples to make new
             tuples. </p>
          <p><strong>Tuple Syntax</strong> </p>
-         <pre class="code-toolbar">Tup = ('Jan','feb','march')</pre>
+         <pre class="code-toolbar"><code>Tup = ('Jan','feb','march')</code></pre>
          <p>To write an empty tuple, you need to write as two parentheses containing nothing- </p>
-         <pre class="code-toolbar">tup1 = ();</pre>
+         <pre class="code-toolbar"><code>tup1 = ();</code></pre>
          <p>For writing tuple for a single value, you need to include a comma, even though there is a single value. Also
             at the end you need to write semicolon as shown below. </p>
-         <pre class="code-toolbar">Tup1 = (50,);</pre>
+         <pre class="code-toolbar"><code>Tup1 = (50,);</code></pre>
          <p>Tuple indices begin at 0, and they can be concatenated, sliced and so on. </p>
          <p>In this tutorial, we will learn- </p>
          <ul>
@@ -156,10 +156,10 @@
          <p>For Example, </p>
          <p> (name, surname, birth year, favorite movie and year, profession, birthplace) = Robert </p>
          <p>Here is the code, </p>
-         <pre class="code-toolbar">tup1 = ('Robert', 'Carlos','1965','Terminator 1995', 'Actor','Florida');
+         <pre class="code-toolbar"><code>tup1 = ('Robert', 'Carlos','1965','Terminator 1995', 'Actor','Florida');
          tup2 = (1,2,3,4,5,6,7);
          print(tup1[0])
-         print(tup2[1:4])</pre>
+         print(tup2[1:4])</code></pre>
          <ul>
             <li>Tuple 1 includes list of information of Robert</li>
             <li>Tuple 2 includes list of numbers in it</li>
@@ -170,11 +170,11 @@
          <h2><a id="1"></a>Packing and Unpacking</h2>
          <p>In packing, we place value into a new tuple while in unpacking we extract those values back into variables.
          </p>
-         <pre class="code-toolbar">x = ("Guru99", 20, "Education")    # tuple packing
+         <pre class="code-toolbar"><code>x = ("Guru99", 20, "Education")    # tuple packing
          (company, emp, profile) = x    # tuple unpacking
          print(company)
          print(emp)
-         print(profile)</pre>
+         print(profile)</code></pre>
          <h2><a id="2"></a>Comparing tuples</h2>
          <p>A comparison operator in Python can work with tuples. </p>
          <p>The comparison starts with a first element of each tuple. If they do not compare to =,&lt; or &gt; then it
@@ -183,21 +183,21 @@
 
          <p>Let's study this with an example- </p>
          <p><strong>#case 1</strong> </p>
-         <pre class="code-toolbar">a=(5,6)
+         <pre class="code-toolbar"><code>a=(5,6)
          b=(1,4)
          if (a&gt;b):print("a is bigger")
          else: print("b is bigger")
-         </pre>
+         </code></pre>
          <p><strong>#case 2</strong> </p>
-         <pre class="code-toolbar">a=(5,6)
+         <pre class="code-toolbar"><code>a=(5,6)
          b=(5,4)
          if (a&gt;b):print("a is bigger")
-         else: print ("b is bigger")</pre>
+         else: print ("b is bigger")</code></pre>
          <p><strong>#case 3</strong> </p>
-         <pre class="code-toolbar">a=(5,6)
+         <pre class="code-toolbar"><code>a=(5,6)
          b=(6,4)
          if (a&gt;b):print("a is bigger")
-         else: print("b is bigger")</pre>
+         else: print("b is bigger")</code></pre>
          <p><strong>Case1:</strong> Comparison starts with a first element of each tuple. In this case 5&gt;1, so the
             output a is bigger </p>
          <p><strong>Case 2:</strong> Comparison starts with a first element of each tuple. In this case 5&gt;5 which is
@@ -210,31 +210,31 @@
          <p><strong>Example</strong>: We would come across a composite key if we need to create a telephone directory
             that maps, first-name, last-name, pairs of telephone numbers, etc. Assuming that we have declared the
             variables as last and first number, we could write a dictionary assignment statement as shown below: </p>
-         <pre class="code-toolbar">directory[last,first] = number</pre>
+         <pre class="code-toolbar"><code>directory[last,first] = number</code></pre>
          <p>Inside the brackets, the expression is a tuple. We could use tuple assignment in a for loop to navigate this
             dictionary. </p>
-         <pre class="code-toolbar">for last, first in directory:</pre>
-         <pre class="code-toolbar">    print first, last, directory[last, first]</pre>
+         <pre class="code-toolbar"><code>for last, first in directory:</code></pre>
+         <pre class="code-toolbar"><code>    print first, last, directory[last, first]</code></pre>
          <p>This loop navigates the keys in the directory, which are tuples. It assigns the elements of each tuple to
             last and first and then prints the name and corresponding telephone number. </p>
          <p><strong>Tuples and dictionary</strong></p>
          <p>Dictionary can return the list of tuples by calling items, where each tuple is a key value pair. </p>
-         <pre class="code-toolbar">a = {'x':100, 'y':200}
+         <pre class="code-toolbar"><code>a = {'x':100, 'y':200}
          b = list(a.items())
          print(b) 
-         </pre>
+         </code></pre>
          <h2><a id="4"></a>Deleting Tuples</h2>
          <p>Tuples are immutable and cannot be deleted. You cannot delete or remove items from a tuple. But deleting
             tuple entirely is possible by using the keyword </p>
-         <pre class="code-toolbar">del</pre>
+         <pre class="code-toolbar"><code>del</code></pre>
          <h2><a id="5"></a>Slicing of Tuple</h2>
          <p>To fetch specific sets of sub-elements from tuple or list, we use this unique function called slicing.
             Slicing is not only applicable to tuple but also for array and list. </p>
-         <pre class="code-toolbar">x = ("a", "b","c", "d", "e")
-         print(x[2:4])</pre>
+         <pre class="code-toolbar"><code>x = ("a", "b","c", "d", "e")
+         print(x[2:4])</code></pre>
          <p>The output of this code will be ('c', 'd'). </p>
          <p><b>Here is the Python 2 Code for all above example</b> </p>
-         <pre class="code-toolbar">tup1 = ('Robert', 'Carlos','1965','Terminator 1995', 'Actor','Florida');
+         <pre class="code-toolbar"><code>tup1 = ('Robert', 'Carlos','1965','Terminator 1995', 'Actor','Florida');
          tup2 = (1,2,3,4,5,6,7);
          print  tup1[0]
          print  tup2[1:4]
@@ -274,7 +274,7 @@
          x = ("a", "b","c", "d", "e")
          print x[2:4]
          
-         </pre>
+         </code></pre>
          <h2><a id="6"></a>Built-in functions with Tuple</h2>
          <p>To perform different task, tuple allows you to use many built-in functions like all(), any(), enumerate(),
             max(), min(), sorted(), len(), tuple(), etc. </p>
@@ -511,6 +511,52 @@
    
     
 })
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
 </script>
 
     

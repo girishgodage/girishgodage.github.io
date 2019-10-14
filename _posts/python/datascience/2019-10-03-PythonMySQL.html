@@ -32,11 +32,11 @@ discussion_id: 2019-10-03-PythonMySQL
             <p>Download RPM package for Linux/Unix from Official site: <a
                     href="https://www.mysql.com/downloads/">https://www.mysql.com/downloads/</a> </p>
             <p>In terminal use following command </p>
-            <pre class="code-toolbar">rpm  -i &lt;Package_name&gt;</pre>
-            <pre class="code-toolbar">Example   rpm -i MySQL-5.0.9.0.i386.rpm
-         </pre>
+            <pre class="code-toolbar"><code>rpm  -i &lt;Package_name&gt;</code></pre>
+            <pre class="code-toolbar"><code>Example   rpm -i MySQL-5.0.9.0.i386.rpm
+         </code></pre>
             <p>To check in Linux <strong> </strong> </p>
-            <pre class="code-toolbar">mysql --version</pre>
+            <pre class="code-toolbar"><code>mysql --version</code></pre>
             <p><strong>Install MySQL in Windows</strong> </p>
             <p> Download MySQL database exe from <a href="https://www.mysql.com/downloads/">official site</a> and
                 install as usual normal installation of software in Windows. Refer this <a
@@ -44,24 +44,24 @@ discussion_id: 2019-10-03-PythonMySQL
                 guide<strong> </strong> </p>
             <h2>Install MySQL Connector Library for Python</h2>
             <p>For Python 2.7 or lower install using pip as: </p>
-            <pre class="code-toolbar">pip install mysql-connector
-         </pre>
+            <pre class="code-toolbar"><code>pip install mysql-connector
+         </code></pre>
             <p>For Python 3 or higher version install using pip3 as:<strong> </strong> </p>
-            <pre class="code-toolbar">pip3 install mysql-connector </pre>
+            <pre class="code-toolbar"><code>pip3 install mysql-connector </code></pre>
             <h2> Test the MySQL Database connection with Python</h2>
             <p>To test database connection here we use pre-installed MySQL connector and pass credentials into
                 <strong>connect()</strong> function like host, username and password. </p>
             <p>Syntax to access MySQL with Python: </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
              import mysql.connector
              db_connection = mysql.connector.connect(
                host="hostname",
                user="username",
                passwd="password"
              )
-         </pre>
+         </code></pre>
             <p>Example, </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          import mysql.connector
          db_connection = mysql.connector.connect(
            host="localhost",
@@ -69,17 +69,17 @@ discussion_id: 2019-10-03-PythonMySQL
            passwd="root"
          )
          print(db_connection)
-         </pre>
+         </code></pre>
             <p>Output: </p>
             <pre
-                class="code-toolbar">&lt;mysql.connector.connection.MySQLConnection object at 0x000002338A4C6B00&gt;</pre>
+                class="code-toolbar">&lt;mysql.connector.connection.MySQLConnection object at 0x000002338A4C6B00&gt;</code></pre>
             <p> Here output shows the connection created successfully. </p>
             <h2>Creating Database in MySQL using Python</h2>
             <p>Syntax to Create new database in SQL is </p>
-            <pre class="code-toolbar">CREATE DATABASE "database_name"
-         </pre>
+            <pre class="code-toolbar"><code>CREATE DATABASE "database_name"
+         </code></pre>
             <p>Now we create database using Python in MySQL<strong> </strong> </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
            import mysql.connector
            db_connection = mysql.connector.connect(
            host= "localhost",
@@ -95,7 +95,7 @@ discussion_id: 2019-10-03-PythonMySQL
          #print all databases
          for db in db_cursor:
              print(db)
-         </pre>
+         </code></pre>
             <p>Output: </p>
             <p style="text-align: center;"><a
                     href="{{site.url}}{{site.baseurl}}/img/python/datascience/img/4/030819_0707_PythonwithM1.png"
@@ -107,10 +107,10 @@ discussion_id: 2019-10-03-PythonMySQL
             <h2>Create a Table in MySQL with Python</h2>
             <p>Let's create a simple table "student" which has two columns. </p>
             <p>SQL Syntax: </p>
-            <pre class="code-toolbar">CREATE  TABLE student (id INT, name VARCHAR(255))
-         </pre>
+            <pre class="code-toolbar"><code>CREATE  TABLE student (id INT, name VARCHAR(255))
+         </code></pre>
             <p><strong>Example:</strong> </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
            import mysql.connector
            db_connection = mysql.connector.connect(
            host="localhost",
@@ -125,17 +125,17 @@ discussion_id: 2019-10-03-PythonMySQL
          db_cursor.execute("SHOW TABLES")
          for table in db_cursor:
              print(table)
-         </pre>
+         </code></pre>
             <p>Output: </p>
-            <pre class="code-toolbar"> ('student',) </pre>
+            <pre class="code-toolbar"><code> ('student',) </code></pre>
             <h2>Create a Table with Primary Key</h2>
             <p>Let's create an <strong>Employee</strong> table with three different columns. We will add a primary key
                 in <strong>id</strong> column with AUTO_INCREMENT constraint </p>
             <p>SQL Syntax, </p>
-            <pre class="code-toolbar">CREATE TABLE employee(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), salary INT(6))
-         </pre>
+            <pre class="code-toolbar"><code>CREATE TABLE employee(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), salary INT(6))
+         </code></pre>
             <p>Example,<strong> </strong> </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
            import mysql.connector
            db_connection = mysql.connector.connect(
            host="localhost",
@@ -150,17 +150,17 @@ discussion_id: 2019-10-03-PythonMySQL
          db_cursor.execute("SHOW TABLES")
          for table in db_cursor:
              print(table)	
-         </pre>
+         </code></pre>
             <p> Output: </p>
-            <pre class="code-toolbar">('employee',) ('student',)</pre>
+            <pre class="code-toolbar"><code>('employee',) ('student',)</code></pre>
             <h2>ALTER table in MySQL with Python</h2>
             <p>Alter command is used for modification of Table structure in SQL. Here we will alter <strong>Student
                 </strong>table and add a primary key to the <strong>id</strong> field. </p>
             <p>SQL Syntax, </p>
-            <pre class="code-toolbar">ALTER TABLE student MODIFY id INT PRIMARY KEY
-         </pre>
+            <pre class="code-toolbar"><code>ALTER TABLE student MODIFY id INT PRIMARY KEY
+         </code></pre>
             <p>Example, </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
            import mysql.connector
            db_connection = mysql.connector.connect(
            host="localhost",
@@ -171,7 +171,7 @@ discussion_id: 2019-10-03-PythonMySQL
          db_cursor = db_connection.cursor()
          #Here we modify existing column id
          db_cursor.execute("ALTER TABLE student MODIFY id INT PRIMARY KEY")
-         </pre>
+         </code></pre>
             <p> Output: </p>
             <p> Here below you can see the <strong>id </strong>column is modified. </p>
             <p style="text-align:center;"><a
@@ -183,12 +183,12 @@ discussion_id: 2019-10-03-PythonMySQL
             <p>Let's perform insertion operation in MySQL Database table which we already create. We will insert data oi
                 STUDENT table and EMPLOYEE table. </p>
             <p>SQL Syntax, </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          INSERT INTO student (id, name) VALUES (01, "John")
          INSERT INTO employee (id, name, salary) VALUES(01, "John", 10000)
-         </pre>
+         </code></pre>
             <p>Example,<strong> </strong> </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
            import mysql.connector
            db_connection = mysql.connector.connect(
            host="localhost",
@@ -205,9 +205,9 @@ discussion_id: 2019-10-03-PythonMySQL
              db_cursor.execute(employee_sql_query)
          db_connection.commit()
          print(db_cursor.rowcount, "Record Inserted")
-         </pre>
+         </code></pre>
             <p>Output: </p>
-            <pre class="code-toolbar"> 2 Record Inserted </pre>
+            <pre class="code-toolbar"><code> 2 Record Inserted </code></pre>
 
 
         </div>

@@ -131,9 +131,9 @@
             <p>Python provides in-built functions for easily copying files using the Operating System Shell utilities.
             </p>
             <p>Following command is used to Copy File </p>
-            <pre class="code-toolbar">shutil.copy(src,dst)</pre>
+            <pre class="code-toolbar"><code>shutil.copy(src,dst)</code></pre>
             <p>Following command is used to Copy File with MetaData Information </p>
-            <pre class="code-toolbar">shutil.copystat(src,dst)</pre>
+            <pre class="code-toolbar"><code>shutil.copystat(src,dst)</code></pre>
             <p>Here are the steps to copy file in Python </p>
             <p><strong>Step 1)</strong> Before, we copy a file, we need to get the the path to the original file in the
                 current directory. In the code - </p>
@@ -190,7 +190,7 @@
                         alt="Python OS Module, Shell Script Commands"
                         src="http://localhost:4000/img/python/tutorial/22/Python18.8.png"></a> </p>
             <p>Here is the code </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          import os
          import shutil
          from os import path
@@ -216,7 +216,7 @@
              
          if __name__=="__main__":
              main()
-         </pre>
+         </code></pre>
             <p><strong>Step 4)</strong> You can fetch the information about the text file last modified </p>
             <p style="text-align:center; "><a
                     href="http://localhost:4000/img/python/tutorial/22/Python18.4_New.png"
@@ -242,7 +242,7 @@
                 </li>
             </ul>
             <p>Here is the code </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          #
          # Example file for working with o.s path module
          
@@ -264,7 +264,7 @@
          
          if __name__ == "__main__":
              main()
-         </pre>
+         </code></pre>
             <p><strong>Summary</strong> </p>
             <ul>
                 <li>To create a copy of the existing file by use code <strong>shutil.copy (src,dst)</strong> </li>
@@ -471,6 +471,52 @@
    
     
 })
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
 </script>
 
     

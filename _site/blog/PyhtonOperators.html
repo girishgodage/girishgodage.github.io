@@ -148,9 +148,9 @@
             can use the eval function, declare variable &amp; calculate, or call functions. </p>
          <p><strong>Example</strong>: For arithmetic operators we will take simple example of addition where we will add
             two-digit 4+5=9 </p>
-         <pre class="code-toolbar">x= 4	
+         <pre class="code-toolbar"><code>x= 4	
          y= 5
-         print(x + y)</pre>
+         print(x + y)</code></pre>
          <p>Similarly, you can use other arithmetic operators like for multiplication(*), division (/), substraction
             (-), etc. </p>
          <h2><a id="2"></a>Comparison Operators</h2>
@@ -161,19 +161,19 @@
             print the result in true or false. Here in example, our value of x = 4 which is smaller than y = 5, so when
             we print the value as x&gt;y, it actually compares the value of x to y and since it is not correct, it
             returns false. </p>
-         <pre class="code-toolbar">x = 4
+         <pre class="code-toolbar"><code>x = 4
          y = 5
-         print(('x &gt; y  is',x&gt;y))</pre>
+         print(('x &gt; y  is',x&gt;y))</code></pre>
          <p>Likewise, you can try other comparison operators (x &lt; y, x==y, x!=y, etc.) </p>
          <h2><a id="3"></a>Python Assignment Operators</h2>
          <p>Python assignment operators are used for assigning the value of the right operand to the left operand.
             Various assignment operators used in Python are (+=, - = , *=, /= , etc.) </p>
          <p><strong>Example</strong>: Python assignment operators is simply to assign the value, for example </p>
 
-         <pre class="code-toolbar">num1 = 4
+         <pre class="code-toolbar"><code>num1 = 4
          num2 = 5
          print(("Line 1 - Value of num1 : ", num1))
-         print(("Line 2 - Value of num2 : ", num2))</pre>
+         print(("Line 2 - Value of num2 : ", num2))</code></pre>
          <p><strong>Example of compound assignment operator</strong> </p>
          <p>We can also use a compound assignment operator, where you can add, subtract, multiply right operand to left
             and assign addition (or any other arithmetic function) to the left operand. </p>
@@ -183,11 +183,11 @@
             <li>Step 3: To this result add num1 to the output of Step 2 ( 9+4)</li>
             <li>Step 4: It will print the final result as 13 </li>
          </ul>
-         <pre class="code-toolbar">num1 = 4
+         <pre class="code-toolbar"><code>num1 = 4
          num2 = 5
          res = num1 + num2
          res += num1
-         print(("Line 1 - Result of + is ", res))</pre>
+         print(("Line 1 - Result of + is ", res))</code></pre>
          <h2><a id="4"></a>Logical Operators</h2>
          <p>Logical operators in Python are used for conditional statements are true or false. Logical operators in
             Python are AND, OR and NOT. For logical operators following condition are applied. </p>
@@ -197,18 +197,18 @@
             <li>For NOT operator- returns TRUE if operand is false</li>
          </ul>
          <p><strong>Example</strong>: Here in example we get true or false based on the value of a and b </p>
-         <pre class="code-toolbar">a = True
+         <pre class="code-toolbar"><code>a = True
          b = False
          print(('a and b is',a and b))
          print(('a or b is',a or b))
-         print(('not a is',not a))</pre>
+         print(('not a is',not a))</code></pre>
          <h2><a id="5"></a>Membership Operators</h2>
          <p>These operators test for membership in a sequence such as lists, strings or tuples. There are two membership
             operators that are used in Python. (in, not in). It gives the result based on the variable present in
             specified sequence or string </p>
          <p><strong>Example</strong>: For example here we check whether the value of x=4 and value of y=8 is available
             in list or not, by using <strong>in</strong> and <strong>not in </strong>operators. </p>
-         <pre class="code-toolbar">x = 4
+         <pre class="code-toolbar"><code>x = 4
          y = 8
          list = [1, 2, 3, 4, 5 ];
          if ( x in list ):
@@ -218,7 +218,7 @@
          if ( y not in list ):
             print("Line 2 - y is not available in the given list")
          else:
-            print("Line 2 - y is available in the given list")</pre>
+            print("Line 2 - y is available in the given list")</code></pre>
          <ul>
             <li>Declare the value for x and y </li>
             <li>Declare the value of list</li>
@@ -280,13 +280,13 @@
          </table>
          <p></p>
          <p><strong>Example</strong>: </p>
-         <pre class="code-toolbar">x = 20
+         <pre class="code-toolbar"><code>x = 20
          y = 20
          if ( x is y ): 
              print("x &amp; y  SAME identity")
          y=30
          if ( x is not y ):
-             print("x &amp; y have DIFFERENT identity")</pre>
+             print("x &amp; y have DIFFERENT identity")</code></pre>
          <ul>
             <li>Declare the value for variable x and y</li>
             <li>Use the operator "is" in code to check if value of x is same as y</li>
@@ -299,13 +299,13 @@
             precedence than addition. For example in 3+ 4*5, the answer is 23, to change the order of precedence we use
             a parentheses (3+4)*5, now the answer is 35. Precedence operator used in Python are (unary + - ~, **, * / %,
             + - , &amp;) etc. </p>
-         <pre class="code-toolbar">v = 4
+         <pre class="code-toolbar"><code>v = 4
          w = 5
          x = 8
          y = 2
          z = 0
          z = (v+w) * x / y;   
-         print("Value of (v+w) * x/ y is ",  z)</pre>
+         print("Value of (v+w) * x/ y is ",  z)</code></pre>
          <ul>
             <li>Declare the value of variable v,w…z</li>
             <li>Now apply the formula and run the code</li>
@@ -313,7 +313,7 @@
          </ul>
          <h3>Python 2 Example</h3>
          <p>Above examples are Python 3 codes, if you want to use Python 2, please consider following codes </p>
-         <pre class="code-toolbar">#Arithmetic Operators
+         <pre class="code-toolbar"><code>#Arithmetic Operators
          x= 4	
          y= 5
          print x + y
@@ -373,7 +373,7 @@
          z = 0
          z = (v+w) * x / y;   
          print "Value of (v+w) * x/ y is ",  z
-         </pre>
+         </code></pre>
          <h3>Summary:</h3>
          <p>Operators in a programming language are used to perform various operations on values and variables. In
             Python, you can use operators like </p>
@@ -597,6 +597,52 @@
    
     
 })
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
 </script>
 
     

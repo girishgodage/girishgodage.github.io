@@ -36,13 +36,13 @@ discussion_id: 2019-09-30-PythonReadNWriteFile
             <p>Using path.exists you can quickly check that a file or directory exists. Here are the steps </p>
             <p><strong>Steps 1)</strong> Before you run the code, it is important that you import the os.path module.
             </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          import os.path
-         from os import path</pre>
+         from os import path</code></pre>
             <p><strong>Steps 2)</strong> Now, use the path.exists() function to check whether a File Exists. </p>
-            <pre class="code-toolbar">path.exists("guru99.txt")</pre>
+            <pre class="code-toolbar"><code>path.exists("guru99.txt")</code></pre>
             <p><strong>Steps 3)</strong> Here is the complete code </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          import os.path
          from os import path
          
@@ -53,7 +53,7 @@ discussion_id: 2019-09-30-PythonReadNWriteFile
             print ("directory exists:" + str(path.exists('myDirectory')))
          
          if __name__== "__main__":
-            main()</pre>
+            main()</code></pre>
             <p> In our case only file guru99.txt is created in the working directory </p>
             <p><strong>Output:</strong> </p>
             <p>File exists: True<br> File exists: False<br>
@@ -61,7 +61,7 @@ discussion_id: 2019-09-30-PythonReadNWriteFile
             </p>
             <h2><a id="2"></a>os.path.isfile()</h2>
             <p>We can use the isfile command to check whether a given input is a file or directory. </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          import os.path
          from os import path
          
@@ -70,13 +70,13 @@ discussion_id: 2019-09-30-PythonReadNWriteFile
              print ("Is it File?" + str(path.isfile('guru99.txt')))
              print ("Is it File?" + str(path.isfile('myDirectory')))
          if __name__== "__main__":
-             main()</pre>
+             main()</code></pre>
             <p><strong>Output:</strong> </p>
             <p>Is it File? True<br> Is it File? False</p>
 
             <h2><a id="3"></a>os.path.isdir()</h2>
             <p>If we want to confirm that a given path points to a directory, we can use the os.path.dir() function </p>
-            <pre class="code-toolbar">import os.path
+            <pre class="code-toolbar"><code>import os.path
          from os import path
          
          def main():
@@ -85,13 +85,13 @@ discussion_id: 2019-09-30-PythonReadNWriteFile
             print ("Is it Directory?" + str(path.isdir('myDirectory')))
          
          if __name__== "__main__":
-            main()</pre>
+            main()</code></pre>
             <p><strong>Output:</strong> </p>
             <p>Is it Directory? False<br> Is it Directory? True </p>
             <h2><a id="4"></a> pathlibPath.exists() For Python 3.4</h2>
             <p> Python 3.4 and above versions have pathlib Module for handling with file system path. It used
                 object-oriented approach to check if file exist or not. </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          import pathlib
          file = pathlib.Path("guru99.txt")
          if file.exists ():
@@ -99,12 +99,12 @@ discussion_id: 2019-09-30-PythonReadNWriteFile
          else:
              print ("File not exist")
          
-         </pre>
+         </code></pre>
             <p><strong>Output:</strong> </p>
             <p>File exist </p>
             <p><strong>Complete Code</strong> </p>
             <p>Here is the complete code </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          import os
          from os import path
          
@@ -118,7 +118,7 @@ discussion_id: 2019-09-30-PythonReadNWriteFile
          
          if __name__ == "__main__":
              main()
-         </pre>
+         </code></pre>
             <p><strong>Output:</strong> </p>
             <p>Item exists: True<br> Item is a file: True<br>
                 Item is a directory: False

@@ -24,9 +24,9 @@ discussion_id: 2019-10-01-PythonRenameFile
         <div itemprop="articleBody">
             <p>Python allows you to quickly create zip/tar archives. </p>
             <p>Following command will zip entire directory </p>
-            <pre class="code-toolbar">shutil.make_archive(output_filename, 'zip', dir_name)</pre>
+            <pre class="code-toolbar"><code>shutil.make_archive(output_filename, 'zip', dir_name)</code></pre>
             <p>Following command gives you control on the files you want to archive </p>
-            <pre class="code-toolbar">ZipFile.write(filename)</pre>
+            <pre class="code-toolbar"><code>ZipFile.write(filename)</code></pre>
             <p> Here are the steps to create Zip File in Python </p>
             <p><strong>Step 1)</strong> To create an archive file from Python, make sure you have your import statement
                 correct and in order. Here the import statement for the archive is
@@ -118,7 +118,7 @@ discussion_id: 2019-10-01-PythonRenameFile
                             src="{{site.url}}{{site.baseurl}}/img/python/tutorial/24/Python18.16.png"></a> </p>
                 <p>Here is the complete code </p>
                 <p><b>Python 2 Example</b> </p>
-                <pre class="code-toolbar">
+                <pre class="code-toolbar"><code>
          import os
          import shutil
          from zipfile import ZipFile
@@ -140,9 +140,9 @@ discussion_id: 2019-10-01-PythonRenameFile
              newzip.write("guru99.txt")
                  newzip.write("guru99.txt.bak")
          if __name__== "__main__":
-               main()</pre>
+               main()</code></pre>
                 <p><b>Python 3 Example</b> </p>
-                <pre class="code-toolbar">import os
+                <pre class="code-toolbar"><code>import os
          import shutil
          from zipfile import ZipFile
          from os import path
@@ -160,7 +160,7 @@ discussion_id: 2019-10-01-PythonRenameFile
              # more fine-grained control over ZIP files
                  with ZipFile("testguru99.zip", "w") as newzip:
                      newzip.write("guru99.txt")
-                     newzip.write("guru99.txt.bak")</pre>
+                     newzip.write("guru99.txt.bak")</code></pre>
                 <p><strong>Summary</strong> </p>
                 <ul>
                     <li>To zip entire directory use command "shutil.make_archive("name","zip", root_dir)</li>

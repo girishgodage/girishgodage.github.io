@@ -57,7 +57,7 @@ discussion_id: 2019-10-02-PythonLambda
                 all this in action in the upcoming examples. </p>
             <h2><a id="3"></a>Syntax and Examples</h2>
             <p>The formal syntax to write a lambda function is as given below: </p>
-            <pre class="code-toolbar">lambda p1, p2: expression </pre>
+            <pre class="code-toolbar"><code>lambda p1, p2: expression </code></pre>
             <p>Here, p1 and p2 are the parameters which are passed to the lambda function. You can add as many or few
                 parameters as you need. </p>
             <p>However, notice that we do not use brackets around the parameters as we do with regular functions. The
@@ -66,12 +66,12 @@ discussion_id: 2019-10-02-PythonLambda
             <h3>Example 1</h3>
             <p>Now that you know about lambdas let's try it with an example. So, open your IDLE and type in the
                 following: </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          adder = lambda x, y: x + y
          print (adder (1, 2))
-         </pre>
+         </code></pre>
             <p><strong>Here is the output:</strong> </p>
-            <pre class="code-toolbar">3</pre>
+            <pre class="code-toolbar"><code>3</code></pre>
             <h3>Code Explanation </h3>
             <p>Here, we define a variable that will hold the result returned by the lambda function. </p>
             <p><strong>1.</strong> The lambda keyword used to define an anonymous function. </p>
@@ -82,16 +82,16 @@ discussion_id: 2019-10-02-PythonLambda
             <h3>Example 2</h3>
             <p>That was a basic example to understand the fundamentals and syntax of lambda. Let's now try to print out
                 a lambda and see the result. Again, open your IDLE and type in the following: </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          #What a lambda returns
          string='some kind of a useless lambda'
          print(lambda string : print(string))
-         </pre>
+         </code></pre>
             <p>Now save your file and hit F5 to run the program. This is the output you should get. </p>
             <p><strong>Output:</strong> </p>
 
-            <pre class="code-toolbar">&lt;function &lt;lambda&gt; at 0x00000185C3BF81E0&gt;
-         </pre>
+            <pre class="code-toolbar"><code>&lt;function &lt;lambda&gt; at 0x00000185C3BF81E0&gt;
+         </code></pre>
             <p>What's happening here? Let's look at the code to understand further. </p>
             <p>Code Explanation </p>
             <ol>
@@ -104,14 +104,14 @@ discussion_id: 2019-10-02-PythonLambda
                 That's what gets printed at the console. </p>
             <h3>Example 3</h3>
             <p>However, if you write a program like this: </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          #What a lambda returns #2
          x="some kind of a useless lambda"
          (lambda x : print(x))(x)
-         </pre>
+         </code></pre>
             <p>And run it by hitting F5, you'll see an output like this. </p>
             <p><strong>Output:</strong> </p>
-            <pre class="code-toolbar">some kind of a useless lambda</pre>
+            <pre class="code-toolbar"><code>some kind of a useless lambda</code></pre>
             <p>Now, the lambda is being called, and the string we pass gets printed at the console. But what is that
                 weird syntax, and why is the lambda definition covered in brackets? Let's understand that now. </p>
             <p>Code Explanation </p>
@@ -124,7 +124,7 @@ discussion_id: 2019-10-02-PythonLambda
             <h3>Example 4</h3>
             <p>Let's look at a final example to understand how lambdas and regular functions are executed. So, open your
                 IDLE and in a new file, type in the following: </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          #A REGULAR FUNCTION
          def guru( funct, *args ):
          funct( *args )
@@ -138,7 +138,7 @@ discussion_id: 2019-10-02-PythonLambda
          #CALL A REGULAR FUNCTION THRU A LAMBDA
          guru(lambda: printer_one('printer 1 LAMBDA CALL'))
          guru(lambda: printer_two('printer 2 LAMBDA CALL'))
-         </pre>
+         </code></pre>
             <p>Now, save the file and hit F5 to run the program. If you didn't make any mistakes, the output should be
                 something like this. </p>
             <p><strong>Output:</strong> </p>
@@ -168,7 +168,7 @@ discussion_id: 2019-10-02-PythonLambda
                 lambda function is callable as soon as it is defined. Let's understand this with an example; fire up
                 your IDLE and type in the following:</p>
 
-            <pre class="code-toolbar"> (lambda x: x + x)(2) </pre>
+            <pre class="code-toolbar"><code> (lambda x: x + x)(2) </code></pre>
             <p><strong>Here is the output and code explanation:</strong> </p>
             <p>This ability of lambdas to be invoked immediately allows you to use them inside functions like map() and
                 reduce(). It is useful because you may not want to use these functions again. </p>
@@ -181,13 +181,13 @@ discussion_id: 2019-10-02-PythonLambda
                 <li>A sequence (any iterator like lists, tuples, etc.)</li>
             </ul>
             <p>For example, </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          sequences = [10,2,8,7,5,4,3,11,0, 1]
          filtered_result = filter (lambda x: x &gt; 4, sequences) 
          print(list(filtered_result))
-         </pre>
+         </code></pre>
             <p><strong>Here's the output:</strong> </p>
-            <pre class="code-toolbar">[10, 8, 7, 5, 11]</pre>
+            <pre class="code-toolbar"><code>[10, 8, 7, 5, 11]</code></pre>
             <p><strong>Code Explanation:</strong> </p>
             <p><strong>1.</strong> In the first statement, we define a list called sequences which contains some
                 numbers. </p>
@@ -204,12 +204,12 @@ discussion_id: 2019-10-02-PythonLambda
                 <li>One or more sequences</li>
             </ol>
             <p>For example, here is a program that prints the squares of numbers in a given list: </p>
-            <pre class="code-toolbar">sequences = [10,2,8,7,5,4,3,11,0, 1]
+            <pre class="code-toolbar"><code>sequences = [10,2,8,7,5,4,3,11,0, 1]
          filtered_result = map (lambda x: x*x, sequences) 
          print(list(filtered_result))
-         </pre>
+         </code></pre>
             <p><strong>Output:</strong> </p>
-            <pre class="code-toolbar"> [100, 4, 64, 49, 25, 16, 121, 0, 1]</pre>
+            <pre class="code-toolbar"><code> [100, 4, 64, 49, 25, 16, 121, 0, 1]</code></pre>
             <p>[KR1] </p>
             <p>Code Explanation: </p>
             <ol>
@@ -235,14 +235,14 @@ discussion_id: 2019-10-02-PythonLambda
                 <li>A sequence (any iterator like lists, tuples, etc.)</li>
             </ol>
             <p>For example, here is a program that returns the product of all elements in a list: </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          from functools import reduce
          sequences = [1,2,3,4,5]
          product = reduce (lambda x, y: x*y, sequences)
          print(product)
-         </pre>
+         </code></pre>
             <p><strong>Here is the output:</strong> </p>
-            <pre class="code-toolbar">120</pre>
+            <pre class="code-toolbar"><code>120</code></pre>
             <p>Code Explanation: </p>
             <ol>
                 <li>Import reduce from the functools module </li>
@@ -275,11 +275,11 @@ discussion_id: 2019-10-02-PythonLambda
             <p><strong>Lambdas</strong> </p>
             <p><strong>Regular Functions</strong> </p>
             <p>Syntax: </p>
-            <pre class="code-toolbar">lambda x : x + x </pre>
+            <pre class="code-toolbar"><code>lambda x : x + x </code></pre>
             <p>Syntax: </p>
-            <pre class="code-toolbar">def (x) :
+            <pre class="code-toolbar"><code>def (x) :
          return x + x 
-         </pre>
+         </code></pre>
             <p>Lambda functions can only have one expression in their body. </p>
             <p>Regular functions can have multiple expressions and statements in their body. </p>
             <p>Lambdas do not have a name associated with them. That's why they are also known as anonymous functions.
@@ -292,11 +292,11 @@ discussion_id: 2019-10-02-PythonLambda
                 a single expression and yields a function object. Consequently, we can name the result of the lambda
                 function and use it in our program as we did in the previous example. </p>
             <p>A regular function for the above example would look like this: </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          def adder (x, y):
          return x + y 
          print (adder (1, 2))
-         </pre>
+         </code></pre>
             <p>Here, we have to define a <strong>name</strong> for the function which <strong>returns </strong>the
                 result when we <strong>call</strong> it. A lambda function doesn't contain a return statement because it
                 will have only a single expression which is always returned by default. You don't even have to assign a

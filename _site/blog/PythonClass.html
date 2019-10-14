@@ -142,17 +142,17 @@
             <h2><a id="2"></a>How to define Python classes</h2>
             <p>To define class you need to consider following points</p>
             <p><strong>Step 1)</strong> In Python, classes are defined by the <strong>"Class" </strong>keyword </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          class myClass():
-             </pre>
+             </code></pre>
             <p><strong>Step 2)</strong> Inside classes, you can define functions or methods that are part of this class
             </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          def method1 (self):
             print "Guru99"
          def method2 (self,someString): 
             print "Software Testing:" + someString
-         </pre>
+         </code></pre>
             <ul>
                 <li>Here we have defined method1 that prints "Guru99."</li>
                 <li>Another method we have defined is method2 that prints "Software Testing"+ SomeString. SomeString is
@@ -173,13 +173,13 @@
                     methods in Python. It is part of the Python syntax to access members of objects</li>
             </ul>
             <p><strong>Step 4)</strong> To make an object of the class </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          c = myClass()
-         </pre>
+         </code></pre>
             <p><strong>Step 5)</strong> To call a method in a class </p>
-            <pre class="code-toolbar">    c.method1()
+            <pre class="code-toolbar"><code>    c.method1()
              c.method2(" Testing is fun")
-         </pre>
+         </code></pre>
             <ul>
                 <li>Notice that when we call the method1 or method2, we don't have to supply the self-keyword. That's
                     automatically handled for us by the Python runtime. </li>
@@ -188,7 +188,7 @@
                 <li>You just have to care about the non-self arguments</li>
             </ul>
             <p><strong>Step 6) </strong>Here is the complete code </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          # Example file for working with classes
          class myClass():
            def method1(self):
@@ -205,7 +205,7 @@
            c.method2(" Testing is fun")
            
          if __name__== "__main__":
-           main()</pre>
+           main()</code></pre>
             <h2><a id="3"></a>How Inheritance works</h2>
             <p>Inheritance is a feature used in object-oriented programming; it refers to defining a new class with less
                 or no modification to an existing class. The new class is called <strong>derived class</strong> and from
@@ -219,12 +219,12 @@
                         src="http://localhost:4000/img/python/tutorial/15//071515_1030_PythonClass2.png"></a> </p>
 
             <p><strong>Python Inheritance Syntax</strong> </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          class DerivedClass(BaseClass):
              body_of_derived_class
-         </pre>
+         </code></pre>
             <p><strong>Step 1)</strong> Run the following code </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          # Example file for working with classes
          class myClass():
            def method1(self):
@@ -247,15 +247,15 @@
          
          if __name__== "__main__":
            main()
-         </pre>
+         </code></pre>
             <p>Notice that the in childClass, method1 is not defined but it is derived from the parent myClass. The
                 output is "Guru99." </p>
             <p><strong>Step 2)</strong> Uncomment Line # 8 &amp; 10. Run the code </p>
             <p>Now, the method 1 is defined in the childClass and output "childClass Method1" is correctly shown. </p>
             <p><strong>Step 3)</strong> Uncomment Line #9. Run the code </p>
             <p>You can a method of the parent class using the syntax </p>
-            <pre class="code-toolbar">	ParentClassName.MethodName(self)
-         </pre>
+            <pre class="code-toolbar"><code>	ParentClassName.MethodName(self)
+         </code></pre>
             <p>In our case, we call, myClass.method1(self) and Guru99 is printed as expected </p>
             <p><strong>Step 4</strong>) Uncomment Line #19. Run the code. </p>
             <p>Method 2 of the child class is called and "childClass method2" is printed as expected.</p>
@@ -264,7 +264,7 @@
             <p>A constructor is a class function that instantiates an object to predefined values. </p>
             <p>It begins with a double underscore (_). It __init__() method </p>
             <p>In below example we are taking name of the user using constructor. </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          class User:
              name = ""
          
@@ -276,12 +276,12 @@
          
          User1 = User("Alex")
          User1.sayHello()
-         </pre>
+         </code></pre>
             <p>Output will be: </p>
             <p>Welcome to Guru99, Alex </p>
             <p><b>Python 2 Example</b> </p>
             <p>Above codes are Python 3 examples, If you want to run in Python 2 please consider following code. </p>
-            <pre class="code-toolbar">
+            <pre class="code-toolbar"><code>
          # How to define Python classes
          # Example file for working with classes
          class myClass():
@@ -326,7 +326,7 @@
          
          if __name__== "__main__":
            main()
-         </pre>
+         </code></pre>
             <h3>Summary:</h3>
             <p>"Class" is a logical grouping of functions and data. Python class provides all the standard features of
                 Object Oriented Programming. </p>
@@ -546,6 +546,52 @@
    
     
 })
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
 </script>
 
     
