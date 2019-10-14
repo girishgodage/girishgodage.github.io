@@ -1,0 +1,217 @@
+---
+title: 20. ReadNWriteFile in Python
+date: 2019-10-01 00:00:00 Z
+categories:
+- PythonTutorial
+tags:
+- learning
+- Installation
+image: https://girishgodage.github.io/img/Python_logo.png
+author: Girish Godage
+layout: posts
+prevurl: https://girishgodage.github.io/blog/Pythonlesson19
+nexturl: https://girishgodage.github.io/blog/Pythonlesson21
+discussion_id: 2019-09-30-PythonReadNWriteFile
+---
+
+<section class="Ptutorial20">
+    <div class="item-page" itemscope="" itemtype="https://schema.org/Article">
+        <meta itemprop="inLanguage" content="en-GB">
+        <div class="page-header">
+            <h1 itemprop="headline"> Python File Handling: Create, Open, Append, Read, Write </h1>
+        </div>
+
+        <div itemprop="articleBody">
+
+            <p>In Python, there is no need for importing external library to read and write files. Python provides an
+                inbuilt function for creating, writing and reading files. </p>
+            <p>In this tutorial, we will learn </p>
+            <ul>
+                <li><a href="#1">How to Create a Text File </a></li>
+                <li><a href="#2">How to Append Data to a File </a></li>
+                <li><a href="#3">How to Read a File </a></li>
+                <li><a href="#4">How to Read a File line by line </a></li>
+                <li><a href="#5">File Modes in Python</a></li>
+            </ul>
+            <h2><a id="1"></a>How to Create a Text File</h2>
+            <p>With Python you can create a .text files (guru99.txt) by using the code, we have demonstrated here how
+                you can do this </p>
+            <p><strong>Step 1) </strong> </p>
+            <pre class="code-toolbar"><code>	f= open("guru99.txt","w+")</code></pre>
+            <ul>
+                <li>We declared the variable f to open a file named textfile.txt. Open takes 2 arguments, the file that
+                    we want to open and a string that represents the kinds of permission or operation we want to do on
+                    the file</li>
+                <li>Here we used "w" letter in our argument, which indicates write and the plus sign that means it will
+                    create a file if it does not exist in library</li>
+                <li>The available option beside "w" are "r" for read and "a" for append and plus sign means if it is not
+                    there then create it</li>
+            </ul>
+            <p><strong>Step 2) </strong> </p>
+            <pre class="code-toolbar"><code>for i in range(10):
+          f.write("This is line %d\r\n" % (i+1))</code></pre>
+            <ul>
+                <li>We have a for loop that runs over a range of 10 numbers.</li>
+                <li>Using the <strong>write</strong> function to enter data into the file.</li>
+                <li>The output we want to iterate in the file is "this is line number", which we declare with write
+                    function and then percent d (displays integer)</li>
+                <li>So basically we are putting in the line number that we are writing, then putting it in a carriage
+                    return and a new line character</li>
+            </ul>
+            <p><strong>Step 3) </strong> </p>
+            <pre class="code-toolbar"><code>	f.close() </code></pre>
+            <ul>
+                <li>This will close the instance of the file guru99.txt stored</li>
+            </ul>
+            <p>Here is the result after code execution </p>
+            <p style="text-align: center;"><a href="{{site.url}}{{site.baseurl}}/img/python/tutorial/20/Python17.1.jpg"
+                    class="jh-image-popup-colorbox cboxElement"><img title="Reading and Writing Files in Python"
+                        alt="Python FILE Tutorial: Create, Append, Read, Write"
+                        src="{{site.url}}{{site.baseurl}}/img/python/tutorial/20/Python17.1.jpg"></a> </p>
+            <p>When you click on your text file in our case "guru99.txt" it will look something like this </p>
+            <p style="text-align: center; "><a href="{{site.url}}{{site.baseurl}}/img/python/tutorial/20/Python17.2.jpg"
+                    class="jh-image-popup-colorbox cboxElement"><img title="Reading and Writing Files in Python"
+                        alt="Python FILE Tutorial: Create, Append, Read, Write"
+                        src="{{site.url}}{{site.baseurl}}/img/python/tutorial/20/Python17.2.jpg"></a> </p>
+            <h2><a id="2"></a>How to Append Data to a File</h2>
+            <p>You can also append a new text to the already existing file or the new file. </p>
+            <p><strong>Step 1) </strong> </p>
+            <pre class="code-toolbar"><code>f=open("guru99.txt", "a+")</code></pre>
+            <p>Once again if you could see a plus sign in the code, it indicates that it will create a new file if it
+                does not exist. But in our case we already have the file, so we are not required to create a new file.
+            </p>
+            <p><strong>Step 2) </strong></p>
+
+            <pre class="code-toolbar"><code>
+         for i in range(2):
+          f.write("Appended line %d\r\n" % (i+1))</code></pre>
+            <p>This will write data into the file in append mode. </p>
+            <p style="text-align: center; "><a href="{{site.url}}{{site.baseurl}}/img/python/tutorial/20/Python17.3.jpg"
+                    class="jh-image-popup-colorbox cboxElement"><img title="Reading and Writing Files in Python"
+                        alt="Python FILE Tutorial: Create, Append, Read, Write"
+                        src="{{site.url}}{{site.baseurl}}/img/python/tutorial/20/Python17.3.jpg"></a> </p>
+            <p>You can see the output in "guru99.txt" file. The output of the code is that earlier file is appended with
+                new data. </p>
+            <p style="text-align: center; "><a href="{{site.url}}{{site.baseurl}}/img/python/tutorial/20/Python17.4.jpg"
+                    class="jh-image-popup-colorbox cboxElement"><img title="Reading and Writing Files in Python"
+                        alt="Python FILE Tutorial: Create, Append, Read, Write"
+                        src="{{site.url}}{{site.baseurl}}/img/python/tutorial/20/Python17.4.jpg"></a> </p>
+            <h2><a id="3"></a>How to Read a File</h2>
+            <p>Not only you can create .txt file from Python but you can also call .txt file in a "read mode"(r). </p>
+            <p><strong>Step 1)</strong> Open the file in Read mode </p>
+            <pre class="code-toolbar"><code>	f=open("guru99.txt", "r")</code></pre>
+            <p><strong>Step 2)</strong> We use the mode function in the code to check that the file is in open mode. If
+                yes, we proceed ahead </p>
+            <pre class="code-toolbar"><code>	if f.mode == 'r':</code></pre>
+            <p><strong>Step 3)</strong> Use f.read to read file data and store it in variable content </p>
+            <pre class="code-toolbar"><code>	contents =f.read()</code></pre>
+            <p><strong>Step 4) </strong>print contents</p>
+            <p>Here is the output</p>
+
+            <p style="text-align: center; "><a href="{{site.url}}{{site.baseurl}}/img/python/tutorial/20/Python17.5.jpg"
+                    class="jh-image-popup-colorbox cboxElement"><img title="Reading and Writing Files in Python"
+                        alt="Python FILE Tutorial: Create, Append, Read, Write"
+                        src="{{site.url}}{{site.baseurl}}/img/python/tutorial/20/Python17.5.jpg"></a> </p>
+            <h2><a id="4"></a>How to Read a File line by line </h2>
+            <p>You can also read your .txt file line by line if your data is too big to read. This code will segregate
+                your data in easy to ready mode </p>
+            <p style="text-align: center; "><a href="{{site.url}}{{site.baseurl}}/img/python/tutorial/20/Python17.6.jpg"
+                    class="jh-image-popup-colorbox cboxElement"><img title="Reading and Writing Files in Python"
+                        alt="Python FILE Tutorial: Create, Append, Read, Write"
+                        src="{{site.url}}{{site.baseurl}}/img/python/tutorial/20/Python17.6.jpg"></a> </p>
+            <p>When you run the code (<strong>f1=f.readlines())</strong> for reading the file or document line by line,
+                it will separate each line and present the file in a readable format. In our case the line is short and
+                readable, the output will look similar to the read mode. But if there is a complex data file which is
+                not readable, this piece of code could be useful. </p>
+            <h2><a id="5"></a>File Modes in Python </h2>
+            <table class="table table-striped table-bordered">
+                <tbody>
+                    <tr>
+                        <th>Mode</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>'r'</td>
+                        <td>This is the default mode. It Opens file for reading.</td>
+                    </tr>
+                    <tr>
+                        <td>'w'</td>
+                        <td>This Mode Opens file for writing. <br>If file does not exist, it creates a new file.<br>If
+                            file exists it truncates the file.</td>
+                    </tr>
+                    <tr>
+                        <td>'x'</td>
+                        <td>Creates a new file. If file already exists, the operation fails.</td>
+                    </tr>
+                    <tr>
+                        <td>'a'</td>
+                        <td>Open file in append mode. <br>If file does not exist, it creates a new file.</td>
+                    </tr>
+                    <tr>
+                        <td>'t'</td>
+                        <td>This is the default mode. It opens in text mode. </td>
+                    </tr>
+                    <tr>
+                        <td>'b'</td>
+                        <td>This opens in binary mode.</td>
+                    </tr>
+                    <tr>
+                        <td>'+'</td>
+                        <td>This will open a file for reading and writing (updating)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <p>Here is the complete code </p>
+            <p><b>Python 2 Example</b> </p>
+            <pre class="code-toolbar"><code>
+         def main():
+          f= open("guru99.txt","w+")
+          #f=open("guru99.txt","a+")
+          for i in range(10):
+              f.write("This is line %d\r\n" % (i+1))
+          f.close()   
+          #Open the file back and read the contents
+          #f=open("guru99.txt", "r")
+          #   if f.mode == 'r': 
+          #     contents =f.read()
+          #     print contents
+          #or, readlines reads the individual line into a list
+          #fl =f.readlines()
+          #for x in fl:
+          #print x
+     if __name__== "__main__":
+       main()</code></pre>
+            <p><b>Python 3 Example</b> </p>
+            <pre class="code-toolbar"><code>def main():
+         f= open("guru99.txt","w+")
+         #f=open("guru99.txt","a+")
+         for i in range(10):
+              f.write("This is line %d\r\n" % (i+1))
+         f.close()
+         #Open the file back and read the contents
+         #f=open("guru99.txt", "r")
+         #if f.mode == 'r':
+         #   contents =f.read()
+         #    print (contents)
+         #or, readlines reads the individual line into a list
+         #fl =f.readlines()
+         #for x in fl:
+         #print(x)
+     if __name__== "__main__":
+       main()</code></pre>
+            <p><strong>Summary</strong> </p>
+            <ul>
+                <li>Python allows you to read, write and delete files</li>
+                <li>Use the function open("filename","w+") to create a file. The + tells the python interpreter to open
+                    file with read and write permissions.</li>
+                <li>To append data to an existing file use the command open("Filename", "<strong>a</strong>")</li>
+                <li>Use the read function to read the ENTIRE contents of a file</li>
+                <li>Use the readlines function to read the content of the file one by one. </li>
+            </ul>
+
+        </div>
+
+    </div>
+</section>
+{% include blogslide.html %}
