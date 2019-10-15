@@ -1,6 +1,6 @@
 ---
 title: 3. Object Oriented Software Design - Solid Principles
-date: 2019-10-14 10:49:00
+date: 2019-10-14 10:49:00 Z
 categories:
 - SoftwareDesign
 tags:
