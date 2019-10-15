@@ -5,7 +5,7 @@ categories:
 - SoftwareDesign
 tags:
 - learning
-image: https://girishgodage.github.io/img/logo.jpg
+image: https://girishgodage.github.io/img/sw_design.png
 author: Girish Godage
 layout: posts
 prevurl: https://girishgodage.github.io/blog/SwDesignLesson1
@@ -13,9 +13,9 @@ nexturl: https://girishgodage.github.io/blog/SwDesignLesson2
 discussion_id: 2019-10-15-SwDesign1
 ---
 
-### With agile and extreme programming, the focus is on keeping your design simple. How do you       keep your design simple? How do you decide whether your code is good enough?
-
 ### What is Simple Design?
+
+ ** With agile and extreme programming, the focus is on keeping your design simple. How do you       keep your design simple? How do you decide whether your code is good enough? **
 
 It is very important to keep the design of your application simple.
 
@@ -105,17 +105,8 @@ Always aim to keep things simple.
 In this article, we looked at the four principles of simple design. These are the first steps to ensure that the design of your application remains simple. It lays the foundation for applying more advanced principles to improving your design.
 
 ---
+{% include swPrincipal.md %}
 
-### Software Design Principles
-
-This is the first article in a series of articles on important Software Design Principles:
-
-* [1 - Introduction to Four Principles Of Simple Design](/SwDesignLesson1){:target='_blank'}
-* [2 - Software Design - Separation Of Concerns - with examples](/SwDesignLesson2){:target='_blank'}
-* [3 - Object Oriented Software Design - Solid Principles - with examples](/SwDesignLesson3){:target='_blank'}
-* [4 - Software Design - Single Responsibility Principle - with examples](/SwDesignLesson4){:target='_blank'}
-* [5 - Software Design - Open Closed Principle - with examples](/SwDesignLesson5){:target='_blank'}
-* [6 - Software Design - What is Dependency Inversion Principle?](/SwDesignLesson6){:target='_blank'}
 
 {% include blogslide.html %}
 

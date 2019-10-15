@@ -1,6 +1,1134 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-10-15T11:44:16+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">1. Introduction to Four Principles Of Simple Design</title><link href="http://localhost:4000/blog/SwDesignLesson1" rel="alternate" type="text/html" title="1. Introduction to Four Principles Of Simple Design" /><published>2019-10-14T10:41:00+00:00</published><updated>2019-10-14T10:41:00+00:00</updated><id>http://localhost:4000/blog/SwDesignLesson1</id><content type="html" xml:base="http://localhost:4000/blog/SwDesignLesson1">&lt;h3 id=&quot;with-agile-and-extreme-programming-the-focus-is-on-keeping-your-design-simple-how-do-you-------keep-your-design-simple-how-do-you-decide-whether-your-code-is-good-enough&quot;&gt;With agile and extreme programming, the focus is on keeping your design simple. How do you       keep your design simple? How do you decide whether your code is good enough?&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-10-15T14:15:56+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">6. Software Design - What is Dependency Inversion Principle?</title><link href="http://localhost:4000/blog/SwDesignLesson6" rel="alternate" type="text/html" title="6. Software Design - What is Dependency Inversion Principle?" /><published>2019-10-14T11:05:00+00:00</published><updated>2019-10-14T11:05:00+00:00</updated><id>http://localhost:4000/blog/SwDesignLesson6</id><content type="html" xml:base="http://localhost:4000/blog/SwDesignLesson6">&lt;p&gt;Dependency Inversion Principle is one of the important SOLID Principles. Dependency Inversion Principle is implemented by one of the most popular Java frameworks - Spring. What is it all about? How does it help you design good applications?&lt;/p&gt;
 
-&lt;h3 id=&quot;what-is-simple-design&quot;&gt;What is Simple Design?&lt;/h3&gt;
+&lt;h3 id=&quot;you-will-learn&quot;&gt;You will Learn&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;What is Dependency Inversion Principle?&lt;/li&gt;
+  &lt;li&gt;How are Dependency Inversion Principle and Spring Framework related?&lt;/li&gt;
+  &lt;li&gt;A few examples of Dependency Inversion Principle in action&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;what-is-dependency-inversion-principle-dip&quot;&gt;What Is Dependency Inversion principle (DIP)?&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“Depend Upon Abstractions (interfaces), not Implementations (concrete classes)”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;What does this statement mean? Let’s try understanding that with an example:&lt;/p&gt;
+
+&lt;p&gt;Let’s look at an example of what this means:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+abstract class OutputDevice {
+	void copy(String device) {
+		Keyboard keyboard = new Keyboard();
+		int character;
+		while ((character = keyboard.read()) != -1) {
+			if (device.equals(&quot;Printer&quot;)) {
+				writeToPrinter(character);
+			} else {
+				writeToDevice(character);
+			}
+		}
+	}
+
+	private void writeToDevice(int character) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void writeToPrinter(int c) {
+		// TODO Auto-generated method stub
+		
+	}
+}
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;What does the &lt;code class=&quot;highlighter-rouge&quot;&gt;copy()&lt;/code&gt; method do?&lt;/p&gt;
+
+&lt;p&gt;It reads a character from the keyboard, and then decides where this character needs to go. If it’s a printer, write to the printer. Else, send it to the disk.&lt;/p&gt;
+
+&lt;p&gt;The problem here is that as the number of &lt;code class=&quot;highlighter-rouge&quot;&gt;OutputDevice&lt;/code&gt; types increase, the logic of &lt;code class=&quot;highlighter-rouge&quot;&gt;copy()&lt;/code&gt; needs to change every single time.&lt;/p&gt;
+
+&lt;p&gt;Let’s look at an alternate implementation:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	public interface Reader {
+		public char read();
+	}
+
+	public interface Writer {
+		public void write(char ch);
+	}
+
+	void copy(Reader r, Writer w) {
+		int c;
+
+		while((c = r.read()) != EOF) {
+			w.write(c);
+		}
+	}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;What we have done here is define two separate interfaces, one to provide the &lt;code class=&quot;highlighter-rouge&quot;&gt;read()&lt;/code&gt;, and the other to define the &lt;code class=&quot;highlighter-rouge&quot;&gt;write()&lt;/code&gt; methods.&lt;/p&gt;
+
+&lt;p&gt;The responsibility of the &lt;code class=&quot;highlighter-rouge&quot;&gt;copy()&lt;/code&gt; method is quite clear here: it reads from the &lt;code class=&quot;highlighter-rouge&quot;&gt;Reader&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;interface&lt;/code&gt;, and writes whatever it gets to the &lt;code class=&quot;highlighter-rouge&quot;&gt;Writer&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;interface&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;copy()&lt;/code&gt; now focuses only on the actual operation, and it does so by identifying everything else as its dependencies.&lt;/p&gt;
+
+&lt;p&gt;It can now work with any implementation of &lt;code class=&quot;highlighter-rouge&quot;&gt;Reader&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Writer&lt;/code&gt; interfaces.&lt;/p&gt;
+
+&lt;h3 id=&quot;dip-and-the-spring-framework&quot;&gt;DIP and The Spring Framework&lt;/h3&gt;
+
+&lt;p&gt;DIP is one of the core principles that the Spring Framework enables. Have a look at this example:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BinarySearchImpl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;binarySearch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numberToSearchFor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;nc&quot;&gt;BubbleSortAlgorithm&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bubbleSortAlgorthm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BubbleSortAlgorithm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+			&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sortedNumbers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bubbleSortAlgorithm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+			&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;BinarySearchImpl&lt;/code&gt; directly creates an instance of the &lt;code class=&quot;highlighter-rouge&quot;&gt;BubbleSortAlgorithm&lt;/code&gt;. Note that &lt;code class=&quot;highlighter-rouge&quot;&gt;BubbleSortAlgorithm&lt;/code&gt; is a dependency of &lt;code class=&quot;highlighter-rouge&quot;&gt;BinarySearchImpl&lt;/code&gt;, and as we saw in our previous example, directly accessing it is not a great idea. If you want to switch from a bubble-sort to a quicksort algorithm later, you need to change quite a lot of code inside &lt;code class=&quot;highlighter-rouge&quot;&gt;BinarySearchImpl&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Better Approach for &lt;code class=&quot;highlighter-rouge&quot;&gt;BinarySearchImpl&lt;/code&gt; is to make use of an interface - sort algorithm. Here is how our modified code would look like:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;intrface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SortAlgorithm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;nd&quot;&gt;@Component&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BinarySearchImpl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SortAlgorithm&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sortAlgorithm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+		&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;BinarySearchImpl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;SortAlgorithm&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sortAlgorithm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;kd&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;sortAlgorithm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sortAlgorithm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+		&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;binarySearch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numberToSearchFor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sortedNumbers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sortAlgorithm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+			&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;User of the &lt;code class=&quot;highlighter-rouge&quot;&gt;BinarySearchImpl&lt;/code&gt; class, can also pass in a specific implementation of &lt;code class=&quot;highlighter-rouge&quot;&gt;SortAlgorithm&lt;/code&gt;, such as a bubble-sort or a quick-sort implementation.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;BinarySearchImpl&lt;/code&gt; is &lt;strong&gt;decoupled&lt;/strong&gt; from which &lt;code class=&quot;highlighter-rouge&quot;&gt;SortAlgorithm&lt;/code&gt; to use.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;If you use the Spring framework, you could use the &lt;code class=&quot;highlighter-rouge&quot;&gt;@Autowired&lt;/code&gt; annotation with the &lt;code class=&quot;highlighter-rouge&quot;&gt;BinarySearchImpl&lt;/code&gt; class, to automatically auto wire an implementation of an available sort algorithm.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;By applying the DIP, you make your code more testable. The test code could pass in dependency mocks to properly test the code.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;Dependency Inversion is about identifying dependencies and externalizing them. You can use a framework like Spring to simplify Dependency Inversion. DIP makes your code more maintainable, reusable and testable.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;software-design-principles&quot;&gt;Software Design Principles&lt;/h3&gt;
+
+&lt;p&gt;This is the first article in a series of articles on important Software Design Principles:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson1&quot; target=&quot;_blank&quot;&gt;1 - Introduction to Four Principles Of Simple Design&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson2&quot; target=&quot;_blank&quot;&gt;2 - Software Design - Separation Of Concerns - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson3&quot; target=&quot;_blank&quot;&gt;3 - Object Oriented Software Design - Solid Principles - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson4&quot; target=&quot;_blank&quot;&gt;4 - Software Design - Single Responsibility Principle - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson5&quot; target=&quot;_blank&quot;&gt;5 - Software Design - Open Closed Principle - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson6&quot; target=&quot;_blank&quot;&gt;6 - Software Design - What is Dependency Inversion Principle?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr /&gt;
+   
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/SwDesignLesson5&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/SwDesignLesson6&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;       
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Dependency Inversion Principle is one of the important SOLID Principles. Dependency Inversion Principle is implemented by one of the most popular Java frameworks - Spring. What is it all about? How does it help you design good applications?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/sw_design.png" /></entry><entry><title type="html">5. Software Design - Open Closed Principle Principle</title><link href="http://localhost:4000/blog/SwDesignLesson5" rel="alternate" type="text/html" title="5. Software Design - Open Closed Principle Principle" /><published>2019-10-14T11:00:00+00:00</published><updated>2019-10-14T11:00:00+00:00</updated><id>http://localhost:4000/blog/SwDesignLesson5</id><content type="html" xml:base="http://localhost:4000/blog/SwDesignLesson5">&lt;p&gt;Open Closed Principle is one of the SOLID Principles. You want your code to be extensible. How do you achieve it with minimum fuss? Let’s get started.&lt;/p&gt;
+
+&lt;h3 id=&quot;we-learn&quot;&gt;We learn&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;What is the Open Closed Principle?&lt;/li&gt;
+  &lt;li&gt;How do you apply this principle in developing and designing software applications?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;open-closed-principle&quot;&gt;Open Closed Principle&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Your classes should be open to extension, but closed to modification&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;What does this mean? Let’s look at a simple example to understand what this means.&lt;/p&gt;
+
+&lt;h3 id=&quot;an-example-of-poor-design&quot;&gt;An example of Poor Design&lt;/h3&gt;
+
+&lt;p&gt;Let’s take a quick look at the calculateArea method in the Shape class.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class Shape {
+	public double calculateArea(Shape[] shapes) {
+		double area = 0;
+		for(Shape shape:shapes) {
+			if(shape instanceof Rectangle) {
+				//Calculate Area of Rectange
+			}
+			else if(shape instanceof Circle) {
+				//Calculate Area of Circle
+			}
+		}
+		return area;
+	}
+}
+
+class Rectangle extends Shape {
+	
+}
+
+class Circle extends Shape {
+	
+	
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Is there a problem with &lt;code class=&quot;highlighter-rouge&quot;&gt;calculateArea()&lt;/code&gt; method?&lt;/p&gt;
+
+&lt;p&gt;What if we add a new shape? What if we remove a shape? What if we want to change the area algorithm for one of the shapes.&lt;/p&gt;
+
+&lt;p&gt;For all these modifications, &lt;code class=&quot;highlighter-rouge&quot;&gt;calculateArea()&lt;/code&gt; method needs to change.&lt;/p&gt;
+
+&lt;p&gt;How can we make it better?&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Parts of the above code below pseudo code, for ease of explanation&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+abstract class Shape {
+
+	
+    abstract double area();
+}
+
+class Rectangle extends Shape {
+
+	@Override
+	double area() {
+		// Area implementation for Rectangle
+		return 0;
+	}
+	
+}
+
+class Circle extends Shape {
+
+	@Override
+	double area() {
+		// Area implementation for Rectangle
+		return 0;
+	}
+	
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A better solution would be to allow each of the shapes, to define their own &lt;code class=&quot;highlighter-rouge&quot;&gt;area()&lt;/code&gt; method. We have created an abstract class called &lt;code class=&quot;highlighter-rouge&quot;&gt;Shape&lt;/code&gt; (which could also have been an interface), and have each of the different shapes extend it. Each shape also overrides &lt;code class=&quot;highlighter-rouge&quot;&gt;Shape&lt;/code&gt;’s abstract &lt;code class=&quot;highlighter-rouge&quot;&gt;area()&lt;/code&gt; method, to compute its specific area.&lt;/p&gt;
+
+&lt;p&gt;The standalone &lt;code class=&quot;highlighter-rouge&quot;&gt;calculateArea()&lt;/code&gt; method would now look like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;abstract class Shape {
+	
+	
+	public double calculateArea(Shape[] shapes)
+	{
+		double area = 0;
+		for(Shape shape:shapes) {
+			area += shape.area();
+		}
+		return area;
+	}
+	
+    abstract double area();
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;calculateArea()&lt;/code&gt; is now responsible just for looping around the shapes, and invoking the &lt;code class=&quot;highlighter-rouge&quot;&gt;area()&lt;/code&gt; method of individual shapes.&lt;/p&gt;
+
+&lt;p&gt;This is a very good example of the OCP.&lt;/p&gt;
+
+&lt;p&gt;If you now want to add another shape, then you need to extend the &lt;code class=&quot;highlighter-rouge&quot;&gt;Shape&lt;/code&gt; class, and override its &lt;code class=&quot;highlighter-rouge&quot;&gt;area()&lt;/code&gt; method:. That’s it.&lt;/p&gt;
+
+&lt;p&gt;Here, &lt;code class=&quot;highlighter-rouge&quot;&gt;Shape&lt;/code&gt; class is open to extension, and &lt;code class=&quot;highlighter-rouge&quot;&gt;calculateArea()&lt;/code&gt; is closed to modification.&lt;/p&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;In this article, we focused on Open Closed Principle.&lt;/p&gt;
+
+&lt;p&gt;Design should be open for extension, but closed for modification.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;software-design-principles&quot;&gt;Software Design Principles&lt;/h3&gt;
+
+&lt;p&gt;This is the first article in a series of articles on important Software Design Principles:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson1&quot; target=&quot;_blank&quot;&gt;1 - Introduction to Four Principles Of Simple Design&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson2&quot; target=&quot;_blank&quot;&gt;2 - Software Design - Separation Of Concerns - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson3&quot; target=&quot;_blank&quot;&gt;3 - Object Oriented Software Design - Solid Principles - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson4&quot; target=&quot;_blank&quot;&gt;4 - Software Design - Single Responsibility Principle - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson5&quot; target=&quot;_blank&quot;&gt;5 - Software Design - Open Closed Principle - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson6&quot; target=&quot;_blank&quot;&gt;6 - Software Design - What is Dependency Inversion Principle?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr /&gt;
+   
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/SwDesignLesson4&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/SwDesignLesson6&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;       
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Open Closed Principle is one of the SOLID Principles. You want your code to be extensible. How do you achieve it with minimum fuss? Let’s get started.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/sw_design.png" /></entry><entry><title type="html">4. Software Design - Single Responsibility Principle</title><link href="http://localhost:4000/blog/SwDesignLesson4" rel="alternate" type="text/html" title="4. Software Design - Single Responsibility Principle" /><published>2019-10-14T10:55:00+00:00</published><updated>2019-10-14T10:55:00+00:00</updated><id>http://localhost:4000/blog/SwDesignLesson4</id><content type="html" xml:base="http://localhost:4000/blog/SwDesignLesson4">&lt;p&gt;For me, Single Responsibility Principle (SRP) is the most important design principle.&lt;/p&gt;
+
+&lt;p&gt;What is Single Responsibility Principle? How do you use it? How does it help with making your software better? Let’s get started.&lt;/p&gt;
+
+&lt;h3 id=&quot;we-learn&quot;&gt;We learn&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;What is the Single Responsibility Principle?&lt;/li&gt;
+  &lt;li&gt;How do you apply this principle in developing and designing software applications?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;what-is-the-single-responsibility-principle-srp&quot;&gt;What Is The Single Responsibility Principle (SRP)?&lt;/h2&gt;
+
+&lt;p&gt;As the term says, this principle is all about having single responsibility.&lt;/p&gt;
+
+&lt;p&gt;In any software system, this principle is applicable at multiple levels&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;a variable&lt;/li&gt;
+  &lt;li&gt;a method&lt;/li&gt;
+  &lt;li&gt;a class&lt;/li&gt;
+  &lt;li&gt;a package&lt;/li&gt;
+  &lt;li&gt;a component&lt;/li&gt;
+  &lt;li&gt;application layers or&lt;/li&gt;
+  &lt;li&gt;the entire application itself&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;srp-for-methods&quot;&gt;SRP For Methods&lt;/h2&gt;
+
+&lt;p&gt;Any method that you write should have a single responsibility -  it should either be a high-level method, or a low-level one. Only when a method has a single responsibility, you will be able to give it an appropriate name.&lt;/p&gt;
+
+&lt;h2 id=&quot;srp-for-classes&quot;&gt;SRP For Classes&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“A class should have one, and only one reason to change”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Let’s now have a look at a few examples of classes that violate this principle, and then look at how to correct the violation.&lt;/p&gt;
+
+&lt;h3 id=&quot;example-1-the-task-class&quot;&gt;Example 1: The &lt;code class=&quot;highlighter-rouge&quot;&gt;Task&lt;/code&gt; class&lt;/h3&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Task&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;downloadFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Strign&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+		&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;parseTheFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;File&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+		&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;persistTheData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Data&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Does the class &lt;code class=&quot;highlighter-rouge&quot;&gt;Task&lt;/code&gt; adhere to the single responsibility principle? Not at all, because it does a lot of different things:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;downloadFile()&lt;/code&gt; downloads the file, by communicating over the internet&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;parseTheFile()&lt;/code&gt; parses the file contents&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;persistTheData()&lt;/code&gt; saves the data into a database&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A better solution would be to have separate classes for each of the responsibilities currently taken up by &lt;code class=&quot;highlighter-rouge&quot;&gt;Task&lt;/code&gt;. Here is one such solution.&lt;/p&gt;
+
+&lt;h4 id=&quot;identifying-the-low-level-classes&quot;&gt;Identifying The Low-level Classes&lt;/h4&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;FileDownloader&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;downloadFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DataParser&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;parseData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DatabaseStorer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;storeIntoDatabase&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;FileDownloader&lt;/code&gt; only downloads the file from the internet&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;DataParser&lt;/code&gt; only parses the downloaded file&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;DatabaseStorer&lt;/code&gt; only stores the parsed data, into the database&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These are all low-level classes here.&lt;/p&gt;
+
+&lt;h4 id=&quot;adding-a-high-level-class&quot;&gt;Adding A High-Level Class&lt;/h4&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DownloadAndStore&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;doEverything&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;FileDownloader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;downloadFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;DataParser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;parseData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;DatabaseStorer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;storeIntoDatabase&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then, you can create a high-level class such as &lt;code class=&quot;highlighter-rouge&quot;&gt;DownloadAndStore&lt;/code&gt; that invokes the functionality of these low-level classes to perform the complete task. Such an organization ensures that the low-level classes are reusable.&lt;/p&gt;
+
+&lt;h3 id=&quot;example-2-the-employee-class&quot;&gt;Example 2: The Employee Class&lt;/h3&gt;
+
+&lt;p&gt;Consider next, the &lt;code class=&quot;highlighter-rouge&quot;&gt;Employee&lt;/code&gt; class shown below:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Employee&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Money&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;calculatePay&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;reportHours&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Employee&lt;/code&gt; concerns itself with not just calculating the pay of an employee, but also reporting hours for work, and saving these details to the database.&lt;/p&gt;
+
+&lt;p&gt;I will leave it as an exercise to fix the Employee class to adhere to SRP.&lt;/p&gt;
+
+&lt;h2 id=&quot;srp-for-components&quot;&gt;SRP For Components&lt;/h2&gt;
+
+&lt;p&gt;Every enterprise application has parts of its functionality organized as Components. For example, have a look at the diagram below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/sw_design/4/Capture-05-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here, the following components are of note:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Security component  takes care of user authentication and authorization. Designing such a component helps abstract applications from the low-level security details. All microservices can interact with this component to find out if a user has access.&lt;/li&gt;
+  &lt;li&gt;The Logging component - does the low level logging functionality&lt;/li&gt;
+  &lt;li&gt;The Archetype component - Can be used to create new microservices&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Each of these components have a single responsibility. If the Security component takes care of logging, it would become less reusable. Therefore, at the component level, a well-defined single responsibility is highly desirable.&lt;/p&gt;
+
+&lt;h3 id=&quot;using-srp-for-common-infrastructure&quot;&gt;Using SRP For Common Infrastructure&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/sw_design/4/Capture-05-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the diagram shown above, you can identify the following infrastructure components:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Naming Service - Has the responsibility to retrieve the service location based on its name&lt;/li&gt;
+  &lt;li&gt;API Gateway - All requests go through the API Gateway. Common features like authentication, logging, rate limiting can be implemented in an API Gateway.&lt;/li&gt;
+  &lt;li&gt;Centralized Logging - Centralized store for logs from all microservices so that we can easily debug problems&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Even with these sub-systems, a single responsibility for each of them is most desirable.&lt;/p&gt;
+
+&lt;h3 id=&quot;using-srp-for-application-layering&quot;&gt;Using SRP For Application Layering&lt;/h3&gt;
+
+&lt;p&gt;Single responsibility is also an important factor in how you layer your application. Have a look at the following conceptual layers in a web application:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/sw_design/4/Capture-05-03.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Web Layer: All functionality concerned with direct user interaction sits here&lt;/li&gt;
+  &lt;li&gt;Business Layer: Houses the core business logic&lt;/li&gt;
+  &lt;li&gt;Data layer: All the functionality dealing with storing and retrieving data goes here&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you had the need to talk to other systems, there would have been an additional Enterprise Messaging Layer added onto this setup.&lt;/p&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;In this article, we talked about the Single Responsibility Principle. It is applicable at multiple levels to the parts of an application. This includes methods, classes, packages, components and application layers. With regards to classes, at a low level it means a class has only one reason to change.&lt;/p&gt;
+
+&lt;p&gt;In general, &lt;strong&gt;Single Responsibility ensures high cohesion, low coupling and enhanced reusability&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;software-design-principles&quot;&gt;Software Design Principles&lt;/h3&gt;
+
+&lt;p&gt;This is the first article in a series of articles on important Software Design Principles:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson1&quot; target=&quot;_blank&quot;&gt;1 - Introduction to Four Principles Of Simple Design&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson2&quot; target=&quot;_blank&quot;&gt;2 - Software Design - Separation Of Concerns - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson3&quot; target=&quot;_blank&quot;&gt;3 - Object Oriented Software Design - Solid Principles - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson4&quot; target=&quot;_blank&quot;&gt;4 - Software Design - Single Responsibility Principle - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson5&quot; target=&quot;_blank&quot;&gt;5 - Software Design - Open Closed Principle - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson6&quot; target=&quot;_blank&quot;&gt;6 - Software Design - What is Dependency Inversion Principle?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr /&gt;
+   
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/SwDesignLesson3&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/SwDesignLesson5&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;       
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">For me, Single Responsibility Principle (SRP) is the most important design principle.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/sw_design.png" /></entry><entry><title type="html">3. Object Oriented Software Design - Solid Principles</title><link href="http://localhost:4000/blog/SwDesignLesson3" rel="alternate" type="text/html" title="3. Object Oriented Software Design - Solid Principles" /><published>2019-10-14T10:49:00+00:00</published><updated>2019-10-14T10:49:00+00:00</updated><id>http://localhost:4000/blog/SwDesignLesson3</id><content type="html" xml:base="http://localhost:4000/blog/SwDesignLesson3">&lt;p&gt;Software design is typically complex. Object oriented design takes it to the next level. There are a number of design patterns to be aware of. Can we make things simple?&lt;/p&gt;
+
+&lt;p&gt;SOLID Principles is a great starting point for Object Oriented Design.&lt;/p&gt;
+
+&lt;h3 id=&quot;we-learn&quot;&gt;We learn&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What are SOLID Principles?&lt;/li&gt;
+  &lt;li&gt;What are the best practices in designing objected oriented software?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;what-are-the-solid-principles&quot;&gt;What Are The SOLID Principles?&lt;/h3&gt;
+
+&lt;p&gt;Plainly listed out, the SOLID principles are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;SRP&lt;/strong&gt;: Single Responsibility Principle&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;OCP&lt;/strong&gt;: Open Closed Principle&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;LSP&lt;/strong&gt;: Liskov Substitution Principle&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;ISP&lt;/strong&gt;: Interface Segregation Principle&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;DIP&lt;/strong&gt;: Dependency Inversion Principle&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let’s look at each of these by turn.&lt;/p&gt;
+
+&lt;h3 id=&quot;single-responsibility-principle-srp&quot;&gt;Single Responsibility Principle (SRP)&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“A class should have one, and only one reason to change”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This principle is not just applicable to a class, but also at the level of a package, a component, an application, or a service. Each of these should each have just one responsibility.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;You should be able to state what each element does in a single sentence.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;When your class or component or application has single responsibility, the options for reuse increases significantly.&lt;/p&gt;
+
+&lt;p&gt;Have a look at the following class:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	public class Task {
+		public void downloadFile(String location) {
+			//...
+		}
+		
+		public void parseTheFile(File file) {
+			//...
+		}
+
+		public void persistTheData(Data data) {
+			//...
+		}
+	}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Task&lt;/code&gt; has three main responsibilities:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Download a file from a location&lt;/li&gt;
+  &lt;li&gt;Parse the contents of the file&lt;/li&gt;
+  &lt;li&gt;Save the data obtained to a database&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It clearly does not satisfy SRP. Let’s look at another example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	public class Employee {
+		public Money calculatePay() {
+			//...
+		}
+
+		public String reportHours() {
+			//...
+		}
+
+		public void save() {
+			//...
+		}
+	}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Employee&lt;/code&gt; has multiple responsibilities as well:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Calculate the employee’s pay&lt;/li&gt;
+  &lt;li&gt;Create a report of hours of work put in&lt;/li&gt;
+  &lt;li&gt;Save the employee details to a database&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Above examples need re-design to meet Single Responsibility Principle.&lt;/p&gt;
+
+&lt;h3 id=&quot;open-closed-principle-ocp&quot;&gt;Open Closed Principle (OCP)&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“Software entities should be open for extension, but closed for modification”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Let’s take a quick look at the calculateArea method in the Shape class.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class Shape {
+	public double calculateArea(Shape[] shapes) {
+		double area = 0;
+		for(Shape shape:shapes) {
+			if(shape instanceof Rectangle) {
+				//Calculate Area of Rectange
+			}
+			else if(shape instanceof Circle) {
+				//Calculate Area of Circle
+			}
+		}
+		return area;
+	}
+}
+
+class Rectangle extends Shape {
+	
+}
+
+class Circle extends Shape {
+	
+	
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Is there a problem with &lt;code class=&quot;highlighter-rouge&quot;&gt;calculateArea()&lt;/code&gt; method?&lt;/p&gt;
+
+&lt;p&gt;What if we add a new shape? What if we remove a shape? What if we want to change the area algorithm for one of the shapes.&lt;/p&gt;
+
+&lt;p&gt;For all these modifications, &lt;code class=&quot;highlighter-rouge&quot;&gt;calculateArea()&lt;/code&gt; method needs to change.&lt;/p&gt;
+
+&lt;p&gt;How can we make it better?&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Parts of the above code below pseudo code, for ease of explanation&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+abstract class Shape {
+
+	
+    abstract double area();
+}
+
+class Rectangle extends Shape {
+
+	@Override
+	double area() {
+		// Area implementation for Rectangle
+		return 0;
+	}
+	
+}
+
+class Circle extends Shape {
+
+	@Override
+	double area() {
+		// Area implementation for Rectangle
+		return 0;
+	}
+	
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A better solution would be to allow each of the shapes, to define their own &lt;code class=&quot;highlighter-rouge&quot;&gt;area()&lt;/code&gt; method. We have created an abstract class called &lt;code class=&quot;highlighter-rouge&quot;&gt;Shape&lt;/code&gt; (which could also have been an interface), and have each of the different shapes extend it. Each shape also overrides &lt;code class=&quot;highlighter-rouge&quot;&gt;Shape&lt;/code&gt;’s abstract &lt;code class=&quot;highlighter-rouge&quot;&gt;area()&lt;/code&gt; method, to compute its specific area.&lt;/p&gt;
+
+&lt;p&gt;The standalone &lt;code class=&quot;highlighter-rouge&quot;&gt;calculateArea()&lt;/code&gt; method would now look like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;abstract class Shape {
+	
+	
+	public double calculateArea(Shape[] shapes)
+	{
+		double area = 0;
+		for(Shape shape:shapes) {
+			area += shape.area();
+		}
+		return area;
+	}
+	
+    abstract double area();
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;calculateArea()&lt;/code&gt; is now responsible just for looping around the shapes, and invoking the &lt;code class=&quot;highlighter-rouge&quot;&gt;area()&lt;/code&gt; method of individual shapes.&lt;/p&gt;
+
+&lt;p&gt;This is a very good example of the OCP.&lt;/p&gt;
+
+&lt;p&gt;If you now want to add another shape, then you need to extend the &lt;code class=&quot;highlighter-rouge&quot;&gt;Shape&lt;/code&gt; class, and override its &lt;code class=&quot;highlighter-rouge&quot;&gt;area()&lt;/code&gt; method:. That’s it.&lt;/p&gt;
+
+&lt;p&gt;Here, &lt;code class=&quot;highlighter-rouge&quot;&gt;Shape&lt;/code&gt; class is open to extension, and &lt;code class=&quot;highlighter-rouge&quot;&gt;calculateArea()&lt;/code&gt; is closed to modification.&lt;/p&gt;
+
+&lt;h3 id=&quot;liskov-substitution-principle-lsp&quot;&gt;Liskov Substitution Principle (LSP)&lt;/h3&gt;
+
+&lt;p&gt;According to this principle:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“Subtypes must be substitutable for their base types”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;One of the things people try to do with object oriented programming, is to use inheritance even when it is not appropriate. They may do it just for the sake of reusing the code. Have a look at this example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	class Rectangle {
+		void setWidth(double w)
+		void setHeight(double h)
+
+		double getWidth()
+		double getHeight()
+	}
+
+	class Square extends Rectangle {
+		void setWidth(double w) 	// Set both width and height to w
+		void setHeight(double h) 	// Set both height and width to h
+
+		double getWidth()
+		double getHeight()
+	}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We have a &lt;code class=&quot;highlighter-rouge&quot;&gt;Rectangle&lt;/code&gt; class that has methods to set and get its width and height. Suppose we have a fresh requirement for a &lt;code class=&quot;highlighter-rouge&quot;&gt;Square&lt;/code&gt; class.&lt;/p&gt;
+
+&lt;p&gt;Instead of implementing it as a separate class, Let’s say we extend &lt;code class=&quot;highlighter-rouge&quot;&gt;Rectangle&lt;/code&gt; (as we know from school geometry that a square is a rectangle). &lt;code class=&quot;highlighter-rouge&quot;&gt;Square&lt;/code&gt; redefines all the set and get methods that it inherits from &lt;code class=&quot;highlighter-rouge&quot;&gt;Rectangle&lt;/code&gt; to set both height and width to the same values.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note that the pair of setters and the pair of getters inside &lt;code class=&quot;highlighter-rouge&quot;&gt;Square&lt;/code&gt;  are redundant.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Consider a piece of client code such as this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	void test(Rectangle r) {
+		r.setWidth(5);
+		r.setHeight(4);
+
+		assertEquals(5*4, r.getWidth() * r.getHeight());
+	}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;test()&lt;/code&gt; is a method to test rectangles. A &lt;code class=&quot;highlighter-rouge&quot;&gt;Square&lt;/code&gt; is a &lt;code class=&quot;highlighter-rouge&quot;&gt;Rectangle&lt;/code&gt;, hence &lt;code class=&quot;highlighter-rouge&quot;&gt;test()&lt;/code&gt; can be called on a &lt;code class=&quot;highlighter-rouge&quot;&gt;Square&lt;/code&gt; object as well. Unfortunately, since both &lt;code class=&quot;highlighter-rouge&quot;&gt;setWidth()&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;setHeight()&lt;/code&gt; modify both the width and height to be equal, the expression &lt;code class=&quot;highlighter-rouge&quot;&gt;r.getWidth() * r.getHeight()&lt;/code&gt; always amounts to &lt;code class=&quot;highlighter-rouge&quot;&gt;4 * 4&lt;/code&gt;, as that was the last value set. &lt;code class=&quot;highlighter-rouge&quot;&gt;test()&lt;/code&gt; always fails for a &lt;code class=&quot;highlighter-rouge&quot;&gt;Square&lt;/code&gt;!&lt;/p&gt;
+
+&lt;p&gt;LSP states that inheritance should be used very carefully. Make sure that the super class is always fully replaceable by each of its sub classes.&lt;/p&gt;
+
+&lt;h3 id=&quot;interface-segregation-principle-isp&quot;&gt;Interface Segregation Principle (ISP)&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;If two systems are communicating to each other, then the dependency should be in the smallest possible interface.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Clients should not be forced to implement interfaces that they don’t use&lt;/p&gt;
+
+&lt;p&gt;Instead of one fat interfaces, a group of smaller interfaces is preferred, each one addressing a sub-module.&lt;/p&gt;
+
+&lt;p&gt;Let’s look at an example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	
+	public abstract class Animal {
+		public abstract void feed();
+	}
+
+	public class Dog extends Animal {
+		public void feed() {
+			//...
+		}
+	}
+
+	public class Tiger extends Animal {
+		public void feed() {
+			//...
+		}
+	}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Let’s say we now need to add a feature called &lt;code class=&quot;highlighter-rouge&quot;&gt;groom()&lt;/code&gt; to each  kind of &lt;code class=&quot;highlighter-rouge&quot;&gt;Animal&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;One option is to add it to &lt;code class=&quot;highlighter-rouge&quot;&gt;Animal&lt;/code&gt; as an abstract method:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	
+	public abstract class Animal {
+		public abstract void feed();
+		public abstract void groom();
+	}
+
+	public class Dog extends Animal {
+		public void feed() {
+			//...
+		}
+		
+		public void groom() {
+			//...
+		}
+	}
+
+	public class Tiger extends Animal {
+		public void feed() {
+			//...
+		}
+
+		// DUMMY implementation, to keep compiler happy
+		public void groom() {
+			//...
+		}
+	}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In that case, both &lt;code class=&quot;highlighter-rouge&quot;&gt;Dog&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Tiger&lt;/code&gt; need to provide implementations for &lt;code class=&quot;highlighter-rouge&quot;&gt;groom()&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now, &lt;code class=&quot;highlighter-rouge&quot;&gt;groom()&lt;/code&gt; makes sense for a &lt;code class=&quot;highlighter-rouge&quot;&gt;Dog&lt;/code&gt;, but not so much for a &lt;code class=&quot;highlighter-rouge&quot;&gt;Tiger&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;However, we are forced to provide a dummy implementation in &lt;code class=&quot;highlighter-rouge&quot;&gt;Tiger&lt;/code&gt; to make the code compile.&lt;/p&gt;
+
+&lt;p&gt;Above example does not adhere to ISP.&lt;/p&gt;
+
+&lt;p&gt;Let’s see how to fix this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	
+	public abstract class Animal {
+		public abstract void feed();
+	}
+
+	public class Pet extends Animal {
+		public abstract void groom();
+		public void feed() {
+			//...
+		}
+	}
+
+	public class Dog extends Pet {
+		public void feed() {
+			//...
+		}
+		
+		public void groom() {
+			//...
+		}
+	}
+
+	public class Tiger extends Animal {
+		public void feed() {
+			//...
+		}
+	}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The new interface &lt;code class=&quot;highlighter-rouge&quot;&gt;Pet&lt;/code&gt; extends the existing &lt;code class=&quot;highlighter-rouge&quot;&gt;Animal&lt;/code&gt;, and also adds its own abstract method &lt;code class=&quot;highlighter-rouge&quot;&gt;groom()&lt;/code&gt;. Now, &lt;code class=&quot;highlighter-rouge&quot;&gt;Dog&lt;/code&gt; will extend &lt;code class=&quot;highlighter-rouge&quot;&gt;Pet&lt;/code&gt;, as it needs both &lt;code class=&quot;highlighter-rouge&quot;&gt;feed()&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;groom()&lt;/code&gt;, whereas &lt;code class=&quot;highlighter-rouge&quot;&gt;Tiger&lt;/code&gt; chooses to extend just &lt;code class=&quot;highlighter-rouge&quot;&gt;Animal&lt;/code&gt; for &lt;code class=&quot;highlighter-rouge&quot;&gt;feed()&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;ISP recommends that you keep your interfaces as small as possible.&lt;/p&gt;
+
+&lt;p&gt;The moment you have a fat interface, any changes to that interface will result in changes in all your implementations.&lt;/p&gt;
+
+&lt;h3 id=&quot;dependency-inversion-principle-dip&quot;&gt;Dependency Inversion Principle (DIP)&lt;/h3&gt;
+
+&lt;p&gt;The Dependency Inversion Principle states that:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“Depend upon abstract classes (interfaces), not upon concrete classes”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Let’s look at an example of what this means:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+abstract class OutputDevice {
+	void copy(String device) {
+		Keyboard keyboard = new Keyboard();
+		int character;
+		while ((character = keyboard.read()) != -1) {
+			if (device.equals(&quot;Printer&quot;)) {
+				writeToPrinter(character);
+			} else {
+				writeToDevice(character);
+			}
+		}
+	}
+
+	private void writeToDevice(int character) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void writeToPrinter(int c) {
+		// TODO Auto-generated method stub
+		
+	}
+}
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;What does the &lt;code class=&quot;highlighter-rouge&quot;&gt;copy()&lt;/code&gt; method do?&lt;/p&gt;
+
+&lt;p&gt;It reads a character from the keyboard, and then decides where this character needs to go. If it’s a printer, write to the printer. Else, send it to the disk.&lt;/p&gt;
+
+&lt;p&gt;The problem here is that as the number of &lt;code class=&quot;highlighter-rouge&quot;&gt;OutputDevice&lt;/code&gt; types increase, the logic of &lt;code class=&quot;highlighter-rouge&quot;&gt;copy()&lt;/code&gt; needs to change every single time.&lt;/p&gt;
+
+&lt;p&gt;Let’s look at an alternate implementation:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	public interface Reader {
+		public char read();
+	}
+
+	public interface Writer {
+		public void write(char ch);
+	}
+
+	void copy(Reader r, Writer w) {
+		int c;
+
+		while((c = r.read()) != EOF) {
+			w.write(c);
+		}
+	}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;copy()&lt;/code&gt; method explicitly states its dependencies - &lt;code class=&quot;highlighter-rouge&quot;&gt;Reader&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Writer&lt;/code&gt; interfaces.&lt;/p&gt;
+
+&lt;p&gt;It inverts responsibility, and leaves the creation of &lt;code class=&quot;highlighter-rouge&quot;&gt;Reader&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Writer&lt;/code&gt; to its users.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;copy()&lt;/code&gt; will not change even when there are new &lt;code class=&quot;highlighter-rouge&quot;&gt;Writer&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;Reader&lt;/code&gt; implementations.&lt;/p&gt;
+
+&lt;p&gt;This is called Dependency Inversion principle.&lt;/p&gt;
+
+&lt;p&gt;Frameworks like Spring make it easy to implement Dependency Inversion.&lt;/p&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;In this article, we looked at the five SOLID principles: SRP, OCP, LSP, ISP and DIP. We also looked at a few code examples to understand more about each one of them.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;software-design-principles&quot;&gt;Software Design Principles&lt;/h3&gt;
+
+&lt;p&gt;This is the first article in a series of articles on important Software Design Principles:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson1&quot; target=&quot;_blank&quot;&gt;1 - Introduction to Four Principles Of Simple Design&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson2&quot; target=&quot;_blank&quot;&gt;2 - Software Design - Separation Of Concerns - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson3&quot; target=&quot;_blank&quot;&gt;3 - Object Oriented Software Design - Solid Principles - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson4&quot; target=&quot;_blank&quot;&gt;4 - Software Design - Single Responsibility Principle - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson5&quot; target=&quot;_blank&quot;&gt;5 - Software Design - Open Closed Principle - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson6&quot; target=&quot;_blank&quot;&gt;6 - Software Design - What is Dependency Inversion Principle?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr /&gt;
+   
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/SwDesignLesson2&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/SwDesignLesson4&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;       
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Software design is typically complex. Object oriented design takes it to the next level. There are a number of design patterns to be aware of. Can we make things simple?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/sw_design.png" /></entry><entry><title type="html">2. Software Design - Separation Of Concerns</title><link href="http://localhost:4000/blog/SwDesignLesson2" rel="alternate" type="text/html" title="2. Software Design - Separation Of Concerns" /><published>2019-10-14T10:45:00+00:00</published><updated>2019-10-14T10:45:00+00:00</updated><id>http://localhost:4000/blog/SwDesignLesson2</id><content type="html" xml:base="http://localhost:4000/blog/SwDesignLesson2">&lt;p&gt;&lt;strong&gt;Software architects and programmers love having Seperation of Concerns. What is it? Why is it important? Let’s get started.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;you-will-learn&quot;&gt;You will learn&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What is Separation Of Concerns?&lt;/li&gt;
+  &lt;li&gt;What are common examples of implementing Separation Of Concerns in software?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;what-is-separation-of-concerns&quot;&gt;What Is Separation Of Concerns?&lt;/h3&gt;
+
+&lt;p&gt;Separation Of Concerns is an important design and architectural principle.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Every element of a software application - a component, a layer,a package,a class or a method should have one concern and implement it well.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;All methods with similar concerns will grouped into a class.&lt;/p&gt;
+
+&lt;p&gt;All classes with similar concerns will be grouped into packages.&lt;/p&gt;
+
+&lt;p&gt;So on and so forth.&lt;/p&gt;
+
+&lt;h3 id=&quot;separation-of-concerns-in-action&quot;&gt;Separation Of Concerns In Action&lt;/h3&gt;
+
+&lt;h4 id=&quot;layered-architecture&quot;&gt;Layered Architecture&lt;/h4&gt;
+
+&lt;p&gt;Organizing an application into separate layers is one way of separating out concerns.&lt;/p&gt;
+
+&lt;p&gt;For example, the following is the typical architecture of a web application:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/sw_design/2/Capture-039-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here are some of the important responsibilities of each of these layers&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The Web layer only bothers about how to present data to its users&lt;/li&gt;
+  &lt;li&gt;The Business layer focuses on implementing the core application logic, correctly and efficiently&lt;/li&gt;
+  &lt;li&gt;The Data layer takes responsibility of talking to the data store.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can see that each layer has a concern and implements it well.&lt;/p&gt;
+
+&lt;h4 id=&quot;organizing-microservices&quot;&gt;Organizing Microservices&lt;/h4&gt;
+
+&lt;p&gt;Another good example of Separation Of Concerns is how you split your microservices. Have a look at the diagram below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/sw_design/2/Capture-039-03.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;All the microservices shown are part of a movie application. But each one of them has its own independent concern.&lt;/p&gt;
+
+&lt;h4 id=&quot;identifying-common-components&quot;&gt;Identifying Common Components&lt;/h4&gt;
+
+&lt;p&gt;Seperation of concerns is also an important factor in building common application and infrastructure components.&lt;/p&gt;
+
+&lt;p&gt;Since a large part of the functionality of microservices is common to all of them, it makes sense to extract out the common components. Here is an example:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/sw_design/2/Capture-039-04.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;All microservices need features such as security and logging. By identifying common components in your service such as Security and Logging, and providing well defined interfaces with each microservice, the implementation of the microservices gets simpler.&lt;/p&gt;
+
+&lt;p&gt;The same is the case with common infrastructure components. Any microservice can interact with them and use their functionality.&lt;/p&gt;
+
+&lt;p&gt;A few examples of Seperation of Concern in infrastructure components&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Naming Server - Microservice3 can locate the identity of Microservice2.&lt;/li&gt;
+  &lt;li&gt;API Gateway - Centralized access to all microservices. You can implement cross cutting microservice concerns here.&lt;/li&gt;
+  &lt;li&gt;Distributed Tracing and Centralized Logging - You can trace microservices and find out what’s happending behind the scenes.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;In this article, we looked at separation of concerns, and several examples of it in action - such as in a layered architecture, in the way microservices are split and organized, and in the way common components and infrastructure are identified and extracted out in a microservices architecture.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;software-design-principles&quot;&gt;Software Design Principles&lt;/h3&gt;
+
+&lt;p&gt;This is the first article in a series of articles on important Software Design Principles:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson1&quot; target=&quot;_blank&quot;&gt;1 - Introduction to Four Principles Of Simple Design&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson2&quot; target=&quot;_blank&quot;&gt;2 - Software Design - Separation Of Concerns - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson3&quot; target=&quot;_blank&quot;&gt;3 - Object Oriented Software Design - Solid Principles - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson4&quot; target=&quot;_blank&quot;&gt;4 - Software Design - Single Responsibility Principle - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson5&quot; target=&quot;_blank&quot;&gt;5 - Software Design - Open Closed Principle - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson6&quot; target=&quot;_blank&quot;&gt;6 - Software Design - What is Dependency Inversion Principle?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr /&gt;
+   
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/SwDesignLesson1&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/SwDesignLesson3&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;       
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Software architects and programmers love having Seperation of Concerns. What is it? Why is it important? Let’s get started.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/sw_design.png" /></entry><entry><title type="html">1. Introduction to Four Principles Of Simple Design</title><link href="http://localhost:4000/blog/SwDesignLesson1" rel="alternate" type="text/html" title="1. Introduction to Four Principles Of Simple Design" /><published>2019-10-14T10:41:00+00:00</published><updated>2019-10-14T10:41:00+00:00</updated><id>http://localhost:4000/blog/SwDesignLesson1</id><content type="html" xml:base="http://localhost:4000/blog/SwDesignLesson1">&lt;h3 id=&quot;what-is-simple-design&quot;&gt;What is Simple Design?&lt;/h3&gt;
+
+&lt;p&gt;** With agile and extreme programming, the focus is on keeping your design simple. How do you       keep your design simple? How do you decide whether your code is good enough? **&lt;/p&gt;
 
 &lt;p&gt;It is very important to keep the design of your application simple.&lt;/p&gt;
 
@@ -90,18 +1218,17 @@
 &lt;p&gt;In this article, we looked at the four principles of simple design. These are the first steps to ensure that the design of your application remains simple. It lays the foundation for applying more advanced principles to improving your design.&lt;/p&gt;
 
 &lt;hr /&gt;
-
 &lt;h3 id=&quot;software-design-principles&quot;&gt;Software Design Principles&lt;/h3&gt;
 
 &lt;p&gt;This is the first article in a series of articles on important Software Design Principles:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/SwDesignLesson1&quot; target=&quot;_blank&quot;&gt;1 - Introduction to Four Principles Of Simple Design&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/SwDesignLesson2&quot; target=&quot;_blank&quot;&gt;2 - Software Design - Separation Of Concerns - with examples&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/SwDesignLesson3&quot; target=&quot;_blank&quot;&gt;3 - Object Oriented Software Design - Solid Principles - with examples&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/SwDesignLesson4&quot; target=&quot;_blank&quot;&gt;4 - Software Design - Single Responsibility Principle - with examples&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/SwDesignLesson5&quot; target=&quot;_blank&quot;&gt;5 - Software Design - Open Closed Principle - with examples&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/SwDesignLesson6&quot; target=&quot;_blank&quot;&gt;6 - Software Design - What is Dependency Inversion Principle?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson1&quot; target=&quot;_blank&quot;&gt;1 - Introduction to Four Principles Of Simple Design&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson2&quot; target=&quot;_blank&quot;&gt;2 - Software Design - Separation Of Concerns - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson3&quot; target=&quot;_blank&quot;&gt;3 - Object Oriented Software Design - Solid Principles - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson4&quot; target=&quot;_blank&quot;&gt;4 - Software Design - Single Responsibility Principle - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson5&quot; target=&quot;_blank&quot;&gt;5 - Software Design - Open Closed Principle - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SwDesignLesson6&quot; target=&quot;_blank&quot;&gt;6 - Software Design - What is Dependency Inversion Principle?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!--Section: Lesson UI--&gt;
@@ -122,7 +1249,7 @@
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">With agile and extreme programming, the focus is on keeping your design simple. How do you keep your design simple? How do you decide whether your code is good enough?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/logo.jpg" /></entry><entry><title type="html">8.Typescript arrow functions</title><link href="http://localhost:4000/blog/Lesson8" rel="alternate" type="text/html" title="8.Typescript arrow functions" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson8</id><content type="html" xml:base="http://localhost:4000/blog/Lesson8">&lt;section class=&quot;tstutorial8&quot;&gt;
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">What is Simple Design?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/sw_design.png" /></entry><entry><title type="html">8.Typescript arrow functions</title><link href="http://localhost:4000/blog/Lesson8" rel="alternate" type="text/html" title="8.Typescript arrow functions" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson8</id><content type="html" xml:base="http://localhost:4000/blog/Lesson8">&lt;section class=&quot;tstutorial8&quot;&gt;
     &lt;p&gt;Since you already know how to use &lt;code&gt;Named functions&lt;/code&gt; and &lt;code&gt;Anonymous functions&lt;/code&gt; let me show
         you another type of function which you will be dealing with while building Angular Applications&lt;/p&gt;
     &lt;p&gt;Let's have a look at the following sample:&lt;/p&gt;
@@ -729,1097 +1856,4 @@ console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">In this lesson, we will cover a different type of variables and scopes. Replace the content of the onStartup() function: onStartup(){ function count(){ for (var i = 0; i &amp;lt; 9; i++){ console.log(i); } console.log('Counted: ' , i); } count();} }</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/typescipt_logo.png" /></entry><entry><title type="html">4.Type Any</title><link href="http://localhost:4000/blog/Lesson4" rel="alternate" type="text/html" title="4.Type Any" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson4</id><content type="html" xml:base="http://localhost:4000/blog/Lesson4">&lt;section class=&quot;ts_tutorial4&quot;&gt;
-    &lt;h3&gt;Type: any&lt;/h3&gt;
-    &lt;p&gt;You could ask — what if I don't know what kind of value my variable will have?&lt;/p&gt;
-    &lt;ol&gt;
-        &lt;li&gt;Let's flush our function code and type ine the following: &lt;/li&gt;
-        &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;  let myVar;
- 
-   myVar = 1;      //number
-   myVar = true;   //boolean
-   myVar = 'mdb';  //string
- &lt;/code&gt;&lt;/pre&gt;
-        &lt;p&gt;The TypeScript compiler doesn't complain. Why!?&lt;/p&gt;
-        &lt;li&gt;Hover over the &lt;code&gt;myVar&lt;/code&gt; declaration, what do you see?&lt;/li&gt;
-        &lt;img class=&quot;img-fluid&quot;
-            src=&quot;http://localhost:4000/img/typescript/4/img/01.png&quot;
-            alt=&quot;Any type&quot;&gt;
-        &lt;p&gt;TypeScript allows you to use a special type &lt;code&gt;any&lt;/code&gt;. It allows you to use dynamic typing but
-            importantly — it requires you to use it consciously.&lt;/p&gt;
-        &lt;li&gt;What is actually type of the variable &lt;code&gt;myVar&lt;/code&gt;? Let's check it:&lt;/li&gt;
-        &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;  myVar = 1;     //number
-   console.log(typeof(myVar));
-   myVar = true;  //boolean
-   console.log(typeof(myVar));
-   myVar = 'mdb'; //string
-   console.log(typeof(myVar));
- &lt;/code&gt;&lt;/pre&gt;
-        &lt;p&gt;The output:&lt;/p&gt;
-        &lt;img class=&quot;img-fluid&quot;
-            src=&quot;http://localhost:4000/img/typescript/4/img/02.png&quot;
-            alt=&quot;Dynamic type&quot;&gt;
-        &lt;li&gt;Now let's add an explicit type, cast after the var declaration:&lt;/li&gt;
-        &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;  let myVar: number;&lt;/code&gt;&lt;/pre&gt;
-        &lt;p&gt;Immediately, the compiler will show two errors regarding the second, and third assignments&lt;/p&gt;
-        &lt;img class=&quot;img-fluid&quot;
-            src=&quot;http://localhost:4000/img/typescript/4/img/03.gif&quot;
-            alt=&quot;Error &quot;&gt;
-    &lt;/ol&gt;
-    &lt;h3&gt;Other types:&lt;/h3&gt;
-    &lt;p&gt;We used already four different types of variables (&lt;code&gt;number&lt;/code&gt;, &lt;code&gt;string&lt;/code&gt;, &lt;code&gt;boolean&lt;/code&gt;
-        and &lt;code&gt;any&lt;/code&gt;). Are there any others? Yes, there are.&lt;/p&gt;
-    &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;  let a: number;                    //numeric type
-   let b: string;                    //string
-   let c: boolean;                   //true or false
-   let d: any;                       //any (dynamic)
-   let e: number[] = [1,2,3];        //array of numbers
-   let f: string[] = ['a','b','c'];  //array of strings
-   let g: any[] = [true, 1, 'a'];    //array of any
-   &lt;/code&gt;&lt;/pre&gt;
-    &lt;p&gt;As you can see, except for basic types which we already covered you can also create arrays of different types
-        including the &lt;code&gt;any&lt;/code&gt; type. There is also one more type of variable — &lt;code&gt;enum&lt;/code&gt; but we will
-        cover it in the future. &lt;/p&gt;
-    &lt;!--     &lt;h3&gt;Enums:&lt;/h3&gt;
-       TODO
-       --&gt;
-&lt;/section&gt;
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr&gt;
-   
-    &lt;div class=&quot;row&quot; &gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Lesson3&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot; 
-                &gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot; &gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Lesson5&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;
-                 &gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Type: any You could ask — what if I don't know what kind of value my variable will have? Let's flush our function code and type ine the following: let myVar; myVar = 1; //number myVar = true; //boolean myVar = 'mdb'; //string The TypeScript compiler doesn't complain. Why!? Hover over the myVar declaration, what do you see? TypeScript allows you to use a special type any. It allows you to use dynamic typing but importantly — it requires you to use it consciously. What is actually type of the variable myVar? Let's check it: myVar = 1; //number console.log(typeof(myVar)); myVar = true; //boolean console.log(typeof(myVar)); myVar = 'mdb'; //string console.log(typeof(myVar)); The output: Now let's add an explicit type, cast after the var declaration: let myVar: number; Immediately, the compiler will show two errors regarding the second, and third assignments Other types: We used already four different types of variables (number, string, boolean and any). Are there any others? Yes, there are. let a: number; //numeric type let b: string; //string let c: boolean; //true or false let d: any; //any (dynamic) let e: number[] = [1,2,3]; //array of numbers let f: string[] = ['a','b','c']; //array of strings let g: any[] = [true, 1, 'a']; //array of any As you can see, except for basic types which we already covered you can also create arrays of different types including the any type. There is also one more type of variable — enum but we will cover it in the future. Previous Lesson Next Lesson</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/typescipt_logo.png" /></entry><entry><title type="html">3.Static vs dynamic typing</title><link href="http://localhost:4000/blog/Lesson3" rel="alternate" type="text/html" title="3.Static vs dynamic typing" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson3</id><content type="html" xml:base="http://localhost:4000/blog/Lesson3">&lt;section class=&quot;tstutorial3&quot;&gt;
-    &lt;h3&gt;Static vs dynamic typing&lt;/h3&gt;
-    &lt;p&gt;let's replace the content of the &lt;code&gt;onStartup&lt;/code&gt;&lt;/p&gt;
-    &lt;ol&gt;
-        &lt;li&gt;First, let's replace the content of the &lt;code&gt;onStartup&lt;/code&gt; function:&lt;/li&gt;
-        &lt;div class=&quot;code-toolbar&quot;&gt;
-            &lt;pre class=&quot;code-toolbar language-javascript&quot;&gt;&lt;code class=&quot; language-javascript&quot;&gt;&lt;span class=&quot;token function&quot;&gt;onStartup&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; test &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;'mdb'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-                test &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-                &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-
-        &lt;/div&gt;
-        &lt;p&gt;You will see that TypeScript complains about the second assignment of test:&lt;/p&gt;
-        &lt;div class=&quot;code-toolbar&quot;&gt;
-            &lt;pre
-                class=&quot;code-toolbar language-javascript&quot;&gt;&lt;code class=&quot; language-javascript&quot;&gt;&lt;span class=&quot;token constant&quot;&gt;ERROR&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; src&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;app&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;app&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;component&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;ts&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; error &lt;span class=&quot;token constant&quot;&gt;TS2322&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Type &lt;span class=&quot;token string&quot;&gt;'5'&lt;/span&gt; is not assignable to type &lt;span class=&quot;token string&quot;&gt;'string'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-
-        &lt;/div&gt;
-        &lt;p&gt;This code would work perfectly fine in JavaScript which allows dynamic change of types. You might think, that
-            this approach is better, however, although it might look easier for a developer &lt;strong&gt;it is not.&lt;/strong&gt;
-            Imagine that there you are working on a project with a team of developers and one of them by mistake changes
-            the type of your variable from &lt;code&gt;number&lt;/code&gt; to &lt;code&gt;string&lt;/code&gt;. All logic based on that variable
-            will be broken now (as it would be comparing a variable to a number).&lt;/p&gt;
-        &lt;li&gt;Let's now surround number 5 with quotes: &lt;code&gt;'5'&lt;/code&gt;&lt;/li&gt;
-        &lt;div class=&quot;code-toolbar&quot;&gt;
-            &lt;pre
-                class=&quot;code-toolbar language-javascript&quot;&gt;&lt;code class=&quot; language-javascript&quot;&gt;test &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;'5'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-
-        &lt;/div&gt;
-        &lt;p&gt;This time the compiler won't complain because we have cast our 5 from a number to a string. As a result we
-            can assign it to our variable, however, we have to remember that it will be treated as a &lt;code&gt;string&lt;/code&gt;
-            and not a &lt;code&gt;number&lt;/code&gt;.&lt;/p&gt;
-        &lt;li&gt;Let's try another test, copy the following condition into your code, but before you paste it think for a
-            moment and try to guess what will be the output: &lt;/li&gt;
-        &lt;div class=&quot;code-toolbar&quot;&gt;
-            &lt;pre class=&quot;code-toolbar language-javascript&quot;&gt;&lt;code class=&quot; language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;test &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;'equals'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-  console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;'not equals'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-
-        &lt;/div&gt;
-        &lt;p&gt;Once you paste the following condition into your code, TypeScript generates an error:&lt;/p&gt;
-        &lt;div class=&quot;code-toolbar&quot;&gt;
-            &lt;pre
-                class=&quot;code-toolbar language-markup&quot;&gt;&lt;code class=&quot; language-markup&quot;&gt;ERROR in src/app/app.component.ts(20,5): error TS2365: Operator '===' cannot be applied to types 'string' and 'number'.&lt;/code&gt;&lt;/pre&gt;
-
-        &lt;/div&gt;
-        &lt;p&gt;Once again, this condition would execute in plain JavaScript and could lead us to an error. By looking at the
-            code you might think that result of the comparison will be true, but due to different types, it would
-            evaluate to &lt;code&gt;false&lt;/code&gt;. TypeScript protects you from making such mistakes warning that you are
-            trying to compare different types. &lt;/p&gt;
-    &lt;/ol&gt;
-&lt;/section&gt;
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr&gt;
-   
-    &lt;div class=&quot;row&quot; &gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Lesson2&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot; 
-                &gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot; &gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Lesson4&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;
-                 &gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Static vs dynamic typing let's replace the content of the onStartup First, let's replace the content of the onStartup function: onStartup(){ let test = 'mdb'; test = 5; }</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/typescipt_logo.png" /></entry><entry><title type="html">2.Our first TypeScript code</title><link href="http://localhost:4000/blog/Lesson2" rel="alternate" type="text/html" title="2.Our first TypeScript code" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson2</id><content type="html" xml:base="http://localhost:4000/blog/Lesson2">&lt;section class=&quot;ts_tutorial2&quot;&gt;
-    &lt;h3&gt;Our first TypeScript code&lt;/h3&gt;
-    &lt;blockquote class=&quot;blockquote bq-warning&quot;&gt;
-        &lt;p class=&quot;bq-title&quot;&gt;Before you start:&lt;/p&gt;
-        &lt;p&gt;Make sure that you have installed TypeScript — if you haven't check &lt;a target=&quot;_blank&quot;
-                href=&quot;https://girishgodage.github.io/blog/Installerlesson2&quot;&gt;this lesson&lt;/a&gt; first.&lt;/p&gt;
-    &lt;/blockquote&gt;
-    &lt;p&gt;Let's write our first line of TypeScript code. Before we will do it let me clarify one thing. TypeScript is
-        independent of Angular, therefore you can use TypeScript without using Angular. Let's see how to do that. &lt;/p&gt;
-    &lt;ol&gt;
-        &lt;li&gt;Open a terminal and create a file &lt;code&gt;main.ts&lt;/code&gt;:&lt;/li&gt;
-        &lt;div class=&quot;code-toolbar&quot;&gt;
-            &lt;pre
-                class=&quot;code-toolbar language-typescript&quot;&gt;&lt;code class=&quot; language-typescript&quot;&gt;&lt;span class=&quot;token builtin&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Hello TS World&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-
-        &lt;/div&gt;
-        &lt;li&gt;Now run following command:&lt;/li&gt;
-        &lt;div class=&quot;code-toolbar&quot;&gt;
-            &lt;pre
-                class=&quot;code-toolbar language-typescript&quot;&gt;&lt;code class=&quot; language-typescript&quot;&gt;tsc main&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;ts&lt;/code&gt;&lt;/pre&gt;
-
-        &lt;/div&gt;
-        &lt;p&gt;This will run TypeScript compiler and compile TypeScript to JavaScript. If you run &lt;code&gt;ls&lt;/code&gt;
-            (macOS/unix) or &lt;code&gt;dir&lt;/code&gt; (Windows) command. You should see 2 files:&lt;/p&gt;
-        &lt;div class=&quot;code-toolbar&quot;&gt;
-            &lt;pre
-                class=&quot;code-toolbar language-typescript&quot;&gt;&lt;code class=&quot; language-typescript&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;rw&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;r&lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;r&lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;  &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; Dawid  staff  &lt;span class=&quot;token number&quot;&gt;31&lt;/span&gt; Feb  &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;35&lt;/span&gt; main&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;js
- &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;rw&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;r&lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;r&lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;  &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; Dawid  staff  &lt;span class=&quot;token number&quot;&gt;31&lt;/span&gt; Feb  &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;35&lt;/span&gt; main&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;ts&lt;/code&gt;&lt;/pre&gt;
-
-        &lt;/div&gt;
-        &lt;p&gt;Our TypeScript code (main.ts) was compiled to JavaScript (main.js).&lt;/p&gt;
-        &lt;li&gt;Let's run our js code using node:&lt;/li&gt;
-        &lt;div class=&quot;code-toolbar&quot;&gt;
-            &lt;pre
-                class=&quot;code-toolbar language-typescript&quot;&gt;&lt;code class=&quot; language-typescript&quot;&gt;node main&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;js&lt;/code&gt;&lt;/pre&gt;
-
-        &lt;/div&gt;
-        &lt;p&gt;You should see:&lt;/p&gt;
-        &lt;div class=&quot;code-toolbar&quot;&gt;
-            &lt;pre
-                class=&quot;code-toolbar language-typescript&quot;&gt;&lt;code class=&quot; language-typescript&quot;&gt;Hello &lt;span class=&quot;token constant&quot;&gt;TS&lt;/span&gt; World&lt;/code&gt;&lt;/pre&gt;
-
-        &lt;/div&gt;
-        &lt;p&gt;And again step by step:&lt;/p&gt;
-        &lt;img class=&quot;img-fluid&quot; src=&quot;http://localhost:4000/img/typescript/2/img/01.gif&quot; alt=&quot;TS superset of JS&quot;&gt;
-        &lt;p&gt;That confirms what we I have stated before:&lt;/p&gt;
-        &lt;blockquote class=&quot;blockquote bq-primary&quot;&gt;
-            &lt;p&gt;Any valid JavaScript code is also a valid TypeScript code.&lt;/p&gt;
-        &lt;/blockquote&gt;
-    &lt;/ol&gt;
-    &lt;h3&gt;Visual Studio Code&lt;/h3&gt;
-    &lt;p&gt;Now you understand that TypeScript is independent of Angular, however, Angular cannot work without TypeScript.
-        Therefore whenever you are running &lt;code&gt;ng serve&lt;/code&gt;, or &lt;code&gt;ng build&lt;/code&gt;, Angular CLI is calling the
-        TypeScript compiler under the hood, so to compile the code of our application to JavaScript that can be used by
-        browsers.&lt;/p&gt;
-    &lt;p&gt;While working with Angular you will hardly use the &lt;code&gt;tsc&lt;/code&gt; command and stand-alone files, therefore we
-        will switch to Visual Studio Code now.&lt;/p&gt;
-    &lt;ol&gt;
-        &lt;li&gt;Open Visual Studio Code&lt;/li&gt;
-        &lt;li&gt; Open our recent project &lt;code&gt;/my-app&lt;/code&gt; (if you missed that check previous tutorial where we set up
-            our project).&lt;/li&gt;
-        &lt;li&gt; Replace the content of &lt;code&gt;/src/app/app.component.ts&lt;/code&gt; file with the following: &lt;/li&gt;
-        &lt;div class=&quot;code-toolbar&quot;&gt;
-            &lt;pre class=&quot;code-toolbar language-typescript&quot;&gt;&lt;code class=&quot; language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; Component &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;'@angular/core'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
- 
-   @&lt;span class=&quot;token function&quot;&gt;Component&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-     selector&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;'app-root'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-     templateUrl&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;'app.component.html'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-     styleUrls&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;'app.component.css'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
- 
-   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
- 
-   &lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;AppComponent&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
- 
-     &lt;span class=&quot;token keyword&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-       &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;onStartup&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-     &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
- 
-   &lt;span class=&quot;token function&quot;&gt;onStartup&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-     &lt;span class=&quot;token builtin&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;'Hello TS World'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
-   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-
-        &lt;/div&gt;
-        &lt;li&gt;Save the file, then run &lt;code&gt;ng serve -o&lt;/code&gt;. When the CLI opens a new tab/window with our project, open
-            the developer console. You will see:&lt;/li&gt;
-        &lt;img class=&quot;img-fluid&quot; src=&quot;http://localhost:4000/img/typescript/2/img/02.png&quot; alt=&quot;Console .log&quot;&gt;
-        &lt;p&gt;As you noticed we have created a function — &lt;code&gt;onStartup()&lt;/code&gt; — and added it to the constructor of our
-            &lt;code&gt;AppComponent&lt;/code&gt;. Whenever an instance of our component is created, it will call our
-            &lt;code&gt;onStartup&lt;/code&gt; function.&lt;/p&gt;
-    &lt;/ol&gt;
-&lt;/section&gt;
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr&gt;
-   
-    &lt;div class=&quot;row&quot; &gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Lesson1&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot; 
-                &gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot; &gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Lesson3&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;
-                 &gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Our first TypeScript code Before you start: Make sure that you have installed TypeScript — if you haven't check this lesson first. Let's write our first line of TypeScript code. Before we will do it let me clarify one thing. TypeScript is independent of Angular, therefore you can use TypeScript without using Angular. Let's see how to do that. Open a terminal and create a file main.ts: console.log(&quot;Hello TS World&quot;);</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/typescipt_logo.png" /></entry><entry><title type="html">1.TypeScript Fundamental</title><link href="http://localhost:4000/blog/Lesson1" rel="alternate" type="text/html" title="1.TypeScript Fundamental" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson1</id><content type="html" xml:base="http://localhost:4000/blog/Lesson1">&lt;section class=&quot;ts_tutorial&quot;&gt;
-    &lt;h2&gt;Fundamentals&lt;/h2&gt;
-    &lt;p&gt;In order to create Angular apps, you have to know Typescript. Within thenext few lessons I will teach you its
-        basic concepts, by covering the following subjects: &lt;/p&gt;
-    &lt;ul&gt;
-        &lt;li&gt;Type annotations&lt;/li&gt;
-        &lt;li&gt;Arrow functions&lt;/li&gt;
-        &lt;li&gt;Interfaces&lt;/li&gt;
-        &lt;li&gt;Classes&lt;/li&gt;
-        &lt;li&gt;Constructors&lt;/li&gt;
-        &lt;li&gt;Access modifiers&lt;/li&gt;
-        &lt;li&gt;Properties&lt;/li&gt;
-        &lt;li&gt;Modules&lt;/li&gt;
-    &lt;/ul&gt;
-    &lt;p&gt;If you are familiar with these concepts you can skip this tutorial and navigate to the next part, however if you
-        are new to TypeScript then follow it carefully.&lt;/p&gt;
-    &lt;h3&gt;What is TypeScript?&lt;/h3&gt;
-    &lt;p&gt;At a first glance you might confuse TypeScript with JavaScript. Especially that any valid JavaScript code is also
-        a valid TypeScript code, however, it doesn't work another way around. TypeScript is a superset of JavaScript.
-    &lt;/p&gt;
-    &lt;img class=&quot;img-fluid&quot; src=&quot;http://localhost:4000/img/typescript/1/img/01.png&quot; alt=&quot;TS superset of JS&quot;&gt;
-    &lt;p&gt;&lt;i&gt;Image taken from https://angular2buch.de&lt;/i&gt;&lt;/p&gt;
-    &lt;blockquote class=&quot;blockquote bq-primary&quot;&gt;
-        &lt;p class=&quot;bq-title&quot;&gt;Remember:&lt;/p&gt;
-        &lt;p&gt;&lt;strong&gt;TypeScript is a superset of JavaScript&lt;/strong&gt;&lt;/p&gt;
-    &lt;/blockquote&gt;
-    &lt;p&gt;That means that &lt;strong&gt;TypeScript extends JavaScript with extra functionality&lt;/strong&gt; which is not present in
-        the current version of JavaScript supported by most browsers. So what are those features? &lt;/p&gt;
-    &lt;h4&gt;Strong typing&lt;/h4&gt;
-    &lt;p&gt;If you are familiar with languages like Java or C# you probably know that &lt;strong&gt;each variable requires a type
-            and this type has to be declared upfront&lt;/strong&gt;. JavaScript is a loosely typed or a dynamically typed
-        language. Variables in JavaScript are not directly associated with any particular value type, and any variable
-        can be assigned (and re-assigned) values of all types:&lt;/p&gt;
-    &lt;div class=&quot;code-toolbar&quot;&gt;
-        &lt;pre class=&quot;code-toolbar language-markup&quot;&gt;&lt;code class=&quot; language-markup&quot;&gt;var foo = 42;    // foo is now a Number
-var foo = 'bar'; // foo is now a String
-var foo = true;  // foo is now a Boolean&lt;/code&gt;&lt;/pre&gt;
-
-    &lt;/div&gt;
-    &lt;p&gt;In a weakly typed language, the type of a &lt;strong&gt;value depends on how it is used&lt;/strong&gt;. For example, if I can
-        pass a string to the addition operator and it will AutoMagically be interpreted as a number &lt;strong&gt;or cause an
-            error if the contents of the string cannot be translated into a number&lt;/strong&gt;. Similarly, I can
-        concatenate strings and numbers or use strings as booleans, etc.&lt;/p&gt;
-    &lt;p&gt;In a strongly typed language, &lt;strong&gt;a variable has a type and that type cannot change&lt;/strong&gt;. What you can do
-        to a variable depends on its type. If we try to compile the above code in TypeScript we will get the sfollowing
-        error:&lt;/p&gt;
-    &lt;div class=&quot;code-toolbar&quot;&gt;
-        &lt;pre
-            class=&quot;code-toolbar language-typescript&quot;&gt;&lt;code class=&quot; language-typescript&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;ts&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; Subsequent variable declarations must have the same &lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;
-Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &lt;span class=&quot;token keyword&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;'number'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; but here has &lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;'boolean'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-
-    &lt;/div&gt;
-    &lt;p&gt;The advantage of a strongly typed language is that &lt;strong&gt;you are forced to make the behavior of your program
-            explicit&lt;/strong&gt;. If you want to add a number and a string your code, you must translate the string into a
-        number to be used as an operand of the addition operator. &lt;strong&gt;This makes code easier to understand because
-            there is no (or less) hidden behavior&lt;/strong&gt;. This also makes your code more verbose.&lt;/p&gt;
-    &lt;blockquote class=&quot;blockquote bq-primary&quot;&gt;
-        &lt;p class=&quot;bq-title&quot;&gt;Remember:&lt;/p&gt;
-        &lt;p&gt;&lt;strong&gt;Strong typing is optional in TypeScript but using this feature makes your application more
-                predictable and make it easier to debug so you should definitely make use of it.&lt;/strong&gt;&lt;/p&gt;
-    &lt;/blockquote&gt;
-    &lt;h4&gt;Object-oriented&lt;/h4&gt;
-    &lt;p&gt;Object-oriented programming (OOP) is an old concept used by multiple languages like Java or C# to help developer
-        associate together data and methods within one &quot;object&quot;. In &lt;code&gt;OOP&lt;/code&gt; object are created and are able to
-        interact with each other using one another's public facing methods. &lt;strong&gt;JavaScript itself is not an
-            object-oriented language&lt;/strong&gt; in the way that C++, C#, or Java are. &lt;strong&gt;TypeScript, on the other
-            hand, can be treated as an object-oriented language&lt;/strong&gt; because of the language constructs it
-        introduces on top of JavaScript closures. &lt;/p&gt;
-    &lt;p&gt;TypeScript brings many object-oriented features which we missed in JavaScript for a very long time. We have
-        explicit concepts of:&lt;/p&gt;
-    &lt;ul&gt;
-        &lt;li&gt;Classes&lt;/li&gt;
-        &lt;li&gt;Interfaces&lt;/li&gt;
-        &lt;li&gt;Constructors&lt;/li&gt;
-        &lt;li&gt;Access modifiers (public and private)&lt;/li&gt;
-    &lt;/ul&gt;
-    &lt;p&gt;We will learn all of that in the later sections.&lt;/p&gt;
-    &lt;h4&gt;Compile-time error&lt;/h4&gt;
-    &lt;p&gt;Let me explain first what &lt;code&gt;run-time error&lt;/code&gt; is as this is a common case. We are talking about the
-        &lt;code&gt;run-time error&lt;/code&gt; when we face any issue while using our application. In other words — if you make a
-        mistake when you create your website and write some code, you will see it only while using the
-        application/website. For example, if you make a typo in an webpage file your browser console will show you an
-        error when you load that page. &lt;/p&gt;
-    &lt;p&gt;Due to weak typing in JavaScript, it often happens that we try to perform operations on a variable with a
-        different type. If our application logic is complex we might not spot that we are trying to assign elements of a
-        different type to each other. In JavaScript, we will get to know about the error &lt;strong&gt;only when someone
-            triggers code and it fails&lt;/strong&gt;. In contrast, TypeScript can provide us with compile-time errors, which
-        means, it can spot errors while compiling code to JavaScript, and fix it before deploying to production. Of
-        course it won't catch them all, but still a lot.&lt;/p&gt;
-    &lt;h4&gt;Awesome tool-set&lt;/h4&gt;
-    &lt;p&gt;I won't write much about this. Along with this course you will see how many useful tools come with Angular.&lt;/p&gt;
-    &lt;p&gt;Let's don't waste time and start coding!&lt;/p&gt;
-
-&lt;/section&gt;
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr&gt;
-   
-    &lt;div class=&quot;row&quot; &gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Lesson1&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot; 
-                &gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot; &gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Lesson2&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;
-                 &gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Fundamentals In order to create Angular apps, you have to know Typescript. Within thenext few lessons I will teach you its basic concepts, by covering the following subjects: Type annotations Arrow functions Interfaces Classes Constructors Access modifiers Properties Modules If you are familiar with these concepts you can skip this tutorial and navigate to the next part, however if you are new to TypeScript then follow it carefully. What is TypeScript? At a first glance you might confuse TypeScript with JavaScript. Especially that any valid JavaScript code is also a valid TypeScript code, however, it doesn't work another way around. TypeScript is a superset of JavaScript. Image taken from https://angular2buch.de Remember: TypeScript is a superset of JavaScript That means that TypeScript extends JavaScript with extra functionality which is not present in the current version of JavaScript supported by most browsers. So what are those features? Strong typing If you are familiar with languages like Java or C# you probably know that each variable requires a type and this type has to be declared upfront. JavaScript is a loosely typed or a dynamically typed language. Variables in JavaScript are not directly associated with any particular value type, and any variable can be assigned (and re-assigned) values of all types: var foo = 42; // foo is now a Number var foo = 'bar'; // foo is now a String var foo = true; // foo is now a Boolean</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/typescipt_logo.png" /></entry><entry><title type="html">3.Python JSON</title><link href="http://localhost:4000/blog/PythonJSON" rel="alternate" type="text/html" title="3.Python JSON" /><published>2019-10-03T00:00:00+00:00</published><updated>2019-10-03T00:00:00+00:00</updated><id>http://localhost:4000/blog/PythonJSON</id><content type="html" xml:base="http://localhost:4000/blog/PythonJSON">&lt;section class=&quot;Ptutorial31&quot;&gt;
-    &lt;div class=&quot;item-page&quot; itemscope=&quot;&quot; itemtype=&quot;https://schema.org/Article&quot;&gt;
-        &lt;meta itemprop=&quot;inLanguage&quot; content=&quot;en-GB&quot;&gt;
-        &lt;div class=&quot;page-header&quot;&gt;
-            &lt;h2 itemprop=&quot;headline&quot;&gt; Python JSON: Encode(dump), Decode(load) json Data &amp;amp; File (Example) &lt;/h2&gt;
-        &lt;/div&gt;
-
-        &lt;div itemprop=&quot;articleBody&quot;&gt;
-
-            &lt;h2&gt;&lt;a id=&quot;1&quot;&gt;&lt;/a&gt;What is JSON?&lt;/h2&gt;
-            &lt;p&gt;&lt;strong&gt;JSON &lt;/strong&gt;is a standard format for data exchange, which is inspired by JavaScript. Generally,
-                JSON is in string or text format. &lt;strong&gt;JSON &lt;/strong&gt;stands for&lt;strong&gt;
-                    J&lt;/strong&gt;ava&lt;strong&gt;S&lt;/strong&gt;cript &lt;strong&gt;O&lt;/strong&gt;bject &lt;strong&gt;N&lt;/strong&gt;otation. &lt;/p&gt;
-            &lt;p&gt;The syntax of JSON: JSON is written as key and value pair. &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-                
-         {
-                 &quot;Key&quot;:  &quot;Value&quot;,
-                 &quot;Key&quot;:  &quot;Value&quot;,
-         } 
-        
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;JSON is very similar to&lt;strong&gt; &lt;/strong&gt;Python dictionary. Python supports JSON, and it has an inbuilt
-                library as a JSON. &lt;/p&gt;
-            &lt;h2&gt;&lt;a id=&quot;2&quot;&gt;&lt;/a&gt;JSON Library in Python &lt;/h2&gt;
-            &lt;p&gt;'&lt;strong&gt;marshal&lt;/strong&gt;' and '&lt;strong&gt;pickle' &lt;/strong&gt;external modules of Python maintain a version of
-                &lt;strong&gt;JSON&lt;/strong&gt; library. To perform JSON related operations like encoding and decoding in Python
-                you need first to &lt;strong&gt;import &lt;/strong&gt;JSON library and for that in your &lt;strong&gt;.py&lt;/strong&gt; file,
-            &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;import json
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Following methods are available in the JSON module &lt;/p&gt;
-            &lt;table class=&quot;table table-striped table-bordered&quot;&gt;
-                &lt;tbody&gt;
-                    &lt;tr&gt;
-                        &lt;th width=&quot;50%&quot;&gt;Method &lt;/th&gt;
-                        &lt;th&gt;Description &lt;/th&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;dumps() &lt;/td&gt;
-                        &lt;td&gt;encoding to JSON objects &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;dump() &lt;/td&gt;
-                        &lt;td&gt;encoded string writing on file &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;loads() &lt;/td&gt;
-                        &lt;td&gt;Decode the JSON string &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;load() &lt;/td&gt;
-                        &lt;td&gt;Decode while JSON file read &lt;/td&gt;
-                    &lt;/tr&gt;
-                &lt;/tbody&gt;
-            &lt;/table&gt;
-            &lt;div class=&quot;toc_container&quot;&gt;
-                &lt;center&gt;&lt;span&gt;&lt;strong&gt;&lt;p&gt;What You Will Learn:&lt;/p&gt;&lt;/strong&gt; &lt;span class=&quot;toc_toggle&quot;&gt;[&lt;a id=&quot;toggler&quot;
-                                onclick=&quot;showme('widget', this.id);&quot; style=&quot;cursor: pointer;&quot;&gt;hide&lt;/a&gt;]&lt;/span&gt;&lt;/span&gt;
-                &lt;/center&gt;
-                &lt;div id=&quot;widget&quot; style=&quot;display:block;&quot;&gt;
-                    &lt;ul&gt;
-                        &lt;li&gt;&lt;a href=&quot;#1&quot;&gt;What is JSON? &lt;/a&gt;&lt;/li&gt;
-                        &lt;li&gt;&lt;a href=&quot;#2&quot;&gt;JSON Library in Python &lt;/a&gt; &lt;/li&gt;
-                        &lt;li&gt;&lt;a href=&quot;#3&quot;&gt;Python to JSON (Encoding) &lt;/a&gt; &lt;/li&gt;
-                        &lt;li&gt;&lt;a href=&quot;#4&quot;&gt;JSON to Python (Decoding) &lt;/a&gt; &lt;/li&gt;
-                        &lt;ul&gt;
-                            &lt;li&gt;&lt;a href=&quot;#5&quot;&gt;Decoding JSON File or Parsing JSON file in Python &lt;/a&gt; &lt;/li&gt;
-                            &lt;li&gt;&lt;a href=&quot;#6&quot;&gt;Compact Encoding in Python &lt;/a&gt; &lt;/li&gt;
-                            &lt;li&gt;&lt;a href=&quot;#7&quot;&gt;Format JSON code (Pretty print) &lt;/a&gt; &lt;/li&gt;
-                        &lt;/ul&gt;
-                        &lt;li&gt;&lt;a href=&quot;#8&quot;&gt;Complex Object encoding of Python &lt;/a&gt; &lt;/li&gt;
-                        &lt;li&gt;&lt;a href=&quot;#9&quot;&gt;Complex JSON object decoding in Python &lt;/a&gt; &lt;/li&gt;
-                        &lt;li&gt;&lt;a href=&quot;#10&quot;&gt;Overview of JSON Serialization class JSONEncoder &lt;/a&gt; &lt;/li&gt;
-                        &lt;li&gt;&lt;a href=&quot;#11&quot;&gt;Overview of JSON Deserialization class JSONDecoder &lt;/a&gt; &lt;/li&gt;
-                        &lt;ul&gt;
-                            &lt;li&gt;&lt;a href=&quot;#12&quot;&gt;Decoding JSON data from URL: Real Life Example. &lt;/a&gt; &lt;/li&gt;
-                        &lt;/ul&gt;
-                        &lt;li&gt;&lt;a href=&quot;#13&quot;&gt;Exceptions Related to JSON Library in Python &lt;/a&gt; &lt;/li&gt;
-                        &lt;li&gt;&lt;a href=&quot;#14&quot;&gt;Infinite and NaN Numbers in Python &lt;/a&gt; &lt;/li&gt;
-                        &lt;li&gt;&lt;a href=&quot;#15&quot;&gt;Repeated key in JSON String &lt;/a&gt; &lt;/li&gt;
-                        &lt;li&gt;&lt;a href=&quot;#16&quot;&gt;CLI (Command Line Interface) with JSON in Python &lt;/a&gt; &lt;/li&gt;
-                        &lt;li&gt;&lt;a href=&quot;#17&quot;&gt;Advantages of JSON in Python &lt;/a&gt; &lt;/li&gt;
-                        &lt;li&gt;&lt;a href=&quot;#18&quot;&gt;Implementation limitation of JSON in Python &lt;/a&gt; &lt;/li&gt;
-                        &lt;li&gt;&lt;a href=&quot;#19&quot;&gt;Cheat Code &lt;/a&gt; &lt;/li&gt;
-                    &lt;/ul&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;h2&gt;&lt;a id=&quot;3&quot;&gt;&lt;/a&gt;Python to JSON (Encoding)&lt;/h2&gt;
-            &lt;p&gt; JSON Library of Python performs following translation of Python objects into JSON objects by default
-            &lt;/p&gt;
-            &lt;table class=&quot;table table-striped table-bordered&quot;&gt;
-                &lt;tbody&gt;
-                    &lt;tr&gt;
-                        &lt;td width=&quot;50%&quot;&gt;&lt;strong&gt;Python&lt;/strong&gt; &lt;/td&gt;
-                        &lt;td&gt;&lt;strong&gt;JSON&lt;/strong&gt; &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;dict &lt;/td&gt;
-                        &lt;td&gt;Object &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;list &lt;/td&gt;
-                        &lt;td&gt;Array &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;unicode &lt;/td&gt;
-                        &lt;td&gt;String &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;number - int, long &lt;/td&gt;
-                        &lt;td&gt;number – int &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;float &lt;/td&gt;
-                        &lt;td&gt;number – real &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;True &lt;/td&gt;
-                        &lt;td&gt;True &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;False &lt;/td&gt;
-                        &lt;td&gt;False &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;None &lt;/td&gt;
-                        &lt;td&gt;Null &lt;/td&gt;
-                    &lt;/tr&gt;
-                &lt;/tbody&gt;
-            &lt;/table&gt;
-            &lt;p&gt;Converting Python data to JSON is called an Encoding operation. Encoding is done with the help of JSON
-                library method – &lt;strong&gt;dumps()&lt;/strong&gt; &lt;/p&gt;
-            &lt;p&gt;&lt;strong&gt;dumps() &lt;/strong&gt;method converts dictionary object of python into JSON string data format. &lt;/p&gt;
-            &lt;p&gt;Now lets we perform our first encoding example with Python. &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         import json
-         
-         x = {
-           &quot;name&quot;: &quot;Ken&quot;,
-           &quot;age&quot;: 45,
-           &quot;married&quot;: True,
-           &quot;children&quot;: (&quot;Alice&quot;,&quot;Bob&quot;),
-           &quot;pets&quot;: ['Dog'],
-           &quot;cars&quot;: [
-             {&quot;model&quot;: &quot;Audi A1&quot;, &quot;mpg&quot;: 15.1},
-             {&quot;model&quot;: &quot;Zeep Compass&quot;, &quot;mpg&quot;: 18.1}
-           ]
-         }
-         # sorting result in asscending order by keys:
-         sorted_string = json.dumps(x, indent=4, sort_keys=True)
-         print(sorted_string)
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Output: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;{&quot;person&quot;: {&quot;name&quot;: &quot;Kenn&quot;, &quot;sex&quot;: &quot;male&quot;, &quot;age&quot;: 28}})
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Let's create a JSON file of the dictionary using the same function &lt;strong&gt;dump() &lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         # here we create new data_file.json file with write mode using file i/o operation 
-         with open('json_file.json', &quot;w&quot;) as file_write:
-         # write json data into file
-         json.dump(person_data, file_write)
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Output: &lt;/p&gt;
-            &lt;p&gt; Nothing to show…In your system json_file.json is created you can check that file. &lt;/p&gt;
-            &lt;p style=&quot;text-align: center;&quot;&gt;&lt;a
-                    href=&quot;http://localhost:4000/img/python/datascience/img/3/122818_1014_PythonJSONE1.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img
-                        src=&quot;http://localhost:4000/img/python/datascience/img/3/122818_1014_PythonJSONE1.png&quot;
-                        alt=&quot;&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;h2&gt;&lt;a id=&quot;4&quot;&gt;&lt;/a&gt;JSON to Python (Decoding)&lt;/h2&gt;
-            &lt;p&gt;JSON string decoding is done with the help of inbuilt method &lt;strong&gt;loads()&lt;/strong&gt; &amp;amp;
-                &lt;strong&gt;load() &lt;/strong&gt;of JSON library in Python. Here translation table show example of JSON objects
-                to Python objects which are helpful to perform decoding in Python of JSON string. &lt;/p&gt;
-            &lt;table class=&quot;table table-striped table-bordered&quot;&gt;
-                &lt;tbody&gt;
-                    &lt;tr&gt;
-                        &lt;td width=&quot;50%&quot;&gt;&lt;strong&gt;JSON&lt;/strong&gt; &lt;/td&gt;
-                        &lt;td&gt;&lt;strong&gt;Python&lt;/strong&gt; &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Object &lt;/td&gt;
-                        &lt;td&gt;dict &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Array &lt;/td&gt;
-                        &lt;td&gt;list &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;String &lt;/td&gt;
-                        &lt;td&gt;unicode &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;number – int &lt;/td&gt;
-                        &lt;td&gt;number - int, long &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;number – real &lt;/td&gt;
-                        &lt;td&gt;float &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;True &lt;/td&gt;
-                        &lt;td&gt;True &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;False &lt;/td&gt;
-                        &lt;td&gt;False &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Null &lt;/td&gt;
-                        &lt;td&gt;None &lt;/td&gt;
-                    &lt;/tr&gt;
-                &lt;/tbody&gt;
-            &lt;/table&gt;
-            &lt;p&gt;Let's see a basic example of decoding in Python with the help of &lt;strong&gt;json.loads()&lt;/strong&gt; function,
-            &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;import json  # json library imported
-         # json data string
-         person_data = '{  &quot;person&quot;:  { &quot;name&quot;:  &quot;Kenn&quot;,  &quot;sex&quot;:  &quot;male&quot;,  &quot;age&quot;:  28}}'
-         # Decoding or converting JSON format in dictionary using loads()
-         dict_obj = json.loads(person_data)
-         print(dict_obj)
-         # check type of dict_obj
-         print(&quot;Type of dict_obj&quot;, type(dict_obj))
-         # get human object details
-         print(&quot;Person......&quot;,  dict_obj.get('person'))
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         {'person': {'name': 'Kenn', 'sex': 'male', 'age': 28}}
-         Type of dict_obj &amp;lt;class 'dict'&amp;gt;
-         Person...... {'name': 'John', 'sex': 'male'}
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p style=&quot;text-align: center;&quot;&gt;&lt;a
-                    href=&quot;http://localhost:4000/img/python/datascience/img/3/122818_1014_PythonJSONE2.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img
-                        src=&quot;http://localhost:4000/img/python/datascience/img/3/122818_1014_PythonJSONE2.png&quot;
-                        alt=&quot;&quot;&gt;&lt;/a&gt;&lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
-            &lt;h3&gt;&lt;a id=&quot;5&quot;&gt;&lt;/a&gt;Decoding JSON File or Parsing JSON file in Python&lt;/h3&gt;
-            &lt;p&gt;&lt;strong&gt;NOTE: &lt;/strong&gt;Decoding JSON file is File Input /Output (I/O) related operation. The JSON file
-                must exist on your system at specified the location that you mention in your program.&lt;strong&gt; &lt;/strong&gt;
-            &lt;/p&gt;
-            &lt;p&gt;Example,&lt;/p&gt;
-
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;import json
-         #File I/O Open function for read data from JSON File
-         with open('X:/json_file.json') as file_object:
-                 # store file data in object
-                 data = json.load(file_object)
-         print(data)
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;&lt;strong&gt;Here data&lt;/strong&gt; is a dictionary object of Python. &lt;/p&gt;
-            &lt;p&gt;Output: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;{'person': {'name': 'Kenn', 'sex': 'male', 'age': 28}}&lt;/code&gt;&lt;/pre&gt;
-            &lt;p style=&quot;text-align: center;&quot;&gt;&lt;a
-                    href=&quot;http://localhost:4000/img/python/datascience/img/3/122818_1014_PythonJSONE3.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img
-                        src=&quot;http://localhost:4000/img/python/datascience/img/3/122818_1014_PythonJSONE3.png&quot;
-                        alt=&quot;&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;h3&gt;&lt;a id=&quot;6&quot;&gt;&lt;/a&gt;Compact Encoding in Python&lt;/h3&gt;
-            &lt;p&gt;When you need to reduce the size of your JSON file, you can use compact encoding in Python. &lt;/p&gt;
-            &lt;p&gt;Example, &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         import json
-         # Create a List that contains dictionary
-         lst = ['a', 'b', 'c',{'4': 5, '6': 7}]
-         # separator used for compact representation of JSON.
-         # Use of ',' to identify list items
-         # Use of ':' to identify key and value in dictionary
-         compact_obj = json.dumps(lst, separators=(',', ':'))
-         print(compact_obj)
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt; &lt;/p&gt;
-            &lt;pre
-                class=&quot;code-toolbar&quot;&gt;'[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, {&quot;4&quot;: 5, &quot;6&quot;: 7}]'
-         
-         ** Here output of JSON is represented in a single line which is the most compact representation by removing the space character from compact_obj **  &lt;/code&gt;&lt;/pre&gt;
-            &lt;h3&gt;&lt;a id=&quot;7&quot;&gt;&lt;/a&gt;Format JSON code (Pretty print)&lt;/h3&gt;
-            &lt;ul&gt;
-                &lt;li&gt;The aim is to write well-formatted code for human understanding. With the help of pretty printing,
-                    anyone can easily understand the code.&lt;strong&gt; &lt;/strong&gt;&lt;/li&gt;
-                &lt;li&gt;Example,&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         import json
-         dic = { 'a': 4, 'b': 5 }
-         ''' To format the code use of indent and 4 shows number of space and use of separator is not necessary but standard way to write code of particular function. '''
-         formatted_obj = json.dumps(dic, indent=4, separators=(',', ': '))
-         print(formatted_obj)
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Output: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;{
-            &quot;a&quot; : 4,
-            &quot;b&quot; : 5
-         }
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p style=&quot;text-align: center;&quot;&gt;&lt;a
-                    href=&quot;http://localhost:4000/img/python/datascience/img/3/122818_1014_PythonJSONE4.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img
-                        src=&quot;http://localhost:4000/img/python/datascience/img/3/122818_1014_PythonJSONE4.png&quot;
-                        alt=&quot;&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;p&gt;To better understand this, change indent to 40 and observe the output- &lt;/p&gt;
-            &lt;p style=&quot;text-align: center;&quot;&gt;&lt;a
-                    href=&quot;http://localhost:4000/img/python/datascience/img/3/122818_1014_PythonJSONE5.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img
-                        src=&quot;http://localhost:4000/img/python/datascience/img/3/122818_1014_PythonJSONE5.png&quot;
-                        alt=&quot;&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;p&gt;&lt;strong&gt;Ordering the JSON code:&lt;/strong&gt; &lt;/p&gt;
-            &lt;p&gt;&lt;strong&gt;sort_keys&lt;/strong&gt; attribute in dumps() function's argument will sort the key in JSON in
-                ascending order. The sort_keys argument is a Boolean attribute. When it's true sorting is allowed
-                otherwise not &lt;/p&gt;
-            &lt;p&gt;Example, &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         import json
-         
-         x = {
-           &quot;name&quot;: &quot;Ken&quot;,
-           &quot;age&quot;: 45,
-           &quot;married&quot;: True,
-           &quot;children&quot;: (&quot;Alice&quot;, &quot;Bob&quot;),
-           &quot;pets&quot;: [ 'Dog' ],
-           &quot;cars&quot;: [
-             {&quot;model&quot;: &quot;Audi A1&quot;, &quot;mpg&quot;: 15.1},
-             {&quot;model&quot;: &quot;Zeep Compass&quot;, &quot;mpg&quot;: 18.1}
-               ],
-         }
-         # sorting result in asscending order by keys:
-         sorted_string = json.dumps(x, indent=4, sort_keys=True)
-         print(sorted_string)
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         {
-             &quot;age&quot;: 45,
-             &quot;cars&quot;: [ {
-                 &quot;model&quot;: &quot;Audi A1&quot;, 
-                 &quot;mpg&quot;: 15.1
-             },
-             {
-                 &quot;model&quot;: &quot;Zeep Compass&quot;, 
-                 &quot;mpg&quot;: 18.1
-             }
-             ],
-             &quot;children&quot;: [ &quot;Alice&quot;,
-                   &quot;Bob&quot;
-             ],
-             &quot;married&quot;: true,
-             &quot;name&quot;: &quot;Ken&quot;,
-             &quot;pets&quot;: [ 
-                 &quot;Dog&quot;
-             ]
-         }
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;As you may observe the keys age, cars, children, etc are arranged in ascending order. &lt;/p&gt;
-            &lt;h2&gt;&lt;a id=&quot;8&quot;&gt;&lt;/a&gt;Complex Object encoding of Python&lt;/h2&gt;
-            &lt;p&gt;A Complex object has two different parts that is &lt;/p&gt;
-            &lt;ol&gt;
-                &lt;li&gt;Real part &lt;/li&gt;
-                &lt;li&gt;Imaginary part&lt;strong&gt; &lt;/strong&gt;&lt;/li&gt;
-            &lt;/ol&gt;
-            &lt;p style=&quot;text-align: center;&quot;&gt;&lt;a
-                    href=&quot;http://localhost:4000/img/python/datascience/img/3/122818_1014_PythonJSONE6.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img
-                        src=&quot;http://localhost:4000/img/python/datascience/img/3/122818_1014_PythonJSONE6.png&quot;
-                        alt=&quot;&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;p&gt;&lt;strong&gt;Example: 3 +2i&lt;/strong&gt; &lt;/p&gt;
-            &lt;p&gt;Before performing encoding of a complex object, you need to check a variable is complex or not. You need
-                to create a function which checks the value stored in a variable by using an instance method.&lt;/p&gt;
-
-            &lt;p&gt;Let's create the specific function for check object is complex or eligible for encoding.&lt;strong&gt;
-                &lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         import json
-         
-         # create function to check instance is complex or not
-         def complex_encode(object):
-             # check using isinstance method
-             if isinstance(object, complex):
-                 return [object.real, object.imag]
-             # raised error using exception handling if object is not complex
-             raise TypeError(repr(object) + &quot; is not JSON serialized&quot;)
-         
-         
-         # perform json encoding by passing parameter
-         complex_obj = json.dumps(4 + 5j, default=complex_encode)
-         print(complex_obj)
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;'[4.0, 5.0]'&lt;/code&gt;&lt;/pre&gt;
-            &lt;h2&gt;&lt;a id=&quot;9&quot;&gt;&lt;/a&gt;Complex JSON object decoding in Python&lt;/h2&gt;
-            &lt;p&gt;To decode complex object in JSON, use an object_hook parameter which checks JSON string contains the
-                complex object or not. Example, &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         import json
-           # function check JSON string contains complex object
-           def is_complex(objct):
-             if '__complex__' in objct:
-               return complex(objct['real'], objct['img'])
-             return objct
-           
-           # use of json loads method with object_hook for check object complex or not
-           complex_object =json.loads('{&quot;__complex__&quot;: true, &quot;real&quot;: 4, &quot;img&quot;: 5}', object_hook = is_complex)
-           #here we not passed complex object so it's convert into dictionary
-           simple_object =json.loads('{&quot;real&quot;: 6, &quot;img&quot;: 7}', object_hook = is_complex)
-           print(&quot;Complex_object......&quot;,complex_object)
-           print(&quot;Without_complex_object......&quot;,simple_object)
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt; Output: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         Complex_object...... (4+5j)
-         Without_complex_object...... {'real': 6, 'img': 7}
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;h2&gt;&lt;a id=&quot;10&quot;&gt;&lt;/a&gt;Overview of JSON Serialization class JSONEncoder&lt;/h2&gt;
-            &lt;p&gt;JSONEncoder class is used for serialization of any Python object while performing encoding. It contains
-                three different methods of encoding which are &lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;strong&gt;default(o)&lt;/strong&gt; – Implemented in the subclass and return serialize object for
-                    &lt;strong&gt;o&lt;/strong&gt; object.&lt;strong&gt; &lt;/strong&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;encode(o)&lt;/strong&gt; – Same as json.dumps() method return JSON string of Python data
-                    structure.&lt;strong&gt; &lt;/strong&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;iterencode(o) &lt;/strong&gt;– Represent string one by one and encode object o. &lt;strong&gt; &lt;/strong&gt;
-                &lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;p&gt;With the help of encode() method of JSONEncoder class, we can also encode any Python object.&lt;strong&gt;
-                &lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;# import JSONEncoder class from json
-         from json.encoder import JSONEncoder
-         colour_dict = { &quot;colour&quot;: [&quot;red&quot;, &quot;yellow&quot;, &quot;green&quot; ]}
-         # directly called encode method of JSON
-         JSONEncoder().encode(colour_dict)
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;'{&quot;colour&quot;: [&quot;red&quot;, &quot;yellow&quot;, &quot;green&quot;]}'&lt;/code&gt;&lt;/pre&gt;
-            &lt;h2&gt;&lt;a id=&quot;11&quot;&gt;&lt;/a&gt;Overview of JSON Deserialization class JSONDecoder &lt;/h2&gt;
-            &lt;p&gt;JSONDecoder class is used for deserialization of any Python object while performing decoding. It contains
-                three different methods of decoding which are &lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;strong&gt;default(o)&lt;/strong&gt; – Implemented in the subclass and return deserialized object
-                    &lt;strong&gt;o&lt;/strong&gt; object.&lt;strong&gt; &lt;/strong&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;decode(o)&lt;/strong&gt; – Same as json.loads() method return Python data structure of JSON string
-                    or data.&lt;strong&gt; &lt;/strong&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;raw_decode(o) &lt;/strong&gt;– Represent Python dictionary one by one and decode object o.
-                    &lt;strong&gt; &lt;/strong&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;p&gt;With the help of decode() method of JSONDecoder class, we can also decode JSON string.&lt;strong&gt; &lt;/strong&gt;
-            &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         import json
-         # import JSONDecoder class from json
-         from json.decoder import JSONDecoder
-         colour_string = '{ &quot;colour&quot;: [&quot;red&quot;, &quot;yellow&quot;]}'
-         # directly called decode method of JSON
-         JSONDecoder().decode(colour_string)
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;&lt;strong&gt; Output:&lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;{'colour': ['red', 'yellow']}&lt;/code&gt;&lt;/pre&gt;
-            &lt;h3&gt;&lt;a id=&quot;12&quot;&gt;&lt;/a&gt;Decoding JSON data from URL: Real Life Example&lt;/h3&gt;
-            &lt;p&gt;We will fetch data of CityBike NYC (Bike Sharing System) from specified URL(&lt;a
-                    href=&quot;https://feeds.citibikenyc.com/stations/stations.json&quot;&gt;https://feeds.citibikenyc.com/stations/stations.json&lt;/a&gt;)
-                and convert into dictionary format. &lt;/p&gt;
-            &lt;p&gt;Example, &lt;/p&gt;
-            &lt;p&gt;NOTE:- Make sure requests library is already installed in your Python, If not then open Terminal or CMD
-                and type &lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt; (For Python 3 or above) &lt;strong&gt;pip3 install requests&lt;/strong&gt; &lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         import json
-         import requests
-         
-         # get JSON string data from CityBike NYC using web requests library
-         json_response= requests.get(&quot;https://feeds.citibikenyc.com/stations/stations.json&quot;)
-         # check type of json_response object
-         print(type(json_response.text))
-         # load data in loads() function of json library
-         bike_dict = json.loads(json_response.text)
-         #check type of news_dict
-         print(type(bike_dict))
-         # now get stationBeanList key data from dict
-         print(bike_dict['stationBeanList'][0]) 
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         &amp;lt;class 'str'&amp;gt;
-         &amp;lt;class 'dict'&amp;gt;
-         {
-             'id': 487,
-              'stationName': 'E 20 St &amp;amp; FDR Drive',
-             'availableDocks': 24,
-             'totalDocks': 34,
-             'latitude': 40.73314259,
-             'longitude': -73.97573881,
-             'statusValue': 'In Service',
-             'statusKey': 1,
-             'availableBikes': 9,
-             'stAddress1': 'E 20 St &amp;amp; FDR Drive',
-             'stAddress2': '',
-             'city': '',
-             'postalCode': '',
-             'location': '', 
-             'altitude': '', 
-             'testStation': False, 
-             'lastCommunicationTime': '2018-12-11 10:59:09 PM', 'landMark': ''
-         }
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;h2&gt;&lt;a id=&quot;13&quot;&gt;&lt;/a&gt;Exceptions Related to JSON Library in Python:&lt;/h2&gt;
-            &lt;ul&gt;
-                &lt;li&gt;Class &lt;strong&gt;json.JSONDecoderError&lt;/strong&gt; handles the exception related to decoding operation.
-                    and it's a subclass of &lt;strong&gt;ValueError.&lt;/strong&gt; &lt;/li&gt;
-                &lt;li&gt;Exception - &lt;strong&gt;json.JSONDecoderError(msg, doc)&lt;/strong&gt; &lt;/li&gt;
-                &lt;li&gt;
-                    Parameters of Exception are,
-                    &lt;ul&gt;
-                        &lt;li&gt;msg – Unformatted Error message&lt;/li&gt;
-                        &lt;li&gt;doc – JSON docs parsed&lt;/li&gt;
-                        &lt;li&gt;pos – start index of doc when it's failed&lt;/li&gt;
-                        &lt;li&gt;lineno – line no shows correspond to pos&lt;/li&gt;
-                        &lt;li&gt;colon – column no correspond to pos&lt;/li&gt;
-                    &lt;/ul&gt;
-                &lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;p&gt;Example, &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         import json
-         #File I/O Open function for read data from JSON File
-         data = {} #Define Empty Dictionary Object
-         try:
-                 with open('json_file_name.json') as file_object:
-                         data = json.load(file_object)
-         except ValueError:
-              print(&quot;Bad JSON file format,  Change JSON File&quot;)
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p style=&quot;text-align: center;&quot;&gt;&lt;a
-                    href=&quot;http://localhost:4000/img/python/datascience/img/3/122818_1014_PythonJSONE7.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img
-                        src=&quot;http://localhost:4000/img/python/datascience/img/3/122818_1014_PythonJSONE7.png&quot;
-                        alt=&quot;&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;h2&gt;&lt;a id=&quot;14&quot;&gt;&lt;/a&gt;Infinite and NaN Numbers in Python&lt;/h2&gt;
-            &lt;p&gt;JSON Data Interchange Format (RFC – Request For Comments) doesn't allow Infinite or Nan Value but there
-                is no restriction in Python- JSON Library to perform Infinite and Nan Value related operation. If JSON
-                gets INFINITE and Nan datatype than it's converted it into literal. &lt;/p&gt;
-            &lt;p&gt;Example, &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         import json
-         # pass float Infinite value
-         infinite_json = json.dumps(float('inf'))
-         # check infinite json type
-         print(infinite_json)
-         print(type(infinite_json))
-         json_nan = json.dumps(float('nan'))
-         print(json_nan)
-         # pass json_string as Infinity
-         infinite = json.loads('Infinity')
-         print(infinite)
-         # check type of Infinity
-         print(type(infinite))
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Output:&lt;/p&gt;
-
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         Infinity
-         &amp;lt;class 'str'&amp;gt;
-         NaN
-         inf
-         &amp;lt;class 'float'&amp;gt;	
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;h2&gt;&lt;a id=&quot;15&quot;&gt;&lt;/a&gt;Repeated key in JSON String &lt;/h2&gt;
-            &lt;p&gt;RFC specifies the key name should be unique in a JSON object, but it's not mandatory. Python JSON library
-                does not raise an exception of repeated objects in JSON. It ignores all repeated key-value pair and
-                considers only last key-value pair among them. &lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;Example,&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         import json
-         repeat_pair = '{&quot;a&quot;:  1, &quot;a&quot;:  2, &quot;a&quot;:  3}'
-         json.loads(repeat_pair)
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Output: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;{'a': 3}&lt;/code&gt;&lt;/pre&gt;
-            &lt;h2&gt;&lt;a id=&quot;16&quot;&gt;&lt;/a&gt;CLI (Command Line Interface) with JSON in Python&lt;/h2&gt;
-            &lt;p&gt;&lt;strong&gt;json.tool &lt;/strong&gt;provides the command line interface to validate JSON pretty-print syntax.
-                Let's see an example of CLI&lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
-            &lt;p style=&quot;text-align: center;&quot;&gt;&lt;a
-                    href=&quot;http://localhost:4000/img/python/datascience/img/3/122818_1014_PythonJSONE8.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img
-                        src=&quot;http://localhost:4000/img/python/datascience/img/3/122818_1014_PythonJSONE8.png&quot;
-                        alt=&quot;&quot;&gt;&lt;/a&gt;&lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;$ echo '{&quot;name&quot; : &quot;Kings Authur&quot; }' | python3 -m json.tool&lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Output: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-        {
-             &quot;name&quot;: &quot; Kings Authur &quot;
-         }
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;h2&gt;&lt;a id=&quot;17&quot;&gt;&lt;/a&gt;Advantages of JSON in Python&lt;/h2&gt;
-            &lt;ul&gt;
-                &lt;li&gt;Easy to move back between container and value (JSON to Python and Python to JSON)&lt;/li&gt;
-                &lt;li&gt;Human readable (Pretty-print) JSON Object&lt;/li&gt;
-                &lt;li&gt;Widely used in data handling.&lt;/li&gt;
-                &lt;li&gt;Doesn't have the same data structure in the single file.&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;h2&gt;&lt;a id=&quot;18&quot;&gt;&lt;/a&gt;Implementation limitation of JSON in Python&lt;/h2&gt;
-            &lt;ul&gt;
-                &lt;li&gt;In deserializer of JSON range and prediction of a number&lt;/li&gt;
-                &lt;li&gt;The Maximum length of JSON string and arrays of JSON and nesting levels of object.&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;h2&gt;&lt;a id=&quot;19&quot;&gt;&lt;/a&gt;Cheat Code&lt;/h2&gt;
-            &lt;table class=&quot;table table-striped table-bordered&quot;&gt;
-                &lt;tbody&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;
-                            &lt;p&gt;json.dumps(person_data) &lt;/p&gt;
-                        &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;p&gt;Create JSON Object &lt;/p&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;
-                            &lt;p&gt;json.dump(person_data, file_write) &lt;/p&gt;
-                        &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;p&gt;Create JSON File using File I/O of Python &lt;/p&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;
-                            &lt;p&gt;compact_obj = json.dumps(data, separators=(',',':'))&lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
-                        &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;p&gt;Compact JSON Object by removing space character from JSON Object using separator &lt;/p&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;
-                            &lt;p&gt;formatted_obj = json.dumps(dic, indent=4, separators=(',', ': '))&lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
-                        &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;p&gt;Formatting JSON code using Indent &lt;/p&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;
-                            &lt;p&gt;sorted_string = json.dumps(x, indent=4, sort_keys=True)&lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
-                        &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;p&gt;Sorting JSON object key by alphabetic order &lt;/p&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;
-                            &lt;p&gt;complex_obj = json.dumps(4 + 5j, default=complex_encode)&lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
-                        &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;p&gt;Python Complex Object encoding in JSON &lt;/p&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;
-                            &lt;p&gt;JSONEncoder().encode(colour_dict)&lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
-                        &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;p&gt;Use of JSONEncoder Class for Serialization &lt;/p&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;
-                            &lt;p&gt;json.loads(data_string)&lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
-                        &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;p&gt;Decoding JSON String in Python dictionary using json.loads() function &lt;/p&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;
-                            &lt;p&gt; json.loads('{&quot;__complex__&quot;: true, &quot;real&quot;: 4, &quot;img&quot;: 5}', object_hook =
-                                is_complex)&lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
-                        &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;p&gt;Decoding of complex JSON object to Python &lt;/p&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;
-                            &lt;p&gt;JSONDecoder().decode(colour_string)&lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
-                        &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;p&gt;Use of Decoding JSON to Python with Deserialization &lt;/p&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                &lt;/tbody&gt;
-            &lt;/table&gt;
-            &lt;p id=&quot;slidetag&quot;&gt;&amp;nbsp;&lt;/p&gt;
-        &lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/section&gt;
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr&gt;
-   
-    &lt;div class=&quot;row&quot; &gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/PythonReadWriteCSV&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot; 
-                &gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot; &gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/PythonMySQL&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;
-                 &gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python JSON: Encode(dump), Decode(load) json Data &amp;amp; File (Example)</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry></feed>
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">In this lesson, we will cover a different type of variables and scopes. Replace the content of the onStartup() function: onStartup(){ function count(){ for (var i = 0; i &amp;lt; 9; i++){ console.log(i); } console.log('Counted: ' , i); } count();} }</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/typescipt_logo.png" /></entry></feed>

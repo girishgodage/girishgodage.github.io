@@ -105,7 +105,7 @@
             class="container">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <p class="post-title">
-                    <h1><a href="/blog/SwDesignLesson1">1. Introduction to Four Principles Of Simple Design</a></h1>
+                    <h1><a href="/blog/SwDesignLesson6">6. Software Design - What is Dependency Inversion Principle?</a></h1>
                 </p>
                 
                 <span class="post-date"><span style="font-weight:600">October 14, 2019 Monday</span> by
@@ -116,101 +116,154 @@
                 </div>
                 
                 <hr>
-                <div><img class="post-image" src="https://girishgodage.github.io/img/sw_design.png" alt="1. Introduction to Four Principles Of Simple Design" height="250" /></div>
+                <div><img class="post-image" src="https://girishgodage.github.io/img/sw_design.png" alt="6. Software Design - What is Dependency Inversion Principle?" height="250" /></div>
                 <div class="post-content">
                     <br>
-                    <h3 id="what-is-simple-design">What is Simple Design?</h3>
+                    <p>Dependency Inversion Principle is one of the important SOLID Principles. Dependency Inversion Principle is implemented by one of the most popular Java frameworks - Spring. What is it all about? How does it help you design good applications?</p>
 
-<p>** With agile and extreme programming, the focus is on keeping your design simple. How do you       keep your design simple? How do you decide whether your code is good enough? **</p>
+<h3 id="you-will-learn">You will Learn</h3>
+<ul>
+  <li>What is Dependency Inversion Principle?</li>
+  <li>How are Dependency Inversion Principle and Spring Framework related?</li>
+  <li>A few examples of Dependency Inversion Principle in action</li>
+</ul>
 
-<p>It is very important to keep the design of your application simple.</p>
-
-<p>In almost all agile projects, the aim is to meet today’s requirements, with clean code.</p>
+<h3 id="what-is-dependency-inversion-principle-dip">What Is Dependency Inversion principle (DIP)?</h3>
 
 <blockquote>
-  <p>You go for complex design, only when simple design does not solve your problem.</p>
+  <p>“Depend Upon Abstractions (interfaces), not Implementations (concrete classes)”</p>
 </blockquote>
 
-<h3 id="the-four-principles-of-simple-design">The Four Principles Of Simple Design</h3>
+<p>What does this statement mean? Let’s try understanding that with an example:</p>
 
-<p>A software application is said to have a simple design if it:</p>
+<p>Let’s look at an example of what this means:</p>
 
-<ul>
-  <li><strong>Runs all tests</strong></li>
-  <li><strong>Contains no duplication</strong></li>
-  <li><strong>Expresses intent of programmers</strong></li>
-  <li><strong>Minimizes number of classes and methods</strong></li>
-</ul>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+abstract class OutputDevice {
+	void copy(String device) {
+		Keyboard keyboard = new Keyboard();
+		int character;
+		while ((character = keyboard.read()) != -1) {
+			if (device.equals("Printer")) {
+				writeToPrinter(character);
+			} else {
+				writeToDevice(character);
+			}
+		}
+	}
 
-<p>Let’s now look at these aspects a little closely, by turn.</p>
+	private void writeToDevice(int character) {
+		// TODO Auto-generated method stub
+		
+	}
 
-<h4 id="runs-all-tests">Runs All Tests</h4>
+	private void writeToPrinter(int c) {
+		// TODO Auto-generated method stub
+		
+	}
+}
 
-<p>We want to keep running all the tests continuously, because we want the code to work, at all times.</p>
 
-<p>An important corollary of this principle is you need to have a large number of automation tests. All unit, integration and API tests must be automated.</p>
+</code></pre></div></div>
 
-<p>You should launch these tests as part of your build, and they should also be a part of Continuous Integration (CI).</p>
+<p>What does the <code class="highlighter-rouge">copy()</code> method do?</p>
 
-<p>With CI, you commit code into the repository, all the tests are run, and immediate feedback is there for you to act on.</p>
+<p>It reads a character from the keyboard, and then decides where this character needs to go. If it’s a printer, write to the printer. Else, send it to the disk.</p>
 
-<p>Since the software is being tested all the time, it is stable.</p>
+<p>The problem here is that as the number of <code class="highlighter-rouge">OutputDevice</code> types increase, the logic of <code class="highlighter-rouge">copy()</code> needs to change every single time.</p>
 
-<h4 id="contains-no-duplication">Contains No Duplication</h4>
+<p>Let’s look at an alternate implementation:</p>
 
-<p>The second principle stresses on the fact that your code should have as little duplication as possible.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	public interface Reader {
+		public char read();
+	}
 
-<p>A good example is to create common components, whereever possible, in the design of large applications. This helps centralize the logic and allow other applications to reuse them.</p>
+	public interface Writer {
+		public void write(char ch);
+	}
 
-<p>Why do we hate duplication?</p>
+	void copy(Reader r, Writer w) {
+		int c;
 
-<p>If there is a need for a change, the same change needs to repeated at all these locations. The result : More effort and also possibilities of more defects when you miss making the change in every location. That is a sign of bad design.</p>
+		while((c = r.read()) != EOF) {
+			w.write(c);
+		}
+	}
 
-<h4 id="expresses-intent-of-programmers">Expresses Intent Of Programmers</h4>
+</code></pre></div></div>
 
-<p>Your code should be easy to read, and your design, simple to understand. This principle is also called <strong>Clarity Of Code</strong>.</p>
+<p>What we have done here is define two separate interfaces, one to provide the <code class="highlighter-rouge">read()</code>, and the other to define the <code class="highlighter-rouge">write()</code> methods.</p>
 
-<p>Have a look at the following piece of code:</p>
+<p>The responsibility of the <code class="highlighter-rouge">copy()</code> method is quite clear here: it reads from the <code class="highlighter-rouge">Reader</code> <code class="highlighter-rouge">interface</code>, and writes whatever it gets to the <code class="highlighter-rouge">Writer</code> <code class="highlighter-rouge">interface</code>.</p>
 
-<h5 id="example-01-v1">Example-01 v1</h5>
+<p><code class="highlighter-rouge">copy()</code> now focuses only on the actual operation, and it does so by identifying everything else as its dependencies.</p>
 
-<p><img src="/img/sw_design/1/Capture-09-01.png" alt="image info" /></p>
+<p>It can now work with any implementation of <code class="highlighter-rouge">Reader</code> and <code class="highlighter-rouge">Writer</code> interfaces.</p>
 
-<p>Do you understand what it does?</p>
+<h3 id="dip-and-the-spring-framework">DIP and The Spring Framework</h3>
 
-<p>Now look at the following version of the same program:</p>
+<p>DIP is one of the core principles that the Spring Framework enables. Have a look at this example:</p>
 
-<h5 id="example-01-v2">Example-01 v2</h5>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BinarySearchImpl</span> <span class="o">{</span>
+		<span class="kd">public</span> <span class="kt">int</span> <span class="nf">binarySearch</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">numbers</span><span class="o">,</span> <span class="kt">int</span> <span class="n">numberToSearchFor</span><span class="o">)</span> <span class="o">{</span>
+			<span class="nc">BubbleSortAlgorithm</span> <span class="n">bubbleSortAlgorthm</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BubbleSortAlgorithm</span><span class="o">();</span>
+			<span class="kt">int</span><span class="o">[]</span> <span class="n">sortedNumbers</span> <span class="o">=</span> <span class="n">bubbleSortAlgorithm</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">numbers</span><span class="o">);</span>
 
-<p><img src="/img/sw_design/1/Capture-09-02.png" alt="image info" /></p>
+			<span class="c1">//...</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
 
-<p>Do you understand what it’s trying to do?</p>
+</code></pre></div></div>
 
-<p>Actually, Example-01 v2 results from applying the Four Principles of Simple Design to Example-01 v1.</p>
+<p><code class="highlighter-rouge">BinarySearchImpl</code> directly creates an instance of the <code class="highlighter-rouge">BubbleSortAlgorithm</code>. Note that <code class="highlighter-rouge">BubbleSortAlgorithm</code> is a dependency of <code class="highlighter-rouge">BinarySearchImpl</code>, and as we saw in our previous example, directly accessing it is not a great idea. If you want to switch from a bubble-sort to a quicksort algorithm later, you need to change quite a lot of code inside <code class="highlighter-rouge">BinarySearchImpl</code>.</p>
 
-<p>Start with creating good names for variables, methods and classes. That improves clarity.</p>
+<p>Better Approach for <code class="highlighter-rouge">BinarySearchImpl</code> is to make use of an interface - sort algorithm. Here is how our modified code would look like:</p>
 
-<h4 id="minimize-number-of-classes-and-methods">Minimize number of classes and methods</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	<span class="kd">public</span> <span class="n">intrface</span> <span class="nc">SortAlgorithm</span> <span class="o">{</span>
+		<span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">sort</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">numbers</span><span class="o">);</span>
+	<span class="o">}</span>
 
-<p>You should have</p>
+	<span class="nd">@Component</span>
+	<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BinarySearchImpl</span> <span class="o">{</span>
+		<span class="nd">@Autowired</span>
+		<span class="kd">private</span> <span class="nc">SortAlgorithm</span> <span class="n">sortAlgorithm</span><span class="o">;</span>
 
-<ul>
-  <li>Small methods</li>
-  <li>Small classes</li>
-  <li>Minimum number classes and methods</li>
-</ul>
+		<span class="kd">public</span> <span class="nf">BinarySearchImpl</span><span class="o">(</span><span class="nc">SortAlgorithm</span> <span class="n">sortAlgorithm</span><span class="o">)</span> <span class="o">{</span>
+			<span class="kd">super</span><span class="o">();</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">sortAlgorithm</span> <span class="o">=</span> <span class="n">sortAlgorithm</span><span class="o">;</span>
+		<span class="o">}</span>
 
-<p>Isn’t it simple.</p>
+		<span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">binarySearch</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">numbers</span><span class="o">,</span> <span class="kt">int</span> <span class="n">numberToSearchFor</span><span class="o">)</span> <span class="o">{</span>
+			<span class="kt">int</span><span class="o">[]</span> <span class="n">sortedNumbers</span> <span class="o">=</span> <span class="n">sortAlgorithm</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">numbers</span><span class="o">);</span>
+			<span class="c1">//...</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
 
-<p>Lesser code you have, lesser code you have to maintain.</p>
+</code></pre></div></div>
 
-<p>Always aim to keep things simple.</p>
+<p>User of the <code class="highlighter-rouge">BinarySearchImpl</code> class, can also pass in a specific implementation of <code class="highlighter-rouge">SortAlgorithm</code>, such as a bubble-sort or a quick-sort implementation.</p>
+
+<blockquote>
+  <p><code class="highlighter-rouge">BinarySearchImpl</code> is <strong>decoupled</strong> from which <code class="highlighter-rouge">SortAlgorithm</code> to use.</p>
+</blockquote>
+
+<blockquote>
+  <p>If you use the Spring framework, you could use the <code class="highlighter-rouge">@Autowired</code> annotation with the <code class="highlighter-rouge">BinarySearchImpl</code> class, to automatically auto wire an implementation of an available sort algorithm.</p>
+</blockquote>
+
+<blockquote>
+  <p>By applying the DIP, you make your code more testable. The test code could pass in dependency mocks to properly test the code.</p>
+</blockquote>
 
 <h3 id="summary">Summary</h3>
 
-<p>In this article, we looked at the four principles of simple design. These are the first steps to ensure that the design of your application remains simple. It lays the foundation for applying more advanced principles to improving your design.</p>
+<p>Dependency Inversion is about identifying dependencies and externalizing them. You can use a framework like Spring to simplify Dependency Inversion. DIP makes your code more maintainable, reusable and testable.</p>
 
 <hr />
+
 <h3 id="software-design-principles">Software Design Principles</h3>
 
 <p>This is the first article in a series of articles on important Software Design Principles:</p>
@@ -230,13 +283,13 @@
    
     <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-6">
-            <a target="_blank" href="https://girishgodage.github.io/blog/SwDesignLesson1" class="btn  btn-sm" id="round-button">
+            <a target="_blank" href="https://girishgodage.github.io/blog/SwDesignLesson5" class="btn  btn-sm" id="round-button">
                 <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
             </a>
         </div>
      
         <div class="col-lg-4 col-md-6 col-sm-6">
-            <a target="_blank" href="https://girishgodage.github.io/blog/SwDesignLesson2" class="btn btn-sm" id="round-button">Next Lesson
+            <a target="_blank" href="https://girishgodage.github.io/blog/SwDesignLesson6" class="btn btn-sm" id="round-button">Next Lesson
                 <i class="fas fa-arrow-right ml-2"></i>
             </a>
         </div>       

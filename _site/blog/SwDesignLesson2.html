@@ -105,7 +105,7 @@
             class="container">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <p class="post-title">
-                    <h1><a href="/blog/SwDesignLesson1">1. Introduction to Four Principles Of Simple Design</a></h1>
+                    <h1><a href="/blog/SwDesignLesson2">2. Software Design - Separation Of Concerns</a></h1>
                 </p>
                 
                 <span class="post-date"><span style="font-weight:600">October 14, 2019 Monday</span> by
@@ -116,101 +116,84 @@
                 </div>
                 
                 <hr>
-                <div><img class="post-image" src="https://girishgodage.github.io/img/sw_design.png" alt="1. Introduction to Four Principles Of Simple Design" height="250" /></div>
+                <div><img class="post-image" src="https://girishgodage.github.io/img/sw_design.png" alt="2. Software Design - Separation Of Concerns" height="250" /></div>
                 <div class="post-content">
                     <br>
-                    <h3 id="what-is-simple-design">What is Simple Design?</h3>
+                    <p><strong>Software architects and programmers love having Seperation of Concerns. What is it? Why is it important? Let’s get started.</strong></p>
 
-<p>** With agile and extreme programming, the focus is on keeping your design simple. How do you       keep your design simple? How do you decide whether your code is good enough? **</p>
+<h3 id="you-will-learn">You will learn</h3>
 
-<p>It is very important to keep the design of your application simple.</p>
+<ul>
+  <li>What is Separation Of Concerns?</li>
+  <li>What are common examples of implementing Separation Of Concerns in software?</li>
+</ul>
 
-<p>In almost all agile projects, the aim is to meet today’s requirements, with clean code.</p>
+<h3 id="what-is-separation-of-concerns">What Is Separation Of Concerns?</h3>
+
+<p>Separation Of Concerns is an important design and architectural principle.</p>
 
 <blockquote>
-  <p>You go for complex design, only when simple design does not solve your problem.</p>
+  <p>Every element of a software application - a component, a layer,a package,a class or a method should have one concern and implement it well.</p>
 </blockquote>
 
-<h3 id="the-four-principles-of-simple-design">The Four Principles Of Simple Design</h3>
+<p>All methods with similar concerns will grouped into a class.</p>
 
-<p>A software application is said to have a simple design if it:</p>
+<p>All classes with similar concerns will be grouped into packages.</p>
 
+<p>So on and so forth.</p>
+
+<h3 id="separation-of-concerns-in-action">Separation Of Concerns In Action</h3>
+
+<h4 id="layered-architecture">Layered Architecture</h4>
+
+<p>Organizing an application into separate layers is one way of separating out concerns.</p>
+
+<p>For example, the following is the typical architecture of a web application:</p>
+
+<p><img src="/img/sw_design/2/Capture-039-02.png" alt="image info" /></p>
+
+<p>Here are some of the important responsibilities of each of these layers</p>
 <ul>
-  <li><strong>Runs all tests</strong></li>
-  <li><strong>Contains no duplication</strong></li>
-  <li><strong>Expresses intent of programmers</strong></li>
-  <li><strong>Minimizes number of classes and methods</strong></li>
+  <li>The Web layer only bothers about how to present data to its users</li>
+  <li>The Business layer focuses on implementing the core application logic, correctly and efficiently</li>
+  <li>The Data layer takes responsibility of talking to the data store.</li>
 </ul>
 
-<p>Let’s now look at these aspects a little closely, by turn.</p>
+<p>You can see that each layer has a concern and implements it well.</p>
 
-<h4 id="runs-all-tests">Runs All Tests</h4>
+<h4 id="organizing-microservices">Organizing Microservices</h4>
 
-<p>We want to keep running all the tests continuously, because we want the code to work, at all times.</p>
+<p>Another good example of Separation Of Concerns is how you split your microservices. Have a look at the diagram below:</p>
 
-<p>An important corollary of this principle is you need to have a large number of automation tests. All unit, integration and API tests must be automated.</p>
+<p><img src="/img/sw_design/2/Capture-039-03.png" alt="image info" /></p>
 
-<p>You should launch these tests as part of your build, and they should also be a part of Continuous Integration (CI).</p>
+<p>All the microservices shown are part of a movie application. But each one of them has its own independent concern.</p>
 
-<p>With CI, you commit code into the repository, all the tests are run, and immediate feedback is there for you to act on.</p>
+<h4 id="identifying-common-components">Identifying Common Components</h4>
 
-<p>Since the software is being tested all the time, it is stable.</p>
+<p>Seperation of concerns is also an important factor in building common application and infrastructure components.</p>
 
-<h4 id="contains-no-duplication">Contains No Duplication</h4>
+<p>Since a large part of the functionality of microservices is common to all of them, it makes sense to extract out the common components. Here is an example:</p>
 
-<p>The second principle stresses on the fact that your code should have as little duplication as possible.</p>
+<p><img src="/img/sw_design/2/Capture-039-04.png" alt="image info" /></p>
 
-<p>A good example is to create common components, whereever possible, in the design of large applications. This helps centralize the logic and allow other applications to reuse them.</p>
+<p>All microservices need features such as security and logging. By identifying common components in your service such as Security and Logging, and providing well defined interfaces with each microservice, the implementation of the microservices gets simpler.</p>
 
-<p>Why do we hate duplication?</p>
+<p>The same is the case with common infrastructure components. Any microservice can interact with them and use their functionality.</p>
 
-<p>If there is a need for a change, the same change needs to repeated at all these locations. The result : More effort and also possibilities of more defects when you miss making the change in every location. That is a sign of bad design.</p>
-
-<h4 id="expresses-intent-of-programmers">Expresses Intent Of Programmers</h4>
-
-<p>Your code should be easy to read, and your design, simple to understand. This principle is also called <strong>Clarity Of Code</strong>.</p>
-
-<p>Have a look at the following piece of code:</p>
-
-<h5 id="example-01-v1">Example-01 v1</h5>
-
-<p><img src="/img/sw_design/1/Capture-09-01.png" alt="image info" /></p>
-
-<p>Do you understand what it does?</p>
-
-<p>Now look at the following version of the same program:</p>
-
-<h5 id="example-01-v2">Example-01 v2</h5>
-
-<p><img src="/img/sw_design/1/Capture-09-02.png" alt="image info" /></p>
-
-<p>Do you understand what it’s trying to do?</p>
-
-<p>Actually, Example-01 v2 results from applying the Four Principles of Simple Design to Example-01 v1.</p>
-
-<p>Start with creating good names for variables, methods and classes. That improves clarity.</p>
-
-<h4 id="minimize-number-of-classes-and-methods">Minimize number of classes and methods</h4>
-
-<p>You should have</p>
-
+<p>A few examples of Seperation of Concern in infrastructure components</p>
 <ul>
-  <li>Small methods</li>
-  <li>Small classes</li>
-  <li>Minimum number classes and methods</li>
+  <li>Naming Server - Microservice3 can locate the identity of Microservice2.</li>
+  <li>API Gateway - Centralized access to all microservices. You can implement cross cutting microservice concerns here.</li>
+  <li>Distributed Tracing and Centralized Logging - You can trace microservices and find out what’s happending behind the scenes.</li>
 </ul>
-
-<p>Isn’t it simple.</p>
-
-<p>Lesser code you have, lesser code you have to maintain.</p>
-
-<p>Always aim to keep things simple.</p>
 
 <h3 id="summary">Summary</h3>
 
-<p>In this article, we looked at the four principles of simple design. These are the first steps to ensure that the design of your application remains simple. It lays the foundation for applying more advanced principles to improving your design.</p>
+<p>In this article, we looked at separation of concerns, and several examples of it in action - such as in a layered architecture, in the way microservices are split and organized, and in the way common components and infrastructure are identified and extracted out in a microservices architecture.</p>
 
 <hr />
+
 <h3 id="software-design-principles">Software Design Principles</h3>
 
 <p>This is the first article in a series of articles on important Software Design Principles:</p>
@@ -236,7 +219,7 @@
         </div>
      
         <div class="col-lg-4 col-md-6 col-sm-6">
-            <a target="_blank" href="https://girishgodage.github.io/blog/SwDesignLesson2" class="btn btn-sm" id="round-button">Next Lesson
+            <a target="_blank" href="https://girishgodage.github.io/blog/SwDesignLesson3" class="btn btn-sm" id="round-button">Next Lesson
                 <i class="fas fa-arrow-right ml-2"></i>
             </a>
         </div>       
