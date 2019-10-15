@@ -1,6 +1,6 @@
 ---
 title: 1. Introduction to Four Principles Of Simple Design
-date: 2019-10-14 10:41:00
+date: 2019-10-14 10:41:00 Z
 categories:
 - SoftwareDesign
 tags:
