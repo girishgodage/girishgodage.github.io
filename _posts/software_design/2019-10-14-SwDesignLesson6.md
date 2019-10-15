@@ -1,6 +1,6 @@
 ---
 title: 6. Software Design - What is Dependency Inversion Principle?
-date: 2019-10-14 11:05:00
+date: 2019-10-14 11:05:00 Z
 categories:
 - SoftwareDesign
 tags:

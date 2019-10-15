@@ -1,6 +1,6 @@
 ---
 title: 4. Software Design - Single Responsibility Principle
-date: 2019-10-14 10:55:00
+date: 2019-10-14 10:55:00 Z
 categories:
 - SoftwareDesign
 tags:

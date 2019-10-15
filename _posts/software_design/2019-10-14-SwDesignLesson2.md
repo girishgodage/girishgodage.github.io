@@ -1,6 +1,6 @@
 ---
 title: 2. Software Design - Separation Of Concerns
-date: 2019-10-14 10:45:00
+date: 2019-10-14 10:45:00 Z
 categories:
 - SoftwareDesign
 tags:

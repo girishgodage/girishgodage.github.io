@@ -1,6 +1,6 @@
 ---
 title: 5. Software Design - Open Closed Principle Principle
-date: 2019-10-14 11:00:00
+date: 2019-10-14 11:00:00 Z
 categories:
 - SoftwareDesign
 tags:
