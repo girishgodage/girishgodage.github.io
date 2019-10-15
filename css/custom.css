@@ -3,7 +3,8 @@ body,
 p,
 tr,
 td {
-    color: #ffffff
+    color: #ffffff;
+    line-height: 1.5;    
 }
 
 [data-animate] {
@@ -1338,9 +1339,18 @@ a:hover {
     color: #40b3c7;
 }
 
+p, dl{
+    color: white;
+    font-size: 1rem; 
+    margin-top: 0; 
+    margin-bottom: .5rem;
+    padding-top: 0.25rem;
+    padding-bottom: .5rem;    
+}
 ul,ol{
     color: white;
-    
+    font-size: 1rem; 
+    padding-left: 2rem;
 }
 
 .h1,
@@ -1439,7 +1449,15 @@ mark {
     background-color: #fcf8e3
 }
 
-.blockquote {
+
+blockquote p {
+    padding: .5rem 1rem;
+    margin-bottom: 2rem;
+    font-size: 1.35rem;
+    font-style: italic;    
+}
+
+blockquote,.blockquote {
     padding: .5rem 1rem;
     margin-bottom: 2rem;
     font-size: 1.25rem;

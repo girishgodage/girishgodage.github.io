@@ -105,230 +105,147 @@
             class="container">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <p class="post-title">
-                    <h1><a href="/blog/Pythonlesson18">18. Calendar in Python</a></h1>
+                    <h1><a href="/blog/SwDesignLesson1">1. Introduction to Four Principles Of Simple Design</a></h1>
                 </p>
                 
-                <span class="post-date"><span style="font-weight:600">September 30, 2019 Monday</span> by
+                <span class="post-date"><span style="font-weight:600">October 14, 2019 Monday</span> by
                     <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">Girish Godage</a>
                 </span>
                 <div class="site-category"> 
-                        <h5>PythonTutorial</h5>
+                        <h5>SoftwareDesign</h5>
                 </div>
                 
                 <hr>
-                <div><img class="post-image" src="https://girishgodage.github.io/img/Python_logo.png" alt="18. Calendar in Python" height="250" /></div>
+                <div><img class="post-image" src="https://girishgodage.github.io/img/logo.jpg" alt="1. Introduction to Four Principles Of Simple Design" height="250" /></div>
                 <div class="post-content">
                     <br>
-                    <section class="Ptutorial18">
-    <div class="item-page" itemscope="" itemtype="https://schema.org/Article">
-        <meta itemprop="inLanguage" content="en-GB">
-        <div class="page-header">
-            <h2 itemprop="headline"> Python CALENDAR Tutorial with Example </h2>
-        </div>
+                    <h3 id="with-agile-and-extreme-programming-the-focus-is-on-keeping-your-design-simple-how-do-you-------keep-your-design-simple-how-do-you-decide-whether-your-code-is-good-enough">With agile and extreme programming, the focus is on keeping your design simple. How do you       keep your design simple? How do you decide whether your code is good enough?</h3>
 
-        <div itemprop="articleBody">
+<h3 id="what-is-simple-design">What is Simple Design?</h3>
 
-            <p>Calendar module in Python has the calendar class that allows the calculations for various task based on
-                date, month, and year. On top of it, the TextCalendar and HTMLCalendar class in Python allows you to
-                edit the calendar and use as per your requirement. </p>
-            <p>Let see what we can do with Python Calendar. </p>
-            <p><strong>Step1)</strong> Run the code. </p>
-            <p style="text-align: center; "><a href="http://localhost:4000/img/python/tutorial/18/Python16.1.png"
-                    class="jh-image-popup-colorbox cboxElement"><img title="Calendar in Python"
-                        alt="Python CALENDAR Tutorial with Example" src="http://localhost:4000/img/python/tutorial/18/Python16.1.png"></a> </p>
-            <ul>
-                <li>Code Line # 1: We begin with "import calendar" which will import all the classes of this module.
-                </li>
-                <li>Code Line # 3: c= calendar.TextCalendar(calendar.SUNDAY) tells the interpreter to create a text
-                    calendar. Start of the month will be Sunday. In Python, you can format the calendar as you can
-                    change the day of the month to begin with</li>
-                <li>Code Line # 4: str= c.formatmonth(2025,1) We are creating calendar for the year 2025, Month 1 –
-                    January</li>
-                <li>Code Line # 5: print str will print the output.</li>
-            </ul>
-            <p>Let's quickly change the value from Sunday to Thursday and check the output </p>
-            <p style="text-align: center; "><a href="http://localhost:4000/img/python/tutorial/18/Python16.2.png"
-                    class="jh-image-popup-colorbox cboxElement"><img title="Calendar in Python"
-                        alt="Python CALENDAR Tutorial with Example" src="http://localhost:4000/img/python/tutorial/18/Python16.2.png"></a> </p>
-            <p><strong>Step 2)</strong> You can also print out the Calendar in HTML format, this feature is helpful for
-                developer if they want to make any changes in the look and feel of calendar </p>
-            <p style="text-align: center; "><a href="http://localhost:4000/img/python/tutorial/18/Python16.3.png"
-                    class="jh-image-popup-colorbox cboxElement"><img title="Calendar in Python"
-                        alt="Python CALENDAR Tutorial with Example" src="http://localhost:4000/img/python/tutorial/18/Python16.3.png"></a> </p>
-            <p><strong>Step 3)</strong> Loops over the days of a month by using c.itermonthday (2025,4), it will fetch
-                the total number of days for that month.</p>
+<p>It is very important to keep the design of your application simple.</p>
 
-            <p style="text-align: center; "><a href="http://localhost:4000/img/python/tutorial/18/Python16.4.png"
-                    class="jh-image-popup-colorbox cboxElement"><img title="Calendar in Python"
-                        alt="Python CALENDAR Tutorial with Example" src="http://localhost:4000/img/python/tutorial/18/Python16.4.png"></a> </p>
-            <ul>
-                <li>When you execute the code to get the total number of days for a specific month say "April" then you
-                    will get 30 days in the output but you will also see some zeros along with these days at the
-                    beginning and sometimes at the end of it. </li>
-                <li>Zeros in the output mean that the day of the week is in an overlapping month, which means it does
-                    not belong to that month.</li>
-                <li>These zeros appears in output because, in your code you have mentioned day (Thursday), so when you
-                    call function "c.itermonthdays", it will start counting days from Thursday and your Thursday may not
-                    start with date 1<sup>st</sup> of April it might be 28<sup>th </sup>or 29<sup>th</sup> of March, so
-                    when you execute the code it will start counting days from 28<sup>th</sup> of march and any days
-                    after that till 1<sup>st</sup> of April. These days will be counted as zero and in the output you
-                    will see these zeroes and same is applicable to the end of the month.</li>
-                <li>So except date 1-30 all the dates from previous as well as post month will appear in the output as
-                    zeroes. </li>
-            </ul>
-            <p><strong>Step 4)</strong> You can fetch the data from the local system, like months or weekdays, etc </p>
-            <p style="text-align: center; "><a href="http://localhost:4000/img/python/tutorial/18/Python16.5.png"
-                    class="jh-image-popup-colorbox cboxElement"><img title="Calendar in Python"
-                        alt="Python CALENDAR Tutorial with Example" src="http://localhost:4000/img/python/tutorial/18/Python16.5.png"></a> </p>
-            <ul>
-                <li>The output over here shows that we have printed out the months name from the local system. Likewise,
-                    you can also fetch the weekdays name as shown below</li>
-                <li>
-                    <div>The output will depend on the local system, suppose if your local system is some other
-                        countries then it will give the output as per the local settings of that country. Here we have
-                        months so it won't be a difference but if it is a week or day, it will certainly differ.</div>
-                    <p> </p>
-                </li>
-            </ul>
-            <p style="text-align: center; "><a href="http://localhost:4000/img/python/tutorial/18/Python16.6.png"
-                    class="jh-image-popup-colorbox cboxElement"><img title="Calendar in Python"
-                        alt="Python CALENDAR Tutorial with Example" src="http://localhost:4000/img/python/tutorial/18/Python16.6.png"></a> </p>
-            <p><strong>Step 5)</strong> You can fetch the list of the specific day for a whole year. For example, there
-                is an audit day on every first Monday of a week. You want to know the date of first Monday for each
-                month. You can use this code</p>
+<p>In almost all agile projects, the aim is to meet today’s requirements, with clean code.</p>
 
-            <p style="text-align: center; "><a href="http://localhost:4000/img/python/tutorial/18/Python16.7.png"
-                    class="jh-image-popup-colorbox cboxElement"><img title="Calendar in Python"
-                        alt="Python CALENDAR Tutorial with Example" src="http://localhost:4000/img/python/tutorial/18/Python16.7.png"></a> </p>
-            <ul>
-                <li>mycal = calendar.monthcalendar(2025, month) will create calendar for the month</li>
-                <li>Set variables week1 and week2 to the First and second week of the calendar</li>
-                <li>Check if Week 1 contains Monday, set audit day</li>
-                <li>Else set audit day as the first Monday in week 2</li>
-                <li>The output shows the date for the first Monday that falls in that month. </li>
-                <li>The length of this Cal object is going to be a certain length, based on how many weeks there in the
-                    month. In our case, it's going to be one or two as such first Monday of the week will be in the
-                    first week most often but if not then consider the second week. Let see in detail why we also
-                    consider the second week.</li>
-                <li>Here we are using the calendar's constant Monday, the calendar object gives you constants that
-                    represent Sunday, Monday, Tuesday, so on, so forth. We've seen these previously. So, if in week one
-                    the day represented by the Monday constant is not equal to 0, remember zeros means days that belong
-                    to another month. So, in this case, if it's zero, it's going to be a Monday that belongs to the
-                    previous month. But if the first Monday is not equal to 0, that means that my audit day will be
-                    within the week one. Otherwise, if that is 0, then the first Monday isn't in the first week of the
-                    month, it's gotta be in the second. </li>
-                <li>So, then I say okay, set my audit day variable to be the Monday represented by Week two. So, audit
-                    day is going to come back with whatever the day is for either the first or second week. </li>
-            </ul>
-            <p>Here is the complete code </p>
-            <p><b>Python 2 Example</b> </p>
-            <pre class="code-toolbar"><code>
-     import calendar
-     # Create a plain text calendar
-     c = calendar.TextCalendar(calendar.THURSDAY)
-     str = c.formatmonth(2025, 1, 0, 0)
-     print str
-     
-     # Create an HTML formatted calendar
-     hc = calendar.HTMLCalendar(calendar.THURSDAY)
-     str = hc.formatmonth(2025, 1)
-     print str
-     # loop over the days of a month
-     # zeroes indicate that the day of the week is in a next month or overlapping month
-     for i in c.itermonthdays(2025, 4):
-         print i
-     
-         # The calendar can give info based on local such a names of days and months (full and abbreviated forms)
-         for name in calendar.month_name:
-             print name
-         for day in calendar.day_name:
-             print day
-         # calculate days based on a rule: For instance an audit day on the second Monday of every month
-         # Figure out what days that would be for each month, we can use the script as shown here
-         for month in range(1, 13):
-             # It retrieves a list of weeks that represent the month
-             mycal = calendar.monthcalendar(2025, month)
-             # The first MONDAY has to be within the first two weeks
-             week1 = mycal[1]
-             week2 = mycal[2]
-             if week1[calendar.MONDAY] != 0:
-                 auditday = week1[calendar.MONDAY]
-             else:
-             # if the first MONDAY isn't in the first week, it must be in the second week
-             auditday = week2[calendar.MONDAY]
-         print "%10s %2d" % (calendar.month_name[month], auditday)
-            </code></pre>
-            <p><b>Python 3 Example</b> </p>
-            <pre class="code-toolbar"><code>
-     import calendar
-     # Create a plain text calendar
-     c = calendar.TextCalendar(calendar.THURSDAY)
-     str = c.formatmonth(2025, 1, 0, 0)
-     print(str)
-     
-     # Create an HTML formatted calendar
-     hc = calendar.HTMLCalendar(calendar.THURSDAY)
-     str = hc.formatmonth(2025, 1)
-     print(str)
-     # loop over the days of a month
-     # zeroes indicate that the day of the week is in a next month or overlapping month
-     for i in c.itermonthdays(2025, 4):
-         print(i)
-     
-         # The calendar can give info based on local such a names of days and months (full and abbreviated forms)
-         for name in calendar.month_name:
-             print(name)
-         for day in calendar.day_name:
-             print(day)
-         # calculate days based on a rule: For instance an audit day on the second Monday of every month
-         # Figure out what days that would be for each month, we can use the script as shown here
-         for month in range(1, 13):
-             # It retrieves a list of weeks that represent the month
-             mycal = calendar.monthcalendar(2025, month)
-             # The first MONDAY has to be within the first two weeks
-             week1 = mycal[1]
-             week2 = mycal[2]
-             if week1[calendar.MONDAY] != 0:
-                 auditday = week1[calendar.MONDAY]
-             else:
-             # if the first MONDAY isn't in the first week, it must be in the second week
-             auditday = week2[calendar.MONDAY]
-         print("%10s %2d" % (calendar.month_name[month], auditday))
-             </code></pre>
-            <p><strong>Summary:</strong> </p>
-            <ul>
-                <li>In Python, you can format the calendar the way you want as you can change the day of the month to
-                    begin</li>
-                <li>Print out the Calendar in HTML format</li>
-                <li>Fetch the data from the local system, like months or weekdays</li>
-                <li>Fetch the list of the specific day for a whole year</li>
-            </ul>
+<blockquote>
+  <p>You go for complex design, only when simple design does not solve your problem.</p>
+</blockquote>
 
-        </div>
+<h3 id="the-four-principles-of-simple-design">The Four Principles Of Simple Design</h3>
 
-    </div>
-</section>
+<p>A software application is said to have a simple design if it:</p>
+
+<ul>
+  <li><strong>Runs all tests</strong></li>
+  <li><strong>Contains no duplication</strong></li>
+  <li><strong>Expresses intent of programmers</strong></li>
+  <li><strong>Minimizes number of classes and methods</strong></li>
+</ul>
+
+<p>Let’s now look at these aspects a little closely, by turn.</p>
+
+<h4 id="runs-all-tests">Runs All Tests</h4>
+
+<p>We want to keep running all the tests continuously, because we want the code to work, at all times.</p>
+
+<p>An important corollary of this principle is you need to have a large number of automation tests. All unit, integration and API tests must be automated.</p>
+
+<p>You should launch these tests as part of your build, and they should also be a part of Continuous Integration (CI).</p>
+
+<p>With CI, you commit code into the repository, all the tests are run, and immediate feedback is there for you to act on.</p>
+
+<p>Since the software is being tested all the time, it is stable.</p>
+
+<h4 id="contains-no-duplication">Contains No Duplication</h4>
+
+<p>The second principle stresses on the fact that your code should have as little duplication as possible.</p>
+
+<p>A good example is to create common components, whereever possible, in the design of large applications. This helps centralize the logic and allow other applications to reuse them.</p>
+
+<p>Why do we hate duplication?</p>
+
+<p>If there is a need for a change, the same change needs to repeated at all these locations. The result : More effort and also possibilities of more defects when you miss making the change in every location. That is a sign of bad design.</p>
+
+<h4 id="expresses-intent-of-programmers">Expresses Intent Of Programmers</h4>
+
+<p>Your code should be easy to read, and your design, simple to understand. This principle is also called <strong>Clarity Of Code</strong>.</p>
+
+<p>Have a look at the following piece of code:</p>
+
+<h5 id="example-01-v1">Example-01 v1</h5>
+
+<p><img src="/img/sw_design/1/Capture-09-01.png" alt="image info" /></p>
+
+<p>Do you understand what it does?</p>
+
+<p>Now look at the following version of the same program:</p>
+
+<h5 id="example-01-v2">Example-01 v2</h5>
+
+<p><img src="/img/sw_design/1/Capture-09-02.png" alt="image info" /></p>
+
+<p>Do you understand what it’s trying to do?</p>
+
+<p>Actually, Example-01 v2 results from applying the Four Principles of Simple Design to Example-01 v1.</p>
+
+<p>Start with creating good names for variables, methods and classes. That improves clarity.</p>
+
+<h4 id="minimize-number-of-classes-and-methods">Minimize number of classes and methods</h4>
+
+<p>You should have</p>
+
+<ul>
+  <li>Small methods</li>
+  <li>Small classes</li>
+  <li>Minimum number classes and methods</li>
+</ul>
+
+<p>Isn’t it simple.</p>
+
+<p>Lesser code you have, lesser code you have to maintain.</p>
+
+<p>Always aim to keep things simple.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>In this article, we looked at the four principles of simple design. These are the first steps to ensure that the design of your application remains simple. It lays the foundation for applying more advanced principles to improving your design.</p>
+
+<hr />
+
+<h3 id="software-design-principles">Software Design Principles</h3>
+
+<p>This is the first article in a series of articles on important Software Design Principles:</p>
+
+<ul>
+  <li><a href="/SwDesignLesson1" target="_blank">1 - Introduction to Four Principles Of Simple Design</a></li>
+  <li><a href="/SwDesignLesson2" target="_blank">2 - Software Design - Separation Of Concerns - with examples</a></li>
+  <li><a href="/SwDesignLesson3" target="_blank">3 - Object Oriented Software Design - Solid Principles - with examples</a></li>
+  <li><a href="/SwDesignLesson4" target="_blank">4 - Software Design - Single Responsibility Principle - with examples</a></li>
+  <li><a href="/SwDesignLesson5" target="_blank">5 - Software Design - Open Closed Principle - with examples</a></li>
+  <li><a href="/SwDesignLesson6" target="_blank">6 - Software Design - What is Dependency Inversion Principle?</a></li>
+</ul>
+
 <!--Section: Lesson UI-->
 <section class="text-center">
-    <hr>
+    <hr />
    
-    <div class="row" >
+    <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-6">
-            <a target="_blank" href="https://girishgodage.github.io/blog/Pythonlesson17" class="btn  btn-sm" id="round-button" 
-                >
+            <a target="_blank" href="https://girishgodage.github.io/blog/SwDesignLesson1" class="btn  btn-sm" id="round-button">
                 <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
             </a>
         </div>
      
-        <div class="col-lg-4 col-md-6 col-sm-6" >
-            <a target="_blank" href="https://girishgodage.github.io/blog/Pythonlesson19" class="btn btn-sm" id="round-button"
-                 >Next Lesson
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="https://girishgodage.github.io/blog/SwDesignLesson2" class="btn btn-sm" id="round-button">Next Lesson
                 <i class="fas fa-arrow-right ml-2"></i>
             </a>
         </div>       
     </div>
 
 </section>
+
+
                 </div>
 
                 <div id="disqus_thread"></div>

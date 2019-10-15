@@ -1,4 +1,128 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-10-14T08:25:25+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">8.Typescript arrow functions</title><link href="http://localhost:4000/blog/Lesson8" rel="alternate" type="text/html" title="8.Typescript arrow functions" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson8</id><content type="html" xml:base="http://localhost:4000/blog/Lesson8">&lt;section class=&quot;tstutorial8&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-10-15T11:44:16+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">1. Introduction to Four Principles Of Simple Design</title><link href="http://localhost:4000/blog/SwDesignLesson1" rel="alternate" type="text/html" title="1. Introduction to Four Principles Of Simple Design" /><published>2019-10-14T10:41:00+00:00</published><updated>2019-10-14T10:41:00+00:00</updated><id>http://localhost:4000/blog/SwDesignLesson1</id><content type="html" xml:base="http://localhost:4000/blog/SwDesignLesson1">&lt;h3 id=&quot;with-agile-and-extreme-programming-the-focus-is-on-keeping-your-design-simple-how-do-you-------keep-your-design-simple-how-do-you-decide-whether-your-code-is-good-enough&quot;&gt;With agile and extreme programming, the focus is on keeping your design simple. How do you       keep your design simple? How do you decide whether your code is good enough?&lt;/h3&gt;
+
+&lt;h3 id=&quot;what-is-simple-design&quot;&gt;What is Simple Design?&lt;/h3&gt;
+
+&lt;p&gt;It is very important to keep the design of your application simple.&lt;/p&gt;
+
+&lt;p&gt;In almost all agile projects, the aim is to meet today’s requirements, with clean code.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;You go for complex design, only when simple design does not solve your problem.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;the-four-principles-of-simple-design&quot;&gt;The Four Principles Of Simple Design&lt;/h3&gt;
+
+&lt;p&gt;A software application is said to have a simple design if it:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Runs all tests&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Contains no duplication&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Expresses intent of programmers&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Minimizes number of classes and methods&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let’s now look at these aspects a little closely, by turn.&lt;/p&gt;
+
+&lt;h4 id=&quot;runs-all-tests&quot;&gt;Runs All Tests&lt;/h4&gt;
+
+&lt;p&gt;We want to keep running all the tests continuously, because we want the code to work, at all times.&lt;/p&gt;
+
+&lt;p&gt;An important corollary of this principle is you need to have a large number of automation tests. All unit, integration and API tests must be automated.&lt;/p&gt;
+
+&lt;p&gt;You should launch these tests as part of your build, and they should also be a part of Continuous Integration (CI).&lt;/p&gt;
+
+&lt;p&gt;With CI, you commit code into the repository, all the tests are run, and immediate feedback is there for you to act on.&lt;/p&gt;
+
+&lt;p&gt;Since the software is being tested all the time, it is stable.&lt;/p&gt;
+
+&lt;h4 id=&quot;contains-no-duplication&quot;&gt;Contains No Duplication&lt;/h4&gt;
+
+&lt;p&gt;The second principle stresses on the fact that your code should have as little duplication as possible.&lt;/p&gt;
+
+&lt;p&gt;A good example is to create common components, whereever possible, in the design of large applications. This helps centralize the logic and allow other applications to reuse them.&lt;/p&gt;
+
+&lt;p&gt;Why do we hate duplication?&lt;/p&gt;
+
+&lt;p&gt;If there is a need for a change, the same change needs to repeated at all these locations. The result : More effort and also possibilities of more defects when you miss making the change in every location. That is a sign of bad design.&lt;/p&gt;
+
+&lt;h4 id=&quot;expresses-intent-of-programmers&quot;&gt;Expresses Intent Of Programmers&lt;/h4&gt;
+
+&lt;p&gt;Your code should be easy to read, and your design, simple to understand. This principle is also called &lt;strong&gt;Clarity Of Code&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Have a look at the following piece of code:&lt;/p&gt;
+
+&lt;h5 id=&quot;example-01-v1&quot;&gt;Example-01 v1&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/sw_design/1/Capture-09-01.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Do you understand what it does?&lt;/p&gt;
+
+&lt;p&gt;Now look at the following version of the same program:&lt;/p&gt;
+
+&lt;h5 id=&quot;example-01-v2&quot;&gt;Example-01 v2&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/sw_design/1/Capture-09-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Do you understand what it’s trying to do?&lt;/p&gt;
+
+&lt;p&gt;Actually, Example-01 v2 results from applying the Four Principles of Simple Design to Example-01 v1.&lt;/p&gt;
+
+&lt;p&gt;Start with creating good names for variables, methods and classes. That improves clarity.&lt;/p&gt;
+
+&lt;h4 id=&quot;minimize-number-of-classes-and-methods&quot;&gt;Minimize number of classes and methods&lt;/h4&gt;
+
+&lt;p&gt;You should have&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Small methods&lt;/li&gt;
+  &lt;li&gt;Small classes&lt;/li&gt;
+  &lt;li&gt;Minimum number classes and methods&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Isn’t it simple.&lt;/p&gt;
+
+&lt;p&gt;Lesser code you have, lesser code you have to maintain.&lt;/p&gt;
+
+&lt;p&gt;Always aim to keep things simple.&lt;/p&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;In this article, we looked at the four principles of simple design. These are the first steps to ensure that the design of your application remains simple. It lays the foundation for applying more advanced principles to improving your design.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;software-design-principles&quot;&gt;Software Design Principles&lt;/h3&gt;
+
+&lt;p&gt;This is the first article in a series of articles on important Software Design Principles:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/SwDesignLesson1&quot; target=&quot;_blank&quot;&gt;1 - Introduction to Four Principles Of Simple Design&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/SwDesignLesson2&quot; target=&quot;_blank&quot;&gt;2 - Software Design - Separation Of Concerns - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/SwDesignLesson3&quot; target=&quot;_blank&quot;&gt;3 - Object Oriented Software Design - Solid Principles - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/SwDesignLesson4&quot; target=&quot;_blank&quot;&gt;4 - Software Design - Single Responsibility Principle - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/SwDesignLesson5&quot; target=&quot;_blank&quot;&gt;5 - Software Design - Open Closed Principle - with examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/SwDesignLesson6&quot; target=&quot;_blank&quot;&gt;6 - Software Design - What is Dependency Inversion Principle?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr /&gt;
+   
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/SwDesignLesson1&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/SwDesignLesson2&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;       
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">With agile and extreme programming, the focus is on keeping your design simple. How do you keep your design simple? How do you decide whether your code is good enough?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/logo.jpg" /></entry><entry><title type="html">8.Typescript arrow functions</title><link href="http://localhost:4000/blog/Lesson8" rel="alternate" type="text/html" title="8.Typescript arrow functions" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson8</id><content type="html" xml:base="http://localhost:4000/blog/Lesson8">&lt;section class=&quot;tstutorial8&quot;&gt;
     &lt;p&gt;Since you already know how to use &lt;code&gt;Named functions&lt;/code&gt; and &lt;code&gt;Anonymous functions&lt;/code&gt; let me show
         you another type of function which you will be dealing with while building Angular Applications&lt;/p&gt;
     &lt;p&gt;Let's have a look at the following sample:&lt;/p&gt;
@@ -681,15 +805,15 @@ console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
     &lt;/div&gt;
 
 &lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Type: any You could ask — what if I don't know what kind of value my variable will have? Let's flush our function code and type ine the following: let myVar; myVar = 1; //number myVar = true; //boolean myVar = 'mdb'; //string The TypeScript compiler doesn't complain. Why!? Hover over the myVar declaration, what do you see? TypeScript allows you to use a special type any. It allows you to use dynamic typing but importantly — it requires you to use it consciously. What is actually type of the variable myVar? Let's check it: myVar = 1; //number console.log(typeof(myVar)); myVar = true; //boolean console.log(typeof(myVar)); myVar = 'mdb'; //string console.log(typeof(myVar)); The output: Now let's add an explicit type, cast after the var declaration: let myVar: number; Immediately, the compiler will show two errors regarding the second, and third assignments Other types: We used already four different types of variables (number, string, boolean and any). Are there any others? Yes, there are. let a: number; //numeric type let b: string; //string let c: boolean; //true or false let d: any; //any (dynamic) let e: number[] = [1,2,3]; //array of numbers let f: string[] = ['a','b','c']; //array of strings let g: any[] = [true, 1, 'a']; //array of any As you can see, except for basic types which we already covered you can also create arrays of different types including the any type. There is also one more type of variable — enum but we will cover it in the future. Previous Lesson Next Lesson</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/typescipt_logo.png" /></entry><entry><title type="html">3.Static vs dynamic typing</title><link href="http://localhost:4000/blog/Lesson3" rel="alternate" type="text/html" title="3.Static vs dynamic typing" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson3</id><content type="html" xml:base="http://localhost:4000/blog/Lesson3">&lt;section class=&quot;tstutorial3&quot;&gt;
-    &lt;h2&gt;Static vs dynamic typing&lt;/h2&gt;
-
+    &lt;h3&gt;Static vs dynamic typing&lt;/h3&gt;
+    &lt;p&gt;let's replace the content of the &lt;code&gt;onStartup&lt;/code&gt;&lt;/p&gt;
     &lt;ol&gt;
         &lt;li&gt;First, let's replace the content of the &lt;code&gt;onStartup&lt;/code&gt; function:&lt;/li&gt;
         &lt;div class=&quot;code-toolbar&quot;&gt;
             &lt;pre class=&quot;code-toolbar language-javascript&quot;&gt;&lt;code class=&quot; language-javascript&quot;&gt;&lt;span class=&quot;token function&quot;&gt;onStartup&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; test &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;'mdb'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-test &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+                &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; test &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;'mdb'&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+                test &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 
         &lt;/div&gt;
         &lt;p&gt;You will see that TypeScript complains about the second assignment of test:&lt;/p&gt;
@@ -754,7 +878,7 @@ test &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Static vs dynamic typing</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/typescipt_logo.png" /></entry><entry><title type="html">2.Our first TypeScript code</title><link href="http://localhost:4000/blog/Lesson2" rel="alternate" type="text/html" title="2.Our first TypeScript code" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson2</id><content type="html" xml:base="http://localhost:4000/blog/Lesson2">&lt;section class=&quot;ts_tutorial2&quot;&gt;
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Static vs dynamic typing let's replace the content of the onStartup First, let's replace the content of the onStartup function: onStartup(){ let test = 'mdb'; test = 5; }</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/typescipt_logo.png" /></entry><entry><title type="html">2.Our first TypeScript code</title><link href="http://localhost:4000/blog/Lesson2" rel="alternate" type="text/html" title="2.Our first TypeScript code" /><published>2019-10-12T00:00:00+00:00</published><updated>2019-10-12T00:00:00+00:00</updated><id>http://localhost:4000/blog/Lesson2</id><content type="html" xml:base="http://localhost:4000/blog/Lesson2">&lt;section class=&quot;ts_tutorial2&quot;&gt;
     &lt;h3&gt;Our first TypeScript code&lt;/h3&gt;
     &lt;blockquote class=&quot;blockquote bq-warning&quot;&gt;
         &lt;p class=&quot;bq-title&quot;&gt;Before you start:&lt;/p&gt;
@@ -1698,640 +1822,4 @@ Variable &lt;span class=&quot;token string&quot;&gt;'foo'&lt;/span&gt; must be &
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python JSON: Encode(dump), Decode(load) json Data &amp;amp; File (Example)</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry><entry><title type="html">1.Python SciPy</title><link href="http://localhost:4000/blog/PythonSciPy" rel="alternate" type="text/html" title="1.Python SciPy" /><published>2019-10-03T00:00:00+00:00</published><updated>2019-10-03T00:00:00+00:00</updated><id>http://localhost:4000/blog/PythonSciPy</id><content type="html" xml:base="http://localhost:4000/blog/PythonSciPy">&lt;section class=&quot;Ptutorial29&quot;&gt;
-    &lt;div class=&quot;item-page&quot; itemscope=&quot;&quot; itemtype=&quot;https://schema.org/Article&quot;&gt;
-        &lt;meta itemprop=&quot;inLanguage&quot; content=&quot;en-GB&quot;&gt;
-        &lt;div class=&quot;page-header&quot;&gt;
-            &lt;h2 itemprop=&quot;headline&quot;&gt; Python SciPy Tutorial: Learn with Example &lt;/h2&gt;
-        &lt;/div&gt;
-        &lt;div itemprop=&quot;articleBody&quot;&gt;
-
-            &lt;h2&gt;&lt;a id=&quot;1&quot;&gt;&lt;/a&gt;What is SciPy?&lt;/h2&gt;
-            &lt;p&gt;SciPy is an Open Source Python-based library, which is used in mathematics, scientific computing,
-                Engineering, and technical computing. &lt;/p&gt;
-            &lt;p&gt;SciPy also pronounced as &quot;Sigh Pi.&quot; &lt;/p&gt;
-            &lt;p&gt;&lt;strong&gt;Sub-packages of SciPy:&lt;/strong&gt; &lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;File input/output - &lt;a
-                        href=&quot;https://docs.scipy.org/doc/scipy/reference/io.html&quot;&gt;&lt;strong&gt;scipy.io&lt;/strong&gt;&lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;Special Function - &lt;a
-                        href=&quot;https://docs.scipy.org/doc/scipy/reference/special.html&quot;&gt;&lt;strong&gt;scipy.special&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt;
-                    &lt;/strong&gt;&lt;/li&gt;
-                &lt;li&gt;Linear Algebra Operation - &lt;a
-                        href=&quot;https://docs.scipy.org/doc/scipy/reference/linalg.html&quot;&gt;&lt;strong&gt;scipy.linalg&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt;
-                    &lt;/strong&gt;&lt;/li&gt;
-                &lt;li&gt;Interpolation - &lt;a
-                        href=&quot;https://docs.scipy.org/doc/scipy/reference/interpolate.html&quot;&gt;&lt;strong&gt;scipy.interpolate&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt;
-                    &lt;/strong&gt;&lt;/li&gt;
-                &lt;li&gt;Optimization and fit - &lt;a
-                        href=&quot;https://docs.scipy.org/doc/scipy/reference/optimize.html&quot;&gt;&lt;strong&gt;scipy.optimize&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt;
-                    &lt;/strong&gt;&lt;/li&gt;
-                &lt;li&gt;Statistics and random numbers - &lt;a
-                        href=&quot;https://docs.scipy.org/doc/scipy/reference/stats.html&quot;&gt;&lt;strong&gt;scipy.stats&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt;
-                    &lt;/strong&gt;&lt;/li&gt;
-                &lt;li&gt;Numerical Integration - &lt;a
-                        href=&quot;https://docs.scipy.org/doc/scipy/reference/integrate.html&quot;&gt;&lt;strong&gt;scipy.integrate&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt;
-                    &lt;/strong&gt;&lt;/li&gt;
-                &lt;li&gt;Fast Fourier transforms - &lt;a
-                        href=&quot;https://docs.scipy.org/doc/scipy/reference/fftpack.html&quot;&gt;&lt;strong&gt;scipy.fftpack&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt;
-                    &lt;/strong&gt;&lt;/li&gt;
-                &lt;li&gt;Signal Processing - &lt;a
-                        href=&quot;https://docs.scipy.org/doc/scipy/reference/signal.html&quot;&gt;&lt;strong&gt;scipy.signal&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt;
-                    &lt;/strong&gt;&lt;/li&gt;
-                &lt;li&gt;Image manipulation – &lt;a
-                        href=&quot;https://docs.scipy.org/doc/scipy/reference/ndimage.html&quot;&gt;&lt;strong&gt;scipy.ndimage&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt;
-                    &lt;/strong&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;p&gt;In this tutorial, you will learn: &lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;a href=&quot;#1&quot;&gt;What is SciPy? &lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#2&quot;&gt;Why use SciPy &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#3&quot;&gt;Numpy VS SciPy &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#4&quot;&gt;SciPy - Installation and Environment Setup &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#5&quot;&gt;File Input / Output package: &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#6&quot;&gt;Special Function package: &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#7&quot;&gt;Linear Algebra with SciPy: &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#8&quot;&gt;Discrete Fourier Transform – scipy.fftpack &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#9&quot;&gt;Optimization and Fit in SciPy – scipy.optimize &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#10&quot;&gt;Nelder –Mead Algorithm: &lt;/a&gt; &lt;/li&gt;
-                &lt;li&gt;&lt;a href=&quot;#11&quot;&gt;Image Processing with SciPy – scipy.ndimage &lt;/a&gt; &lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;h2&gt;&lt;a id=&quot;2&quot;&gt;&lt;/a&gt;Why use SciPy&lt;/h2&gt;
-            &lt;ul&gt;
-                &lt;li&gt;SciPy contains varieties of sub packages which help to solve the most common issue related to
-                    Scientific Computation.&lt;/li&gt;
-                &lt;li&gt;SciPy is the most used Scientific library only second to GNU Scientific Library for C/C++ or
-                    Matlab's.&lt;/li&gt;
-                &lt;li&gt;Easy to use and understand as well as fast computational power.&lt;/li&gt;
-                &lt;li&gt;It can operate on an array of NumPy library. &lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;h2&gt;&lt;a id=&quot;3&quot;&gt;&lt;/a&gt;Numpy VS SciPy&lt;/h2&gt;
-            &lt;p&gt;&lt;strong&gt;Numpy:&lt;/strong&gt; &lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;Numpy is written in C and use for mathematical or numeric calculation.&lt;strong&gt; &lt;/strong&gt;&lt;/li&gt;
-                &lt;li&gt;It is faster than other Python Libraries&lt;strong&gt; &lt;/strong&gt;&lt;/li&gt;
-                &lt;li&gt;Numpy is the most useful library for Data Science to perform basic calculations.&lt;strong&gt; &lt;/strong&gt;
-                &lt;/li&gt;
-                &lt;li&gt;Numpy contains nothing but array data type which performs the most basic operation like sorting,
-                    shaping, indexing, etc.&lt;strong&gt; &lt;/strong&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;p&gt;&lt;strong&gt;SciPy:&lt;/strong&gt; &lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;SciPy is built in top of the NumPy &lt;/li&gt;
-                &lt;li&gt;SciPy is a fully-featured version of Linear Algebra while Numpy contains only a few features. &lt;/li&gt;
-                &lt;li&gt;Most new Data Science features are available in Scipy rather than Numpy.&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;h2&gt;&lt;a id=&quot;4&quot;&gt;&lt;/a&gt;SciPy - Installation and Environment Setup&lt;/h2&gt;
-            &lt;p&gt;You can also install SciPy in Windows via pip &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;Python3 -m pip install --user numpy scipy 
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Install Scipy on Linux &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;sudo apt-get install  python-scipy python-numpy
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Install SciPy in Mac &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;sudo port install py35-scipy py35-numpy
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Before start to learning SciPy, you need to know basic functionality as well as different types of an
-                array of &lt;a href=&quot;https://www.guru99.com/numpy-tutorial.html&quot;&gt;NumPy&lt;/a&gt; &lt;/p&gt;
-            &lt;p&gt;The standard way of import infSciPy modules and Numpy: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         from scipy import special   #same for other modules
-         import numpy as np
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;h2&gt;&lt;a id=&quot;5&quot;&gt;&lt;/a&gt;File Input / Output package:&lt;/h2&gt;
-            &lt;p&gt;Scipy, I/O package, has a wide range of functions for work with different files format which are Matlab,
-                Arff, Wave, Matrix Market, IDL, NetCDF, TXT, CSV and binary format. &lt;/p&gt;
-            &lt;p&gt;Let's we take one file format example as which are regularly use of MatLab: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-          import numpy as np
-          from scipy import io as sio
-          array = np.ones((4, 4))
-          sio.savemat('example.mat', {'ar': array}) 
-          data = sio.loadmat(‘example.mat', struct_as_record=True)
-          data['array']
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Output: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;array([[ 1., 1., 1., 1.],
-                    [ 1., 1., 1., 1.],
-                    [ 1., 1., 1., 1.],
-                    [ 1., 1., 1., 1.]])
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Code Explanation &lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;strong&gt;Line 1 &amp;amp; 2: &lt;/strong&gt; Import the essential library scipy with i/o package and Numpy.
-                &lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;Line 3&lt;/strong&gt;: Create 4 x 4, dimensional one's array &lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;Line 4&lt;/strong&gt;: Store array in &lt;strong&gt;example.mat&lt;/strong&gt; file. &lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;Line 5: &lt;/strong&gt;Get data from &lt;strong&gt;example.mat&lt;/strong&gt; file &lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;Line 6&lt;/strong&gt;: Print output. &lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;h2&gt;&lt;a id=&quot;6&quot;&gt;&lt;/a&gt;Special Function package&lt;/h2&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;strong&gt;scipy.special&lt;/strong&gt; package contains numerous functions of mathematical physics.&lt;/li&gt;
-                &lt;li&gt; SciPy special function includes Cubic Root, Exponential, Log sum Exponential, Lambert, Permutation
-                    and Combinations, Gamma, Bessel, hypergeometric, Kelvin, beta, parabolic cylinder, Relative Error
-                    Exponential, etc.. &lt;/li&gt;
-                &lt;li&gt;For one line description all of these function, type in Python console: &lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         help(scipy.special)	
-         Output : 
-         NAME
-             scipy.special
-         
-         DESCRIPTION
-             ========================================
-             Special functions (:mod:`scipy.special`)
-             ========================================
-              
-             .. module:: scipy.special
-              
-             Nearly all of the functions below are universal functions and follow
-             broadcasting and automatic array-looping rules. Exceptions are noted.
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;h3&gt;Cubic Root Function:&lt;/h3&gt;
-            &lt;p&gt;Cubic Root function finds the cube root of values. &lt;/p&gt;
-            &lt;p&gt;Syntax: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;scipy.special.cbrt(x)
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Example: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         from scipy.special import cbrt
-         #Find cubic root of 27 &amp;amp; 64 using cbrt() function
-         cb = cbrt([27, 64])
-         #print value of cb
-         print(cb)
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Output: array([3., 4.]) &lt;/p&gt;
-            &lt;h3&gt;Exponential Function:&lt;/h3&gt;
-            &lt;p&gt;Exponential function computes the 10**x element-wise.&lt;/p&gt;
-
-            &lt;p&gt;Example: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         from scipy.special import exp10
-         #define exp10 function and pass value in its
-         exp = exp10([1,10])
-         print(exp)
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Output: [1.e+01 1.e+10] &lt;/p&gt;
-            &lt;h3&gt;Permutations &amp;amp; Combinations:&lt;/h3&gt;
-            &lt;p&gt;SciPy also gives functionality to calculate Permutations and Combinations. &lt;/p&gt;
-            &lt;p&gt;&lt;strong&gt;Combinations - &lt;/strong&gt; scipy.special.comb(N,k&lt;strong&gt;)&lt;/strong&gt; &lt;/p&gt;
-            &lt;p&gt;Example: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         from scipy.special import comb
-         #find combinations of 5, 2 values using comb(N, k)
-         com = comb(5, 2, exact = False, repetition=True)
-         print(com)
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Output: 15.0 &lt;/p&gt;
-            &lt;p&gt; &lt;strong&gt;Permutations – &lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;scipy.special.perm(N,k)
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Example: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         from scipy.special import perm
-         #find permutation of 5, 2 using perm (N, k) function
-         per = perm(5, 2, exact = True)
-         print(per)
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Output: 20 &lt;/p&gt;
-            &lt;h3&gt;Log Sum Exponential Function &lt;/h3&gt;
-            &lt;p&gt;Log Sum Exponential computes the log of sum exponential input element. &lt;/p&gt;
-            &lt;p&gt;Syntax : &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;scipy.special.logsumexp(x) 
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;h3&gt; Bessel Function &lt;/h3&gt;
-            &lt;p&gt;Nth integer order calculation function &lt;/p&gt;
-            &lt;p&gt;Syntax : &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;scipy.special.jn()
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;h2&gt;&lt;a id=&quot;7&quot;&gt;&lt;/a&gt;Linear Algebra with SciPy&lt;/h2&gt;
-            &lt;ul&gt;
-                &lt;li&gt;Linear Algebra of SciPy is an implementation of BLAS and ATLAS LAPACK libraries. &lt;/li&gt;
-                &lt;li&gt;Performance of Linear Algebra is very fast compared to BLAS and LAPACK.&lt;/li&gt;
-                &lt;li&gt;Linear algebra routine accepts two-dimensional array object and output is also a two-dimensional
-                    array.&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;p&gt;Now let's do some test with &lt;strong&gt;scipy.linalg,&lt;/strong&gt; &lt;/p&gt;
-            &lt;p&gt;Calculating &lt;strong&gt;determinant&lt;/strong&gt; of a two-dimensional matrix, &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         from scipy import linalg
-         import numpy as np
-         #define square matrix
-         two_d_array = np.array([ [4,5], [3,2] ])
-         #pass values to det() function
-         linalg.det( two_d_array )
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Output: -7.0 &lt;/p&gt;
-            &lt;p&gt;&lt;strong&gt;Inverse Matrix – &lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;scipy.linalg.inv()&lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Inverse Matrix of Scipy calculates the inverse of any square matrix. &lt;/p&gt;
-            &lt;p&gt; Let's see,&lt;/p&gt;
-
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         from scipy import linalg
-         import numpy as np
-         # define square matrix
-         two_d_array = np.array([ [4,5], [3,2] ])
-         #pass value to function inv()
-         linalg.inv( two_d_array )
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Output: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-                array( [[-0.28571429,  0.71428571],
-                [ 0.42857143, -0.57142857]] )
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt; &lt;strong&gt;Eigenvalues and Eigenvector – &lt;/strong&gt;scipy.linalg.eig() &lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;The most common problem in linear algebra is eigenvalues and eigenvector which can be easily solved
-                    using &lt;strong&gt;eig()&lt;/strong&gt; &lt;strong&gt; &lt;/strong&gt;function.&lt;/li&gt;
-                &lt;li&gt;Now lets we find the Eigenvalue of (&lt;strong&gt;X&lt;/strong&gt;) and correspond eigenvector of a
-                    two-dimensional square matrix.&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;p&gt;Example, &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         from scipy import linalg
-         import numpy as np
-         #define two dimensional array
-         arr = np.array([[5,4],[6,3]])
-         #pass value into function
-         eg_val, eg_vect = linalg.eig(arr)
-         #get eigenvalues
-         print(eg_val)
-         #get eigenvectors
-         print(eg_vect)
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Output: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         [ 9.+0.j -1.+0.j] #eigenvalues
-          [ [ 0.70710678 -0.5547002 ] #eigenvectors
-            [ 0.70710678  0.83205029] ]
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;h2&gt;&lt;a id=&quot;8&quot;&gt;&lt;/a&gt;Discrete Fourier Transform – scipy.fftpack&lt;/h2&gt;
-            &lt;ul&gt;
-                &lt;li&gt;DFT is a mathematical technique which is used in converting spatial data into frequency data.&lt;/li&gt;
-                &lt;li&gt;FFT (Fast Fourier Transformation) is an algorithm for computing DFT &lt;/li&gt;
-                &lt;li&gt;FFT is applied to a multidimensional array.&lt;/li&gt;
-                &lt;li&gt;Frequency defines the number of signal or wavelength in particular time period.&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;p&gt;Example: Take a wave and show using Matplotlib library. we take simple periodic function example of
-                sin(20 × 2πt) &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         %matplotlib inline
-         from matplotlib import pyplot as plt
-         import numpy as np 
-         
-         #Frequency in terms of Hertz
-         fre  = 5 
-         #Sample rate
-         fre_samp = 50
-         t = np.linspace(0, 2, 2 * fre_samp, endpoint = False )
-         a = np.sin(fre  * 2 * np.pi * t)
-         figure, axis = plt.subplots()
-         axis.plot(t, a)
-         axis.set_xlabel ('Time (s)')
-         axis.set_ylabel ('Signal amplitude')
-         plt.show()
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Output : &lt;/p&gt;
-            &lt;p style=&quot;text-align:center;&quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy1.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img src=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy1.png&quot;
-                        alt=&quot;&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;p&gt;You can see this. Frequency is 5 Hz and its signal repeats in 1/5 seconds – it's call as a particular
-                time period. &lt;/p&gt;
-            &lt;p&gt;Now let us use this sinusoid wave with the help of DFT application. &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         from scipy import fftpack
-         
-         A = fftpack.fft(a)
-         frequency = fftpack.fftfreq(len(a)) * fre_samp
-         figure, axis = plt.subplots()
-         
-         axis.stem(frequency, np.abs(A))
-         axis.set_xlabel('Frequency in Hz')
-         axis.set_ylabel('Frequency Spectrum Magnitude')
-         axis.set_xlim(-fre_samp / 2, fre_samp/ 2)
-         axis.set_ylim(-5, 110)
-         plt.show()
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Output: &lt;/p&gt;
-            &lt;p style=&quot;text-align: center;&quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy2.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img src=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy2.png&quot;
-                        alt=&quot;&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;You can clearly see that output is a one-dimensional array.&lt;/li&gt;
-                &lt;li&gt;Input containing complex values are zero except two points.&lt;/li&gt;
-                &lt;li&gt;In DFT example we visualize the magnitude of the signal.&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;h2&gt;&lt;a id=&quot;9&quot;&gt;&lt;/a&gt;Optimization and Fit in SciPy – scipy.optimize&lt;/h2&gt;
-            &lt;ul&gt;
-                &lt;li&gt;Optimization provides a useful algorithm for minimization of curve fitting, multidimensional or
-                    scalar and root fitting. &lt;/li&gt;
-                &lt;li&gt;Let's take an example of &lt;strong&gt;a Scalar Function, &lt;/strong&gt;to find minimum scalar
-                    function&lt;strong&gt;.&lt;/strong&gt; &lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         %matplotlib inline
-         import matplotlib.pyplot as plt
-         from scipy import optimize
-         import numpy as np
-         
-         def function(a):
-                return   a*2 + 20 * np.sin(a)
-         plt.plot(a, function(a))
-         plt.show()
-         #use BFGS algorithm for optimization
-         optimize.fmin_bfgs(function, 0) 
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Output: &lt;/p&gt;
-            &lt;p style=&quot;text-align: center;&quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy3.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img src=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy3.png&quot;
-                        alt=&quot;&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;p&gt;Optimization terminated successfully. &lt;/p&gt;
-            &lt;p&gt; Current function value: -23.241676 &lt;/p&gt;
-            &lt;p&gt; Iterations: 4 &lt;/p&gt;
-            &lt;p&gt; Function evaluations: 18 &lt;/p&gt;
-            &lt;p&gt; Gradient evaluations: 6 &lt;/p&gt;
-            &lt;p&gt;array([-1.67096375])&lt;/p&gt;
-
-            &lt;ul&gt;
-                &lt;li&gt;In this example, optimization is done with the help of the gradient descent algorithm from the
-                    initial point &lt;/li&gt;
-                &lt;li&gt;But the possible issue is local minima instead of global minima. If we don't find a neighbor of
-                    global minima, then we need to apply global optimization and find global minima function used as
-                    &lt;strong&gt;basinhopping()&lt;/strong&gt; which combines local optimizer. &lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;p&gt;&lt;strong&gt;optimize.basinhopping(function, 0)&lt;/strong&gt; &lt;/p&gt;
-            &lt;p&gt;Output: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-          fun: -23.241676238045315
-          lowest_optimization_result:
-               fun: -23.241676238045315
-          hess_inv: array([[0.05023331]])
-               jac: array([4.76837158e-07])
-           message: 'Optimization terminated successfully.'
-              nfev: 15
-               nit: 3
-              njev: 5
-            status: 0
-           success: True
-                 x: array([-1.67096375])
-                             message: ['requested number of basinhopping iterations completed successfully']
-               minimization_failures: 0
-                                nfev: 1530
-                                 nit: 100
-                                njev: 510
-                        x: array([-1.67096375])
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;h2&gt;&lt;a id=&quot;10&quot;&gt;&lt;/a&gt;Nelder –Mead Algorithm:&lt;/h2&gt;
-            &lt;ul&gt;
-                &lt;li&gt;Nelder-Mead algorithm selects through method parameter.&lt;/li&gt;
-                &lt;li&gt;It provides the most straightforward way of minimization for fair behaved function. &lt;/li&gt;
-                &lt;li&gt;Nelder – Mead algorithm is not used for gradient evaluations because it may take a longer time to
-                    find the solution. &lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         import numpy as np
-         from scipy.optimize import minimize
-         #define function f(x)
-         def f(x):   
-             return .4*(1 - x[0])**2
-           
-         optimize.minimize(f, [2, -1], method=&quot;Nelder-Mead&quot;)
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Output: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-                final_simplex: (array([[ 1.        , -1.27109375],
-                [ 1.        , -1.27118835],
-                [ 1.        , -1.27113762]]), array([0., 0., 0.]))
-                    fun: 0.0
-                message: 'Optimization terminated successfully.'
-                   nfev: 147
-                    nit: 69
-                 status: 0
-                success: True
-                      x: array([ 1.        , -1.27109375])
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;h2&gt;&lt;a id=&quot;11&quot;&gt;&lt;/a&gt;Image Processing with SciPy – scipy.ndimage&lt;/h2&gt;
-            &lt;ul&gt;
-                &lt;li&gt;scipy.ndimage is a submodule of SciPy which is mostly used for performing an image related operation
-                &lt;/li&gt;
-                &lt;li&gt;ndimage means the &quot;n&quot; dimensional image.&lt;/li&gt;
-                &lt;li&gt;SciPy Image Processing provides Geometrics transformation (rotate, crop, flip), image filtering
-                    (sharp and de nosing), display image, image segmentation, classification and features extraction.
-                &lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;MISC Package&lt;/strong&gt; in SciPy contains prebuilt images which can be used to perform image
-                    manipulation task &lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;p&gt;Example: Let's take a geometric transformation example of images &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         from scipy import misc
-         from matplotlib import pyplot as plt
-         import numpy as np
-         #get face image of panda from misc package
-         panda = misc.face()
-         #plot or show image of face
-         plt.imshow( panda )
-         plt.show()
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt; Output: &lt;/p&gt;
-            &lt;p style=&quot;text-align:center;&quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy4.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img src=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy4.png&quot;
-                        alt=&quot;&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;p&gt;Now we &lt;strong&gt;Flip-down&lt;/strong&gt; current image: &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         #Flip Down using scipy misc.face image  
-         flip_down = np.flipud(misc.face())
-         plt.imshow(flip_down)
-         plt.show()
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Output:&lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
-            &lt;p style=&quot;text-align: center;&quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy5.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img src=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy5.png&quot;
-                        alt=&quot;&quot;&gt;&lt;/a&gt;&lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
-            &lt;p&gt;Example&lt;strong&gt;: Rotation of Image using Scipy,&lt;/strong&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         from scipy import ndimage, misc
-         from matplotlib import pyplot as plt
-         panda = misc.face()
-         #rotatation function of scipy for image – image rotated 135 degree
-         panda_rotate = ndimage.rotate(panda, 135)
-         plt.imshow(panda_rotate)
-         plt.show()
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Output: &lt;/p&gt;
-            &lt;p style=&quot;text-align:center;&quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy6.png&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img src=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy6.png&quot;
-                        alt=&quot;&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;h3&gt; Integration with Scipy – Numerical Integration&lt;/h3&gt;
-            &lt;ul&gt;
-                &lt;li&gt;When we integrate any function where analytically integrate is not possible, we need to turn for
-                    numerical integration &lt;/li&gt;
-                &lt;li&gt;SciPy provides functionality to integrate function with numerical integration.&lt;/li&gt;
-                &lt;li&gt;&lt;strong&gt;scipy.integrate&lt;/strong&gt; library has single integration, double, triple, multiple, Gaussian
-                    quadrate, Romberg, Trapezoidal and Simpson's rules.&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;p&gt;Example: Now take an example of &lt;strong&gt;Single Integration&lt;/strong&gt; &lt;/p&gt;
-            &lt;p style=&quot;text-align:center;&quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy7.jpg&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img src=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy7.jpg&quot;
-                        alt=&quot;&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;p&gt;Here &lt;strong&gt;a&lt;/strong&gt; is the upper limit and &lt;strong&gt;b&lt;/strong&gt; is the lower limit &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         from scipy import integrate
-         # take f(x) function as f
-         f = lambda x : x**2
-         #single integration with a = 0 &amp;amp; b = 1  
-         integration = integrate.quad(f, 0 , 1)
-         print(integration)
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Output: &lt;/p&gt;
-            &lt;p&gt;(0.33333333333333337, 3.700743415417189e-15) &lt;/p&gt;
-            &lt;p&gt;Here function returns two values, in which the first value is integration and second value is estimated
-                error in integral. &lt;/p&gt;
-            &lt;p&gt;Example: Now take an example of &lt;strong&gt;double integration. &lt;/strong&gt;We find the double integration of
-                the following equation, &lt;/p&gt;
-            &lt;p style=&quot;text-align:center;&quot;&gt;&lt;a href=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy8.jpg&quot;
-                    class=&quot;jh-image-popup-colorbox cboxElement&quot;&gt;&lt;img src=&quot;http://localhost:4000/img/python/datascience/img/1/120518_0746_PythonSciPy8.jpg&quot;
-                        alt=&quot;&quot;&gt;&lt;/a&gt; &lt;/p&gt;
-            &lt;pre class=&quot;code-toolbar&quot;&gt;&lt;code&gt;
-         from scipy import integrate
-         import numpy as np
-         #import square root function from math lib
-         from math import sqrt
-         # set  fuction f(x)
-         f = lambda x, y : 64 *x*y
-         # lower limit of second integral
-         p = lambda x : 0
-         # upper limit of first integral
-         q = lambda y : sqrt(1 - 2*y**2)
-         # perform double integration
-         integration = integrate.dblquad(f , 0 , 2/4,  p, q)
-         print(integration)
-         &lt;/code&gt;&lt;/pre&gt;
-            &lt;p&gt;Output: &lt;/p&gt;
-            &lt;p&gt;&lt;strong&gt; &lt;/strong&gt;(3.0, 9.657432734515774e-14)&lt;strong&gt; &lt;/strong&gt; &lt;/p&gt;
-            &lt;p&gt; You have seen that above output as same previous one. &lt;/p&gt;
-            &lt;h2&gt;Summary&lt;/h2&gt;
-            &lt;ul&gt;
-                &lt;li&gt;SciPy(pronounced as &quot;Sigh Pi&quot;) is an Open Source Python-based library, which is used in mathematics,
-                    scientific computing, Engineering, and technical computing.&lt;/li&gt;
-                &lt;li&gt;SciPy contains varieties of sub packages which help to solve the most common issue related to
-                    Scientific Computation.&lt;/li&gt;
-                &lt;li&gt;SciPy is built in top of the NumPy &lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;table class=&quot;table table-striped table-bordered&quot;&gt;
-                &lt;tbody&gt;
-                    &lt;tr&gt;
-                        &lt;th&gt;Package Name &lt;/th&gt;
-                        &lt;th&gt;Description &lt;/th&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt; scipy.io &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;ul&gt;
-                                &lt;li&gt; File input/output &lt;/li&gt;
-                            &lt;/ul&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt; scipy.special &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;ul&gt;
-                                &lt;li&gt; Special Function &lt;/li&gt;
-                            &lt;/ul&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt; scipy.linalg &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;ul&gt;
-                                &lt;li&gt; Linear Algebra Operation &lt;/li&gt;
-                            &lt;/ul&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt; scipy.interpolate &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;ul&gt;
-                                &lt;li&gt; Interpolation &lt;/li&gt;
-                            &lt;/ul&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt; scipy.optimize &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;ul&gt;
-                                &lt;li&gt; Optimization and fit &lt;/li&gt;
-                            &lt;/ul&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt; scipy.stats &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;ul&gt;
-                                &lt;li&gt; Statistics and random numbers &lt;/li&gt;
-                            &lt;/ul&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt; scipy.integrate &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;ul&gt;
-                                &lt;li&gt; Numerical Integration &lt;/li&gt;
-                            &lt;/ul&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt; scipy.fftpack &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;ul&gt;
-                                &lt;li&gt; Fast Fourier transforms &lt;/li&gt;
-                            &lt;/ul&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt; scipy.signal &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;ul&gt;
-                                &lt;li&gt; Signal Processing &lt;/li&gt;
-                            &lt;/ul&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;scipy.ndimage &lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;ul&gt;
-                                &lt;li&gt; Image manipulation – &lt;/li&gt;
-                            &lt;/ul&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                &lt;/tbody&gt;
-            &lt;/table&gt;
-
-        &lt;/div&gt;
-
-    &lt;/div&gt;
-
-&lt;/section&gt;
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr&gt;
-   
-    &lt;div class=&quot;row&quot; &gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/PythonSciPy&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot; 
-                &gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot; &gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/PythonReadWriteCSV&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;
-                 &gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python SciPy Tutorial: Learn with Example</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry></feed>
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="Installation" /><summary type="html">Python JSON: Encode(dump), Decode(load) json Data &amp;amp; File (Example)</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/Python_logo.png" /></entry></feed>
