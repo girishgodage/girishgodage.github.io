@@ -5,7 +5,7 @@ categories:
 - SoftwareProgramming
 tags:
 - learning
-image: https://girishgodage.github.io/img/sw_architect.png
+image: https://girishgodage.github.io/img/sw_program.png
 author: Girish Godage
 layout: posts
 prevurl: https://girishgodage.github.io/blog/SwProgrammingLesson2
