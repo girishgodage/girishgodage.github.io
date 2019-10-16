@@ -1,5 +1,5 @@
 ---
-title:  Programming Basics - Introduction To Object Oriented Programming
+title: Programming Basics - Introduction To Object Oriented Programming
 date: 2019-10-15 20:30:00 Z
 categories:
 - SoftwareProgramming

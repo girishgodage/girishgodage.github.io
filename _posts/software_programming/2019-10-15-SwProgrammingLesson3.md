@@ -1,5 +1,5 @@
 ---
-title:  Introduction To Aspect Oriented Programming and Cross Cutting Concerns
+title: Introduction To Aspect Oriented Programming and Cross Cutting Concerns
 date: 2019-10-15 20:30:00 Z
 categories:
 - SoftwareProgramming
