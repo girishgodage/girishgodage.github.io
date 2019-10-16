@@ -5,7 +5,7 @@ categories:
 - SoftwareArchitecture
 tags:
 - learning
-image: https://girishgodage.github.io/img/sw_design.png
+image: https://girishgodage.github.io/img/sw_architect.png
 author: Girish Godage
 layout: posts
 prevurl: https://girishgodage.github.io/blog/SwArchitectLesson4
