@@ -1,6 +1,6 @@
 ### Software Design
 
-This is the first article in a series of articles on Software Design:
+This is the article in a series of articles on Software Design:
 
 - [1 - How do you keep your design simple?](/blog/SwDesignLesson7){:target='_blank'}
 - [2 - Design Patterns For Beginners - with Java Examples](/blog/SwDesignLesson8){:target='_blank'}

@@ -1,6 +1,6 @@
 ### Software Design Principles
 
-This is the first article in a series of articles on important Software Design Principles:
+This is the article in a series of articles on important Software Design Principles:
 
 * [1 - Introduction to Four Principles Of Simple Design](/blog/SwDesignLesson1){:target='_blank'}
 * [2 - Software Design - Separation Of Concerns - with examples](/blog/SwDesignLesson2){:target='_blank'}
