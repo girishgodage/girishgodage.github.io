@@ -145,7 +145,7 @@
          import os.path
          from os import path</code></pre>
             <p><strong>Steps 2)</strong> Now, use the path.exists() function to check whether a File Exists. </p>
-            <pre class="code-toolbar"><code>path.exists("guru99.txt")</code></pre>
+            <pre class="code-toolbar"><code>path.exists("Girish.txt")</code></pre>
             <p><strong>Steps 3)</strong> Here is the complete code </p>
             <pre class="code-toolbar"><code>
          import os.path
@@ -153,13 +153,13 @@
          
          def main():
          
-            print ("file exist:"+str(path.exists('guru99.txt')))
-            print ("File exists:" + str(path.exists('career.guru99.txt')))
+            print ("file exist:"+str(path.exists('Girish.txt')))
+            print ("File exists:" + str(path.exists('career.Girish.txt')))
             print ("directory exists:" + str(path.exists('myDirectory')))
          
          if __name__== "__main__":
             main()</code></pre>
-            <p> In our case only file guru99.txt is created in the working directory </p>
+            <p> In our case only file Girish.txt is created in the working directory </p>
             <p><strong>Output:</strong> </p>
             <p>File exists: True<br> File exists: False<br>
                 directory exists: False
@@ -172,7 +172,7 @@
          
          def main():
          
-             print ("Is it File?" + str(path.isfile('guru99.txt')))
+             print ("Is it File?" + str(path.isfile('Girish.txt')))
              print ("Is it File?" + str(path.isfile('myDirectory')))
          if __name__== "__main__":
              main()</code></pre>
@@ -186,7 +186,7 @@
          
          def main():
          
-            print ("Is it Directory?" + str(path.isdir('guru99.txt')))
+            print ("Is it Directory?" + str(path.isdir('Girish.txt')))
             print ("Is it Directory?" + str(path.isdir('myDirectory')))
          
          if __name__== "__main__":
@@ -198,7 +198,7 @@
                 object-oriented approach to check if file exist or not. </p>
             <pre class="code-toolbar"><code>
          import pathlib
-         file = pathlib.Path("guru99.txt")
+         file = pathlib.Path("Girish.txt")
          if file.exists ():
              print ("File exist")
          else:
@@ -217,9 +217,9 @@
              # Print the name of the OS
              print(os.name)
          #Check for item existence and type
-         print("Item exists:" + str(path.exists("guru99.txt")))
-         print("Item is a file: " + str(path.isfile("guru99.txt")))
-         print("Item is a directory: " + str(path.isdir("guru99.txt")))
+         print("Item exists:" + str(path.exists("Girish.txt")))
+         print("Item is a file: " + str(path.isfile("Girish.txt")))
+         print("Item is a directory: " + str(path.isdir("Girish.txt")))
          
          if __name__ == "__main__":
              main()
