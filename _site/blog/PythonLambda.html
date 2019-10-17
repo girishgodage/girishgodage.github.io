@@ -231,18 +231,18 @@
                 IDLE and in a new file, type in the following: </p>
             <pre class="code-toolbar"><code>
          #A REGULAR FUNCTION
-         def guru( funct, *args ):
+         def girish( funct, *args ):
          funct( *args )
          def printer_one( arg ):
          return print (arg)
          def printer_two( arg ):
          print(arg)
          #CALL A REGULAR FUNCTION 
-         guru( printer_one, 'printer 1 REGULAR CALL' )
-         guru( printer_two, 'printer 2 REGULAR CALL \n' )
+         girish( printer_one, 'printer 1 REGULAR CALL' )
+         girish( printer_two, 'printer 2 REGULAR CALL \n' )
          #CALL A REGULAR FUNCTION THRU A LAMBDA
-         guru(lambda: printer_one('printer 1 LAMBDA CALL'))
-         guru(lambda: printer_two('printer 2 LAMBDA CALL'))
+         girish(lambda: printer_one('printer 1 LAMBDA CALL'))
+         girish(lambda: printer_two('printer 2 LAMBDA CALL'))
          </code></pre>
             <p>Now, save the file and hit F5 to run the program. If you didn't make any mistakes, the output should be
                 something like this. </p>
@@ -253,13 +253,13 @@
             <p>printer 2 LAMBDA CALL </p>
             <p>Code Explanation </p>
             <ol>
-                <li>A function called guru that takes another function as the first parameter and any other arguments
+                <li>A function called girish that takes another function as the first parameter and any other arguments
                     following it.</li>
                 <li>printer_one is a simple function which prints the parameter passed to it and returns it. </li>
                 <li>printer_two is similar to printer_one but without the return statement.</li>
-                <li>In this part, we are calling the guru function and passing the printer functions and a string as
+                <li>In this part, we are calling the girish function and passing the printer functions and a string as
                     parameters.</li>
-                <li>This is the syntax to achieve the fourth step (i.e., calling the guru function) but using lambdas.
+                <li>This is the syntax to achieve the fourth step (i.e., calling the girish function) but using lambdas.
                 </li>
             </ol>
             <p>In the next section, you will learn how to use lambda functions with <strong>map(),</strong>
