@@ -243,14 +243,14 @@
             <p>Here we will see an example of how we can use w+ and ^ expression in our code. We cover re.findall
                 function later in this tutorial but for a while we simply focus on \w+ and \^ expression. </p>
             <p> For example, for our string "guru99, education is fun" if we execute the code with w+ and^, it will give
-                the output "guru99". </p>
+                the output "guru". </p>
             <p style="text-align: center; "><a href="http://localhost:4000/img/python/tutorial/16/Python14.1.png"
                     class="jh-image-popup-colorbox cboxElement"><img
                         title="Python Regular Expressions: Complete Tutorial"
                         alt="Python Regex Tutorial: re.match(),re.search(), re.findall(), Flags"
                         src="http://localhost:4000/img/python/tutorial/16/Python14.1.png"></a> </p>
             <pre class="code-toolbar"><code><code>import re
-         xx = "guru99,education is fun"
+         xx = "guru,education is fun"
          r1 = re.findall(r"^\w+",xx)
          print(r1)</code></pre>
             <p>Remember, if you remove +sign from the w+, the output will change, and it will only give the first
