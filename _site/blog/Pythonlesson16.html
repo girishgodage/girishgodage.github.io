@@ -227,7 +227,7 @@
             </div>
             <h2><a id="1"></a>Regular Expression Syntax</h2>
             <p><strong>RE </strong> </p>
-            <pre class="code-toolbar"><code><code>	import re
+            <pre class="code-toolbar"><code>	import re
          </code></pre>
             <ul>
                 <li>"re" module included with Python primarily used for string searching and manipulation </li>
@@ -242,14 +242,14 @@
             </ul>
             <p>Here we will see an example of how we can use w+ and ^ expression in our code. We cover re.findall
                 function later in this tutorial but for a while we simply focus on \w+ and \^ expression. </p>
-            <p> For example, for our string "guru99, education is fun" if we execute the code with w+ and^, it will give
+            <p> For example, for our string "guru, education is fun" if we execute the code with w+ and^, it will give
                 the output "guru". </p>
             <p style="text-align: center; "><a href="http://localhost:4000/img/python/tutorial/16/Python14.1.png"
                     class="jh-image-popup-colorbox cboxElement"><img
                         title="Python Regular Expressions: Complete Tutorial"
                         alt="Python Regex Tutorial: re.match(),re.search(), re.findall(), Flags"
                         src="http://localhost:4000/img/python/tutorial/16/Python14.1.png"></a> </p>
-            <pre class="code-toolbar"><code><code>import re
+            <pre class="code-toolbar"><code>import re
          xx = "guru,education is fun"
          r1 = re.findall(r"^\w+",xx)
          print(r1)</code></pre>
@@ -279,8 +279,8 @@
             <p>Similarly, there are series of other regular expressions in Python that you can use in various ways in
                 Python like \d,\D,$,\.,\b, etc. </p>
             <p>Here is the complete code </p>
-            <pre class="code-toolbar"><code><code>import re
-         xx = "guru99,education is fun"
+            <pre class="code-toolbar"><code>import re
+         xx = "guru,education is fun"
          r1 = re.findall(r"^\w+", xx)
          print((re.split(r'\s','we are splitting the words')))
          print((re.split(r's','split the words')))</code></pre>
@@ -318,11 +318,11 @@
                         title="Python Regular Expressions: Complete Tutorial"
                         alt="Python Regex Tutorial: re.match(),re.search(), re.findall(), Flags"
                         src="http://localhost:4000/img/python/tutorial/16/Python14.5.png"></a> </p>
-            <p>For example here we look for two literal strings "Software testing" "guru99", in a text string
+            <p>For example here we look for two literal strings "Software testing" "guru", in a text string
                 "Software<a href="/software-testing.html"
                     onclick="ga('send', 'event', 'internal_linking', 'Python Regex Tutorial: re.match(),re.search(), re.findall(), Flags', 'Python Regex Tutorial: re.match(),re.search(), re.findall(), Flags');">
                     Testing </a>is fun". For "software testing" we found the match hence it returns the output as "found
-                a match", while for word "guru99" we could not found in string hence it returns the output as "No
+                a match", while for word "guru" we could not found in string hence it returns the output as "No
                 match". </p>
             <h2><a id="7"></a>Using re.findall for text</h2>
             <p>Re.findall() module is used when you want to iterate over the lines of the file, it will return a list of
@@ -335,15 +335,15 @@
                         alt="Python Regex Tutorial: re.match(),re.search(), re.findall(), Flags"
                         src="http://localhost:4000/img/python/tutorial/16/Python14.6.png"></a> </p>
             <p>Here is the complete code </p>
-            <pre class="code-toolbar"><code><code>import re
+            <pre class="code-toolbar"><code>import re
          
-         list = ["guru99 get", "guru99 give", "guru Selenium"]
+         list = ["guru get", "guru give", "guru Selenium"]
          for element in list:
              z = re.match("(g\w+)\W(g\w+)", element)
          if z:
              print((z.groups()))
              
-         patterns = ['software testing', 'guru99']
+         patterns = ['software testing', 'guru']
          text = 'software testing is fun?'
          for pattern in patterns:
              print('Looking for "%s" in "%s" -&gt;' % (pattern, text), end=' ')
@@ -351,8 +351,8 @@
                  print('found a match!')
          else:
              print('no match')
-         abc = <span id="cloakb423dbe997bf5ce49a8608254902d46c"><a href="mailto:'guru99@google.com">'guru99@google.com</a></span><script src="/media/plg_jchoptimize/cache/js/b6bec3fdcab9c764d07ac6eb67aa12a4_0.js"></script>
-             <script>document.getElementById('cloakb423dbe997bf5ce49a8608254902d46c').innerHTML = ''; var prefix = '&#109;a' + 'i&#108;' + '&#116;o'; var path = 'hr' + 'ef' + '='; var addyb423dbe997bf5ce49a8608254902d46c = '&#039;g&#117;r&#117;99' + '&#64;'; addyb423dbe997bf5ce49a8608254902d46c = addyb423dbe997bf5ce49a8608254902d46c + 'g&#111;&#111;gl&#101;' + '&#46;' + 'c&#111;m'; var addy_textb423dbe997bf5ce49a8608254902d46c = '&#039;g&#117;r&#117;99' + '&#64;' + 'g&#111;&#111;gl&#101;' + '&#46;' + 'c&#111;m'; document.getElementById('cloakb423dbe997bf5ce49a8608254902d46c').innerHTML += '<a ' + path + '\'' + prefix + ':' + addyb423dbe997bf5ce49a8608254902d46c + '\'>' + addy_textb423dbe997bf5ce49a8608254902d46c + '<\/a>';</script>, <span id="cloak28a8928c51f23b3066d076110cb02d1d"><a href="mailto:careerguru99@hotmail.com">careerguru99@hotmail.com</a></span><script>document.getElementById('cloak28a8928c51f23b3066d076110cb02d1d').innerHTML = ''; var prefix = '&#109;a' + 'i&#108;' + '&#116;o'; var path = 'hr' + 'ef' + '='; var addy28a8928c51f23b3066d076110cb02d1d = 'c&#97;r&#101;&#101;rg&#117;r&#117;99' + '&#64;'; addy28a8928c51f23b3066d076110cb02d1d = addy28a8928c51f23b3066d076110cb02d1d + 'h&#111;tm&#97;&#105;l' + '&#46;' + 'c&#111;m'; var addy_text28a8928c51f23b3066d076110cb02d1d = 'c&#97;r&#101;&#101;rg&#117;r&#117;99' + '&#64;' + 'h&#111;tm&#97;&#105;l' + '&#46;' + 'c&#111;m'; document.getElementById('cloak28a8928c51f23b3066d076110cb02d1d').innerHTML += '<a ' + path + '\'' + prefix + ':' + addy28a8928c51f23b3066d076110cb02d1d + '\'>' + addy_text28a8928c51f23b3066d076110cb02d1d + '<\/a>';</script>, <span id="cloak1b474f05b5758d526118ba6d92a65a9b"><a href="mailto:users@yahoomail.com">users@yahoomail.com</a></span><script>document.getElementById('cloak1b474f05b5758d526118ba6d92a65a9b').innerHTML = ''; var prefix = '&#109;a' + 'i&#108;' + '&#116;o'; var path = 'hr' + 'ef' + '='; var addy1b474f05b5758d526118ba6d92a65a9b = '&#117;s&#101;rs' + '&#64;'; addy1b474f05b5758d526118ba6d92a65a9b = addy1b474f05b5758d526118ba6d92a65a9b + 'y&#97;h&#111;&#111;m&#97;&#105;l' + '&#46;' + 'c&#111;m'; var addy_text1b474f05b5758d526118ba6d92a65a9b = '&#117;s&#101;rs' + '&#64;' + 'y&#97;h&#111;&#111;m&#97;&#105;l' + '&#46;' + 'c&#111;m'; document.getElementById('cloak1b474f05b5758d526118ba6d92a65a9b').innerHTML += '<a ' + path + '\'' + prefix + ':' + addy1b474f05b5758d526118ba6d92a65a9b + '\'>' + addy_text1b474f05b5758d526118ba6d92a65a9b + '<\/a>';</script>'
+         abc = <span id="cloakb423dbe997bf5ce49a8608254902d46c"><a href="mailto:'guru@google.com">'guru@google.com</a></span><script src="/media/plg_jchoptimize/cache/js/b6bec3fdcab9c764d07ac6eb67aa12a4_0.js"></script>
+             <script>document.getElementById('cloakb423dbe997bf5ce49a8608254902d46c').innerHTML = ''; var prefix = '&#109;a' + 'i&#108;' + '&#116;o'; var path = 'hr' + 'ef' + '='; var addyb423dbe997bf5ce49a8608254902d46c = '&#039;g&#117;r&#117;99' + '&#64;'; addyb423dbe997bf5ce49a8608254902d46c = addyb423dbe997bf5ce49a8608254902d46c + 'g&#111;&#111;gl&#101;' + '&#46;' + 'c&#111;m'; var addy_textb423dbe997bf5ce49a8608254902d46c = '&#039;g&#117;r&#117;99' + '&#64;' + 'g&#111;&#111;gl&#101;' + '&#46;' + 'c&#111;m'; document.getElementById('cloakb423dbe997bf5ce49a8608254902d46c').innerHTML += '<a ' + path + '\'' + prefix + ':' + addyb423dbe997bf5ce49a8608254902d46c + '\'>' + addy_textb423dbe997bf5ce49a8608254902d46c + '<\/a>';</script>, <span id="cloak28a8928c51f23b3066d076110cb02d1d"><a href="mailto:careerguru@hotmail.com">careerguru@hotmail.com</a></span><script>document.getElementById('cloak28a8928c51f23b3066d076110cb02d1d').innerHTML = ''; var prefix = '&#109;a' + 'i&#108;' + '&#116;o'; var path = 'hr' + 'ef' + '='; var addy28a8928c51f23b3066d076110cb02d1d = 'c&#97;r&#101;&#101;rg&#117;r&#117;99' + '&#64;'; addy28a8928c51f23b3066d076110cb02d1d = addy28a8928c51f23b3066d076110cb02d1d + 'h&#111;tm&#97;&#105;l' + '&#46;' + 'c&#111;m'; var addy_text28a8928c51f23b3066d076110cb02d1d = 'c&#97;r&#101;&#101;rg&#117;r&#117;99' + '&#64;' + 'h&#111;tm&#97;&#105;l' + '&#46;' + 'c&#111;m'; document.getElementById('cloak28a8928c51f23b3066d076110cb02d1d').innerHTML += '<a ' + path + '\'' + prefix + ':' + addy28a8928c51f23b3066d076110cb02d1d + '\'>' + addy_text28a8928c51f23b3066d076110cb02d1d + '<\/a>';</script>, <span id="cloak1b474f05b5758d526118ba6d92a65a9b"><a href="mailto:users@yahoomail.com">users@yahoomail.com</a></span><script>document.getElementById('cloak1b474f05b5758d526118ba6d92a65a9b').innerHTML = ''; var prefix = '&#109;a' + 'i&#108;' + '&#116;o'; var path = 'hr' + 'ef' + '='; var addy1b474f05b5758d526118ba6d92a65a9b = '&#117;s&#101;rs' + '&#64;'; addy1b474f05b5758d526118ba6d92a65a9b = addy1b474f05b5758d526118ba6d92a65a9b + 'y&#97;h&#111;&#111;m&#97;&#105;l' + '&#46;' + 'c&#111;m'; var addy_text1b474f05b5758d526118ba6d92a65a9b = '&#117;s&#101;rs' + '&#64;' + 'y&#97;h&#111;&#111;m&#97;&#105;l' + '&#46;' + 'c&#111;m'; document.getElementById('cloak1b474f05b5758d526118ba6d92a65a9b').innerHTML += '<a ' + path + '\'' + prefix + ':' + addy1b474f05b5758d526118ba6d92a65a9b + '\'>' + addy_text1b474f05b5758d526118ba6d92a65a9b + '<\/a>';</script>'
          emails = re.findall(r'[\w\.-]+@[\w\.-]+', abc)
          for email in emails:
              print(email)</code></pre>
@@ -407,7 +407,7 @@
                         alt="Python Regex Tutorial: re.match(),re.search(), re.findall(), Flags"
                         src="http://localhost:4000/img/python/tutorial/16/Python14.7.png"></a> </p>
             <p>Here is the code </p>
-            <pre class="code-toolbar"><code><code>import re
+            <pre class="code-toolbar"><code>import re
          xx = """guru99 
          careerguru99	
          selenium"""
@@ -416,7 +416,7 @@
          print(k1)
          print(k2)</code></pre>
             <ul>
-                <li>We declared the variable xx for string " guru99…. careerguru99….selenium"</li>
+                <li>We declared the variable xx for string " guru…. careerguru….selenium"</li>
                 <li>Run the code without using flags multiline, it gives the output only 'g' from the lines</li>
                 <li>Run the code with flag "multiline", when you print 'k2' it gives the output as 'g', 'c' and 's'
                 </li>
@@ -426,15 +426,15 @@
                 Comment), etc. </p>
             <p><b>Python 2 Example</b> </p>
             <p>Above codes are Python 3 examples, If you want to run in Python 2 please consider following code. </p>
-            <pre class="code-toolbar"><code><code># Example of w+ and ^ Expression
+            <pre class="code-toolbar"><code># Example of w+ and ^ Expression
          import re
-         xx = "guru99,education is fun"
+         xx = "guru,education is fun"
          r1 = re.findall(r"^\w+",xx)
          print r1
          
          # Example of \s expression in re.split function
          import re
-         xx = "guru99,education is fun"
+         xx = "guru,education is fun"
          r1 = re.findall(r"^\w+", xx)
          print (re.split(r'\s','we are splitting the words'))
          print (re.split(r's','split the words'))
@@ -442,13 +442,13 @@
          # Using re.findall for text
          import re
          
-         list = ["guru99 get", "guru99 give", "guru Selenium"]
+         list = ["guru get", "guru give", "guru Selenium"]
          for element in list:
              z = re.match("(g\w+)\W(g\w+)", element)
          if z:
              print(z.groups())
              
-         patterns = ['software testing', 'guru99']
+         patterns = ['software testing', 'guru']
          text = 'software testing is fun?'
          for pattern in patterns:
              print 'Looking for "%s" in "%s" -&gt;' % (pattern, text),
@@ -456,15 +456,15 @@
                  print 'found a match!'
          else:
              print 'no match'
-         abc = <span id="cloak7e3c445ef7094b61fb031021bd034781"><a href="mailto:'guru99@google.com">'guru99@google.com</a></span><script>document.getElementById('cloak7e3c445ef7094b61fb031021bd034781').innerHTML = ''; var prefix = '&#109;a' + 'i&#108;' + '&#116;o'; var path = 'hr' + 'ef' + '='; var addy7e3c445ef7094b61fb031021bd034781 = '&#039;g&#117;r&#117;99' + '&#64;'; addy7e3c445ef7094b61fb031021bd034781 = addy7e3c445ef7094b61fb031021bd034781 + 'g&#111;&#111;gl&#101;' + '&#46;' + 'c&#111;m'; var addy_text7e3c445ef7094b61fb031021bd034781 = '&#039;g&#117;r&#117;99' + '&#64;' + 'g&#111;&#111;gl&#101;' + '&#46;' + 'c&#111;m'; document.getElementById('cloak7e3c445ef7094b61fb031021bd034781').innerHTML += '<a ' + path + '\'' + prefix + ':' + addy7e3c445ef7094b61fb031021bd034781 + '\'>' + addy_text7e3c445ef7094b61fb031021bd034781 + '<\/a>';</script>, <span id="cloakeea47a6c47b3606d4442b8620b6630d0"><a href="mailto:careerguru99@hotmail.com">careerguru99@hotmail.com</a></span><script>document.getElementById('cloakeea47a6c47b3606d4442b8620b6630d0').innerHTML = ''; var prefix = '&#109;a' + 'i&#108;' + '&#116;o'; var path = 'hr' + 'ef' + '='; var addyeea47a6c47b3606d4442b8620b6630d0 = 'c&#97;r&#101;&#101;rg&#117;r&#117;99' + '&#64;'; addyeea47a6c47b3606d4442b8620b6630d0 = addyeea47a6c47b3606d4442b8620b6630d0 + 'h&#111;tm&#97;&#105;l' + '&#46;' + 'c&#111;m'; var addy_texteea47a6c47b3606d4442b8620b6630d0 = 'c&#97;r&#101;&#101;rg&#117;r&#117;99' + '&#64;' + 'h&#111;tm&#97;&#105;l' + '&#46;' + 'c&#111;m'; document.getElementById('cloakeea47a6c47b3606d4442b8620b6630d0').innerHTML += '<a ' + path + '\'' + prefix + ':' + addyeea47a6c47b3606d4442b8620b6630d0 + '\'>' + addy_texteea47a6c47b3606d4442b8620b6630d0 + '<\/a>';</script>, <span id="cloak0fe0bb819b137f4365c98714691287ca"><a href="mailto:users@yahoomail.com">users@yahoomail.com</a></span><script>document.getElementById('cloak0fe0bb819b137f4365c98714691287ca').innerHTML = ''; var prefix = '&#109;a' + 'i&#108;' + '&#116;o'; var path = 'hr' + 'ef' + '='; var addy0fe0bb819b137f4365c98714691287ca = '&#117;s&#101;rs' + '&#64;'; addy0fe0bb819b137f4365c98714691287ca = addy0fe0bb819b137f4365c98714691287ca + 'y&#97;h&#111;&#111;m&#97;&#105;l' + '&#46;' + 'c&#111;m'; var addy_text0fe0bb819b137f4365c98714691287ca = '&#117;s&#101;rs' + '&#64;' + 'y&#97;h&#111;&#111;m&#97;&#105;l' + '&#46;' + 'c&#111;m'; document.getElementById('cloak0fe0bb819b137f4365c98714691287ca').innerHTML += '<a ' + path + '\'' + prefix + ':' + addy0fe0bb819b137f4365c98714691287ca + '\'>' + addy_text0fe0bb819b137f4365c98714691287ca + '<\/a>';</script>'
+         abc = <span id="cloak7e3c445ef7094b61fb031021bd034781"><a href="mailto:'guru@google.com">'guru@google.com</a></span><script>document.getElementById('cloak7e3c445ef7094b61fb031021bd034781').innerHTML = ''; var prefix = '&#109;a' + 'i&#108;' + '&#116;o'; var path = 'hr' + 'ef' + '='; var addy7e3c445ef7094b61fb031021bd034781 = '&#039;g&#117;r&#117;99' + '&#64;'; addy7e3c445ef7094b61fb031021bd034781 = addy7e3c445ef7094b61fb031021bd034781 + 'g&#111;&#111;gl&#101;' + '&#46;' + 'c&#111;m'; var addy_text7e3c445ef7094b61fb031021bd034781 = '&#039;g&#117;r&#117;99' + '&#64;' + 'g&#111;&#111;gl&#101;' + '&#46;' + 'c&#111;m'; document.getElementById('cloak7e3c445ef7094b61fb031021bd034781').innerHTML += '<a ' + path + '\'' + prefix + ':' + addy7e3c445ef7094b61fb031021bd034781 + '\'>' + addy_text7e3c445ef7094b61fb031021bd034781 + '<\/a>';</script>, <span id="cloakeea47a6c47b3606d4442b8620b6630d0"><a href="mailto:careerguru@hotmail.com">careerguru@hotmail.com</a></span><script>document.getElementById('cloakeea47a6c47b3606d4442b8620b6630d0').innerHTML = ''; var prefix = '&#109;a' + 'i&#108;' + '&#116;o'; var path = 'hr' + 'ef' + '='; var addyeea47a6c47b3606d4442b8620b6630d0 = 'c&#97;r&#101;&#101;rg&#117;r&#117;99' + '&#64;'; addyeea47a6c47b3606d4442b8620b6630d0 = addyeea47a6c47b3606d4442b8620b6630d0 + 'h&#111;tm&#97;&#105;l' + '&#46;' + 'c&#111;m'; var addy_texteea47a6c47b3606d4442b8620b6630d0 = 'c&#97;r&#101;&#101;rg&#117;r&#117;99' + '&#64;' + 'h&#111;tm&#97;&#105;l' + '&#46;' + 'c&#111;m'; document.getElementById('cloakeea47a6c47b3606d4442b8620b6630d0').innerHTML += '<a ' + path + '\'' + prefix + ':' + addyeea47a6c47b3606d4442b8620b6630d0 + '\'>' + addy_texteea47a6c47b3606d4442b8620b6630d0 + '<\/a>';</script>, <span id="cloak0fe0bb819b137f4365c98714691287ca"><a href="mailto:users@yahoomail.com">users@yahoomail.com</a></span><script>document.getElementById('cloak0fe0bb819b137f4365c98714691287ca').innerHTML = ''; var prefix = '&#109;a' + 'i&#108;' + '&#116;o'; var path = 'hr' + 'ef' + '='; var addy0fe0bb819b137f4365c98714691287ca = '&#117;s&#101;rs' + '&#64;'; addy0fe0bb819b137f4365c98714691287ca = addy0fe0bb819b137f4365c98714691287ca + 'y&#97;h&#111;&#111;m&#97;&#105;l' + '&#46;' + 'c&#111;m'; var addy_text0fe0bb819b137f4365c98714691287ca = '&#117;s&#101;rs' + '&#64;' + 'y&#97;h&#111;&#111;m&#97;&#105;l' + '&#46;' + 'c&#111;m'; document.getElementById('cloak0fe0bb819b137f4365c98714691287ca').innerHTML += '<a ' + path + '\'' + prefix + ':' + addy0fe0bb819b137f4365c98714691287ca + '\'>' + addy_text0fe0bb819b137f4365c98714691287ca + '<\/a>';</script>'
          emails = re.findall(r'[\w\.-]+@[\w\.-]+', abc)
          for email in emails:
              print email
          
          # Example of re.M or Multiline Flags
          import re
-         xx = """guru99 
-         careerguru99	
+         xx = """guru
+         careerguru	
          selenium"""
          k1 = re.findall(r"^\w", xx)
          k2 = re.findall(r"^\w", xx, re.MULTILINE)
