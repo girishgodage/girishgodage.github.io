@@ -91,9 +91,6 @@ It is quite common in such architectures to have common components for security,
 
 Let's say you want to handle authorization and authentication. By using a specific Security component to handle this functionality, you are abstracting away this logic from the rest of the application. The higher level microservices shown only need to know how to integrate with the security component. It does not need to know the inner details of the security component.
 
-[comments]:Do check out our video on this:
-
-[comments]:[![image info](/images/Capture-012-03.png)](https://www.youtube.com/watch?v=OF55HZPE7lQ)
 
 ### Summary
 

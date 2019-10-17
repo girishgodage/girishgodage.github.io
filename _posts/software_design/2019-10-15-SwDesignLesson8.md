@@ -758,9 +758,6 @@ That's why we have the concept of an ATC. The flights communicate with the ATC, 
 
 In the software world, a good example of the Mediator pattern is the ESB (Enterprise Service Bus). In a distributed system, instead of letting the applications talk to each other, an application drops in a message to the ESB. The ESB routes the request to the application that needs to handle the request. It acts as the Mediator.
 
-[comments]:Do check out our video on the same topic:
-
-[comments]:[![image info](images/Capture-109-01.png)](https://www.youtube.com/watch?v=f5Rzr5mVNbY)
 
 ### Summary
 

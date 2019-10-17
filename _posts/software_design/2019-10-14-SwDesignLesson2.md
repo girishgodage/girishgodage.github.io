@@ -74,9 +74,6 @@ A few examples of Seperation of Concern in infrastructure components
 - API Gateway - Centralized access to all microservices. You can implement cross cutting microservice concerns here.
 - Distributed Tracing and Centralized Logging - You can trace microservices and find out what's happending behind the scenes.
 
-[comment]:Do check out our video on this:
-
-[comment]:[![image info](/images/Capture-039-01.png)](https://www.youtube.com/watch?v=GRTQ896UWaI)
 
 ### Summary
 

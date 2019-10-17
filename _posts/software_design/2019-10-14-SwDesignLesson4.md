@@ -185,10 +185,6 @@ In this article, we talked about the Single Responsibility Principle. It is appl
 
 In general, **Single Responsibility ensures high cohesion, low coupling and enhanced reusability**.
 
-[comment]:Do check out our video on this:
-
-[comment]:[![image info](/images/Capture-05-01.png)](	https://www.youtube.com/watch?v=eympIQPQLx4) 
-
 ---
 
 {% include swPrincipal.md %}

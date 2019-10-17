@@ -249,9 +249,6 @@ A very effective way to avoid such layer-to-layer coupling is to use the **Facad
 
 *All in all, decoupling makes the code more reusable and testable.*
 
-[comments]:Do check out our video on this:
-
-[comments]:[![image info](/images/Capture-06-05.png)](https://www.youtube.com/watch?v=f32UZn8fQiw)
 
 ### Summary
 

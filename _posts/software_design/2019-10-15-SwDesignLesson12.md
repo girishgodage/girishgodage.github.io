@@ -168,11 +168,6 @@ When you look at your method/class/package/component, take to a minute to also t
 However, if you end up joining together many phrases and sentences with several "and"s, then you violate the SRP. Your software could end up have low cohesion. 
 
 
-[comments]:Do check out our video on this:
-
-[comments]:[![image info](/images/Capture-08-02.png)](https://www.youtube.com/watch?v=Gx2N-kkO4FU)
-     
-
 ### Summary
 
 In this video, we talked about cohesion in significant detail. Cohesion is all about grouping related things together. Cohesion is applicable at multiple levels in a single application, such as method/class/package/component/application. You group related methods into a class, related classes into a package, and related packages perhaps into a component. 

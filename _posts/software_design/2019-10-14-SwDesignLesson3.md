@@ -439,10 +439,6 @@ This is called Dependency Inversion principle.
 
 Frameworks like Spring make it easy to implement Dependency Inversion.
 
-[comment]:Do check out our video on this:
-
-[comment]:[![image info](/images/Capture-022-02.png)](https://www.youtube.com/watch?v=yxf2spbpTSw)
-
 
 ### Summary
 

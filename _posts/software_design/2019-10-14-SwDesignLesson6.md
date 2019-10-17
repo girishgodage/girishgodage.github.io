@@ -146,9 +146,6 @@ User of the ```BinarySearchImpl``` class, can also pass in a specific implementa
 
 > By applying the DIP, you make your code more testable. The test code could pass in dependency mocks to properly test the code. 
 
-[comments]:Do check out our video on this:
-
-[comments]:[![image info](/images/Capture-015-01.png)](https://www.youtube.com/watch?v=PdQ4xAUGitk)   
 
 ### Summary
 

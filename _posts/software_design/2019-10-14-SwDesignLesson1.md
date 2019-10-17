@@ -96,9 +96,6 @@ Lesser code you have, lesser code you have to maintain.
 
 Always aim to keep things simple.
 
-[comment]: Do check out our video on this:
-
-[comment]: [![image info](/images/Capture-09-03.png)](https://www.youtube.com/watch?v=jQIJkzCmUvo)   
 
 ### Summary
 

@@ -126,9 +126,6 @@ If you now want to add another shape, then you need to extend the ```Shape``` cl
 
 Here, ```Shape``` class is open to extension, and ```calculateArea()``` is closed to modification.
 
-[comment]:Do check out our video on this:
-
-[comment]:[![image info](/images/Capture-017-02.png)](https://www.youtube.com/watch?v=pjDphh9OBVk)
 
 ### Summary
 
