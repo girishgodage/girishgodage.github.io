@@ -1,4 +1,191 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-10-18T14:35:44+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">Microservices with Spring Boot - Part 5 - Using Eureka Naming Server</title><link href="http://localhost:4000/blog/Microservices5" rel="alternate" type="text/html" title="Microservices with Spring Boot - Part 5 - Using Eureka Naming Server" /><published>2019-10-17T20:17:00+00:00</published><updated>2019-10-17T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices5</id><content type="html" xml:base="http://localhost:4000/blog/Microservices5">&lt;p&gt;Let’s learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot. We will create a couple of microservices and get them to talk to each other using Eureka Naming Server and Ribbon for Client Side Load Balancing.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-10-18T14:58:37+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">Breaking a Monolith into Microservices - Best Practices and Challenges</title><link href="http://localhost:4000/blog/Microservices6" rel="alternate" type="text/html" title="Breaking a Monolith into Microservices - Best Practices and Challenges" /><published>2019-10-17T20:17:00+00:00</published><updated>2019-10-17T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices6</id><content type="html" xml:base="http://localhost:4000/blog/Microservices6">&lt;p&gt;In this article, we will describe the first steps, in taking an architecture from monolith to microservice.&lt;/p&gt;
+
+&lt;h2 id=&quot;you-will-learn&quot;&gt;You will learn&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;What are the important features of microservices architectures?&lt;/li&gt;
+  &lt;li&gt;What are the important challenges?&lt;/li&gt;
+  &lt;li&gt;How do you break a monolith to microservices?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let’s start with the basics of a monolith architecture,  understand the microservices architecture, and figure out what should you do to migrate from the former to the latter.&lt;/p&gt;
+
+&lt;h3 id=&quot;monolith-architecture&quot;&gt;Monolith Architecture&lt;/h3&gt;
+
+&lt;p&gt;The salient features of monolith applications are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Released, or taken to production, once every few week or months or years&lt;/li&gt;
+  &lt;li&gt;Generally have a wide range of features and functionality&lt;/li&gt;
+  &lt;li&gt;Have a development team of over 50 people working on them&lt;/li&gt;
+  &lt;li&gt;Debugging problems that arise in them, is a huge challenge&lt;/li&gt;
+  &lt;li&gt;It is almost impossible to bring in new technologies and technical processes, midway through the lifetime of such an application&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Monolith applications are typically huge, with them having a million lines of code on average.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;A monolithic application would look something like the following:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Capture-064-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You have a large application talking to a large database.&lt;/p&gt;
+
+&lt;h3 id=&quot;microservices-architecture&quot;&gt;Microservices Architecture&lt;/h3&gt;
+
+&lt;p&gt;In microservices architectures, instead of building a large application, we build a number of smaller microservices.&lt;/p&gt;
+
+&lt;p&gt;Here is how you would split up the monolith MovieApplication:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Capture-064-03.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;As you can see here, the databases are also separated out.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Microservices architecture involves a number of small, well-designed microservices, that exchange messages among themselves:
+&lt;img src=&quot;/images/Capture-059-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;microservices-architecture-is-tough&quot;&gt;Microservices Architecture Is Tough&lt;/h3&gt;
+
+&lt;p&gt;While a microservices architecture looks very easy at a high level, implementing it is not a trivial process at all.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;There are a number of important decisions to make for moving to Microservices Architectures&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Examples:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;What are the boundaries of the individual microservices?&lt;/li&gt;
+  &lt;li&gt;How small should a microservice be, and what functionality should go into it?&lt;/li&gt;
+  &lt;li&gt;What all data needs to go into the database that a particular microservice talks to extensively?&lt;/li&gt;
+  &lt;li&gt;How should the microservices communicate with each other?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;challenges-with-the-microservices-architectures&quot;&gt;Challenges with the Microservices Architectures&lt;/h3&gt;
+
+&lt;p&gt;The challenges that need to be tacked when setting up a microservices architecture are described below.&lt;/p&gt;
+
+&lt;h4 id=&quot;quick-setup-needed&quot;&gt;Quick Setup Needed&lt;/h4&gt;
+
+&lt;p&gt;You can NOT spend a month setting up each microservice. You should be able to setup a microservice quickly.&lt;/p&gt;
+
+&lt;h4 id=&quot;automation&quot;&gt;Automation&lt;/h4&gt;
+
+&lt;p&gt;Because there are a number of smaller components instead of a monolith, there needs to be automation in every activity, such as builds, deployment, monitoring, etc.&lt;/p&gt;
+
+&lt;h4 id=&quot;visibility&quot;&gt;Visibility&lt;/h4&gt;
+
+&lt;p&gt;You have a potentially large number of smaller components to deploy and maintain. This number could be 100 today, and a 1000 tomorrow. You should be able to monitor and identify problems automatically. You need great visibility around all the components.&lt;/p&gt;
+
+&lt;h4 id=&quot;bounded-context&quot;&gt;Bounded Context&lt;/h4&gt;
+
+&lt;p&gt;Deciding the boundaries of a microservice is not an easy task. Applying Bounded Context principles from Domain Driven Design is usually a good starting point.&lt;/p&gt;
+
+&lt;p&gt;Your understanding of the domain evolves over a period of time. You need to ensure that the microservice boundaries evolve with time.&lt;/p&gt;
+
+&lt;h4 id=&quot;configuration-management&quot;&gt;Configuration Management&lt;/h4&gt;
+
+&lt;p&gt;You need to maintain configurations for hundreds of components across environments. It would be best to have a configuration management solution.&lt;/p&gt;
+
+&lt;h4 id=&quot;dynamic-scale-up-and-scale-down&quot;&gt;Dynamic Scale Up And Scale Down&lt;/h4&gt;
+
+&lt;p&gt;The advantages of a microservices architecture can be realized only of the application can scale up and scale down easily in the cloud.&lt;/p&gt;
+
+&lt;h4 id=&quot;pack-of-cards&quot;&gt;Pack Of Cards&lt;/h4&gt;
+
+&lt;p&gt;If the microservice at the bottom of a call chain fails, it can have knock on effects on all the other microservices. Microservices should be fault tolerant by design.&lt;/p&gt;
+
+&lt;h4 id=&quot;debugging&quot;&gt;Debugging&lt;/h4&gt;
+
+&lt;p&gt;When there is a problem that needs investigation, you might need to look into multiple services across different components. Centralized logging and dashboards are essential to make it easy to debug problems.&lt;/p&gt;
+
+&lt;h4 id=&quot;consistency&quot;&gt;Consistency&lt;/h4&gt;
+
+&lt;p&gt;You cannot have a wide range of tools solving the same problem. While it is important to encourage innovation, it is also essential to have decentralized governance around the languages, platforms, technologies and tools used for implementing, deploying and monitoring microservices.&lt;/p&gt;
+
+&lt;h3 id=&quot;going-from-monolith-to-microservices---it-is-not-a-switch&quot;&gt;Going from Monolith To Microservices - It is Not A Switch&lt;/h3&gt;
+
+&lt;p&gt;You may have noticed that after describing monolith applications, we directly jumped into the challenges of microservices.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The reason we did not first talk about the advantages of microservices, is that you need a reality check when you migrate from one architecture to another. You need to realize this is not something you can do in a few weeks or months.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Getting a microservices architecture right involves a few years of work. It’s not a switch, but a journey.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;During that journey, both architectures live side by side.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;You would hope that number of applications using the microservices architecture grows over time.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;ask-why-are-you-migrating-from-monolith-to-microservices&quot;&gt;Ask Why are you migrating From Monolith To Microservices&lt;/h4&gt;
+
+&lt;p&gt;This is the most important question to ask! Don’t do microservices because it is a buzzword. Do it because your business needs it.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Why are you migrating from Monolith to Microservices?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;What do you want to achieve?&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Do you want to be able to adopt new technologies and processes, in a faster manner?&lt;/li&gt;
+  &lt;li&gt;Do you want faster release cycles for your application?&lt;/li&gt;
+  &lt;li&gt;Do you want to scale more easily in the cloud?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You need to be very aware of which of these reasons is the biggest one, for your migration.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The approach you use to actually migrate would differ, based on the exact reason for migration.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Let’s look at these approaches in a little more detail.&lt;/p&gt;
+
+&lt;h5 id=&quot;if-your-reason-is---to-adopt-new-technologies&quot;&gt;If your reason is - to Adopt New Technologies&lt;/h5&gt;
+
+&lt;p&gt;Let’s say the reason is the ability to adopt newer technologies. In that case, you can start off with designing microservices for the next set of features you intend to implement. In other words, all the requirements for new feature implementation in the monolith application, are the best candidates to become microservices.&lt;/p&gt;
+
+&lt;p&gt;You need to answer questions such as:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;How do you design the database?&lt;/li&gt;
+  &lt;li&gt;How do make sure the communication between the old monolith and the new components, is proper?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;if-your-reason-is---to-have-faster-release-cycles&quot;&gt;If your reason is - to have Faster Release Cycles&lt;/h5&gt;
+
+&lt;p&gt;Your business may not be happy with the pace at which new features are being released to production. In that scenario, you first need to identify those parts of the application, where there are frequent changes.&lt;/p&gt;
+
+&lt;p&gt;Once you do this, you can extract the fast moving parts and create microservices around them.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The idea behind this is , when there is a change, only release the related microservice.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h5 id=&quot;if-your-reason-is---to-scale-with-the-cloud&quot;&gt;If your reason is - to Scale With The Cloud&lt;/h5&gt;
+
+&lt;p&gt;If the driving force behind the migration is scaling with the cloud, then you need to analyze what needs to be done to put your application in the cloud.&lt;/p&gt;
+
+&lt;p&gt;Start with research and Proof-of-Concept prototypes to understand the dependencies involved. You need to find out which dependencies are important to break, and anticipate the problems you may face on making the application cloud-native.&lt;/p&gt;
+
+&lt;h5 id=&quot;more-than-one&quot;&gt;More than one&lt;/h5&gt;
+
+&lt;p&gt;Your business might need more that one of the above. Prioritize them and get started with the most important ones.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Clearly, the path to migration will not be the same for all. However, with whatever microservices that you design in your journey, make sure they address the challenges that we saw earlier, in an effective manner.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;In this article, we had a good look at the activities involved in moving from a monolith to a microservices architecture. We observed that it is not an easy journey, as the though process involved in designing the two kinds of systems, is radically different.&lt;/p&gt;
+
+&lt;p&gt;The actual journey of your migration will heavily depend upon the exact reason why you want to do it. Ultimately, with whatever microservices you come up with, make sure they effectively address the challenges that exist in such a system.&lt;/p&gt;
+
+&lt;hr /&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">In this article, we will describe the first steps, in taking an architecture from monolith to microservice. You will learn What are the important features of microservices architectures? What are the important challenges? How do you break a monolith to microservices?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/microservices.png" /></entry><entry><title type="html">Microservices with Spring Boot - Part 5 - Using Eureka Naming Server</title><link href="http://localhost:4000/blog/Microservices5" rel="alternate" type="text/html" title="Microservices with Spring Boot - Part 5 - Using Eureka Naming Server" /><published>2019-10-17T20:17:00+00:00</published><updated>2019-10-17T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices5</id><content type="html" xml:base="http://localhost:4000/blog/Microservices5">&lt;p&gt;Let’s learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot. We will create a couple of microservices and get them to talk to each other using Eureka Naming Server and Ribbon for Client Side Load Balancing.&lt;/p&gt;
 
 &lt;p&gt;This is part 5 of this series. In this part, we will focus on enabling Eureka Naming Server and have the microservices communicate with it.&lt;/p&gt;
 
@@ -3286,91 +3473,4 @@
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">In this article, we explore the reasons why we build applications with several layers. We also look at different options for each layer in the Java world.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/sw_architect.png" /></entry><entry><title type="html">5 Important Responsibilities of a Software Architect</title><link href="http://localhost:4000/blog/SwArchitectLesson4" rel="alternate" type="text/html" title="5 Important Responsibilities of a Software Architect" /><published>2019-10-15T18:50:00+00:00</published><updated>2019-10-15T18:50:00+00:00</updated><id>http://localhost:4000/blog/SwArchitectLesson4</id><content type="html" xml:base="http://localhost:4000/blog/SwArchitectLesson4">&lt;p&gt;In this article, we look at some of the important responsibilities that an architect is expected to handle. Although we chiefly focus on application architects, most of these also hold true for enterprise architects as well.&lt;/p&gt;
-
-&lt;p&gt;Five Responsibilities Of Architects that we look at are&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Clean And Simple Architecture&lt;/li&gt;
-  &lt;li&gt;Clear Standards&lt;/li&gt;
-  &lt;li&gt;Proper Governance&lt;/li&gt;
-  &lt;li&gt;Best Engineering Practices&lt;/li&gt;
-  &lt;li&gt;Awesome Technical Processes&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;clean-and-simple-architecture&quot;&gt;Clean And Simple Architecture&lt;/h3&gt;
-
-&lt;p&gt;Any application that you work on needs to have a very clean and simple architecture. There must be great clarity in the organization on application layers, the use of specific frameworks at each layer, and patterns in communication with external applications.&lt;/p&gt;
-
-&lt;h3 id=&quot;clear-standards&quot;&gt;Clear Standards&lt;/h3&gt;
-
-&lt;p&gt;There needs to be clarity on the sets of standards followed in design, development, deployment and operations.&lt;/p&gt;
-
-&lt;h3 id=&quot;governance&quot;&gt;Governance&lt;/h3&gt;
-
-&lt;p&gt;Architects needs to ensure proper governance around the various standards, and on the creation of common components. In any enterprise application, it always adds great value to have common components that are frequently reused across different applications and application layers.&lt;/p&gt;
-
-&lt;h3 id=&quot;best-engineering-practices&quot;&gt;Best Engineering Practices&lt;/h3&gt;
-
-&lt;p&gt;It is very important to adhere to engineering best practices over the lifetime of an application. Interesting examples are Test Driven Development, Behavior Driven Development, DevOps. Such practices also involve use of consistent build and deployment tools and processes.&lt;/p&gt;
-
-&lt;p&gt;The question you need to ask yourself frequently is - Are you are making the best possible use of these practices, to achieve business goals?&lt;/p&gt;
-
-&lt;h3 id=&quot;awesome-technical-processes&quot;&gt;Awesome Technical Processes&lt;/h3&gt;
-
-&lt;p&gt;You need to make sure that you have great processes in place for the following:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Development&lt;/li&gt;
-  &lt;li&gt;Deployment&lt;/li&gt;
-  &lt;li&gt;Continuous Integration&lt;/li&gt;
-  &lt;li&gt;Immediate Defect Feedback&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;You need to have complete control over such issues.&lt;/p&gt;
-
-&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
-
-&lt;p&gt;In this article, we looked at the some of the important responsibilities of a software architect.&lt;/p&gt;
-
-&lt;p&gt;Five Responsibilities Of Architects that we looked at are&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Clean And Simple Architecture&lt;/li&gt;
-  &lt;li&gt;Clear Standards&lt;/li&gt;
-  &lt;li&gt;Proper Governance&lt;/li&gt;
-  &lt;li&gt;Best Engineering Practices&lt;/li&gt;
-  &lt;li&gt;Awesome Technical Processes&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;software-architecture&quot;&gt;Software Architecture&lt;/h3&gt;
-
-&lt;p&gt;This is the article in a series of articles on important Software Architecture:&lt;/p&gt;
-
-&lt;p&gt;This is the first article in the following series of articles on Software Architecture :&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/SwArchitectLesson1&quot; target=&quot;_blank&quot;&gt;1 - Quick Introduction To Software Architecture&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/SwArchitectLesson2&quot; target=&quot;_blank&quot;&gt;2 - What Is The Goal Of a Software Architect?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/SwArchitectLesson3&quot; target=&quot;_blank&quot;&gt;3 - 5 Qualities of a Great Software Architect&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/SwArchitectLesson4&quot; target=&quot;_blank&quot;&gt;4 - 5 Important Responsibilities of a Software Architect&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/SwArchitectLesson5&quot; target=&quot;_blank&quot;&gt;5 - Software Architecture - Why do we use Layered Architectures?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr /&gt;
-   
-    &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/SwArchitectLesson3&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/SwArchitectLesson5&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">In this article, we look at some of the important responsibilities that an architect is expected to handle. Although we chiefly focus on application architects, most of these also hold true for enterprise architects as well.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/sw_architect.png" /></entry></feed>
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">In this article, we explore the reasons why we build applications with several layers. We also look at different options for each layer in the Java world.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/sw_architect.png" /></entry></feed>
