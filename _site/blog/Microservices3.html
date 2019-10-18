@@ -124,6 +124,7 @@
 <p>This is part 3 of this series. In this part, we will focus on creating the Currency Conversion Microservice.</p>
 
 <h2 id="you-will-learn">You will learn</h2>
+
 <ul>
   <li>How to create a microservice with Spring Boot?</li>
   <li>How to use RestTemplate to execute a REST Service?</li>
@@ -163,6 +164,7 @@
 <p><img src="/images/spring-boot-microservice-currency-conversion-service-project-structure.png" alt="Image" title="Project Structure" /></p>
 
 <p>A few details:</p>
+
 <ul>
   <li><code class="highlighter-rouge">SpringBootMicroserviceCurrencyConversionApplication.java</code> - The Spring Boot Application class generated with Spring Initializer. This class acts as the launching point for application.</li>
   <li><code class="highlighter-rouge">pom.xml</code> - Contains all the dependencies needed to build this project. We will use Spring Boot Starter Web.</li>
@@ -172,6 +174,7 @@
 </ul>
 
 <h2 id="tools-you-will-need">Tools you will need</h2>
+
 <ul>
   <li>Maven 3.0+ is your build tool</li>
   <li>Your favorite IDE. We use Eclipse.</li>
@@ -280,7 +283,7 @@
   <span class="py">server.port</span><span class="p">=</span><span class="s">8100</span>
 </code></pre></div></div>
 
-<p>We are assigning an application name as well as a default port of <code class="highlighter-rouge">8100</code>.</p>
+<p>We are assigning an application name as well as a default port of <code class="highlighter-rouge">8100</code> .</p>
 
 <h2 id="testing-the-microservice">Testing the Microservice</h2>
 
@@ -321,6 +324,7 @@
 </code></pre></div></div>
 
 <p>We first define a simple proxy.</p>
+
 <ul>
   <li><code class="highlighter-rouge">@FeignClient(name="forex-service" url="localhost:8100")</code> - Declares that this is a Feign Client and the url at which forex-service is present is <code class="highlighter-rouge">localhost:8100</code></li>
   <li><code class="highlighter-rouge">@GetMapping("/currency-exchange/from/{from}/to/{to}")</code> - URI of the service we would want to consume</li>
@@ -501,9 +505,9 @@
       <span class="nt">&lt;/pluginRepository&gt;</span>
     <span class="nt">&lt;/pluginRepositories&gt;</span>
 
-
   <span class="nt">&lt;/project&gt;</span>
 </code></pre></div></div>
+
 <hr />
 
 <h6 id="spring-boot-microservice-currency-conversion-servicesrcmainjavacomgirishgodagespringbootmicroserviceexamplecurrencyconversioncurrencyconversionbeanjava">/spring-boot-microservice-currency-conversion-service/src/main/java/com/girishgodage/springboot/microservice/example/currencyconversion/CurrencyConversionBean.java</h6>
@@ -594,6 +598,7 @@
 
   <span class="o">}</span>
 </code></pre></div></div>
+
 <hr />
 
 <h6 id="spring-boot-microservice-currency-conversion-servicesrcmainjavacomgirishgodagespringbootmicroserviceexamplecurrencyconversioncurrencyconversioncontrollerjava">/spring-boot-microservice-currency-conversion-service/src/main/java/com/girishgodage/springboot/microservice/example/currencyconversion/CurrencyConversionController.java</h6>
@@ -653,6 +658,7 @@
 
   <span class="o">}</span>
 </code></pre></div></div>
+
 <hr />
 
 <h6 id="spring-boot-microservice-currency-conversion-servicesrcmainjavacomgirishgodagespringbootmicroserviceexamplecurrencyconversioncurrencyexchangeserviceproxyjava">/spring-boot-microservice-currency-conversion-service/src/main/java/com/girishgodage/springboot/microservice/example/currencyconversion/CurrencyExchangeServiceProxy.java</h6>
@@ -671,6 +677,7 @@
       <span class="o">(</span><span class="nd">@PathVariable</span><span class="o">(</span><span class="s">"from"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">from</span><span class="o">,</span> <span class="nd">@PathVariable</span><span class="o">(</span><span class="s">"to"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">to</span><span class="o">);</span>
   <span class="o">}</span>
 </code></pre></div></div>
+
 <hr />
 
 <h6 id="spring-boot-microservice-currency-conversion-servicesrcmainjavacomgirishgodagespringbootmicroserviceexamplecurrencyconversionspringbootmicroservicecurrencyconversionapplicationjava">/spring-boot-microservice-currency-conversion-service/src/main/java/com/girishgodage/springboot/microservice/example/currencyconversion/SpringBootMicroserviceCurrencyConversionApplication.java</h6>
@@ -691,6 +698,7 @@
     <span class="o">}</span>
   <span class="o">}</span>
 </code></pre></div></div>
+
 <hr />
 
 <h6 id="spring-boot-microservice-currency-conversion-servicesrcmainresourcesapplicationproperties">/spring-boot-microservice-currency-conversion-service/src/main/resources/application.properties</h6>
@@ -698,6 +706,7 @@
 <div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="py">spring.application.name</span><span class="p">=</span><span class="s">currency-conversion-service</span>
   <span class="py">server.port</span><span class="p">=</span><span class="s">8100</span>
 </code></pre></div></div>
+
 <hr />
 
 <h6 id="spring-boot-microservice-currency-conversion-servicesrctestjavacomgirishgodagespringbootmicroserviceexamplecurrencyconversionspringbootmicroservicecurrencyconversionapplicationtestsjava">/spring-boot-microservice-currency-conversion-service/src/test/java/com/girishgodage/springboot/microservice/example/currencyconversion/SpringBootMicroserviceCurrencyConversionApplicationTests.java</h6>

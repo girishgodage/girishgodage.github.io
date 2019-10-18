@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-10-18T18:13:51+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">Microservices Architectures - Advantages Of Microservices</title><link href="http://localhost:4000/blog/Microservices9" rel="alternate" type="text/html" title="Microservices Architectures - Advantages Of Microservices" /><published>2019-10-17T20:17:00+00:00</published><updated>2019-10-17T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices9</id><content type="html" xml:base="http://localhost:4000/blog/Microservices9">&lt;p&gt;Microservices architectures are very popular today. In this article, we discuss the three main advantages of having a microservices architecture.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-10-18T18:32:29+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">Microservices Architectures - Advantages Of Microservices</title><link href="http://localhost:4000/blog/Microservices9" rel="alternate" type="text/html" title="Microservices Architectures - Advantages Of Microservices" /><published>2019-10-17T20:17:00+00:00</published><updated>2019-10-17T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices9</id><content type="html" xml:base="http://localhost:4000/blog/Microservices9">&lt;p&gt;Microservices architectures are very popular today. In this article, we discuss the three main advantages of having a microservices architecture.&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;New Technology And Process Adoption&lt;/li&gt;
   &lt;li&gt;Dynamic Scaling Up And Down&lt;/li&gt;
@@ -1723,6 +1723,7 @@
 &lt;p&gt;This is part 3 of this series. In this part, we will focus on creating the Currency Conversion Microservice.&lt;/p&gt;
 
 &lt;h2 id=&quot;you-will-learn&quot;&gt;You will learn&lt;/h2&gt;
+
 &lt;ul&gt;
   &lt;li&gt;How to create a microservice with Spring Boot?&lt;/li&gt;
   &lt;li&gt;How to use RestTemplate to execute a REST Service?&lt;/li&gt;
@@ -1762,6 +1763,7 @@
 &lt;p&gt;&lt;img src=&quot;/images/spring-boot-microservice-currency-conversion-service-project-structure.png&quot; alt=&quot;Image&quot; title=&quot;Project Structure&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;A few details:&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SpringBootMicroserviceCurrencyConversionApplication.java&lt;/code&gt; - The Spring Boot Application class generated with Spring Initializer. This class acts as the launching point for application.&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;pom.xml&lt;/code&gt; - Contains all the dependencies needed to build this project. We will use Spring Boot Starter Web.&lt;/li&gt;
@@ -1771,6 +1773,7 @@
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;tools-you-will-need&quot;&gt;Tools you will need&lt;/h2&gt;
+
 &lt;ul&gt;
   &lt;li&gt;Maven 3.0+ is your build tool&lt;/li&gt;
   &lt;li&gt;Your favorite IDE. We use Eclipse.&lt;/li&gt;
@@ -1879,7 +1882,7 @@
   &lt;span class=&quot;py&quot;&gt;server.port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;8100&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;We are assigning an application name as well as a default port of &lt;code class=&quot;highlighter-rouge&quot;&gt;8100&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;We are assigning an application name as well as a default port of &lt;code class=&quot;highlighter-rouge&quot;&gt;8100&lt;/code&gt; .&lt;/p&gt;
 
 &lt;h2 id=&quot;testing-the-microservice&quot;&gt;Testing the Microservice&lt;/h2&gt;
 
@@ -1920,6 +1923,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;We first define a simple proxy.&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@FeignClient(name=&quot;forex-service&quot; url=&quot;localhost:8100&quot;)&lt;/code&gt; - Declares that this is a Feign Client and the url at which forex-service is present is &lt;code class=&quot;highlighter-rouge&quot;&gt;localhost:8100&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@GetMapping(&quot;/currency-exchange/from/{from}/to/{to}&quot;)&lt;/code&gt; - URI of the service we would want to consume&lt;/li&gt;
@@ -2100,9 +2104,9 @@
       &lt;span class=&quot;nt&quot;&gt;&amp;lt;/pluginRepository&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;/pluginRepositories&amp;gt;&lt;/span&gt;
 
-
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;/project&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;hr /&gt;
 
 &lt;h6 id=&quot;spring-boot-microservice-currency-conversion-servicesrcmainjavacomgirishgodagespringbootmicroserviceexamplecurrencyconversioncurrencyconversionbeanjava&quot;&gt;/spring-boot-microservice-currency-conversion-service/src/main/java/com/girishgodage/springboot/microservice/example/currencyconversion/CurrencyConversionBean.java&lt;/h6&gt;
@@ -2193,6 +2197,7 @@
 
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;hr /&gt;
 
 &lt;h6 id=&quot;spring-boot-microservice-currency-conversion-servicesrcmainjavacomgirishgodagespringbootmicroserviceexamplecurrencyconversioncurrencyconversioncontrollerjava&quot;&gt;/spring-boot-microservice-currency-conversion-service/src/main/java/com/girishgodage/springboot/microservice/example/currencyconversion/CurrencyConversionController.java&lt;/h6&gt;
@@ -2252,6 +2257,7 @@
 
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;hr /&gt;
 
 &lt;h6 id=&quot;spring-boot-microservice-currency-conversion-servicesrcmainjavacomgirishgodagespringbootmicroserviceexamplecurrencyconversioncurrencyexchangeserviceproxyjava&quot;&gt;/spring-boot-microservice-currency-conversion-service/src/main/java/com/girishgodage/springboot/microservice/example/currencyconversion/CurrencyExchangeServiceProxy.java&lt;/h6&gt;
@@ -2270,6 +2276,7 @@
       &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;@PathVariable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;from&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;@PathVariable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;to&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;hr /&gt;
 
 &lt;h6 id=&quot;spring-boot-microservice-currency-conversion-servicesrcmainjavacomgirishgodagespringbootmicroserviceexamplecurrencyconversionspringbootmicroservicecurrencyconversionapplicationjava&quot;&gt;/spring-boot-microservice-currency-conversion-service/src/main/java/com/girishgodage/springboot/microservice/example/currencyconversion/SpringBootMicroserviceCurrencyConversionApplication.java&lt;/h6&gt;
@@ -2290,6 +2297,7 @@
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;hr /&gt;
 
 &lt;h6 id=&quot;spring-boot-microservice-currency-conversion-servicesrcmainresourcesapplicationproperties&quot;&gt;/spring-boot-microservice-currency-conversion-service/src/main/resources/application.properties&lt;/h6&gt;
@@ -2297,6 +2305,7 @@
 &lt;div class=&quot;language-properties highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;py&quot;&gt;spring.application.name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;currency-conversion-service&lt;/span&gt;
   &lt;span class=&quot;py&quot;&gt;server.port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;8100&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;hr /&gt;
 
 &lt;h6 id=&quot;spring-boot-microservice-currency-conversion-servicesrctestjavacomgirishgodagespringbootmicroserviceexamplecurrencyconversionspringbootmicroservicecurrencyconversionapplicationtestsjava&quot;&gt;/spring-boot-microservice-currency-conversion-service/src/test/java/com/girishgodage/springboot/microservice/example/currencyconversion/SpringBootMicroserviceCurrencyConversionApplicationTests.java&lt;/h6&gt;
@@ -2922,179 +2931,301 @@
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Let’s learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot. We will create a couple of microservices and get them to talk to each other using Eureka Naming Server and Ribbon for Client Side Load Balancing.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/microservices.png" /></entry><entry><title type="html">Microservices Architectures - Microservices vs SOA</title><link href="http://localhost:4000/blog/Microservices11" rel="alternate" type="text/html" title="Microservices Architectures - Microservices vs SOA" /><published>2019-10-17T20:17:00+00:00</published><updated>2019-10-17T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices11</id><content type="html" xml:base="http://localhost:4000/blog/Microservices11">&lt;p&gt;Microservices architectures are very popular today. In this article, we take a look at how microservices architectures are different from Service Oriented Architectures (SOA).&lt;/p&gt;
-
-&lt;h3 id=&quot;deployability&quot;&gt;Deployability&lt;/h3&gt;
-
-&lt;p&gt;Both Microservices and Service Oriented Architectures primarily talk about creating small services.&lt;/p&gt;
-
-&lt;p&gt;Whenever we talk of microservices, we refer to small sized services that are also independently deployable.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Capture-065-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;For example, we should be able to release Microservice1 without affecting the behavior of any of the other microservices. We would be able to take such a microservice to production very quickly.&lt;/p&gt;
-
-&lt;p&gt;The focus of SOA might be on creating independent services, but not exactly independently deployable ones. In SOA, while we focused on API, the deployable units were generally large.&lt;/p&gt;
-
-&lt;h3 id=&quot;thin-pipes-v-enterprise-system-bus&quot;&gt;Thin Pipes v Enterprise System Bus&lt;/h3&gt;
-
-&lt;p&gt;With the evolution of its architectures, SOA ended up having large Enterprise Service Buses (ESBs). ESBs were introduced to enable loose coupling between SOA components.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Capture-065-03.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;In order to implement a new feature in an application, changes are needed both on the application logic, as well as in the enterprise bus.&lt;/p&gt;
-
-&lt;p&gt;The enterprise system bus become a central spoke where a lot of business logic also made its way. Over a period of time, these sucked in a lot of business logic, making the application difficult to maintain.&lt;/p&gt;
-
-&lt;p&gt;Microservices architectures keep minimum logic in the communication infrastructure - thin pipes.&lt;/p&gt;
-
-&lt;h3 id=&quot;tied-to-xml&quot;&gt;Tied To XML&lt;/h3&gt;
-
-&lt;p&gt;SOA was tied to the XML technologies, inheriting its formalities and complexities.&lt;/p&gt;
-
-&lt;h3 id=&quot;governance&quot;&gt;Governance&lt;/h3&gt;
-
-&lt;p&gt;With SOA, there is always an centralize architecture team that decides what logic goes into an ESB, and what cannot, among other things.&lt;/p&gt;
-
-&lt;p&gt;On the other hand, microservices architectures focuses on having decentralized governance.&lt;/p&gt;
-
-&lt;h3 id=&quot;lets-take-an-example&quot;&gt;Let’s take an example&lt;/h3&gt;
-
-&lt;p&gt;Consider a banking application. Along with a savings account, a customer gets a debit card for free. An Insurance Savings Account and a Debit Card are different banking products, managed by different product systems.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Capture-065-03.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;soa&quot;&gt;SOA&lt;/h4&gt;
-
-&lt;p&gt;In the SOA architecture, the ESB takes the order from the selling application, and handles the communication with the systems that create the appropriate products.&lt;/p&gt;
-
-&lt;p&gt;The ESB ends up having a lot of business logic, making it top-heavy.&lt;/p&gt;
-
-&lt;h4 id=&quot;microservices&quot;&gt;Microservices&lt;/h4&gt;
-
-&lt;p&gt;Typical microservices architecture makes use of an event driven architecture. It makes extensive use of a message queue to ensure reliable communication between different microservices, each having it own responsibility.&lt;/p&gt;
-
-&lt;p&gt;The sales app would create an order event, and put it in the queue. Each of the other services would look at the event, and process it if relevant to them.&lt;/p&gt;
-
-&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
-
-&lt;p&gt;In this article, we had a look at the differences between microservices architecture and SOA. We  looked at independent deployability, de-centralized governance, and the event based nature of microservices architectures.&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;introduction-to-cloud-microservice---challenges-and-advantages&quot;&gt;Introduction to Cloud, Microservice - Challenges and Advantages&lt;/h3&gt;
-
-&lt;p&gt;This is the article in a series of five articles on cloud and microservices:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/Microservices7&quot; target=&quot;_blank&quot;&gt;1 - Microservices Architecutres - Quick introduction to Cloud - Why, What and How?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/Microservices8&quot; target=&quot;_blank&quot;&gt;2 - Microservice Architectures - Introduction to Spring Cloud&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/Microservices9&quot; target=&quot;_blank&quot;&gt;3 - Microservices Architectures - Advantages Of Microservices&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/Microservices10&quot; target=&quot;_blank&quot;&gt;4 - Microservice Architectures - Challenges with building Microservices&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/Microservices11&quot; target=&quot;_blank&quot;&gt;5 - Microservices Architectures - Microservices vs SOA&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr /&gt;
-   
-    &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Microservices10&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Microservices11&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Microservices architectures are very popular today. In this article, we take a look at how microservices architectures are different from Service Oriented Architectures (SOA).</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/microservices.png" /></entry><entry><title type="html">Microservice Architectures - Challenges with building Microservices</title><link href="http://localhost:4000/blog/Microservices10" rel="alternate" type="text/html" title="Microservice Architectures - Challenges with building Microservices" /><published>2019-10-17T20:17:00+00:00</published><updated>2019-10-17T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices10</id><content type="html" xml:base="http://localhost:4000/blog/Microservices10">&lt;p&gt;Microservices architectures are very popular today. In this article, we discuss the important challenges in developing a microservices architecture.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Identifying Microservice Boundaries - Implementing Bounded Context&lt;/li&gt;
-  &lt;li&gt;Having Proper Configuration Management&lt;/li&gt;
-  &lt;li&gt;Implementing Technology for Dynamic Scale Up And Scale Down&lt;/li&gt;
-  &lt;li&gt;Ensuring High Visibility&lt;/li&gt;
-  &lt;li&gt;Ensuring High Fault Tolerance&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;identifying-microservice-boundaries---implementing-bounded-context&quot;&gt;Identifying Microservice Boundaries - Implementing Bounded Context&lt;/h3&gt;
-
-&lt;p&gt;We are aware that in a microservices architecture, instead of single big monolith application, we build a number of independent microservices talking with each other:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Capture-066-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Let’s learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot. We will create a couple of microservices and get them to talk to each other using Eureka Naming Server and Ribbon for Client Side Load Balancing.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/microservices.png" /></entry><entry><title type="html">Microservices with Spring Boot - Part 1 - Getting Started</title><link href="http://localhost:4000/blog/Microservices1" rel="alternate" type="text/html" title="Microservices with Spring Boot - Part 1 - Getting Started" /><published>2019-10-17T20:17:00+00:00</published><updated>2019-10-17T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices1</id><content type="html" xml:base="http://localhost:4000/blog/Microservices1">&lt;p&gt;This guide will help you learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot.&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;An important question one faces while designing such a system is, how do we define the boundaries of individual microservices?&lt;/p&gt;
+  &lt;p&gt;We will create a couple of microservices and get them to talk to each other using Eureka Naming Server and Ribbon for Client Side Load Balancing.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;How do you decide what one service does, and what it should not do?&lt;/p&gt;
+&lt;p&gt;In part 1 of this series, lets get introduced to the concept of microservices and understand how to create great microservices with Spring Boot and Spring Cloud.&lt;/p&gt;
 
-&lt;p&gt;This is particularly difficult for a new application, as there may not be enough business knowledge to establish the right boundaries.&lt;/p&gt;
+&lt;h2 id=&quot;you-will-learn&quot;&gt;You will learn&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;What is a Monolith?&lt;/li&gt;
+  &lt;li&gt;What is a Microservice?&lt;/li&gt;
+  &lt;li&gt;What are the Challenges with Microservices?&lt;/li&gt;
+  &lt;li&gt;How does Spring Boot and Spring Cloud make developing Microservices easy?&lt;/li&gt;
+  &lt;li&gt;How to implement client side load balancing with Ribbon?&lt;/li&gt;
+  &lt;li&gt;How to implement a Naming Server (Eureka Naming Server)?&lt;/li&gt;
+  &lt;li&gt;How to connect the microservices with Naming Server and Ribbon?&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;The task of deciding the boundaries of microservices is an evolving process. It is not something you necessarily get right the first time.&lt;/p&gt;
+&lt;h2 id=&quot;microservices-overview---a-big-picture&quot;&gt;Microservices Overview - A Big Picture&lt;/h2&gt;
 
-&lt;p&gt;It often involves using domain driven design while playing around the functionality of the microservices. As you gain design knowledge, you need to put that knowledge back into the microservices architecture.&lt;/p&gt;
+&lt;p&gt;In this series of articles, we would create two microservices:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Forex Service - Abbreviated as FS&lt;/li&gt;
+  &lt;li&gt;Currency Conversion Service - Abbreviated as CCS&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;The best practices include following domain driven design.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Do not worry if you are not clear about a few things. The idea is to give a big picture before we get our hands dirty and create the microservices step by step&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;h3 id=&quot;having-proper-configuration-management&quot;&gt;Having Proper Configuration Management&lt;/h3&gt;
+&lt;h3 id=&quot;forex-service&quot;&gt;Forex Service&lt;/h3&gt;
 
-&lt;p&gt;Configuration management poses quite a stiff challenge in implementing microservices.&lt;/p&gt;
+&lt;p&gt;Forex Service (FS) is the Service Provider. It provides currency exchange values for various currency. Let’s assume that it talks to a Forex Exchange and provides the current conversion value between currencies.&lt;/p&gt;
 
-&lt;p&gt;Suppose that in our system, we have a few microservices, each of which has multiple instances in each environment:
-&lt;img src=&quot;/images/Capture-066-03.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;An example request and response is shown below:&lt;/p&gt;
 
-&lt;p&gt;In a slightly larger system, there could be 10 microservices with 5 environments, and 50 instances at the least. We are talking about tons of configuration  here!&lt;/p&gt;
+&lt;p&gt;GET to http://localhost:8000/currency-exchange/from/EUR/to/INR&lt;/p&gt;
 
-&lt;p&gt;This will involve a lot of work for the operations team, just to maintain all these configuration.&lt;/p&gt;
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;id:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10002&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;from:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;EUR&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;to:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;INR&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;conversionMultiple:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;75&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;port:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Typically, centralized configuration helps you manage configuration.&lt;/p&gt;
+&lt;p&gt;The request above is the currency exchange value for EUR to INR. In the response, conversionMultiple is 75.&lt;/p&gt;
 
-&lt;h3 id=&quot;implementing-technology-for-dynamic-scale-up-and-scale-down&quot;&gt;Implementing Technology for Dynamic Scale Up And Scale Down&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;We will talk about port in the response a little later.&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;For a microservices architecture, establishing the technology to do dynamic scaling of infrastructure, is a mountain to scale in itself.&lt;/p&gt;
+&lt;h3 id=&quot;currency-conversion-service&quot;&gt;Currency Conversion Service&lt;/h3&gt;
 
-&lt;p&gt;The loads on different microservices could be different, at different instances of time:
-&lt;img src=&quot;/images/Capture-066-03.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Currency Conversion Service (CCS) can convert a bucket of currencies into another currency. It uses the Forex Service to get current currency exchange values. CCS is the Service Consumer.&lt;/p&gt;
 
-&lt;p&gt;At a particular point of time, you may need 2 instances of Microservice2. However at a later point in time, that need may go up to 4. Again, it could shoot up to 10 later. In essence, we need to bring up new instances of a microservices when they are in demand, and bring them down when no longer needed.&lt;/p&gt;
+&lt;p&gt;An example request and response is shown below:&lt;/p&gt;
 
-&lt;p&gt;All this scaling needs to be done with dynamic load balancing. At the point of time shown in the diagram, the load from Microservice1 needs to be distributed among the 4 instances of Microservice2. Later, when there are 10 instances of Microservice2, there needs to be another load redistribution among those 10 instances.&lt;/p&gt;
+&lt;p&gt;GET to http://localhost:8100/currency-converter/from/EUR/to/INR/quantity/10000&lt;/p&gt;
 
-&lt;p&gt;Building an architecture for this involves a number of technical components - Naming Server, Load Balancers, Monitoring tools to identify whether to scale in or scale out.&lt;/p&gt;
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;id:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10002&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;from:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;EUR&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;to:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;INR&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;conversionMultiple:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;75&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;quantity:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;totalCalculatedAmount:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;750000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;port:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;ensuring-high-visibility&quot;&gt;Ensuring High Visibility&lt;/h3&gt;
+&lt;p&gt;The request above is to find the value of 10000 EUR in INR. The totalCalculatedAmount is 750000 INR.&lt;/p&gt;
 
-&lt;p&gt;Ensuring visibility is one of the most important challenges that needs to be addressed.&lt;/p&gt;
+&lt;p&gt;The diagram below shows the communication between CCS and FS.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/Capture-066-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/Spring-Boot-Microservice-1-CCS-FS.png&quot; alt=&quot;Image&quot; title=&quot;Spring-Boot-Microservice-1-CCS-FS&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;If we say that the functionality of the above system needs to be distributed among 10 microservices, but there is a bug, how do you identify where the bug is? There is clearly a need for a centralized log, where we need to find out what happened with a specific request.&lt;/p&gt;
+&lt;h3 id=&quot;eureka-naming-server-and-ribbon&quot;&gt;Eureka Naming Server and Ribbon&lt;/h3&gt;
 
-&lt;p&gt;We also need to have effective monitoring across the microservices.&lt;/p&gt;
+&lt;p&gt;Based on the load, we can have multiple instances of the Currency Conversion Service and the Forex Service running.
+&lt;img src=&quot;/images/Spring-Boot-Microservice-2-CCS.png&quot; alt=&quot;Image&quot; title=&quot;Spring-Boot-Microservice-2-CCS.png&quot; /&gt;
+&lt;img src=&quot;/images/Spring-Boot-Microservice-3-FSInstances.png&quot; alt=&quot;Image&quot; title=&quot;Spring-Boot-Microservice-3-FSInstances.png&quot; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;ensuring-high-fault-tolerance&quot;&gt;Ensuring High Fault Tolerance&lt;/h3&gt;
+&lt;p&gt;And the number of instances for each service might vary with time. Below picture shows a specific instance where there are 5 instances of the Forex Service.&lt;/p&gt;
 
-&lt;p&gt;If not well designed, a microservices architecture can behave like a pack of cards. A microservice at the end of such a chain would be fundamental to the system behaving well.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/Spring-Boot-Microservice-4-5FSInstances.png&quot; alt=&quot;Image&quot; title=&quot;Spring-Boot-Microservice-4-5FSInstances.png&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Therefore, it is very important for you to have sufficient fault tolerance in place, in your system.&lt;/p&gt;
+&lt;p&gt;What needs to happen in the above situation is load should be uniformly distributed among these 5 instances.
+&lt;img src=&quot;/images/Spring-Boot-Microservice-5-CCSToFS5instances.png&quot; alt=&quot;Image&quot; title=&quot;Spring-Boot-Microservice-5-CCSToFS5instances.png&quot; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+&lt;p&gt;In this series of articles, we will use Ribbon for Load Balancing and Eureka Naming server for registering all microservices.
+&lt;img src=&quot;/images/Spring-Boot-Microservice-6-EurekaNamingServer-Deployment.png&quot; alt=&quot;Image&quot; title=&quot;Spring-Boot-Microservice-6-EurekaNamingServer-Deployment.png&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;In this article, we looked at the various challenges that need to be addressed, while designing a microservices architecture. We covered areas such as bounded context, configuration management, dynamic scale up and scale down, visibility and fault tolerance.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Do not worry if you are not clear about a few things. The idea is to give a big picture before we get our hands dirty and create the microservices step by step&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;what-is-a-monolith-application&quot;&gt;What is a Monolith Application?&lt;/h2&gt;
+
+&lt;p&gt;Have you ever worked in a project&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Which is released (taken to production) once every few months&lt;/li&gt;
+  &lt;li&gt;Which has a wide range of features and functionality&lt;/li&gt;
+  &lt;li&gt;Which has a team of more than 50 working for it&lt;/li&gt;
+  &lt;li&gt;Where debugging problems is a big challenge&lt;/li&gt;
+  &lt;li&gt;Where bringing in new technology and new process is almost impossible&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These are typical characteristics of a Monolith applications.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Monolith applications are typically huge - more 100,000 line of code. In some instances even more than million lines of code.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Monoliths are characterized by&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Large Application Size&lt;/li&gt;
+  &lt;li&gt;Long Release Cycles&lt;/li&gt;
+  &lt;li&gt;Large Teams&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Typical Challenges include&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Scalability Challenges&lt;/li&gt;
+  &lt;li&gt;New Technology Adoption&lt;/li&gt;
+  &lt;li&gt;New Processes - Agile?&lt;/li&gt;
+  &lt;li&gt;Difficult to Automation Test&lt;/li&gt;
+  &lt;li&gt;Difficult ot Adapt to Modern Development Practices&lt;/li&gt;
+  &lt;li&gt;Adapting to Device Explosion&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;microservices&quot;&gt;Microservices&lt;/h2&gt;
+
+&lt;p&gt;Microservice Architectures evolved as a solution to the scalability and innovotation challenges with Monolith architectures.&lt;/p&gt;
+
+&lt;p&gt;There are a number of definitions proposed for Microservices&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Small autonomous services that work together - Sam Newman&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Developing a single application as a suite of small services each running in its own process and communicating with lightweight mechanisms, often an HTTP resource API. These services are built around business capabilities and independently deployable by fully automated deployment machinery. There is a bare minimum of centralized management of these services, which may be written in different programming languages and use different data storage technologies - James Lewis and Martin Fowler&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;While there is no single accepted definition for microservices, for me, there are a few important characteristics:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;REST - Built around RESTful Resources. Communication can be HTTP or event based.&lt;/li&gt;
+  &lt;li&gt;Small Well Chosen Deployable Units - Bounded Contexts&lt;/li&gt;
+  &lt;li&gt;Cloud Enabled - Dynamic Scaling&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;how-does-microservice-architecture-look-like&quot;&gt;How does Microservice Architecture look like?&lt;/h2&gt;
+
+&lt;p&gt;This is how a monolith would look like. One application for everything.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/MonolithApplication.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is how the same application would look like when developed using Microservices Architecture.
+&lt;img src=&quot;/images/MicroservicesArchitectureSplit.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Microservice Architectures involve a number of small, well designed, components interacting with messages.
+&lt;img src=&quot;/images/Microservices-Chain-Example.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;advantages-of-microservices&quot;&gt;Advantages of Microservices&lt;/h2&gt;
+
+&lt;p&gt;Advantages&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;New Technology &amp;amp; Process Adaption becomes easier. You can try new technologies with the newer microservices that we create.&lt;/li&gt;
+  &lt;li&gt;Faster Release Cycles&lt;/li&gt;
+  &lt;li&gt;Scaling with Cloud&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;challenges-with-microservice-architectures&quot;&gt;Challenges with Microservice Architectures&lt;/h2&gt;
+
+&lt;p&gt;While developing a number of smaller components might look easy, there are a number of inherent complexities that are associated with microservices architectures.&lt;/p&gt;
+
+&lt;p&gt;Lets look at some of the challenges:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Quick Setup needed : You cannot spend a month setting up each microservice. You should be able to create microservices quickly.&lt;/li&gt;
+  &lt;li&gt;Automation : Because there are a number of smaller components instead of a monolith, you need to automate everything - Builds, Deployment, Monitoring etc.&lt;/li&gt;
+  &lt;li&gt;Visibility : You now have a number of smaller components to deploy and maintain. Maybe 100 or maybe 1000 components. You should be able to monitor and identify problems automatically. You need great visibility around all the components.&lt;/li&gt;
+  &lt;li&gt;Bounded Context : Deciding the boundaries of a microservice is not an easy task. Bounded Contexts from Domain Driven Design is a good starting point. Your understanding of the domain evolves over a period of time. You need to ensure that the microservice boundaries evolve.&lt;/li&gt;
+  &lt;li&gt;Configuration Management : You need to maintain configurations for hundreds of components across environments. You would need a Configuration Management solution&lt;/li&gt;
+  &lt;li&gt;Dynamic Scale Up and Scale Down : The advantages of microservices will only be realized if your applications can scaled up and down easily in the cloud.&lt;/li&gt;
+  &lt;li&gt;Pack of Cards : If a microservice at the bottom of the call chain fails, it can have knock on effects on all other microservices. Microservices should be fault tolerant by Design.&lt;/li&gt;
+  &lt;li&gt;Debugging : When there is a problem that needs investigation, you might need to look into multiple services across different components. Centralized Logging and Dashboards are essential to make it easy to debug problems.&lt;/li&gt;
+  &lt;li&gt;Consistency : You cannot have a wide range of tools solving the same problem. While it is important to foster innovation, it is also important to have some decentralized governance around the languages, platforms, technology and tools used for implementing/deploying/monitoring microservices.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;solutions-to-challenges-with-microservice-architectures&quot;&gt;Solutions to Challenges with Microservice Architectures&lt;/h2&gt;
+
+&lt;h3 id=&quot;spring-boot&quot;&gt;Spring Boot&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Enable building production ready applications quickly&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Provide non-functional features&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;embedded servers  (easy deployment with containers)&lt;/li&gt;
+  &lt;li&gt;metrics (monitoring)&lt;/li&gt;
+  &lt;li&gt;health checks (monitoring)&lt;/li&gt;
+  &lt;li&gt;externalized configuration&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;spring-cloud&quot;&gt;Spring Cloud&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Spring Cloud provides solutions to cloud enable your microservices. It leverages and builds on top of some of the Cloud solutions opensourced by Netflix (Netflix OSS).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;important-spring-cloud-modules&quot;&gt;Important Spring Cloud Modules&lt;/h4&gt;
+
+&lt;p&gt;Dynamic Scale Up and Down. Using a combination of&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Naming Server (Eureka)&lt;/li&gt;
+  &lt;li&gt;Ribbon (Client Side Load Balancing)&lt;/li&gt;
+  &lt;li&gt;Feign (Easier REST Clients)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Visibility and Monitoring with&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Zipkin Distributed Tracing&lt;/li&gt;
+  &lt;li&gt;Netflix API Gateway&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Configuration Management with&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spring Cloud Config Server&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Fault Tolerance with&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Hystrix&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;microservice-series-of-articles&quot;&gt;Microservice Series of Articles&lt;/h2&gt;
+
+&lt;p&gt;In this series of articles, we would create two microservices:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Forex Service - Abbreviated as FS&lt;/li&gt;
+  &lt;li&gt;Currency Conversion Service - Abbreviated as CCS&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The diagram below shows the communication between CCS and FS. We would establish communication between these two components.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Spring-Boot-Microservice-1-CCS-FS.png&quot; alt=&quot;Image&quot; title=&quot;Spring-Boot-Microservice-1-CCS-FS&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We would want to be able to dynamically scale up and scale down the number of instances of each of these services.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Spring-Boot-Microservice-2-CCS.png&quot; alt=&quot;Image&quot; title=&quot;Spring-Boot-Microservice-2-CCS.png&quot; /&gt;
+&lt;img src=&quot;/images/Spring-Boot-Microservice-3-FSInstances.png&quot; alt=&quot;Image&quot; title=&quot;Spring-Boot-Microservice-3-FSInstances.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And the number of instances for each service might vary with time. Below picture shows a specific instance where there are 5 instances of the Forex Service.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Spring-Boot-Microservice-4-5FSInstances.png&quot; alt=&quot;Image&quot; title=&quot;Spring-Boot-Microservice-4-5FSInstances.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Implementing a solution for dynamic scale up and down needs to answer two questions&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;How does the Currency Conversion Service (CCS) know how many instances of Forex Service (FS) are active?&lt;/li&gt;
+  &lt;li&gt;How does the Currency Conversion Service (CCS) distribute the load between the active instances.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Because we want this to be dynamic, we cannot hardcode the urls of FS in CCS. Thats why we bring in a Naming Server.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Spring-Boot-Microservice-6-EurekaNamingServer-Deployment.png&quot; alt=&quot;Image&quot; title=&quot;Spring-Boot-Microservice-6-EurekaNamingServer-Deployment.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;All instances of the components (CCS and FS) register with the Eureka Naming Server. When FS needs to call the CCS, it will ask Eureka Naming Server for the active instances. We will use Ribbon to do Client Side Load Balancing between the different instances of FS.&lt;/p&gt;
+
+&lt;p&gt;A high level sequence diagram of what would happen when there is a request from CCS to FS is shown below:
+&lt;img src=&quot;/images/Spring-Boot-Microservice-7-Eureka-Sequence-Diagram.png&quot; alt=&quot;Image&quot; title=&quot;Spring-Boot-Microservice-7-Eureka-Sequence-Diagram.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here are the next series of Articles&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Creating a Forex Microservice - We will create a simple rest service based on Spring Boot Starter Web and Spring Boot Started JPA. We will use Hibernate as JPA implmentation and connect to H2 database.&lt;/li&gt;
+  &lt;li&gt;Create the CCS - Currency Conversion Service - We will create a simple rest service using feign to invoke the Forex Microservice&lt;/li&gt;
+  &lt;li&gt;Use Ribbon for Load Balancing&lt;/li&gt;
+  &lt;li&gt;Implement Eureka Naming Service and connect FS and CCS through Eureka.&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;hr /&gt;
-&lt;h3 id=&quot;introduction-to-cloud-microservice---challenges-and-advantages&quot;&gt;Introduction to Cloud, Microservice - Challenges and Advantages&lt;/h3&gt;
+&lt;h3 id=&quot;springboot-microservice&quot;&gt;SpringBoot Microservice&lt;/h3&gt;
 
-&lt;p&gt;This is the article in a series of five articles on cloud and microservices:&lt;/p&gt;
+&lt;p&gt;This is a 5 Part Article Series&lt;/p&gt;
+
+&lt;p&gt;Microservices with Spring Boot&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/Microservices7&quot; target=&quot;_blank&quot;&gt;1 - Microservices Architecutres - Quick introduction to Cloud - Why, What and How?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/Microservices8&quot; target=&quot;_blank&quot;&gt;2 - Microservice Architectures - Introduction to Spring Cloud&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/Microservices9&quot; target=&quot;_blank&quot;&gt;3 - Microservices Architectures - Advantages Of Microservices&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/Microservices10&quot; target=&quot;_blank&quot;&gt;4 - Microservice Architectures - Challenges with building Microservices&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/Microservices11&quot; target=&quot;_blank&quot;&gt;5 - Microservices Architectures - Microservices vs SOA&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Part 1 - &lt;a href=&quot;/blog/Microservices1&quot; target=&quot;_blank&quot;&gt;Getting Started with Microservices Architecture&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Part 2 - &lt;a href=&quot;/blog/Microservices2&quot; target=&quot;_blank&quot;&gt;Creating Forex Microservice&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Part 3 - &lt;a href=&quot;/blog/Microservices3&quot; target=&quot;_blank&quot;&gt;Creating Currency Conversion Microservice&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Part 4 - &lt;a href=&quot;/blog/Microservices4&quot; target=&quot;_blank&quot;&gt;Using Ribbon for Load Balancing&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Part 5 - &lt;a href=&quot;/blog/Microservices5&quot; target=&quot;_blank&quot;&gt;Using Eureka Naming Server&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;!--Section: Lesson UI--&gt;
@@ -3103,16 +3234,199 @@
    
     &lt;div class=&quot;row&quot;&gt;
         &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Microservices9&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Microservices1&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
                 &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
             &lt;/a&gt;
         &lt;/div&gt;
      
         &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Microservices11&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Microservices2&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
                 &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
             &lt;/a&gt;
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Microservices architectures are very popular today. In this article, we discuss the important challenges in developing a microservices architecture. Identifying Microservice Boundaries - Implementing Bounded Context Having Proper Configuration Management Implementing Technology for Dynamic Scale Up And Scale Down Ensuring High Visibility Ensuring High Fault Tolerance Identifying Microservice Boundaries - Implementing Bounded Context</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/microservices.png" /></entry></feed>
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">This guide will help you learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/microservices.png" /></entry><entry><title type="html">Introduction To Aspect Oriented Programming and Cross Cutting Concerns</title><link href="http://localhost:4000/blog/SwProgrammingLesson3" rel="alternate" type="text/html" title="Introduction To Aspect Oriented Programming and Cross Cutting Concerns" /><published>2019-10-15T20:30:00+00:00</published><updated>2019-10-15T20:30:00+00:00</updated><id>http://localhost:4000/blog/SwProgrammingLesson3</id><content type="html" xml:base="http://localhost:4000/blog/SwProgrammingLesson3">&lt;p&gt;Software applications are built in layers. There is common functionality that is sometimes needed across layers - logging, performance tracing etc.&lt;/p&gt;
+
+&lt;p&gt;How do you implement these common features?&lt;/p&gt;
+
+&lt;h3 id=&quot;you-will-learn&quot;&gt;You will learn?&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;What Is Aspect Oriented Programming?&lt;/li&gt;
+  &lt;li&gt;What are the important concepts behind Aspect-Oriented Programming?&lt;/li&gt;
+  &lt;li&gt;What are the situations where AOP is used?&lt;/li&gt;
+  &lt;li&gt;Why is AOP needed?&lt;/li&gt;
+  &lt;li&gt;What are the best Java frameworks to implement AOP?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;what-is-aspect-oriented-programming&quot;&gt;What Is Aspect Oriented Programming?&lt;/h3&gt;
+
+&lt;p&gt;In order to understand what &lt;strong&gt;Aspect Oriented Programming (AOP)&lt;/strong&gt; is all about, let’s first talk about &lt;strong&gt;layered architecture&lt;/strong&gt;, and  something called &lt;strong&gt;cross-cutting concerns&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;what-is-a-layered-architecture&quot;&gt;What is a Layered Architecture&lt;/h4&gt;
+
+&lt;p&gt;Whenever we design and develop a large software application, we make use of  a &lt;strong&gt;layered architecture&lt;/strong&gt;. For instance, in a web application, it is quite common to see an architecture similar to the following:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Capture-02-01.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here, we see that the application is organized into a Web layer, a Business layer, and a Data layer.&lt;/p&gt;
+
+&lt;h4 id=&quot;understanding-cross-cutting-concerns&quot;&gt;Understanding Cross Cutting Concerns&lt;/h4&gt;
+
+&lt;p&gt;In a layered architecture, there are specific parts that are common to all these different layers. Such parts include:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Logging&lt;/li&gt;
+  &lt;li&gt;Security&lt;/li&gt;
+  &lt;li&gt;Performance&lt;/li&gt;
+  &lt;li&gt;Auditing&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;All these features are applicable across layers, hence it makes sense to implement them in a common way.&lt;/p&gt;
+
+&lt;p&gt;Let’s say you want to implement logic to find out how much time each method takes to execute, in each of the three layers (Web, Business and Data) above.&lt;/p&gt;
+
+&lt;p&gt;That’s where AOP steps in.&lt;/p&gt;
+
+&lt;h4 id=&quot;an-example-of-aop&quot;&gt;An Example Of AOP&lt;/h4&gt;
+
+&lt;p&gt;Let’s now look at a simple example where we apply AOP.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;nd&quot;&gt;@Component&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HiByeService&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sayHi&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	    &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hi &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+	  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	
+	  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sayBye&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	    &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Bye&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+	  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	
+	  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;returnSomething&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hi Bye&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+	  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;class&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;HiByeService&lt;/code&gt; has a few methods such as &lt;code class=&quot;highlighter-rouge&quot;&gt;sayHi()&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;sayBye()&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;returnSomething()&lt;/code&gt; defined within it.&lt;/p&gt;
+
+&lt;p&gt;We want to do a few computations by taking up each of these methods, by turn at the following stages:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Do something before the method begins execution&lt;/li&gt;
+  &lt;li&gt;Do something after the method completes execution&lt;/li&gt;
+  &lt;li&gt;Track how much time the method takes during its execution&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here we take &lt;code class=&quot;highlighter-rouge&quot;&gt;HiByeService&lt;/code&gt; as a specific example to work with. The same could be done across several classes that make up such an application.&lt;/p&gt;
+
+&lt;p&gt;Let’s take each of these computations and look at them in some detail.&lt;/p&gt;
+
+&lt;h4 id=&quot;doing-stuff-before-execution&quot;&gt;Doing Stuff Before Execution&lt;/h4&gt;
+
+&lt;p&gt;Have a look at the following AOP code:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;nd&quot;&gt;@Aspect&lt;/span&gt;
+	&lt;span class=&quot;nd&quot;&gt;@Component&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyAspect&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	  &lt;span class=&quot;nd&quot;&gt;@Before&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;execution(* HiByeService.*(..))&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+	  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;before&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;JoinPoint&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;joinPoint&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	    &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Before &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+	    &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;joinPoint&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getSignature&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+	    &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Arrays&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;joinPoint&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getArgs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()));&lt;/span&gt;
+	  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We first define an &lt;strong&gt;aspect&lt;/strong&gt; with the annotation &lt;code class=&quot;highlighter-rouge&quot;&gt;@Aspect&lt;/code&gt; for the &lt;code class=&quot;highlighter-rouge&quot;&gt;class&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;MyAspect&lt;/code&gt;. Within it is another annotation, &lt;code class=&quot;highlighter-rouge&quot;&gt;@Before&lt;/code&gt; that describes the method &lt;code class=&quot;highlighter-rouge&quot;&gt;before()&lt;/code&gt;. The idea of this aspect is that whatever logic lies in the &lt;code class=&quot;highlighter-rouge&quot;&gt;before()&lt;/code&gt; body, is executed before any method of &lt;code class=&quot;highlighter-rouge&quot;&gt;HiByeService&lt;/code&gt; is run. Note that in the &lt;code class=&quot;highlighter-rouge&quot;&gt;@Before&lt;/code&gt; annotation, a package name could also be mentioned instead of a class name. This aspect would then be executed before any method in the entire package.&lt;/p&gt;
+
+&lt;h4 id=&quot;doing-stuff-after-execution&quot;&gt;Doing Stuff After Execution&lt;/h4&gt;
+
+&lt;p&gt;Similar to this, it is also possible to define an aspect to execute after every method within &lt;code class=&quot;highlighter-rouge&quot;&gt;HiByeService&lt;/code&gt; is run:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;nd&quot;&gt;@AfterReturning&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pointcut&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;execution(* HiByeService.*(..))&quot;&lt;/span&gt;
+	                    &lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;returning&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;result&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+	  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;after&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;JoinPoint&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;joinPoint&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	    &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;After &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+	    &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;joinPoint&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getSignature&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+	    &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot; result is &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+	  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For this, you need to define a method with an &lt;code class=&quot;highlighter-rouge&quot;&gt;@AfterReturning&lt;/code&gt; annotation, defined above for the &lt;code class=&quot;highlighter-rouge&quot;&gt;after()&lt;/code&gt; method. This method here takes an extra argument to store the result of execution of the method of &lt;code class=&quot;highlighter-rouge&quot;&gt;HiByeService&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;doing-stuff-around-execution&quot;&gt;Doing Stuff Around Execution&lt;/h4&gt;
+
+&lt;p&gt;An additional thing you can do is define an aspect around the execution of a method:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;nd&quot;&gt;@Around&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;execution(* HiByeService.*(..))&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;around&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;ProceedingJoinPoint&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;joinPoint&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 
+	                                      &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Throwable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	  &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;startTime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getTime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+	  &lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;joinPoint&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;proceed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+	  &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;endTime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getTime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+	  &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Execution Time - &quot;&lt;/span&gt; 
+	                  &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endTime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;startTime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Over here, we have made use of an annotation called &lt;code class=&quot;highlighter-rouge&quot;&gt;@Around&lt;/code&gt; to decorate the &lt;code class=&quot;highlighter-rouge&quot;&gt;around()&lt;/code&gt; method.&lt;/p&gt;
+
+&lt;p&gt;In this method body, we intercept the call to the method in &lt;code class=&quot;highlighter-rouge&quot;&gt;HiByeService&lt;/code&gt; in the following manner:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;We make note of the start time of execution&lt;/li&gt;
+  &lt;li&gt;Allow the method to run its course&lt;/li&gt;
+  &lt;li&gt;Finally, we make note of the end time of execution&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We then output the computed execution time of that method.&lt;/p&gt;
+
+&lt;h4 id=&quot;how-to-make-use-of-aop&quot;&gt;How To Make Use Of AOP&lt;/h4&gt;
+
+&lt;p&gt;At a high level, AOP allows you to intercept calls to methods, and perform logic around these calls. We have used annotations to decorate our computations within the aspect.&lt;/p&gt;
+
+&lt;p&gt;In our examples above, we have restricted ourselves to a single class. However, we could easily extend it to more classes or packages by &lt;em&gt;varying&lt;/em&gt; the &lt;strong&gt;regular expression&lt;/strong&gt; we use in the annotations.&lt;/p&gt;
+
+&lt;p&gt;For example, we could choose to intercept classes pertaining to the web layer, or classes across all three layers of the example web application.&lt;/p&gt;
+
+&lt;h4 id=&quot;terms-we-use-in-aop&quot;&gt;Terms We Use In AOP&lt;/h4&gt;
+
+&lt;p&gt;Let’s now look at some important terms we use when talking about AOP.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Point Cut&lt;/strong&gt; : It refers to the regular expression that defines what methods need to be intercepted by this aspect. It essentially says where the logic within an aspect method is applicable.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Advice&lt;/strong&gt; : This is nothing but the logic within the aspect method. It describes what we do when the Point Cut expression is matched.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Aspect&lt;/strong&gt;: The combination of the Point Cut and the Advice&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Join Point&lt;/strong&gt;: This refers to the situation where a method’s execution has been intercepted, and the aspect is in execution&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Weaving&lt;/strong&gt;: The entire process of taking a method, intercepting its execution and applying an aspect to its execution. This is the functionality provided by the AOP framework. Examples of AOP frameworks are &lt;strong&gt;SpringAOP&lt;/strong&gt; and &lt;strong&gt;AspectJ&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;aop-in-summary&quot;&gt;AOP In Summary&lt;/h4&gt;
+
+&lt;p&gt;In this article, we looked at Aspect Oriented Programming (AOP). We talked about cross-cutting concerns, and described the situations where AOP can be used. In particular, we saw examples of how we can define a point cut, and define the logic of an aspect. We focused on how we can specify aspects to run before, after or around the execution of a method. We then examined the important terms that describe AOP concepts.&lt;/p&gt;
+
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr /&gt;
+   
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/SwProgrammingLesson2&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/SwProgrammingLesson3&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;       
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Software applications are built in layers. There is common functionality that is sometimes needed across layers - logging, performance tracing etc.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/sw_program.png" /></entry></feed>

@@ -13,15 +13,17 @@ nexturl: https://girishgodage.github.io/blog/Microservices4
 discussion_id: 2019-10-15-Microservices3
 ---
 
-Let's learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot. We will create a couple of microservices and get them to talk to each other using Eureka Naming Server and Ribbon for Client Side Load Balancing.  
+Let's learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot. We will create a couple of microservices and get them to talk to each other using Eureka Naming Server and Ribbon for Client Side Load Balancing.
 
 This is part 3 of this series. In this part, we will focus on creating the Currency Conversion Microservice.
  
+
 ## You will learn
-- How to create a microservice with Spring Boot?
-- How to use RestTemplate to execute a REST Service?
-- How to use Feign to execute a REST Service?
-- What are the advantages of Feign over RestTemplate?
+
+* How to create a microservice with Spring Boot?
+* How to use RestTemplate to execute a REST Service?
+* How to use Feign to execute a REST Service?
+* What are the advantages of Feign over RestTemplate?
 
 ## Resources Overview
 
@@ -31,7 +33,7 @@ An example request and response is shown below:
 
 GET to http://localhost:8100/currency-converter/from/EUR/to/INR/quantity/10000
 
-```json
+``` json
   {
     id: 10002,
     from: "EUR",
@@ -47,29 +49,35 @@ The request above is to find the value of 10000 EUR in INR. The totalCalculatedA
 
 The diagram below shows the communication between CCS and FS.
 
-![Image](/images/Spring-Boot-Microservice-1-CCS-FS.png "Spring-Boot-Microservice-1-CCS-FS") 
+![Image](/images/Spring-Boot-Microservice-1-CCS-FS.png "Spring-Boot-Microservice-1-CCS-FS")
+
+ 
 
 ## Project Code Structure
 
 Following screenshot shows the structure of the project we will create.
 
-![Image](/images/spring-boot-microservice-currency-conversion-service-project-structure.png "Project Structure") 
+![Image](/images/spring-boot-microservice-currency-conversion-service-project-structure.png "Project Structure")
+
+ 
 
 A few details:
-- `SpringBootMicroserviceCurrencyConversionApplication.java` - The Spring Boot Application class generated with Spring Initializer. This class acts as the launching point for application.
-- `pom.xml` - Contains all the dependencies needed to build this project. We will use Spring Boot Starter Web.
-- `CurrencyConversionBean.java` - Bean to hold the response that we want to send out.
-- `CurrencyExchangeServiceProxy.java` - This will be the Feign Proxy to call the Forex Service.
-- `CurrencyConversionController.java` - Spring Rest Controller exposing the currency conversion service. This will use the `CurrencyExchangeServiceProxy` to call the Forex Service.
+
+* `SpringBootMicroserviceCurrencyConversionApplication.java` - The Spring Boot Application class generated with Spring Initializer. This class acts as the launching point for application.
+* `pom.xml` - Contains all the dependencies needed to build this project. We will use Spring Boot Starter Web.
+* `CurrencyConversionBean.java` - Bean to hold the response that we want to send out.
+* `CurrencyExchangeServiceProxy.java` - This will be the Feign Proxy to call the Forex Service.
+* `CurrencyConversionController.java` - Spring Rest Controller exposing the currency conversion service. This will use the `CurrencyExchangeServiceProxy` to call the Forex Service.
 
 ## Tools you will need
-- Maven 3.0+ is your build tool
-- Your favorite IDE. We use Eclipse.
-- JDK 1.8+
+
+* Maven 3.0+ is your build tool
+* Your favorite IDE. We use Eclipse.
+* JDK 1.8+
 
 ## Bootstrapping with Spring Initializr
 
-Creating a Microservice with Spring Initializr is a cake walk. 
+Creating a Microservice with Spring Initializr is a cake walk.
 
 Spring Initializr [http://start.spring.io/](http://start.spring.io/){:target="_blank"} is great tool to bootstrap your Spring Boot projects.
 
@@ -79,15 +87,15 @@ You can create a wide variety of projects using Spring Initializr.
 
 Following steps have to be done for a Web Services project
 
-- Launch Spring Initializr and choose the following
-  - Choose `com.girishgodage.springboot.microservice.example.currencyconversion` as Group
-  - Choose `spring-boot-microservice-currency-conversion` as Artifact
-  - Choose following dependencies
+* Launch Spring Initializr and choose the following
+  + Choose `com.girishgodage.springboot.microservice.example.currencyconversion` as Group
+  + Choose `spring-boot-microservice-currency-conversion` as Artifact
+  + Choose following dependencies
     - Web
     - DevTools
     - Feign
-- Click Generate Project.
-- Import the project into Eclipse. File -> Import -> Existing Maven Project.
+* Click Generate Project.
+* Import the project into Eclipse. File -> Import -> Existing Maven Project.
 
 > Do not forget to choose Feign in the dependencies
 
@@ -95,7 +103,7 @@ Following steps have to be done for a Web Services project
 
 This is a simple bean for creating the response.
 
-```
+``` 
   public class CurrencyConversionBean {
     private Long id;
     private String from;
@@ -127,7 +135,7 @@ This is a simple bean for creating the response.
 
 The code below shows the implementation of REST Client to call the forex service and process the response. As you can see there is a lot of code that needs to be written for making a simple service call.
 
-```
+``` 
   @RestController
   public class CurrencyConversionController {
 
@@ -157,21 +165,20 @@ The code below shows the implementation of REST Client to call the forex service
 
 /spring-boot-microservice-currency-conversion-service/src/main/resources/application.properties
 
-```properties
+``` properties
   spring.application.name=currency-conversion-service
   server.port=8100
 ```
 
-We are assigning an application name as well as a default port of `8100`.
+We are assigning an application name as well as a default port of `8100` .
 
 ## Testing the Microservice
 
 Start the Spring Boot Application by launching SpringBootMicroserviceCurrencyConversionApplication.java
 
+GET to `http://localhost:8100/currency-converter/from/EUR/to/INR/quantity/10000` 
 
-GET to `http://localhost:8100/currency-converter/from/EUR/to/INR/quantity/10000`
-
-```json
+``` json
   {
     id: 10002,
     from: "EUR",
@@ -189,7 +196,7 @@ Feign provide a better alternative to RestTemplate to call REST API.
 
 /spring-boot-microservice-currency-conversion-service/src/main/java/com/girishgodage/springboot/microservice/example/currencyconversion/CurrencyExchangeServiceProxy.java
 
-```java
+``` java
   package com.girishgodage.springboot.microservice.example.currencyconversion;
 
   import org.springframework.cloud.openfeign.FeignClient;
@@ -205,16 +212,16 @@ Feign provide a better alternative to RestTemplate to call REST API.
   }
 ```
 
-We first define a simple proxy. 
-- `@FeignClient(name="forex-service" url="localhost:8100")` - Declares that this is a Feign Client and the url at which forex-service is present is `localhost:8100`
-- `@GetMapping("/currency-exchange/from/{from}/to/{to}")` - URI of the service we would want to consume
+We first define a simple proxy.
 
+* `@FeignClient(name="forex-service" url="localhost:8100")` - Declares that this is a Feign Client and the url at which forex-service is present is `localhost:8100` 
+* `@GetMapping("/currency-exchange/from/{from}/to/{to}")` - URI of the service we would want to consume
 
 ## Using Feign Proxy from the Microservice Controller
 
 Making the call using the proxy is very simple. You can see it in action in the code below. All that we had to do was to autowire the proxy and use to call the method.
 
-```
+``` 
     @Autowired
     private CurrencyExchangeServiceProxy proxy;
 
@@ -236,7 +243,7 @@ Making the call using the proxy is very simple. You can see it in action in the 
 
 Before we are able to use Feign, we need to enable it by using `@EnableFeignClients` annotation on the appropriate package where the client proxies are defined.
 
-```
+``` 
   @SpringBootApplication
   @EnableFeignClients("com.girishgodage.springboot.microservice.example.currencyconversion")
   @EnableDiscoveryClient
@@ -252,7 +259,7 @@ Before we are able to use Feign, we need to enable it by using `@EnableFeignClie
 
 GET to http://localhost:8100/currency-converter-feign/from/EUR/to/INR/quantity/10000
 
-```json
+``` json
   {
     id: 10002,
     from: "EUR",
@@ -268,7 +275,9 @@ GET to http://localhost:8100/currency-converter-feign/from/EUR/to/INR/quantity/1
 
 We have now created two microservices and established communication between them.
 
-![Image](/images/Spring-Boot-Microservice-1-CCS-FS.png "Spring-Boot-Microservice-1-CCS-FS") 
+![Image](/images/Spring-Boot-Microservice-1-CCS-FS.png "Spring-Boot-Microservice-1-CCS-FS")
+
+ 
 
 However, we are hardcoding the url for FS in CCS. That means when new instances of FS are launched up we have no way to distribute load between them.
 
@@ -276,10 +285,9 @@ In the next part, we will enable client side load distribution using Ribbon.
 
 ## Complete Code Example
 
-
 ###### /spring-boot-microservice-currency-conversion-service/pom.xml
 
-```xml
+``` xml
   <?xml version="1.0" encoding="UTF-8"?>
   <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -390,14 +398,14 @@ In the next part, we will enable client side load distribution using Ribbon.
       </pluginRepository>
     </pluginRepositories>
 
-
   </project>
 ```
+
 ---
 
 ###### /spring-boot-microservice-currency-conversion-service/src/main/java/com/girishgodage/springboot/microservice/example/currencyconversion/CurrencyConversionBean.java
 
-```java
+``` java
   package com.girishgodage.springboot.microservice.example.currencyconversion;
   import java.math.BigDecimal;
 
@@ -484,11 +492,12 @@ In the next part, we will enable client side load distribution using Ribbon.
 
   }
 ```
+
 ---
 
 ###### /spring-boot-microservice-currency-conversion-service/src/main/java/com/girishgodage/springboot/microservice/example/currencyconversion/CurrencyConversionController.java
 
-```java
+``` java
   package com.girishgodage.springboot.microservice.example.currencyconversion;
 
   import java.math.BigDecimal;
@@ -544,11 +553,12 @@ In the next part, we will enable client side load distribution using Ribbon.
 
   }
 ```
+
 ---
 
 ###### /spring-boot-microservice-currency-conversion-service/src/main/java/com/girishgodage/springboot/microservice/example/currencyconversion/CurrencyExchangeServiceProxy.java
 
-```java
+``` java
   package com.girishgodage.springboot.microservice.example.currencyconversion;
 
   import org.springframework.cloud.openfeign.FeignClient;
@@ -563,11 +573,12 @@ In the next part, we will enable client side load distribution using Ribbon.
       (@PathVariable("from") String from, @PathVariable("to") String to);
   }
 ```
+
 ---
 
 ###### /spring-boot-microservice-currency-conversion-service/src/main/java/com/girishgodage/springboot/microservice/example/currencyconversion/SpringBootMicroserviceCurrencyConversionApplication.java
 
-```java
+``` java
   package com.girishgodage.springboot.microservice.example.currencyconversion;
 
   import org.springframework.boot.SpringApplication;
@@ -584,19 +595,21 @@ In the next part, we will enable client side load distribution using Ribbon.
     }
   }
 ```
+
 ---
 
 ###### /spring-boot-microservice-currency-conversion-service/src/main/resources/application.properties
 
-```properties
+``` properties
   spring.application.name=currency-conversion-service
   server.port=8100
 ```
+
 ---
 
 ###### /spring-boot-microservice-currency-conversion-service/src/test/java/com/girishgodage/springboot/microservice/example/currencyconversion/SpringBootMicroserviceCurrencyConversionApplicationTests.java
 
-```java
+``` java
   package com.girishgodage.springboot.microservice.example.currencyconversion;
 
   import org.junit.Test;
@@ -614,7 +627,6 @@ In the next part, we will enable client side load distribution using Ribbon.
 
   }
 ```
-
 
 ---
 {% include microservices1.md %}
