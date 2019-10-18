@@ -1,5 +1,5 @@
 ---
-title:  Microservices with Spring Boot - Part 5 - Using Eureka Naming Server
+title: Microservices with Spring Boot - Part 5 - Using Eureka Naming Server
 date: 2019-10-17 20:17:00 Z
 categories:
 - SpringBootMicroservices
