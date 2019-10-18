@@ -149,8 +149,8 @@
                         src="http://localhost:4000/img/python/tutorial/22/Python18.5.png"></a> </p>
             <p><strong>Code Explanation</strong> </p>
             <ul>
-                <li>First we are going to check that our "guru99.txt" file exists or not. Since we have created
-                    guru99.txt file earlier, we know it exists, and we will carry on further with the code</li>
+                <li>First we are going to check that our "Girish.txt" file exists or not. Since we have created
+                    Girish.txt file earlier, we know it exists, and we will carry on further with the code</li>
                 <li>We store the file path in the variable "<strong>src</strong>" if your file exist</li>
                 <li>Once we get the path, we going to separate the path and the file name</li>
                 <li>For that, we are going to use the split <code>path.split</code> function on source variable</li>
@@ -158,7 +158,7 @@
                     separately </li>
             </ul>
             <p><strong>Step 2)</strong> We use Shutil Module to create a copy of the existing file. Here we used to
-                create a copy of our existing file "guru99.txt." </p>
+                create a copy of our existing file "Girish.txt." </p>
             <p style="text-align: center; "><a href="http://localhost:4000/img/python/tutorial/22/Python18.6.png"
                     class="jh-image-popup-colorbox cboxElement"><img
                         title="O.S Path Utilities &amp; File System Shell Methods Python"
@@ -167,7 +167,7 @@
             <p><strong>Code Explanation</strong></p>
 
             <ul>
-                <li>Take the original file name "guru99.txt" and add letters .bak at the end "guru99.txt.bak". This name
+                <li>Take the original file name "Girish.txt" and add letters .bak at the end "Girish.txt.bak". This name
                     with .bak extension is going to be our duplicate copy </li>
                 <li>And then we going to use utility's copy function to copy from source to the destination</li>
                 <li>When you run the code, you will see a duplicate file with .bak extension is created on right-hand
@@ -176,7 +176,7 @@
             <p><strong>Step 3)</strong> Copy function only copies the content of the file but no other information. To
                 copy <strong>meta-data</strong> associated with the file, file permission and other information you have
                 to use "<strong>copystat</strong>" function. Before we run this code, we have to delete our copy file
-                "guru99.text.bak". </p>
+                "Girish.text.bak". </p>
             <p style="text-align: center; "><a href="http://localhost:4000/img/python/tutorial/22/Python18.7.png"
                     class="jh-image-popup-colorbox cboxElement"><img
                         title="O.S Path Utilities &amp; File System Shell Methods Python"
@@ -198,9 +198,9 @@
          
          def main():
              # make a duplicate of an existing file
-             if path.exists("guru99.txt"):
+             if path.exists("Girish.txt"):
              # get the path to the file in the current directory
-                 src = path.realpath("guru99.txt");
+                 src = path.realpath("Girish.txt");
              
              #seperate the path from the filter
              head, tail = path.split(src)
@@ -227,16 +227,16 @@
                         src="http://localhost:4000/img/python/tutorial/22/Python18.4_New.png"></a> </p>
             <ul>
                 <li>
-                    <div>Code Line#15- It tells the day, date, month, year and time when .txt file (guru99) was last
+                    <div>Code Line#15- It tells the day, date, month, year and time when .txt file (Girish) was last
                         modified. We use the path module to get the file modification time details, and then we are
                         going to use the <strong>time classes c time function </strong>to convert that into a readable
-                        time. So when we run the code, we can see the file guru99.txt was last modified on <strong>Mon,
+                        time. So when we run the code, we can see the file Girish.txt was last modified on <strong>Mon,
                             Jan 8<sup>th</sup> at 13:35 2018. </strong></div>
                 </li>
                 <li>
                     <div>Code Line#17- It does the same thing giving information about file modification, but it has a
                         different format to represent it. Here we use <strong>Get Modification Time function</strong>
-                        (path.getmtime("guru99.txt")). Now instead of using the c time function we going to use
+                        (path.getmtime("Girish.txt")). Now instead of using the c time function we going to use
                         <strong>From Time Stamp function </strong>and going to construct a date time object. In output,
                         you can see file modification time detail is printed out in different format <strong>2018-01-08,
                             13:35:51.334072</strong> </div>
@@ -258,9 +258,9 @@
          
          
              # Get the modification time
-             t = time.ctime(path.getmtime("guru99.txt.bak"))
+             t = time.ctime(path.getmtime("Girish.txt.bak"))
              print(t)
-             print(datetime.datetime.fromtimestamp(path.getmtime("guru99.txt.bak")))
+             print(datetime.datetime.fromtimestamp(path.getmtime("Girish.txt.bak")))
          
          
          if __name__ == "__main__":

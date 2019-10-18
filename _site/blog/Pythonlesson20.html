@@ -139,10 +139,10 @@
                 <li><a href="#5">File Modes in Python</a></li>
             </ul>
             <h2><a id="1"></a>How to Create a Text File</h2>
-            <p>With Python you can create a .text files (guru99.txt) by using the code, we have demonstrated here how
+            <p>With Python you can create a .text files (Girish.txt) by using the code, we have demonstrated here how
                 you can do this </p>
             <p><strong>Step 1) </strong> </p>
-            <pre class="code-toolbar"><code>	f= open("guru99.txt","w+")</code></pre>
+            <pre class="code-toolbar"><code>	f= open("Girish.txt","w+")</code></pre>
             <ul>
                 <li>We declared the variable f to open a file named textfile.txt. Open takes 2 arguments, the file that
                     we want to open and a string that represents the kinds of permission or operation we want to do on
@@ -166,14 +166,14 @@
             <p><strong>Step 3) </strong> </p>
             <pre class="code-toolbar"><code>	f.close() </code></pre>
             <ul>
-                <li>This will close the instance of the file guru99.txt stored</li>
+                <li>This will close the instance of the file Girish.txt stored</li>
             </ul>
             <p>Here is the result after code execution </p>
             <p style="text-align: center;"><a href="http://localhost:4000/img/python/tutorial/20/Python17.1.jpg"
                     class="jh-image-popup-colorbox cboxElement"><img title="Reading and Writing Files in Python"
                         alt="Python FILE Tutorial: Create, Append, Read, Write"
                         src="http://localhost:4000/img/python/tutorial/20/Python17.1.jpg"></a> </p>
-            <p>When you click on your text file in our case "guru99.txt" it will look something like this </p>
+            <p>When you click on your text file in our case "Girish.txt" it will look something like this </p>
             <p style="text-align: center; "><a href="http://localhost:4000/img/python/tutorial/20/Python17.2.jpg"
                     class="jh-image-popup-colorbox cboxElement"><img title="Reading and Writing Files in Python"
                         alt="Python FILE Tutorial: Create, Append, Read, Write"
@@ -181,7 +181,7 @@
             <h2><a id="2"></a>How to Append Data to a File</h2>
             <p>You can also append a new text to the already existing file or the new file. </p>
             <p><strong>Step 1) </strong> </p>
-            <pre class="code-toolbar"><code>f=open("guru99.txt", "a+")</code></pre>
+            <pre class="code-toolbar"><code>f=open("Girish.txt", "a+")</code></pre>
             <p>Once again if you could see a plus sign in the code, it indicates that it will create a new file if it
                 does not exist. But in our case we already have the file, so we are not required to create a new file.
             </p>
@@ -195,7 +195,7 @@
                     class="jh-image-popup-colorbox cboxElement"><img title="Reading and Writing Files in Python"
                         alt="Python FILE Tutorial: Create, Append, Read, Write"
                         src="http://localhost:4000/img/python/tutorial/20/Python17.3.jpg"></a> </p>
-            <p>You can see the output in "guru99.txt" file. The output of the code is that earlier file is appended with
+            <p>You can see the output in "Girish.txt" file. The output of the code is that earlier file is appended with
                 new data. </p>
             <p style="text-align: center; "><a href="http://localhost:4000/img/python/tutorial/20/Python17.4.jpg"
                     class="jh-image-popup-colorbox cboxElement"><img title="Reading and Writing Files in Python"
@@ -204,7 +204,7 @@
             <h2><a id="3"></a>How to Read a File</h2>
             <p>Not only you can create .txt file from Python but you can also call .txt file in a "read mode"(r). </p>
             <p><strong>Step 1)</strong> Open the file in Read mode </p>
-            <pre class="code-toolbar"><code>	f=open("guru99.txt", "r")</code></pre>
+            <pre class="code-toolbar"><code>	f=open("Girish.txt", "r")</code></pre>
             <p><strong>Step 2)</strong> We use the mode function in the code to check that the file is in open mode. If
                 yes, we proceed ahead </p>
             <pre class="code-toolbar"><code>	if f.mode == 'r':</code></pre>
@@ -271,13 +271,13 @@
             <p><b>Python 2 Example</b> </p>
             <pre class="code-toolbar"><code>
          def main():
-          f= open("guru99.txt","w+")
-          #f=open("guru99.txt","a+")
+          f= open("Girish.txt","w+")
+          #f=open("Girish.txt","a+")
           for i in range(10):
               f.write("This is line %d\r\n" % (i+1))
           f.close()   
           #Open the file back and read the contents
-          #f=open("guru99.txt", "r")
+          #f=open("Girish.txt", "r")
           #   if f.mode == 'r': 
           #     contents =f.read()
           #     print contents
@@ -289,13 +289,13 @@
        main()</code></pre>
             <p><b>Python 3 Example</b> </p>
             <pre class="code-toolbar"><code>def main():
-         f= open("guru99.txt","w+")
-         #f=open("guru99.txt","a+")
+         f= open("Girish.txt","w+")
+         #f=open("Girish.txt","a+")
          for i in range(10):
               f.write("This is line %d\r\n" % (i+1))
          f.close()
          #Open the file back and read the contents
-         #f=open("guru99.txt", "r")
+         #f=open("Girish.txt", "r")
          #if f.mode == 'r':
          #   contents =f.read()
          #    print (contents)
