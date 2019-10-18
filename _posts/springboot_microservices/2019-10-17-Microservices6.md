@@ -1,5 +1,5 @@
 ---
-title:  Breaking a Monolith into Microservices - Best Practices and Challenges
+title: Breaking a Monolith into Microservices - Best Practices and Challenges
 date: 2019-10-17 20:17:00 Z
 categories:
 - SpringBootMicroservices
