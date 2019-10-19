@@ -5,12 +5,12 @@ categories:
 - SoftwareProgramming
 tags:
 - learning
-image: https://girishgodage.github.io/img/sw_program.png
+image: /img/sw_program.png
 author: Girish Godage
 layout: posts
-prevurl: https://girishgodage.github.io/blog/SwProgrammingLesson2
-nexturl: https://girishgodage.github.io/blog/SwProgrammingLesson3
-discussion_id: 2019-10-15-SwProgrammingLesson3
+prevurl: /blog/Programming-Basics-002-Introduction-To-Object-Oriented-Programming
+nexturl: /blog/Programming-Basics-003-AspectOrientedProgramming
+discussion_id: 2019-10-15-Programming-Basics-003
 ---
 
 Software applications are built in layers. There is common functionality that is sometimes needed across layers - logging, performance tracing etc.

@@ -105,7 +105,7 @@
             class="container">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <p class="post-title">
-                    <h1><a href="/blog/SwProgrammingLesson3">Introduction To Aspect Oriented Programming and Cross Cutting Concerns</a></h1>
+                    <h1><a href="/blog/Programming-Basics-002-Introduction-To-Object-Oriented-Programming">Programming Basics - Introduction To Object Oriented Programming</a></h1>
                 </p>
                 
                 <span class="post-date"><span style="font-weight:600">October 15, 2019 Tuesday</span> by
@@ -116,177 +116,207 @@
                 </div>
                 
                 <hr>
-                <div><img class="post-image" src="https://girishgodage.github.io/img/sw_program.png" alt="Introduction To Aspect Oriented Programming and Cross Cutting Concerns" height="250" /></div>
+                <div><img class="post-image" src="/img/sw_program.png" alt="Programming Basics - Introduction To Object Oriented Programming" height="250" /></div>
                 <div class="post-content">
                     <br>                     
-                    <p>Software applications are built in layers. There is common functionality that is sometimes needed across layers - logging, performance tracing etc.</p>
+                    <p>Object oriented programming (OOP) is all about thinking in terms of objects. Let’s dig deeper.</p>
 
-<p>How do you implement these common features?</p>
-
-<h3 id="you-will-learn">You will learn?</h3>
+<h2 id="you-will-learn">You will learn</h2>
 
 <ul>
-  <li>What Is Aspect Oriented Programming?</li>
-  <li>What are the important concepts behind Aspect-Oriented Programming?</li>
-  <li>What are the situations where AOP is used?</li>
-  <li>Why is AOP needed?</li>
-  <li>What are the best Java frameworks to implement AOP?</li>
+  <li>What Is Structured Programming?</li>
+  <li>What Is Object Oriented Programming?</li>
+  <li>How is Object Oriented Programming different from Structured Programming?</li>
+  <li>How can you think in terms of objects - state and responsibility?</li>
+  <li>We look at a few examples of designing object oriented programs.</li>
 </ul>
 
-<h3 id="what-is-aspect-oriented-programming">What Is Aspect Oriented Programming?</h3>
+<p>Before we discuss OOP, let us first look at structured programming.</p>
 
-<p>In order to understand what <strong>Aspect Oriented Programming (AOP)</strong> is all about, let’s first talk about <strong>layered architecture</strong>, and  something called <strong>cross-cutting concerns</strong>.</p>
+<h3 id="what-is-structured-programming">What Is Structured Programming?</h3>
 
-<h4 id="what-is-a-layered-architecture">What is a Layered Architecture</h4>
+<p>If you have ever done any programming in languages such as C and Pascal, then you have done what is called <strong>procedural</strong>, or <strong>structured programming</strong>. Such programming involves thinking in terms of procedures (or methods/functions). If you have a problem to solve, you split the logic of the solution into a sequence of multiple procedures, as the steps. You would start thinking about what functions need to be written.</p>
 
-<p>Whenever we design and develop a large software application, we make use of  a <strong>layered architecture</strong>. For instance, in a web application, it is quite common to see an architecture similar to the following:</p>
+<h4 id="example-flight-problem">Example: Flight Problem</h4>
 
-<p><img src="/images/Capture-02-01.png" alt="image info" /></p>
+<p>Suppose the problem at hand is flying from one city to another. The different steps involved in that would take the form of a sequence of procedures as shown below:</p>
 
-<p>Here, we see that the application is organized into a Web layer, a Business layer, and a Data layer.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	// Global Data
 
-<h4 id="understanding-cross-cutting-concerns">Understanding Cross Cutting Concerns</h4>
-
-<p>In a layered architecture, there are specific parts that are common to all these different layers. Such parts include:</p>
-
-<ul>
-  <li>Logging</li>
-  <li>Security</li>
-  <li>Performance</li>
-  <li>Auditing</li>
-</ul>
-
-<p>All these features are applicable across layers, hence it makes sense to implement them in a common way.</p>
-
-<p>Let’s say you want to implement logic to find out how much time each method takes to execute, in each of the three layers (Web, Business and Data) above.</p>
-
-<p>That’s where AOP steps in.</p>
-
-<h4 id="an-example-of-aop">An Example Of AOP</h4>
-
-<p>Let’s now look at a simple example where we apply AOP.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-	<span class="nd">@Component</span>
-	<span class="kd">class</span> <span class="nc">HiByeService</span> <span class="o">{</span>
-	  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sayHi</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
-	    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hi "</span> <span class="o">+</span> <span class="n">name</span><span class="o">);</span>
-	  <span class="o">}</span>
-	
-	  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sayBye</span><span class="o">()</span> <span class="o">{</span>
-	    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Bye"</span><span class="o">);</span>
-	  <span class="o">}</span>
-	
-	  <span class="kd">public</span> <span class="nc">String</span> <span class="nf">returnSomething</span><span class="o">()</span> <span class="o">{</span>
-	    <span class="k">return</span> <span class="s">"Hi Bye"</span><span class="o">;</span>
-	  <span class="o">}</span>
-	<span class="o">}</span>
-</code></pre></div></div>
-
-<p>The <code class="highlighter-rouge">`class` ` ` ` ` `HiByeService` ` ` has a few methods such as ` ` `sayHi()` ` `, ` ` `sayBye()` ` ` and ` ` `returnSomething()`</code> defined within it.</p>
-
-<p>We want to do a few computations by taking up each of these methods, by turn at the following stages:</p>
-
-<ul>
-  <li>Do something before the method begins execution</li>
-  <li>Do something after the method completes execution</li>
-  <li>Track how much time the method takes during its execution</li>
-</ul>
-
-<p>Here we take <code class="highlighter-rouge">`HiByeService`</code> as a specific example to work with. The same could be done across several classes that make up such an application.</p>
-
-<p>Let’s take each of these computations and look at them in some detail.</p>
-
-<h4 id="doing-stuff-before-execution">Doing Stuff Before Execution</h4>
-
-<p>Have a look at the following AOP code:</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-	<span class="nd">@Aspect</span>
-	<span class="nd">@Component</span>
-	<span class="kd">class</span> <span class="nc">MyAspect</span> <span class="o">{</span>
-	  <span class="nd">@Before</span><span class="o">(</span><span class="s">"execution(* HiByeService.*(..))"</span><span class="o">)</span>
-	  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">before</span><span class="o">(</span><span class="nc">JoinPoint</span> <span class="n">joinPoint</span><span class="o">)</span> <span class="o">{</span>
-	    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Before "</span><span class="o">);</span>
-	    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">joinPoint</span><span class="o">.</span><span class="na">getSignature</span><span class="o">().</span><span class="na">getName</span><span class="o">());</span>
-	    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">joinPoint</span><span class="o">.</span><span class="na">getArgs</span><span class="o">()));</span>
-	  <span class="o">}</span>
-</code></pre></div></div>
-
-<p>We first define an <strong>aspect</strong> with the annotation <code class="highlighter-rouge">`@Aspect` ` ` for the ` ` `class` ` ` ` ` `MyAspect` ` `. Within it is another annotation, ` ` `@Before` ` ` that describes the method ` ` `before()` ` `. The idea of this aspect is that whatever logic lies in the ` ` `before()` ` ` body, is executed before any method of ` ` `HiByeService` ` ` is run. Note that in the ` ` `@Before`</code> annotation, a package name could also be mentioned instead of a class name. This aspect would then be executed before any method in the entire package.</p>
-
-<h4 id="doing-stuff-after-execution">Doing Stuff After Execution</h4>
-
-<p>Similar to this, it is also possible to define an aspect to execute after every method within <code class="highlighter-rouge">`HiByeService`</code> is run:</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-	<span class="nd">@AfterReturning</span><span class="o">(</span><span class="n">pointcut</span> <span class="o">=</span> <span class="s">"execution(* HiByeService.*(..))"</span>
-	                    <span class="o">,</span> <span class="n">returning</span> <span class="o">=</span> <span class="s">"result"</span><span class="o">)</span>
-	  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">after</span><span class="o">(</span><span class="nc">JoinPoint</span> <span class="n">joinPoint</span><span class="o">,</span> <span class="nc">Object</span> <span class="n">result</span><span class="o">)</span> <span class="o">{</span>
-	    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"After "</span><span class="o">);</span>
-	    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">joinPoint</span><span class="o">.</span><span class="na">getSignature</span><span class="o">().</span><span class="na">getName</span><span class="o">());</span>
-	    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">" result is "</span> <span class="o">+</span> <span class="n">result</span><span class="o">);</span>
-	  <span class="o">}</span>
-	<span class="o">}</span>
+	fly() {
+		travelToairport();
+		findCheckInCounter();
+		checkIn();
+		passSecurityCheck();
+		waitForBoardingCall();
+		boardTheFlight();
+		wishTheAirHostess();
+		takeOff();
+		haveFun();
+		landing();
+	}
 
 </code></pre></div></div>
 
-<p>For this, you need to define a method with an <code class="highlighter-rouge">`@AfterReturning` ` ` annotation, defined above for the ` ` `after()` ` ` method. This method here takes an extra argument to store the result of execution of the method of ` ` `HiByeService`</code>.</p>
+<p>We are looking to combine the functions that we write, to solve the stated problem.</p>
 
-<h4 id="doing-stuff-around-execution">Doing Stuff Around Execution</h4>
+<h3 id="what-is-object-oriented-programming">What Is Object Oriented Programming?</h3>
 
-<p>An additional thing you can do is define an aspect around the execution of a method:</p>
+<p>Object Oriented Programming (OOP) brings a new thought process to the table. OOP focuses instead on the actors in the system called objects. It focuses on:</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-	<span class="nd">@Around</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"execution(* HiByeService.*(..))"</span><span class="o">)</span>
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">around</span><span class="o">(</span><span class="nc">ProceedingJoinPoint</span> <span class="n">joinPoint</span><span class="o">)</span> 
-	                                      <span class="kd">throws</span> <span class="nc">Throwable</span> <span class="o">{</span>
-	  <span class="kt">long</span> <span class="n">startTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">().</span><span class="na">getTime</span><span class="o">();</span>
-	  <span class="nc">Object</span> <span class="n">result</span> <span class="o">=</span> <span class="n">joinPoint</span><span class="o">.</span><span class="na">proceed</span><span class="o">();</span>
-	  <span class="kt">long</span> <span class="n">endTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">().</span><span class="na">getTime</span><span class="o">();</span>
-	  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Execution Time - "</span> 
+<ul>
+  <li>The data that these objects contain</li>
+  <li>The actions that can be performed on them</li>
+</ul>
 
-	                  <span class="o">+</span> <span class="o">(</span><span class="n">endTime</span> <span class="o">-</span> <span class="n">startTime</span><span class="o">));</span>
+<p>If this sounds complex to you, then you are not alone!</p>
 
-	<span class="o">}</span>
+<p>Every new programmer who is introduced to OOP feels pretty much the same way.</p>
+
+<p>How would OOP approach the problem of taking a flight from one city to another?</p>
+
+<h3 id="example-flight-problem-revisited">Example: Flight Problem Revisited</h3>
+
+<p>Lets take a step by step approach:</p>
+
+<h4 id="step-1--identify-objects">Step-1 : Identify Objects</h4>
+
+<p>We first think about the different objects involved in the solution.</p>
+
+<ul>
+  <li>Aeroplane</li>
+  <li>Airhostess</li>
+  <li>Passenger</li>
+</ul>
+
+<p>In addition to these, we could have more objects such as:</p>
+
+<ul>
+  <li>Cab</li>
+  <li>Airport</li>
+  <li>Co-passengers</li>
+  <li>Pilot</li>
+</ul>
+
+<p>and many more.</p>
+
+<h4 id="step-2">Step-2</h4>
+
+<p>Once you have identified the objects of the system, you next determine the data an object would contains and actions that can be performed on it.</p>
+
+<p>Aeroplane</p>
+
+<ul>
+  <li>Data : airline, make, type, position</li>
+  <li>Actions : takeOff(), land(), cruise()</li>
+</ul>
+
+<p>Airhostess</p>
+
+<ul>
+  <li>Data : name, address</li>
+  <li>Actions : wish(), serve()</li>
+</ul>
+
+<p>Passenger</p>
+
+<ul>
+  <li>Data : name, address</li>
+  <li>Actions : takeCab(), checkIn(), walk(), smile()</li>
+</ul>
+
+<p>Of course, there could be a lot more data and actions in each of the objects that we have elaborated on, above.</p>
+
+<p>In summary, structured programming is only concerned about identifying procedures, and combining them to form a solution. In contrast, OOP focuses on the objects involves, and deals with their individual data and actions.</p>
+
+<h3 id="understanding-oop-terminology">Understanding OOP Terminology</h3>
+
+<p>Let’s now deal with a few standard terms that are used, when dealing with OOP.</p>
+
+<h4 id="class">Class</h4>
+
+<p>A class is nothing but a template used to create objects within a program. A class allows you to define the data that can be stored inside the object, as well as what actions can be performed on them. What you see below is the definition of a simple class, named Planet:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	class Planet {
+		name, location, distanceFromSun //state
+		revolve(), rotate() // behavior
+	}
 
 </code></pre></div></div>
 
-<p>Over here, we have made use of an annotation called <code class="highlighter-rouge">`@Around` ` ` to decorate the ` ` `around()`</code> method.</p>
+<h4 id="object">Object</h4>
 
-<p>In this method body, we intercept the call to the method in <code class="highlighter-rouge">`HiByeService`</code> in the following manner:</p>
+<p>An object is defined as an instance of a class. For example, earth and venus are instances of the Planet class. Here is how you go about creating Planet instances:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	Planet earth = new Planet();
+	Planet venus = new Planet();
+
+</code></pre></div></div>
+
+<p>You can have other instances as well. If Planet defined the attributes of a planet, then earth and venus are live instances of planets.</p>
+
+<h4 id="state">State</h4>
+
+<p>The data that an object might contain is also referred to as its <strong>state</strong>. These are represented by the member variables inside the class.</p>
+
+<p>The state of an object can change over a period of time.</p>
+
+<p>The position of an Aeroplane at this point of time, would be different from what it will be after say, an hour’s time. Similarly, the distance of the earth from the Sun changes with the passage of time.</p>
+
+<h4 id="behavior">Behavior</h4>
+
+<p>The actions that can be performed on an object are referred to as its <strong>behavior</strong>. This translates to the methods that can be defined inside a class.</p>
+
+<h3 id="lets-try-some-exercises">Let’s Try Some Exercises</h3>
+
+<p>Let’s now apply what we have learned so far, by applying OOPs to a couple of exercises.</p>
+
+<h4 id="exercise-1--online-shopping-system">Exercise 1 : Online Shopping System</h4>
+
+<p>Think about the different things that are involved in creating an online shopping system. Make sure to focus on their data, and enumerate what actions can be performed on them.</p>
+
+<h4 id="exercise-2--person">Exercise 2 : Person</h4>
+
+<p>Think about the different things that are related to a Person. Make sure to focus on the data that such a class stores, and enumerate what actions can be performed on a Person.</p>
+
+<h3 id="solutions-to-exercises">Solutions To Exercises</h3>
+
+<h4 id="exercise-1--online-shopping-system-1">Exercise 1 : Online Shopping System</h4>
+<p>Customer</p>
 
 <ul>
-  <li>We make note of the start time of execution</li>
-  <li>Allow the method to run its course</li>
-  <li>Finally, we make note of the end time of execution</li>
+  <li>Data : name, address</li>
+  <li>Actions : login(), logout(), selectProduct(product)</li>
 </ul>
 
-<p>We then output the computed execution time of that method.</p>
-
-<h4 id="how-to-make-use-of-aop">How To Make Use Of AOP</h4>
-
-<p>At a high level, AOP allows you to intercept calls to methods, and perform logic around these calls. We have used annotations to decorate our computations within the aspect.</p>
-
-<p>In our examples above, we have restricted ourselves to a single class. However, we could easily extend it to more classes or packages by <em>varying</em> the <strong>regular expression</strong> we use in the annotations.</p>
-
-<p>For example, we could choose to intercept classes pertaining to the web layer, or classes across all three layers of the example web application.</p>
-
-<h4 id="terms-we-use-in-aop">Terms We Use In AOP</h4>
-
-<p>Let’s now look at some important terms we use when talking about AOP.</p>
+<p>Shopping Cart</p>
 
 <ul>
-  <li><strong>Point Cut</strong> : It refers to the regular expression that defines what methods need to be intercepted by this aspect. It essentially says where the logic within an aspect method is applicable.</li>
-  <li><strong>Advice</strong> : This is nothing but the logic within the aspect method. It describes what we do when the Point Cut expression is matched.</li>
-  <li><strong>Aspect</strong>: The combination of the Point Cut and the Advice</li>
-  <li><strong>Join Point</strong>: This refers to the situation where a method’s execution has been intercepted, and the aspect is in execution</li>
-  <li><strong>Weaving</strong>: The entire process of taking a method, intercepting its execution and applying an aspect to its execution. This is the functionality provided by the AOP framework. Examples of AOP frameworks are <strong>SpringAOP</strong> and <strong>AspectJ</strong>.</li>
+  <li>Data : items</li>
+  <li>Actions : addItem(item), removeItem(item)</li>
 </ul>
 
-<h4 id="aop-in-summary">AOP In Summary</h4>
+<p>Product</p>
 
-<p>In this article, we looked at Aspect Oriented Programming (AOP). We talked about cross-cutting concerns, and described the situations where AOP can be used. In particular, we saw examples of how we can define a point cut, and define the logic of an aspect. We focused on how we can specify aspects to run before, after or around the execution of a method. We then examined the important terms that describe AOP concepts.</p>
+<ul>
+  <li>Data : name, price, quantityAvailable</li>
+  <li>Actions : order(), changePrice()</li>
+</ul>
+
+<h4 id="exercise-2--person-1">Exercise 2 : Person</h4>
+
+<ul>
+  <li>Data - name, address, hobbies, work</li>
+  <li>Actions - walk(), run(), sleep(), eat(), drink()</li>
+</ul>
+
+<p>The idea behind these exercises was to get you thinking about applying concepts in OOP.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>In this article, we had a introductory look at object oriented programming, or OOP. We first saw the approach taken by structured programming, that focuses on procedures. OOP brings a different approach by focusing on objects involved, and their data and actions. We introduced some OOP terminology, such as class, object, state and behavior. Finally, we explored a couple of exercises to try and apply the simple concepts of OOP that we saw here.</p>
 
 <!--Section: Lesson UI-->
 <section class="text-center">
@@ -294,13 +324,13 @@
    
     <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-6">
-            <a target="_blank" href="https://girishgodage.github.io/blog/SwProgrammingLesson2" class="btn  btn-sm" id="round-button">
+            <a target="_blank" href="/blog/Programming-Basics-001-Five-Things-Think-About-Programming" class="btn  btn-sm" id="round-button">
                 <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
             </a>
         </div>
      
         <div class="col-lg-4 col-md-6 col-sm-6">
-            <a target="_blank" href="https://girishgodage.github.io/blog/SwProgrammingLesson3" class="btn btn-sm" id="round-button">Next Lesson
+            <a target="_blank" href="/blog/Programming-Basics-003-AspectOrientedProgramming" class="btn btn-sm" id="round-button">Next Lesson
                 <i class="fas fa-arrow-right ml-2"></i>
             </a>
         </div>       

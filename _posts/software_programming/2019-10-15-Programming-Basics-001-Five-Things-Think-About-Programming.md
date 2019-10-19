@@ -5,12 +5,12 @@ categories:
 - SoftwareProgramming
 tags:
 - learning
-image: https://girishgodage.github.io/img/sw_program.png
+image: /img/sw_program.png
 author: Girish Godage
 layout: posts
-prevurl: https://girishgodage.github.io/blog/SwProgrammingLesson1
-nexturl: https://girishgodage.github.io/blog/SwProgrammingLesson2
-discussion_id: 2019-10-15-SwProgrammingLesson1
+prevurl: /blog/Programming-Basics-001-Five-Things-Think-About-Programming
+nexturl: /blog/Programming-Basics-002-Introduction-To-Object-Oriented-Programming
+discussion_id: 2019-10-15-Programming-Basics-001
 ---
 
 You would obviously want to write code that meets your core requirements and provide good performance - choosing right data structures and algorithms to use is the fundamental part of programming.

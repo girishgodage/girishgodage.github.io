@@ -5,12 +5,12 @@ categories:
 - SoftwareProgramming
 tags:
 - learning
-image: https://girishgodage.github.io/img/sw_program.png
+image: /img/sw_program.png
 author: Girish Godage
 layout: posts
-prevurl: https://girishgodage.github.io/blog/SwProgrammingLesson1
-nexturl: https://girishgodage.github.io/blog/SwProgrammingLesson3
-discussion_id: 2019-10-15-SwProgrammingLesson2
+prevurl: /blog/Programming-Basics-001-Five-Things-Think-About-Programming
+nexturl: /blog/Programming-Basics-003-AspectOrientedProgramming
+discussion_id: 2019-10-15-Programming-Basics-002
 ---
 
 Object oriented programming (OOP) is all about thinking in terms of objects. Let's dig deeper.
