@@ -5,11 +5,11 @@ categories:
 - SoftwareProgramming
 tags:
 - learning
-image: /img/sw_program.png
+image: "/img/sw_program.png"
 author: Girish Godage
 layout: posts
-prevurl: /blog/Programming-Basics-001-Five-Things-Think-About-Programming
-nexturl: /blog/Programming-Basics-002-Introduction-To-Object-Oriented-Programming
+prevurl: "/blog/Programming-Basics-001-Five-Things-Think-About-Programming"
+nexturl: "/blog/Programming-Basics-002-Introduction-To-Object-Oriented-Programming"
 discussion_id: 2019-10-15-Programming-Basics-001
 ---
 
