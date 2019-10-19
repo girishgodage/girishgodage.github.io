@@ -118,7 +118,7 @@
                 <hr>
                 <div><img class="post-image" src="https://girishgodage.github.io/img/microservices.png" alt="Microservices with Spring Boot - Part 2 - Creating Forex Microservice" height="250" /></div>
                 <div class="post-content">
-                    <br>
+                    <br>                     
                     <p>Let’s learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot. We will create a couple of microservices and get them to talk to each other using Eureka Naming Server and Ribbon for Client Side Load Balancing.</p>
 
 <p>This is part 2 of this series. In this part, we will focus on creating the Forex Microservice.</p>
@@ -721,8 +721,12 @@
             </div>
         </div>
     </div>
-    <!-- Footer-->
-
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top">Top
+</button>
+<!-- Footer-->
 <footer class="main-footer">
     <div class="container">
         <div class="row">
@@ -912,6 +916,28 @@
         })
         element2.insertBefore(element, element2.children[0]);
     })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";
+        }else
+        {
+            myBtton.style.display="none";
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+        document.body.scrollTop =0;
+        document.documentElement.scrollTop=0;
+    }
 
 </script>
 

@@ -118,7 +118,7 @@
                 <hr>
                 <div><img class="post-image" src="https://girishgodage.github.io/img/sw_design.png" alt="Software Design - Cohesion - with examples" height="250" /></div>
                 <div class="post-content">
-                    <br>
+                    <br>                     
                     <p>High Cohesion is one of the important aims when your architect and design your software. What is it all about?</p>
 
 <h1 id="you-will-learn">You will learn</h1>
@@ -354,8 +354,12 @@
             </div>
         </div>
     </div>
-    <!-- Footer-->
-
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top">Top
+</button>
+<!-- Footer-->
 <footer class="main-footer">
     <div class="container">
         <div class="row">
@@ -545,6 +549,28 @@
         })
         element2.insertBefore(element, element2.children[0]);
     })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";
+        }else
+        {
+            myBtton.style.display="none";
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+        document.body.scrollTop =0;
+        document.documentElement.scrollTop=0;
+    }
 
 </script>
 

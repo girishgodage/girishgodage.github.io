@@ -118,7 +118,7 @@
                 <hr>
                 <div><img class="post-image" src="https://girishgodage.github.io/img/angular/tutorials/agenda-app/1/image_1.png" alt="7.Using Bootstrap in Angular" height="250" /></div>
                 <div class="post-content">
-                    <br>
+                    <br>                     
                     <section class="tutorial7">
 
     <div class="angular-tutorial tutorial">
@@ -370,8 +370,12 @@ div<span class="token punctuation">[</span><span class="token keyword">class</sp
             </div>
         </div>
     </div>
-    <!-- Footer-->
-
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top">Top
+</button>
+<!-- Footer-->
 <footer class="main-footer">
     <div class="container">
         <div class="row">
@@ -561,6 +565,28 @@ div<span class="token punctuation">[</span><span class="token keyword">class</sp
         })
         element2.insertBefore(element, element2.children[0]);
     })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";
+        }else
+        {
+            myBtton.style.display="none";
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+        document.body.scrollTop =0;
+        document.documentElement.scrollTop=0;
+    }
 
 </script>
 

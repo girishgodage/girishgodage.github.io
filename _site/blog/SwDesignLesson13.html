@@ -118,7 +118,7 @@
                 <hr>
                 <div><img class="post-image" src="https://girishgodage.github.io/img/sw_design.png" alt="Software Design - Introduction to Evolutionary Design" height="250" /></div>
                 <div class="post-content">
-                    <br>
+                    <br>                     
                     <p>With extreme programming and agile, the focus is being lean and doing just in time design. In this context, how do you ensure that your design remains good and evolves along with the application requirements?</p>
 
 <h3 id="we-learn">We learn</h3>
@@ -322,8 +322,12 @@ developers are reluctant to refactor the code. Now, the design is no longer evol
             </div>
         </div>
     </div>
-    <!-- Footer-->
-
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top">Top
+</button>
+<!-- Footer-->
 <footer class="main-footer">
     <div class="container">
         <div class="row">
@@ -513,6 +517,28 @@ developers are reluctant to refactor the code. Now, the design is no longer evol
         })
         element2.insertBefore(element, element2.children[0]);
     })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";
+        }else
+        {
+            myBtton.style.display="none";
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+        document.body.scrollTop =0;
+        document.documentElement.scrollTop=0;
+    }
 
 </script>
 

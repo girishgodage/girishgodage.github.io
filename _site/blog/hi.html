@@ -118,7 +118,7 @@
                 <hr>
                 <div><img class="post-image" src="https://girishgodage.github.io/img/logo.jpg" alt="Hello World" height="250" /></div>
                 <div class="post-content">
-                    <br>
+                    <br>                     
                     <p>Hello everyone, I am <a href="https://www.instagram.com/girishgodage_007" target="_blank"><strong>Girish</strong></a>. I am  an <strong>46</strong>-year-old guy,
 who has a <strong>good command in technology &amp; Management</strong>.I worked on <strong>.net,java, Python, Web  and Mobile Application</strong>. This website is created using <a href="https://jekyllrb.com/"><strong>Jekyll</strong></a>. I love to create new stuff from the  knowledge I have. You can follow me on my <a href="https://github.com/girishgodage" target="_blank">Github</a> to see my current projects.</p>
 
@@ -154,8 +154,12 @@ who has a <strong>good command in technology &amp; Management</strong>.I worked 
             </div>
         </div>
     </div>
-    <!-- Footer-->
-
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top">Top
+</button>
+<!-- Footer-->
 <footer class="main-footer">
     <div class="container">
         <div class="row">
@@ -345,6 +349,28 @@ who has a <strong>good command in technology &amp; Management</strong>.I worked 
         })
         element2.insertBefore(element, element2.children[0]);
     })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";
+        }else
+        {
+            myBtton.style.display="none";
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+        document.body.scrollTop =0;
+        document.documentElement.scrollTop=0;
+    }
 
 </script>
 

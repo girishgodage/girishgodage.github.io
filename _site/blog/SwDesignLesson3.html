@@ -118,7 +118,7 @@
                 <hr>
                 <div><img class="post-image" src="https://girishgodage.github.io/img/sw_design.png" alt="3. Object Oriented Software Design - Solid Principles" height="250" /></div>
                 <div class="post-content">
-                    <br>
+                    <br>                     
                     <p>Software design is typically complex. Object oriented design takes it to the next level. There are a number of design patterns to be aware of. Can we make things simple?</p>
 
 <p>SOLID Principles is a great starting point for Object Oriented Design.</p>
@@ -624,8 +624,12 @@ abstract class OutputDevice {
             </div>
         </div>
     </div>
-    <!-- Footer-->
-
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top">Top
+</button>
+<!-- Footer-->
 <footer class="main-footer">
     <div class="container">
         <div class="row">
@@ -815,6 +819,28 @@ abstract class OutputDevice {
         })
         element2.insertBefore(element, element2.children[0]);
     })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";
+        }else
+        {
+            myBtton.style.display="none";
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+        document.body.scrollTop =0;
+        document.documentElement.scrollTop=0;
+    }
 
 </script>
 

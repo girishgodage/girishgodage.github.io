@@ -118,7 +118,7 @@
                 <hr>
                 <div><img class="post-image" src="https://girishgodage.github.io/img/typescipt_logo.png" alt="8.Typescript arrow functions" height="250" /></div>
                 <div class="post-content">
-                    <br>
+                    <br>                     
                     <section class="tstutorial8">
     <p>Since you already know how to use <code>Named functions</code> and <code>Anonymous functions</code> let me show
         you another type of function which you will be dealing with while building Angular Applications</p>
@@ -359,8 +359,12 @@ singleParam <span class="token operator">=&gt;</span> expression
             </div>
         </div>
     </div>
-    <!-- Footer-->
-
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top">Top
+</button>
+<!-- Footer-->
 <footer class="main-footer">
     <div class="container">
         <div class="row">
@@ -550,6 +554,28 @@ singleParam <span class="token operator">=&gt;</span> expression
         })
         element2.insertBefore(element, element2.children[0]);
     })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";
+        }else
+        {
+            myBtton.style.display="none";
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+        document.body.scrollTop =0;
+        document.documentElement.scrollTop=0;
+    }
 
 </script>
 

@@ -118,7 +118,7 @@
                 <hr>
                 <div><img class="post-image" src="https://girishgodage.github.io/img/typescipt_logo.png" alt="1.TypeScript Fundamental" height="250" /></div>
                 <div class="post-content">
-                    <br>
+                    <br>                     
                     <section class="ts_tutorial">
     <h2>Fundamentals</h2>
     <p>In order to create Angular apps, you have to know Typescript. Within thenext few lessons I will teach you its
@@ -262,8 +262,12 @@ Variable <span class="token string">'foo'</span> must be <span class="token keyw
             </div>
         </div>
     </div>
-    <!-- Footer-->
-
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top">Top
+</button>
+<!-- Footer-->
 <footer class="main-footer">
     <div class="container">
         <div class="row">
@@ -453,6 +457,28 @@ Variable <span class="token string">'foo'</span> must be <span class="token keyw
         })
         element2.insertBefore(element, element2.children[0]);
     })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";
+        }else
+        {
+            myBtton.style.display="none";
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+        document.body.scrollTop =0;
+        document.documentElement.scrollTop=0;
+    }
 
 </script>
 
