@@ -13,33 +13,33 @@ nexturl: https://girishgodage.github.io/blog/SwProgrammingLesson2
 discussion_id: 2019-10-15-SwProgrammingLesson1
 ---
 
-You would obviously want to write code that meets your core requirements and provide good performance - choosing right data structures and algorithms to use is the fundamental part of programming.  
+You would obviously want to write code that meets your core requirements and provide good performance - choosing right data structures and algorithms to use is the fundamental part of programming.
 
 What are the other things that you need to worry about? Here are five things that we think are essential.
 
 ### Readability of Code
 
-This is an indicator of how easy it is for another programmer, to read your code. 
+This is an indicator of how easy it is for another programmer, to read your code.
 
 > Would another programmer be able to easily understand what your classes and methods do? 
 
-The critical aspect to be addressed here is how well your variables, methods and classes are named. 
+The critical aspect to be addressed here is how well your variables, methods and classes are named.
 
 ### Reusability of Components
 
-Before you implement a new functionality, check whether there is already a common component that can do the work for you. 
+Before you implement a new functionality, check whether there is already a common component that can do the work for you.
 
 Is any part of your feature reusable across the enterprise? Is there is a need to create a component out of this feature?
 
 ### Unit Testing
 
-The best way to systematically ensure unit tests are written, is to follow Test Driven Development (TDD). With TDD, you write the tests before you actually write the code.  
+The best way to systematically ensure unit tests are written, is to follow Test Driven Development (TDD). With TDD, you write the tests before you actually write the code.
 
 Writing unit tests and running them regularly, is the only way to continuously improve the design of your code. If you fail to do so, your design becomes stagnant.
 
 ### Non Functional Requirements
 
-Non functional requirements are typically those requirements which are missing in your requirement documents or user stories. 
+Non functional requirements are typically those requirements which are missing in your requirement documents or user stories.
 
 Examples of non functional requirements are:
 
@@ -52,13 +52,11 @@ and other kinds of fun stuff! Doing well on these parameters should always be on
 
 ### What's For Dinner?
 
-Always have fun when you code. Programming is an intense mental activity, and keep taking fun breaks during the course of a day. It could mean pulling your teammate's leg. 
-
+Always have fun when you code. Programming is an intense mental activity, and keep taking fun breaks during the course of a day. It could mean pulling your teammate's leg.
 
 ### Summary
 
-In this article, we took a quick look at 5 things programmers should focus on while writing code. 
-
+In this article, we took a quick look at 5 things programmers should focus on while writing code.
 
 {% include blogslide.html %}
 

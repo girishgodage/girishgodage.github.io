@@ -124,6 +124,7 @@
 <p>How do you implement these common features?</p>
 
 <h3 id="you-will-learn">You will learn?</h3>
+
 <ul>
   <li>What Is Aspect Oriented Programming?</li>
   <li>What are the important concepts behind Aspect-Oriented Programming?</li>
@@ -182,16 +183,17 @@
 	<span class="o">}</span>
 </code></pre></div></div>
 
-<p>The <code class="highlighter-rouge">class</code> <code class="highlighter-rouge">HiByeService</code> has a few methods such as <code class="highlighter-rouge">sayHi()</code>, <code class="highlighter-rouge">sayBye()</code> and <code class="highlighter-rouge">returnSomething()</code> defined within it.</p>
+<p>The <code class="highlighter-rouge">`class` ` ` ` ` `HiByeService` ` ` has a few methods such as ` ` `sayHi()` ` `, ` ` `sayBye()` ` ` and ` ` `returnSomething()`</code> defined within it.</p>
 
 <p>We want to do a few computations by taking up each of these methods, by turn at the following stages:</p>
+
 <ul>
   <li>Do something before the method begins execution</li>
   <li>Do something after the method completes execution</li>
   <li>Track how much time the method takes during its execution</li>
 </ul>
 
-<p>Here we take <code class="highlighter-rouge">HiByeService</code> as a specific example to work with. The same could be done across several classes that make up such an application.</p>
+<p>Here we take <code class="highlighter-rouge">`HiByeService`</code> as a specific example to work with. The same could be done across several classes that make up such an application.</p>
 
 <p>Let’s take each of these computations and look at them in some detail.</p>
 
@@ -211,11 +213,11 @@
 	  <span class="o">}</span>
 </code></pre></div></div>
 
-<p>We first define an <strong>aspect</strong> with the annotation <code class="highlighter-rouge">@Aspect</code> for the <code class="highlighter-rouge">class</code> <code class="highlighter-rouge">MyAspect</code>. Within it is another annotation, <code class="highlighter-rouge">@Before</code> that describes the method <code class="highlighter-rouge">before()</code>. The idea of this aspect is that whatever logic lies in the <code class="highlighter-rouge">before()</code> body, is executed before any method of <code class="highlighter-rouge">HiByeService</code> is run. Note that in the <code class="highlighter-rouge">@Before</code> annotation, a package name could also be mentioned instead of a class name. This aspect would then be executed before any method in the entire package.</p>
+<p>We first define an <strong>aspect</strong> with the annotation <code class="highlighter-rouge">`@Aspect` ` ` for the ` ` `class` ` ` ` ` `MyAspect` ` `. Within it is another annotation, ` ` `@Before` ` ` that describes the method ` ` `before()` ` `. The idea of this aspect is that whatever logic lies in the ` ` `before()` ` ` body, is executed before any method of ` ` `HiByeService` ` ` is run. Note that in the ` ` `@Before`</code> annotation, a package name could also be mentioned instead of a class name. This aspect would then be executed before any method in the entire package.</p>
 
 <h4 id="doing-stuff-after-execution">Doing Stuff After Execution</h4>
 
-<p>Similar to this, it is also possible to define an aspect to execute after every method within <code class="highlighter-rouge">HiByeService</code> is run:</p>
+<p>Similar to this, it is also possible to define an aspect to execute after every method within <code class="highlighter-rouge">`HiByeService`</code> is run:</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 	<span class="nd">@AfterReturning</span><span class="o">(</span><span class="n">pointcut</span> <span class="o">=</span> <span class="s">"execution(* HiByeService.*(..))"</span>
@@ -229,7 +231,7 @@
 
 </code></pre></div></div>
 
-<p>For this, you need to define a method with an <code class="highlighter-rouge">@AfterReturning</code> annotation, defined above for the <code class="highlighter-rouge">after()</code> method. This method here takes an extra argument to store the result of execution of the method of <code class="highlighter-rouge">HiByeService</code>.</p>
+<p>For this, you need to define a method with an <code class="highlighter-rouge">`@AfterReturning` ` ` annotation, defined above for the ` ` `after()` ` ` method. This method here takes an extra argument to store the result of execution of the method of ` ` `HiByeService`</code>.</p>
 
 <h4 id="doing-stuff-around-execution">Doing Stuff Around Execution</h4>
 
@@ -243,14 +245,16 @@
 	  <span class="nc">Object</span> <span class="n">result</span> <span class="o">=</span> <span class="n">joinPoint</span><span class="o">.</span><span class="na">proceed</span><span class="o">();</span>
 	  <span class="kt">long</span> <span class="n">endTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">().</span><span class="na">getTime</span><span class="o">();</span>
 	  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Execution Time - "</span> 
+
 	                  <span class="o">+</span> <span class="o">(</span><span class="n">endTime</span> <span class="o">-</span> <span class="n">startTime</span><span class="o">));</span>
+
 	<span class="o">}</span>
 
 </code></pre></div></div>
 
-<p>Over here, we have made use of an annotation called <code class="highlighter-rouge">@Around</code> to decorate the <code class="highlighter-rouge">around()</code> method.</p>
+<p>Over here, we have made use of an annotation called <code class="highlighter-rouge">`@Around` ` ` to decorate the ` ` `around()`</code> method.</p>
 
-<p>In this method body, we intercept the call to the method in <code class="highlighter-rouge">HiByeService</code> in the following manner:</p>
+<p>In this method body, we intercept the call to the method in <code class="highlighter-rouge">`HiByeService`</code> in the following manner:</p>
 
 <ul>
   <li>We make note of the start time of execution</li>

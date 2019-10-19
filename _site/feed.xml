@@ -1,200 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-10-19T01:21:55+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">Microservices Architectures - Microservices vs SOA</title><link href="http://localhost:4000/blog/Microservices11" rel="alternate" type="text/html" title="Microservices Architectures - Microservices vs SOA" /><published>2019-10-17T20:17:00+00:00</published><updated>2019-10-17T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices11</id><content type="html" xml:base="http://localhost:4000/blog/Microservices11">&lt;p&gt;Microservices architectures are very popular today. In this article, we take a look at how microservices architectures are different from Service Oriented Architectures (SOA).&lt;/p&gt;
-
-&lt;h3 id=&quot;deployability&quot;&gt;Deployability&lt;/h3&gt;
-
-&lt;p&gt;Both Microservices and Service Oriented Architectures primarily talk about creating small services.&lt;/p&gt;
-
-&lt;p&gt;Whenever we talk of microservices, we refer to small sized services that are also independently deployable.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Capture-065-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;For example, we should be able to release Microservice1 without affecting the behavior of any of the other microservices. We would be able to take such a microservice to production very quickly.&lt;/p&gt;
-
-&lt;p&gt;The focus of SOA might be on creating independent services, but not exactly independently deployable ones. In SOA, while we focused on API, the deployable units were generally large.&lt;/p&gt;
-
-&lt;h3 id=&quot;thin-pipes-v-enterprise-system-bus&quot;&gt;Thin Pipes v Enterprise System Bus&lt;/h3&gt;
-
-&lt;p&gt;With the evolution of its architectures, SOA ended up having large Enterprise Service Buses (ESBs). ESBs were introduced to enable loose coupling between SOA components.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Capture-065-03.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;In order to implement a new feature in an application, changes are needed both on the application logic, as well as in the enterprise bus.&lt;/p&gt;
-
-&lt;p&gt;The enterprise system bus become a central spoke where a lot of business logic also made its way. Over a period of time, these sucked in a lot of business logic, making the application difficult to maintain.&lt;/p&gt;
-
-&lt;p&gt;Microservices architectures keep minimum logic in the communication infrastructure - thin pipes.&lt;/p&gt;
-
-&lt;h3 id=&quot;tied-to-xml&quot;&gt;Tied To XML&lt;/h3&gt;
-
-&lt;p&gt;SOA was tied to the XML technologies, inheriting its formalities and complexities.&lt;/p&gt;
-
-&lt;h3 id=&quot;governance&quot;&gt;Governance&lt;/h3&gt;
-
-&lt;p&gt;With SOA, there is always an centralize architecture team that decides what logic goes into an ESB, and what cannot, among other things.&lt;/p&gt;
-
-&lt;p&gt;On the other hand, microservices architectures focuses on having decentralized governance.&lt;/p&gt;
-
-&lt;h3 id=&quot;lets-take-an-example&quot;&gt;Let’s take an example&lt;/h3&gt;
-
-&lt;p&gt;Consider a banking application. Along with a savings account, a customer gets a debit card for free. An Insurance Savings Account and a Debit Card are different banking products, managed by different product systems.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Capture-065-03.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;soa&quot;&gt;SOA&lt;/h4&gt;
-
-&lt;p&gt;In the SOA architecture, the ESB takes the order from the selling application, and handles the communication with the systems that create the appropriate products.&lt;/p&gt;
-
-&lt;p&gt;The ESB ends up having a lot of business logic, making it top-heavy.&lt;/p&gt;
-
-&lt;h4 id=&quot;microservices&quot;&gt;Microservices&lt;/h4&gt;
-
-&lt;p&gt;Typical microservices architecture makes use of an event driven architecture. It makes extensive use of a message queue to ensure reliable communication between different microservices, each having it own responsibility.&lt;/p&gt;
-
-&lt;p&gt;The sales app would create an order event, and put it in the queue. Each of the other services would look at the event, and process it if relevant to them.&lt;/p&gt;
-
-&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
-
-&lt;p&gt;In this article, we had a look at the differences between microservices architecture and SOA. We  looked at independent deployability, de-centralized governance, and the event based nature of microservices architectures.&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;introduction-to-cloud-microservice---challenges-and-advantages&quot;&gt;Introduction to Cloud, Microservice - Challenges and Advantages&lt;/h3&gt;
-
-&lt;p&gt;This is the article in a series of five articles on cloud and microservices:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/Microservices7&quot; target=&quot;_blank&quot;&gt;1 - Microservices Architecutres - Quick introduction to Cloud - Why, What and How?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/Microservices8&quot; target=&quot;_blank&quot;&gt;2 - Microservice Architectures - Introduction to Spring Cloud&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/Microservices9&quot; target=&quot;_blank&quot;&gt;3 - Microservices Architectures - Advantages Of Microservices&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/Microservices10&quot; target=&quot;_blank&quot;&gt;4 - Microservice Architectures - Challenges with building Microservices&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/Microservices11&quot; target=&quot;_blank&quot;&gt;5 - Microservices Architectures - Microservices vs SOA&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr /&gt;
-   
-    &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Microservices10&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Microservices11&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Microservices architectures are very popular today. In this article, we take a look at how microservices architectures are different from Service Oriented Architectures (SOA).</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/microservices.png" /></entry><entry><title type="html">Microservice Architectures - Challenges with building Microservices</title><link href="http://localhost:4000/blog/Microservices10" rel="alternate" type="text/html" title="Microservice Architectures - Challenges with building Microservices" /><published>2019-10-17T20:17:00+00:00</published><updated>2019-10-17T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices10</id><content type="html" xml:base="http://localhost:4000/blog/Microservices10">&lt;p&gt;Microservices architectures are very popular today. In this article, we discuss the important challenges in developing a microservices architecture.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Identifying Microservice Boundaries - Implementing Bounded Context&lt;/li&gt;
-  &lt;li&gt;Having Proper Configuration Management&lt;/li&gt;
-  &lt;li&gt;Implementing Technology for Dynamic Scale Up And Scale Down&lt;/li&gt;
-  &lt;li&gt;Ensuring High Visibility&lt;/li&gt;
-  &lt;li&gt;Ensuring High Fault Tolerance&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;identifying-microservice-boundaries---implementing-bounded-context&quot;&gt;Identifying Microservice Boundaries - Implementing Bounded Context&lt;/h3&gt;
-
-&lt;p&gt;We are aware that in a microservices architecture, instead of single big monolith application, we build a number of independent microservices talking with each other:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Capture-066-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;An important question one faces while designing such a system is, how do we define the boundaries of individual microservices?&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;How do you decide what one service does, and what it should not do?&lt;/p&gt;
-
-&lt;p&gt;This is particularly difficult for a new application, as there may not be enough business knowledge to establish the right boundaries.&lt;/p&gt;
-
-&lt;p&gt;The task of deciding the boundaries of microservices is an evolving process. It is not something you necessarily get right the first time.&lt;/p&gt;
-
-&lt;p&gt;It often involves using domain driven design while playing around the functionality of the microservices. As you gain design knowledge, you need to put that knowledge back into the microservices architecture.&lt;/p&gt;
-
-&lt;p&gt;The best practices include following domain driven design.&lt;/p&gt;
-
-&lt;h3 id=&quot;having-proper-configuration-management&quot;&gt;Having Proper Configuration Management&lt;/h3&gt;
-
-&lt;p&gt;Configuration management poses quite a stiff challenge in implementing microservices.&lt;/p&gt;
-
-&lt;p&gt;Suppose that in our system, we have a few microservices, each of which has multiple instances in each environment:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Capture-066-03.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;In a slightly larger system, there could be 10 microservices with 5 environments, and 50 instances at the least. We are talking about tons of configuration  here!&lt;/p&gt;
-
-&lt;p&gt;This will involve a lot of work for the operations team, just to maintain all these configuration.&lt;/p&gt;
-
-&lt;p&gt;Typically, centralized configuration helps you manage configuration.&lt;/p&gt;
-
-&lt;h3 id=&quot;implementing-technology-for-dynamic-scale-up-and-scale-down&quot;&gt;Implementing Technology for Dynamic Scale Up And Scale Down&lt;/h3&gt;
-
-&lt;p&gt;For a microservices architecture, establishing the technology to do dynamic scaling of infrastructure, is a mountain to scale in itself.&lt;/p&gt;
-
-&lt;p&gt;The loads on different microservices could be different, at different instances of time:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Capture-066-03.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;At a particular point of time, you may need 2 instances of Microservice2. However at a later point in time, that need may go up to 4. Again, it could shoot up to 10 later. In essence, we need to bring up new instances of a microservices when they are in demand, and bring them down when no longer needed.&lt;/p&gt;
-
-&lt;p&gt;All this scaling needs to be done with dynamic load balancing. At the point of time shown in the diagram, the load from Microservice1 needs to be distributed among the 4 instances of Microservice2. Later, when there are 10 instances of Microservice2, there needs to be another load redistribution among those 10 instances.&lt;/p&gt;
-
-&lt;p&gt;Building an architecture for this involves a number of technical components - Naming Server, Load Balancers, Monitoring tools to identify whether to scale in or scale out.&lt;/p&gt;
-
-&lt;h3 id=&quot;ensuring-high-visibility&quot;&gt;Ensuring High Visibility&lt;/h3&gt;
-
-&lt;p&gt;Ensuring visibility is one of the most important challenges that needs to be addressed.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Capture-066-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;If we say that the functionality of the above system needs to be distributed among 10 microservices, but there is a bug, how do you identify where the bug is? There is clearly a need for a centralized log, where we need to find out what happened with a specific request.&lt;/p&gt;
-
-&lt;p&gt;We also need to have effective monitoring across the microservices.&lt;/p&gt;
-
-&lt;h3 id=&quot;ensuring-high-fault-tolerance&quot;&gt;Ensuring High Fault Tolerance&lt;/h3&gt;
-
-&lt;p&gt;If not well designed, a microservices architecture can behave like a pack of cards. A microservice at the end of such a chain would be fundamental to the system behaving well.&lt;/p&gt;
-
-&lt;p&gt;Therefore, it is very important for you to have sufficient fault tolerance in place, in your system.&lt;/p&gt;
-
-&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
-
-&lt;p&gt;In this article, we looked at the various challenges that need to be addressed, while designing a microservices architecture. We covered areas such as bounded context, configuration management, dynamic scale up and scale down, visibility and fault tolerance.&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;introduction-to-cloud-microservice---challenges-and-advantages&quot;&gt;Introduction to Cloud, Microservice - Challenges and Advantages&lt;/h3&gt;
-
-&lt;p&gt;This is the article in a series of five articles on cloud and microservices:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/Microservices7&quot; target=&quot;_blank&quot;&gt;1 - Microservices Architecutres - Quick introduction to Cloud - Why, What and How?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/Microservices8&quot; target=&quot;_blank&quot;&gt;2 - Microservice Architectures - Introduction to Spring Cloud&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/Microservices9&quot; target=&quot;_blank&quot;&gt;3 - Microservices Architectures - Advantages Of Microservices&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/Microservices10&quot; target=&quot;_blank&quot;&gt;4 - Microservice Architectures - Challenges with building Microservices&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/Microservices11&quot; target=&quot;_blank&quot;&gt;5 - Microservices Architectures - Microservices vs SOA&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr /&gt;
-   
-    &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Microservices9&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Microservices11&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Microservices architectures are very popular today. In this article, we discuss the important challenges in developing a microservices architecture.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/microservices.png" /></entry><entry><title type="html">Microservices Architectures - Advantages Of Microservices</title><link href="http://localhost:4000/blog/Microservices9" rel="alternate" type="text/html" title="Microservices Architectures - Advantages Of Microservices" /><published>2019-10-17T20:17:00+00:00</published><updated>2019-10-17T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices9</id><content type="html" xml:base="http://localhost:4000/blog/Microservices9">&lt;p&gt;Microservices architectures are very popular today. In this article, we discuss the three main advantages of having a microservices architecture.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-10-19T01:42:22+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">Microservices Architectures - Advantages Of Microservices</title><link href="http://localhost:4000/blog/Microservices9" rel="alternate" type="text/html" title="Microservices Architectures - Advantages Of Microservices" /><published>2019-10-17T20:17:00+00:00</published><updated>2019-10-17T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices9</id><content type="html" xml:base="http://localhost:4000/blog/Microservices9">&lt;p&gt;Microservices architectures are very popular today. In this article, we discuss the three main advantages of having a microservices architecture.&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;New Technology And Process Adoption&lt;/li&gt;
   &lt;li&gt;Dynamic Scaling Up And Down&lt;/li&gt;
@@ -1751,7 +1555,7 @@
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Let’s learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot. We will create a couple of microservices and get them to talk to each other using Eureka Naming Server and Ribbon for Client Side Load Balancing.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/microservices.png" /></entry><entry><title type="html">Microservices with Spring Boot - Part 4 - Using Ribbon for Load Balancing</title><link href="http://localhost:4000/blog/Microservices4" rel="alternate" type="text/html" title="Microservices with Spring Boot - Part 4 - Using Ribbon for Load Balancing" /><published>2019-10-17T20:17:00+00:00</published><updated>2019-10-17T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices4</id><content type="html" xml:base="http://localhost:4000/blog/Microservices4">&lt;p&gt;Let’s learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot. We will create a couple of microservices and get them to talk to each other using Eureka Naming Server and Ribbon for Client Side Load Balancing.&lt;/p&gt;
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Let’s learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot. We will create a couple of microservices and get them to talk to each other using Eureka Naming Server and Ribbon for Client Side Load Balancing.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/microservices.png" /></entry><entry><title type="html">Microservices with Spring Boot - Part 4 - Using Ribbon for Load Balancing</title><link href="http://localhost:4000/blog/Microservices4" rel="alternate" type="text/html" title="Microservices with Spring Boot - Part 4 - Using Ribbon for Load Balancing" /><published>2019-10-17T20:17:00+00:00</published><updated>2019-10-17T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices4</id><content type="html" xml:base="http://localhost:4000/blog/Microservices4">&lt;h3 id=&quot;lets-learn-the-basics-of-microservices-and-microservices-architectures-we-will-also-start-looking-at-a-basic-implementation-of-a-microservice-with-spring-boot-we-will-create-a-couple-of-microservices-and-get-them-to-talk-to-each-other-using-eureka-naming-server-and-ribbon-for-client-side-load-balancing&quot;&gt;Let’s learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot. We will create a couple of microservices and get them to talk to each other using Eureka Naming Server and Ribbon for Client Side Load Balancing.&lt;/h3&gt;
 
 &lt;h2 id=&quot;microservices-overview&quot;&gt;Microservices Overview&lt;/h2&gt;
 
@@ -3127,4 +2931,200 @@
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Let’s learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot. We will create a couple of microservices and get them to talk to each other using Eureka Naming Server and Ribbon for Client Side Load Balancing.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/microservices.png" /></entry></feed>
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Let’s learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot. We will create a couple of microservices and get them to talk to each other using Eureka Naming Server and Ribbon for Client Side Load Balancing.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/microservices.png" /></entry><entry><title type="html">Microservices Architectures - Microservices vs SOA</title><link href="http://localhost:4000/blog/Microservices11" rel="alternate" type="text/html" title="Microservices Architectures - Microservices vs SOA" /><published>2019-10-17T20:17:00+00:00</published><updated>2019-10-17T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices11</id><content type="html" xml:base="http://localhost:4000/blog/Microservices11">&lt;p&gt;Microservices architectures are very popular today. In this article, we take a look at how microservices architectures are different from Service Oriented Architectures (SOA).&lt;/p&gt;
+
+&lt;h3 id=&quot;deployability&quot;&gt;Deployability&lt;/h3&gt;
+
+&lt;p&gt;Both Microservices and Service Oriented Architectures primarily talk about creating small services.&lt;/p&gt;
+
+&lt;p&gt;Whenever we talk of microservices, we refer to small sized services that are also independently deployable.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Capture-065-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;For example, we should be able to release Microservice1 without affecting the behavior of any of the other microservices. We would be able to take such a microservice to production very quickly.&lt;/p&gt;
+
+&lt;p&gt;The focus of SOA might be on creating independent services, but not exactly independently deployable ones. In SOA, while we focused on API, the deployable units were generally large.&lt;/p&gt;
+
+&lt;h3 id=&quot;thin-pipes-v-enterprise-system-bus&quot;&gt;Thin Pipes v Enterprise System Bus&lt;/h3&gt;
+
+&lt;p&gt;With the evolution of its architectures, SOA ended up having large Enterprise Service Buses (ESBs). ESBs were introduced to enable loose coupling between SOA components.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Capture-065-03.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In order to implement a new feature in an application, changes are needed both on the application logic, as well as in the enterprise bus.&lt;/p&gt;
+
+&lt;p&gt;The enterprise system bus become a central spoke where a lot of business logic also made its way. Over a period of time, these sucked in a lot of business logic, making the application difficult to maintain.&lt;/p&gt;
+
+&lt;p&gt;Microservices architectures keep minimum logic in the communication infrastructure - thin pipes.&lt;/p&gt;
+
+&lt;h3 id=&quot;tied-to-xml&quot;&gt;Tied To XML&lt;/h3&gt;
+
+&lt;p&gt;SOA was tied to the XML technologies, inheriting its formalities and complexities.&lt;/p&gt;
+
+&lt;h3 id=&quot;governance&quot;&gt;Governance&lt;/h3&gt;
+
+&lt;p&gt;With SOA, there is always an centralize architecture team that decides what logic goes into an ESB, and what cannot, among other things.&lt;/p&gt;
+
+&lt;p&gt;On the other hand, microservices architectures focuses on having decentralized governance.&lt;/p&gt;
+
+&lt;h3 id=&quot;lets-take-an-example&quot;&gt;Let’s take an example&lt;/h3&gt;
+
+&lt;p&gt;Consider a banking application. Along with a savings account, a customer gets a debit card for free. An Insurance Savings Account and a Debit Card are different banking products, managed by different product systems.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Capture-065-03.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;soa&quot;&gt;SOA&lt;/h4&gt;
+
+&lt;p&gt;In the SOA architecture, the ESB takes the order from the selling application, and handles the communication with the systems that create the appropriate products.&lt;/p&gt;
+
+&lt;p&gt;The ESB ends up having a lot of business logic, making it top-heavy.&lt;/p&gt;
+
+&lt;h4 id=&quot;microservices&quot;&gt;Microservices&lt;/h4&gt;
+
+&lt;p&gt;Typical microservices architecture makes use of an event driven architecture. It makes extensive use of a message queue to ensure reliable communication between different microservices, each having it own responsibility.&lt;/p&gt;
+
+&lt;p&gt;The sales app would create an order event, and put it in the queue. Each of the other services would look at the event, and process it if relevant to them.&lt;/p&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;In this article, we had a look at the differences between microservices architecture and SOA. We  looked at independent deployability, de-centralized governance, and the event based nature of microservices architectures.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h3 id=&quot;introduction-to-cloud-microservice---challenges-and-advantages&quot;&gt;Introduction to Cloud, Microservice - Challenges and Advantages&lt;/h3&gt;
+
+&lt;p&gt;This is the article in a series of five articles on cloud and microservices:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/Microservices7&quot; target=&quot;_blank&quot;&gt;1 - Microservices Architecutres - Quick introduction to Cloud - Why, What and How?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/Microservices8&quot; target=&quot;_blank&quot;&gt;2 - Microservice Architectures - Introduction to Spring Cloud&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/Microservices9&quot; target=&quot;_blank&quot;&gt;3 - Microservices Architectures - Advantages Of Microservices&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/Microservices10&quot; target=&quot;_blank&quot;&gt;4 - Microservice Architectures - Challenges with building Microservices&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/Microservices11&quot; target=&quot;_blank&quot;&gt;5 - Microservices Architectures - Microservices vs SOA&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr /&gt;
+   
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Microservices10&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Microservices11&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;       
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Microservices architectures are very popular today. In this article, we take a look at how microservices architectures are different from Service Oriented Architectures (SOA).</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/microservices.png" /></entry><entry><title type="html">Microservice Architectures - Challenges with building Microservices</title><link href="http://localhost:4000/blog/Microservices10" rel="alternate" type="text/html" title="Microservice Architectures - Challenges with building Microservices" /><published>2019-10-17T20:17:00+00:00</published><updated>2019-10-17T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices10</id><content type="html" xml:base="http://localhost:4000/blog/Microservices10">&lt;p&gt;Microservices architectures are very popular today. In this article, we discuss the important challenges in developing a microservices architecture.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Identifying Microservice Boundaries - Implementing Bounded Context&lt;/li&gt;
+  &lt;li&gt;Having Proper Configuration Management&lt;/li&gt;
+  &lt;li&gt;Implementing Technology for Dynamic Scale Up And Scale Down&lt;/li&gt;
+  &lt;li&gt;Ensuring High Visibility&lt;/li&gt;
+  &lt;li&gt;Ensuring High Fault Tolerance&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;identifying-microservice-boundaries---implementing-bounded-context&quot;&gt;Identifying Microservice Boundaries - Implementing Bounded Context&lt;/h3&gt;
+
+&lt;p&gt;We are aware that in a microservices architecture, instead of single big monolith application, we build a number of independent microservices talking with each other:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Capture-066-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;An important question one faces while designing such a system is, how do we define the boundaries of individual microservices?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;How do you decide what one service does, and what it should not do?&lt;/p&gt;
+
+&lt;p&gt;This is particularly difficult for a new application, as there may not be enough business knowledge to establish the right boundaries.&lt;/p&gt;
+
+&lt;p&gt;The task of deciding the boundaries of microservices is an evolving process. It is not something you necessarily get right the first time.&lt;/p&gt;
+
+&lt;p&gt;It often involves using domain driven design while playing around the functionality of the microservices. As you gain design knowledge, you need to put that knowledge back into the microservices architecture.&lt;/p&gt;
+
+&lt;p&gt;The best practices include following domain driven design.&lt;/p&gt;
+
+&lt;h3 id=&quot;having-proper-configuration-management&quot;&gt;Having Proper Configuration Management&lt;/h3&gt;
+
+&lt;p&gt;Configuration management poses quite a stiff challenge in implementing microservices.&lt;/p&gt;
+
+&lt;p&gt;Suppose that in our system, we have a few microservices, each of which has multiple instances in each environment:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Capture-066-03.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In a slightly larger system, there could be 10 microservices with 5 environments, and 50 instances at the least. We are talking about tons of configuration  here!&lt;/p&gt;
+
+&lt;p&gt;This will involve a lot of work for the operations team, just to maintain all these configuration.&lt;/p&gt;
+
+&lt;p&gt;Typically, centralized configuration helps you manage configuration.&lt;/p&gt;
+
+&lt;h3 id=&quot;implementing-technology-for-dynamic-scale-up-and-scale-down&quot;&gt;Implementing Technology for Dynamic Scale Up And Scale Down&lt;/h3&gt;
+
+&lt;p&gt;For a microservices architecture, establishing the technology to do dynamic scaling of infrastructure, is a mountain to scale in itself.&lt;/p&gt;
+
+&lt;p&gt;The loads on different microservices could be different, at different instances of time:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Capture-066-03.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;At a particular point of time, you may need 2 instances of Microservice2. However at a later point in time, that need may go up to 4. Again, it could shoot up to 10 later. In essence, we need to bring up new instances of a microservices when they are in demand, and bring them down when no longer needed.&lt;/p&gt;
+
+&lt;p&gt;All this scaling needs to be done with dynamic load balancing. At the point of time shown in the diagram, the load from Microservice1 needs to be distributed among the 4 instances of Microservice2. Later, when there are 10 instances of Microservice2, there needs to be another load redistribution among those 10 instances.&lt;/p&gt;
+
+&lt;p&gt;Building an architecture for this involves a number of technical components - Naming Server, Load Balancers, Monitoring tools to identify whether to scale in or scale out.&lt;/p&gt;
+
+&lt;h3 id=&quot;ensuring-high-visibility&quot;&gt;Ensuring High Visibility&lt;/h3&gt;
+
+&lt;p&gt;Ensuring visibility is one of the most important challenges that needs to be addressed.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Capture-066-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If we say that the functionality of the above system needs to be distributed among 10 microservices, but there is a bug, how do you identify where the bug is? There is clearly a need for a centralized log, where we need to find out what happened with a specific request.&lt;/p&gt;
+
+&lt;p&gt;We also need to have effective monitoring across the microservices.&lt;/p&gt;
+
+&lt;h3 id=&quot;ensuring-high-fault-tolerance&quot;&gt;Ensuring High Fault Tolerance&lt;/h3&gt;
+
+&lt;p&gt;If not well designed, a microservices architecture can behave like a pack of cards. A microservice at the end of such a chain would be fundamental to the system behaving well.&lt;/p&gt;
+
+&lt;p&gt;Therefore, it is very important for you to have sufficient fault tolerance in place, in your system.&lt;/p&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;In this article, we looked at the various challenges that need to be addressed, while designing a microservices architecture. We covered areas such as bounded context, configuration management, dynamic scale up and scale down, visibility and fault tolerance.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h3 id=&quot;introduction-to-cloud-microservice---challenges-and-advantages&quot;&gt;Introduction to Cloud, Microservice - Challenges and Advantages&lt;/h3&gt;
+
+&lt;p&gt;This is the article in a series of five articles on cloud and microservices:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/Microservices7&quot; target=&quot;_blank&quot;&gt;1 - Microservices Architecutres - Quick introduction to Cloud - Why, What and How?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/Microservices8&quot; target=&quot;_blank&quot;&gt;2 - Microservice Architectures - Introduction to Spring Cloud&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/Microservices9&quot; target=&quot;_blank&quot;&gt;3 - Microservices Architectures - Advantages Of Microservices&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/Microservices10&quot; target=&quot;_blank&quot;&gt;4 - Microservice Architectures - Challenges with building Microservices&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/Microservices11&quot; target=&quot;_blank&quot;&gt;5 - Microservices Architectures - Microservices vs SOA&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr /&gt;
+   
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Microservices9&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;https://girishgodage.github.io/blog/Microservices11&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;       
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Microservices architectures are very popular today. In this article, we discuss the important challenges in developing a microservices architecture.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://girishgodage.github.io/img/microservices.png" /></entry></feed>
