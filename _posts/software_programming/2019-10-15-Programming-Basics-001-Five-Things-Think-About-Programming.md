@@ -1,12 +1,14 @@
 ---
 title: Programming Basics - Five Things To Think About While Programming
 date: 2019-10-15 20:17:00 Z
-description: You would obviously want to write code that meets your core requirements and provide good performance - choosing right data structures and algorithms to use is the fundamental part of programming.  What are the other things that you need to worry about? Here are five things that we think are essential.
-categories:  SwProgramming
 categories:
 - SoftwareProgramming
 tags:
 - learning
+description: You would obviously want to write code that meets your core requirements
+  and provide good performance - choosing right data structures and algorithms to
+  use is the fundamental part of programming.  What are the other things that you
+  need to worry about? Here are five things that we think are essential.
 summary: You would obviously want to write code that meets your core requirements
   and provide good performance - choosing right data structures and algorithms to
   use is the fundamental part of programming.  What are the other things that you
