@@ -5,12 +5,14 @@ categories:
 - SoftwareArchitecture
 tags:
 - learning
-image: https://girishgodage.github.io/img/sw_architect.png
+summary: Good Software Architecture is essential to building great software. What is Software Architecture all about?
+image: /img/sw_architect.png
 author: Girish Godage
 layout: posts
-prevurl: https://girishgodage.github.io/blog/SwArchitectLesson1
-nexturl: https://girishgodage.github.io/blog/SwArchitectLesson2
+prevurl: /blog/introduction-to-software-architecture
+nexturl: blog/what-is-the-goal-of-an-software-architect
 discussion_id: 2019-10-15-SwArchitectLesson1
+permalink:  "/blog/introduction-to-software-architecture"
 ---
 
 Good Software Architecture is essential to building great software. What is Software Architecture all about?

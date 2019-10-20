@@ -5,18 +5,16 @@ categories:
 - SoftwareProgramming
 tags:
 - learning
-description: Software applications are built in layers. There is common functionality
-  that is sometimes needed across layers - logging, performance tracing etc. How do
-  you implement these common features?
 summary: Software applications are built in layers. There is common functionality
   that is sometimes needed across layers - logging, performance tracing etc. How do
   you implement these common features?
 image: "/img/sw_program.png"
 author: Girish Godage
 layout: posts
-prevurl: "/blog/Programming-Basics-002-Introduction-To-Object-Oriented-Programming"
-nexturl: "/blog/Programming-Basics-003-AspectOrientedProgramming"
+prevurl: "/blog/programming-basics-introduction-to-object-oriented-programming"
+nexturl: "/blog/introduction-to-aspect-oriented-programming-and-cross-cutting-concerns"
 discussion_id: 2019-10-15-Programming-Basics-003
+permalink:  "/blog/introduction-to-aspect-oriented-programming-and-cross-cutting-concerns"
 ---
 
 Software applications are built in layers. There is common functionality that is sometimes needed across layers - logging, performance tracing etc.

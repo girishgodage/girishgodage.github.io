@@ -5,10 +5,6 @@ categories:
 - SoftwareProgramming
 tags:
 - learning
-description: You would obviously want to write code that meets your core requirements
-  and provide good performance - choosing right data structures and algorithms to
-  use is the fundamental part of programming.  What are the other things that you
-  need to worry about? Here are five things that we think are essential.
 summary: You would obviously want to write code that meets your core requirements
   and provide good performance - choosing right data structures and algorithms to
   use is the fundamental part of programming.  What are the other things that you
@@ -16,9 +12,10 @@ summary: You would obviously want to write code that meets your core requirement
 image: "/img/sw_program.png"
 author: Girish Godage
 layout: posts
-prevurl: "/blog/Programming-Basics-001-Five-Things-Think-About-Programming"
-nexturl: "/blog/Programming-Basics-002-Introduction-To-Object-Oriented-Programming"
+prevurl: "/blog/programming-basics-five-things-to-think-about-while-programming"
+nexturl: "/blog/programming-basics-introduction-to-object-oriented-programming"
 discussion_id: 2019-10-15-Programming-Basics-001
+permalink:  "/blog/programming-basics-five-things-to-think-about-while-programming"
 ---
 
 You would obviously want to write code that meets your core requirements and provide good performance - choosing right data structures and algorithms to use is the fundamental part of programming.

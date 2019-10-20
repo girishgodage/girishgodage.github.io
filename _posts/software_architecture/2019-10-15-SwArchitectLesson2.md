@@ -5,12 +5,15 @@ categories:
 - SoftwareArchitecture
 tags:
 - learning
-image: https://girishgodage.github.io/img/sw_architect.png
+summary:  In this article, we have a close look at what your goal as an architect should be. Before reading any further, take a piece of paper and put down the list of goals from your perspective. 
+image: /img/sw_architect.png
 author: Girish Godage
 layout: posts
-prevurl: https://girishgodage.github.io/blog/SwArchitectLesson1
-nexturl: https://girishgodage.github.io/blog/SwArchitectLesson3
+prevurl: /blog/introduction-to-software-architecture
+nexturl: /blog/five-important-qualities-of-a-software-architect
 discussion_id: 2019-10-15-SwArchitectLesson2
+permalink:  "/blog/what-is-the-goal-of-an-software-architect"
+
 ---
 
 In this article, we have a close look at what your goal as an architect should be. Before reading any further, take a piece of paper and put down the list of goals from your perspective.
