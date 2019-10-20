@@ -1,18 +1,20 @@
 ---
 title: Introduction to Four Principles Of Simple Design
 date: 2019-10-14 10:41:00 Z
+permalink: "/blog/four-principles-of-simple-design"
 categories:
 - SoftwareDesign
 tags:
 - learning
-summary: With agile and extreme programming, the focus is on keeping your design simple. How do you keep your design simple? How do you decide whether your code is good enough?
-image: /img/sw_design.png
+summary: With agile and extreme programming, the focus is on keeping your design simple.
+  How do you keep your design simple? How do you decide whether your code is good
+  enough?
+image: "/img/sw_design.png"
 author: Girish Godage
 layout: posts
-prevurl: /blog/four-principles-of-simple-design
-nexturl: /blog/software-design-seperation-of-concerns-with-examples
+prevurl: "/blog/four-principles-of-simple-design"
+nexturl: "/blog/software-design-seperation-of-concerns-with-examples"
 discussion_id: 2019-10-15-SwDesign1
-permalink:  /blog/four-principles-of-simple-design
 ---
 
 ### What is Simple Design?

@@ -1,18 +1,19 @@
 ---
 title: Breaking a Monolith into Microservices - Best Practices and Challenges
 date: 2019-10-17 20:17:00 Z
+permalink: "/blog/breaking-a-monolith-into-microservices"
 categories:
 - SpringBootMicroservices
 tags:
 - learning
-summary:  In this article, we will describe the first steps, in taking an architecture from monolith to microservice. 
-image: /img/microservices.png
+summary: In this article, we will describe the first steps, in taking an architecture
+  from monolith to microservice.
+image: "/img/microservices.png"
 author: Girish Godage
 layout: posts
 prevurl: 
 nexturl: 
 discussion_id: 2019-10-15-Microservices6
-permalink:  /blog/breaking-a-monolith-into-microservices
 ---
 
 In this article, we will describe the first steps, in taking an architecture from monolith to microservice. 

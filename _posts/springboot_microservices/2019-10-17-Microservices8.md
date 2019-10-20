@@ -1,18 +1,19 @@
 ---
 title: Introduction to Spring Cloud
 date: 2019-10-17 20:17:00 Z
+permalink: "/blog/introduction-to-spring-cloud"
 categories:
 - SpringBootMicroservices
 tags:
 - learning
-summary:  In this article, we focus on Spring Cloud. We talk about the various components under its umbrella. 
-image: /img/microservices.png
+summary: In this article, we focus on Spring Cloud. We talk about the various components
+  under its umbrella.
+image: "/img/microservices.png"
 author: Girish Godage
 layout: posts
-prevurl: /blog/introduction-to-cloud
-nexturl: /blog/introduction-to-spring-cloud
+prevurl: "/blog/introduction-to-cloud"
+nexturl: "/blog/introduction-to-spring-cloud"
 discussion_id: 2019-10-15-Microservices8
-permalink:  /blog/introduction-to-spring-cloud
 ---
 
 In this article, we focus on Spring Cloud. We will talk about the various components under its umbrella. 

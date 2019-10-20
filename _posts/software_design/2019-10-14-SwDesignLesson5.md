@@ -1,18 +1,19 @@
 ---
 title: Software Design - Open Closed Principle Principle
 date: 2019-10-14 11:00:00 Z
+permalink: "/blog/software-design-open-closed-principle"
 categories:
 - SoftwareDesign
 tags:
 - learning
-summary: Open Closed Principle is one of the SOLID Principles. You want your code to be easily extended. How do you achieve it with minimum fuss? Let's get started.
-image: /img/sw_design.png
+summary: Open Closed Principle is one of the SOLID Principles. You want your code
+  to be easily extended. How do you achieve it with minimum fuss? Let's get started.
+image: "/img/sw_design.png"
 author: Girish Godage
 layout: posts
-prevurl: /blog/software-design-single-responsibility-principle
-nexturl: /blog/software-design-dependency-inversion-principle
+prevurl: "/blog/software-design-single-responsibility-principle"
+nexturl: "/blog/software-design-dependency-inversion-principle"
 discussion_id: 2019-10-15-SwDesign5
-permalink:  /blog/software-design-open-closed-principle
 ---
 
 Open Closed Principle is one of the SOLID Principles. You want your code to be extensible. How do you achieve it with minimum fuss? Let's get started.

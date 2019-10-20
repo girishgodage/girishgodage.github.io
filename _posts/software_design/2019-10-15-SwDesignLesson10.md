@@ -1,18 +1,19 @@
 ---
 title: Software Design - Encapsulation - with examples
 date: 2019-10-15 11:24:00 Z
+permalink: "/blog/software-design-encapsulation-with-examples"
 categories:
 - SoftwareDesign
 tags:
 - learning
-summary: Software architects and programmers love low coupling. What is coupling? Why is coupling important? Let's get started.
-image: /img/sw_design.png
+summary: Software architects and programmers love low coupling. What is coupling?
+  Why is coupling important? Let's get started.
+image: "/img/sw_design.png"
 author: Girish Godage
 layout: posts
-prevurl: /blog/software-design-what-is-abstraction
-nexturl: /blog/software-design-coupling-with-examples
+prevurl: "/blog/software-design-what-is-abstraction"
+nexturl: "/blog/software-design-coupling-with-examples"
 discussion_id: 2019-10-15-SwDesign10
-permalink: /blog/software-design-encapsulation-with-examples
 ---
 
 Encapsulation is one of the important goals of Software Design. What is Encapsulation? Why is it important? Let's get started.

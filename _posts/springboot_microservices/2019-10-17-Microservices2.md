@@ -1,18 +1,22 @@
 ---
 title: Microservices with Spring Boot - Part 2 - Creating Forex Microservice
 date: 2019-10-17 20:17:00 Z
+permalink: "/blog/creating-microservices-with-spring-boot-part-2-forex-microservice"
 categories:
 - SpringBootMicroservices
 tags:
 - learning
-summary:    Let's learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot. We will create a couple of microservices and get them to talk to each other using Eureka Naming Server and Ribbon for Client Side Load Balancing. In part 2 of this series, we will focus on Creating Forex Microservice.
-image: /img/microservices.png
+summary: Let's learn the basics of microservices and microservices architectures.
+  We will also start looking at a basic implementation of a microservice with Spring
+  Boot. We will create a couple of microservices and get them to talk to each other
+  using Eureka Naming Server and Ribbon for Client Side Load Balancing. In part 2
+  of this series, we will focus on Creating Forex Microservice.
+image: "/img/microservices.png"
 author: Girish Godage
 layout: posts
-prevurl: /blog/creating-microservices-with-spring-boot-part-1-getting-started
-nexturl: /blog/creating-microservices-with-spring-boot-part-3-currency-conversion-microservice
+prevurl: "/blog/creating-microservices-with-spring-boot-part-1-getting-started"
+nexturl: "/blog/creating-microservices-with-spring-boot-part-3-currency-conversion-microservice"
 discussion_id: 2019-10-15-Microservices2
-permalink:  /blog/creating-microservices-with-spring-boot-part-2-forex-microservice
 ---
 
 Let's learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot. We will create a couple of microservices and get them to talk to each other using Eureka Naming Server and Ribbon for Client Side Load Balancing.  

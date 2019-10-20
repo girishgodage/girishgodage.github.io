@@ -1,18 +1,20 @@
 ---
 title: Design Patterns For Beginners - with Java Examples
 date: 2019-10-15 09:32:00 Z
+permalink: "/blog/design-patterns-for-beginners-with-java-examples"
 categories:
 - SoftwareDesign
 tags:
 - learning
-summary: In this guide, we give you an introduction to the world of design patterns.For each pattern, we understand 1) the pattern a2) the context in which it is applicable -  with a real-world example.
-image: /img/sw_design.png
+summary: In this guide, we give you an introduction to the world of design patterns.For
+  each pattern, we understand 1) the pattern a2) the context in which it is applicable
+  -  with a real-world example.
+image: "/img/sw_design.png"
 author: Girish Godage
 layout: posts
-prevurl: /software-design-keep-your-design-simple
-nexturl: /blog/software-design-what-is-abstraction
+prevurl: "/software-design-keep-your-design-simple"
+nexturl: "/blog/software-design-what-is-abstraction"
 discussion_id: 2019-10-15-SwDesign8
-permalink:  /blog/design-patterns-for-beginners-with-java-examples
 ---
 
 In this guide, we give you an introduction to the world of design patterns.For each pattern, we understand 1) the pattern a2) the context in which it is applicable -  with a real-world example.
