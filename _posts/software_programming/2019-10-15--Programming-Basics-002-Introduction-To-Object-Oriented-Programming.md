@@ -6,6 +6,8 @@ categories:
 - SoftwareProgramming
 tags:
 - learning
+summary: Object oriented programming (OOP) is all about thinking in terms of objects.
+  Let's dig deeper.
 image: "/img/sw_program.png"
 author: Girish Godage
 layout: posts

@@ -7,6 +7,10 @@ categories:
 - SoftwareProgramming
 tags:
 - learning
+summary: You would obviously want to write code that meets your core requirements
+  and provide good performance - choosing right data structures and algorithms to
+  use is the fundamental part of programming.  What are the other things that you
+  need to worry about? Here are five things that we think are essential.
 image: "/img/sw_program.png"
 author: Girish Godage
 layout: posts
