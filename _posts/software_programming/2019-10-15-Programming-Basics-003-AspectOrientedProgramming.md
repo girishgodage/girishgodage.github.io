@@ -1,6 +1,7 @@
 ---
 title: Introduction To Aspect Oriented Programming and Cross Cutting Concerns
 date: 2019-10-15 20:30:00 Z
+permalink: "/blog/introduction-to-aspect-oriented-programming-and-cross-cutting-concerns"
 categories:
 - SoftwareProgramming
 tags:
@@ -14,7 +15,6 @@ layout: posts
 prevurl: "/blog/programming-basics-introduction-to-object-oriented-programming"
 nexturl: "/blog/introduction-to-aspect-oriented-programming-and-cross-cutting-concerns"
 discussion_id: 2019-10-15-Programming-Basics-003
-permalink:  "/blog/introduction-to-aspect-oriented-programming-and-cross-cutting-concerns"
 ---
 
 Software applications are built in layers. There is common functionality that is sometimes needed across layers - logging, performance tracing etc.

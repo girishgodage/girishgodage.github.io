@@ -1,18 +1,19 @@
 ---
 title: Quick Introduction To Software Architecture - What, Why and How?
 date: 2019-10-15 18:17:00 Z
+permalink: "/blog/introduction-to-software-architecture"
 categories:
 - SoftwareArchitecture
 tags:
 - learning
-summary: Good Software Architecture is essential to building great software. What is Software Architecture all about?
-image: /img/sw_architect.png
+summary: Good Software Architecture is essential to building great software. What
+  is Software Architecture all about?
+image: "/img/sw_architect.png"
 author: Girish Godage
 layout: posts
-prevurl: /blog/introduction-to-software-architecture
+prevurl: "/blog/introduction-to-software-architecture"
 nexturl: blog/what-is-the-goal-of-an-software-architect
 discussion_id: 2019-10-15-SwArchitectLesson1
-permalink:  "/blog/introduction-to-software-architecture"
 ---
 
 Good Software Architecture is essential to building great software. What is Software Architecture all about?
