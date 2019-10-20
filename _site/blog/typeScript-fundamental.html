@@ -105,7 +105,7 @@
             class="container">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <p class="post-title">
-                    <h1><a href="/typescripttutorial/2019/10/12/Lesson3/">3.Static vs dynamic typing</a></h1>
+                    <h1><a href="/blog/typeScript-fundamental">1.TypeScript Fundamental</a></h1>
                 </p>
                 
                 <span class="post-date"><span style="font-weight:600">October 12, 2019 Saturday</span> by
@@ -116,62 +116,102 @@
                 </div>
                 
                 <hr>
-                <div><img class="post-image" src="https://girishgodage.github.io/img/typescipt_logo.png" alt="3.Static vs dynamic typing" height="250" /></div>
+                <div><img class="post-image" src="/img/typescipt_logo.png" alt="1.TypeScript Fundamental" height="250" /></div>
                 <div class="post-content">
                     <br>                     
-                    <section class="tstutorial3">
-    <h3>Static vs dynamic typing</h3>
-    <p>let's replace the content of the <code>onStartup</code></p>
-    <ol>
-        <li>First, let's replace the content of the <code>onStartup</code> function:</li>
-        <div class="code-toolbar">
-            <pre class="code-toolbar language-javascript"><code class=" language-javascript"><span class="token function">onStartup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                <span class="token keyword">let</span> test <span class="token operator">=</span> <span class="token string">'mdb'</span><span class="token punctuation">;</span>
-                test <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span></code></pre>
+                    <section class="ts_tutorial">
+    <h2>Fundamentals</h2>
+    <p>In order to create Angular apps, you have to know Typescript. Within thenext few lessons I will teach you its
+        basic concepts, by covering the following subjects: </p>
+    <ul>
+        <li>Type annotations</li>
+        <li>Arrow functions</li>
+        <li>Interfaces</li>
+        <li>Classes</li>
+        <li>Constructors</li>
+        <li>Access modifiers</li>
+        <li>Properties</li>
+        <li>Modules</li>
+    </ul>
+    <p>If you are familiar with these concepts you can skip this tutorial and navigate to the next part, however if you
+        are new to TypeScript then follow it carefully.</p>
+    <h3>What is TypeScript?</h3>
+    <p>At a first glance you might confuse TypeScript with JavaScript. Especially that any valid JavaScript code is also
+        a valid TypeScript code, however, it doesn't work another way around. TypeScript is a superset of JavaScript.
+    </p>
+    <img class="img-fluid" src="http://localhost:4000/img/typescript/1/img/01.png" alt="TS superset of JS">
+    <p><i>Image taken from https://angular2buch.de</i></p>
+    <blockquote class="blockquote bq-primary">
+        <p class="bq-title">Remember:</p>
+        <p><strong>TypeScript is a superset of JavaScript</strong></p>
+    </blockquote>
+    <p>That means that <strong>TypeScript extends JavaScript with extra functionality</strong> which is not present in
+        the current version of JavaScript supported by most browsers. So what are those features? </p>
+    <h4>Strong typing</h4>
+    <p>If you are familiar with languages like Java or C# you probably know that <strong>each variable requires a type
+            and this type has to be declared upfront</strong>. JavaScript is a loosely typed or a dynamically typed
+        language. Variables in JavaScript are not directly associated with any particular value type, and any variable
+        can be assigned (and re-assigned) values of all types:</p>
+    <div class="code-toolbar">
+        <pre class="code-toolbar language-markup"><code class=" language-markup">var foo = 42;    // foo is now a Number
+var foo = 'bar'; // foo is now a String
+var foo = true;  // foo is now a Boolean</code></pre>
 
-        </div>
-        <p>You will see that TypeScript complains about the second assignment of test:</p>
-        <div class="code-toolbar">
-            <pre
-                class="code-toolbar language-javascript"><code class=" language-javascript"><span class="token constant">ERROR</span> <span class="token keyword">in</span> src<span class="token operator">/</span>app<span class="token operator">/</span>app<span class="token punctuation">.</span>component<span class="token punctuation">.</span><span class="token function">ts</span><span class="token punctuation">(</span><span class="token number">18</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">:</span> error <span class="token constant">TS2322</span><span class="token punctuation">:</span> Type <span class="token string">'5'</span> is not assignable to type <span class="token string">'string'</span><span class="token punctuation">.</span></code></pre>
+    </div>
+    <p>In a weakly typed language, the type of a <strong>value depends on how it is used</strong>. For example, if I can
+        pass a string to the addition operator and it will AutoMagically be interpreted as a number <strong>or cause an
+            error if the contents of the string cannot be translated into a number</strong>. Similarly, I can
+        concatenate strings and numbers or use strings as booleans, etc.</p>
+    <p>In a strongly typed language, <strong>a variable has a type and that type cannot change</strong>. What you can do
+        to a variable depends on its type. If we try to compile the above code in TypeScript we will get the sfollowing
+        error:</p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-typescript"><code class=" language-typescript"><span class="token punctuation">[</span>ts<span class="token punctuation">]</span> Subsequent variable declarations must have the same <span class="token keyword">type</span><span class="token punctuation">.</span>
+Variable <span class="token string">'foo'</span> must be <span class="token keyword">of</span> <span class="token keyword">type</span> <span class="token string">'number'</span><span class="token punctuation">,</span> but here has <span class="token keyword">type</span> <span class="token string">'boolean'</span><span class="token punctuation">.</span></code></pre>
 
-        </div>
-        <p>This code would work perfectly fine in JavaScript which allows dynamic change of types. You might think, that
-            this approach is better, however, although it might look easier for a developer <strong>it is not.</strong>
-            Imagine that there you are working on a project with a team of developers and one of them by mistake changes
-            the type of your variable from <code>number</code> to <code>string</code>. All logic based on that variable
-            will be broken now (as it would be comparing a variable to a number).</p>
-        <li>Let's now surround number 5 with quotes: <code>'5'</code></li>
-        <div class="code-toolbar">
-            <pre
-                class="code-toolbar language-javascript"><code class=" language-javascript">test <span class="token operator">=</span> <span class="token string">'5'</span><span class="token punctuation">;</span></code></pre>
+    </div>
+    <p>The advantage of a strongly typed language is that <strong>you are forced to make the behavior of your program
+            explicit</strong>. If you want to add a number and a string your code, you must translate the string into a
+        number to be used as an operand of the addition operator. <strong>This makes code easier to understand because
+            there is no (or less) hidden behavior</strong>. This also makes your code more verbose.</p>
+    <blockquote class="blockquote bq-primary">
+        <p class="bq-title">Remember:</p>
+        <p><strong>Strong typing is optional in TypeScript but using this feature makes your application more
+                predictable and make it easier to debug so you should definitely make use of it.</strong></p>
+    </blockquote>
+    <h4>Object-oriented</h4>
+    <p>Object-oriented programming (OOP) is an old concept used by multiple languages like Java or C# to help developer
+        associate together data and methods within one "object". In <code>OOP</code> object are created and are able to
+        interact with each other using one another's public facing methods. <strong>JavaScript itself is not an
+            object-oriented language</strong> in the way that C++, C#, or Java are. <strong>TypeScript, on the other
+            hand, can be treated as an object-oriented language</strong> because of the language constructs it
+        introduces on top of JavaScript closures. </p>
+    <p>TypeScript brings many object-oriented features which we missed in JavaScript for a very long time. We have
+        explicit concepts of:</p>
+    <ul>
+        <li>Classes</li>
+        <li>Interfaces</li>
+        <li>Constructors</li>
+        <li>Access modifiers (public and private)</li>
+    </ul>
+    <p>We will learn all of that in the later sections.</p>
+    <h4>Compile-time error</h4>
+    <p>Let me explain first what <code>run-time error</code> is as this is a common case. We are talking about the
+        <code>run-time error</code> when we face any issue while using our application. In other words — if you make a
+        mistake when you create your website and write some code, you will see it only while using the
+        application/website. For example, if you make a typo in an webpage file your browser console will show you an
+        error when you load that page. </p>
+    <p>Due to weak typing in JavaScript, it often happens that we try to perform operations on a variable with a
+        different type. If our application logic is complex we might not spot that we are trying to assign elements of a
+        different type to each other. In JavaScript, we will get to know about the error <strong>only when someone
+            triggers code and it fails</strong>. In contrast, TypeScript can provide us with compile-time errors, which
+        means, it can spot errors while compiling code to JavaScript, and fix it before deploying to production. Of
+        course it won't catch them all, but still a lot.</p>
+    <h4>Awesome tool-set</h4>
+    <p>I won't write much about this. Along with this course you will see how many useful tools come with Angular.</p>
+    <p>Let's don't waste time and start coding!</p>
 
-        </div>
-        <p>This time the compiler won't complain because we have cast our 5 from a number to a string. As a result we
-            can assign it to our variable, however, we have to remember that it will be treated as a <code>string</code>
-            and not a <code>number</code>.</p>
-        <li>Let's try another test, copy the following condition into your code, but before you paste it think for a
-            moment and try to guess what will be the output: </li>
-        <div class="code-toolbar">
-            <pre class="code-toolbar language-javascript"><code class=" language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span>test <span class="token operator">===</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'equals'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'not equals'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-
-        </div>
-        <p>Once you paste the following condition into your code, TypeScript generates an error:</p>
-        <div class="code-toolbar">
-            <pre
-                class="code-toolbar language-markup"><code class=" language-markup">ERROR in src/app/app.component.ts(20,5): error TS2365: Operator '===' cannot be applied to types 'string' and 'number'.</code></pre>
-
-        </div>
-        <p>Once again, this condition would execute in plain JavaScript and could lead us to an error. By looking at the
-            code you might think that result of the comparison will be true, but due to different types, it would
-            evaluate to <code>false</code>. TypeScript protects you from making such mistakes warning that you are
-            trying to compare different types. </p>
-    </ol>
 </section>
 <!--Section: Lesson UI-->
 <section class="text-center">
@@ -179,14 +219,14 @@
    
     <div class="row" >
         <div class="col-lg-4 col-md-6 col-sm-6">
-            <a target="_blank" href="https://girishgodage.github.io/blog/Lesson2" class="btn  btn-sm" id="round-button" 
+            <a target="_blank" href="/blog/typeScript-fundamental" class="btn  btn-sm" id="round-button" 
                 >
                 <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
             </a>
         </div>
      
         <div class="col-lg-4 col-md-6 col-sm-6" >
-            <a target="_blank" href="https://girishgodage.github.io/blog/Lesson4" class="btn btn-sm" id="round-button"
+            <a target="_blank" href="/blog/first-typeScript-code" class="btn btn-sm" id="round-button"
                  >Next Lesson
                 <i class="fas fa-arrow-right ml-2"></i>
             </a>

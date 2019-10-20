@@ -105,7 +105,7 @@
             class="container">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <p class="post-title">
-                    <h1><a href="/typescripttutorial/2019/10/12/Lesson6/">6.Default Methods</a></h1>
+                    <h1><a href="/blog/static_vs_dynamic_typing">3.Static vs dynamic typing</a></h1>
                 </p>
                 
                 <span class="post-date"><span style="font-weight:600">October 12, 2019 Saturday</span> by
@@ -116,219 +116,62 @@
                 </div>
                 
                 <hr>
-                <div><img class="post-image" src="https://girishgodage.github.io/img/typescipt_logo.png" alt="6.Default Methods" height="250" /></div>
+                <div><img class="post-image" src="/img/typescipt_logo.png" alt="3.Static vs dynamic typing" height="250" /></div>
                 <div class="post-content">
                     <br>                     
-                    <section class="ts_tutorial6">
-    <div class="col-lg-12">
-        <p>As we learned in a previous lesson, TypeScript allows us to use static typing and use different type of
-            variables. Each variable defines a certain set of functions which can be used along with them. For instance:
-        </p>
-        <ol>
-            <li>Declare the following variables in <code>app.components.ts</code>:</li>
-            <div class="code-toolbar">
-                <pre class="code-toolbar language-markup"><code class=" language-markup">let a: number;                    //numeric type
-     let b: string;                    //string
-     let c: boolean;                   //true or false
-     let d: any;                       //any (dynamic)
-     let e: number[] = [1,2,3];        //array of numbers
-     let f: string[] = ['a','b','c'];  //array of strings
-     let g: any[] = [true, 1, 'a'];    //array of any</code></pre>
+                    <section class="tstutorial3">
+    <h3>Static vs dynamic typing</h3>
+    <p>let's replace the content of the <code>onStartup</code></p>
+    <ol>
+        <li>First, let's replace the content of the <code>onStartup</code> function:</li>
+        <div class="code-toolbar">
+            <pre class="code-toolbar language-javascript"><code class=" language-javascript"><span class="token function">onStartup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">let</span> test <span class="token operator">=</span> <span class="token string">'mdb'</span><span class="token punctuation">;</span>
+                test <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span></code></pre>
 
-            </div>
-            <li>In a new line, type each of the variables, followed by dot (ie. <code>a.</code>) and observe the result:
-            </li>
-            <img class="img-fluid" src="http://localhost:4000/img/typescript/6/img/01.gif" alt="Any type">
-            <p>As you may notice, Visual Studio suggests functions which can be used along with each variable type. </p>
-        </ol>
-        <h4>Numeric type methods:</h4>
-        <table class="table table-sm">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Method</th>
-                    <th>Description</th>
-                    <th>Result</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td><strong>a = 5.56789;</strong></td>
-                    <td>Basic assignment</td>
-                    <td><strong>5.56789</strong></td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>a.toExponential()</td>
-                    <td>Convert a number into an exponential notation:</td>
-                    <td>5.56789e+0</td>
-                </tr>
-                <tr>
-                    <th scope="row">3a</th>
-                    <td>a.toFixed()</td>
-                    <td rowspan="2" style="vertical-align: middle;">Converts a number to a string keeping a specified
-                        number
-                        of decimals.</td>
-                    <td>6</td>
-                </tr>
-                <tr>
-                    <th scope="row">3b</th>
-                    <td>a.toFixed(2)</td>
-                    <td>5.57</td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>a.toLocaleString('ar-EG')</td>
-                    <td>Returns a string with a language sensitive representation of this number.</td>
-                    <td>٥٫٥٦٨</td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>a.toPrecision(2)</td>
-                    <td>Returns a string representing the Number object to a specified precision. <br>While toFixed(n)
-                        provides n length after the decimal point; toPrecision(x) provides x total length.</td>
-                    <td>5.6</td>
-                </tr>
-                <tr>
-                    <th scope="row">6</th>
-                    <td>a.toString()</td>
-                    <td>Returns a string representing the Number object.</td>
-                    <td>5.56789</td>
-                </tr>
-                <tr>
-                    <th scope="row">7</th>
-                    <td>a.valueOf()</td>
-                    <td>The valueOf() method returns the wrapped primitive value of a Number object.</td>
-                    <td>5.56789</td>
-                </tr>
-            </tbody>
-        </table>
-        <h4>String type methods:</h4>
-        <blockquote class="blockquote bq-warning">
-            <p class="bq-title">Warning</p>
-            <p>The string prototype in TypeScript offers more default methods than described below, however, they are
-                marked
-                as <code>deprecated</code>. That means, that they will be removed in the future so you should avoid
-                using
-                them. Some browsers may still support them, though.</p>
-        </blockquote>
-        <table class="table table-sm">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Method</th>
-                    <th>Description</th>
-                    <th>Result</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td><strong>b = 'Hello World';</strong></td>
-                    <td>Basic assignment</td>
-                    <td><strong>Hello World</strong></td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>b.charAt(6)</td>
-                    <td>The String object's charAt() method returns a new string consisting of the single UTF-16 code
-                        unit
-                        located at the specified offset into the string.</td>
-                    <td>M</td>
-                </tr>
-                <tr>
-                    <th scope="row">3a</th>
-                    <td>b.charCodeAt(6)</td>
-                    <td>The charCodeAt() method returns an integer between 0 and 65535 representing the UTF-16 code unit
-                        at
-                        the given index.</td>
-                    <td>77</td>
-                </tr>
-                <tr>
-                    <th scope="row">3b</th>
-                    <td>b.concat('. It is nice to meet you.');</td>
-                    <td>The concat() method combines the text of one or more strings and returns a new string.</td>
-                    <td>Hello Wolrd. It is nice to meet you.</td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>b.endsWith('d')</td>
-                    <td>The endsWith() method determines whether a string ends with the characters of a specified
-                        string,
-                        returning true or false as appropriate.</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <th scope="row">5.1</th>
-                    <td>b.includes('B');</td>
-                    <td rowspan="2" style="vertical-align: middle;">The includes() method determines whether one string
-                        may
-                        be found within another string, returning true or false as appropriate.</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <th scope="row">5.2</th>
-                    <td>b.includes('b');</td>
-                    <td>false</td>
-                </tr>
-                <tr>
-                </tr>
-                <tr>
-                    <th scope="row">6</th>
-                    <td>a.indexOf('M')</td>
-                    <td>The indexOf() method returns the index within the calling String object of the first occurrence
-                        of
-                        the specified value, starting the search at fromIndex. Returns -1 if the value is not found.
-                    </td>
-                    <td>6</td>
-                </tr>
-                <tr>
-                    <th scope="row">7</th>
-                    <td>a.lastIndexOf('l')</td>
-                    <td>The lastIndexOf() method returns the index within the calling String object of the last
-                        occurrence
-                        of the specified value, searching backwards from fromIndex. Returns -1 if the value is not
-                        found.
-                    </td>
-                    <td>12</td>
-                </tr>
-            </tbody>
-        </table>
-        <p>Coming soon:</p>
-        <ul>
-            <li>b.localeCompare()</li>
-            <li>b.match()</li>
-            <li>b.normalize()</li>
-            <li>b.padEnd()</li>
-            <li>b.padStart()</li>
-            <li>b.repeat()</li>
-            <li>b.replace()</li>
-            <li>b.search()</li>
-            <li>b.slice()</li>
-            <li>b.split()</li>
-            <li>b.startsWith()</li>
-            <li>b.substr()</li>
-            <li>b.substring()</li>
-            <li>b.toLocaleLowerCase()</li>
-            <li>b.toLocaleUpperCase()</li>
-            <li>b.toLowerCase()</li>
-            <li>b.toString()</li>
-            <li>b.toUpperCase()</li>
-            <li>b.trim()</li>
-            <li>b.trimLeft()</li>
-            <li>b.trimRight()</li>
-            <li>b.valueOf()</li>
-            <li>b.[@@iterator]()</li>
-            <li>b.raw()</li>
-        </ul>
-        <h4>Any and boolean</h4>
-        <p>The any type doesn't offer any predefined methods. Boolean offers two basic methods — <code>toString</code>
-            which
-            returns a string of either 'true' or 'false, as well as <code>valueOf</code> which returns the primitive
-            value
-            of the Boolean object.</p>
-    </div>
+        </div>
+        <p>You will see that TypeScript complains about the second assignment of test:</p>
+        <div class="code-toolbar">
+            <pre
+                class="code-toolbar language-javascript"><code class=" language-javascript"><span class="token constant">ERROR</span> <span class="token keyword">in</span> src<span class="token operator">/</span>app<span class="token operator">/</span>app<span class="token punctuation">.</span>component<span class="token punctuation">.</span><span class="token function">ts</span><span class="token punctuation">(</span><span class="token number">18</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">:</span> error <span class="token constant">TS2322</span><span class="token punctuation">:</span> Type <span class="token string">'5'</span> is not assignable to type <span class="token string">'string'</span><span class="token punctuation">.</span></code></pre>
+
+        </div>
+        <p>This code would work perfectly fine in JavaScript which allows dynamic change of types. You might think, that
+            this approach is better, however, although it might look easier for a developer <strong>it is not.</strong>
+            Imagine that there you are working on a project with a team of developers and one of them by mistake changes
+            the type of your variable from <code>number</code> to <code>string</code>. All logic based on that variable
+            will be broken now (as it would be comparing a variable to a number).</p>
+        <li>Let's now surround number 5 with quotes: <code>'5'</code></li>
+        <div class="code-toolbar">
+            <pre
+                class="code-toolbar language-javascript"><code class=" language-javascript">test <span class="token operator">=</span> <span class="token string">'5'</span><span class="token punctuation">;</span></code></pre>
+
+        </div>
+        <p>This time the compiler won't complain because we have cast our 5 from a number to a string. As a result we
+            can assign it to our variable, however, we have to remember that it will be treated as a <code>string</code>
+            and not a <code>number</code>.</p>
+        <li>Let's try another test, copy the following condition into your code, but before you paste it think for a
+            moment and try to guess what will be the output: </li>
+        <div class="code-toolbar">
+            <pre class="code-toolbar language-javascript"><code class=" language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span>test <span class="token operator">===</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'equals'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'not equals'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+
+        </div>
+        <p>Once you paste the following condition into your code, TypeScript generates an error:</p>
+        <div class="code-toolbar">
+            <pre
+                class="code-toolbar language-markup"><code class=" language-markup">ERROR in src/app/app.component.ts(20,5): error TS2365: Operator '===' cannot be applied to types 'string' and 'number'.</code></pre>
+
+        </div>
+        <p>Once again, this condition would execute in plain JavaScript and could lead us to an error. By looking at the
+            code you might think that result of the comparison will be true, but due to different types, it would
+            evaluate to <code>false</code>. TypeScript protects you from making such mistakes warning that you are
+            trying to compare different types. </p>
+    </ol>
 </section>
 <!--Section: Lesson UI-->
 <section class="text-center">
@@ -336,14 +179,14 @@
    
     <div class="row" >
         <div class="col-lg-4 col-md-6 col-sm-6">
-            <a target="_blank" href="https://girishgodage.github.io/blog/Lesson5" class="btn  btn-sm" id="round-button" 
+            <a target="_blank" href="/blog/first-typeScript-code" class="btn  btn-sm" id="round-button" 
                 >
                 <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
             </a>
         </div>
      
         <div class="col-lg-4 col-md-6 col-sm-6" >
-            <a target="_blank" href="https://girishgodage.github.io/blog/Lesson7" class="btn btn-sm" id="round-button"
+            <a target="_blank" href="/blog/type-any" class="btn btn-sm" id="round-button"
                  >Next Lesson
                 <i class="fas fa-arrow-right ml-2"></i>
             </a>

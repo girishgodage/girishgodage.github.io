@@ -105,7 +105,7 @@
             class="container">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <p class="post-title">
-                    <h1><a href="/typescripttutorial/2019/10/12/Lesson4/">4.Type Any</a></h1>
+                    <h1><a href="/blog/variable-scope">5.Variable Scope</a></h1>
                 </p>
                 
                 <span class="post-date"><span style="font-weight:600">October 12, 2019 Saturday</span> by
@@ -116,63 +116,64 @@
                 </div>
                 
                 <hr>
-                <div><img class="post-image" src="https://girishgodage.github.io/img/typescipt_logo.png" alt="4.Type Any" height="250" /></div>
+                <div><img class="post-image" src="/img/typescipt_logo.png" alt="5.Variable Scope" height="250" /></div>
                 <div class="post-content">
                     <br>                     
-                    <section class="ts_tutorial4">
-    <h3>Type: any</h3>
-    <p>You could ask — what if I don't know what kind of value my variable will have?</p>
+                    <section class="ts_tutorial5">
+    <p>In this lesson, we will cover a different type of variables and scopes.</p>
     <ol>
-        <li>Let's flush our function code and type ine the following: </li>
-        <pre class="code-toolbar"><code class="language-javascript">  let myVar;
+        <li>Replace the content of the <code>onStartup()</code> function:</li>
+        <div class="code-toolbar">
+            <pre class="code-toolbar language-typescript"><code class=" language-typescript"><span class="token function">onStartup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+   <span class="token keyword">function</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">9</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+       <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
  
-   myVar = 1;      //number
-   myVar = true;   //boolean
-   myVar = 'mdb';  //string
- </code></pre>
-        <p>The TypeScript compiler doesn't complain. Why!?</p>
-        <li>Hover over the <code>myVar</code> declaration, what do you see?</li>
+     <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Counted: '</span> <span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+ 
+   <span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
+ <span class="token punctuation">}</span></code></pre>
+
+        </div>
+        <li>And start our application, what you will see?</li>
         <img class="img-fluid"
-            src="http://localhost:4000/img/typescript/4/img/01.png"
-            alt="Any type">
-        <p>TypeScript allows you to use a special type <code>any</code>. It allows you to use dynamic typing but
-            importantly — it requires you to use it consciously.</p>
-        <li>What is actually type of the variable <code>myVar</code>? Let's check it:</li>
-        <pre class="code-toolbar"><code class="language-typescript">  myVar = 1;     //number
-   console.log(typeof(myVar));
-   myVar = true;  //boolean
-   console.log(typeof(myVar));
-   myVar = 'mdb'; //string
-   console.log(typeof(myVar));
- </code></pre>
-        <p>The output:</p>
+            src="http://localhost:4000/img/typescript/5/img/01.png"
+            alt="Function output.">
+        <p>Note that although our <code>i</code> variable was declared inside a <code>for</code> loop, it is accessible
+            to the <code>console.log()</code> function which is outside of <code>our</code> code block. Why?</p>
+        <p>This is because we have declared our variable as <code>var</code>. In JavaScript, all variables declared like
+            that have scope to the nearest function, which in our case is <code>count()</code>.</p>
         <img class="img-fluid"
-            src="http://localhost:4000/img/typescript/4/img/02.png"
-            alt="Dynamic type">
-        <li>Now let's add an explicit type, cast after the var declaration:</li>
-        <pre class="code-toolbar"><code class="language-typescript">  let myVar: number;</code></pre>
-        <p>Immediately, the compiler will show two errors regarding the second, and third assignments</p>
+            src="http://localhost:4000/img/typescript/5/img/02.png"
+            alt="var variable scope.">
+        <li>Let's change <code>var</code>, to <code>let</code>:</li>
+        <div class="code-toolbar">
+            <pre
+                class="code-toolbar language-typescript"><code class=" language-typescript"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span></code></pre>
+
+        </div>
+        <p>Now the scope of our variable is changed to local:</p>
         <img class="img-fluid"
-            src="http://localhost:4000/img/typescript/4/img/03.gif"
-            alt="Error ">
+            src="http://localhost:4000/img/typescript/5/img/03.png"
+            alt="let variable scope.">
+        <li>Let's have a look at the error which occurred in line 22 after we change the scope of our variable:</li>
+        <img class="img-fluid"
+            src="http://localhost:4000/img/typescript/5/img/04.png"
+            alt="Error.">
+        <p>and if we save the file, we will see an error in the console during compilation:</p>
+        <div class="code-toolbar">
+            <pre
+                class="code-toolbar language-typescript"><code class=" language-typescript"><span class="token constant">ERROR</span> <span class="token keyword">in</span> src<span class="token operator">/</span>app<span class="token operator">/</span>app<span class="token punctuation">.</span>component<span class="token punctuation">.</span><span class="token function">ts</span><span class="token punctuation">(</span><span class="token number">22</span><span class="token punctuation">,</span><span class="token number">31</span><span class="token punctuation">)</span><span class="token punctuation">:</span> error <span class="token constant">TS2304</span><span class="token punctuation">:</span> Cannot find name <span class="token string">'i'</span><span class="token punctuation">.</span></code></pre>
+
+        </div>
+        <p>Remember when we talked about compile-time errors? This is a beautiful example, the compiler spots this error
+            and informs us that we are trying to access a variable which isn't accessible within the current scope
+            <strong>before we even tried to run our code in a browser</strong>. Actually, thanks to Visual Studio
+            <strong>we can see an error even before we request the CLI to compile our project</strong>. The editor shows
+            us errors in real-time. That's a really awesome feature which will save you a lot of time.</p>
     </ol>
-    <h3>Other types:</h3>
-    <p>We used already four different types of variables (<code>number</code>, <code>string</code>, <code>boolean</code>
-        and <code>any</code>). Are there any others? Yes, there are.</p>
-    <pre class="code-toolbar"><code class="language-javascript">  let a: number;                    //numeric type
-   let b: string;                    //string
-   let c: boolean;                   //true or false
-   let d: any;                       //any (dynamic)
-   let e: number[] = [1,2,3];        //array of numbers
-   let f: string[] = ['a','b','c'];  //array of strings
-   let g: any[] = [true, 1, 'a'];    //array of any
-   </code></pre>
-    <p>As you can see, except for basic types which we already covered you can also create arrays of different types
-        including the <code>any</code> type. There is also one more type of variable — <code>enum</code> but we will
-        cover it in the future. </p>
-    <!--     <h3>Enums:</h3>
-       TODO
-       -->
 </section>
 <!--Section: Lesson UI-->
 <section class="text-center">
@@ -180,14 +181,14 @@
    
     <div class="row" >
         <div class="col-lg-4 col-md-6 col-sm-6">
-            <a target="_blank" href="https://girishgodage.github.io/blog/Lesson3" class="btn  btn-sm" id="round-button" 
+            <a target="_blank" href="/blog/type-any" class="btn  btn-sm" id="round-button" 
                 >
                 <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
             </a>
         </div>
      
         <div class="col-lg-4 col-md-6 col-sm-6" >
-            <a target="_blank" href="https://girishgodage.github.io/blog/Lesson5" class="btn btn-sm" id="round-button"
+            <a target="_blank" href="/blog/default-methods" class="btn btn-sm" id="round-button"
                  >Next Lesson
                 <i class="fas fa-arrow-right ml-2"></i>
             </a>

@@ -105,7 +105,7 @@
             class="container">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <p class="post-title">
-                    <h1><a href="/typescripttutorial/2019/10/12/Lesson5/">5.Variable Scope</a></h1>
+                    <h1><a href="/blog/typescript_type_assertion">7.Typescript type assertion</a></h1>
                 </p>
                 
                 <span class="post-date"><span style="font-weight:600">October 12, 2019 Saturday</span> by
@@ -116,64 +116,91 @@
                 </div>
                 
                 <hr>
-                <div><img class="post-image" src="https://girishgodage.github.io/img/typescipt_logo.png" alt="5.Variable Scope" height="250" /></div>
+                <div><img class="post-image" src="/img/typescipt_logo.png" alt="7.Typescript type assertion" height="250" /></div>
                 <div class="post-content">
                     <br>                     
-                    <section class="ts_tutorial5">
-    <p>In this lesson, we will cover a different type of variables and scopes.</p>
-    <ol>
-        <li>Replace the content of the <code>onStartup()</code> function:</li>
-        <div class="code-toolbar">
-            <pre class="code-toolbar language-typescript"><code class=" language-typescript"><span class="token function">onStartup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-   <span class="token keyword">function</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">9</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-       <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token punctuation">}</span>
- 
-     <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Counted: '</span> <span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
- 
-   <span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
- <span class="token punctuation">}</span></code></pre>
+                    <section class="ts_tutorial7">
+    <p>During application development, it may happen that you deal with a situation where you will know more about the
+        value than TypeScript does. Most often in a situation, where you know that the type of a certain entity could be
+        more specific than it is now.</p>
+    <p>Type assertion is a way to explicitly inform the compiler that you want to treat the entity as it would have a
+        different type. This allows you to treat <code>any</code> as a <code>number</code>, or a <code>number</code> as
+        a <code>string</code>. Let's have a look at the following example:</p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-typescript"><code class=" language-typescript"><span class="token keyword">let</span> someValue<span class="token punctuation">:</span> <span class="token builtin">any</span> <span class="token operator">=</span> <span class="token string">"I am sure I am a string"</span><span class="token punctuation">;</span></code></pre>
 
-        </div>
-        <li>And start our application, what you will see?</li>
-        <img class="img-fluid"
-            src="http://localhost:4000/img/typescript/5/img/01.png"
-            alt="Function output.">
-        <p>Note that although our <code>i</code> variable was declared inside a <code>for</code> loop, it is accessible
-            to the <code>console.log()</code> function which is outside of <code>our</code> code block. Why?</p>
-        <p>This is because we have declared our variable as <code>var</code>. In JavaScript, all variables declared like
-            that have scope to the nearest function, which in our case is <code>count()</code>.</p>
-        <img class="img-fluid"
-            src="http://localhost:4000/img/typescript/5/img/02.png"
-            alt="var variable scope.">
-        <li>Let's change <code>var</code>, to <code>let</code>:</li>
-        <div class="code-toolbar">
-            <pre
-                class="code-toolbar language-typescript"><code class=" language-typescript"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span></code></pre>
+    </div>
+    <p>Although, we are sure that someValue contains a string, for the compiler it still has a type of <code>any</code>.
+        As result, you won't be able to use methods like <code>length()</code> which is a default method for a string
+        type variable. What you can do is to inform the compiler to treat it as a <code>string</code>. You can do this
+        in two ways:</p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-typescript"><code class=" language-typescript"><span class="token keyword">let</span> strLength<span class="token punctuation">:</span> <span class="token builtin">number</span> <span class="token operator">=</span> <span class="token punctuation">(</span>someValue<span class="token punctuation">)</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span></code></pre>
 
-        </div>
-        <p>Now the scope of our variable is changed to local:</p>
-        <img class="img-fluid"
-            src="http://localhost:4000/img/typescript/5/img/03.png"
-            alt="let variable scope.">
-        <li>Let's have a look at the error which occurred in line 22 after we change the scope of our variable:</li>
-        <img class="img-fluid"
-            src="http://localhost:4000/img/typescript/5/img/04.png"
-            alt="Error.">
-        <p>and if we save the file, we will see an error in the console during compilation:</p>
-        <div class="code-toolbar">
-            <pre
-                class="code-toolbar language-typescript"><code class=" language-typescript"><span class="token constant">ERROR</span> <span class="token keyword">in</span> src<span class="token operator">/</span>app<span class="token operator">/</span>app<span class="token punctuation">.</span>component<span class="token punctuation">.</span><span class="token function">ts</span><span class="token punctuation">(</span><span class="token number">22</span><span class="token punctuation">,</span><span class="token number">31</span><span class="token punctuation">)</span><span class="token punctuation">:</span> error <span class="token constant">TS2304</span><span class="token punctuation">:</span> Cannot find name <span class="token string">'i'</span><span class="token punctuation">.</span></code></pre>
+    </div>
+    <p>Or using the <code>as</code> syntax: </p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-typescript"><code class=" language-typescript"><span class="token keyword">let</span> strLength<span class="token punctuation">:</span> <span class="token builtin">number</span> <span class="token operator">=</span> <span class="token punctuation">(</span>someValue <span class="token keyword">as</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span></code></pre>
 
-        </div>
-        <p>Remember when we talked about compile-time errors? This is a beautiful example, the compiler spots this error
-            and informs us that we are trying to access a variable which isn't accessible within the current scope
-            <strong>before we even tried to run our code in a browser</strong>. Actually, thanks to Visual Studio
-            <strong>we can see an error even before we request the CLI to compile our project</strong>. The editor shows
-            us errors in real-time. That's a really awesome feature which will save you a lot of time.</p>
-    </ol>
+    </div>
+    <p>Probably you already know that in JavaScript you can define functions like the one below: </p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-javascript"><code class=" language-javascript"><span class="token comment">// Named function</span>
+<span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ <span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Call named function</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+    </div>
+    <p>which are so-called <code> Named functions</code>. You can also use <code>Anonymous functions</code>:</p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-javascript"><code class=" language-javascript"><span class="token comment">// Anonymous function</span>
+<span class="token keyword">let</span> <span class="token function-variable function">myAdd</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// You can call it like this</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">myAdd</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// But definitely more common</span>
+console<span class="token punctuation">.</span><span class="token function">log</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>x <span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+    </div>
+    <p>An anonymous function is a function that was declared without any named identifier to refer to it. As such, an
+        anonymous function is usually not accessible after its initial creation.</p>
+    <p>One common use for Anonymous functions is as arguments to other functions. Another common use is as a closure,
+        for which see also the Closures chapter. Below shows its use as an argument to other functions:</p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-javascript"><code class=" language-javascript"><span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+    </div>
+    <p>Or call it with parameter: </p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-javascript"><code class=" language-javascript"><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token function">alert</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+    </div>
+
+    <p>So basically, you want to use Anonymous functions in all places where you have to <strong>use a function as an
+            argument to other function</strong> or as a <strong>closure</strong> (we will learn about closures in later
+        lessons). </p>
+    <p>In those cases you use the function only once, therefore you don't want to name it (like you would for a
+        <code>Named function</code>) just to use it in a single line.</p>
+    <p>Anonymous functions might look confusing at the start, however, once you start using them you will find them very
+        handy. But there is something else, another type of the function called an <code>arrow function</code> which we
+        will learn about in the next lesson.</p>
 </section>
 <!--Section: Lesson UI-->
 <section class="text-center">
@@ -181,14 +208,14 @@
    
     <div class="row" >
         <div class="col-lg-4 col-md-6 col-sm-6">
-            <a target="_blank" href="https://girishgodage.github.io/blog/Lesson4" class="btn  btn-sm" id="round-button" 
+            <a target="_blank" href="/blog/default-methods" class="btn  btn-sm" id="round-button" 
                 >
                 <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
             </a>
         </div>
      
         <div class="col-lg-4 col-md-6 col-sm-6" >
-            <a target="_blank" href="https://girishgodage.github.io/blog/Lesson6" class="btn btn-sm" id="round-button"
+            <a target="_blank" href="/blog/typescript-arrowFunctions" class="btn btn-sm" id="round-button"
                  >Next Lesson
                 <i class="fas fa-arrow-right ml-2"></i>
             </a>
