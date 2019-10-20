@@ -1,18 +1,22 @@
 ---
 title: Microservices with Spring Boot - Part 3 - Creating Currency Conversion Microservice
 date: 2019-10-17 20:17:00 Z
+permalink: "/blog/Creating-microservices-with-spring-boot-part-3-currency-conversion-microservice"
 categories:
 - SpringBootMicroservices
 tags:
 - learning
-summary:    Let's learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot. We will create a couple of microservices and get them to talk to each other using Eureka Naming Server and Ribbon for Client Side Load Balancing. In part 3 of this series, we will focus on Creating Currency Conversion Microservice.
-image: /img/microservices.png
+summary: Let's learn the basics of microservices and microservices architectures.
+  We will also start looking at a basic implementation of a microservice with Spring
+  Boot. We will create a couple of microservices and get them to talk to each other
+  using Eureka Naming Server and Ribbon for Client Side Load Balancing. In part 3
+  of this series, we will focus on Creating Currency Conversion Microservice.
+image: "/img/microservices.png"
 author: Girish Godage
 layout: posts
-prevurl: /blog/creating-microservices-with-spring-boot-part-2-forex-microservice
-nexturl: /blog/microservices-with-spring-boot-part-4-ribbon-for-load-balancing
+prevurl: "/blog/creating-microservices-with-spring-boot-part-2-forex-microservice"
+nexturl: "/blog/microservices-with-spring-boot-part-4-ribbon-for-load-balancing"
 discussion_id: 2019-10-15-Microservices3
-permalink: /blog/Creating-microservices-with-spring-boot-part-3-currency-conversion-microservice
 ---
 
 Let's learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot. We will create a couple of microservices and get them to talk to each other using Eureka Naming Server and Ribbon for Client Side Load Balancing.

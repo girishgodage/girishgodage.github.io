@@ -1,18 +1,19 @@
 ---
 title: Software Design - Cohesion - with examples
 date: 2019-10-15 11:36:00 Z
+permalink: "/blog/software-design-cohesion-with-examples"
 categories:
 - SoftwareDesign
 tags:
 - learning
-summary: High Cohesion is one of the important aims when your architect and design your software. What is it all about?
-image: /img/sw_design.png
+summary: High Cohesion is one of the important aims when your architect and design
+  your software. What is it all about?
+image: "/img/sw_design.png"
 author: Girish Godage
 layout: posts
-prevurl: /blog/software-design-coupling-with-examples
-nexturl: /blog/software-design-introduction-to-evolutionary-design
+prevurl: "/blog/software-design-coupling-with-examples"
+nexturl: "/blog/software-design-introduction-to-evolutionary-design"
 discussion_id: 2019-10-15-SwDesign12
-permalink: /blog/software-design-cohesion-with-examples
 ---
 
 High Cohesion is one of the important aims when your architect and design your software. What is it all about?

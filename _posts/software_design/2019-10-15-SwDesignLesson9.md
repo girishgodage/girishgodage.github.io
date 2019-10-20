@@ -1,19 +1,19 @@
 ---
 title: Software Design - What is Abstraction?
 date: 2019-10-15 11:12:00 Z
+permalink: "/blog/software-design-what-is-abstraction"
 categories:
 - SoftwareDesign
 tags:
 - learning
-summary: Abstraction is one of the fundamental concepts of software engineering. It is all about hiding complexity while building your application.
-image: /img/sw_design.png
+summary: Abstraction is one of the fundamental concepts of software engineering. It
+  is all about hiding complexity while building your application.
+image: "/img/sw_design.png"
 author: Girish Godage
 layout: posts
-prevurl: /blog/design-patterns-for-beginners-with-java-examples
-nexturl: /blog/software-design-encapsulation-with-examples
+prevurl: "/blog/design-patterns-for-beginners-with-java-examples"
+nexturl: "/blog/software-design-encapsulation-with-examples"
 discussion_id: 2019-10-15-SwDesign9
-permalink:  /blog/software-design-what-is-abstraction
-
 ---
 
 Abstraction is one of the fundamental concepts of software engineering. It is all about hiding complexity in building various parts of your application. 

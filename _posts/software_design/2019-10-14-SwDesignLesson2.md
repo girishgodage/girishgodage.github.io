@@ -1,18 +1,19 @@
 ---
 title: Software Design - Separation Of Concerns
 date: 2019-10-14 10:45:00 Z
+permalink: "/blog/software-design-seperation-of-concerns-with-examples"
 categories:
 - SoftwareDesign
 tags:
 - learning
-summary: Software architects and programmers love having Seperation of Concerns. What is it? Why is it important? Let's get started.
-image: /img/sw_design.png
+summary: Software architects and programmers love having Seperation of Concerns. What
+  is it? Why is it important? Let's get started.
+image: "/img/sw_design.png"
 author: Girish Godage
 layout: posts
-prevurl: /blog/four-principles-of-simple-design
-nexturl: /blog/software-design-solid-principles
+prevurl: "/blog/four-principles-of-simple-design"
+nexturl: "/blog/software-design-solid-principles"
 discussion_id: 2019-10-15-SwDesign2
-permalink:  /blog/software-design-seperation-of-concerns-with-examples
 ---
 
 **Software architects and programmers love having Seperation of Concerns. What is it? Why is it important? Let's get started.**

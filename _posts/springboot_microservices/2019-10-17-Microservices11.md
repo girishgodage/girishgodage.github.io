@@ -1,18 +1,20 @@
 ---
 title: Microservices Architectures - Microservices vs SOA
 date: 2019-10-17 20:17:00 Z
+permalink: "/blog/microservice-architectures-soa-vs-microservices"
 categories:
 - SpringBootMicroservices
 tags:
 - learning
-summary: Microservices architectures are very popular today. In this article, we take a look at how microservices architectures are different from Service Oriented Architectures (SOA).
-image: /img/microservices.png
+summary: Microservices architectures are very popular today. In this article, we take
+  a look at how microservices architectures are different from Service Oriented Architectures
+  (SOA).
+image: "/img/microservices.png"
 author: Girish Godage
 layout: posts
-prevurl: /blog/microservice-architectures-challenges-with-microservices
-nexturl: /blog/microservice-architectures-soa-vs-microservices
+prevurl: "/blog/microservice-architectures-challenges-with-microservices"
+nexturl: "/blog/microservice-architectures-soa-vs-microservices"
 discussion_id: 2019-10-15-Microservices11
-permalink:  /blog/microservice-architectures-soa-vs-microservices
 ---
 
 ### Microservices architectures are very popular today. In this article, we take a look at how microservices architectures are different from Service Oriented Architectures (SOA).

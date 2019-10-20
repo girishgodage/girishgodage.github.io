@@ -1,18 +1,22 @@
 ---
 title: Object Oriented Software Design - Solid Principles
 date: 2019-10-14 10:49:00 Z
+permalink: "/blog/software-design-solid-principles"
 categories:
 - SoftwareDesign
 tags:
 - learning
-summary: Software design is typically complex. Object oriented design takes it to the next level. There are a number of design patterns and other stuff to be aware of. Can we make things simple? What are the goals to aim for when you are doing object oriented design? SOLID Principles is a great starting point for Object Oriented Design.
-image: /img/sw_design.png
+summary: Software design is typically complex. Object oriented design takes it to
+  the next level. There are a number of design patterns and other stuff to be aware
+  of. Can we make things simple? What are the goals to aim for when you are doing
+  object oriented design? SOLID Principles is a great starting point for Object Oriented
+  Design.
+image: "/img/sw_design.png"
 author: Girish Godage
 layout: posts
-prevurl: /blog/software-design-seperation-of-concerns-with-examples
-nexturl: /blog/software-design-single-responsibility-principle
+prevurl: "/blog/software-design-seperation-of-concerns-with-examples"
+nexturl: "/blog/software-design-single-responsibility-principle"
 discussion_id: 2019-10-15-SwDesign3
-permalink:  /blog/software-design-solid-principles
 ---
 
 Software design is typically complex. Object oriented design takes it to the next level. There are a number of design patterns to be aware of. Can we make things simple?
