@@ -1,11 +1,13 @@
 ---
 title: Introduction To Aspect Oriented Programming and Cross Cutting Concerns
 date: 2019-10-15 20:30:00 Z
-summary: Software applications are built in layers. There is common functionality that is sometimes needed across layers - logging, performance tracing etc. How do you implement these common features?
 categories:
 - SoftwareProgramming
 tags:
 - learning
+summary: Software applications are built in layers. There is common functionality
+  that is sometimes needed across layers - logging, performance tracing etc. How do
+  you implement these common features?
 image: "/img/sw_program.png"
 author: Girish Godage
 layout: posts
