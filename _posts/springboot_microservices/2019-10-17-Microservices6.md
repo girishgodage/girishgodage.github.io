@@ -5,12 +5,14 @@ categories:
 - SpringBootMicroservices
 tags:
 - learning
-image: https://girishgodage.github.io/img/microservices.png
+summary:  In this article, we will describe the first steps, in taking an architecture from monolith to microservice. 
+image: /img/microservices.png
 author: Girish Godage
 layout: posts
 prevurl: 
 nexturl: 
 discussion_id: 2019-10-15-Microservices6
+permalink:  /blog/breaking-a-monolith-into-microservices
 ---
 
 In this article, we will describe the first steps, in taking an architecture from monolith to microservice. 

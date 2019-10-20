@@ -5,12 +5,15 @@ categories:
 - SoftwareDesign
 tags:
 - learning
-image: https://girishgodage.github.io/img/sw_design.png
+summary: With extreme programming and agile, the focus is being lean and keeping your design simple. In this context, how do you ensure that your design remains good and evolves along with the application requirements? Here are a five tips you can focus on.
+image: /img/sw_design.png
 author: Girish Godage
 layout: posts
-prevurl: https://girishgodage.github.io/blog/SwDesignLesson7
-nexturl: https://girishgodage.github.io/blog/SwDesignLesson8
+prevurl: /blog/software-design-keep-your-design-simple
+nexturl: /blog/design-patterns-for-beginners-with-java-examples
 discussion_id: 2019-10-15-SwDesign7
+permalink:  /blog/software-design-keep-your-design-simple
+---
 ---
 
 With extreme programming and agile, the focus is being lean and keeping your design simple. In this context, how do you ensure that your design remains good and evolves along with the application requirements? Here are a five tips you can focus on.
@@ -25,7 +28,7 @@ A software application is said to have a simple design if it:
 * **Expresses intent of programmers**
 * **Minimizes number of classes and methods**
 
-You can read more about it [here](/blog/SwDesignLesson1){:target='_blank'}
+You can read more about it [here](/blog/four-principles-of-simple-design){:target='_blank'}
 
 #### SOLID Principles
 
@@ -37,7 +40,7 @@ This represents a good aim to have when designing Object Object Software. The te
 * Interface Segregation Principle
 * Dependency Inversion Principle
 
-You can read more about it [here](/blog/SwDesignLesson3){:target='_blank'}
+You can read more about it [here](/blog/software-design-solid-principles){:target='_blank'}
 
 #### Appropriate Patterns
 

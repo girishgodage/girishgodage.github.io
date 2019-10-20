@@ -5,12 +5,14 @@ categories:
 - SoftwareDesign
 tags:
 - learning
-image: https://girishgodage.github.io/img/sw_design.png
+summary: With extreme programming and agile, the focus is being lean and doing just in time design. In this context, how do you ensure that your design remains good and evolves along with the application requirements? 
+image: /img/sw_design.png
 author: Girish Godage
 layout: posts
-prevurl: https://girishgodage.github.io/blog/SwDesignLesson12
-nexturl: https://girishgodage.github.io/blog/SwDesignLesson13
+prevurl: /blog/software-design-cohesion-with-examples
+nexturl: /blog/software-design-introduction-to-evolutionary-design
 discussion_id: 2019-10-15-SwDesign13
+permalink: /blog/software-design-introduction-to-evolutionary-design
 ---
 
 With extreme programming and agile, the focus is being lean and doing just in time design. In this context, how do you ensure that your design remains good and evolves along with the application requirements? 

@@ -5,12 +5,14 @@ categories:
 - SoftwareDesign
 tags:
 - learning
-image: https://girishgodage.github.io/img/sw_design.png
+summary: In this guide, we give you an introduction to the world of design patterns.For each pattern, we understand 1) the pattern a2) the context in which it is applicable -  with a real-world example.
+image: /img/sw_design.png
 author: Girish Godage
 layout: posts
-prevurl: https://girishgodage.github.io/blog/SwDesignLesson7
-nexturl: https://girishgodage.github.io/blog/SwDesignLesson9
+prevurl: /software-design-keep-your-design-simple
+nexturl: /blog/software-design-what-is-abstraction
 discussion_id: 2019-10-15-SwDesign8
+permalink:  /blog/design-patterns-for-beginners-with-java-examples
 ---
 
 In this guide, we give you an introduction to the world of design patterns.For each pattern, we understand 1) the pattern a2) the context in which it is applicable -  with a real-world example.

@@ -5,12 +5,14 @@ categories:
 - SpringBootMicroservices
 tags:
 - learning
-image: https://girishgodage.github.io/img/microservices.png
+summary: Microservices architectures are very popular today. In this article, we take a look at how microservices architectures are different from Service Oriented Architectures (SOA).
+image: /img/microservices.png
 author: Girish Godage
 layout: posts
-prevurl: https://girishgodage.github.io/blog/Microservices10
-nexturl: https://girishgodage.github.io/blog/Microservices11
+prevurl: /blog/microservice-architectures-challenges-with-microservices
+nexturl: /blog/microservice-architectures-soa-vs-microservices
 discussion_id: 2019-10-15-Microservices11
+permalink:  /blog/microservice-architectures-soa-vs-microservices
 ---
 
 ### Microservices architectures are very popular today. In this article, we take a look at how microservices architectures are different from Service Oriented Architectures (SOA).

@@ -5,12 +5,14 @@ categories:
 - SpringBootMicroservices
 tags:
 - learning
-image: https://girishgodage.github.io/img/microservices.png
+summary: Microservices architectures are very popular today. In this article, we discuss the three main advantages of having a microservices architecture.
+image: /img/microservices.png
 author: Girish Godage
 layout: posts
-prevurl: https://girishgodage.github.io/blog/Microservices8
-nexturl: https://girishgodage.github.io/blog/Microservices10
+prevurl: /blog/introduction-to-spring-cloud
+nexturl: /blog/microservice-architectures-challenges-with-microservices
 discussion_id: 2019-10-15-Microservices9
+permalink:  /blog/microservice-architectures-advantages-of-microservices
 ---
 
 Microservices architectures are very popular today. In this article, we discuss the three main advantages of having a microservices architecture.

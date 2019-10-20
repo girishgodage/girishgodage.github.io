@@ -1,16 +1,18 @@
 ---
-title: 4. Software Design - Single Responsibility Principle
+title: Software Design - Single Responsibility Principle
 date: 2019-10-14 10:55:00 Z
 categories:
 - SoftwareDesign
 tags:
 - learning
-image: https://girishgodage.github.io/img/sw_design.png
+summary: For me, Single Responsibility Principle is the most important design principle. What is Single Responsibility Principle? How do you use it? How does it help with making your software better? Let's get started.
+image: /img/sw_design.png
 author: Girish Godage
 layout: posts
-prevurl: https://girishgodage.github.io/blog/SwDesignLesson3
-nexturl: https://girishgodage.github.io/blog/SwDesignLesson5
+prevurl: /blog/software-design-solid-principles
+nexturl: /blog/software-design-open-closed-principle
 discussion_id: 2019-10-15-SwDesign4
+permalink:  /blog/software-design-single-responsibility-principle
 ---
 
 For me, Single Responsibility Principle (SRP) is the most important design principle. 

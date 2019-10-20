@@ -5,12 +5,14 @@ categories:
 - SpringBootMicroservices
 tags:
 - learning
-image: https://girishgodage.github.io/img/microservices.png
+summary:    Let's learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot. We will create a couple of microservices and get them to talk to each other using Eureka Naming Server and Ribbon for Client Side Load Balancing. In part 2 of this series, we will focus on Creating Forex Microservice.
+image: /img/microservices.png
 author: Girish Godage
 layout: posts
-prevurl: https://girishgodage.github.io/blog/Microservices1
-nexturl: https://girishgodage.github.io/blog/Microservices3
+prevurl: /blog/creating-microservices-with-spring-boot-part-1-getting-started
+nexturl: /blog/creating-microservices-with-spring-boot-part-3-currency-conversion-microservice
 discussion_id: 2019-10-15-Microservices2
+permalink:  /blog/creating-microservices-with-spring-boot-part-2-forex-microservice
 ---
 
 Let's learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot. We will create a couple of microservices and get them to talk to each other using Eureka Naming Server and Ribbon for Client Side Load Balancing.  

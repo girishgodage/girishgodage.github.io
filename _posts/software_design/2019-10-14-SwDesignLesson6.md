@@ -1,16 +1,18 @@
 ---
-title: 6. Software Design - What is Dependency Inversion Principle?
+title: Software Design - What is Dependency Inversion Principle?
 date: 2019-10-14 11:05:00 Z
 categories:
 - SoftwareDesign
 tags:
 - learning
-image: https://girishgodage.github.io/img/sw_design.png
+summary: Dependency Inversion Principle is one of the important SOLID Principles. Dependency Inversion Principle is implemented by one of the most popular Java frameworks - Spring. What is it all about? How does it help you design good applications?
+image: /img/sw_design.png
 author: Girish Godage
 layout: posts
-prevurl: https://girishgodage.github.io/blog/SwDesignLesson5
-nexturl: https://girishgodage.github.io/blog/SwDesignLesson6
+prevurl: /blog/software-design-open-closed-principle
+nexturl: /blog/software-design-dependency-inversion-principle
 discussion_id: 2019-10-15-SwDesign6
+permalink:  /blog/software-design-dependency-inversion-principle
 ---
 
 Dependency Inversion Principle is one of the important SOLID Principles. Dependency Inversion Principle is implemented by one of the most popular Java frameworks - Spring. What is it all about? How does it help you design good applications?

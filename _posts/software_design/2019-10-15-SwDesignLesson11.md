@@ -5,12 +5,14 @@ categories:
 - SoftwareDesign
 tags:
 - learning
-image: https://girishgodage.github.io/img/sw_design.png
+summary: Software architects and programmers love low coupling. What is coupling? Why is coupling important? Let's get started.
+image: /img/sw_design.png
 author: Girish Godage
 layout: posts
-prevurl: https://girishgodage.github.io/blog/SwDesignLesson10
-nexturl: https://girishgodage.github.io/blog/SwDesignLesson12
+prevurl: /blog/software-design-encapsulation-with-examples
+nexturl: /blog/software-design-cohesion-with-examples
 discussion_id: 2019-10-15-SwDesign11
+permalink: /blog/software-design-coupling-with-examples
 ---
 
 Software architects and programmers love low coupling. What is coupling? Why is coupling important? Let's get started.

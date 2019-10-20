@@ -5,12 +5,14 @@ categories:
 - SpringBootMicroservices
 tags:
 - learning
-image: https://girishgodage.github.io/img/microservices.png
+summary:  In this article, we focus our attention on the cloud. Why do we need the cloud?
+image: /img/microservices.png
 author: Girish Godage
 layout: posts
-prevurl: https://girishgodage.github.io/blog/Microservices7
-nexturl: https://girishgodage.github.io/blog/Microservices8
+prevurl: /blog/introduction-to-cloud
+nexturl: /blog/introduction-to-spring-cloud
 discussion_id: 2019-10-15-Microservices7
+permalink:  /blog/introduction-to-cloud
 ---
 
 In this article, we focus our attention on the cloud. Why do we need the cloud?

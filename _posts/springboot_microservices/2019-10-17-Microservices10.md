@@ -5,12 +5,14 @@ categories:
 - SpringBootMicroservices
 tags:
 - learning
-image: https://girishgodage.github.io/img/microservices.png
+summary: Microservices architectures are very popular today. In this article, we discuss the important challenges in developing a microservices architecture.
+image: /img/microservices.png
 author: Girish Godage
 layout: posts
-prevurl: https://girishgodage.github.io/blog/Microservices9
-nexturl: https://girishgodage.github.io/blog/Microservices11
+prevurl: /blog/microservice-architectures-advantages-of-microservices
+nexturl: /blog/microservice-architectures-soa-vs-microservices
 discussion_id: 2019-10-15-Microservices10
+permalink:  /blog/microservice-architectures-challenges-with-microservices
 ---
 
 Microservices architectures are very popular today. In this article, we discuss the important challenges in developing a microservices architecture.
