@@ -1,6 +1,7 @@
 ---
 title: Programming Basics - Five Things To Think About While Programming
 date: 2019-10-15 20:17:00 Z
+permalink: "/blog/programming-basics-five-things-to-think-about-while-programming"
 categories:
 - SoftwareProgramming
 tags:
@@ -15,7 +16,6 @@ layout: posts
 prevurl: "/blog/programming-basics-five-things-to-think-about-while-programming"
 nexturl: "/blog/programming-basics-introduction-to-object-oriented-programming"
 discussion_id: 2019-10-15-Programming-Basics-001
-permalink:  "/blog/programming-basics-five-things-to-think-about-while-programming"
 ---
 
 You would obviously want to write code that meets your core requirements and provide good performance - choosing right data structures and algorithms to use is the fundamental part of programming.

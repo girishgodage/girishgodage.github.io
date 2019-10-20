@@ -1,18 +1,19 @@
 ---
 title: Programming Basics - Introduction To Object Oriented Programming
 date: 2019-10-15 20:30:00 Z
+permalink: "/blog/programming-basics-introduction-to-object-oriented-programming"
 categories:
 - SoftwareProgramming
 tags:
 - learning
-summary: Object oriented programming (OOP) is all about thinking in terms of objects. Let's dig deeper.
+summary: Object oriented programming (OOP) is all about thinking in terms of objects.
+  Let's dig deeper.
 image: "/img/sw_program.png"
 author: Girish Godage
 layout: posts
 prevurl: "/blog/programming-basics-five-things-to-think-about-while-programming"
 nexturl: "/blog/introduction-to-aspect-oriented-programming-and-cross-cutting-concerns"
 discussion_id: 2019-10-15-Programming-Basics-002
-permalink:  "/blog/programming-basics-introduction-to-object-oriented-programming"
 ---
 
 Object oriented programming (OOP) is all about thinking in terms of objects. Let's dig deeper.

@@ -1,19 +1,20 @@
 ---
 title: What Is The Goal Of a Software Architect?
 date: 2019-10-15 18:17:00 Z
+permalink: "/blog/what-is-the-goal-of-an-software-architect"
 categories:
 - SoftwareArchitecture
 tags:
 - learning
-summary:  In this article, we have a close look at what your goal as an architect should be. Before reading any further, take a piece of paper and put down the list of goals from your perspective. 
-image: /img/sw_architect.png
+summary: In this article, we have a close look at what your goal as an architect should
+  be. Before reading any further, take a piece of paper and put down the list of goals
+  from your perspective.
+image: "/img/sw_architect.png"
 author: Girish Godage
 layout: posts
-prevurl: /blog/introduction-to-software-architecture
-nexturl: /blog/five-important-qualities-of-a-software-architect
+prevurl: "/blog/introduction-to-software-architecture"
+nexturl: "/blog/five-important-qualities-of-a-software-architect"
 discussion_id: 2019-10-15-SwArchitectLesson2
-permalink:  "/blog/what-is-the-goal-of-an-software-architect"
-
 ---
 
 In this article, we have a close look at what your goal as an architect should be. Before reading any further, take a piece of paper and put down the list of goals from your perspective.
