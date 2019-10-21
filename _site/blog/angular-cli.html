@@ -11,8 +11,8 @@
 <meta name="msapplication-navbutton-color" content="#2A80EE">
 <!-- iOS Safari -->
 <meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
-<title>1.Angular installation &#8211; Girish Godage</title>
-<meta name="description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
+<title>Angular and CLI &#8211; Girish Godage</title>
+<meta name="description" content="The goal of following tutorial is to guide you on how to install Angular on your local machine. This require Node.js and npm installed on your machine.">
 <meta name="keywords" content="AngularTutorial">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,9 +26,9 @@
     <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="1.Angular installation">
+    <meta property="og:title" content="Angular and CLI">
     <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
-    <meta property="og:url" content="http://localhost:4000/angulartutorial/2019/09/20/AngularInstall/">
+    <meta property="og:url" content="http://localhost:4000/blog/angular-cli">
     <meta property="og:site_name" content="Girish Godage">
 
     <!-- Twitter Card -->
@@ -36,9 +36,9 @@
     
         <meta name="twitter:site" content="@GGodage" />
     
-    <meta name="twitter:title" content="1.Angular installation" />
-    <meta name="twitter:description" content="I am a passionate Leader, who has a good command in technology & Mangement. Also, I am a creative designer and an innovatie techie." />
-    <meta name="twitter:url" content="http://localhost:4000/angulartutorial/2019/09/20/AngularInstall/" />
+    <meta name="twitter:title" content="Angular and CLI" />
+    <meta name="twitter:description" content="The goal of following tutorial is to guide you on how to install Angular on your local machine. This require Node.js and npm installed on your machine." />
+    <meta name="twitter:url" content="http://localhost:4000/blog/angular-cli" />
 
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
@@ -58,7 +58,7 @@
     
 
 
-    <link rel="canonical" href="http://localhost:4000/angulartutorial/2019/09/20/AngularInstall/">
+    <link rel="canonical" href="http://localhost:4000/blog/angular-cli">
 <link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
     <!-- Bootstrap CSS-->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -154,10 +154,10 @@
             class="container">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <p class="post-title">
-                    <h1><a href="/angulartutorial/2019/09/20/AngularInstall/">1.Angular installation</a></h1>
+                    <h1><a href="/blog/angular-cli">Angular and CLI</a></h1>
                 </p>
                 
-                <span class="post-date"><span style="font-weight:600">September 20, 2019 Friday</span> by
+                <span class="post-date"><span style="font-weight:600">September 21, 2019 Saturday</span> by
                     <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">Girish Godage</a>
                 </span>
                 <div class="site-category"> 
@@ -165,212 +165,101 @@
                 </div>
                 
                 <hr>
-                <div><img class="post-image" src="https://girishgodage.github.io/img/angular_logo.png" alt="1.Angular installation" height="250" /></div>
+                <div><img class="post-image" src="/img/angular_logo.png" alt="Angular and CLI" height="250" /></div>
                 <div class="post-content">
                     <br>                     
-                    <section class="tutorial">
+                    <section class="tutorial1">
     <h2>Goal</h2>
-    <p> The goal of the following tutorial is to guide you on how to install all software required to start our journey
-        with Angular. If have your environment ready, you can skip to <a
-            href=>next tutorial</a>. However, if you never
-        worked with Angular before this is a place to start at. Below steps will guide you on how to install all
-        prerequisites regardless of platform (Windows, macOS, unix) you are using. Let's start! </p>
-    <h2>1. Command line</h2>
-    <p>Command line is a crucial for each developer. If you haven't used it before it's a high time to get familiar with
-        it. It might look complicated and difficult to learn, however, once you put your hands on it you will find that
-        is very powerful and useful tool. </p>
-    <!-- Nav tabs -->
-    <div class="nav-tabs">
-        <div class="tabs-wrapper">
-            <ul class="nav nav-tabs" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link waves-light active waves-effect waves-light" data-toggle="tab" href="#panel11"
-                        role="tab"><i class="fab fa-windows fa-2x" aria-hidden="true"></i><br> Windows</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link waves-light waves-effect waves-light" data-toggle="tab" href="#panel12"
-                        role="tab"><i class="fab fa-apple fa-2x" aria-hidden="true"></i><br> macOS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link waves-light waves-effect waves-light" data-toggle="tab" href="#panel13"
-                        role="tab"><i class="fab fa-linux fa-2x" aria-hidden="true"></i><br> Linux</a>
-                </li>
-            </ul>
-        </div>
-        <!-- Tab panels -->
-        <div class="tab-content card my-2" style="background-color: black;color:white">
-            <!--Panel 1-->
-            <div class="tab-pane fade in show active mx-4" id="panel11" role="tabpanel">
-                <h4>How to run command line? </h4>
-                <h6>Keyboard shortcut: </h6>
-                <p>On your keyboard press: <kbd><i class="fab fa-windows" aria-hidden="true"></i></kbd> + <kbd> R
-                    </kbd>. You will see <code>Run</code> windows. Type <code>cmd</code> and click OK or press
-                    <kbd>Enter</kbd></p>
-                <img class="img-fluid" src="http://localhost:4000/img/angular/tutorials/environment/img/1.png"
-                    alt="Run window">
-                <p>You will see screen as below: </p>
-                <img class="img-fluid" src="http://localhost:4000/img/angular/tutorials/environment/img/2.jpg"
-                    alt="Windows command line">
-                <p>That's it. You can now use a command line, however, please keep in mind that Windows Command Line is
-                    frankly speaking - crappy tool. That's why we strongly encourage you to use some alternative like
-                    GitBash. It has more unix-like commands which are more user-friendly than built in windows commands.
-                </p>
-            </div>
-            <!--/.Panel 1-->
-            <!--Panel 2-->
-            <div class="tab-pane fade mx-4" id="panel12" role="tabpanel">
-                <h4>How to run command line? </h4>
-                <h6>Keyboard shortcut: </h6>
-                <p>Press <kbd>cmd ⌘</kbd> + <kbd>space</kbd> to open Spotlight search, type <code>terminal</code> and
-                    hit <kbd>Enter ⏎</kbd> </p>
-                <img class="img-fluid" src="http://localhost:4000/img/angular/tutorials/environment/img/3.png"
-                    alt="Spotlight search">
-                <p>You will see screen as below:</p>
-                <img class="img-fluid" src="http://localhost:4000/img/angular/tutorials/environment/img/4.png"
-                    alt="macOS terminal">
-            </div>
-            <!--/.Panel 2-->
-            <!--Panel 3-->
-            <div class="tab-pane fade mx-4" id="panel13" role="tabpanel">
-                <p>Unix unlike Windows or macOS, doesn't necessarily have Graphic User Interface (GUI), therefore in
-                    some distributions like RedHat, CentOS, Debian, Ubuntu Server terminal will launch immediately after
-                    booting machine. </p>
-                <p>In case you use some GUI, them may look differently, however in most cases you they will have Windows
-                    like "Start" button which will open search menu which allows you to find <code>terminal</code> app.
-                </p>
-                <p>Sample start screen on Ubuntu:</p>
-                <img class="img-fluid" src="http://localhost:4000/img/angular/tutorials/environment/img/15.png"
-                    alt="Ubuntu Home">
-                <p>Also terminal windows and colors may vary depends on distribution, sample Ubuntu terminal: </p>
-                <img class="img-fluid" src="http://localhost:4000/img/angular/tutorials/environment/img/16.jpg"
-                    alt="Ubuntu terminal">
-            </div>
-            <!--/.Panel 3-->
-        </div>
-    </div>
-    <p>Since you know how to run terminal, let's move to our runtime environment - Node.js. </p>
-    <h2>2. Installing Node.js and Node Package Manager (npm)</h2>
-    <!-- Nav tabs -->
-    <div class="nav-tabs">
-        <div class="tabs-wrapper">
-            <ul class="nav classic-tabs tabs-blue" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link waves-light waves-effect waves-light active" data-toggle="tab" href="#panel21"
-                        role="tab" aria-selected="true"><i class="fab fa-windows fa-2x" aria-hidden="true"></i><br>
-                        Windows</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link waves-light waves-effect waves-light" data-toggle="tab" href="#panel22"
-                        role="tab" aria-selected="false"><i class="fab fa-apple fa-2x" aria-hidden="true"></i><br>
-                        macOS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link waves-light waves-effect waves-light" data-toggle="tab" href="#panel23"
-                        role="tab" aria-selected="false"><i class="fab fa-linux fa-2x" aria-hidden="true"></i><br>
-                        Linux</a>
-                </li>
-            </ul>
-        </div>
-        <!-- Tab panels -->
-        <div class="tab-content card my-2" style="background-color: black;color:white">
-            <!--Panel 1-->
-            <div class="tab-pane fade in active show mx-4" id="panel21" role="tabpanel">
-                <ol>
-                    <li>Download the Windows installer from the <a href="https://nodejs.org/en/">Nodes.js® web site</a>.
-                    </li>
-                    <li>Run the installer (the .msi file you downloaded in the previous step.)</li>
-                    <li>Follow the prompts in the installer (Accept the license agreement, click the NEXT button a bunch
-                        of times and accept the default installation settings).</li>
-                    <img class="img-fluid"
-                        src="http://localhost:4000/img/angular/tutorials/environment/img/21.png"
-                        alt="Windows Node.js installation">
-                    <li>Restart your computer. You won’t be able to run Node.js® until you restart your computer.</li>
-                </ol>
-            </div>
-            <!--/.Panel 1-->
-            <!--Panel 2-->
-            <div class="tab-pane fade mx-4" id="panel22" role="tabpanel">
-                <ol>
-                    <li>Download the Windows installer from the <a href="https://nodejs.org/en/">Nodes.js® web site</a>.
-                    </li>
-                    <li>Run the installer (the .msi file you downloaded in the previous step.)</li>
-                    <li>Follow the prompts in the installer (Accept the license agreement, click the NEXT button a bunch
-                        of times and accept the default installation settings).</li>
-                    <img class="img-fluid"
-                        src="http://localhost:4000/img/angular/tutorials/environment/img/22.png"
-                        alt="macOS Node.js installation">
-                </ol>
-            </div>
-            <!--/.Panel 2-->
-            <!--Panel 3-->
-            <div class="tab-pane fade mx-4" id="panel23" role="tabpanel">
-                <h3>Ubuntu/Debian</h3>
-                <code>curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -</code> <br>
-                <code>sudo apt-get install -y nodejs</code>
-                <h3> Red Hat® Enterprise Linux® / RHEL, CentOS and Fedora</h3>
-                <code>curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -</code><br>
-                <code>sudo yum -y install nodejs</code>
-                <h3> Arch Linux</h3>
-                <code>pacman -S nodejs npm</code>
-            </div>
-            <!--/.Panel 3-->
-        </div>
-    </div>
-    <h2>3. Verifying installation </h2>
-    <p>It's time to check that we have Node and NPM installed correctly. We will simply run few commands to see what
-        version of each is installed and to run a simple test program:</p>
-    <ol>
-        <li>
-            <b>Test Node:</b> Open command line and type:
-            <div class="code-toolbar">
-                <pre
-                    class="code-toolbar language-typescript"><code class=" language-typescript">node <span class="token operator">-</span>v</code></pre>
-            </div>
-            This should print a version number, so you’ll see something like this:
-            <div class="code-toolbar">
-                <pre
-                    class="code-toolbar language-typescript"><code class=" language-typescript">v8<span class="token punctuation">.</span><span class="token number">9.1</span></code></pre>
-            </div>
-        </li>
-        <li>
-            <b>Test npm:</b> To see if NPM is installed, type:
-            <div class="code-toolbar">
-                <pre
-                    class="code-toolbar language-typescript"><code class=" language-typescript">npm <span class="token operator">-</span>v</code></pre>
+    <p> The goal of following tutorial is to guide you on how to install Angular on your local machine.
+        This require Node.js and npm installed on your machine. If you don't have it or don't know if you have, please
+        check <a href="/blog/angular-install">previous tutorial</a>. If you
+        already have it we can start installing Angular! </p>
+    <h2>Angular and Angular CLI</h2>
+    <p>Angular is a TypeScript-based open-source front-end web application platform led by the Angular Team at Google
+        and by a community of individuals and corporations. Angular Command Line Interface (CLI) is a tool which helps
+        you to scaffold and build angular apps using modules. It also handles all common tedious task for you. We will
+        show it on the example but first - let's install.</p>
+    <h2>1. Installation </h2>
+    <p>Open terminal/comand prompt and run:</p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-typescript"><code class=" language-typescript">npm install <span class="token operator">-</span>g @angular<span class="token operator">/</span>cli</code></pre>
+        <div class="toolbar">
 
-            </div>
-            This should print NPM’s version number so you’ll see something like this:
-            <div class="code-toolbar">
-                <pre
-                    class="code-toolbar language-typescript"><code class=" language-typescript"><span class="token number">5.5</span><span class="token number">.1</span></code></pre>
-            </div>
-        </li>
-        <li>
-            <b>Verify JS:</b> Create a file called <code>hello.js</code> and type inside:
-            <div class="code-toolbar">
-                <pre
-                    class="code-toolbar language-typescript"><code class=" language-typescript"><span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello world from Girish"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-            </div>
-            <p>Open terminal, navigate to folder where you have created a file and type
-            </p>
-            <div class="code-toolbar">
-                <pre
-                    class="code-toolbar language-typescript"><code class=" language-typescript">node hello<span class="token punctuation">.</span>js</code></pre>
-            </div>
-            you should see following output:
-            <p></p>
-        </li>
-    </ol>
-    <img class="img-fluid" src="http://localhost:4000/img/angular/tutorials/environment/img/01.png"
+        </div>
+    </div>
+    <p>Next we will install Typescript - type script is a superset of JS, we will learn more about that in next lessons,
+        for now just note that it's required by Angular</p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-typescript"><code class=" language-typescript">npm i <span class="token operator">-</span>g typescript</code></pre>
+        <div class="toolbar">
+
+        </div>
+    </div>
+    <h2>2. Verify installation </h2>
+    <p>Run following command in comand prompt: </p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-typescript"><code class=" language-typescript">ng <span class="token operator">--</span>version</code></pre>
+        <div class="toolbar">
+
+        </div>
+    </div>
+    <p>You should see current version of Angular, CLI and Typescript:</p>
+    <img class="img-fluid" src="http://localhost:4000/img/angular/tutorials/angular-cli/img/01.png"
         alt="hello world">
+    <h2>3. First Angular app </h2>
+    <p>Since everything is ready we are ready to create our first Angular app. Open <command> prompt and run following
+            command:
+    </p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-typescript"><code class=" language-typescript">ng <span class="token keyword">new</span> <span class="token class-name">hello</span><span class="token operator">-</span>world</code></pre>
+        <div class="toolbar">
+
+        </div>
+    </div>
+    <p>Expected output:</p>
+    <img class="img-fluid" src="http://localhost:4000/img/angular/tutorials/angular-cli/img/02.png"
+        alt="new new cli">
+    <p>Now let's navigate to our new project:</p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-typescript"><code class=" language-typescript">cd hello<span class="token operator">-</span>world</code></pre>
+        <div class="toolbar">
+
+        </div>
+    </div>
+    <p>and run:</p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-typescript"><code class=" language-typescript">ng serve <span class="token operator">-</span>o</code></pre>
+        <div class="toolbar">
+
+        </div>
+    </div>
+    <p>Expected output:</p>
+    <img class="img-fluid" src="http://localhost:4000/img/angular/tutorials/angular-cli/img/03.png"
+        alt="new serve">
+    <p>Our browser should automatically open (cause we added <code>-o</code> option) new window/card in our default web
+        browser and display following content. If that didn't happen, open a browser manually and navigate to </p>
+    <div class="code-toolbar">
+        <pre
+            class="code-toolbar language-typescript"><code class=" language-typescript">http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token regex">/localhost:4200/</span></code></pre>
+        <div class="toolbar">
+        </div>
+    </div>
+    <img class="img-fluid" src="http://localhost:4000/img/angular/tutorials/angular-cli/img/04.png"
+        alt="new serve">
     <p>Now let's get back to our current project.<strong>Click NEXT LESSON</strong> button to proceed further.</p>
 
-    <H4>Watch the youtube video for this lesson</H4> 
+    <H4>Watch the youtube video for this lesson</H4>
     <!-- Feel free to change the width and height to your desired video size. -->
 
 <div class="embed-container">
     <iframe
-        src="https://www.youtube.com/embed/"
+        src="https://www.youtube.com/embed/PerqZ-YR9Co"
         width="700"
         height="480"
         frameborder="0"
@@ -384,14 +273,14 @@
    
     <div class="row" >
         <div class="col-lg-4 col-md-6 col-sm-6">
-            <a target="_blank" href="https://girishgodage.github.io/blog/AngularInstall" class="btn  btn-sm" id="round-button" 
+            <a target="_blank" href="/blog/angula-install" class="btn  btn-sm" id="round-button" 
                 >
                 <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
             </a>
         </div>
      
         <div class="col-lg-4 col-md-6 col-sm-6" >
-            <a target="_blank" href="https://girishgodage.github.io/blog/Installerlesson2" class="btn btn-sm" id="round-button"
+            <a target="_blank" href="/blog/getting-started" class="btn btn-sm" id="round-button"
                  >Next Lesson
                 <i class="fas fa-arrow-right ml-2"></i>
             </a>

@@ -11,8 +11,8 @@
 <meta name="msapplication-navbutton-color" content="#2A80EE">
 <!-- iOS Safari -->
 <meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
-<title>16.Summary &#8211; Girish Godage</title>
-<meta name="description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
+<title>Add new Event &#8211; Girish Godage</title>
+<meta name="description" content="Finally, the last thing we have to do is to handle our form on submit and add new event to the list">
 <meta name="keywords" content="AngularTutorial">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,9 +26,9 @@
     <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="16.Summary">
+    <meta property="og:title" content="Add new Event">
     <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
-    <meta property="og:url" content="http://localhost:4000/angulartutorial/2019/09/24/AgendaApp11/">
+    <meta property="og:url" content="http://localhost:4000/blog/add-new-event">
     <meta property="og:site_name" content="Girish Godage">
 
     <!-- Twitter Card -->
@@ -36,9 +36,9 @@
     
         <meta name="twitter:site" content="@GGodage" />
     
-    <meta name="twitter:title" content="16.Summary" />
-    <meta name="twitter:description" content="I am a passionate Leader, who has a good command in technology & Mangement. Also, I am a creative designer and an innovatie techie." />
-    <meta name="twitter:url" content="http://localhost:4000/angulartutorial/2019/09/24/AgendaApp11/" />
+    <meta name="twitter:title" content="Add new Event" />
+    <meta name="twitter:description" content="Finally, the last thing we have to do is to handle our form on submit and add new event to the list" />
+    <meta name="twitter:url" content="http://localhost:4000/blog/add-new-event" />
 
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
@@ -58,7 +58,7 @@
     
 
 
-    <link rel="canonical" href="http://localhost:4000/angulartutorial/2019/09/24/AgendaApp11/">
+    <link rel="canonical" href="http://localhost:4000/blog/add-new-event">
 <link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
     <!-- Bootstrap CSS-->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -154,7 +154,7 @@
             class="container">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <p class="post-title">
-                    <h1><a href="/angulartutorial/2019/09/24/AgendaApp11/">16.Summary</a></h1>
+                    <h1><a href="/blog/add-new-event">Add new Event</a></h1>
                 </p>
                 
                 <span class="post-date"><span style="font-weight:600">September 24, 2019 Tuesday</span> by
@@ -165,42 +165,113 @@
                 </div>
                 
                 <hr>
-                <div><img class="post-image" src="https://girishgodage.github.io/img/angular/tutorials/agenda-app/1/image_1.png" alt="16.Summary" height="250" /></div>
+                <div><img class="post-image" src="/img/angular/tutorials/agenda-app/10/final.gif" alt="Add new Event" height="250" /></div>
                 <div class="post-content">
                     <br>                     
-                    <section class="tutorial16">
+                    <section class="tutorial15">
+
     <div class="angular-tutorial tutorial">
-        <h2>Summary</h2>
-
-        <h5>Our app is done, however there are still a few more things which we should do:</h5>
-        <ul>
-            <li>
-                change the type of any event properties (i.e. switch time to JS Date instead of string)
-            </li>
-            <li>
-                call an external API to get a real weather forecast
-            </li>
-            <li>
-                add validation to our form (make sure that the user fills in all of the mandatory data)
-            </li>
-            <li>
-                handle duplicates
-            </li>
-        </ul>
-        <p>and a few more interesting things. We will learn all about that in Part 2 of our tutorial.&nbsp;</p>
 
 
+        <h2>Add new Event</h2>
 
-        <p class="note note-warning"><strong>Important!</strong> <br>
-            I am very happy that you reached this far. I would like to thank you and <strong>ask you for a small
-                favor</strong>. If you didn't rate the previous lessons yet please either spend a few minutes and rate
-            them or (as a summary of the entire tutorial) <strong>using the stars below</strong>. <br> <br>
+        <p>Finally, the last thing we have to do is to handle our form on submit and add new event to the list.</p>
 
-            <strong>Your feedback is very important to us!</strong> Once you vote (<strong>it's just a single
-                click!</strong>) there will be optional form which let you leave comment to us. Please let us know what
-            you liked and what you didn't like to help us make next tutorials better and better!
-        </p>
-       
+        <ol>
+            <li>Add new function to <code>app.component.ts</code></li>
+
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdb79feea82146939d545fda76b9e905910" role="tab">app.component.ts</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdb79feea82146939d545fda76b9e905910" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token function">addNewEvent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">const</span> newEvent<span class="token punctuation">:</span> any <span class="token operator">=</span> <span class="token punctuation">{</span>
+            time<span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>timeInput<span class="token punctuation">.</span>value<span class="token punctuation">,</span>
+            subject<span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>subjectInput<span class="token punctuation">.</span>value<span class="token punctuation">,</span>
+            location<span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>locationInput<span class="token punctuation">.</span>value<span class="token punctuation">,</span>
+            description<span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>descriptionInput<span class="token punctuation">.</span>value
+          <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        
+          <span class="token keyword">this</span><span class="token punctuation">.</span>events<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>newEvent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+          <span class="token keyword">this</span><span class="token punctuation">.</span>timeInput<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>subjectInput<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>locationInput<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>descriptionInput<span class="token punctuation">.</span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+          <span class="token keyword">this</span><span class="token punctuation">.</span>modal<span class="token punctuation">.</span><span class="token function">hide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                            <div class="toolbar">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.mdbsnippet -->
+
+            <p>As you probably already see our new functions does four things
+
+            </p>
+            <ol>
+                <li>Creates a <mark>newEvent</mark> object with values from the form</li>
+                <li>Adds the new object to the <mark>events</mark> array </li>
+                <li>Clears the form's inputs</li>
+                <li>Hides modal</li>
+
+            </ol>
+
+            <p></p>
+
+            <li>Update the button in a Modal Footer with call to <mark>addNewEvent()</mark></li>
+
+            <!-- mdbsnippet -->
+            <div class="docs-pills">
+                <div class="d-flex justify-content-between">
+                    <ul class="nav md-pills pills-grey">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab"
+                                href="#mdb53cad2dc0b560f4dce03be8100b3be8a" role="tab">app.component.html</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="mdb53cad2dc0b560f4dce03be8100b3be8a" role="tabpanel">
+                        <div class="code-toolbar">
+                            <pre
+                                class="grey lighten-3 px-3 mb-0 line-numbers  language-js"><code class=" language-js"><span class="token operator">&lt;</span>button
+          type<span class="token operator">=</span><span class="token string">"button"</span>
+          mdbBtn
+          color<span class="token operator">=</span><span class="token string">"info"</span>
+          <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"waves-effect"</span>
+          <span class="token punctuation">(</span>click<span class="token punctuation">)</span><span class="token operator">=</span><span class="token string">"addNewEvent()"</span>
+          mdbWavesEffect
+        <span class="token operator">&gt;</span>
+          Add
+        <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                            <div class="toolbar">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.mdbsnippet -->
+
+            <li>Save and test the app</li>
+
+            <img class="img-fluid"
+                src="http://localhost:4000/img/angular/tutorials/agenda-app/10/final.gif"
+                alt="Add new event"><br>
+
+
+
+        </ol>
+
 
     </div>
 
@@ -211,14 +282,14 @@
    
     <div class="row" >
         <div class="col-lg-4 col-md-6 col-sm-6">
-            <a target="_blank" href="https://girishgodage.github.io/blog/AgendaApp10" class="btn  btn-sm" id="round-button" 
+            <a target="_blank" href="/blog/forms-and-inputs" class="btn  btn-sm" id="round-button" 
                 >
                 <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
             </a>
         </div>
      
         <div class="col-lg-4 col-md-6 col-sm-6" >
-            <a target="_blank" href="" class="btn btn-sm" id="round-button"
+            <a target="_blank" href="/blog/agendaapp-summary" class="btn btn-sm" id="round-button"
                  >Next Lesson
                 <i class="fas fa-arrow-right ml-2"></i>
             </a>
