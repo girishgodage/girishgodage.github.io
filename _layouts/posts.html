@@ -33,6 +33,10 @@
                     {{page.content}}
                 </div>
 
+                {% if site.show_sharing_icons %}
+                    {% include share_buttons.html %}
+                {% endif %}
+
                 <div id="disqus_thread"></div>
                 <script>
                 
