@@ -8,6 +8,11 @@
 
 <body>
     {% include header.html%}
+
+    {% assign minutes = page.content | strip_html | number_of_words | divided_by: 180 %}
+    {% if minutes == 0 %}
+        {% assign minutes = 1 %}
+    {% endif %}
     
     <div style="background-color:Gray;">
         <div style="padding:0;min-height:95.05vh;display:flex;font-family: Poppins, sans-serif;margin-top: 5rem;"
@@ -17,11 +22,19 @@
                     <h1><a href="{{site.ur}}{{site.baseurl}}{{page.url}}">{{page.title}}</a></h1>
                 </p>
                 {% for author in site.data.authors %}
-                <span class="post-date">{{page.date
-              |
-              date: '<span style="font-weight:600">%B %d, %Y %A</span>' }} by
-                    <a style="font-weight:600" href="{{ author.twitter }}" target="_blank">{{page.author}}</a>
+                <span class="post-meta">{{page.date
+              | 
+              date: '
+              <span style="font-weight:600">%B %d, %Y %A</span>' }}
+                    {% if page.minutes %}
+                       ( {{ page.minutes }} {{ site.text.post.minute_read }})
+                    {% else %}
+                       ( {{ minutes }} {{ site.text.post.minute_read }} ) 
+                    {% endif %}
+                     
+                    <a style="font-weight:600" href="{{ author.twitter }}" target="_blank">   by {{page.author}}</a>
                 </span>
+                
                 <div class="site-category"> 
                         <h5>{{page.categories}}</h5>
                 </div>
@@ -69,6 +82,7 @@
     </div>
 
     {% include js-files.html %}
+    
 
 
 </body>
