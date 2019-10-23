@@ -6,7 +6,9 @@ categories:
 - SpringBootMicroservices
 tags:
 - learning
-summary:  In this article, we talk about event driven architectures, in the context of microservices architectures. We also discuss what are the advantages of using an event driven approach. 
+summary: In this article, we talk about event driven architectures, in the context
+  of microservices architectures. We also discuss what are the advantages of using
+  an event driven approach.
 image: "/img/microservices.png"
 author: Girish Godage
 layout: posts

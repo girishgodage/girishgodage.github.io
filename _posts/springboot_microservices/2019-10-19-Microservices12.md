@@ -6,7 +6,8 @@ categories:
 - SpringBootMicroservices
 tags:
 - learning
-summary: In this article, we talk about Service Discovery. Why is Service Discovery important in microservices architecture, and how to set it up for your application.
+summary: In this article, we talk about Service Discovery. Why is Service Discovery
+  important in microservices architecture, and how to set it up for your application.
 image: "/img/microservices.png"
 author: Girish Godage
 layout: posts

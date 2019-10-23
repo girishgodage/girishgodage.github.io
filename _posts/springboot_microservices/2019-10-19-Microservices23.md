@@ -6,7 +6,8 @@ categories:
 - SpringBootMicroservices
 tags:
 - learning
-summary: In this article, we throw some light on what asynchronous messaging is all about and discuss why you should consider it for your microservices architectures. 
+summary: In this article, we throw some light on what asynchronous messaging is all
+  about and discuss why you should consider it for your microservices architectures.
 image: "/img/microservices.png"
 author: Girish Godage
 layout: posts

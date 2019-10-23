@@ -6,7 +6,8 @@ categories:
 - SpringBootMicroservices
 tags:
 - learning
-summary:  In this article, we focus our attention on the Dynamic Scaling or Auto Scaling. Why do we need applications that can auto scale?
+summary: In this article, we focus our attention on the Dynamic Scaling or Auto Scaling.
+  Why do we need applications that can auto scale?
 image: "/img/microservices.png"
 author: Girish Godage
 layout: posts

@@ -1,12 +1,13 @@
 ---
-title:  Microservice Best Practice - Why do you build a Vertical Slice?
+title: Microservice Best Practice - Why do you build a Vertical Slice?
 date: 2019-10-19 20:17:00 Z
 permalink: "/blog/software-best-practices-building-a-vertical-slice"
 categories:
 - SpringBootMicroservices
 tags:
 - learning
-summary: In this article, we look at what is a vertical slice, and why we build it. We also discuss the best practices involved in building vertical slices.
+summary: In this article, we look at what is a vertical slice, and why we build it.
+  We also discuss the best practices involved in building vertical slices.
 image: "/img/microservices.png"
 author: Girish Godage
 layout: posts

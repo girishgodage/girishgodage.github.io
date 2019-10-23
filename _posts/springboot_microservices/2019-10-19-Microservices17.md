@@ -6,7 +6,8 @@ categories:
 - SpringBootMicroservices
 tags:
 - learning
-summary:  In this article, we discuss an important property of microservices, called fault tolerance
+summary: In this article, we discuss an important property of microservices, called
+  fault tolerance
 image: "/img/microservices.png"
 author: Girish Godage
 layout: posts
