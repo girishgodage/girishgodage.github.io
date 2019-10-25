@@ -1,4 +1,1169 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-10-23T05:58:23+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">Asynchronous communication with queues and microservices - A perfect combination?</title><link href="http://localhost:4000/blog/asynchronous-communication-with-queues-in-microservices" rel="alternate" type="text/html" title="Asynchronous communication with queues and microservices - A perfect combination?" /><published>2019-10-19T20:17:00+00:00</published><updated>2019-10-19T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices23</id><content type="html" xml:base="http://localhost:4000/blog/asynchronous-communication-with-queues-in-microservices">&lt;p&gt;In this article, we throw some light on what asynchronous messaging is all about and discuss why you should consider it for your microservices architectures.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-10-25T03:00:03+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">Spring Batch Tutorial for Beginners</title><link href="http://localhost:4000/blog/spring-basics-introduction-to-spring-batch" rel="alternate" type="text/html" title="Spring Batch Tutorial for Beginners" /><published>2019-10-23T06:40:00+00:00</published><updated>2019-10-23T06:40:00+00:00</updated><id>http://localhost:4000/blog/springframewok7</id><content type="html" xml:base="http://localhost:4000/blog/spring-basics-introduction-to-spring-batch">&lt;p&gt;Spring Batch is a lightweight, comprehensive batch framework that is designed for use in developing robust batch applications.&lt;/p&gt;
+
+&lt;h2 id=&quot;you-will-learn&quot;&gt;You will learn&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;What is Spring Batch?&lt;/li&gt;
+  &lt;li&gt;How does Spring Batch make building batch programs easier?&lt;/li&gt;
+  &lt;li&gt;What are important features of Spring Batch?&lt;/li&gt;
+  &lt;li&gt;What are important concepts to understand in Spring Batch?&lt;/li&gt;
+  &lt;li&gt;What are the best practices in using Spring Batch?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;what-is-spring-batch&quot;&gt;What Is Spring Batch?&lt;/h3&gt;
+
+&lt;p&gt;Spring Batch is a lightweight, comprehensive batch framework that is designed for use in developing robust batch applications.&lt;/p&gt;
+
+&lt;h3 id=&quot;why-is-spring-batch-useful&quot;&gt;Why Is Spring Batch Useful?&lt;/h3&gt;
+
+&lt;p&gt;The requirements of typical batch programs are very similar:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Restartability&lt;/strong&gt;: It is normally required to restart a batch program from where it had failed&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Different readers and writers&lt;/strong&gt;: You need the ability to talk to different kinds of data sources and sinks. These include talking to a database, an external messaging service such as JMS, and many others.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Chunk Processing&lt;/strong&gt;:  If for instance there are a million records to be written to storage, it is a practical idea to split it into manageable chunks of 1000 records each, and write these chinks one at a time. Even if one such chink fails, the other operations are not affected.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Ease Of Transaction Management&lt;/strong&gt;: Transaction management should be simple to implement properly, even when using chunk processing.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Ease of parallel processing&lt;/strong&gt;: It should be possible to run the batch tasks using parallel processing. For this, it is important that the configuration be simple, so that overhead is minimized.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;understanding-spring-batch&quot;&gt;Understanding Spring Batch&lt;/h3&gt;
+
+&lt;p&gt;A &lt;strong&gt;Job&lt;/strong&gt; in Spring Batch is nothing but a sequence of &lt;strong&gt;Steps&lt;/strong&gt;. Each Step can be configured before execution, with the following attributes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;next&lt;/strong&gt;: The next Step to execute&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;tasklet&lt;/strong&gt;: The task that needs to be done as part of this Step.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;decision&lt;/strong&gt;: This decides in which situations this Step needs to be run&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;the-job-instance&quot;&gt;The Job Instance&lt;/h4&gt;
+
+&lt;p&gt;A Job Launcher is used in order to execute a Spring Batch Job. Note the following points about a Job thus created:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Each execution of a Job is called a Job Instance. Each Job Instance is provided with a unique execution id, which is useful to restart the job if it fails.&lt;/li&gt;
+  &lt;li&gt;A Job can be configured with parameters. These can be passed to it from the Job Launcher.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;how-spring-batch-works&quot;&gt;How Spring Batch Works&lt;/h4&gt;
+
+&lt;p&gt;A typical Job would look like the following:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Capture-086-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Each Job can have multiple Steps, and sometimes it is useful to organize the Steps into Flows. Different flows can usually be run in parallel, and the rest of the steps are run in strict sequential order.&lt;/p&gt;
+
+&lt;p&gt;Spring Batch 3.0 supports JSR-352 - a Java specification for batch processing.&lt;/p&gt;
+
+&lt;h3 id=&quot;best-practices-for-spring-batch&quot;&gt;Best Practices For Spring Batch&lt;/h3&gt;
+
+&lt;p&gt;The following are the recommended practices when using Spring Batch:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Be careful about exception handling and transaction management. These become the most critical issues with managing batch programs.&lt;/li&gt;
+  &lt;li&gt;Deploy your batch programs as near to the data as possible. This improves their performance greatly, and that of the entire enterprise.&lt;/li&gt;
+  &lt;li&gt;Allocate enough memory.&lt;/li&gt;
+  &lt;li&gt;Stress test the application from the start of the project.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;In this article, we had a good look at Spring Batch, a framework for crating robust enterprise-level batch applications. The needs of most enterprise batch applications are fairly the same. Spring Batch implements several best practices in developing batch applications.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h3 id=&quot;spring-framework&quot;&gt;Spring Framework&lt;/h3&gt;
+
+&lt;p&gt;This is the first article in a series of articles on Spring Framework:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-the-spring-framework&quot; target=&quot;_blank&quot;&gt;1 - Introduction To Spring Framework&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-what-is-a-dependency&quot; target=&quot;_blank&quot;&gt;2 - What Is A Dependency?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-dependency-injection-inversion-of-control&quot; target=&quot;_blank&quot;&gt;3 - What Is Dependency Injection?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-and-spring-boot-what-is-component-scan&quot; target=&quot;_blank&quot;&gt;4 - What Is Component Scan?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-architectures-and-modules&quot; target=&quot;_blank&quot;&gt;5 - Architecture of Spring Framework - Modularity and Spring Modules&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-projects-with-examples&quot; target=&quot;_blank&quot;&gt;6 - What Are Spring Projects?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-basics-introduction-to-spring-batch&quot; target=&quot;_blank&quot;&gt;7 - Introduction To Spring Batch&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr /&gt;
+   
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;/blog/spring-projects-with-examples&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;/blog/spring-basics-introduction-to-spring-batch&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;       
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Spring Batch is a lightweight, comprehensive batch framework that is designed for use in developing robust batch applications. You will learn What is Spring Batch? How does Spring Batch make building batch programs easier? What are important features of Spring Batch? What are important concepts to understand in Spring Batch? What are the best practices in using Spring Batch?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/microservices.png" /></entry><entry><title type="html">What Are Spring Projects?</title><link href="http://localhost:4000/blog/spring-projects-with-examples" rel="alternate" type="text/html" title="What Are Spring Projects?" /><published>2019-10-23T06:34:00+00:00</published><updated>2019-10-23T06:34:00+00:00</updated><id>http://localhost:4000/blog/springframewok6</id><content type="html" xml:base="http://localhost:4000/blog/spring-projects-with-examples">&lt;p&gt;There are several important Spring Projects solving the needs of enterprises today. What are Spring Projects and how are they different from Spring Modules?&lt;/p&gt;
+
+&lt;h2 id=&quot;you-will-learn&quot;&gt;You will learn&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;What are Spring Projects?&lt;/li&gt;
+  &lt;li&gt;What are examples of Spring Projects?&lt;/li&gt;
+  &lt;li&gt;How are Spring Projects different from Spring Modules?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;what-are-spring-projects&quot;&gt;What Are Spring Projects?&lt;/h3&gt;
+
+&lt;p&gt;Within the Spring framework, there are a variety of different Spring modules - JDBC, AOP, Beans, Context. All Spring Modules share the same release version as the Spring framework. They are part of the same project.&lt;/p&gt;
+
+&lt;p&gt;Apart from the Spring framework and its various modules, there are other frameworks called Spring Projects. These projects provide solutions to other issues faced by enterprise applications.&lt;/p&gt;
+
+&lt;p&gt;These projects are versioned differently from the Spring framework. For example, the current version of Spring Framework is 5.x.x and that of Spring Boot (one of the Spring Projects) is 2.x.x.&lt;/p&gt;
+
+&lt;h4 id=&quot;spring-boot&quot;&gt;Spring Boot&lt;/h4&gt;
+
+&lt;p&gt;Spring Boot is one of the most popular framework to develop microservices today. Spring Boot makes it easy to develop applications quickly. It has important features such as starter projects, auto configuration and actuator, it is a cakewalk to develop microservices.&lt;/p&gt;
+
+&lt;h3 id=&quot;spring-cloud&quot;&gt;Spring Cloud&lt;/h3&gt;
+
+&lt;p&gt;World is moving towards the cloud. Everyone wants to deploy their application in the cloud. If you develop a microservice using Spring Boot, you could use Spring Cloud to make it cloud-enabled.&lt;/p&gt;
+
+&lt;h3 id=&quot;spring-data&quot;&gt;Spring Data&lt;/h3&gt;
+
+&lt;p&gt;Spring Data provides a provides mechanisms for consistent data access.&lt;/p&gt;
+
+&lt;p&gt;A few years earlier, there were only one kind of database an application could connect to - the SQL based relational databases.  Today, we also have at our disposal a wide variety of databases including the NoSQL databases.&lt;/p&gt;
+
+&lt;p&gt;Spring Data ensures that the way we access data from all these sources remains consistent.&lt;/p&gt;
+
+&lt;h3 id=&quot;spring-integration&quot;&gt;Spring Integration&lt;/h3&gt;
+
+&lt;p&gt;Spring Integration on the other hand, addresses the issues of application integration.&lt;/p&gt;
+
+&lt;p&gt;Spring Integration provides implementations for recommended architecture patterns in Enterprise Application Integration.&lt;/p&gt;
+
+&lt;h3 id=&quot;spring-batch&quot;&gt;Spring Batch&lt;/h3&gt;
+
+&lt;p&gt;Not all processing is done online, and a lot is also accomplished through batch applications.&lt;/p&gt;
+
+&lt;p&gt;Batch applications have their own unique set of requirements. For instance, it is important to be able to restart a batch job from the point where it had failed earlier. It may also be necessary to track down accurately what is happening in the back ground when a batch job executes.&lt;/p&gt;
+
+&lt;p&gt;Spring Batch provides a great option to develop batch applications.&lt;/p&gt;
+
+&lt;h3 id=&quot;spring-security&quot;&gt;Spring Security&lt;/h3&gt;
+
+&lt;p&gt;Security is one of the most important non functional requirements of an application’s development. Any application that you develop, be it a web application, a REST service or any other, you want it to be secure.&lt;/p&gt;
+
+&lt;p&gt;Spring Security provides features for securing the applications that you develop. It has support for basic authentication, OAuth1 and OAuth2 authentication.&lt;/p&gt;
+
+&lt;h3 id=&quot;spring-hateoas&quot;&gt;Spring HATEOAS&lt;/h3&gt;
+
+&lt;p&gt;With RESTful services, it is not sufficient if you simply return the data for a resource. It is also recommended to return related actions you can perform on the resource. This is called HATEOAS. Spring HATEOAS enables you to develop HATEOAS compatible REST API.&lt;/p&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;We have looked at seven of the available Spring projects. This is an evolving space and there are new Spring projects every year to solve emerging enterprise problems.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h3 id=&quot;spring-framework&quot;&gt;Spring Framework&lt;/h3&gt;
+
+&lt;p&gt;This is the first article in a series of articles on Spring Framework:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-the-spring-framework&quot; target=&quot;_blank&quot;&gt;1 - Introduction To Spring Framework&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-what-is-a-dependency&quot; target=&quot;_blank&quot;&gt;2 - What Is A Dependency?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-dependency-injection-inversion-of-control&quot; target=&quot;_blank&quot;&gt;3 - What Is Dependency Injection?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-and-spring-boot-what-is-component-scan&quot; target=&quot;_blank&quot;&gt;4 - What Is Component Scan?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-architectures-and-modules&quot; target=&quot;_blank&quot;&gt;5 - Architecture of Spring Framework - Modularity and Spring Modules&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-projects-with-examples&quot; target=&quot;_blank&quot;&gt;6 - What Are Spring Projects?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-basics-introduction-to-spring-batch&quot; target=&quot;_blank&quot;&gt;7 - Introduction To Spring Batch&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr /&gt;
+   
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;/blog/spring-framework-architectures-and-modules&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;/blog/spring-basics-introduction-to-spring-batch&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;       
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">There are several important Spring Projects solving the needs of enterprises today. What are Spring Projects and how are they different from Spring Modules? You will learn What are Spring Projects? What are examples of Spring Projects? How are Spring Projects different from Spring Modules?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/microservices.png" /></entry><entry><title type="html">Spring Framework - What Is Component Scan?</title><link href="http://localhost:4000/blog/spring-and-spring-boot-what-is-component-scan" rel="alternate" type="text/html" title="Spring Framework - What Is Component Scan?" /><published>2019-10-23T06:18:00+00:00</published><updated>2019-10-23T06:18:00+00:00</updated><id>http://localhost:4000/blog/springframewok4</id><content type="html" xml:base="http://localhost:4000/blog/spring-and-spring-boot-what-is-component-scan">&lt;p&gt;Spring framework identifies the beans and their dependencies, creates the beans and injects the dependencies into beans. How does the Spring Framework know where to search for beans and dependencies? How does Spring Boot make component scan easier?&lt;/p&gt;
+
+&lt;h2 id=&quot;you-will-learn&quot;&gt;You will learn&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Why do we need Component Scan in Spring?&lt;/li&gt;
+  &lt;li&gt;How can you configure a Component Scan in Spring with XML and Java Annotation based configuration?&lt;/li&gt;
+  &lt;li&gt;How does Spring Boot provide an automatic Component Scan?&lt;/li&gt;
+  &lt;li&gt;How do you solve problems with Component Scan?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In this article, we understand a little bit about component scan in the context of the Spring framework. We also see how component scan works with the Spring Boot framework.&lt;/p&gt;
+
+&lt;h3 id=&quot;functionality-of-the-spring-framework&quot;&gt;Functionality Of The Spring Framework?&lt;/h3&gt;
+
+&lt;p&gt;What is the fundamental functionality of the Spring framework? It is dependency injection.&lt;/p&gt;
+
+&lt;p&gt;Spring framework identifies the beans and their dependencies, finds them and injects the dependencies into beans.&lt;/p&gt;
+
+&lt;p&gt;Have a look at the following example:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;nd&quot;&gt;@Component&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ComplexAlgorithmImpl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;privare&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SortAlgorithm&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sortAlgorithm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SortAlgorithm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;nd&quot;&gt;@Component&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;QuickSortAlgorithm&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SortAlgorithm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Let’s quickly look at what Spring Framework needs to do get the autowiring working.&lt;/p&gt;
+
+&lt;p&gt;Spring framework needs to create instances of &lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;QuickSortAlgorithm&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Since &lt;code class=&quot;highlighter-rouge&quot;&gt;QuickSortAlgorithm&lt;/code&gt; is the only implementation of &lt;code class=&quot;highlighter-rouge&quot;&gt;SortAlgorithm&lt;/code&gt; available, it needs to be auto-wired into the &lt;code class=&quot;highlighter-rouge&quot;&gt;sortAlgorithm&lt;/code&gt; field of &lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-does-spring-search-for-beans&quot;&gt;How Does Spring Search For Beans?&lt;/h3&gt;
+
+&lt;p&gt;Let’s look at a few questions?&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;How does Spring know where to look for the beans?&lt;/li&gt;
+  &lt;li&gt;How does it know where it needs to search for classes with annotations such as &lt;code class=&quot;highlighter-rouge&quot;&gt;@Component&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;@Service&lt;/code&gt;?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A typical application could have hundreds of JARS, and as a result, thousands of classes. Therefore, it is not practical for Spring to search in all the classes present in the &lt;code class=&quot;highlighter-rouge&quot;&gt;CLASSPATH&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;enter-component-scan&quot;&gt;Enter Component Scan&lt;/h3&gt;
+
+&lt;p&gt;Clearly, Spring needs to be given inputs to identify the packages of the beans and dependencies. This is where component scan comes into the picture.&lt;/p&gt;
+
+&lt;p&gt;You declare a component scan by passing in a list of packages where the scan needs to take place:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;nd&quot;&gt;@Configuration&lt;/span&gt;
+	&lt;span class=&quot;nd&quot;&gt;@ComponentScan&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;basePackages&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;s&quot;&gt;&quot;com.girishgodage.spring.example1.businessservice&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+			&lt;span class=&quot;s&quot;&gt;&quot;com.girishgodage.spring.example1.dataservice.stub&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;})&lt;/span&gt;
+
+	&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SpringContext&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The packages mentioned above are the locations where the beans and their dependencies are defined. This &lt;code class=&quot;highlighter-rouge&quot;&gt;@ComponentScan&lt;/code&gt; gives a clue to the Spring framework on where to search.&lt;/p&gt;
+
+&lt;h3 id=&quot;component-scan-with-xml-configuration&quot;&gt;Component Scan With XML Configuration&lt;/h3&gt;
+
+&lt;p&gt;The thing is, component scan an also be done with XML configuration:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Capture-092-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;For this, use the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;context:component-scan&amp;gt;&lt;/code&gt; tag, and specify the packages that are the locations.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-does-auto-configuration-work-with-spring-boot&quot;&gt;How does Auto Configuration work with Spring Boot?&lt;/h3&gt;
+
+&lt;p&gt;Spring Boot tries to automate a lot of stuff. Consider the code example below:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;girishgodage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;spring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;basics&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;springin5steps&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+	&lt;span class=&quot;nd&quot;&gt;@SpringBootApplication&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SpringIn5StepsApplication&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;girishgodage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;spring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;basics&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;springin5steps&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+	
+	&lt;span class=&quot;nd&quot;&gt;@RunWith&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;SpringRunner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+	&lt;span class=&quot;nd&quot;&gt;@SpringBootTest&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SpringIn5StepsApplicationTests&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;As soon as Spring Boot sees the annotation &lt;code class=&quot;highlighter-rouge&quot;&gt;@SpringBootApplication&lt;/code&gt;, it does an automatic scan on the current package, which is &lt;code class=&quot;highlighter-rouge&quot;&gt;com.girishgodage.spring.basics.springin5steps&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;You don’t need to explicitly define a component scan. If all the components that you need are present in the same package as &lt;code class=&quot;highlighter-rouge&quot;&gt;SpringIn5StepsApplication&lt;/code&gt;, you don’t need to explicitly specify component scan.&lt;/p&gt;
+
+&lt;h3 id=&quot;troubleshooting-component-scan-in-spring-boot&quot;&gt;Troubleshooting Component Scan In Spring Boot&lt;/h3&gt;
+
+&lt;p&gt;Have a look at the following Spring Boot application:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Capture-092-03.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Since &lt;code class=&quot;highlighter-rouge&quot;&gt;SpringbootIn10StepsApplication&lt;/code&gt; has a &lt;code class=&quot;highlighter-rouge&quot;&gt;@SpringBootApplication&lt;/code&gt; annotation attached to it, an automatic component scan in the package &lt;code class=&quot;highlighter-rouge&quot;&gt;com.girishgodage.springboot.basics.springbootin10steps&lt;/code&gt;, and all its sub-packages.&lt;/p&gt;
+
+&lt;p&gt;However, what would happen if you have one of the components defined in a different package, say &lt;code class=&quot;highlighter-rouge&quot;&gt;com.in28mnutes.springboot.somethingelse&lt;/code&gt;?&lt;/p&gt;
+
+&lt;p&gt;In this case, you need to add that package to the component scan. There are a couple of options available for doing this.&lt;/p&gt;
+
+&lt;h3 id=&quot;explicit-component-scan-in-spring-boot&quot;&gt;Explicit Component Scan In Spring Boot&lt;/h3&gt;
+
+&lt;p&gt;There are two ways of doing an explicit component scan:&lt;/p&gt;
+
+&lt;h4 id=&quot;scan-a-parent-package&quot;&gt;Scan a parent package&lt;/h4&gt;
+
+&lt;p&gt;This would scan the entire parent package tree of &lt;code class=&quot;highlighter-rouge&quot;&gt;com.girishgodage.springboot&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;nd&quot;&gt;@ComponentScan&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;com.girishgodage.springboot&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+	
+	&lt;span class=&quot;nd&quot;&gt;@SpringBootApplication&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SpringBootApllicationIn10Steps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;define-explicit-scans&quot;&gt;Define explicit scans&lt;/h4&gt;
+
+&lt;p&gt;In this case, we explicitly mention a list of specific packages within the tree. Therefore, only those two paths in the package tree will now get scanned.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;nd&quot;&gt;@ComponentScan&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;({&lt;/span&gt;
+		&lt;span class=&quot;s&quot;&gt;&quot;com.girishgodage.springboot.basics.springbootin10steps&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+		&lt;span class=&quot;s&quot;&gt;&quot;com.girishgodage.springboot.somethingelse&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;})&lt;/span&gt;
+	
+	&lt;span class=&quot;nd&quot;&gt;@SpringBootApplication&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SpringBootApllicationIn10Steps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;As soon as you explicitly define a component scan, you are taking complete control. The default automatic scan that generally happens with Spring Boot will not longer take place. You need to specify the default package, as well as other packages.&lt;/p&gt;
+
+&lt;h3 id=&quot;errors-related-to-component-scan&quot;&gt;Errors Related To Component Scan&lt;/h3&gt;
+
+&lt;p&gt;Let’s look at some of the errors related to component scan and how you can solve them.&lt;/p&gt;
+
+&lt;h4 id=&quot;typical-errors&quot;&gt;Typical Errors&lt;/h4&gt;
+
+&lt;p&gt;When the controllers are not scanned, the URLs would not work. You would observe behaviors like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Capture-092-04.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The other kind of error is when Spring does not find the dependencies. A typical error looks like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Capture-092-05.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This means Spring expects at least one bean to auto-wire a dependency, but is not able to locate them.&lt;/p&gt;
+
+&lt;h3 id=&quot;solving-errors-with-component-scan&quot;&gt;Solving Errors With Component Scan&lt;/h3&gt;
+
+&lt;p&gt;Here are some of the things to look fo:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Make sure that you have the right annotation for the concerned bean - &lt;code class=&quot;highlighter-rouge&quot;&gt;@Controller&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;@Repository&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;@Component&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Make sure that the package that a component is present in, is part of the component scan.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;In this article, we talked about component scan in the context of Spring and Spring Boot frameworks.The &lt;code class=&quot;highlighter-rouge&quot;&gt;@ComponentScan&lt;/code&gt; annotation is used to specify packages to locate components in Spring. This is automatically done in the default package, in the case of Spring Boot.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h3 id=&quot;spring-framework&quot;&gt;Spring Framework&lt;/h3&gt;
+
+&lt;p&gt;This is the first article in a series of articles on Spring Framework:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-the-spring-framework&quot; target=&quot;_blank&quot;&gt;1 - Introduction To Spring Framework&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-what-is-a-dependency&quot; target=&quot;_blank&quot;&gt;2 - What Is A Dependency?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-dependency-injection-inversion-of-control&quot; target=&quot;_blank&quot;&gt;3 - What Is Dependency Injection?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-and-spring-boot-what-is-component-scan&quot; target=&quot;_blank&quot;&gt;4 - What Is Component Scan?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-architectures-and-modules&quot; target=&quot;_blank&quot;&gt;5 - Architecture of Spring Framework - Modularity and Spring Modules&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-projects-with-examples&quot; target=&quot;_blank&quot;&gt;6 - What Are Spring Projects?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-basics-introduction-to-spring-batch&quot; target=&quot;_blank&quot;&gt;7 - Introduction To Spring Batch&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr /&gt;
+   
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;/blog/spring-framework-dependency-injection-inversion-of-control&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;/blog/spring-framework-architectures-and-modules&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;       
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Spring framework identifies the beans and their dependencies, creates the beans and injects the dependencies into beans. How does the Spring Framework know where to search for beans and dependencies? How does Spring Boot make component scan easier? You will learn Why do we need Component Scan in Spring? How can you configure a Component Scan in Spring with XML and Java Annotation based configuration? How does Spring Boot provide an automatic Component Scan? How do you solve problems with Component Scan?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/microservices.png" /></entry><entry><title type="html">Architecture of Spring Framework - Modularity and Spring Modules</title><link href="http://localhost:4000/blog/spring-framework-architectures-and-modules" rel="alternate" type="text/html" title="Architecture of Spring Framework - Modularity and Spring Modules" /><published>2019-10-23T06:18:00+00:00</published><updated>2019-10-23T06:18:00+00:00</updated><id>http://localhost:4000/blog/springframewok5</id><content type="html" xml:base="http://localhost:4000/blog/spring-framework-architectures-and-modules">&lt;p&gt;One of the most important features of the Spring framework is its modularity. It is not one big monolith framework. What is the architecture of Spring Framework? What are Spring Modules? How are they organized?&lt;/p&gt;
+
+&lt;h2 id=&quot;you-will-learn&quot;&gt;You will learn&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;What is the architecture of Spring Framework?&lt;/li&gt;
+  &lt;li&gt;How is Spring Framework Modularized?&lt;/li&gt;
+  &lt;li&gt;What are different Spring Modules?&lt;/li&gt;
+  &lt;li&gt;Which modules provide which Spring Features like Dependency Injection and Auto wiring?&lt;/li&gt;
+  &lt;li&gt;How can you develop applications with multiple layers with Spring?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;spring-architecture-and-modules&quot;&gt;Spring Architecture and Modules&lt;/h3&gt;
+
+&lt;p&gt;Let’s look at the modules that are present in a typical Spring Project.
+&lt;img src=&quot;/images/Capture-095-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It is not organized as one big JAR file. It is composed of a large number of smaller JAR files.&lt;/p&gt;
+
+&lt;p&gt;Spring is organized into modules. Here is how Spring is organized conceptually:
+&lt;img src=&quot;/images/Capture-095-03.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;container&quot;&gt;Container&lt;/h3&gt;
+
+&lt;p&gt;This is the most heavily used part of the Spring framework. This includes modules such as:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Beans: To manage the application dependencies&lt;/li&gt;
+  &lt;li&gt;Core&lt;/li&gt;
+  &lt;li&gt;Context: To maintain the application context&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;database-access-and-integration&quot;&gt;Database Access And Integration&lt;/h3&gt;
+
+&lt;p&gt;Spring provide excellent options for implementing data and integration layers.&lt;/p&gt;
+
+&lt;p&gt;The important data access modules are:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;JDBC&lt;/strong&gt; : To talk to relational database using JDBC&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;ORM&lt;/strong&gt; : Provides good integration with all ORM (Object Relational Mapping) frameworks, such as Hibernate and MyBatis.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;JMS&lt;/strong&gt; : If you want to talk to another application over a queue, JMS provides an excellent option. Spring has good integration with JMS.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;OXM&lt;/strong&gt; : This module provides good integration in scenarios where object to XML mappings are required.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Transactions&lt;/strong&gt; : Transaction management is an important part of data access integration functionality. Ideally, you want the transaction to be fully successful, or completely rolled back. If a transaction has 4 steps and failed at the third step, the previous two successful steps must also be rolled back. Spring has great support for transaction management.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;web&quot;&gt;Web&lt;/h3&gt;
+
+&lt;p&gt;Spring has very good support to develop your web layer:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spring MVC : It is Spring’s own web framework&lt;/li&gt;
+  &lt;li&gt;Struts : Spring provides good integration with Struts.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;cross-cutting-features&quot;&gt;Cross Cutting Features&lt;/h3&gt;
+
+&lt;p&gt;An application is typically developed in multiple layers. For example, a web application is often designed to have three layers: web, business and data:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Capture-095-04.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;There are many things that are applicable to more than one layer. Those are called &lt;strong&gt;cross cutting concerns&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;unit-testing&quot;&gt;Unit Testing&lt;/h4&gt;
+
+&lt;p&gt;One important cross cutting concern is unit testing. We want to be able to unit test code in all the three layers mentioned above. Spring Test framework provides good support for unit testing.&lt;/p&gt;
+
+&lt;h4 id=&quot;aop&quot;&gt;AOP&lt;/h4&gt;
+
+&lt;p&gt;AOP stands for Aspect oriented programming. This module is useful for implementing features such as security and logging. Spring AOP provides basic AOP features.&lt;/p&gt;
+
+&lt;p&gt;Spring provides good integration with the AspectJ framework to do advanced AOP.&lt;/p&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;In this article, we had a brief look at the modular structure of the Spring framework. It is not a single monolith, but is organized as a set of small modules.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h3 id=&quot;spring-framework&quot;&gt;Spring Framework&lt;/h3&gt;
+
+&lt;p&gt;This is the first article in a series of articles on Spring Framework:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-the-spring-framework&quot; target=&quot;_blank&quot;&gt;1 - Introduction To Spring Framework&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-what-is-a-dependency&quot; target=&quot;_blank&quot;&gt;2 - What Is A Dependency?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-dependency-injection-inversion-of-control&quot; target=&quot;_blank&quot;&gt;3 - What Is Dependency Injection?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-and-spring-boot-what-is-component-scan&quot; target=&quot;_blank&quot;&gt;4 - What Is Component Scan?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-architectures-and-modules&quot; target=&quot;_blank&quot;&gt;5 - Architecture of Spring Framework - Modularity and Spring Modules&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-projects-with-examples&quot; target=&quot;_blank&quot;&gt;6 - What Are Spring Projects?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-basics-introduction-to-spring-batch&quot; target=&quot;_blank&quot;&gt;7 - Introduction To Spring Batch&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr /&gt;
+   
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;/blog/spring-and-spring-boot-what-is-component-scan&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;/blog/spring-projects-with-examples&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;       
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">One of the most important features of the Spring framework is its modularity. It is not one big monolith framework. What is the architecture of Spring Framework? What are Spring Modules? How are they organized? You will learn What is the architecture of Spring Framework? How is Spring Framework Modularized? What are different Spring Modules? Which modules provide which Spring Features like Dependency Injection and Auto wiring? How can you develop applications with multiple layers with Spring?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/microservices.png" /></entry><entry><title type="html">Spring Basics - Dependency Injection and Inversion of Control</title><link href="http://localhost:4000/blog/spring-framework-dependency-injection-inversion-of-control" rel="alternate" type="text/html" title="Spring Basics - Dependency Injection and Inversion of Control" /><published>2019-10-23T06:06:00+00:00</published><updated>2019-10-23T06:06:00+00:00</updated><id>http://localhost:4000/blog/springframewok3</id><content type="html" xml:base="http://localhost:4000/blog/spring-framework-dependency-injection-inversion-of-control">&lt;p&gt;Developers starting with the Spring framework often get confused with terminology - Dependency, Dependency Injection and Inversion Of Control. In this article, we introduce you to the concepts of Dependency Injection and Inversion Of Control.&lt;/p&gt;
+
+&lt;h2 id=&quot;you-will-learn&quot;&gt;You will learn&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;What Is Dependency Injection?&lt;/li&gt;
+  &lt;li&gt;Why do you need Dependency Injection?&lt;/li&gt;
+  &lt;li&gt;What Is tight coupling?&lt;/li&gt;
+  &lt;li&gt;What Is de-coupling?&lt;/li&gt;
+  &lt;li&gt;How does Spring Framework provide Dependency Injection?&lt;/li&gt;
+  &lt;li&gt;What Is Inversion Of Control?&lt;/li&gt;
+  &lt;li&gt;What are good examples of inversion of control?&lt;/li&gt;
+  &lt;li&gt;How does Spring Framework implement Inversion of Control?&lt;/li&gt;
+  &lt;li&gt;Why Is Inversion of Control Important and what are its advantages?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;what-is-dependency-injection&quot;&gt;What Is Dependency Injection?&lt;/h3&gt;
+
+&lt;p&gt;Dependency injection is the core feature of the Spring Framework.  Dependency injection is a concept that is borrowed from the Dependency Inversion Principle (DIP).&lt;/p&gt;
+
+&lt;h4 id=&quot;tight-coupling&quot;&gt;Tight Coupling&lt;/h4&gt;
+
+&lt;p&gt;Have a look at the following examples of code:&lt;/p&gt;
+
+&lt;h5 id=&quot;example-1&quot;&gt;Example-1&lt;/h5&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;TodoBusinessService&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nc&quot;&gt;TodoDataServiceImpl&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dataService&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;TodoDataServiceImpl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;//... &lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;TodoBusinessService&lt;/code&gt; is directly creating an instance of &lt;code class=&quot;highlighter-rouge&quot;&gt;TodoDataServiceImpl&lt;/code&gt; within itself.&lt;/p&gt;
+
+&lt;h5 id=&quot;example-2&quot;&gt;Example-2&lt;/h5&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ComplexAlgorithmImpl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nc&quot;&gt;BubbleSortAlgorithm&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bubbleSortAlgorithm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BubbleSortAlgorithm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt; is meant to perform a lot of complex logic, and one of the things it does is sorting. here, it is directly creating an instance of &lt;code class=&quot;highlighter-rouge&quot;&gt;BubbleSortAlgorithm&lt;/code&gt; within itself.&lt;/p&gt;
+
+&lt;p&gt;These two examples highlight code with tight coupling.&lt;/p&gt;
+
+&lt;p&gt;Imagine what you need to do, if you want to change the sort algorithm to quicksort. You need to change the relevant code within &lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Hence, &lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt; is tightly coupled to &lt;code class=&quot;highlighter-rouge&quot;&gt;BubbleSortAlgorithm&lt;/code&gt;, a specific sort algorithm.&lt;/p&gt;
+
+&lt;h4 id=&quot;decoupling-complexalgorithmimpl&quot;&gt;Decoupling &lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt;&lt;/h4&gt;
+
+&lt;p&gt;How do we decouple &lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt; from the specific sort algorithm?&lt;/p&gt;
+
+&lt;p&gt;We want it to be used with bubble sort, or quick sort, or radix sort, or any other sort. The solution is to make use of an interface.&lt;/p&gt;
+
+&lt;p&gt;Have a look at the following code:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SortAlgorithm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;nd&quot;&gt;@Component&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ComplexAlgorithmImpl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SortAlgorithm&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sortAlgorithm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;	
+		&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BubbleSortAlgorithm&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SortAlogrithm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;QuickSortAlgorithm&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SortAlogrithm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;decoupling-explained&quot;&gt;Decoupling Explained&lt;/h4&gt;
+
+&lt;p&gt;We have created an interface named &lt;code class=&quot;highlighter-rouge&quot;&gt;SortAlgorithm&lt;/code&gt; that has &lt;code class=&quot;highlighter-rouge&quot;&gt;sort()&lt;/code&gt; method defined. Specific sort algorithms all implement &lt;code class=&quot;highlighter-rouge&quot;&gt;SortAlgorithm&lt;/code&gt; by overriding &lt;code class=&quot;highlighter-rouge&quot;&gt;sort()&lt;/code&gt;. Here, &lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt; makes use of &lt;code class=&quot;highlighter-rouge&quot;&gt;SortAlgorithm&lt;/code&gt; as a dependency by declaring it as a member. However, the actual implementation of &lt;code class=&quot;highlighter-rouge&quot;&gt;SortAlgorithm&lt;/code&gt; needs to be passed in as a parameter to its constructor, or a setter method. The user decides which specific sort algorithm &lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt; gets to use.&lt;/p&gt;
+
+&lt;p&gt;Whichever class wants to make use of &lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt; needs to write code such as this:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;nc&quot;&gt;CompexAlgorithmImpl&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;binarySearch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ComplexAlgorithmImpl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;QuickSortAlgorithm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Other classes may choose to pass in &lt;code class=&quot;highlighter-rouge&quot;&gt;SortAlgorithm&lt;/code&gt; implementations for bubble sort, heap sort or radix sort.&lt;/p&gt;
+
+&lt;h4 id=&quot;inversion-of-control-with-complexalgorithmimpl&quot;&gt;Inversion of Control with &lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt;&lt;/h4&gt;
+
+&lt;p&gt;Look at it from the perspective of &lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;In the first approach, it took up the responsibility of selecting the specific sort algorithm. As a result, the specific &lt;code class=&quot;highlighter-rouge&quot;&gt;BubbleSortAlgorithm&lt;/code&gt; was hard-coded.&lt;/p&gt;
+
+&lt;p&gt;In the second approach, the class which uses &lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt; gets to decide which specific sort algorithm is to be used.&lt;/p&gt;
+
+&lt;p&gt;There is a clear inversion of responsibility taking place. This is also called Inversion of Control or &lt;strong&gt;dependency inversion&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dependency inversion results in &lt;strong&gt;loose coupling&lt;/strong&gt;.  &lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt; is not tied to a specific sort algorithm.&lt;/p&gt;
+
+&lt;h3 id=&quot;dependency-injection-in-spring&quot;&gt;Dependency Injection In Spring&lt;/h3&gt;
+
+&lt;p&gt;Now where does Spring framework come into picture?&lt;/p&gt;
+
+&lt;p&gt;Lets look at the code below:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;nc&quot;&gt;CompexAlgorithmImpl&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;binarySearch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ComplexAlgorithmImpl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;QuickSortAlgorithm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In the above piece of code, we are manually creating the objects and tying them up with dependencies. In a typical application, we might have thousands of objects. Do you want to write the code for all it manually. How about having a framework that does this for you?&lt;/p&gt;
+
+&lt;p&gt;Let’s consider the following example:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;nd&quot;&gt;@Component&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ComplexAlgorithmImpl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SortAlgorithm&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sortAlgorithm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;	
+		&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;When this code is run - Spring creates an instance of &lt;code class=&quot;highlighter-rouge&quot;&gt;QuickSortAlgorithm&lt;/code&gt; which implements &lt;code class=&quot;highlighter-rouge&quot;&gt;SortAlgorithm&lt;/code&gt; interface, and wires it into an instance of &lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;This process, where the Spring framework identifies the beans, identifies the dependencies, and populates the dependencies inside the beans is called &lt;strong&gt;dependency injection&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;dependency-inversion-and-dependency-injection&quot;&gt;Dependency Inversion And Dependency Injection&lt;/h4&gt;
+
+&lt;p&gt;So far in this article, we have discussed two important concepts:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Dependency Inversion : We create loosely couple code by explicitly declaring dependencies, and introducing interfaces for them.&lt;/li&gt;
+  &lt;li&gt;Dependency Injection : The Spring framework identifies beans and dependencies, and wires dependencies inside beans.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;In this article, we talked about dependency injection. Dependency injection has its roots in a core SOLID principle of object oriented programming, named the Dependency Inversion principle. We saw how dependency inversion transforms tightly couple code into a loosely coupled one. Dependencies are explicitly identified, and classes that use them become flexible.&lt;/p&gt;
+
+&lt;p&gt;Dependency injection is a mechanism based on dependency inversion. The Spring framework identifies beans and dependencies, and autowires the dependencies into beans.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h3 id=&quot;spring-framework&quot;&gt;Spring Framework&lt;/h3&gt;
+
+&lt;p&gt;This is the first article in a series of articles on Spring Framework:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-the-spring-framework&quot; target=&quot;_blank&quot;&gt;1 - Introduction To Spring Framework&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-what-is-a-dependency&quot; target=&quot;_blank&quot;&gt;2 - What Is A Dependency?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-dependency-injection-inversion-of-control&quot; target=&quot;_blank&quot;&gt;3 - What Is Dependency Injection?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-and-spring-boot-what-is-component-scan&quot; target=&quot;_blank&quot;&gt;4 - What Is Component Scan?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-architectures-and-modules&quot; target=&quot;_blank&quot;&gt;5 - Architecture of Spring Framework - Modularity and Spring Modules&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-projects-with-examples&quot; target=&quot;_blank&quot;&gt;6 - What Are Spring Projects?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-basics-introduction-to-spring-batch&quot; target=&quot;_blank&quot;&gt;7 - Introduction To Spring Batch&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr /&gt;
+   
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;/blog/spring-framework-what-is-a-dependency&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;/blog/spring-and-spring-boot-what-is-component-scan&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;       
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Developers starting with the Spring framework often get confused with terminology - Dependency, Dependency Injection and Inversion Of Control. In this article, we introduce you to the concepts of Dependency Injection and Inversion Of Control.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/microservices.png" /></entry><entry><title type="html">Spring Basics - What Is A Dependency?</title><link href="http://localhost:4000/blog/spring-framework-what-is-a-dependency" rel="alternate" type="text/html" title="Spring Basics - What Is A Dependency?" /><published>2019-10-23T05:54:00+00:00</published><updated>2019-10-23T05:54:00+00:00</updated><id>http://localhost:4000/blog/springframewok2</id><content type="html" xml:base="http://localhost:4000/blog/spring-framework-what-is-a-dependency">&lt;p&gt;Most important feature of Spring Framework is Dependency Injection. To understand Dependency Injection, you need to understand the concept of a Dependency.&lt;/p&gt;
+
+&lt;h2 id=&quot;you-will-learn&quot;&gt;You will learn&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;What is a Dependency?&lt;/li&gt;
+  &lt;li&gt;How are applications built? How is one layer dependent on another?&lt;/li&gt;
+  &lt;li&gt;How is a class dependent on another?&lt;/li&gt;
+  &lt;li&gt;How does the Spring Framework do Dependency Injection?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In this article, we have a look at what a dependency is in general terms, and then in the context of the Spring framework.&lt;/p&gt;
+
+&lt;h3 id=&quot;dependencies-at-a-high-level&quot;&gt;Dependencies At A High Level&lt;/h3&gt;
+
+&lt;p&gt;We build enterprise applications in multiple layers:
+&lt;img src=&quot;/images/Capture-093-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A typical Java application will have three layers in its architecture: web, business and data.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The web layer&lt;/li&gt;
+  &lt;li&gt;The business layer&lt;/li&gt;
+  &lt;li&gt;The data layer&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In the above scenario:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Web Layer depends on Business Layer. The business layer is a dependency for the web layer.&lt;/li&gt;
+  &lt;li&gt;Business layer depends on Data Layer. The data layer is a dependency for the business layer.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;dependencies-at-class-level&quot;&gt;Dependencies At Class Level&lt;/h3&gt;
+
+&lt;p&gt;Let’s look at an example:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;nd&quot;&gt;@Service&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ClientBOImpl&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;implemented&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ClientBO&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
+		&lt;span class=&quot;nc&quot;&gt;ProductDO&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;productDO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
+		&lt;span class=&quot;nc&quot;&gt;ClientDO&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clientDo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+		&lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Amount&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getClientProductsSum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cliendId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+		&lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;saveChangedProducts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clientId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;userEnteredProducts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+		&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ClientBOImpl&lt;/code&gt; is the business class, and it makes use of two data layer classes - &lt;code class=&quot;highlighter-rouge&quot;&gt;ProductDO&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;ClientDO&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Let’s now have a look at the business logic within ````ClientBOImpl```:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getClientProductsSum()&lt;/code&gt; : This returns the sum of all products for a given client.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;saveChangedProducts()&lt;/code&gt; : When products are modified on the application page, this method is called.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Both methods in ClientBOImpl need either &lt;code class=&quot;highlighter-rouge&quot;&gt;ProductDO&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;ClientDO&lt;/code&gt;. &lt;code class=&quot;highlighter-rouge&quot;&gt;ProductDO&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;ClientDO&lt;/code&gt; are dependencies of ClientBOImpl.&lt;/p&gt;
+
+&lt;h3 id=&quot;inputsoutputs-are-not-dependencies&quot;&gt;Inputs/Outputs Are Not Dependencies&lt;/h3&gt;
+
+&lt;p&gt;If you look at &lt;code class=&quot;highlighter-rouge&quot;&gt;public Amount getClientProductsSum(long clientId)&lt;/code&gt;, clientId is merely an input, not a dependency. Similarly, the total calculated amount returned by &lt;code class=&quot;highlighter-rouge&quot;&gt;getClientProductsSum&lt;/code&gt; is an output, not a dependency.&lt;/p&gt;
+
+&lt;h3 id=&quot;a-few-more-examples-of-dependencies&quot;&gt;A Few More Examples Of Dependencies&lt;/h3&gt;
+
+&lt;h4 id=&quot;example-1&quot;&gt;Example-1&lt;/h4&gt;
+
+&lt;p&gt;Have a look at the following code:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;nd&quot;&gt;@Component&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ComplexAlgorithmImpl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SortAlgorithm&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sortAlgorithm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;	
+		&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SortAlgorithm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;nd&quot;&gt;@Component&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;QuickSortAlgorithm&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SortAlogrithm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt; performs a lot of complex logic, and sorting is one of the steps.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;SortAlgorithm&lt;/code&gt; is a dependency of &lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Since &lt;code class=&quot;highlighter-rouge&quot;&gt;SortAlgorithm&lt;/code&gt; is an interface, you can easily change the actual sort algorithm used by &lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt;, without changing its code.&lt;/p&gt;
+
+&lt;h4 id=&quot;example-2&quot;&gt;Example-2&lt;/h4&gt;
+
+&lt;p&gt;Consider the following code:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.sql.ResultSet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+	&lt;span class=&quot;nd&quot;&gt;@Repository&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PersonJdbcDao&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
+		&lt;span class=&quot;nc&quot;&gt;JdbcTemplate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jdbcTemplate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+		&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PersonRowMapper&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RowMapper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+			&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;mapRow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;ResultSet&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rowNum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SQLException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+				&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+			&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+			&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To execute a query on the database, &lt;code class=&quot;highlighter-rouge&quot;&gt;PersonJdbcDao&lt;/code&gt; needs &lt;code class=&quot;highlighter-rouge&quot;&gt;JdbcTemplate&lt;/code&gt;. Therefore, &lt;code class=&quot;highlighter-rouge&quot;&gt;JdbcTemplate&lt;/code&gt; is a dependency of &lt;code class=&quot;highlighter-rouge&quot;&gt;PersonJdbcDao&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Let’s look at a simple method:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;findById&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jdbcTemplate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;queryForObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//...);&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;id&lt;/code&gt; is the input for this method, and the output returned is of type &lt;code class=&quot;highlighter-rouge&quot;&gt;Person&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;In the above method, we are making use of a dependeny &lt;code class=&quot;highlighter-rouge&quot;&gt;jdbcTemplate&lt;/code&gt; . The inputs and outputs are not dependencies.&lt;/p&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;In this article, we focused on the most important concept in Spring Framework - a dependency.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h3 id=&quot;spring-framework&quot;&gt;Spring Framework&lt;/h3&gt;
+
+&lt;p&gt;This is the first article in a series of articles on Spring Framework:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-the-spring-framework&quot; target=&quot;_blank&quot;&gt;1 - Introduction To Spring Framework&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-what-is-a-dependency&quot; target=&quot;_blank&quot;&gt;2 - What Is A Dependency?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-dependency-injection-inversion-of-control&quot; target=&quot;_blank&quot;&gt;3 - What Is Dependency Injection?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-and-spring-boot-what-is-component-scan&quot; target=&quot;_blank&quot;&gt;4 - What Is Component Scan?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-architectures-and-modules&quot; target=&quot;_blank&quot;&gt;5 - Architecture of Spring Framework - Modularity and Spring Modules&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-projects-with-examples&quot; target=&quot;_blank&quot;&gt;6 - What Are Spring Projects?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-basics-introduction-to-spring-batch&quot; target=&quot;_blank&quot;&gt;7 - Introduction To Spring Batch&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr /&gt;
+   
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;/blog/introduction-to-the-spring-framework&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;/blog/spring-framework-dependency-injection-inversion-of-control&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;       
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Most important feature of Spring Framework is Dependency Injection. To understand Dependency Injection, you need to understand the concept of a Dependency. You will learn What is a Dependency? How are applications built? How is one layer dependent on another? How is a class dependent on another? How does the Spring Framework do Dependency Injection?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/microservices.png" /></entry><entry><title type="html">Introduction To Spring Framework - Quick Tutorial For Beginners</title><link href="http://localhost:4000/blog/introduction-to-the-spring-framework" rel="alternate" type="text/html" title="Introduction To Spring Framework - Quick Tutorial For Beginners" /><published>2019-10-23T05:41:00+00:00</published><updated>2019-10-23T05:41:00+00:00</updated><id>http://localhost:4000/blog/springframewok1</id><content type="html" xml:base="http://localhost:4000/blog/introduction-to-the-spring-framework">&lt;p&gt;In this article, we look to get an introduction to what the Spring framework is, and why it is so widely used.&lt;/p&gt;
+
+&lt;h2 id=&quot;you-will-learn&quot;&gt;You will learn&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;What is Spring Framework?&lt;/li&gt;
+  &lt;li&gt;What are the important problems that Spring Framework solves?&lt;/li&gt;
+  &lt;li&gt;How does Spring Framework make building enterprise applications easier?&lt;/li&gt;
+  &lt;li&gt;What are important features of Spring Framework?&lt;/li&gt;
+  &lt;li&gt;What are important concepts to understand in Spring Framework?&lt;/li&gt;
+  &lt;li&gt;Why Is The Spring Framework Important?&lt;/li&gt;
+  &lt;li&gt;What are the best practices in using Spring Framework?&lt;/li&gt;
+  &lt;li&gt;What are Spring Projects?&lt;/li&gt;
+  &lt;li&gt;What are Spring Modules?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;what-is-spring&quot;&gt;What Is Spring?&lt;/h3&gt;
+
+&lt;p&gt;Here’s the description from the Spring web site:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The Spring framework provides comprehensive infrastructural support to develop Java applications.  Spring handles the infrastructure, so you can develop your application.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;What does this mean?&lt;/p&gt;
+
+&lt;p&gt;Let’s look at some of the important features of Spring framework with examples.&lt;/p&gt;
+
+&lt;h3 id=&quot;writing-loosely-coupled-code&quot;&gt;Writing Loosely Coupled Code&lt;/h3&gt;
+
+&lt;p&gt;When we write application code, we don’t want it to be tightly coupled.&lt;/p&gt;
+
+&lt;h4 id=&quot;what-is-tight-coupling&quot;&gt;What Is Tight Coupling?&lt;/h4&gt;
+
+&lt;p&gt;Tightly coupled code could look like the following:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ComplexAlgorithmImpl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nc&quot;&gt;BubbleSortAlgorithm&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bubbleSortAlgorithm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BubbleSortAlgorithm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt; is tightly coupled to the &lt;code class=&quot;highlighter-rouge&quot;&gt;BubbleSortAlgorithm&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you need to change the sort algorithm from &lt;code class=&quot;highlighter-rouge&quot;&gt;BubbleSortAlgorithm&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;QuickSortAlgorithm&lt;/code&gt;, then the code of &lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt; needs to change as well.&lt;/p&gt;
+
+&lt;h4 id=&quot;what-is-loose-coupling&quot;&gt;What Is Loose Coupling?&lt;/h4&gt;
+
+&lt;p&gt;Is there a better way to manage change, than what we see over here?  turns out there is - use an interface named &lt;code class=&quot;highlighter-rouge&quot;&gt;SortAlgorithm&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SortAlgorithm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BubbleSortAlgorithm&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SortAlgorithm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;QuickSortAlgorithm&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SortAlgorithm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;nd&quot;&gt;@Component&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ComplexAlgorithmImpl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SortAlgorithm&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sortAlgorithm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt; is no longer tightly coupled to any particular sort algorithm.&lt;/p&gt;
+
+&lt;p&gt;Whenever you need to instantiate a &lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt;, this is how  you proceed:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;nc&quot;&gt;ComplexAlgorithmImpl&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;binarySearch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ComplexAlgorithmImpl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;QuickSortAlgorithm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The exact sort algorithm to be used can be passed as an input parameter to the constructor.&lt;/p&gt;
+
+&lt;h4 id=&quot;what-does-the-spring-framework-do&quot;&gt;What does the Spring Framework do?&lt;/h4&gt;
+
+&lt;p&gt;Where does the Spring framework come into the picture?&lt;/p&gt;
+
+&lt;p&gt;Look at the snippet below:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;nd&quot;&gt;@Component&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ComplexAlgorithmImpl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SortAlgorithm&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sortAlgorithm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	&lt;span class=&quot;nd&quot;&gt;@Component&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;QuickSortAlgorithm&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SortAlgorithm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We defined the components and identified their dependencies by using Spring specific annotations.&lt;/p&gt;
+
+&lt;p&gt;We are defining &lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt; as a spring bean, and &lt;code class=&quot;highlighter-rouge&quot;&gt;SortAlgorithm&lt;/code&gt; as a dependency. We are also providing an implementation of &lt;code class=&quot;highlighter-rouge&quot;&gt;SortAlgorithm&lt;/code&gt; - &lt;code class=&quot;highlighter-rouge&quot;&gt;QuickSortAlgorithm&lt;/code&gt; as a spring bean.&lt;/p&gt;
+
+&lt;p&gt;When Spring Framework looks at this code, it create a QuickSortAlgorithm bean and injects it into ComplexAlgorithmImpl bean. This is called &lt;strong&gt;Dependency Injection&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;advantages-of-loose-coupling&quot;&gt;Advantages Of Loose Coupling&lt;/h3&gt;
+
+&lt;p&gt;If you want to switch to a new &lt;code class=&quot;highlighter-rouge&quot;&gt;SortAlgorithm&lt;/code&gt; implementation, then loose coupling makes it very easy to make the change. The code inside &lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt; does not need to change at all.&lt;/p&gt;
+
+&lt;p&gt;You need to remove the &lt;code class=&quot;highlighter-rouge&quot;&gt;@Component&lt;/code&gt; annotation from &lt;code class=&quot;highlighter-rouge&quot;&gt;QuickSortAlgorithm&lt;/code&gt; and place it at the definition of the new implementation.&lt;/p&gt;
+
+&lt;p&gt;The other thing you are now able to do is write a unit test for &lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt;, without worrying about the sort logic.&lt;/p&gt;
+
+&lt;p&gt;You can create a stub algorithm that implements &lt;code class=&quot;highlighter-rouge&quot;&gt;SortAlgorithm&lt;/code&gt;, and use that in tests for &lt;code class=&quot;highlighter-rouge&quot;&gt;ComplexAlgorithmImpl&lt;/code&gt;. The test would now focus on the business logic of the component, not its dependencies.&lt;/p&gt;
+
+&lt;h3 id=&quot;another-example-of-loose-coupling&quot;&gt;Another Example Of Loose Coupling&lt;/h3&gt;
+
+&lt;p&gt;Have a look at the following code:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;nd&quot;&gt;@RestController&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;WelcomeController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;WelcomeService&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;service&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;WelcomeService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+		
+		&lt;span class=&quot;nd&quot;&gt;@RequestMapping&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/welcome&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;retrieveWelcomeMessage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;WelcomeController&lt;/code&gt; is directly creating an instance of the &lt;code class=&quot;highlighter-rouge&quot;&gt;WelcomeService&lt;/code&gt;, and so it is tightly coupled to it.&lt;/p&gt;
+
+&lt;p&gt;If you were to use the Spring framework to decouple the two, you do something like:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+	&lt;span class=&quot;nd&quot;&gt;@Component&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;WelcomeService&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;nd&quot;&gt;@RestController&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Welcome&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Controller&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
+		&lt;span class=&quot;nc&quot;&gt;WelcomeService&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+		&lt;span class=&quot;nd&quot;&gt;@RequestMapping&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/welcome&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;retrieveWelcomeMessage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;		
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;	
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now, Spring auto-wires in the &lt;code class=&quot;highlighter-rouge&quot;&gt;WelcomeService&lt;/code&gt; dependency to the &lt;code class=&quot;highlighter-rouge&quot;&gt;WelcomeController&lt;/code&gt; component. When writing a unit test for this component, we can use a &lt;code class=&quot;highlighter-rouge&quot;&gt;WelcomeService&lt;/code&gt; stub instead of an actual dependency.&lt;/p&gt;
+
+&lt;h3 id=&quot;solving-other-problems-using-spring&quot;&gt;Solving Other Problems Using Spring&lt;/h3&gt;
+
+&lt;p&gt;The Spring framework can be used to solve a host of other problems in Java applications.
+Let’s look at a few of them.&lt;/p&gt;
+
+&lt;h4 id=&quot;reducing-duplication-in-code&quot;&gt;Reducing Duplication In Code&lt;/h4&gt;
+
+&lt;p&gt;Spring provides a whole range of modules such as:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;SpringMVC&lt;/li&gt;
+  &lt;li&gt;SpringJDBC&lt;/li&gt;
+  &lt;li&gt;SpringORM&lt;/li&gt;
+  &lt;li&gt;SpringAOP&lt;/li&gt;
+  &lt;li&gt;SpringJMS&lt;/li&gt;
+  &lt;li&gt;SpringTest&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;All these frameworks make it easy to write your Java code. They bring in a set of abstractions, that reduce boilerplate code.&lt;/p&gt;
+
+&lt;h4 id=&quot;improving-integration-with-other-frameworks&quot;&gt;Improving Integration With Other Frameworks&lt;/h4&gt;
+
+&lt;p&gt;Spring does not try to provide solutions for problems that have already been solved. It provides excellent integration with frameworks such as&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Hibernate for ORM&lt;/li&gt;
+  &lt;li&gt;iBatis for object mapping&lt;/li&gt;
+  &lt;li&gt;JUnit and Mockito for unit testing&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;what-does-the-spring-framework-do-1&quot;&gt;What Does The Spring Framework Do?&lt;/h3&gt;
+
+&lt;p&gt;The Spring framework facilitates the following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Allows the programmers to focus on the business logic. The key feature is dependency management, and it provides excellent interfacing with external frameworks, by adding layers on top of them.&lt;/li&gt;
+  &lt;li&gt;Enables testability, as it enables us to write decoupled code.&lt;/li&gt;
+  &lt;li&gt;Allows for inversion of control, through dependency injection. A component is no longer tied to specific dependencies. Instead, the dependency is injected in from outside, during instantiation of the component. The Spring framework takes care of the actual injection.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;best-practices-with-spring&quot;&gt;Best Practices With Spring&lt;/h3&gt;
+
+&lt;h4 id=&quot;use-spring-initializr&quot;&gt;Use Spring Initializr&lt;/h4&gt;
+
+&lt;p&gt;Spring Initializr is a Spring project generation tool. Visit the following website - start.spring.io:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Capture-081-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You only need to provide the Group Id, the Artifact Id, and the framework dependencies of the project. After that, you can generate the project and get started with Spring.&lt;/p&gt;
+
+&lt;h4 id=&quot;consider-spring-boot&quot;&gt;Consider Spring Boot&lt;/h4&gt;
+
+&lt;p&gt;Spring Boot makes it very easy to use the Spring framework.&lt;/p&gt;
+
+&lt;h4 id=&quot;write-unit-tests&quot;&gt;Write Unit Tests&lt;/h4&gt;
+
+&lt;p&gt;Always make sure you write great unit tests, because Spring makes it easy for you.&lt;/p&gt;
+
+&lt;h3 id=&quot;challenges-with-spring-framework&quot;&gt;Challenges With Spring Framework&lt;/h3&gt;
+
+&lt;p&gt;Spring is difficult for a starting programmer to understand. However, once you understand it, you cannot stop using it!&lt;/p&gt;
+
+&lt;h3 id=&quot;understand-spring-modules&quot;&gt;Understand Spring Modules&lt;/h3&gt;
+
+&lt;p&gt;Modules in Spring offer specialized functionality which can be used within a Spring application. Popular ones are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;SpringMVC&lt;/li&gt;
+  &lt;li&gt;SpringJDBC&lt;/li&gt;
+  &lt;li&gt;SpringORM&lt;/li&gt;
+  &lt;li&gt;SpringAOP&lt;/li&gt;
+  &lt;li&gt;SpringJMS&lt;/li&gt;
+  &lt;li&gt;SpringTest&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;explore-spring-projects&quot;&gt;Explore Spring Projects&lt;/h3&gt;
+
+&lt;p&gt;There are a wide variety of projects that have been done, under the umbrella of the Spring Framework. Popular ones include Spring Cloud, and Spring Web Services.&lt;/p&gt;
+
+&lt;p&gt;In this article, we had an introductory look at the Spring Framework. We saw that Spring is a Java framework that makes life easy for a programmer. Spring improves the testability of the application code, and also makes it easy to interface it with external frameworks. Spring comes with its own umbrella of projects, and a rich set of modules as well.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h3 id=&quot;spring-framework&quot;&gt;Spring Framework&lt;/h3&gt;
+
+&lt;p&gt;This is the first article in a series of articles on Spring Framework:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-the-spring-framework&quot; target=&quot;_blank&quot;&gt;1 - Introduction To Spring Framework&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-what-is-a-dependency&quot; target=&quot;_blank&quot;&gt;2 - What Is A Dependency?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-dependency-injection-inversion-of-control&quot; target=&quot;_blank&quot;&gt;3 - What Is Dependency Injection?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-and-spring-boot-what-is-component-scan&quot; target=&quot;_blank&quot;&gt;4 - What Is Component Scan?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-architectures-and-modules&quot; target=&quot;_blank&quot;&gt;5 - Architecture of Spring Framework - Modularity and Spring Modules&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-projects-with-examples&quot; target=&quot;_blank&quot;&gt;6 - What Are Spring Projects?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-basics-introduction-to-spring-batch&quot; target=&quot;_blank&quot;&gt;7 - Introduction To Spring Batch&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr /&gt;
+   
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;/blog/introduction-to-the-spring-framework&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;/blog/spring-framework-what-is-a-dependency&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;       
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">In this article, we look to get an introduction to what the Spring framework is, and why it is so widely used. You will learn What is Spring Framework? What are the important problems that Spring Framework solves? How does Spring Framework make building enterprise applications easier? What are important features of Spring Framework? What are important concepts to understand in Spring Framework? Why Is The Spring Framework Important? What are the best practices in using Spring Framework? What are Spring Projects? What are Spring Modules?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/microservices.png" /></entry><entry><title type="html">Asynchronous communication with queues and microservices - A perfect combination?</title><link href="http://localhost:4000/blog/asynchronous-communication-with-queues-in-microservices" rel="alternate" type="text/html" title="Asynchronous communication with queues and microservices - A perfect combination?" /><published>2019-10-19T20:17:00+00:00</published><updated>2019-10-19T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices23</id><content type="html" xml:base="http://localhost:4000/blog/asynchronous-communication-with-queues-in-microservices">&lt;p&gt;In this article, we throw some light on what asynchronous messaging is all about and discuss why you should consider it for your microservices architectures.&lt;/p&gt;
 
 &lt;h3 id=&quot;what-you-will-learn&quot;&gt;What you will learn&lt;/h3&gt;
 &lt;ul&gt;
@@ -431,757 +1596,4 @@ mvn archetype:create-from-project
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">In this article, we discuss why queues are needed, and how they form the cornerstone of asynchronous communication in microservices architectures.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/microservices.png" /></entry><entry><title type="html">Microservice Best Practice - Why do you build a Vertical Slice?</title><link href="http://localhost:4000/blog/software-best-practices-building-a-vertical-slice" rel="alternate" type="text/html" title="Microservice Best Practice - Why do you build a Vertical Slice?" /><published>2019-10-19T20:17:00+00:00</published><updated>2019-10-19T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices20</id><content type="html" xml:base="http://localhost:4000/blog/software-best-practices-building-a-vertical-slice">&lt;p&gt;In this article, we look at what is a vertical slice, and why we build it. We also discuss the best practices involved in building vertical slices.&lt;/p&gt;
-
-&lt;h3 id=&quot;what-you-will-learn&quot;&gt;What you will learn&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;What is an vertical slice?&lt;/li&gt;
-  &lt;li&gt;When do you build a vertical slice?&lt;/li&gt;
-  &lt;li&gt;What are the advantages in building a vertical slice?&lt;/li&gt;
-  &lt;li&gt;What are the best practices in building a vertical slice?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;need-for-a-vertical-slice&quot;&gt;Need For A Vertical Slice&lt;/h3&gt;
-
-&lt;p&gt;Let’s say you want to start off writing a new microservice, or developing any new application. There are several technical risks that need to be addressed , such as deciding what framework to use, identifying the layers of the architecture, figuring out communication with other systems, and so on.&lt;/p&gt;
-
-&lt;p&gt;You want to make sure you have great unit tests in place, and also have a good continuous integration and deployment system to process the builds.&lt;/p&gt;
-
-&lt;p&gt;How do we address these challenges?&lt;/p&gt;
-
-&lt;h3 id=&quot;what-is-a-vertical-slice&quot;&gt;What Is A Vertical Slice?&lt;/h3&gt;
-
-&lt;p&gt;A vertical slice involves selecting one or more of the complex or risky use cases of the systems, and implementing them first.&lt;/p&gt;
-
-&lt;p&gt;Typically, this involves addressing all the risks listed above - selecting the right framework, organizing into layers, handling communication properly, having great tests in place, and following a CI/CD process.&lt;/p&gt;
-
-&lt;p&gt;You will also deploy and test it to make sure all requirements are met.&lt;/p&gt;
-
-&lt;h3 id=&quot;benefits-of-a-vertical-slice&quot;&gt;Benefits Of A Vertical Slice&lt;/h3&gt;
-
-&lt;p&gt;A vertical slice will help you identify and solve technology risk faster. Once a vertical slice is built well, adhering to coding and other standards, it could also act as a reference point for other developers in your team.&lt;/p&gt;
-
-&lt;h3 id=&quot;best-practices&quot;&gt;Best Practices&lt;/h3&gt;
-
-&lt;p&gt;Lets quickly look at a few best practices around building vertical slices:&lt;/p&gt;
-
-&lt;h4 id=&quot;ensure-static-analysis&quot;&gt;Ensure Static Analysis&lt;/h4&gt;
-
-&lt;p&gt;Make sure that a tool to perform static analysis of your code is in place during the development of the vertical slice. Also make sure development adheres to all relevant best practices.&lt;/p&gt;
-
-&lt;h4 id=&quot;ensure-continuous-integration&quot;&gt;Ensure Continuous Integration&lt;/h4&gt;
-
-&lt;p&gt;It is very important you have a continuous integration process in place, to take the vertical slice build through development, QA, staging and deployment.&lt;/p&gt;
-
-&lt;h4 id=&quot;address-technical-training-issues&quot;&gt;Address Technical Training Issues&lt;/h4&gt;
-
-&lt;p&gt;If the vertical slice is well implemented, it acts as a good reference point. This means that the development team can be trained using the vertical slice as a case study.&lt;/p&gt;
-
-&lt;h3 id=&quot;challenges&quot;&gt;Challenges&lt;/h3&gt;
-
-&lt;p&gt;It is very important that care be shown in selecting the use case for your vertical slice. Make sure that you choose a sufficiently complex use case, because you need to explore how the various technical risks will be addressed.&lt;/p&gt;
-
-&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
-
-&lt;p&gt;In this article, we had a look at what are the technical risks involved in starting application development. We then saw how creating a vertical slice, using a complex use case, helps in exploring solutions to these risks, and acts as a reference point for the development team. We explored the best practices for creating a vertical slice, and looked at the challenges involved.&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;best-practices-with-cloud-and-microservices&quot;&gt;Best Practices with Cloud and Microservices&lt;/h3&gt;
-
-&lt;p&gt;This is the first article in a series of six articles on best practices with cloud and microservices:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/12-factor-app-cloud-native-microservices-best-practices&quot; target=&quot;_blank&quot;&gt;1 - The 12 Factor App - Best Practices In Cloud Native Applications and Microservices&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-event-driven-architectures-with-microservices&quot; target=&quot;_blank&quot;&gt;2 - Microservices Architectures - Event Driven Approach&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/software-best-practices-building-a-vertical-slice&quot; target=&quot;_blank&quot;&gt;3 - Why do you build a Vertical Slice?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/messaging-queues-and-asynchronous-communication-in-microservices&quot; target=&quot;_blank&quot;&gt;4 - Microservice Architecture Best Practices - Messaging Queues&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/creating-archetypes-in-microservices-architectures-best-practices&quot; target=&quot;_blank&quot;&gt;5 - Build an Archetype&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/asynchronous-communication-with-queues-in-microservices&quot; target=&quot;_blank&quot;&gt;6 - Asynchronous communication with queues and microservices - A perfect combination?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr /&gt;
-   
-    &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/introduction-to-event-driven-architectures-with-microservices&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/messaging-queues-and-asynchronous-communication-in-microservices&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">In this article, we look at what is a vertical slice, and why we build it. We also discuss the best practices involved in building vertical slices.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/microservices.png" /></entry><entry><title type="html">Microservices Architectures - Event Driven Approach</title><link href="http://localhost:4000/blog/introduction-to-event-driven-architectures-with-microservices" rel="alternate" type="text/html" title="Microservices Architectures - Event Driven Approach" /><published>2019-10-19T20:17:00+00:00</published><updated>2019-10-19T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices19</id><content type="html" xml:base="http://localhost:4000/blog/introduction-to-event-driven-architectures-with-microservices">&lt;h3 id=&quot;the-need-for-event-driven-architecture&quot;&gt;The Need For Event Driven Architecture&lt;/h3&gt;
-
-&lt;p&gt;Microservices architectures have multiple small-sized microservices talking to each other. Here is one such architecture:
-&lt;img src=&quot;/images/Capture-060-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;There are a set of common components - technical as well as infrastructure. Examples of technical components are Security and Logging components. Examples of infrastructure components include Naming Server, API Gateway and Centralized Logging.&lt;/p&gt;
-
-&lt;p&gt;When implementing microservices, you would want to make them as event driven as possible. Why? Let’s take an example&lt;/p&gt;
-
-&lt;h3 id=&quot;take-a-use-case&quot;&gt;Take A Use Case&lt;/h3&gt;
-
-&lt;p&gt;Consider the use case of an online shopping application. Whenever there is an order, it is received by the order service. There are several actions that need to be carried out in order service:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Update the stock&lt;/li&gt;
-  &lt;li&gt;Send out email and SMS&lt;/li&gt;
-  &lt;li&gt;Notify the packaging team.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;monolithic-approach&quot;&gt;Monolithic Approach&lt;/h4&gt;
-
-&lt;p&gt;An initial approach could be to have a single monolith application to take care of all the functionality.&lt;/p&gt;
-
-&lt;h4 id=&quot;microservices-approach&quot;&gt;Microservices Approach&lt;/h4&gt;
-
-&lt;p&gt;Alternatively, these are fairly independent activities, and the entire application can be structured to have microservices for them, in a straightforward manner.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Capture-060-03.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;In this approach, you create an order event for the request coming in, and place it in the Queue. The rest of the individual services listen in to the queue for order events, and do the processing subsequently.&lt;/p&gt;
-
-&lt;h4 id=&quot;how-to-choose&quot;&gt;How to choose?&lt;/h4&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;How do we make the decision which of the two application architectures to choose?&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;The nature of your application decides this.&lt;/p&gt;
-
-&lt;p&gt;If your system does not have a very high load at any given time, and also does not have any pressing scalability requirements, then you might want go with a monolith approach.&lt;/p&gt;
-
-&lt;p&gt;However, when your system is a large , handling millions of requests every day, and also has very stringent scalability requirements, you might be better off with the microservices approach.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;An event driven architecture would be the one best suited to your needs.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;advantages-of-event-driven-architectures&quot;&gt;Advantages Of Event Driven Architectures&lt;/h3&gt;
-
-&lt;h4 id=&quot;improved-flexibility-and-maintainability&quot;&gt;Improved Flexibility And Maintainability&lt;/h4&gt;
-
-&lt;p&gt;One of the most important needs of an application is maintainability. Ease of maintainability comes with proper &lt;strong&gt;separation of concerns&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;In our example above, the OrderService is only responsible for collecting the order and placing it in the queue. It does not worry about how it is going to be processed, who is going to process it, and so on.&lt;/p&gt;
-
-&lt;p&gt;Similarly,  the StockService is only responsible for updating the stock, and the same with the other microservices.&lt;/p&gt;
-
-&lt;p&gt;If there is a need for an additional processing step on an order, you write a new microservice to listen on the queue, and easily integrate it into the system.&lt;/p&gt;
-
-&lt;p&gt;Such an architecture is clearly extensible, and also easily maintainable, due to separation of concerns.&lt;/p&gt;
-
-&lt;h4 id=&quot;high-scalability&quot;&gt;High Scalability&lt;/h4&gt;
-
-&lt;p&gt;Let’s consider an example : One fine day, a large volume of emails need to be sent out.&lt;/p&gt;
-
-&lt;p&gt;In that case, you have the freedom to create a large number of instances of the EmailService, to handle additional load.&lt;/p&gt;
-
-&lt;p&gt;A similar thing can be spoken about the other microservices in the mix, depending on the need of the hour.&lt;/p&gt;
-
-&lt;p&gt;This is a clear advantage of this architecture, over using a single component to handle all the functionality.&lt;/p&gt;
-
-&lt;h4 id=&quot;improved-availability&quot;&gt;Improved Availability&lt;/h4&gt;
-
-&lt;p&gt;Let’s say one of the services listening for order events from the queue, such as the PackageService, goes down.&lt;/p&gt;
-
-&lt;p&gt;In the first architecture approach of using a monolithic approach, any one functionality going down would mean the application cannot process orders any more.&lt;/p&gt;
-
-&lt;p&gt;In case of an event driven architecture, the PackageService going down would not prevent the OrderService from putting the order event into the Queue. The OrderService can notify the user of successful request receipt.&lt;/p&gt;
-
-&lt;p&gt;A notification request would then be sent to the troubleshooting team about the PackageServer going down, and while it is being restored, the order event remains in the Queue. It can be processed by all the other services during this time, and when PAckageService comes back up, it can process the event as if nothing untoward has happened.&lt;/p&gt;
-
-&lt;h4 id=&quot;good-reliability&quot;&gt;Good Reliability&lt;/h4&gt;
-
-&lt;p&gt;Event driven architectures ensure a good standard of reliability for the system as a whole. However, the individual microservices can function with different levels of reliability. For example the StockService normally needs to ensure a high level of reliability, the EmailService and SMSService a medium level of reliability, and the PackageService - between low and medium levels of reliability.&lt;/p&gt;
-
-&lt;h4 id=&quot;good-performance-and-responsiveness&quot;&gt;Good Performance and Responsiveness&lt;/h4&gt;
-
-&lt;p&gt;Note that in our example event driven architecture, all that the OrderService does is receive the order and place it on the queue, before acknowledging the user. The user does not need to wait till all the steps are performed on an order. This has high high responsiveness, and is seen by the user as high performance.&lt;/p&gt;
-
-&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
-
-&lt;p&gt;In this article, we had a look at event driven architectures. We saw that event driven architecture is ideal for implementing applications with high load, and strict scalability needs.&lt;/p&gt;
-
-&lt;p&gt;We saw an example of an online shopping application that employs such an architecture. The advantages of using such an architecture include improved flexibility and maintainability, high scalability, imrpoved availability, good reliability and good performance.&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;best-practices-with-cloud-and-microservices&quot;&gt;Best Practices with Cloud and Microservices&lt;/h3&gt;
-
-&lt;p&gt;This is the first article in a series of six articles on best practices with cloud and microservices:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/12-factor-app-cloud-native-microservices-best-practices&quot; target=&quot;_blank&quot;&gt;1 - The 12 Factor App - Best Practices In Cloud Native Applications and Microservices&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-event-driven-architectures-with-microservices&quot; target=&quot;_blank&quot;&gt;2 - Microservices Architectures - Event Driven Approach&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/software-best-practices-building-a-vertical-slice&quot; target=&quot;_blank&quot;&gt;3 - Why do you build a Vertical Slice?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/messaging-queues-and-asynchronous-communication-in-microservices&quot; target=&quot;_blank&quot;&gt;4 - Microservice Architecture Best Practices - Messaging Queues&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/creating-archetypes-in-microservices-architectures-best-practices&quot; target=&quot;_blank&quot;&gt;5 - Build an Archetype&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/asynchronous-communication-with-queues-in-microservices&quot; target=&quot;_blank&quot;&gt;6 - Asynchronous communication with queues and microservices - A perfect combination?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr /&gt;
-   
-    &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/12-factor-app-cloud-native-microservices-best-practices&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/software-best-practices-building-a-vertical-slice&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">The Need For Event Driven Architecture</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/microservices.png" /></entry><entry><title type="html">The 12 Factor App - Best Practices In Cloud Native Applications and Microservices</title><link href="http://localhost:4000/blog/12-factor-app-cloud-native-microservices-best-practices" rel="alternate" type="text/html" title="The 12 Factor App - Best Practices In Cloud Native Applications and Microservices" /><published>2019-10-19T20:17:00+00:00</published><updated>2019-10-19T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices18</id><content type="html" xml:base="http://localhost:4000/blog/12-factor-app-cloud-native-microservices-best-practices">&lt;p&gt;In order that an application be deployed in the cloud and enjoy features such as auto scaling, it first needs to be cloud native. In this article, we have a close look at the best practices for cloud native applications, popularly known as The 12 Factor App.&lt;/p&gt;
-
-&lt;h2 id=&quot;the-12-factor-app&quot;&gt;The 12 Factor App&lt;/h2&gt;
-
-&lt;p&gt;12 Factor App is a set of best practices that guide you to build a great cloud native application. These were framed by Heroku, based on their experiences with building cloud native applications.&lt;/p&gt;
-
-&lt;h3 id=&quot;1codebase---one-codebase-tracked-in-revision-control-many-deploys&quot;&gt;1.Codebase - One codebase tracked in revision control, many deploys&lt;/h3&gt;
-
-&lt;p&gt;You have the codebase in a version control system, and you extract and build it, then deploy it many times.&lt;/p&gt;
-
-&lt;h3 id=&quot;2dependencies---explicitly-declare-and-isolate-dependencies&quot;&gt;2.Dependencies - Explicitly declare and isolate dependencies&lt;/h3&gt;
-
-&lt;p&gt;Whenever you build a software application, say in Java, you need a number of dependencies such as frameworks. You may need to manage the versions of the libraries you need to use. Explicitly declare and isolate such dependencies.&lt;/p&gt;
-
-&lt;h3 id=&quot;3config---store-config-in-the-environment&quot;&gt;3.Config - Store config in the environment&lt;/h3&gt;
-
-&lt;p&gt;There are a variety of environments where an application could execute, such as development, QA, staging and production. Applications have different configuration in each of the environments. It is recommended to seperate the configuration and store it within the environment itself.&lt;/p&gt;
-
-&lt;p&gt;Another option is to store the configuration information in a centralized repository.&lt;/p&gt;
-
-&lt;p&gt;An good example is Spring Cloud Config Server. The configuration is stored in the config server, which can then be mapped to the environment.&lt;/p&gt;
-
-&lt;h3 id=&quot;4backing-services---treat-backing-services-as-attached-resources&quot;&gt;4.Backing services - Treat backing services as attached resources&lt;/h3&gt;
-
-&lt;p&gt;Backing services refers to the other systems that an application needs to talk to, and this also includes the databases. All such services need to be considered as attached resources.&lt;/p&gt;
-
-&lt;p&gt;All of these need to be configurable, and it should be easy to switch from one backing service to another. This switch should be possible with just a switch in configuration.&lt;/p&gt;
-
-&lt;h3 id=&quot;5build-release-run---strictly-separate-build-and-run-stages&quot;&gt;5.Build, release, run - Strictly separate build and run stages&lt;/h3&gt;
-
-&lt;p&gt;The build, release and run stages need to be strictly separated.&lt;/p&gt;
-
-&lt;p&gt;You need to be able to build a deployable component, such as a JAR, WAR or an EAR, that is independent of the environment. There should not be any change in this component as the deployment environment changes.&lt;/p&gt;
-
-&lt;p&gt;A release is a phase where we take this reusable component, and combine it with a specific configuration for a target environment.&lt;/p&gt;
-
-&lt;p&gt;The next phase is to take the released entity, create a container out of it, and run it in the environment.&lt;/p&gt;
-
-&lt;h3 id=&quot;6processes---execute-the-app-as-one-or-more-stateless-processes&quot;&gt;6.Processes - Execute the app as one or more stateless processes&lt;/h3&gt;
-
-&lt;p&gt;Ideally an application should be stateless.&lt;/p&gt;
-
-&lt;p&gt;But, in case you have state - where you store the state of an application determines how flexible it is.&lt;/p&gt;
-
-&lt;p&gt;If you store state in a central data store such as redis, it makes the application very flexible.&lt;/p&gt;
-
-&lt;p&gt;You no longer need sticky sessions. You can have any instance of an app, answer any request.&lt;/p&gt;
-
-&lt;h3 id=&quot;7port-binding---export-services-via-port-binding&quot;&gt;7.Port binding - Export services via port binding&lt;/h3&gt;
-
-&lt;p&gt;You should be able to deploy applications as services, by tying them with ports.&lt;/p&gt;
-
-&lt;h3 id=&quot;8concurrency---scale-out-via-the-process-model&quot;&gt;8.Concurrency - Scale out via the process model&lt;/h3&gt;
-
-&lt;p&gt;There are two kinds of scaling that can be applied to an application - horizontal and vertical. Vertical scaling refers to increasing the hardware infrastructure, such as increasing the CPU processing power, or increasing the amount of physical memory available to the application. Clearly, there are limits to such an approach.&lt;/p&gt;
-
-&lt;p&gt;Horizontal scaling refers to the possibility of dynamically increasing or decreasing the number of instances of an application, depending on the system needs.&lt;/p&gt;
-
-&lt;p&gt;Your applications should be built to be able to dynamically adapt to changing number of instances of various services.&lt;/p&gt;
-
-&lt;h3 id=&quot;9disposability---maximize-robustness-with-fast-startup-and-graceful-shutdown&quot;&gt;9.Disposability - Maximize robustness with fast startup and graceful shutdown&lt;/h3&gt;
-
-&lt;p&gt;If one of the instances of the application is causing errors, or is slow in responding to requests, or is not responding at all, it should be possible to gracefully shut the instance down.&lt;/p&gt;
-
-&lt;p&gt;In addition, the other applications in the system should not be affected by this change in the environment.&lt;/p&gt;
-
-&lt;p&gt;You should be able to bring in new instances as they are needed, and take down instances when required. This property is known as disposability, and is a measure of the system’s robustness.&lt;/p&gt;
-
-&lt;h3 id=&quot;10development--production-parity&quot;&gt;10.Development / Production Parity&lt;/h3&gt;
-
-&lt;p&gt;There is a strong need to keep the development, QA, staging and production stages of a deployment pipeline, as similar as possible. The similarities should apply to the processes you follow, the technologies you make use of, and the infrastructure you employ.&lt;/p&gt;
-
-&lt;p&gt;If you have this parity among these stages, then most of the problems that could arise with the application, would appear in the earlier stages. Not many surprises would be in store for you at production.&lt;/p&gt;
-
-&lt;h3 id=&quot;11logs---treat-logs-as-event-streams&quot;&gt;11.Logs - Treat logs as event streams&lt;/h3&gt;
-
-&lt;p&gt;Visibility is one of the most important requirements of a microservices architecture.&lt;/p&gt;
-
-&lt;p&gt;By treating each log message entered into a centralized logging system as an event, you get a sequence of actions that are performed on a request when it enters the system, right up to when it is completed or abandoned.&lt;/p&gt;
-
-&lt;p&gt;All one needs to do in order to debug a problem, is to go to the central dashboard and search for it.&lt;/p&gt;
-
-&lt;h3 id=&quot;12admin-processes---run-adminmanagement-tasks-as-one-off-processes&quot;&gt;12.Admin processes - Run admin/management tasks as one-off processes&lt;/h3&gt;
-
-&lt;p&gt;There are a number of one-off process that you need to run - batch programs, database migrations, scripts.&lt;/p&gt;
-
-&lt;p&gt;Treat one-off processes the same way as long running processes.&lt;/p&gt;
-
-&lt;p&gt;Have the same standards - have code base in version control, follow standard deployment processes and use the same environments&lt;/p&gt;
-
-&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
-
-&lt;p&gt;In this article, we looked at the best practices for cloud native applications, called the 12 Factor App.&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;best-practices-with-cloud-and-microservices&quot;&gt;Best Practices with Cloud and Microservices&lt;/h3&gt;
-
-&lt;p&gt;This is the first article in a series of six articles on best practices with cloud and microservices:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/12-factor-app-cloud-native-microservices-best-practices&quot; target=&quot;_blank&quot;&gt;1 - The 12 Factor App - Best Practices In Cloud Native Applications and Microservices&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-event-driven-architectures-with-microservices&quot; target=&quot;_blank&quot;&gt;2 - Microservices Architectures - Event Driven Approach&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/software-best-practices-building-a-vertical-slice&quot; target=&quot;_blank&quot;&gt;3 - Why do you build a Vertical Slice?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/messaging-queues-and-asynchronous-communication-in-microservices&quot; target=&quot;_blank&quot;&gt;4 - Microservice Architecture Best Practices - Messaging Queues&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/creating-archetypes-in-microservices-architectures-best-practices&quot; target=&quot;_blank&quot;&gt;5 - Build an Archetype&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/asynchronous-communication-with-queues-in-microservices&quot; target=&quot;_blank&quot;&gt;6 - Asynchronous communication with queues and microservices - A perfect combination?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr /&gt;
-   
-    &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/12-factor-app-cloud-native-microservices-best-practices&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/introduction-to-event-driven-architectures-with-microservices&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">In order that an application be deployed in the cloud and enjoy features such as auto scaling, it first needs to be cloud native. In this article, we have a close look at the best practices for cloud native applications, popularly known as The 12 Factor App.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/microservices.png" /></entry><entry><title type="html">Microservices Architectures - What is Fault Tolerance?</title><link href="http://localhost:4000/blog/fault-tolerance-in-microservices" rel="alternate" type="text/html" title="Microservices Architectures - What is Fault Tolerance?" /><published>2019-10-19T20:17:00+00:00</published><updated>2019-10-19T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices17</id><content type="html" xml:base="http://localhost:4000/blog/fault-tolerance-in-microservices">&lt;p&gt;In this article, we discuss an important property of microservices, called fault tolerance.&lt;/p&gt;
-
-&lt;h2 id=&quot;you-will-learn&quot;&gt;You will learn&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;What is Fault Tolerance?&lt;/li&gt;
-  &lt;li&gt;Why is fault tolerance important in microservices architecture?&lt;/li&gt;
-  &lt;li&gt;How do you achieve fault tolerance?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;what-is-fault-tolerance&quot;&gt;What Is Fault Tolerance?&lt;/h3&gt;
-
-&lt;p&gt;Microservices need to be extremely reliable.&lt;/p&gt;
-
-&lt;p&gt;When we build a microservices architecture, there are a large number of small microservices, and they all need to communicate with one another.&lt;/p&gt;
-
-&lt;p&gt;Lets consider the following example:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Capture-053-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Let’s say Microservice5 is down at some point of time.&lt;/p&gt;
-
-&lt;p&gt;All the other microservices are directly or indirectly dependent on it, so they all go down as well.&lt;/p&gt;
-
-&lt;p&gt;The solution to this problem is to have a fallback in case of failure of a microservice. This aspect of a microservice is called &lt;strong&gt;fault tolerance&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;implementing-fault-tolerance-with-hystrix&quot;&gt;Implementing Fault Tolerance with Hystrix&lt;/h3&gt;
-
-&lt;p&gt;A popular framework used to implement fault tolerance is Hystrix, a Netflix open source framework. Here is a code example of the same:&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-	&lt;span class=&quot;nd&quot;&gt;@GetMapping&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/fault-tolerance-example&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;nd&quot;&gt;@HystrixCommand&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fallbackMethod&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;fallbackRetrieveConfguration&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LimitConfiguration&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;retrieveConfiguration&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;RuntimeException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Not Available&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LimitConfiguration&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fallbackRetrieveConfiguration&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;LimitConfiguration&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;999&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; 
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Hystrix enables you to specify the fallback method for each of your service methods. If the method throws an exception, what should be returned to the service consumer?&lt;/p&gt;
-
-&lt;p&gt;Here, if &lt;code class=&quot;highlighter-rouge&quot;&gt;retrieveConfiguration()&lt;/code&gt; fails, then &lt;code class=&quot;highlighter-rouge&quot;&gt;fallbackRetrieveConfiguration&lt;/code&gt; is called, which returns a hardcoded &lt;code class=&quot;highlighter-rouge&quot;&gt;LimitConfiguration&lt;/code&gt; instance:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Capture-053-03.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;hystrix-and-alerts&quot;&gt;Hystrix And Alerts&lt;/h4&gt;
-
-&lt;p&gt;With Hystrix, you can also configure alerts at the back-end. If a service starts failing continuously, you can send alerts to the maintainance team.&lt;/p&gt;
-
-&lt;h3 id=&quot;hystrix-is-not-a-silver-bullet&quot;&gt;Hystrix is not a silver bullet&lt;/h3&gt;
-
-&lt;p&gt;Using Hystrix and fallback methods is appropriate for services that handle non critical information.&lt;/p&gt;
-
-&lt;p&gt;However, it is not a silver bullet.&lt;/p&gt;
-
-&lt;p&gt;Consider for instance, a service that returns the balance of a bank  account. You cannot provide a default hardcoded value back.&lt;/p&gt;
-
-&lt;h3 id=&quot;using-sufficient-redundancy&quot;&gt;Using sufficient redundancy&lt;/h3&gt;
-
-&lt;p&gt;It is important to design critical services in a fail safe manner. It is important to build enough redundancy into the system to ensure that the services do not fail.&lt;/p&gt;
-
-&lt;h3 id=&quot;have-sufficient-testing&quot;&gt;Have sufficient testing&lt;/h3&gt;
-
-&lt;p&gt;It is important to test for failure. Bring a microservice down. See how your system reacts.&lt;/p&gt;
-
-&lt;p&gt;Chaos Monkey is a good example from Netflix.&lt;/p&gt;
-
-&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
-
-&lt;p&gt;In this article, we discussed about fault tolerance. We saw how fault tolerance is essential in microservices architecture. We then saw how it can be implemented at the code level using frameworks such as Hystrix.&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;cloud-and-microservices-terminology&quot;&gt;Cloud and Microservices Terminology&lt;/h3&gt;
-
-&lt;p&gt;This is the article in a series of six articles on terminology used with cloud and microservices:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/service-discovery-in-microservices&quot; target=&quot;_blank&quot;&gt;1 - Microservices Architectures - What is Service Discovery?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-centralized-configuration-with-spring-cloud-config-server&quot; target=&quot;_blank&quot;&gt;2 - Microservices Architectures - Centralized Configuration and Config Server&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-api-gateways-with-microservices&quot; target=&quot;_blank&quot;&gt;3 - Microservices Architectures - API Gateways&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-centralized-logging-with-microservices&quot; target=&quot;_blank&quot;&gt;4 - Microservices Architectures - Importance of Centralized Logging&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-auto-scaling-or-dynamic-scaling-in-cloud&quot; target=&quot;_blank&quot;&gt;5 - Microservices Architectures - Introduction to Auto Scaling&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/fault-tolerance-in-microservices&quot; target=&quot;_blank&quot;&gt;6 - Microservices Architectures - What is Fault Tolerance?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr /&gt;
-   
-    &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/introduction-to-auto-scaling-or-dynamic-scaling-in-cloud&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/fault-tolerance-in-microservices&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">In this article, we discuss an important property of microservices, called fault tolerance.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/microservices.png" /></entry><entry><title type="html">Microservices Architectures - Introduction to Auto Scaling</title><link href="http://localhost:4000/blog/introduction-to-auto-scaling-or-dynamic-scaling-in-cloud" rel="alternate" type="text/html" title="Microservices Architectures - Introduction to Auto Scaling" /><published>2019-10-19T20:17:00+00:00</published><updated>2019-10-19T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices16</id><content type="html" xml:base="http://localhost:4000/blog/introduction-to-auto-scaling-or-dynamic-scaling-in-cloud">&lt;p&gt;In this article, we focus our attention on the Dynamic Scaling or Auto Scaling. Why do we need applications that can auto scale?&lt;/p&gt;
-
-&lt;h2 id=&quot;you-will-learn&quot;&gt;You will learn&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;What is Auto or Dynamic Scaling?&lt;/li&gt;
-  &lt;li&gt;Why is Dynamic Scaling important in a microservices context?&lt;/li&gt;
-  &lt;li&gt;How can you implement Dynamic Scaling in Cloud?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;load-on-applications-varies&quot;&gt;Load On Applications Varies&lt;/h3&gt;
-
-&lt;p&gt;Load on your applications vary depending on time of the day, the day of the month or the month of the year.&lt;/p&gt;
-
-&lt;p&gt;Take for instance, amazon.com. It has very high loads during Thanks Giving Period, up to 20 times the normal load. However, during the major sports events such as Superbowl or a Football World Cup, the traffic could be considerably lesser - because every body is busy watching the event.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;How can you setup infrastructure for applications to manage varying loads?&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;It is quite possible that the infrastructure needed to handle 10x the load, is ten times that needed to handle 1x the load.&lt;/p&gt;
-
-&lt;p&gt;If you have on premise infrastructure, you need a large infrastructure in place to handle peak load.&lt;/p&gt;
-
-&lt;p&gt;During periods with lesser load, a lot of infrastructure would be sitting idle.&lt;/p&gt;
-
-&lt;h3 id=&quot;cloud-to-the-rescue&quot;&gt;Cloud To The Rescue&lt;/h3&gt;
-
-&lt;p&gt;That’s where cloud comes into picture.  With cloud, you can request more resources when the load is high and give them back to the cloud when you have less load.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;This is called Scale Out (create more instances as load increases) and Scale In (reduces instances as load goes down)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;How do you build applications that are cloud enabled - applications that work well in the cloud?&lt;/p&gt;
-
-&lt;p&gt;That’s where a microservices architecture comes into picture.&lt;/p&gt;
-
-&lt;h3 id=&quot;introducing-auto-scaling-example&quot;&gt;Introducing Auto Scaling Example&lt;/h3&gt;
-
-&lt;p&gt;Building your application using microservices enables you to increase the number of microservice instances during high load, and reduce them during less load.&lt;/p&gt;
-
-&lt;p&gt;Consider the following example of a CurrencyConversionService:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Capture-055-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Capture-055-03.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The CurrencyConversionService talks to the ForexService. The ForexService is concerned with calculating how many INR can result from 1 USD, or how many INR can result from 1 EUR.&lt;/p&gt;
-
-&lt;p&gt;The CurrencyConversionService takes a bag of currencies and amounts, and produce the total amount in a currency of your choice. For example, it will tell the total worth in INR of 10 EUR and 25 USD.&lt;/p&gt;
-
-&lt;p&gt;The ForexService might also be consumed from a number of other microservices.&lt;/p&gt;
-
-&lt;h4 id=&quot;scaling-infrastructure-to-match-load&quot;&gt;Scaling Infrastructure To Match Load&lt;/h4&gt;
-
-&lt;p&gt;The load on ForexService might be different from the load on CurrencyConversionService. You might need to have different number of instances of CurrencyConversionService and ForexService. For example, there may be two instances of the CurrencyConversionService, and five instances of the ForexService:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Capture-055-04.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Capture-055-05.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;At a later point in time, the load on CurrencyConversionService could be low, needing just two instances. On the other hand, a much higher load on ForexService could need 50 instances. The requests coming in from the 2 instances of CurrencyConversionService are distributed across the 50 instances of the ForexService.&lt;/p&gt;
-
-&lt;p&gt;That in essence, is the requirement for auto scaling - dynamically changing number of microservice instances, and evenly distributing the load across them.&lt;/p&gt;
-
-&lt;h3 id=&quot;implementing-auto-scaling&quot;&gt;Implementing Auto Scaling&lt;/h3&gt;
-
-&lt;p&gt;There are a few important concepts involved in implementing auto scaling. The following sections discuss them in some detail.&lt;/p&gt;
-
-&lt;h4 id=&quot;naming-server&quot;&gt;Naming Server&lt;/h4&gt;
-
-&lt;p&gt;Naming servers enables something called &lt;strong&gt;location transparency&lt;/strong&gt;. Every microservice registers with the naming service. Any microservice that needs to talk to another microservice, will ask the naming server for its location.&lt;/p&gt;
-
-&lt;p&gt;Whenever a new instance of CurrencyConversionService or ForexService comes up, it registers with the naming server. 
-&lt;img src=&quot;/images/Capture-055-06.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;When CurrencyConversionService wants to talk to ForexService, it asks the naming server for available instances.&lt;/p&gt;
-
-&lt;h3 id=&quot;implementing-location-transparency&quot;&gt;Implementing Location Transparency&lt;/h3&gt;
-
-&lt;p&gt;CurrencyConversionService knows that there are five instances of the ForexService.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;How does it distribute the load among all these instances?&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;That’s where a load balancer comes into the picture.&lt;/p&gt;
-
-&lt;p&gt;A popular client side load balancing framework is Ribbon.
-&lt;img src=&quot;/images/Capture-055-07.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Let’s look at a diagram to understand whats happening:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Capture-055-08.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;As soon as any instance of CurrencyConversionService or ForexService comes up, it registers itself with the naming server. If the CCSInstance2 wants to know the URL of ForexService instances, it again talks to the naming server. The naming server responds with a list of all instances of the ForexService - FSInstance1 and FSinstance2, and their corresponding URLs.&lt;/p&gt;
-
-&lt;p&gt;The Ribbon load balancer does a round-robin among the ForexService instances to balance out the load among the instances.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Ribbon offers wide variety of load balancing algorithms to choose from.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;when-to-increase-and-decrease-instances&quot;&gt;When to increase and decrease instances?&lt;/h3&gt;
-
-&lt;p&gt;There is one question we did not really talk about.&lt;/p&gt;
-
-&lt;p&gt;How do we know when to increase or decrease the number of instances of a microservices?&lt;/p&gt;
-
-&lt;p&gt;That is where application monitoring and container (Docker) management (using Kubernetes) comes into the picture.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Capture-055-09.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;An application needs to be monitored to find out how much load it has. For this, the application has to expose metrics for us to track the load.&lt;/p&gt;
-
-&lt;p&gt;You can containerize each microservice using Docker and create an image.&lt;/p&gt;
-
-&lt;p&gt;Kubernetes has the capability to manage containers. Kubernetes can configured to auto scale based on the load. Kubernetes can identify the application instances, monitor their loads, and automatically scale up and down.&lt;/p&gt;
-
-&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
-
-&lt;p&gt;In this article, we talked about auto scaling. We look at important parts of implementing auto scaling - naming server, load balancer, containers (Docker) and container orchestration (Kubernetes).&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;cloud-and-microservices-terminology&quot;&gt;Cloud and Microservices Terminology&lt;/h3&gt;
-
-&lt;p&gt;This is the article in a series of six articles on terminology used with cloud and microservices:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/service-discovery-in-microservices&quot; target=&quot;_blank&quot;&gt;1 - Microservices Architectures - What is Service Discovery?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-centralized-configuration-with-spring-cloud-config-server&quot; target=&quot;_blank&quot;&gt;2 - Microservices Architectures - Centralized Configuration and Config Server&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-api-gateways-with-microservices&quot; target=&quot;_blank&quot;&gt;3 - Microservices Architectures - API Gateways&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-centralized-logging-with-microservices&quot; target=&quot;_blank&quot;&gt;4 - Microservices Architectures - Importance of Centralized Logging&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-auto-scaling-or-dynamic-scaling-in-cloud&quot; target=&quot;_blank&quot;&gt;5 - Microservices Architectures - Introduction to Auto Scaling&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/fault-tolerance-in-microservices&quot; target=&quot;_blank&quot;&gt;6 - Microservices Architectures - What is Fault Tolerance?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr /&gt;
-   
-    &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/introduction-to-centralized-logging-with-microservices&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/fault-tolerance-in-microservices&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">In this article, we focus our attention on the Dynamic Scaling or Auto Scaling. Why do we need applications that can auto scale?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/microservices.png" /></entry><entry><title type="html">Microservices Architectures - Importance of Centralized Logging</title><link href="http://localhost:4000/blog/introduction-to-centralized-logging-with-microservices" rel="alternate" type="text/html" title="Microservices Architectures - Importance of Centralized Logging" /><published>2019-10-19T20:17:00+00:00</published><updated>2019-10-19T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices15</id><content type="html" xml:base="http://localhost:4000/blog/introduction-to-centralized-logging-with-microservices">&lt;p&gt;In this article, we explore the concept of centralized logging, with respect to microservices.&lt;/p&gt;
-
-&lt;h3 id=&quot;you-will-learn&quot;&gt;You will learn&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;What is centralized logging?&lt;/li&gt;
-  &lt;li&gt;Why do we need centralized logging?&lt;/li&gt;
-  &lt;li&gt;Why are microservices difficult to debug?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;the-need-for-visibility&quot;&gt;The Need For Visibility&lt;/h3&gt;
-
-&lt;p&gt;In a microservices architecture, there are a number of small microservices talking to each other:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Capture-057-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;In the above example, let’s assume there is a problem with Microservice5, due to which Microservice1 throws an error.&lt;/p&gt;
-
-&lt;p&gt;How does a developer debug the problem?&lt;/p&gt;
-
-&lt;p&gt;He would like to know the details of what’s happening in every microservice from Microservice1 through Microservice5. From such a trace, it should be possible to identify that something went wrong at Microservice5.&lt;/p&gt;
-
-&lt;p&gt;The more you break things down into smaller microservices, the more visibility you need into what’s going on in the background. Otherwise, a lot of time and effort needs to be spent in debugging problems.&lt;/p&gt;
-
-&lt;p&gt;One of the popular ways to improve visibility is by using &lt;strong&gt;centralized logging&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;centralized-logging-using-log-streams&quot;&gt;Centralized Logging Using Log Streams&lt;/h3&gt;
-
-&lt;p&gt;Using Log Streams is one way to implement centralized logging. The common way to implement it is to stream microservice logs to a common queue. Distributed logging server listens to the queue and acts as log store. It provides search capabilities to search the trace.&lt;/p&gt;
-
-&lt;h3 id=&quot;popular-implementations&quot;&gt;Popular Implementations&lt;/h3&gt;
-
-&lt;p&gt;Some of the popular implementations include&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;the ELK stack (Elastic Search, Logstash and Kibana) for Centralized Logging&lt;/li&gt;
-  &lt;li&gt;Zipkin, Open Tracing API And Zaeger for Distributed Tracing&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
-
-&lt;p&gt;In this article, we had a look at centralized logging. We saw that there is a need for high visibility in microservices architecture. Centralized logging provides visibility for better debugging of problems. Using log streams is one way of implementing centralized logging.&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;cloud-and-microservices-terminology&quot;&gt;Cloud and Microservices Terminology&lt;/h3&gt;
-
-&lt;p&gt;This is the article in a series of six articles on terminology used with cloud and microservices:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/service-discovery-in-microservices&quot; target=&quot;_blank&quot;&gt;1 - Microservices Architectures - What is Service Discovery?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-centralized-configuration-with-spring-cloud-config-server&quot; target=&quot;_blank&quot;&gt;2 - Microservices Architectures - Centralized Configuration and Config Server&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-api-gateways-with-microservices&quot; target=&quot;_blank&quot;&gt;3 - Microservices Architectures - API Gateways&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-centralized-logging-with-microservices&quot; target=&quot;_blank&quot;&gt;4 - Microservices Architectures - Importance of Centralized Logging&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-auto-scaling-or-dynamic-scaling-in-cloud&quot; target=&quot;_blank&quot;&gt;5 - Microservices Architectures - Introduction to Auto Scaling&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/fault-tolerance-in-microservices&quot; target=&quot;_blank&quot;&gt;6 - Microservices Architectures - What is Fault Tolerance?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr /&gt;
-   
-    &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/introduction-to-api-gateways-with-microservices&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/introduction-to-auto-scaling-or-dynamic-scaling-in-cloud&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">In this article, we explore the concept of centralized logging, with respect to microservices.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/microservices.png" /></entry><entry><title type="html">Microservices Architectures - Introduction to API Gateway</title><link href="http://localhost:4000/blog/introduction-to-api-gateways-with-microservices" rel="alternate" type="text/html" title="Microservices Architectures - Introduction to API Gateway" /><published>2019-10-19T20:17:00+00:00</published><updated>2019-10-19T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices14</id><content type="html" xml:base="http://localhost:4000/blog/introduction-to-api-gateways-with-microservices">&lt;p&gt;In this article, we look at what an API Gateway is, in the context of microservices.&lt;/p&gt;
-
-&lt;h2 id=&quot;you-will-learn&quot;&gt;You will learn&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;What is an API Gateway?&lt;/li&gt;
-  &lt;li&gt;Why do we need API Gateways?&lt;/li&gt;
-  &lt;li&gt;How does an API Gateway Work?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;handling-cross-cutting-concerns&quot;&gt;Handling Cross Cutting Concerns&lt;/h3&gt;
-
-&lt;p&gt;Whenever we design and develop a large software application, we make use of  a &lt;strong&gt;layered architecture&lt;/strong&gt;. For instance, in a web application, it is quite common to see an architecture similar to the following:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Capture-02-01.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Here, we see that the application is organized into a Web layer, a Business layer, and a Data layer.&lt;/p&gt;
-
-&lt;p&gt;In a layered architecture, there are specific parts that are common to all these different layers. Such parts include:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Logging&lt;/li&gt;
-  &lt;li&gt;Security&lt;/li&gt;
-  &lt;li&gt;Performance&lt;/li&gt;
-  &lt;li&gt;Auditing&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;All these features are applicable across layers, hence it makes sense to implement them in a common way.&lt;/p&gt;
-
-&lt;p&gt;Aspect Oriented programming is a well established way of handling these concerns. Use of constructs such as filters and interceptors is common while implementing them.&lt;/p&gt;
-
-&lt;h3 id=&quot;the-need-for-api-gateway&quot;&gt;The Need For API Gateway&lt;/h3&gt;
-
-&lt;p&gt;When we talk about a microservices architecture, we deal with multiple microservices talking to each other:
-&lt;img src=&quot;/images/Capture-059-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Where do you implement all the features that are common across microservices?&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;authentication&lt;/li&gt;
-  &lt;li&gt;logging&lt;/li&gt;
-  &lt;li&gt;auditing&lt;/li&gt;
-  &lt;li&gt;rate limiting&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;That’s where the API Gateway comes into the picture.&lt;/p&gt;
-
-&lt;h3 id=&quot;how-does-an-api-gateway-work&quot;&gt;How does an API Gateway Work?&lt;/h3&gt;
-
-&lt;p&gt;In microservices, we route all requests - both internal and external - through API Gateways. We can implement all the common features like authentication, logging, auditing, and rate limiting in the API Gateway.&lt;/p&gt;
-
-&lt;p&gt;For example, you may not want Microservice3 to be called more than 10 times by a particular client. You could do that as part of rate limiting in the API gateway.&lt;/p&gt;
-
-&lt;p&gt;You can implement the common features across microservices in the API gateway. A popular API Gateway implementation is Zuul API Gateway.&lt;/p&gt;
-
-&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
-
-&lt;p&gt;Just like AOP handles cross cutting concerns in standalone applications, the API gateway manages common features for microservices in an enterprise.&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;cloud-and-microservices-terminology&quot;&gt;Cloud and Microservices Terminology&lt;/h3&gt;
-
-&lt;p&gt;This is the article in a series of six articles on terminology used with cloud and microservices:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/service-discovery-in-microservices&quot; target=&quot;_blank&quot;&gt;1 - Microservices Architectures - What is Service Discovery?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-centralized-configuration-with-spring-cloud-config-server&quot; target=&quot;_blank&quot;&gt;2 - Microservices Architectures - Centralized Configuration and Config Server&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-api-gateways-with-microservices&quot; target=&quot;_blank&quot;&gt;3 - Microservices Architectures - API Gateways&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-centralized-logging-with-microservices&quot; target=&quot;_blank&quot;&gt;4 - Microservices Architectures - Importance of Centralized Logging&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-auto-scaling-or-dynamic-scaling-in-cloud&quot; target=&quot;_blank&quot;&gt;5 - Microservices Architectures - Introduction to Auto Scaling&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/fault-tolerance-in-microservices&quot; target=&quot;_blank&quot;&gt;6 - Microservices Architectures - What is Fault Tolerance?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr /&gt;
-   
-    &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/introduction-to-centralized-configuration-with-spring-cloud-config-server&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/introduction-to-centralized-logging-with-microservices&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">In this article, we look at what an API Gateway is, in the context of microservices.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/microservices.png" /></entry></feed>
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">In this article, we discuss why queues are needed, and how they form the cornerstone of asynchronous communication in microservices architectures.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/microservices.png" /></entry></feed>
