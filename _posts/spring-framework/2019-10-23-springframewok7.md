@@ -3,10 +3,11 @@ title: Spring Batch Tutorial for Beginners
 date: 2019-10-23 06:40:00 Z
 permalink: "/blog/spring-basics-introduction-to-spring-batch"
 categories:
-- SpringFramework   
+- SpringFramework
 tags:
 - learning
-summary: Spring Batch is a lightweight, comprehensive batch framework that is designed for use in developing robust batch applications. 
+summary: Spring Batch is a lightweight, comprehensive batch framework that is designed
+  for use in developing robust batch applications.
 image: "/img/microservices.png"
 author: Girish Godage
 layout: posts
