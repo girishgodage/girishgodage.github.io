@@ -6,7 +6,10 @@ categories:
 - SpringBootMicroservices
 tags:
 - learning
-summary:  In order that an application be deployed in the cloud and enjoy features such as auto scaling, it first needs to be cloud native. In this article, we have a close look at the best practices for cloud native applications, popularly known as The 12 Factor App. 
+summary: In order that an application be deployed in the cloud and enjoy features
+  such as auto scaling, it first needs to be cloud native. In this article, we have
+  a close look at the best practices for cloud native applications, popularly known
+  as The 12 Factor App.
 image: "/img/microservices.png"
 author: Girish Godage
 layout: posts

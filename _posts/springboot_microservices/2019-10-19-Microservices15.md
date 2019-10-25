@@ -6,7 +6,8 @@ categories:
 - SpringBootMicroservices
 tags:
 - learning
-summary: In this article, we explore the concept of centralized logging, in the context of microservices.
+summary: In this article, we explore the concept of centralized logging, in the context
+  of microservices.
 image: "/img/microservices.png"
 author: Girish Godage
 layout: posts

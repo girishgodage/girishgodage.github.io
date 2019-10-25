@@ -1,12 +1,13 @@
 ---
-title:  Microservice Architecture Best Practices - Messaging Queues
+title: Microservice Architecture Best Practices - Messaging Queues
 date: 2019-10-19 20:17:00 Z
 permalink: "/blog/messaging-queues-and-asynchronous-communication-in-microservices"
 categories:
 - SpringBootMicroservices
 tags:
 - learning
-summary: In this article, we discuss why Messaging queues are needed, and how they form the cornerstone of communication in microservices architectures.
+summary: In this article, we discuss why Messaging queues are needed, and how they
+  form the cornerstone of communication in microservices architectures.
 image: "/img/microservices.png"
 author: Girish Godage
 layout: posts
