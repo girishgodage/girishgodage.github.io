@@ -3,10 +3,12 @@ title: Spring Framework - What Is Component Scan?
 date: 2019-10-23 06:18:00 Z
 permalink: "/blog/spring-and-spring-boot-what-is-component-scan"
 categories:
-- SpringFramework   
+- SpringFramework
 tags:
 - learning
-summary: Spring framework identifies the beans and their dependencies, creates the beans and injects the dependencies into beans. How does the Spring Framework know where to search for beans and dependencies? How does Spring Boot make it easier?
+summary: Spring framework identifies the beans and their dependencies, creates the
+  beans and injects the dependencies into beans. How does the Spring Framework know
+  where to search for beans and dependencies? How does Spring Boot make it easier?
 image: "/img/microservices.png"
 author: Girish Godage
 layout: posts

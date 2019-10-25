@@ -3,10 +3,11 @@ title: What Are Spring Projects?
 date: 2019-10-23 06:34:00 Z
 permalink: "/blog/spring-projects-with-examples"
 categories:
-- SpringFramework   
+- SpringFramework
 tags:
 - learning
-summary: There are several important Spring Projects solving the needs of enterprises today. What are Spring Projects and how are they different from Spring Modules?
+summary: There are several important Spring Projects solving the needs of enterprises
+  today. What are Spring Projects and how are they different from Spring Modules?
 image: "/img/microservices.png"
 author: Girish Godage
 layout: posts

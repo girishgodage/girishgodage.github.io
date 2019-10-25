@@ -3,10 +3,12 @@ title: Spring Basics - Dependency Injection and Inversion of Control
 date: 2019-10-23 06:06:00 Z
 permalink: "/blog/spring-framework-dependency-injection-inversion-of-control"
 categories:
-- SpringFramework   
+- SpringFramework
 tags:
 - learning
-summary: Developers starting with the Spring framework often get confused with terminology - Dependency, Dependency Injection and Inversion Of Control. In this article, we introduce you to the concepts of Dependency Injection and Inversion Of Control..
+summary: Developers starting with the Spring framework often get confused with terminology
+  - Dependency, Dependency Injection and Inversion Of Control. In this article, we
+  introduce you to the concepts of Dependency Injection and Inversion Of Control..
 image: "/img/microservices.png"
 author: Girish Godage
 layout: posts

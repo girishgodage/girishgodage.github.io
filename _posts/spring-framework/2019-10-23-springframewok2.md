@@ -3,10 +3,11 @@ title: Spring Basics - What Is A Dependency?
 date: 2019-10-23 05:54:00 Z
 permalink: "/blog/spring-framework-what-is-a-dependency"
 categories:
-- SpringFramework   
+- SpringFramework
 tags:
 - learning
-summary: Most important feature of Spring Framework is Dependency Injection. To understand Dependency Injection, you need to understand the concept of a Dependency..
+summary: Most important feature of Spring Framework is Dependency Injection. To understand
+  Dependency Injection, you need to understand the concept of a Dependency..
 image: "/img/microservices.png"
 author: Girish Godage
 layout: posts
