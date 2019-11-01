@@ -1,5 +1,5 @@
 ---
-title: "Build out BackEnd and Refactor"
+title: Build out BackEnd and Refactor
 date: 2019-10-24 05:54:00 Z
 permalink: "/blog/BuildoutBackEndandRefactor"
 categories:
