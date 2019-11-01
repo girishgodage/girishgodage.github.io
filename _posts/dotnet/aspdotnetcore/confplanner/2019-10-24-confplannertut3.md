@@ -430,9 +430,11 @@ Okay, now we need to update our `ApplicationDbContext` so Entity Framework knows
     });
     ```
 1. Run the application to see the updated data via Swagger UI.
+![](/img/aspdotnetcore/confplanner/3/41.png)
 1. Use the Swagger UI to upload [NDC_Sydney_2019.json](https://github.com/girishgodage/confplanerapp/tree/master/ConferencePlanner/BackEnd/Data/Import/NDC_Sydney_2019.json) to the `/api/Sessions/upload` API.
 
-
+![](/img/aspdotnetcore/confplanner/3/42.png)
+![](/img/aspdotnetcore/confplanner/3/43.png)
 ---
 {% include conf_sessions.md %}
 
