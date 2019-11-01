@@ -3,10 +3,12 @@ title: "Build out BackEnd and Refactor"
 date: 2019-10-24 05:54:00 Z
 permalink: "/blog/BuildoutBackEndandRefactor"
 categories:
-- "asp.net core"
+- asp.net core
 tags:
 - learning
-summary: In this tutorial, we'll add the rest of our models and controllers that expose them. We'll also refactor our application, moving our DTOs to a shared project so they can be used by our front-end application later..
+summary: In this tutorial, we'll add the rest of our models and controllers that expose
+  them. We'll also refactor our application, moving our DTOs to a shared project so
+  they can be used by our front-end application later..
 image: "/img/springframework.png"
 author: Girish Godage
 layout: posts
@@ -14,7 +16,6 @@ prevurl: "/blog/CreateBackEndAPIproject"
 nexturl: "/blog/Addfront-endrenderagendasetupfront-endmodels"
 discussion_id: 2019-10-24-confplannertut3
 ---
-
 
 ## Building out the Back End
 
