@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-11-01T10:09:47+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">ASP.NET Core - App Building Workshop Tutorial</title><link href="http://localhost:4000/blog/app-building-Workshop-start" rel="alternate" type="text/html" title="ASP.NET Core - App Building Workshop Tutorial" /><published>2019-10-24T05:54:00+00:00</published><updated>2019-10-24T05:54:00+00:00</updated><id>http://localhost:4000/blog/confplannertut1</id><content type="html" xml:base="http://localhost:4000/blog/app-building-Workshop-start">&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-11-01T12:58:07+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">ASP.NET Core - App Building Workshop Tutorial</title><link href="http://localhost:4000/blog/app-building-Workshop-start" rel="alternate" type="text/html" title="ASP.NET Core - App Building Workshop Tutorial" /><published>2019-10-24T05:54:00+00:00</published><updated>2019-10-24T05:54:00+00:00</updated><id>http://localhost:4000/blog/confplannertut1</id><content type="html" xml:base="http://localhost:4000/blog/app-building-Workshop-start">&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://www.microsoft.com/net/download&quot;&gt;Download&lt;/a&gt; and install the .NET Core SDK and Visual Studio.&lt;/p&gt;
 
@@ -51,7 +51,492 @@
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Setup</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/springframework.png" /></entry><entry><title type="html">Build the back-end API with basic EF model</title><link href="http://localhost:4000/blog/CreateBackEndAPIproject" rel="alternate" type="text/html" title="Build the back-end API with basic EF model" /><published>2019-10-24T05:54:00+00:00</published><updated>2019-10-24T05:54:00+00:00</updated><id>http://localhost:4000/blog/confplannertut2</id><content type="html" xml:base="http://localhost:4000/blog/CreateBackEndAPIproject">&lt;h2 id=&quot;creating-a-new-project-using-visual-studio&quot;&gt;Creating a new project using Visual Studio&lt;/h2&gt;
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Setup</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/springframework.png" /></entry><entry><title type="html">Build the back-end API with basic EF model</title><link href="http://localhost:4000/blog/BuildoutBackEndandRefactor" rel="alternate" type="text/html" title="Build the back-end API with basic EF model" /><published>2019-10-24T05:54:00+00:00</published><updated>2019-10-24T05:54:00+00:00</updated><id>http://localhost:4000/blog/confplannertut3</id><content type="html" xml:base="http://localhost:4000/blog/BuildoutBackEndandRefactor">&lt;h2 id=&quot;building-out-the-back-end&quot;&gt;Building out the Back End&lt;/h2&gt;
+
+&lt;p&gt;In this session, we’ll add the rest of our models and controllers that expose them. We’ll also refactor our application, moving our DTOs to a shared project so they can be used by our front-end application later.&lt;/p&gt;
+
+&lt;h2 id=&quot;add-a-conferencedto-project&quot;&gt;Add a ConferenceDTO project&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;We’ll start by creating the new shared project to hold our data transfer objects.&lt;/p&gt;
+  &lt;h3 id=&quot;adding-the-conferencedto-project-using-visual-studio&quot;&gt;Adding the ConferenceDTO Project using Visual Studio&lt;/h3&gt;
+  &lt;ol&gt;
+    &lt;li&gt;If using Visual Studio, right-click on the Solution and select &lt;em&gt;Add&lt;/em&gt; / &lt;em&gt;New Project…&lt;/em&gt;.&lt;/li&gt;
+    &lt;li&gt;Select &lt;em&gt;.NET Standard&lt;/em&gt; from the project types on the left and select the &lt;em&gt;Class Library (.NET Standard)&lt;/em&gt; template. Name the project ConferenceDTO and press OK.
+&lt;img src=&quot;/img/aspdotnetcore/confplanner/3/vs2019-create-dto-project.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+    &lt;li&gt;Delete the generated &lt;code class=&quot;highlighter-rouge&quot;&gt;Class1.cs&lt;/code&gt; file from this new project.
+&lt;img src=&quot;/img/aspdotnetcore/confplanner/3/31.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+    &lt;li&gt;Right-click the ‘Dependencies’ node under the BackENd project, select “Add Reference…” and put a checkmark near ConferenceDTO.
+&lt;img src=&quot;/img/aspdotnetcore/confplanner/3/32.png&quot; alt=&quot;&quot; /&gt;
+      &lt;h3 id=&quot;adding-the-conferencedto-project-via-the-command-line&quot;&gt;Adding the ConferenceDTO project via the Command Line&lt;/h3&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Open a command prompt and navigate to the root &lt;code class=&quot;highlighter-rouge&quot;&gt;ConferencePlanner&lt;/code&gt; directory.&lt;/li&gt;
+    &lt;li&gt;Run the following command:
+      &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;dotnet new classlib -o ConferenceDTO -f netstandard2.0
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Next we’ll need to add a reference to the ConferenceDTO project from the BackEnd project. From the command line, navigate to the BackEnd project directory and execute the following command:
+      &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;dotnet add reference ../ConferenceDTO
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Add the ConferenceDTO project to the solution:
+      &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dotnet sln add ConferenceDTO/ConferenceDTO.csproj
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;      &lt;/div&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;refactoring-the-speaker-model-into-the-conferencedto-project&quot;&gt;Refactoring the Speaker model into the ConferenceDTO project&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Copy the &lt;code class=&quot;highlighter-rouge&quot;&gt;Speaker.cs&lt;/code&gt; class from the &lt;em&gt;BackEnd&lt;/em&gt; application into the root of the new ConferenceDTO project, and change the namespace to &lt;code class=&quot;highlighter-rouge&quot;&gt;ConferenceDTO&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;The data annotations references should be broken at this point, to resovle it, we need to add a nuget the missing NuGet package into the &lt;code class=&quot;highlighter-rouge&quot;&gt;ConferenceDTO&lt;/code&gt; project.&lt;/li&gt;
+  &lt;li&gt;Add a reference to the NuGet package &lt;code class=&quot;highlighter-rouge&quot;&gt;System.ComponentModel.Annotations&lt;/code&gt; version &lt;code class=&quot;highlighter-rouge&quot;&gt;4.6.0&lt;/code&gt;.
+ &lt;img src=&quot;/img/aspdotnetcore/confplanner/3/33.png&quot; alt=&quot;&quot; /&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;This can be done from the command line using &lt;code class=&quot;highlighter-rouge&quot;&gt;dotnet add package System.ComponentModel.Annotations --version 4.6.0&lt;/code&gt;&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;When the package restore completes, you should see that your data annotations are now resolved.&lt;/li&gt;
+  &lt;li&gt;Go back to the &lt;em&gt;BackEnd&lt;/em&gt; application and modify the code in &lt;code class=&quot;highlighter-rouge&quot;&gt;Speaker.cs&lt;/code&gt; as shown:
+    &lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Speaker&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ConferenceDTO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Speaker&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/confplanner/3/34.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Run the application and view the Speakers data using the Swagger UI to verify everything still works.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;adding-the-remaining-models-to-conferencedto&quot;&gt;Adding the remaining models to ConferenceDTO&lt;/h2&gt;
+
+&lt;p&gt;We’ve got several more models to add, and unfortunately it’s a little mechanical. You can copy the following classes manually, or open the completed solution which is shown at the end.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Create an &lt;code class=&quot;highlighter-rouge&quot;&gt;Attendee.cs&lt;/code&gt; class in the &lt;em&gt;ConferenceDTO&lt;/em&gt; project with the following code:
+    &lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Collections.Generic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.ComponentModel.DataAnnotations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   
+&lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;ConferenceDTO&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Attendee&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Id&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   
+        &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Required&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;StringLength&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;virtual&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FirstName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   
+        &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Required&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;StringLength&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;virtual&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LastName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   
+        &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Required&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;StringLength&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UserName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+           
+        &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;StringLength&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;256&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;virtual&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EmailAddress&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Create a &lt;code class=&quot;highlighter-rouge&quot;&gt;Session.cs&lt;/code&gt; class with the following code:
+    &lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Collections&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Collections.Generic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.ComponentModel.DataAnnotations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   
+&lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;ConferenceDTO&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Session&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Id&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   
+        &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Required&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;StringLength&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Title&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   
+        &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;StringLength&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;virtual&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Abstract&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;virtual&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DateTimeOffset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;StartTime&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;virtual&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DateTimeOffset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EndTime&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   
+        &lt;span class=&quot;c1&quot;&gt;// Bonus points to those who can figure out why this is written this way&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TimeSpan&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Duration&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EndTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Subtract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StartTime&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;??&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EndTime&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;??&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DateTimeOffset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MinValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;??&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TimeSpan&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Zero&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TrackId&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Create a new &lt;code class=&quot;highlighter-rouge&quot;&gt;Track.cs&lt;/code&gt; class with the following code:
+    &lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Collections.Generic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.ComponentModel.DataAnnotations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   
+&lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;ConferenceDTO&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Track&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Id&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   
+        &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Required&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;StringLength&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;creating-derived-models-in-the-backend-project&quot;&gt;Creating Derived Models in the BackEnd project&lt;/h2&gt;
+&lt;p&gt;We’re not going to create our EF models directly from the &lt;code class=&quot;highlighter-rouge&quot;&gt;ConferenceDTO&lt;/code&gt; classes. Instead, we’ll create some composite classes such as &lt;code class=&quot;highlighter-rouge&quot;&gt;SessionSpeaker&lt;/code&gt;, since these will map more closely to what our application will be working with.&lt;/p&gt;
+
+&lt;p&gt;We’re also going to take this opportunity to rename the &lt;code class=&quot;highlighter-rouge&quot;&gt;Models&lt;/code&gt; directory in the &lt;em&gt;BackEnd&lt;/em&gt; project to &lt;code class=&quot;highlighter-rouge&quot;&gt;Data&lt;/code&gt; since it no longer just contains models.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Right-click the &lt;code class=&quot;highlighter-rouge&quot;&gt;Models&lt;/code&gt; directory and select &lt;code class=&quot;highlighter-rouge&quot;&gt;Rename&lt;/code&gt;, changing the name to &lt;code class=&quot;highlighter-rouge&quot;&gt;Data&lt;/code&gt;.
+    &lt;blockquote&gt;
+      &lt;p&gt;Note: If you are using Visual Studio, you can use refactoring to rename the namespace.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Add a &lt;code class=&quot;highlighter-rouge&quot;&gt;SessionSpeaker.cs&lt;/code&gt; class to the &lt;code class=&quot;highlighter-rouge&quot;&gt;Data&lt;/code&gt; directory with the following code:
+    &lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Collections.Generic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Linq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Threading.Tasks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   
+&lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;BackEnd.Data&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SessionSpeaker&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SessionId&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Session&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Session&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SpeakerId&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Speaker&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Speaker&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add an &lt;code class=&quot;highlighter-rouge&quot;&gt;SessionAttendee.cs&lt;/code&gt; class with the following code:&lt;/p&gt;
+
+    &lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Collections.Generic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Linq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Threading.Tasks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+ &lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;BackEnd.Data&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+     &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SessionAttendee&lt;/span&gt;
+     &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+         &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SessionId&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+         &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Session&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Session&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+         &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AttendeeId&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+         &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Attendee&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Attendee&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Add an &lt;code class=&quot;highlighter-rouge&quot;&gt;Attendee.cs&lt;/code&gt; class with the following code:
+    &lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Collections.Generic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   
+&lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;BackEnd.Data&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Attendee&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ConferenceDTO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Attendee&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;virtual&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ICollection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SessionAttendee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SessionsAttendees&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Add a &lt;code class=&quot;highlighter-rouge&quot;&gt;Session.cs&lt;/code&gt; class with the following code:
+    &lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Collections&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Collections.Generic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   
+&lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;BackEnd.Data&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Session&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ConferenceDTO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Session&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;virtual&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ICollection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SessionSpeaker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SessionSpeakers&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;virtual&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ICollection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SessionAttendee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SessionAttendees&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Track&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Track&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Add a &lt;code class=&quot;highlighter-rouge&quot;&gt;Track.cs&lt;/code&gt; class with the following code:
+    &lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Collections.Generic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.ComponentModel.DataAnnotations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;BackEnd.Data&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Track&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ConferenceDTO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Track&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;virtual&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ICollection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Sessions&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Modify the &lt;code class=&quot;highlighter-rouge&quot;&gt;Speaker.cs&lt;/code&gt; class we wrote previously to make the following two changes: update to the namespace to match our directory rename, and add a referece to the &lt;code class=&quot;highlighter-rouge&quot;&gt;SessionSpeaker&lt;/code&gt; composite class:
+    &lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Collections.Generic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   
+&lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;BackEnd.Data&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Speaker&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ConferenceDTO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Speaker&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;virtual&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ICollection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SessionSpeaker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SessionSpeakers&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SessionSpeaker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;update-the-applicationdbcontext&quot;&gt;Update the ApplicationDbContext&lt;/h2&gt;
+&lt;p&gt;Okay, now we need to update our &lt;code class=&quot;highlighter-rouge&quot;&gt;ApplicationDbContext&lt;/code&gt; so Entity Framework knows about our new models.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Update &lt;code class=&quot;highlighter-rouge&quot;&gt;ApplicationDbContext.cs&lt;/code&gt; to use the following code:
+    &lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Microsoft.EntityFrameworkCore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;BackEnd.Data&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ApplicationDbContext&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DbContext&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ApplicationDbContext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DbContextOptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ApplicationDbContext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;OnModelCreating&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ModelBuilder&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;modelBuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;modelBuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Entity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Attendee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;()&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;HasIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UserName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;IsUnique&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+             &lt;span class=&quot;c1&quot;&gt;// Many-to-many: Session &amp;lt;-&amp;gt; Attendee&lt;/span&gt;
+             &lt;span class=&quot;n&quot;&gt;modelBuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Entity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SessionAttendee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;()&lt;/span&gt;
+                 &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;HasKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ca&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ca&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SessionId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ca&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AttendeeId&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+             &lt;span class=&quot;c1&quot;&gt;// Many-to-many: Speaker &amp;lt;-&amp;gt; Session&lt;/span&gt;
+             &lt;span class=&quot;n&quot;&gt;modelBuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Entity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SessionSpeaker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;()&lt;/span&gt;
+                 &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;HasKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ss&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SessionId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SpeakerId&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DbSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Sessions&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DbSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Track&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Tracks&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DbSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Speaker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Speakers&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DbSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Attendee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Attendees&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Fix errors due to the rename from &lt;code class=&quot;highlighter-rouge&quot;&gt;BackEnd.Models&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;BackEnd.Data&lt;/code&gt;. You can either do this using a find / replace (replacing “BackEnd.Models” with “BackEnd.Data”) or you can do a build and fix errors.&lt;/li&gt;
+  &lt;li&gt;Ensure that the application builds now.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;add-a-new-database-migration&quot;&gt;Add a new database migration&lt;/h2&gt;
+
+&lt;h3 id=&quot;visual-studio-package-manager-console&quot;&gt;Visual Studio: Package Manager Console&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;Run the following commands in the Package Manager Console (specify the &lt;code class=&quot;highlighter-rouge&quot;&gt;BackEnd&lt;/code&gt; project)
+    &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;Add-Migration Refactor
+Update-Database
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/confplanner/3/37.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+    &lt;h3 id=&quot;command-line&quot;&gt;Command line&lt;/h3&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Run the following commands in the command prompt in the &lt;code class=&quot;highlighter-rouge&quot;&gt;BackEnd&lt;/code&gt; project directory:
+    &lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;dotnet ef migrations add Refactor
+dotnet ef database update
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Now take a deep breath and run the application and navigate to &lt;code class=&quot;highlighter-rouge&quot;&gt;/swagger&lt;/code&gt;. You should see the Swagger UI.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;updating-the-speakers-api-controller&quot;&gt;Updating the Speakers API controller&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Modify the query for the &lt;code class=&quot;highlighter-rouge&quot;&gt;GetSpeakers()&lt;/code&gt; method as shown below:
+    &lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;speakers&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Speakers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AsNoTracking&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SessionSpeakers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                            &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ThenInclude&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ss&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToListAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;speakers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/confplanner/3/39.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;While the above will work, this is directly returning our model class. A better practice is to return an output model class. Create a &lt;code class=&quot;highlighter-rouge&quot;&gt;SpeakerResponse.cs&lt;/code&gt; class in the &lt;code class=&quot;highlighter-rouge&quot;&gt;ConferenceDTO&lt;/code&gt; project with the following code:
+    &lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Collections.Generic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;ConferenceDTO&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SpeakerResponse&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Speaker&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ICollection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Sessions&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Now we’ll add a utility method to map between these classes. In the &lt;em&gt;BackEnd&lt;/em&gt; project, create an &lt;code class=&quot;highlighter-rouge&quot;&gt;Infrastructure&lt;/code&gt; directory. Add a class named &lt;code class=&quot;highlighter-rouge&quot;&gt;EntityExtensions.cs&lt;/code&gt; with the following mapping code:
+    &lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;BackEnd.Data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Collections.Generic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Linq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Threading.Tasks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;BackEnd.Data&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;EntityExtensions&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ConferenceDTO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SpeakerResponse&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;MapSpeakerResponse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Speaker&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;speaker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ConferenceDTO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SpeakerResponse&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;Id&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;speaker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;speaker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;Bio&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;speaker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Bio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;WebSite&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;speaker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WebSite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;Sessions&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;speaker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SessionSpeakers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ss&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
+                        &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ConferenceDTO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Session&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                            &lt;span class=&quot;n&quot;&gt;Id&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SessionId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                            &lt;span class=&quot;n&quot;&gt;Title&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Title&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Now we can update the &lt;code class=&quot;highlighter-rouge&quot;&gt;GetSpeakers()&lt;/code&gt; method of the &lt;em&gt;SpeakersController&lt;/em&gt; so that it returns our response model. Update the last few lines so that the method reads as follows:
+    &lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HttpGet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ActionResult&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ConferenceDTO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SpeakerResponse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GetSpeakers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;speakers&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Speakers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AsNoTracking&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+                                    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SessionSpeakers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                                        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ThenInclude&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ss&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                                    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;MapSpeakerResponse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+                                    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToListAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;speakers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Update the &lt;code class=&quot;highlighter-rouge&quot;&gt;GetSpeaker()&lt;/code&gt; method to use our mapped response models as follows:
+    &lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;HttpGet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{id}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ActionResult&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ConferenceDTO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SpeakerResponse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GetSpeaker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;speaker&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Speakers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AsNoTracking&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+                                    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SessionSpeakers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                                        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ThenInclude&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ss&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                                    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;SingleOrDefaultAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Id&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;speaker&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;NotFound&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;speaker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;MapSpeakerResponse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/confplanner/3/40.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Remove the other actions (&lt;code class=&quot;highlighter-rouge&quot;&gt;PutSpeaker&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;PostSpeaker&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;DeleteSpeaker&lt;/code&gt;), on the &lt;code class=&quot;highlighter-rouge&quot;&gt;SpeakersController&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;adding-the-remaining-api-controllers-and-dtos&quot;&gt;Adding the remaining API Controllers and DTOs&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Add the following response DTO classes from &lt;a href=&quot;https://github.com/girishgodage/confplanerapp/tree/master/save-points/2-BackEnd-completed/ConferencePlanner/ConferenceDTO&quot;&gt;the save point folder&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;AttendeeResponse&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SessionResponse&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ConferenceResponse&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;TrackResponse&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;TagResponse&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Update the &lt;code class=&quot;highlighter-rouge&quot;&gt;EntityExtensions&lt;/code&gt; class with the &lt;code class=&quot;highlighter-rouge&quot;&gt;MapSessionResponse&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;MapAttendeeResponse&lt;/code&gt; methods from &lt;a href=&quot;https://github.com/girishgodage/confplanerapp/tree/master/save-points/2b-BackEnd-completed/ConferencePlanner/BackEnd/Infrastructure&quot;&gt;the save point folder&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Copy the following controllers from &lt;a href=&quot;https://github.com/girishgodage/confplanerapp/tree/master/save-points/2b-BackEnd-completed/ConferencePlanner/BackEnd/Controllers&quot;&gt;the save point folder&lt;/a&gt; into the current project’s &lt;code class=&quot;highlighter-rouge&quot;&gt;BackEnd/Controllers&lt;/code&gt; directory:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SessionsController&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;AttendeesController&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;adding-conference-upload-support&quot;&gt;Adding Conference Upload support&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Copy the &lt;code class=&quot;highlighter-rouge&quot;&gt;DataLoader.cs&lt;/code&gt; class from &lt;a href=&quot;https://github.com/girishgodage/confplanerapp/tree/master/ConferencePlanner/BackEnd/Data/DataLoader.cs&quot;&gt;here&lt;/a&gt; into the &lt;code class=&quot;highlighter-rouge&quot;&gt;Data&lt;/code&gt; directory of the &lt;code class=&quot;highlighter-rouge&quot;&gt;BackEnd&lt;/code&gt; project.&lt;/li&gt;
+  &lt;li&gt;Copy the &lt;code class=&quot;highlighter-rouge&quot;&gt;SessionizeLoader.cs&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;DevIntersectionLoader.cs&lt;/code&gt; classes from &lt;a href=&quot;https://github.com/girishgodage/confplanerapp/tree/master/ConferencePlanner/BackEnd/Data/&quot;&gt;here&lt;/a&gt; into the current project’s &lt;code class=&quot;highlighter-rouge&quot;&gt;/src/BackEnd/Data/&lt;/code&gt; directory.
+    &lt;blockquote&gt;
+      &lt;p&gt;Note: We have data loaders from the two conference series where this workshop has been presented most; you can update this to plug in your own conference file format.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;To improve the UI for upload, turn on the option to display enums as strings by changing &lt;code class=&quot;highlighter-rouge&quot;&gt;AddSwaggerGen&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;Startup.cs&lt;/code&gt; to the following:
+    &lt;div class=&quot;language-c# highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AddSwaggerGen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+     &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;SwaggerDoc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;v1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OpenApiInfo&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Title&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Conference Planner API&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Version&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;v1&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+     &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;DescribeAllEnumsAsStrings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Run the application to see the updated data via Swagger UI.&lt;/li&gt;
+  &lt;li&gt;Use the Swagger UI to upload &lt;a href=&quot;https://github.com/girishgodage/confplanerapp/tree/master/ConferencePlanner/BackEnd/Data/Import/NDC_Sydney_2019.json&quot;&gt;NDC_Sydney_2019.json&lt;/a&gt; to the &lt;code class=&quot;highlighter-rouge&quot;&gt;/api/Sessions/upload&lt;/code&gt; API.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;sessions&quot;&gt;Sessions&lt;/h2&gt;
+
+&lt;p&gt;This is series of articles on Building Conf planner app with Asp.net Core:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/CreateBackEndAPIproject&quot; target=&quot;_blank&quot;&gt;1 - Build the back-end API with basic EF model&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/BuildoutBackEndandRefactor&quot; target=&quot;_blank&quot;&gt;2 - Finish the back-end API and EF model, refactor into view modelsl&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/Addfront-endrenderagendasetupfront-endmodels&quot; target=&quot;_blank&quot;&gt;3 - Add front-end, render agenda, set up front-end models&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/Addauthfeatures&quot; target=&quot;_blank&quot;&gt;4 - Add authentication, add admin policy, allow editing sessions, users can sign-in with Identity, custom auth tag helper&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/Addpersonalagenda&quot; target=&quot;_blank&quot;&gt;5 - Add user association and personal agenda&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/ProductionReadinessandDeployment&quot; target=&quot;_blank&quot;&gt;6 - Deployment, Azure and other production environments, configuring environments, diagnostics&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/Challenges&quot; target=&quot;_blank&quot;&gt;7 - Challenges&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/SPAFrontEnd&quot; target=&quot;_blank&quot;&gt;8 - SPA front-end &lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr /&gt;
+   
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;/blog/CreateBackEndAPIproject&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;/blog/Addfront-endrenderagendasetupfront-endmodels&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;       
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Building out the Back End</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/springframework.png" /></entry><entry><title type="html">Build the back-end API with basic EF model</title><link href="http://localhost:4000/blog/CreateBackEndAPIproject" rel="alternate" type="text/html" title="Build the back-end API with basic EF model" /><published>2019-10-24T05:54:00+00:00</published><updated>2019-10-24T05:54:00+00:00</updated><id>http://localhost:4000/blog/confplannertut2</id><content type="html" xml:base="http://localhost:4000/blog/CreateBackEndAPIproject">&lt;h2 id=&quot;creating-a-new-project-using-visual-studio&quot;&gt;Creating a new project using Visual Studio&lt;/h2&gt;
 &lt;ol&gt;
   &lt;li&gt;Create and add a new project named &lt;code class=&quot;highlighter-rouge&quot;&gt;BackEnd&lt;/code&gt; and name the solution &lt;code class=&quot;highlighter-rouge&quot;&gt;ConferencePlanner&lt;/code&gt; using File / New / ASP.NET Core Web Application. Select the Web API template, No Auth, no Docker support.
     &lt;h5 id=&quot;open-a-visual-studio&quot;&gt;Open a Visual Studio&lt;/h5&gt;
@@ -591,113 +1076,7 @@ Update-Database
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">There are several important Spring Projects solving the needs of enterprises today. What are Spring Projects and how are they different from Spring Modules? You will learn What are Spring Projects? What are examples of Spring Projects? How are Spring Projects different from Spring Modules?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/springframework.png" /></entry><entry><title type="html">Architecture of Spring Framework - Modularity and Spring Modules</title><link href="http://localhost:4000/blog/spring-framework-architectures-and-modules" rel="alternate" type="text/html" title="Architecture of Spring Framework - Modularity and Spring Modules" /><published>2019-10-23T06:18:00+00:00</published><updated>2019-10-23T06:18:00+00:00</updated><id>http://localhost:4000/blog/springframewok5</id><content type="html" xml:base="http://localhost:4000/blog/spring-framework-architectures-and-modules">&lt;p&gt;One of the most important features of the Spring framework is its modularity. It is not one big monolith framework. What is the architecture of Spring Framework? What are Spring Modules? How are they organized?&lt;/p&gt;
-
-&lt;h2 id=&quot;you-will-learn&quot;&gt;You will learn&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;What is the architecture of Spring Framework?&lt;/li&gt;
-  &lt;li&gt;How is Spring Framework Modularized?&lt;/li&gt;
-  &lt;li&gt;What are different Spring Modules?&lt;/li&gt;
-  &lt;li&gt;Which modules provide which Spring Features like Dependency Injection and Auto wiring?&lt;/li&gt;
-  &lt;li&gt;How can you develop applications with multiple layers with Spring?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;spring-architecture-and-modules&quot;&gt;Spring Architecture and Modules&lt;/h3&gt;
-
-&lt;p&gt;Let’s look at the modules that are present in a typical Spring Project.
-&lt;img src=&quot;/images/Capture-095-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;It is not organized as one big JAR file. It is composed of a large number of smaller JAR files.&lt;/p&gt;
-
-&lt;p&gt;Spring is organized into modules. Here is how Spring is organized conceptually:
-&lt;img src=&quot;/images/Capture-095-03.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;container&quot;&gt;Container&lt;/h3&gt;
-
-&lt;p&gt;This is the most heavily used part of the Spring framework. This includes modules such as:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Beans: To manage the application dependencies&lt;/li&gt;
-  &lt;li&gt;Core&lt;/li&gt;
-  &lt;li&gt;Context: To maintain the application context&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;database-access-and-integration&quot;&gt;Database Access And Integration&lt;/h3&gt;
-
-&lt;p&gt;Spring provide excellent options for implementing data and integration layers.&lt;/p&gt;
-
-&lt;p&gt;The important data access modules are:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;JDBC&lt;/strong&gt; : To talk to relational database using JDBC&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;ORM&lt;/strong&gt; : Provides good integration with all ORM (Object Relational Mapping) frameworks, such as Hibernate and MyBatis.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;JMS&lt;/strong&gt; : If you want to talk to another application over a queue, JMS provides an excellent option. Spring has good integration with JMS.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;OXM&lt;/strong&gt; : This module provides good integration in scenarios where object to XML mappings are required.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Transactions&lt;/strong&gt; : Transaction management is an important part of data access integration functionality. Ideally, you want the transaction to be fully successful, or completely rolled back. If a transaction has 4 steps and failed at the third step, the previous two successful steps must also be rolled back. Spring has great support for transaction management.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;web&quot;&gt;Web&lt;/h3&gt;
-
-&lt;p&gt;Spring has very good support to develop your web layer:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Spring MVC : It is Spring’s own web framework&lt;/li&gt;
-  &lt;li&gt;Struts : Spring provides good integration with Struts.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;cross-cutting-features&quot;&gt;Cross Cutting Features&lt;/h3&gt;
-
-&lt;p&gt;An application is typically developed in multiple layers. For example, a web application is often designed to have three layers: web, business and data:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Capture-095-04.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;There are many things that are applicable to more than one layer. Those are called &lt;strong&gt;cross cutting concerns&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h4 id=&quot;unit-testing&quot;&gt;Unit Testing&lt;/h4&gt;
-
-&lt;p&gt;One important cross cutting concern is unit testing. We want to be able to unit test code in all the three layers mentioned above. Spring Test framework provides good support for unit testing.&lt;/p&gt;
-
-&lt;h4 id=&quot;aop&quot;&gt;AOP&lt;/h4&gt;
-
-&lt;p&gt;AOP stands for Aspect oriented programming. This module is useful for implementing features such as security and logging. Spring AOP provides basic AOP features.&lt;/p&gt;
-
-&lt;p&gt;Spring provides good integration with the AspectJ framework to do advanced AOP.&lt;/p&gt;
-
-&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
-
-&lt;p&gt;In this article, we had a brief look at the modular structure of the Spring framework. It is not a single monolith, but is organized as a set of small modules.&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;spring-framework&quot;&gt;Spring Framework&lt;/h3&gt;
-
-&lt;p&gt;This is the first article in a series of articles on Spring Framework:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-the-spring-framework&quot; target=&quot;_blank&quot;&gt;1 - Introduction To Spring Framework&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-what-is-a-dependency&quot; target=&quot;_blank&quot;&gt;2 - What Is A Dependency?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-dependency-injection-inversion-of-control&quot; target=&quot;_blank&quot;&gt;3 - What Is Dependency Injection?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/spring-and-spring-boot-what-is-component-scan&quot; target=&quot;_blank&quot;&gt;4 - What Is Component Scan?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-architectures-and-modules&quot; target=&quot;_blank&quot;&gt;5 - Architecture of Spring Framework - Modularity and Spring Modules&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/spring-projects-with-examples&quot; target=&quot;_blank&quot;&gt;6 - What Are Spring Projects?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/spring-basics-introduction-to-spring-batch&quot; target=&quot;_blank&quot;&gt;7 - Introduction To Spring Batch&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr /&gt;
-   
-    &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/spring-and-spring-boot-what-is-component-scan&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/spring-projects-with-examples&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">One of the most important features of the Spring framework is its modularity. It is not one big monolith framework. What is the architecture of Spring Framework? What are Spring Modules? How are they organized? You will learn What is the architecture of Spring Framework? How is Spring Framework Modularized? What are different Spring Modules? Which modules provide which Spring Features like Dependency Injection and Auto wiring? How can you develop applications with multiple layers with Spring?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/springframework.png" /></entry><entry><title type="html">Spring Framework - What Is Component Scan?</title><link href="http://localhost:4000/blog/spring-and-spring-boot-what-is-component-scan" rel="alternate" type="text/html" title="Spring Framework - What Is Component Scan?" /><published>2019-10-23T06:18:00+00:00</published><updated>2019-10-23T06:18:00+00:00</updated><id>http://localhost:4000/blog/springframewok4</id><content type="html" xml:base="http://localhost:4000/blog/spring-and-spring-boot-what-is-component-scan">&lt;p&gt;Spring framework identifies the beans and their dependencies, creates the beans and injects the dependencies into beans. How does the Spring Framework know where to search for beans and dependencies? How does Spring Boot make component scan easier?&lt;/p&gt;
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">There are several important Spring Projects solving the needs of enterprises today. What are Spring Projects and how are they different from Spring Modules? You will learn What are Spring Projects? What are examples of Spring Projects? How are Spring Projects different from Spring Modules?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/springframework.png" /></entry><entry><title type="html">Spring Framework - What Is Component Scan?</title><link href="http://localhost:4000/blog/spring-and-spring-boot-what-is-component-scan" rel="alternate" type="text/html" title="Spring Framework - What Is Component Scan?" /><published>2019-10-23T06:18:00+00:00</published><updated>2019-10-23T06:18:00+00:00</updated><id>http://localhost:4000/blog/springframewok4</id><content type="html" xml:base="http://localhost:4000/blog/spring-and-spring-boot-what-is-component-scan">&lt;p&gt;Spring framework identifies the beans and their dependencies, creates the beans and injects the dependencies into beans. How does the Spring Framework know where to search for beans and dependencies? How does Spring Boot make component scan easier?&lt;/p&gt;
 
 &lt;h2 id=&quot;you-will-learn&quot;&gt;You will learn&lt;/h2&gt;
 &lt;ul&gt;
@@ -918,7 +1297,113 @@ Update-Database
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Spring framework identifies the beans and their dependencies, creates the beans and injects the dependencies into beans. How does the Spring Framework know where to search for beans and dependencies? How does Spring Boot make component scan easier? You will learn Why do we need Component Scan in Spring? How can you configure a Component Scan in Spring with XML and Java Annotation based configuration? How does Spring Boot provide an automatic Component Scan? How do you solve problems with Component Scan?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/springframework.png" /></entry><entry><title type="html">Spring Basics - Dependency Injection and Inversion of Control</title><link href="http://localhost:4000/blog/spring-framework-dependency-injection-inversion-of-control" rel="alternate" type="text/html" title="Spring Basics - Dependency Injection and Inversion of Control" /><published>2019-10-23T06:06:00+00:00</published><updated>2019-10-23T06:06:00+00:00</updated><id>http://localhost:4000/blog/springframewok3</id><content type="html" xml:base="http://localhost:4000/blog/spring-framework-dependency-injection-inversion-of-control">&lt;p&gt;Developers starting with the Spring framework often get confused with terminology - Dependency, Dependency Injection and Inversion Of Control. In this article, we introduce you to the concepts of Dependency Injection and Inversion Of Control.&lt;/p&gt;
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Spring framework identifies the beans and their dependencies, creates the beans and injects the dependencies into beans. How does the Spring Framework know where to search for beans and dependencies? How does Spring Boot make component scan easier? You will learn Why do we need Component Scan in Spring? How can you configure a Component Scan in Spring with XML and Java Annotation based configuration? How does Spring Boot provide an automatic Component Scan? How do you solve problems with Component Scan?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/springframework.png" /></entry><entry><title type="html">Architecture of Spring Framework - Modularity and Spring Modules</title><link href="http://localhost:4000/blog/spring-framework-architectures-and-modules" rel="alternate" type="text/html" title="Architecture of Spring Framework - Modularity and Spring Modules" /><published>2019-10-23T06:18:00+00:00</published><updated>2019-10-23T06:18:00+00:00</updated><id>http://localhost:4000/blog/springframewok5</id><content type="html" xml:base="http://localhost:4000/blog/spring-framework-architectures-and-modules">&lt;p&gt;One of the most important features of the Spring framework is its modularity. It is not one big monolith framework. What is the architecture of Spring Framework? What are Spring Modules? How are they organized?&lt;/p&gt;
+
+&lt;h2 id=&quot;you-will-learn&quot;&gt;You will learn&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;What is the architecture of Spring Framework?&lt;/li&gt;
+  &lt;li&gt;How is Spring Framework Modularized?&lt;/li&gt;
+  &lt;li&gt;What are different Spring Modules?&lt;/li&gt;
+  &lt;li&gt;Which modules provide which Spring Features like Dependency Injection and Auto wiring?&lt;/li&gt;
+  &lt;li&gt;How can you develop applications with multiple layers with Spring?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;spring-architecture-and-modules&quot;&gt;Spring Architecture and Modules&lt;/h3&gt;
+
+&lt;p&gt;Let’s look at the modules that are present in a typical Spring Project.
+&lt;img src=&quot;/images/Capture-095-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It is not organized as one big JAR file. It is composed of a large number of smaller JAR files.&lt;/p&gt;
+
+&lt;p&gt;Spring is organized into modules. Here is how Spring is organized conceptually:
+&lt;img src=&quot;/images/Capture-095-03.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;container&quot;&gt;Container&lt;/h3&gt;
+
+&lt;p&gt;This is the most heavily used part of the Spring framework. This includes modules such as:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Beans: To manage the application dependencies&lt;/li&gt;
+  &lt;li&gt;Core&lt;/li&gt;
+  &lt;li&gt;Context: To maintain the application context&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;database-access-and-integration&quot;&gt;Database Access And Integration&lt;/h3&gt;
+
+&lt;p&gt;Spring provide excellent options for implementing data and integration layers.&lt;/p&gt;
+
+&lt;p&gt;The important data access modules are:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;JDBC&lt;/strong&gt; : To talk to relational database using JDBC&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;ORM&lt;/strong&gt; : Provides good integration with all ORM (Object Relational Mapping) frameworks, such as Hibernate and MyBatis.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;JMS&lt;/strong&gt; : If you want to talk to another application over a queue, JMS provides an excellent option. Spring has good integration with JMS.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;OXM&lt;/strong&gt; : This module provides good integration in scenarios where object to XML mappings are required.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Transactions&lt;/strong&gt; : Transaction management is an important part of data access integration functionality. Ideally, you want the transaction to be fully successful, or completely rolled back. If a transaction has 4 steps and failed at the third step, the previous two successful steps must also be rolled back. Spring has great support for transaction management.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;web&quot;&gt;Web&lt;/h3&gt;
+
+&lt;p&gt;Spring has very good support to develop your web layer:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spring MVC : It is Spring’s own web framework&lt;/li&gt;
+  &lt;li&gt;Struts : Spring provides good integration with Struts.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;cross-cutting-features&quot;&gt;Cross Cutting Features&lt;/h3&gt;
+
+&lt;p&gt;An application is typically developed in multiple layers. For example, a web application is often designed to have three layers: web, business and data:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Capture-095-04.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;There are many things that are applicable to more than one layer. Those are called &lt;strong&gt;cross cutting concerns&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;unit-testing&quot;&gt;Unit Testing&lt;/h4&gt;
+
+&lt;p&gt;One important cross cutting concern is unit testing. We want to be able to unit test code in all the three layers mentioned above. Spring Test framework provides good support for unit testing.&lt;/p&gt;
+
+&lt;h4 id=&quot;aop&quot;&gt;AOP&lt;/h4&gt;
+
+&lt;p&gt;AOP stands for Aspect oriented programming. This module is useful for implementing features such as security and logging. Spring AOP provides basic AOP features.&lt;/p&gt;
+
+&lt;p&gt;Spring provides good integration with the AspectJ framework to do advanced AOP.&lt;/p&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;In this article, we had a brief look at the modular structure of the Spring framework. It is not a single monolith, but is organized as a set of small modules.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h3 id=&quot;spring-framework&quot;&gt;Spring Framework&lt;/h3&gt;
+
+&lt;p&gt;This is the first article in a series of articles on Spring Framework:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-the-spring-framework&quot; target=&quot;_blank&quot;&gt;1 - Introduction To Spring Framework&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-what-is-a-dependency&quot; target=&quot;_blank&quot;&gt;2 - What Is A Dependency?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-dependency-injection-inversion-of-control&quot; target=&quot;_blank&quot;&gt;3 - What Is Dependency Injection?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-and-spring-boot-what-is-component-scan&quot; target=&quot;_blank&quot;&gt;4 - What Is Component Scan?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-framework-architectures-and-modules&quot; target=&quot;_blank&quot;&gt;5 - Architecture of Spring Framework - Modularity and Spring Modules&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-projects-with-examples&quot; target=&quot;_blank&quot;&gt;6 - What Are Spring Projects?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/blog/spring-basics-introduction-to-spring-batch&quot; target=&quot;_blank&quot;&gt;7 - Introduction To Spring Batch&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--Section: Lesson UI--&gt;
+&lt;section class=&quot;text-center&quot;&gt;
+    &lt;hr /&gt;
+   
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;/blog/spring-and-spring-boot-what-is-component-scan&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
+                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
+            &lt;/a&gt;
+        &lt;/div&gt;
+     
+        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
+            &lt;a target=&quot;_blank&quot; href=&quot;/blog/spring-projects-with-examples&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
+                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;       
+    &lt;/div&gt;
+
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">One of the most important features of the Spring framework is its modularity. It is not one big monolith framework. What is the architecture of Spring Framework? What are Spring Modules? How are they organized? You will learn What is the architecture of Spring Framework? How is Spring Framework Modularized? What are different Spring Modules? Which modules provide which Spring Features like Dependency Injection and Auto wiring? How can you develop applications with multiple layers with Spring?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/springframework.png" /></entry><entry><title type="html">Spring Basics - Dependency Injection and Inversion of Control</title><link href="http://localhost:4000/blog/spring-framework-dependency-injection-inversion-of-control" rel="alternate" type="text/html" title="Spring Basics - Dependency Injection and Inversion of Control" /><published>2019-10-23T06:06:00+00:00</published><updated>2019-10-23T06:06:00+00:00</updated><id>http://localhost:4000/blog/springframewok3</id><content type="html" xml:base="http://localhost:4000/blog/spring-framework-dependency-injection-inversion-of-control">&lt;p&gt;Developers starting with the Spring framework often get confused with terminology - Dependency, Dependency Injection and Inversion Of Control. In this article, we introduce you to the concepts of Dependency Injection and Inversion Of Control.&lt;/p&gt;
 
 &lt;h2 id=&quot;you-will-learn&quot;&gt;You will learn&lt;/h2&gt;
 &lt;ul&gt;
@@ -1558,102 +2043,4 @@ Let’s look at a few of them.&lt;/p&gt;
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Most important feature of Spring Framework is Dependency Injection. To understand Dependency Injection, you need to understand the concept of a Dependency. You will learn What is a Dependency? How are applications built? How is one layer dependent on another? How is a class dependent on another? How does the Spring Framework do Dependency Injection?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/springframework.png" /></entry><entry><title type="html">Asynchronous communication with queues and microservices - A perfect combination?</title><link href="http://localhost:4000/blog/asynchronous-communication-with-queues-in-microservices" rel="alternate" type="text/html" title="Asynchronous communication with queues and microservices - A perfect combination?" /><published>2019-10-19T20:17:00+00:00</published><updated>2019-10-19T20:17:00+00:00</updated><id>http://localhost:4000/blog/Microservices23</id><content type="html" xml:base="http://localhost:4000/blog/asynchronous-communication-with-queues-in-microservices">&lt;p&gt;In this article, we throw some light on what asynchronous messaging is all about and discuss why you should consider it for your microservices architectures.&lt;/p&gt;
-
-&lt;h3 id=&quot;what-you-will-learn&quot;&gt;What you will learn&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;What is Asynchronous Communication?&lt;/li&gt;
-  &lt;li&gt;Why Do We Need Asynchronous Communication?&lt;/li&gt;
-  &lt;li&gt;How is Asynchronous Communication implemented?&lt;/li&gt;
-  &lt;li&gt;Why should you consider using Asynchronous Communication for your microservices?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;what-is-synchronous-communication&quot;&gt;What Is Synchronous Communication?&lt;/h3&gt;
-
-&lt;p&gt;Consider the following example of a microservices architecture:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Capture-046-02.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;You have Microservice1 calling Microservice2, which in turn invokes Microservice3. Suppose that Microservice3 offers a simple web service functionality. So Microservice1 can send it a request for data over HTTP, and get back a response containing the requested data.&lt;/p&gt;
-
-&lt;p&gt;The communication that exists between these two microservices is called &lt;strong&gt;synchronous communication&lt;/strong&gt;. Microservice1 sends the request, waits for the data to be returned, and then proceeds.&lt;/p&gt;
-
-&lt;h4 id=&quot;drawbacks-of-synchronous-communication&quot;&gt;Drawbacks Of Synchronous Communication&lt;/h4&gt;
-
-&lt;p&gt;This mode of communication works well when the response arrives almost immediately. However, it puts restrictions on the microservices that are involved. In order that Microservice1 be available, Microservice2 also needs to be available.&lt;/p&gt;
-
-&lt;p&gt;In certain scenarios, synchronous communication might not even be user friendly.&lt;/p&gt;
-
-&lt;p&gt;Let’s say Microservice2 is down. In that case, the user who submitted the request needs to be intimated about it. You don’t always want to do that. In such situations, &lt;strong&gt;asynchronous communication&lt;/strong&gt; provides a better alternative.&lt;/p&gt;
-
-&lt;h3 id=&quot;asynchronous-communication&quot;&gt;Asynchronous Communication&lt;/h3&gt;
-
-&lt;p&gt;Have a look at the following application architecture:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Capture-046-03.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;In the picture above, we make use of a ZipkinDistributedTracingServer. Different Microservices send logs that are finally consolidated in the Zipkin Tracing Service. Each microservice puts its tracing information into the RabbitMQ message queue. The server processes messages as and when they come into the queue.&lt;/p&gt;
-
-&lt;p&gt;In this architecture, applications communicate through RabbitMQ. CurrencyCalculationService puts its own tracing information into RabbitMQ, and then forgets about it. It does not worry about the responses coming back to it.&lt;/p&gt;
-
-&lt;p&gt;Now, what would happen if the ZipkinDistributedTracingServer were to go down?&lt;/p&gt;
-
-&lt;p&gt;The services communicating with it would not worry one bit. They would continue sending messages to the queue. When the server comes back up, it resumes processing the messages present in the queue, and saves them to the database.&lt;/p&gt;
-
-&lt;h4 id=&quot;advantages-of-asynchronous-communication&quot;&gt;Advantages Of Asynchronous Communication&lt;/h4&gt;
-
-&lt;p&gt;Let’s look at a few advantages of asynchronous communication:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;In a system that involves asynchronous messaging, the server does not need to be up and running, all the time. Messages that are put into the message queue can be processed in batches, at a later time.&lt;/li&gt;
-  &lt;li&gt;Instead of a single instance of the tracing server processing the message queue, you could spawn multiple instances to lighten the load.&lt;/li&gt;
-  &lt;li&gt;If you use a modern version of a messaging queue, there is a good chance you get to use a replay feature. This helps in re-processing a message that initially threw an error.&lt;/li&gt;
-  &lt;li&gt;Asynchronous communication is great for systems that require &lt;strong&gt;eventual consistency&lt;/strong&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Great thing is as long as we fix the errors and reprocess the message, the users of services that initiated the requests with errors do not even need to know about them.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&quot;limitations-of-asynchronous-communication&quot;&gt;Limitations Of Asynchronous Communication&lt;/h4&gt;
-
-&lt;p&gt;Asynchronous communication cannot be used&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;If the processing needs to be real-time - if there is a hard constraint on the response time of a certain request.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
-
-&lt;p&gt;In this article, we had a look at what asynchronous communication is all about, We started with a peek at synchronous communication, and saw that it puts constraints on applications and their availability. Asynchronous communication solves the problem by causing services to enqueue requests into a message queue. A server then processes them independently, often in batches.&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;best-practices-with-cloud-and-microservices&quot;&gt;Best Practices with Cloud and Microservices&lt;/h3&gt;
-
-&lt;p&gt;This is the first article in a series of six articles on best practices with cloud and microservices:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/12-factor-app-cloud-native-microservices-best-practices&quot; target=&quot;_blank&quot;&gt;1 - The 12 Factor App - Best Practices In Cloud Native Applications and Microservices&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/introduction-to-event-driven-architectures-with-microservices&quot; target=&quot;_blank&quot;&gt;2 - Microservices Architectures - Event Driven Approach&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/software-best-practices-building-a-vertical-slice&quot; target=&quot;_blank&quot;&gt;3 - Why do you build a Vertical Slice?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/messaging-queues-and-asynchronous-communication-in-microservices&quot; target=&quot;_blank&quot;&gt;4 - Microservice Architecture Best Practices - Messaging Queues&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/creating-archetypes-in-microservices-architectures-best-practices&quot; target=&quot;_blank&quot;&gt;5 - Build an Archetype&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/asynchronous-communication-with-queues-in-microservices&quot; target=&quot;_blank&quot;&gt;6 - Asynchronous communication with queues and microservices - A perfect combination?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr /&gt;
-   
-    &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/creating-archetypes-in-microservices-architectures-best-practices&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/asynchronous-communication-with-queues-in-microservices&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">In this article, we throw some light on what asynchronous messaging is all about and discuss why you should consider it for your microservices architectures.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/microservices.png" /></entry></feed>
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Most important feature of Spring Framework is Dependency Injection. To understand Dependency Injection, you need to understand the concept of a Dependency. You will learn What is a Dependency? How are applications built? How is one layer dependent on another? How is a class dependent on another? How does the Spring Framework do Dependency Injection?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/springframework.png" /></entry></feed>

@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#2A80EE">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#2A80EE">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
+<title>Build the back-end API with basic EF model &#8211; Girish Godage</title>
+<meta name="description" content="In this tutorial, we'll add the rest of our models and controllers that expose them. We'll also refactor our application, moving our DTOs to a shared project so they can be used by our front-end application later..">
+<meta name="keywords" content="asp.net core">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all">
+
+<!-- Verifications -->
+    
+    
+        
+<!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Build the back-end API with basic EF model">
+    <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
+    <meta property="og:url" content="http://localhost:4000/blog/BuildoutBackEndandRefactor">
+    <meta property="og:site_name" content="Girish Godage">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@GGodage" />
+    
+    <meta name="twitter:title" content="Build the back-end API with basic EF model" />
+    <meta name="twitter:description" content="In this tutorial, we'll add the rest of our models and controllers that expose them. We'll also refactor our application, moving our DTOs to a shared project so they can be used by our front-end application later.." />
+    <meta name="twitter:url" content="http://localhost:4000/blog/BuildoutBackEndandRefactor" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/img/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/img/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    
+
+
+    <link rel="canonical" href="http://localhost:4000/blog/BuildoutBackEndandRefactor">
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
+    <!-- Bootstrap CSS-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Google fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+   
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
+    
+    <!-- animate.css-->
+    <link rel="stylesheet" href="http://localhost:4000/sitejs/animate.css/animate.css">
+    <!-- theme stylesheet-->
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="http://localhost:4000/css/custom.css" as="style">
+    <link rel="stylesheet" href="http://localhost:4000/css/comments.css" as="style">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="http://localhost:4000/img/logo-big.png">
+    <!-- Fab Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
+    
+    
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    
+    <script type="text/javascript">
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+       ga('create', 'UA-130164763-2', 'auto');
+       ga('send', 'pageview');
+    </script>
+    
+    <!-- Typed.js DONT TOUCHHHHHHHHHHHHH!-->
+    <!--<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.9/typed.min.js"></script>
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+      </script>
+      
+      <!-- START OF RELEVANT PART -->
+    <script async src="https://just-comments.com/w2.js"></script>
+    <!-- END OF RELEVANT PART -->
+
+
+</head>
+
+<body>
+    
+<!-- navbar-->
+<header class="header">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container"><a class="navbar-brand" href="http://localhost:4000"><img
+          src="http://localhost:4000/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
+          alt="logo"> <img src="http://localhost:4000/img/girish_logo.png" height="30" alt="girilogo"></a>
+      <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span
+          class="fa fa-bars" style="color: white"></span></button>
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="http://localhost:4000#home" class="nav-link  link-scroll">Home</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#about" class="nav-link link-scroll">About</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#skills" class="nav-link link-scroll">Skills</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#services" class="nav-link link-scroll">Services</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#references" class="nav-link link-scroll">My
+              work</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#contact" class="nav-link link-scroll">Contact</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000/blog" class="nav-link link-scroll">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    
+    
+    
+    <div style="background-color:Gray;">
+        <div style="padding:0;min-height:95.05vh;display:flex;font-family: Poppins, sans-serif;margin-top: 5rem;"
+            class="container">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <p class="post-title">
+                    <h1><a href="/blog/BuildoutBackEndandRefactor">Build the back-end API with basic EF model</a></h1>
+                </p>
+                
+                <span class="post-meta">
+              <span style="font-weight:600">October 24, 2019 Thursday</span>
+                    
+                       ( 9 minute read ) 
+                    
+                     
+                    <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">   by Girish Godage</a>
+                </span>
+                
+                <div class="site-category"> 
+                        <h5>asp.net core</h5>
+                </div>
+                
+                <hr>
+                <div><img class="post-image" src="/img/springframework.png" alt="Build the back-end API with basic EF model" height="250" /></div>
+                <div class="post-content">
+                    <br>                     
+                    <h2 id="building-out-the-back-end">Building out the Back End</h2>
+
+<p>In this session, we’ll add the rest of our models and controllers that expose them. We’ll also refactor our application, moving our DTOs to a shared project so they can be used by our front-end application later.</p>
+
+<h2 id="add-a-conferencedto-project">Add a ConferenceDTO project</h2>
+<blockquote>
+  <p>We’ll start by creating the new shared project to hold our data transfer objects.</p>
+  <h3 id="adding-the-conferencedto-project-using-visual-studio">Adding the ConferenceDTO Project using Visual Studio</h3>
+  <ol>
+    <li>If using Visual Studio, right-click on the Solution and select <em>Add</em> / <em>New Project…</em>.</li>
+    <li>Select <em>.NET Standard</em> from the project types on the left and select the <em>Class Library (.NET Standard)</em> template. Name the project ConferenceDTO and press OK.
+<img src="/img/aspdotnetcore/confplanner/3/vs2019-create-dto-project.png" alt="" /></li>
+    <li>Delete the generated <code class="highlighter-rouge">Class1.cs</code> file from this new project.
+<img src="/img/aspdotnetcore/confplanner/3/31.png" alt="" /></li>
+    <li>Right-click the ‘Dependencies’ node under the BackENd project, select “Add Reference…” and put a checkmark near ConferenceDTO.
+<img src="/img/aspdotnetcore/confplanner/3/32.png" alt="" />
+      <h3 id="adding-the-conferencedto-project-via-the-command-line">Adding the ConferenceDTO project via the Command Line</h3>
+    </li>
+    <li>Open a command prompt and navigate to the root <code class="highlighter-rouge">ConferencePlanner</code> directory.</li>
+    <li>Run the following command:
+      <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">dotnet new classlib -o ConferenceDTO -f netstandard2.0
+</span></code></pre></div>      </div>
+    </li>
+    <li>Next we’ll need to add a reference to the ConferenceDTO project from the BackEnd project. From the command line, navigate to the BackEnd project directory and execute the following command:
+      <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">dotnet add reference ../ConferenceDTO
+</span></code></pre></div>      </div>
+    </li>
+    <li>Add the ConferenceDTO project to the solution:
+      <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet sln add ConferenceDTO/ConferenceDTO.csproj
+</code></pre></div>      </div>
+    </li>
+  </ol>
+</blockquote>
+
+<h2 id="refactoring-the-speaker-model-into-the-conferencedto-project">Refactoring the Speaker model into the ConferenceDTO project</h2>
+<ol>
+  <li>Copy the <code class="highlighter-rouge">Speaker.cs</code> class from the <em>BackEnd</em> application into the root of the new ConferenceDTO project, and change the namespace to <code class="highlighter-rouge">ConferenceDTO</code>.</li>
+  <li>The data annotations references should be broken at this point, to resovle it, we need to add a nuget the missing NuGet package into the <code class="highlighter-rouge">ConferenceDTO</code> project.</li>
+  <li>Add a reference to the NuGet package <code class="highlighter-rouge">System.ComponentModel.Annotations</code> version <code class="highlighter-rouge">4.6.0</code>.
+ <img src="/img/aspdotnetcore/confplanner/3/33.png" alt="" />
+    <blockquote>
+      <p>This can be done from the command line using <code class="highlighter-rouge">dotnet add package System.ComponentModel.Annotations --version 4.6.0</code></p>
+    </blockquote>
+  </li>
+  <li>When the package restore completes, you should see that your data annotations are now resolved.</li>
+  <li>Go back to the <em>BackEnd</em> application and modify the code in <code class="highlighter-rouge">Speaker.cs</code> as shown:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Speaker</span> <span class="p">:</span> <span class="n">ConferenceDTO</span><span class="p">.</span><span class="n">Speaker</span>
+<span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/3/34.png" alt="" /></p>
+  </li>
+  <li>Run the application and view the Speakers data using the Swagger UI to verify everything still works.</li>
+</ol>
+
+<h2 id="adding-the-remaining-models-to-conferencedto">Adding the remaining models to ConferenceDTO</h2>
+
+<p>We’ve got several more models to add, and unfortunately it’s a little mechanical. You can copy the following classes manually, or open the completed solution which is shown at the end.</p>
+
+<ol>
+  <li>Create an <code class="highlighter-rouge">Attendee.cs</code> class in the <em>ConferenceDTO</em> project with the following code:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.ComponentModel.DataAnnotations</span><span class="p">;</span>
+   
+<span class="k">namespace</span> <span class="nn">ConferenceDTO</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Attendee</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+   
+        <span class="p">[</span><span class="n">Required</span><span class="p">]</span>
+        <span class="p">[</span><span class="nf">StringLength</span><span class="p">(</span><span class="m">200</span><span class="p">)]</span>
+        <span class="k">public</span> <span class="k">virtual</span> <span class="kt">string</span> <span class="n">FirstName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+   
+        <span class="p">[</span><span class="n">Required</span><span class="p">]</span>
+        <span class="p">[</span><span class="nf">StringLength</span><span class="p">(</span><span class="m">200</span><span class="p">)]</span>
+        <span class="k">public</span> <span class="k">virtual</span> <span class="kt">string</span> <span class="n">LastName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+   
+        <span class="p">[</span><span class="n">Required</span><span class="p">]</span>
+        <span class="p">[</span><span class="nf">StringLength</span><span class="p">(</span><span class="m">200</span><span class="p">)]</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">UserName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+           
+        <span class="p">[</span><span class="nf">StringLength</span><span class="p">(</span><span class="m">256</span><span class="p">)]</span>
+        <span class="k">public</span> <span class="k">virtual</span> <span class="kt">string</span> <span class="n">EmailAddress</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Create a <code class="highlighter-rouge">Session.cs</code> class with the following code:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.ComponentModel.DataAnnotations</span><span class="p">;</span>
+   
+<span class="k">namespace</span> <span class="nn">ConferenceDTO</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Session</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+   
+        <span class="p">[</span><span class="n">Required</span><span class="p">]</span>
+        <span class="p">[</span><span class="nf">StringLength</span><span class="p">(</span><span class="m">200</span><span class="p">)]</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">Title</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+   
+        <span class="p">[</span><span class="nf">StringLength</span><span class="p">(</span><span class="m">4000</span><span class="p">)]</span>
+        <span class="k">public</span> <span class="k">virtual</span> <span class="kt">string</span> <span class="n">Abstract</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+   
+        <span class="k">public</span> <span class="k">virtual</span> <span class="n">DateTimeOffset</span><span class="p">?</span> <span class="n">StartTime</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+   
+        <span class="k">public</span> <span class="k">virtual</span> <span class="n">DateTimeOffset</span><span class="p">?</span> <span class="n">EndTime</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+   
+        <span class="c1">// Bonus points to those who can figure out why this is written this way</span>
+        <span class="k">public</span> <span class="n">TimeSpan</span> <span class="n">Duration</span> <span class="p">=&gt;</span> <span class="n">EndTime</span><span class="p">?.</span><span class="nf">Subtract</span><span class="p">(</span><span class="n">StartTime</span> <span class="p">??</span> <span class="n">EndTime</span> <span class="p">??</span> <span class="n">DateTimeOffset</span><span class="p">.</span><span class="n">MinValue</span><span class="p">)</span> <span class="p">??</span> <span class="n">TimeSpan</span><span class="p">.</span><span class="n">Zero</span><span class="p">;</span>
+   
+        <span class="k">public</span> <span class="kt">int</span><span class="p">?</span> <span class="n">TrackId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Create a new <code class="highlighter-rouge">Track.cs</code> class with the following code:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.ComponentModel.DataAnnotations</span><span class="p">;</span>
+   
+<span class="k">namespace</span> <span class="nn">ConferenceDTO</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Track</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+   
+        <span class="p">[</span><span class="n">Required</span><span class="p">]</span>
+        <span class="p">[</span><span class="nf">StringLength</span><span class="p">(</span><span class="m">200</span><span class="p">)]</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="creating-derived-models-in-the-backend-project">Creating Derived Models in the BackEnd project</h2>
+<p>We’re not going to create our EF models directly from the <code class="highlighter-rouge">ConferenceDTO</code> classes. Instead, we’ll create some composite classes such as <code class="highlighter-rouge">SessionSpeaker</code>, since these will map more closely to what our application will be working with.</p>
+
+<p>We’re also going to take this opportunity to rename the <code class="highlighter-rouge">Models</code> directory in the <em>BackEnd</em> project to <code class="highlighter-rouge">Data</code> since it no longer just contains models.</p>
+<ol>
+  <li>Right-click the <code class="highlighter-rouge">Models</code> directory and select <code class="highlighter-rouge">Rename</code>, changing the name to <code class="highlighter-rouge">Data</code>.
+    <blockquote>
+      <p>Note: If you are using Visual Studio, you can use refactoring to rename the namespace.</p>
+    </blockquote>
+  </li>
+  <li>Add a <code class="highlighter-rouge">SessionSpeaker.cs</code> class to the <code class="highlighter-rouge">Data</code> directory with the following code:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+   
+<span class="k">namespace</span> <span class="nn">BackEnd.Data</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">SessionSpeaker</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">SessionId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+   
+        <span class="k">public</span> <span class="n">Session</span> <span class="n">Session</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+   
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">SpeakerId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+   
+        <span class="k">public</span> <span class="n">Speaker</span> <span class="n">Speaker</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Add an <code class="highlighter-rouge">SessionAttendee.cs</code> class with the following code:</p>
+
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+ <span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+ <span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+ <span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+
+ <span class="k">namespace</span> <span class="nn">BackEnd.Data</span>
+ <span class="p">{</span>
+     <span class="k">public</span> <span class="k">class</span> <span class="nc">SessionAttendee</span>
+     <span class="p">{</span>
+         <span class="k">public</span> <span class="kt">int</span> <span class="n">SessionId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+         <span class="k">public</span> <span class="n">Session</span> <span class="n">Session</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+         <span class="k">public</span> <span class="kt">int</span> <span class="n">AttendeeId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+         <span class="k">public</span> <span class="n">Attendee</span> <span class="n">Attendee</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Add an <code class="highlighter-rouge">Attendee.cs</code> class with the following code:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+   
+<span class="k">namespace</span> <span class="nn">BackEnd.Data</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Attendee</span> <span class="p">:</span> <span class="n">ConferenceDTO</span><span class="p">.</span><span class="n">Attendee</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">virtual</span> <span class="n">ICollection</span><span class="p">&lt;</span><span class="n">SessionAttendee</span><span class="p">&gt;</span> <span class="n">SessionsAttendees</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Add a <code class="highlighter-rouge">Session.cs</code> class with the following code:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+   
+<span class="k">namespace</span> <span class="nn">BackEnd.Data</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Session</span> <span class="p">:</span> <span class="n">ConferenceDTO</span><span class="p">.</span><span class="n">Session</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">virtual</span> <span class="n">ICollection</span><span class="p">&lt;</span><span class="n">SessionSpeaker</span><span class="p">&gt;</span> <span class="n">SessionSpeakers</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">virtual</span> <span class="n">ICollection</span><span class="p">&lt;</span><span class="n">SessionAttendee</span><span class="p">&gt;</span> <span class="n">SessionAttendees</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+   
+        <span class="k">public</span> <span class="n">Track</span> <span class="n">Track</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Add a <code class="highlighter-rouge">Track.cs</code> class with the following code:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.ComponentModel.DataAnnotations</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">BackEnd.Data</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Track</span> <span class="p">:</span> <span class="n">ConferenceDTO</span><span class="p">.</span><span class="n">Track</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">virtual</span> <span class="n">ICollection</span><span class="p">&lt;</span><span class="n">Session</span><span class="p">&gt;</span> <span class="n">Sessions</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Modify the <code class="highlighter-rouge">Speaker.cs</code> class we wrote previously to make the following two changes: update to the namespace to match our directory rename, and add a referece to the <code class="highlighter-rouge">SessionSpeaker</code> composite class:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+   
+<span class="k">namespace</span> <span class="nn">BackEnd.Data</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Speaker</span> <span class="p">:</span> <span class="n">ConferenceDTO</span><span class="p">.</span><span class="n">Speaker</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">virtual</span> <span class="n">ICollection</span><span class="p">&lt;</span><span class="n">SessionSpeaker</span><span class="p">&gt;</span> <span class="n">SessionSpeakers</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">SessionSpeaker</span><span class="p">&gt;();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="update-the-applicationdbcontext">Update the ApplicationDbContext</h2>
+<p>Okay, now we need to update our <code class="highlighter-rouge">ApplicationDbContext</code> so Entity Framework knows about our new models.</p>
+
+<ol>
+  <li>Update <code class="highlighter-rouge">ApplicationDbContext.cs</code> to use the following code:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">Microsoft.EntityFrameworkCore</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">BackEnd.Data</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">ApplicationDbContext</span> <span class="p">:</span> <span class="n">DbContext</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="nf">ApplicationDbContext</span><span class="p">(</span><span class="n">DbContextOptions</span><span class="p">&lt;</span><span class="n">ApplicationDbContext</span><span class="p">&gt;</span> <span class="n">options</span><span class="p">)</span>
+            <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+        <span class="p">{</span>
+
+        <span class="p">}</span>
+
+        <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnModelCreating</span><span class="p">(</span><span class="n">ModelBuilder</span> <span class="n">modelBuilder</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">modelBuilder</span><span class="p">.</span><span class="n">Entity</span><span class="p">&lt;</span><span class="n">Attendee</span><span class="p">&gt;()</span>
+            <span class="p">.</span><span class="nf">HasIndex</span><span class="p">(</span><span class="n">a</span> <span class="p">=&gt;</span> <span class="n">a</span><span class="p">.</span><span class="n">UserName</span><span class="p">)</span>
+            <span class="p">.</span><span class="nf">IsUnique</span><span class="p">();</span>
+
+             <span class="c1">// Many-to-many: Session &lt;-&gt; Attendee</span>
+             <span class="n">modelBuilder</span><span class="p">.</span><span class="n">Entity</span><span class="p">&lt;</span><span class="n">SessionAttendee</span><span class="p">&gt;()</span>
+                 <span class="p">.</span><span class="nf">HasKey</span><span class="p">(</span><span class="n">ca</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="p">{</span> <span class="n">ca</span><span class="p">.</span><span class="n">SessionId</span><span class="p">,</span> <span class="n">ca</span><span class="p">.</span><span class="n">AttendeeId</span> <span class="p">});</span>
+
+             <span class="c1">// Many-to-many: Speaker &lt;-&gt; Session</span>
+             <span class="n">modelBuilder</span><span class="p">.</span><span class="n">Entity</span><span class="p">&lt;</span><span class="n">SessionSpeaker</span><span class="p">&gt;()</span>
+                 <span class="p">.</span><span class="nf">HasKey</span><span class="p">(</span><span class="n">ss</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="p">{</span> <span class="n">ss</span><span class="p">.</span><span class="n">SessionId</span><span class="p">,</span> <span class="n">ss</span><span class="p">.</span><span class="n">SpeakerId</span> <span class="p">});</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Session</span><span class="p">&gt;</span> <span class="n">Sessions</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="k">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Track</span><span class="p">&gt;</span> <span class="n">Tracks</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="k">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Speaker</span><span class="p">&gt;</span> <span class="n">Speakers</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="k">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Attendee</span><span class="p">&gt;</span> <span class="n">Attendees</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Fix errors due to the rename from <code class="highlighter-rouge">BackEnd.Models</code> to <code class="highlighter-rouge">BackEnd.Data</code>. You can either do this using a find / replace (replacing “BackEnd.Models” with “BackEnd.Data”) or you can do a build and fix errors.</li>
+  <li>Ensure that the application builds now.</li>
+</ol>
+
+<h2 id="add-a-new-database-migration">Add a new database migration</h2>
+
+<h3 id="visual-studio-package-manager-console">Visual Studio: Package Manager Console</h3>
+<ol>
+  <li>Run the following commands in the Package Manager Console (specify the <code class="highlighter-rouge">BackEnd</code> project)
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">Add-Migration Refactor
+Update-Database
+</span></code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/3/37.png" alt="" /></p>
+    <h3 id="command-line">Command line</h3>
+  </li>
+  <li>Run the following commands in the command prompt in the <code class="highlighter-rouge">BackEnd</code> project directory:
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">dotnet ef migrations add Refactor
+dotnet ef database update
+</span></code></pre></div>    </div>
+  </li>
+  <li>Now take a deep breath and run the application and navigate to <code class="highlighter-rouge">/swagger</code>. You should see the Swagger UI.</li>
+</ol>
+
+<h2 id="updating-the-speakers-api-controller">Updating the Speakers API controller</h2>
+
+<ol>
+  <li>Modify the query for the <code class="highlighter-rouge">GetSpeakers()</code> method as shown below:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">speakers</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_context</span><span class="p">.</span><span class="n">Speakers</span><span class="p">.</span><span class="nf">AsNoTracking</span><span class="p">()</span>
+                        <span class="p">.</span><span class="nf">Include</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">SessionSpeakers</span><span class="p">)</span>
+                            <span class="p">.</span><span class="nf">ThenInclude</span><span class="p">(</span><span class="n">ss</span> <span class="p">=&gt;</span> <span class="n">ss</span><span class="p">.</span><span class="n">Session</span><span class="p">)</span>
+                        <span class="p">.</span><span class="nf">ToListAsync</span><span class="p">();</span>
+<span class="k">return</span> <span class="n">speakers</span><span class="p">;</span>
+</code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/3/39.png" alt="" /></p>
+  </li>
+  <li>While the above will work, this is directly returning our model class. A better practice is to return an output model class. Create a <code class="highlighter-rouge">SpeakerResponse.cs</code> class in the <code class="highlighter-rouge">ConferenceDTO</code> project with the following code:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ConferenceDTO</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">SpeakerResponse</span> <span class="p">:</span> <span class="n">Speaker</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="n">ICollection</span><span class="p">&lt;</span><span class="n">Session</span><span class="p">&gt;</span> <span class="n">Sessions</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Session</span><span class="p">&gt;();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Now we’ll add a utility method to map between these classes. In the <em>BackEnd</em> project, create an <code class="highlighter-rouge">Infrastructure</code> directory. Add a class named <code class="highlighter-rouge">EntityExtensions.cs</code> with the following mapping code:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">BackEnd.Data</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">BackEnd.Data</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">EntityExtensions</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">static</span> <span class="n">ConferenceDTO</span><span class="p">.</span><span class="n">SpeakerResponse</span> <span class="nf">MapSpeakerResponse</span><span class="p">(</span><span class="k">this</span> <span class="n">Speaker</span> <span class="n">speaker</span><span class="p">)</span> <span class="p">=&gt;</span>
+            <span class="k">new</span> <span class="n">ConferenceDTO</span><span class="p">.</span><span class="n">SpeakerResponse</span>
+            <span class="p">{</span>
+                <span class="n">Id</span> <span class="p">=</span> <span class="n">speaker</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span>
+                <span class="n">Name</span> <span class="p">=</span> <span class="n">speaker</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span>
+                <span class="n">Bio</span> <span class="p">=</span> <span class="n">speaker</span><span class="p">.</span><span class="n">Bio</span><span class="p">,</span>
+                <span class="n">WebSite</span> <span class="p">=</span> <span class="n">speaker</span><span class="p">.</span><span class="n">WebSite</span><span class="p">,</span>
+                <span class="n">Sessions</span> <span class="p">=</span> <span class="n">speaker</span><span class="p">.</span><span class="n">SessionSpeakers</span><span class="p">?</span>
+                    <span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">ss</span> <span class="p">=&gt;</span>
+                        <span class="k">new</span> <span class="n">ConferenceDTO</span><span class="p">.</span><span class="n">Session</span>
+                        <span class="p">{</span>
+                            <span class="n">Id</span> <span class="p">=</span> <span class="n">ss</span><span class="p">.</span><span class="n">SessionId</span><span class="p">,</span>
+                            <span class="n">Title</span> <span class="p">=</span> <span class="n">ss</span><span class="p">.</span><span class="n">Session</span><span class="p">.</span><span class="n">Title</span>
+                        <span class="p">})</span>
+                    <span class="p">.</span><span class="nf">ToList</span><span class="p">()</span>
+            <span class="p">};</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Now we can update the <code class="highlighter-rouge">GetSpeakers()</code> method of the <em>SpeakersController</em> so that it returns our response model. Update the last few lines so that the method reads as follows:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span>
+<span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">ActionResult</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">ConferenceDTO</span><span class="p">.</span><span class="n">SpeakerResponse</span><span class="p">&gt;&gt;&gt;</span> <span class="nf">GetSpeakers</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">speakers</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_context</span><span class="p">.</span><span class="n">Speakers</span><span class="p">.</span><span class="nf">AsNoTracking</span><span class="p">()</span>
+                                    <span class="p">.</span><span class="nf">Include</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">SessionSpeakers</span><span class="p">)</span>
+                                        <span class="p">.</span><span class="nf">ThenInclude</span><span class="p">(</span><span class="n">ss</span> <span class="p">=&gt;</span> <span class="n">ss</span><span class="p">.</span><span class="n">Session</span><span class="p">)</span>
+                                    <span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="nf">MapSpeakerResponse</span><span class="p">())</span>
+                                    <span class="p">.</span><span class="nf">ToListAsync</span><span class="p">();</span>
+    <span class="k">return</span> <span class="n">speakers</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Update the <code class="highlighter-rouge">GetSpeaker()</code> method to use our mapped response models as follows:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="nf">HttpGet</span><span class="p">(</span><span class="s">"{id}"</span><span class="p">)]</span>
+<span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">ActionResult</span><span class="p">&lt;</span><span class="n">ConferenceDTO</span><span class="p">.</span><span class="n">SpeakerResponse</span><span class="p">&gt;&gt;</span> <span class="nf">GetSpeaker</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">speaker</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_context</span><span class="p">.</span><span class="n">Speakers</span><span class="p">.</span><span class="nf">AsNoTracking</span><span class="p">()</span>
+                                    <span class="p">.</span><span class="nf">Include</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">SessionSpeakers</span><span class="p">)</span>
+                                        <span class="p">.</span><span class="nf">ThenInclude</span><span class="p">(</span><span class="n">ss</span> <span class="p">=&gt;</span> <span class="n">ss</span><span class="p">.</span><span class="n">Session</span><span class="p">)</span>
+                                    <span class="p">.</span><span class="nf">SingleOrDefaultAsync</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="n">id</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">speaker</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">speaker</span><span class="p">.</span><span class="nf">MapSpeakerResponse</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/3/40.png" alt="" /></p>
+  </li>
+  <li>Remove the other actions (<code class="highlighter-rouge">PutSpeaker</code>, <code class="highlighter-rouge">PostSpeaker</code>, <code class="highlighter-rouge">DeleteSpeaker</code>), on the <code class="highlighter-rouge">SpeakersController</code>.</li>
+</ol>
+
+<h2 id="adding-the-remaining-api-controllers-and-dtos">Adding the remaining API Controllers and DTOs</h2>
+
+<ol>
+  <li>Add the following response DTO classes from <a href="https://github.com/girishgodage/confplanerapp/tree/master/save-points/2-BackEnd-completed/ConferencePlanner/ConferenceDTO">the save point folder</a>
+    <ul>
+      <li><code class="highlighter-rouge">AttendeeResponse</code></li>
+      <li><code class="highlighter-rouge">SessionResponse</code></li>
+      <li><code class="highlighter-rouge">ConferenceResponse</code></li>
+      <li><code class="highlighter-rouge">TrackResponse</code></li>
+      <li><code class="highlighter-rouge">TagResponse</code></li>
+    </ul>
+  </li>
+  <li>Update the <code class="highlighter-rouge">EntityExtensions</code> class with the <code class="highlighter-rouge">MapSessionResponse</code> and <code class="highlighter-rouge">MapAttendeeResponse</code> methods from <a href="https://github.com/girishgodage/confplanerapp/tree/master/save-points/2b-BackEnd-completed/ConferencePlanner/BackEnd/Infrastructure">the save point folder</a></li>
+  <li>Copy the following controllers from <a href="https://github.com/girishgodage/confplanerapp/tree/master/save-points/2b-BackEnd-completed/ConferencePlanner/BackEnd/Controllers">the save point folder</a> into the current project’s <code class="highlighter-rouge">BackEnd/Controllers</code> directory:
+    <ul>
+      <li><code class="highlighter-rouge">SessionsController</code></li>
+      <li><code class="highlighter-rouge">AttendeesController</code></li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="adding-conference-upload-support">Adding Conference Upload support</h2>
+<ol>
+  <li>Copy the <code class="highlighter-rouge">DataLoader.cs</code> class from <a href="https://github.com/girishgodage/confplanerapp/tree/master/ConferencePlanner/BackEnd/Data/DataLoader.cs">here</a> into the <code class="highlighter-rouge">Data</code> directory of the <code class="highlighter-rouge">BackEnd</code> project.</li>
+  <li>Copy the <code class="highlighter-rouge">SessionizeLoader.cs</code> and <code class="highlighter-rouge">DevIntersectionLoader.cs</code> classes from <a href="https://github.com/girishgodage/confplanerapp/tree/master/ConferencePlanner/BackEnd/Data/">here</a> into the current project’s <code class="highlighter-rouge">/src/BackEnd/Data/</code> directory.
+    <blockquote>
+      <p>Note: We have data loaders from the two conference series where this workshop has been presented most; you can update this to plug in your own conference file format.</p>
+    </blockquote>
+  </li>
+  <li>To improve the UI for upload, turn on the option to display enums as strings by changing <code class="highlighter-rouge">AddSwaggerGen</code> in <code class="highlighter-rouge">Startup.cs</code> to the following:
+    <div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">services</span><span class="p">.</span><span class="nf">AddSwaggerGen</span><span class="p">(</span><span class="n">options</span> <span class="p">=&gt;</span>
+ <span class="p">{</span>
+     <span class="n">options</span><span class="p">.</span><span class="nf">SwaggerDoc</span><span class="p">(</span><span class="s">"v1"</span><span class="p">,</span> <span class="k">new</span> <span class="n">OpenApiInfo</span> <span class="p">{</span> <span class="n">Title</span> <span class="p">=</span> <span class="s">"Conference Planner API"</span><span class="p">,</span> <span class="n">Version</span> <span class="p">=</span> <span class="s">"v1"</span> <span class="p">});</span>
+     <span class="n">options</span><span class="p">.</span><span class="nf">DescribeAllEnumsAsStrings</span><span class="p">();</span>
+ <span class="p">});</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Run the application to see the updated data via Swagger UI.</li>
+  <li>Use the Swagger UI to upload <a href="https://github.com/girishgodage/confplanerapp/tree/master/ConferencePlanner/BackEnd/Data/Import/NDC_Sydney_2019.json">NDC_Sydney_2019.json</a> to the <code class="highlighter-rouge">/api/Sessions/upload</code> API.</li>
+</ol>
+
+<hr />
+<h2 id="sessions">Sessions</h2>
+
+<p>This is series of articles on Building Conf planner app with Asp.net Core:</p>
+
+<ul>
+  <li><a href="/blog/CreateBackEndAPIproject" target="_blank">1 - Build the back-end API with basic EF model</a></li>
+  <li><a href="/blog/BuildoutBackEndandRefactor" target="_blank">2 - Finish the back-end API and EF model, refactor into view modelsl</a></li>
+  <li><a href="/blog/Addfront-endrenderagendasetupfront-endmodels" target="_blank">3 - Add front-end, render agenda, set up front-end models</a></li>
+  <li><a href="/blog/Addauthfeatures" target="_blank">4 - Add authentication, add admin policy, allow editing sessions, users can sign-in with Identity, custom auth tag helper</a></li>
+  <li><a href="/blog/Addpersonalagenda" target="_blank">5 - Add user association and personal agenda</a></li>
+  <li><a href="/blog/ProductionReadinessandDeployment" target="_blank">6 - Deployment, Azure and other production environments, configuring environments, diagnostics</a></li>
+  <li><a href="/blog/Challenges" target="_blank">7 - Challenges</a></li>
+  <li><a href="/blog/SPAFrontEnd" target="_blank">8 - SPA front-end </a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/CreateBackEndAPIproject" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/Addfront-endrenderagendasetupfront-endmodels" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+
+                </div>
+
+                
+
+                <div id="disqus_thread"></div>
+                <script>
+                
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://girishgodage-github-io.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
+</button>
+<!-- Footer-->
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 text-center text-lg-left">
+                <p class="social">
+                    <a href="https://www.facebook.com/girish.godage.5" class="external facebook wow fadeInUp">
+                        <i class="fa fa-facebook"></i></a>
+                    <a href="https://instagram.com/girishgodage_007" data-wow-delay="0.2s" class="external instagram wow fadeInUp">
+                        <i class="fa fa-instagram"></i></a>
+                    <a href="https://youtube.com/girishgodage" data-wow-delay="0.4s" class="external youtube wow fadeInUp">
+                        <i class="fa fa-youtube-play"></i></a>
+                    <a href="https://twitter.com/GGodage" data-wow-delay="0.4s" class="external twitter wow fadeInUp">
+                            <i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/girishgodage" data-wow-delay="0.4s" class="external github wow fadeInUp">
+                                <i class="fa fa-github"></i></a>    
+                    <a href="mailto:girishgodage@gmail.com?subject=Hello%20Girish" data-wow-delay="0.6s" class="email wow fadeInUp">
+                        <i class="fa fa-envelope"></i></a></p>
+            </div>
+            <div class="col-12 col-md-2">
+            <h5>Quick Links</h5>
+            <ul>
+               <li><a href="http://localhost:4000#about">About</a></li>
+               <li><a href="http://localhost:4000#contact">Contact</a></li>
+               <li><a href="/sitemap.xml">Sitemap</a></li>               
+            </ul>
+         </div>
+            <div class="col-12 col-md-4 text-center text-lg-right mt-4 mt-lg-0">
+                <p> <b>©</b>2019 Girish Godage </p>
+                <p class="text-center, text-shadow"> Hosted On <a href="https://pages.github.com/">GitHub Pages</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Typed.js DONT TOUCH THIS! -->
+    <div id="typed-strings">
+    </div>
+
+        <!-- JavaScript files-->
+    <script src="http://localhost:4000/sitejs/jquery/jquery.min.js"></script>
+    <script src="http://localhost:4000/sitejs/popper.js/umd/popper.min.js"> </script>
+    <script src="http://localhost:4000/sitejs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="http://localhost:4000/sitejs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="http://localhost:4000/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.counterup/jquery.counterup.js"></script>
+    <script src="http://localhost:4000/js/front.js"></script>
+    <script src="http://localhost:4000/js/comment.js"></script>
+       <!-- Script pointing to search-script.js -->
+    <script src="http://localhost:4000/js/search-script.js" type="text/javascript"></script>
+   
+    <!-- Configuration -->
+    <script>
+         SimpleJekyllSearch({
+         searchInput: document.getElementById('search-input'),
+         resultsContainer: document.getElementById('results-container'),
+         json: '/search.json'
+         })
+         </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC36FUDDdOTidZJ8nzS5vfE7KVyayenKPE",
+    authDomain: "githubcontactlist.firebaseapp.com",
+    databaseURL: "https://githubcontactlist.firebaseio.com",
+    projectId: "githubcontactlist",
+    storageBucket: "githubcontactlist.appspot.com",
+    messagingSenderId: "899685398702",
+    appId: "1:899685398702:web:0c23c56d2d6d40df37553f",
+    measurementId: "G-YWBRCYJYFW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script>
+   $(function() {
+      
+    //make a variable to keep track of data coming from firebase
+    var data = [];
+
+    // Reference messages collection
+      var messagesRef = firebase.database().ref('contactformmessages');  
+
+
+    //listen to data updates from firebase
+    messagesRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+        //when the data updates at firebase, put it in the data variable
+        data = snapshot.val();
+    })
+    //Entire Contact Form (handler)
+    $('#contactForm').submit(function(e) {
+      e.preventDefault();
+
+        var $form = $(this);
+        console.log("Submit to Firebase");
+
+        //disable submit button
+        $form.find("#sendForm").prop('disabled', true);
+
+        //get values to send to Firebase
+        var name = $('#name').val();
+        console.log(name);
+		
+		var surname = $('#surname').val();
+        console.log(surname);
+		
+		var email = $('#email').val();
+        console.log(email);	
+		
+		var phone = $('#phone').val();
+        console.log(phone);
+
+        var message = $('#message').val();
+        console.log(message);
+
+       
+        //take the values from the form, and put them in an object
+        var newContact = {
+         "name": name,
+			"surname": surname,
+			"email": email,
+			"phone": phone,
+         "message": message
+        }
+        //put new object in data array
+        data.push(newContact);
+        console.log(data);
+
+        //send the new data to Firebase
+        messagesRef.set(data, function(err) {
+            if (err) {
+                alert("Data no go");
+            }else{
+            $("#form-wrapper").slideToggle();
+            $('#form-success-message').slideToggle();
+			}
+        });
+
+        return false;
+    })
+   
+    
+})
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";           
+        }else
+        {
+           myBtton.style.display="none";     
+          
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+      //  document.body.scrollTop =0;
+      //  document.documentElement.scrollTop=0;
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    }
+
+</script>
+
+    
+    
+
+
+</body>
+
+</html>

@@ -12,7 +12,7 @@ author: Girish Godage
 layout: posts
 prevurl: "/blog/app-building-Workshop-start"
 nexturl: "/blog/BuildoutBackEndandRefactor"
-discussion_id: 2019-10-24-confplannertut1
+discussion_id: 2019-10-24-confplannertut2
 ---
 
 
