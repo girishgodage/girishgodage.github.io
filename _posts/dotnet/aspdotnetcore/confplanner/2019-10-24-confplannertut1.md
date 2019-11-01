@@ -3,10 +3,13 @@ title: ASP.NET Core - App Building Workshop Tutorial
 date: 2019-10-24 05:54:00 Z
 permalink: "/blog/app-building-Workshop-start"
 categories:
-- "asp.net core"
+- asp.net core
 tags:
 - learning
-summary: In this workshop, you'll learn by building a full-featured ASP.NET Core application from scratch. We'll start from File/ New and build up to an API back-end application, a web front-end application, and a common library for shared data transfer objects using .NET Standard..
+summary: In this workshop, you'll learn by building a full-featured ASP.NET Core application
+  from scratch. We'll start from File/ New and build up to an API back-end application,
+  a web front-end application, and a common library for shared data transfer objects
+  using .NET Standard..
 image: "/img/springframework.png"
 author: Girish Godage
 layout: posts
