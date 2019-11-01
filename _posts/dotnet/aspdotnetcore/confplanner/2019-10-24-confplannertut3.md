@@ -1,7 +1,7 @@
 ---
-title: "Build the back-end API with basic EF model"
+title: "Build out BackEnd and Refactor"
 date: 2019-10-24 05:54:00 Z
-permalink: "/blog//BuildoutBackEndandRefactor"
+permalink: "/blog/BuildoutBackEndandRefactor"
 categories:
 - "asp.net core"
 tags:
