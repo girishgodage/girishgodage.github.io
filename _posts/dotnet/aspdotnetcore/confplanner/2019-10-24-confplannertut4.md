@@ -1,12 +1,13 @@
 ---
-title: "Building the Front End"
+title: Building the Front End
 date: 2019-10-24 05:54:00 Z
 permalink: "/blog/Addfront-endrenderagendasetupfront-endmodels"
 categories:
 - asp.net core
 tags:
 - learning
-summary: In this tutorial, we'll add the front end web site, with a public (anonymous) home page showing the conference agenda.
+summary: In this tutorial, we'll add the front end web site, with a public (anonymous)
+  home page showing the conference agenda.
 image: "/img/springframework.png"
 author: Girish Godage
 layout: posts
