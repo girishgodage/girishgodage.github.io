@@ -1,19 +1,5 @@
 ---
-title: Introduction To Spring Framework - Quick Tutorial For Beginners
-date: 2019-10-23 05:41:00 Z
-permalink: "/blog/introduction-to-the-spring-framework"
-categories:
-- SpringFramework
-tags:
-- learning
-summary: In this article, we look to get an introduction to what the Spring framework
-  is, and why it is so widely used.
-image: "/img/springframework.png
-author: Girish Godage
-layout: posts
-prevurl: "/blog/introduction-to-the-spring-framework"
-nexturl: "/blog/spring-framework-what-is-a-dependency"
-discussion_id: 2019-10-23-SpringFramework1
+title: 2019 10 23 Springframewok1
 ---
 
 In this article, we look to get an introduction to what the Spring framework is, and why it is so widely used. 
