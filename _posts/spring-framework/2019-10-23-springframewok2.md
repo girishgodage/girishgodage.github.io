@@ -8,7 +8,7 @@ tags:
 - learning
 summary: Most important feature of Spring Framework is Dependency Injection. To understand
   Dependency Injection, you need to understand the concept of a Dependency..
-image: "/img/microservices.png"
+image: "/img/springframework.png"
 author: Girish Godage
 layout: posts
 prevurl: "/blog/introduction-to-the-spring-framework"

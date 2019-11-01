@@ -8,7 +8,7 @@ tags:
 - learning
 summary: There are several important Spring Projects solving the needs of enterprises
   today. What are Spring Projects and how are they different from Spring Modules?
-image: "/img/microservices.png"
+image: "/img/springframework.png"
 author: Girish Godage
 layout: posts
 prevurl: "/blog/spring-framework-architectures-and-modules"

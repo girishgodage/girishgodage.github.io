@@ -8,7 +8,7 @@ tags:
 - learning
 summary: In this article, we look to get an introduction to what the Spring framework
   is, and why it is so widely used.
-image: "/img/microservices.png"
+image: "/img/springframework.png
 author: Girish Godage
 layout: posts
 prevurl: "/blog/introduction-to-the-spring-framework"

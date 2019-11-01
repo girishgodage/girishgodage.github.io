@@ -9,7 +9,7 @@ tags:
 summary: One of the most important features of the Spring framework is its modularity.
   It is not one big monolith framework. What are Spring Modules? How are they organized?
   What is the architecture of Spring Framework?
-image: "/img/microservices.png"
+image: "/img/springframework.png"
 author: Girish Godage
 layout: posts
 prevurl: "/blog/spring-and-spring-boot-what-is-component-scan"

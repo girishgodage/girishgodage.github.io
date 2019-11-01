@@ -8,7 +8,7 @@ tags:
 - learning
 summary: Spring Batch is a lightweight, comprehensive batch framework that is designed
   for use in developing robust batch applications.
-image: "/img/microservices.png"
+image: "/img/springframework.png"
 author: Girish Godage
 layout: posts
 prevurl: "/blog/spring-projects-with-examples"

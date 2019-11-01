@@ -9,7 +9,7 @@ tags:
 summary: Spring framework identifies the beans and their dependencies, creates the
   beans and injects the dependencies into beans. How does the Spring Framework know
   where to search for beans and dependencies? How does Spring Boot make it easier?
-image: "/img/microservices.png"
+image: "/img/springframework.png"
 author: Girish Godage
 layout: posts
 prevurl: "/blog/spring-framework-dependency-injection-inversion-of-control"
