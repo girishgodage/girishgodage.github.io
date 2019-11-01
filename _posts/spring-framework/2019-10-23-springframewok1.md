@@ -6,7 +6,8 @@ categories:
 - SpringFramework
 tags:
 - learning
-summary: In this article, we look to get an introduction to what the Spring framework is, and why it is so widely used.
+summary: In this article, we look to get an introduction to what the Spring framework
+  is, and why it is so widely used.
 image: "/img/springframework.png"
 author: Girish Godage
 layout: posts
