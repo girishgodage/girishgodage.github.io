@@ -8,7 +8,7 @@ tags:
 - learning
 summary: In this tutorial, you'll learn to build up to an API back-end application,
   using .NET  Core Web Application for our ConferencePlanner application.
-image: "/img/aspnetcore.png.png"
+image: "/img/aspnetcore.png"
 author: Girish Godage
 layout: posts
 prevurl: "/blog/app-building-Workshop-start"

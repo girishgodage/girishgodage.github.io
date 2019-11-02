@@ -9,7 +9,7 @@ tags:
 summary: In this tutorial, we'll add the rest of our models and controllers that expose
   them. We'll also refactor our application, moving our DTOs to a shared project so
   they can be used by our front-end application later..
-image: "/img/aspnetcore.png.png"
+image: "/img/aspnetcore.png"
 author: Girish Godage
 layout: posts
 prevurl: "/blog/CreateBackEndAPIproject"
