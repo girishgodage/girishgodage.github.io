@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-11-02T05:31:14+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">ASP.NET Core - App Building Workshop Tutorial</title><link href="http://localhost:4000/blog/app-building-Workshop-start" rel="alternate" type="text/html" title="ASP.NET Core - App Building Workshop Tutorial" /><published>2019-10-24T05:54:00+00:00</published><updated>2019-10-24T05:54:00+00:00</updated><id>http://localhost:4000/blog/confplannertut1</id><content type="html" xml:base="http://localhost:4000/blog/app-building-Workshop-start">&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-11-02T06:04:49+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">ASP.NET Core - App Building Workshop Tutorial</title><link href="http://localhost:4000/blog/app-building-Workshop-start" rel="alternate" type="text/html" title="ASP.NET Core - App Building Workshop Tutorial" /><published>2019-10-24T05:54:00+00:00</published><updated>2019-10-24T05:54:00+00:00</updated><id>http://localhost:4000/blog/confplannertut1</id><content type="html" xml:base="http://localhost:4000/blog/app-building-Workshop-start">&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://www.microsoft.com/net/download&quot;&gt;Download&lt;/a&gt; and install the .NET Core SDK and Visual Studio.&lt;/p&gt;
 
@@ -62,10 +62,11 @@
 &lt;h3 id=&quot;adding-the-frontend-project-using-visual-studio&quot;&gt;Adding the FrontEnd Project using Visual Studio&lt;/h3&gt;
 &lt;ol&gt;
   &lt;li&gt;If using Visual Studio, right-click on the Solution and select &lt;em&gt;Add&lt;/em&gt; / &lt;em&gt;New Project…&lt;/em&gt;.&lt;/li&gt;
-  &lt;li&gt;Select &lt;em&gt;.NET Core&lt;/em&gt; from the project types on the left and select the &lt;em&gt;ASP.NET Core Web Application&lt;/em&gt; template. Name the project “FrontEnd”, name the solution “ConferencePlanner”, and press OK.&lt;/li&gt;
+  &lt;li&gt;Select &lt;em&gt;.NET Core&lt;/em&gt; from the project types on the left and select the &lt;em&gt;ASP.NET Core Web Application&lt;/em&gt; template. Name the project “FrontEnd”, name the solution “ConferencePlanner”, and press OK.
+&lt;img src=&quot;/img/aspdotnetcore/confplanner/4/45.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
   &lt;li&gt;Select &lt;em&gt;ASP.NET Core 3.0&lt;/em&gt; from the drop-down list in the top-left corner&lt;/li&gt;
   &lt;li&gt;Select the &lt;em&gt;Web Application&lt;/em&gt; template and click &lt;em&gt;OK&lt;/em&gt;
-&lt;img src=&quot;images/vs2019-new-razorpages-project.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;img src=&quot;/img/aspdotnetcore/confplanner/4/44.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
   &lt;li&gt;Right-click on the &lt;em&gt;FrontEnd&lt;/em&gt; project and add a reference to the &lt;em&gt;ConferenceDTO&lt;/em&gt; project.&lt;/li&gt;
 &lt;/ol&gt;
 
@@ -90,6 +91,7 @@
   &lt;/ol&gt;
 &lt;/blockquote&gt;
 
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/confplanner/4/46.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 &lt;h2 id=&quot;create-and-wire-up-an-api-service-client&quot;&gt;Create and wire-up an API service client&lt;/h2&gt;
 &lt;blockquote&gt;
   &lt;p&gt;We’ll create a class to talk to our backend web API service&lt;/p&gt;
@@ -120,10 +122,14 @@
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/confplanner/4/47.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
-  &lt;li&gt;Add a reference to the &lt;em&gt;Microsoft.AspNet.WebApi.Client&lt;/em&gt; NuGet package in the FrontEnd project:
+  &lt;li&gt;
+    &lt;p&gt;Add a reference to the &lt;em&gt;Microsoft.AspNet.WebApi.Client&lt;/em&gt; NuGet package in the FrontEnd project:&lt;/p&gt;
+
     &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dotnet add package Microsoft.AspNet.WebApi.Client
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/confplanner/4/48.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;Staying in this folder, add a new class called &lt;code class=&quot;highlighter-rouge&quot;&gt;ApiClient&lt;/code&gt; that implements the &lt;code class=&quot;highlighter-rouge&quot;&gt;IApiClient&lt;/code&gt; interface by using &lt;code class=&quot;highlighter-rouge&quot;&gt;HttpClient&lt;/code&gt; to call out to our BackEnd API application and JSON serialize/deserialize the payloads:
     &lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -260,17 +266,18 @@
     &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BaseAddress&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Uri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Configuration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;serviceUrl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/confplanner/4/49.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;This adds an instance of &lt;code class=&quot;highlighter-rouge&quot;&gt;HttpClientFactory&lt;/code&gt; with its base URL pulled from the application configuration, which will point to our BackEnd API application&lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Open the &lt;em&gt;appsettings.json&lt;/em&gt; file and add the configuration key for &lt;code class=&quot;highlighter-rouge&quot;&gt;serviceUrl&lt;/code&gt; pointing to the URL your specific BackEnd API application is configured to run in (check your &lt;em&gt;launchSettings.json&lt;/em&gt; file for the specific port your BackEnd API application uses):&lt;/p&gt;
 
-    &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nl&quot;&gt;&quot;ServiceUrl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://localhost:56009/&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nl&quot;&gt;&quot;ServiceUrl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://localhost:44386/&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/confplanner/4/50.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+    &lt;h2 id=&quot;list-the-sessions-on-the-home-page&quot;&gt;List the sessions on the home page&lt;/h2&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
-
-&lt;h2 id=&quot;list-the-sessions-on-the-home-page&quot;&gt;List the sessions on the home page&lt;/h2&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Now that we have an API client we can use to talk to our BackEnd API application, we’ll update the home page to show a basic list of all sessions for the conference to ensure the FrontEnd can talk to the BackEnd correctly.&lt;/p&gt;
@@ -352,9 +359,12 @@
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
-  &lt;li&gt;Right-click the solution, select Properties and set both BackEnd and FrontEnd as startup projects&lt;/li&gt;
+  &lt;li&gt;Right-click the solution, select Properties and set both BackEnd and FrontEnd as startup projects
+&lt;img src=&quot;/img/aspdotnetcore/confplanner/4/52.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
   &lt;li&gt;Run the FrontEnd application at this stage and we should see the sessions listed on the home page&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/confplanner/4/53.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;add-buttons-to-allow-showing-sessions-for-different-days&quot;&gt;Add buttons to allow showing sessions for different days&lt;/h3&gt;
 
@@ -372,14 +382,10 @@
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Run the application again and try clicking the buttons to show sessions for the different days&lt;/p&gt;
+  &lt;li&gt;Run the application again and try clicking the buttons to show sessions for the different days
+&lt;img src=&quot;/img/aspdotnetcore/confplanner/4/54.png&quot; alt=&quot;&quot; /&gt;
+    &lt;h2 id=&quot;update-the-sessions-list-ui&quot;&gt;Update the sessions list UI&lt;/h2&gt;
   &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;update-the-sessions-list-ui&quot;&gt;Update the sessions list UI&lt;/h2&gt;
-
-&lt;ol&gt;
   &lt;li&gt;
     &lt;p&gt;Make the list of sessions better looking by updating the markup to use &lt;a href=&quot;https://getbootstrap.com/docs/4.0/components/card/&quot;&gt;Bootstrap cards&lt;/a&gt;:&lt;/p&gt;
 
@@ -409,15 +415,14 @@
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Run the page again and see the updated sessions list UI. Click the buttons again to show sessions for the different days.&lt;/p&gt;
+  &lt;li&gt;Run the page again and see the updated sessions list UI. Click the buttons again to show sessions for the different days.
+&lt;img src=&quot;/img/aspdotnetcore/confplanner/4/55.png&quot; alt=&quot;&quot; /&gt;
+    &lt;h2 id=&quot;add-a-session-details-page&quot;&gt;Add a session details page&lt;/h2&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;Now that we have a home page showing all the sessions, we’ll create a page to show all the details of a specific session&lt;/p&gt;
+    &lt;/blockquote&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
-
-&lt;h2 id=&quot;add-a-session-details-page&quot;&gt;Add a session details page&lt;/h2&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;Now that we have a home page showing all the sessions, we’ll create a page to show all the details of a specific session&lt;/p&gt;
-&lt;/blockquote&gt;
 
 &lt;h3 id=&quot;add-a-session-razor-page&quot;&gt;Add a Session Razor Page&lt;/h3&gt;
 &lt;ol&gt;
@@ -482,15 +487,12 @@
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;@para&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
  }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/confplanner/4/56.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+    &lt;h2 id=&quot;add-a-page-to-show-speaker-details&quot;&gt;Add a page to show speaker details&lt;/h2&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;We’ll add a page to show details for a given speaker&lt;/p&gt;
+    &lt;/blockquote&gt;
   &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;add-a-page-to-show-speaker-details&quot;&gt;Add a page to show speaker details&lt;/h2&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;We’ll add a page to show details for a given speaker&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
   &lt;li&gt;Add a new Razor Page using the &lt;em&gt;Razor Page&lt;/em&gt; template. Call the page &lt;em&gt;Speaker.cshtml&lt;/em&gt; and save it in the &lt;em&gt;/Pages&lt;/em&gt; directory.&lt;/li&gt;
   &lt;li&gt;Accept the &lt;code class=&quot;highlighter-rouge&quot;&gt;IApiClient&lt;/code&gt; in the constructor and add supporting members to the Page model &lt;code class=&quot;highlighter-rouge&quot;&gt;SpeakerModel&lt;/code&gt;:
     &lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SpeakerModel&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PageModel&lt;/span&gt;
@@ -545,17 +547,18 @@
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/confplanner/4/57.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+    &lt;h2 id=&quot;add-search-functionality&quot;&gt;Add search functionality&lt;/h2&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;We’ll add a page to allow users to search the conference agenda, finding sessions and speakers that match the supplied search term.&lt;/p&gt;
+    &lt;/blockquote&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
-
-&lt;h2 id=&quot;add-search-functionality&quot;&gt;Add search functionality&lt;/h2&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;We’ll add a page to allow users to search the conference agenda, finding sessions and speakers that match the supplied search term.&lt;/p&gt;
-&lt;/blockquote&gt;
 
 &lt;h3 id=&quot;add-dtos-for-search&quot;&gt;Add DTOs for search&lt;/h3&gt;
 &lt;ol&gt;
   &lt;li&gt;Add a new DTO class &lt;code class=&quot;highlighter-rouge&quot;&gt;SearchTerm&lt;/code&gt; in the DTO project:
+&lt;img src=&quot;/img/aspdotnetcore/confplanner/4/58.png&quot; alt=&quot;&quot; /&gt;
     &lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
  &lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Collections.Generic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
  &lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -788,7 +791,8 @@
  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
-  &lt;li&gt;Click on the &lt;code class=&quot;highlighter-rouge&quot;&gt;Search&lt;/code&gt; link to test the new search feature.&lt;/li&gt;
+  &lt;li&gt;Click on the &lt;code class=&quot;highlighter-rouge&quot;&gt;Search&lt;/code&gt; link to test the new search feature.
+&lt;img src=&quot;/img/aspdotnetcore/confplanner/4/59.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;hr /&gt;

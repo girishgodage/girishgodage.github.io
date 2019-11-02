@@ -188,10 +188,11 @@
 <h3 id="adding-the-frontend-project-using-visual-studio">Adding the FrontEnd Project using Visual Studio</h3>
 <ol>
   <li>If using Visual Studio, right-click on the Solution and select <em>Add</em> / <em>New Project…</em>.</li>
-  <li>Select <em>.NET Core</em> from the project types on the left and select the <em>ASP.NET Core Web Application</em> template. Name the project “FrontEnd”, name the solution “ConferencePlanner”, and press OK.</li>
+  <li>Select <em>.NET Core</em> from the project types on the left and select the <em>ASP.NET Core Web Application</em> template. Name the project “FrontEnd”, name the solution “ConferencePlanner”, and press OK.
+<img src="/img/aspdotnetcore/confplanner/4/45.png" alt="" /></li>
   <li>Select <em>ASP.NET Core 3.0</em> from the drop-down list in the top-left corner</li>
   <li>Select the <em>Web Application</em> template and click <em>OK</em>
-<img src="images/vs2019-new-razorpages-project.png" alt="" /></li>
+<img src="/img/aspdotnetcore/confplanner/4/44.png" alt="" /></li>
   <li>Right-click on the <em>FrontEnd</em> project and add a reference to the <em>ConferenceDTO</em> project.</li>
 </ol>
 
@@ -216,6 +217,7 @@
   </ol>
 </blockquote>
 
+<p><img src="/img/aspdotnetcore/confplanner/4/46.png" alt="" /></p>
 <h2 id="create-and-wire-up-an-api-service-client">Create and wire-up an API service client</h2>
 <blockquote>
   <p>We’ll create a class to talk to our backend web API service</p>
@@ -246,10 +248,14 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/4/47.png" alt="" /></p>
   </li>
-  <li>Add a reference to the <em>Microsoft.AspNet.WebApi.Client</em> NuGet package in the FrontEnd project:
+  <li>
+    <p>Add a reference to the <em>Microsoft.AspNet.WebApi.Client</em> NuGet package in the FrontEnd project:</p>
+
     <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet add package Microsoft.AspNet.WebApi.Client
 </code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/4/48.png" alt="" /></p>
   </li>
   <li>Staying in this folder, add a new class called <code class="highlighter-rouge">ApiClient</code> that implements the <code class="highlighter-rouge">IApiClient</code> interface by using <code class="highlighter-rouge">HttpClient</code> to call out to our BackEnd API application and JSON serialize/deserialize the payloads:
     <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
@@ -386,17 +392,18 @@
     <span class="n">client</span><span class="p">.</span><span class="n">BaseAddress</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Uri</span><span class="p">(</span><span class="n">Configuration</span><span class="p">[</span><span class="s">"serviceUrl"</span><span class="p">]);</span>
 <span class="p">});</span>
 </code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/4/49.png" alt="" /></p>
   </li>
   <li>This adds an instance of <code class="highlighter-rouge">HttpClientFactory</code> with its base URL pulled from the application configuration, which will point to our BackEnd API application</li>
   <li>
     <p>Open the <em>appsettings.json</em> file and add the configuration key for <code class="highlighter-rouge">serviceUrl</code> pointing to the URL your specific BackEnd API application is configured to run in (check your <em>launchSettings.json</em> file for the specific port your BackEnd API application uses):</p>
 
-    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"ServiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost:56009/"</span><span class="w">
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"ServiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost:44386/"</span><span class="w">
 </span></code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/4/50.png" alt="" /></p>
+    <h2 id="list-the-sessions-on-the-home-page">List the sessions on the home page</h2>
   </li>
 </ol>
-
-<h2 id="list-the-sessions-on-the-home-page">List the sessions on the home page</h2>
 
 <blockquote>
   <p>Now that we have an API client we can use to talk to our BackEnd API application, we’ll update the home page to show a basic list of all sessions for the conference to ensure the FrontEnd can talk to the BackEnd correctly.</p>
@@ -478,9 +485,12 @@
 <span class="nt">&lt;/div&gt;</span>
 </code></pre></div>    </div>
   </li>
-  <li>Right-click the solution, select Properties and set both BackEnd and FrontEnd as startup projects</li>
+  <li>Right-click the solution, select Properties and set both BackEnd and FrontEnd as startup projects
+<img src="/img/aspdotnetcore/confplanner/4/52.png" alt="" /></li>
   <li>Run the FrontEnd application at this stage and we should see the sessions listed on the home page</li>
 </ol>
+
+<p><img src="/img/aspdotnetcore/confplanner/4/53.png" alt="" /></p>
 
 <h3 id="add-buttons-to-allow-showing-sessions-for-different-days">Add buttons to allow showing sessions for different days</h3>
 
@@ -498,14 +508,10 @@
 <span class="nt">&lt;/ul&gt;</span>
 </code></pre></div>    </div>
   </li>
-  <li>
-    <p>Run the application again and try clicking the buttons to show sessions for the different days</p>
+  <li>Run the application again and try clicking the buttons to show sessions for the different days
+<img src="/img/aspdotnetcore/confplanner/4/54.png" alt="" />
+    <h2 id="update-the-sessions-list-ui">Update the sessions list UI</h2>
   </li>
-</ol>
-
-<h2 id="update-the-sessions-list-ui">Update the sessions list UI</h2>
-
-<ol>
   <li>
     <p>Make the list of sessions better looking by updating the markup to use <a href="https://getbootstrap.com/docs/4.0/components/card/">Bootstrap cards</a>:</p>
 
@@ -535,15 +541,14 @@
 <span class="nt">&lt;/div&gt;</span>
 </code></pre></div>    </div>
   </li>
-  <li>
-    <p>Run the page again and see the updated sessions list UI. Click the buttons again to show sessions for the different days.</p>
+  <li>Run the page again and see the updated sessions list UI. Click the buttons again to show sessions for the different days.
+<img src="/img/aspdotnetcore/confplanner/4/55.png" alt="" />
+    <h2 id="add-a-session-details-page">Add a session details page</h2>
+    <blockquote>
+      <p>Now that we have a home page showing all the sessions, we’ll create a page to show all the details of a specific session</p>
+    </blockquote>
   </li>
 </ol>
-
-<h2 id="add-a-session-details-page">Add a session details page</h2>
-<blockquote>
-  <p>Now that we have a home page showing all the sessions, we’ll create a page to show all the details of a specific session</p>
-</blockquote>
 
 <h3 id="add-a-session-razor-page">Add a Session Razor Page</h3>
 <ol>
@@ -608,15 +613,12 @@
     <span class="nt">&lt;p&gt;</span>@para<span class="nt">&lt;/p&gt;</span>
  }
 </code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/4/56.png" alt="" /></p>
+    <h2 id="add-a-page-to-show-speaker-details">Add a page to show speaker details</h2>
+    <blockquote>
+      <p>We’ll add a page to show details for a given speaker</p>
+    </blockquote>
   </li>
-</ol>
-
-<h2 id="add-a-page-to-show-speaker-details">Add a page to show speaker details</h2>
-<blockquote>
-  <p>We’ll add a page to show details for a given speaker</p>
-</blockquote>
-
-<ol>
   <li>Add a new Razor Page using the <em>Razor Page</em> template. Call the page <em>Speaker.cshtml</em> and save it in the <em>/Pages</em> directory.</li>
   <li>Accept the <code class="highlighter-rouge">IApiClient</code> in the constructor and add supporting members to the Page model <code class="highlighter-rouge">SpeakerModel</code>:
     <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">SpeakerModel</span> <span class="p">:</span> <span class="n">PageModel</span>
@@ -671,17 +673,18 @@
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/4/57.png" alt="" /></p>
+    <h2 id="add-search-functionality">Add search functionality</h2>
+    <blockquote>
+      <p>We’ll add a page to allow users to search the conference agenda, finding sessions and speakers that match the supplied search term.</p>
+    </blockquote>
   </li>
 </ol>
-
-<h2 id="add-search-functionality">Add search functionality</h2>
-<blockquote>
-  <p>We’ll add a page to allow users to search the conference agenda, finding sessions and speakers that match the supplied search term.</p>
-</blockquote>
 
 <h3 id="add-dtos-for-search">Add DTOs for search</h3>
 <ol>
   <li>Add a new DTO class <code class="highlighter-rouge">SearchTerm</code> in the DTO project:
+<img src="/img/aspdotnetcore/confplanner/4/58.png" alt="" />
     <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
  <span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
  <span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
@@ -914,7 +917,8 @@
  <span class="nt">&lt;/li&gt;</span>
 </code></pre></div>    </div>
   </li>
-  <li>Click on the <code class="highlighter-rouge">Search</code> link to test the new search feature.</li>
+  <li>Click on the <code class="highlighter-rouge">Search</code> link to test the new search feature.
+<img src="/img/aspdotnetcore/confplanner/4/59.png" alt="" /></li>
 </ol>
 
 <hr />

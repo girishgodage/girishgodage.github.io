@@ -25,9 +25,10 @@ In this session, we'll add the front end web site, with a public (anonymous) hom
 ### Adding the FrontEnd Project using Visual Studio
 1. If using Visual Studio, right-click on the Solution and select *Add* / *New Project...*.
 1. Select *.NET Core* from the project types on the left and select the *ASP.NET Core Web Application* template. Name the project "FrontEnd", name the solution "ConferencePlanner", and press OK.
+![](/img/aspdotnetcore/confplanner/4/45.png)
 1. Select *ASP.NET Core 3.0* from the drop-down list in the top-left corner
 1. Select the *Web Application* template and click *OK*
-![](images/vs2019-new-razorpages-project.png)
+![](/img/aspdotnetcore/confplanner/4/44.png)
 1. Right-click on the *FrontEnd* project and add a reference to the *ConferenceDTO* project.
 
 ### Adding the FrontEnd Project via the Command Line
@@ -45,6 +46,7 @@ In this session, we'll add the front end web site, with a public (anonymous) hom
 > We'll clear out some content from the template that we don't need
 1. Open */Pages/Index.cshtml* and delete all the HTML content (after line 6)
 
+![](/img/aspdotnetcore/confplanner/4/46.png)
 ## Create and wire-up an API service client
 > We'll create a class to talk to our backend web API service
 
@@ -73,10 +75,13 @@ In this session, we'll add the front end web site, with a public (anonymous) hom
        }
    }
    ```
+   ![](/img/aspdotnetcore/confplanner/4/47.png)
 1. Add a reference to the *Microsoft.AspNet.WebApi.Client* NuGet package in the FrontEnd project:
+   
    ```
    dotnet add package Microsoft.AspNet.WebApi.Client
    ```
+   ![](/img/aspdotnetcore/confplanner/4/48.png)     
 1. Staying in this folder, add a new class called `ApiClient` that implements the `IApiClient` interface by using `HttpClient` to call out to our BackEnd API application and JSON serialize/deserialize the payloads:
    ``` csharp
    using System;
@@ -210,14 +215,14 @@ In this session, we'll add the front end web site, with a public (anonymous) hom
        client.BaseAddress = new Uri(Configuration["serviceUrl"]);
    });
    ```
-
+![](/img/aspdotnetcore/confplanner/4/49.png)
 1. This adds an instance of `HttpClientFactory` with its base URL pulled from the application configuration, which will point to our BackEnd API application
 1. Open the *appsettings.json* file and add the configuration key for `serviceUrl` pointing to the URL your specific BackEnd API application is configured to run in (check your *launchSettings.json* file for the specific port your BackEnd API application uses):
 
    ``` json
-   "ServiceUrl": "https://localhost:56009/"
+   "ServiceUrl": "https://localhost:44386/"
    ```
-
+![](/img/aspdotnetcore/confplanner/4/50.png)
 ## List the sessions on the home page
 
 >Now that we have an API client we can use to talk to our BackEnd API application, we'll update the home page to show a basic list of all sessions for the conference to ensure the FrontEnd can talk to the BackEnd correctly.
@@ -294,7 +299,11 @@ In this session, we'll add the front end web site, with a public (anonymous) hom
    </div>
    ```
 1. Right-click the solution, select Properties and set both BackEnd and FrontEnd as startup projects
+![](/img/aspdotnetcore/confplanner/4/52.png)
 1. Run the FrontEnd application at this stage and we should see the sessions listed on the home page
+
+![](/img/aspdotnetcore/confplanner/4/53.png)
+
 
 ### Add buttons to allow showing sessions for different days
 
@@ -312,7 +321,7 @@ In this session, we'll add the front end web site, with a public (anonymous) hom
    ```
 
 1. Run the application again and try clicking the buttons to show sessions for the different days
-
+![](/img/aspdotnetcore/confplanner/4/54.png)
 ## Update the sessions list UI
 
 1. Make the list of sessions better looking by updating the markup to use [Bootstrap cards](https://getbootstrap.com/docs/4.0/components/card/):
@@ -345,7 +354,7 @@ In this session, we'll add the front end web site, with a public (anonymous) hom
    ```
 
 1. Run the page again and see the updated sessions list UI. Click the buttons again to show sessions for the different days.
-
+![](/img/aspdotnetcore/confplanner/4/55.png)
 ## Add a session details page
 > Now that we have a home page showing all the sessions, we'll create a page to show all the details of a specific session
 
@@ -412,7 +421,7 @@ In this session, we'll add the front end web site, with a public (anonymous) hom
        <p>@para</p>
     }
    ```
-
+![](/img/aspdotnetcore/confplanner/4/56.png)
 ## Add a page to show speaker details
 >We'll add a page to show details for a given speaker
 
@@ -471,12 +480,13 @@ In this session, we'll add the front end web site, with a public (anonymous) hom
        </div>
    </div>
    ```
-
+![](/img/aspdotnetcore/confplanner/4/57.png)
 ## Add search functionality
 >We'll add a page to allow users to search the conference agenda, finding sessions and speakers that match the supplied search term.
 
 ### Add DTOs for search
 1. Add a new DTO class `SearchTerm` in the DTO project:
+![](/img/aspdotnetcore/confplanner/4/58.png)
     ```csharp
     using System;
     using System.Collections.Generic;
@@ -704,7 +714,7 @@ In this session, we'll add the front end web site, with a public (anonymous) hom
     </li>
     ```
 1. Click on the `Search` link to test the new search feature.
-
+![](/img/aspdotnetcore/confplanner/4/59.png)
 
 ---
 {% include conf_sessions.md %}
