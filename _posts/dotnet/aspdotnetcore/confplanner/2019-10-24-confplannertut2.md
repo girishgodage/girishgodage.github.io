@@ -3,12 +3,12 @@ title: Build the back-end API with basic EF model
 date: 2019-10-24 05:54:00 Z
 permalink: "/blog/CreateBackEndAPIproject"
 categories:
-- asp.net core
+- Asp.net core
 tags:
 - learning
 summary: In this tutorial, you'll learn to build up to an API back-end application,
   using .NET  Core Web Application for our ConferencePlanner application.
-image: "/img/springframework.png"
+image: "/img/aspnetcore.png.png"
 author: Girish Godage
 layout: posts
 prevurl: "/blog/app-building-Workshop-start"
