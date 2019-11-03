@@ -496,6 +496,9 @@ Update-Database
   <li>Re-launch the application and now you shouldn’t get an exception.</li>
 </ol>
 
+<p><img src="/img/aspdotnetcore/confplanner/5/69.png" alt="" /></p>
+
+<p><img src="/img/aspdotnetcore/confplanner/5/70.png" alt="" /></p>
 <h1 id="adding-admin-section">Adding admin section</h1>
 
 <h2 id="add-an-admin-policy">Add an admin policy</h2>
@@ -585,6 +588,7 @@ Update-Database
      <span class="p">});</span>
  <span class="p">});</span>
 </code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/5/71.png" alt="" /></p>
   </li>
   <li>
     <p>Add <code class="highlighter-rouge">System.Security.Claims</code> to the list of usings in <code class="highlighter-rouge">Index.cshtml.cs</code>, then use the helper method in the page model to determine if the current user is an administrator.</p>
@@ -599,6 +603,7 @@ Update-Database
      <span class="c1">// ...</span>
  <span class="p">}</span>
 </code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/5/72.png" alt="" /></p>
   </li>
   <li>
     <p>On the <code class="highlighter-rouge">Index</code> razor page, add an edit link to allow admins to edit sessions. You’ll add the following code directly after the session <code class="highlighter-rouge">foreach</code> loop:</p>
@@ -630,6 +635,7 @@ Update-Database
     <span class="n">options</span><span class="p">.</span><span class="n">Conventions</span><span class="p">.</span><span class="nf">AuthorizeFolder</span><span class="p">(</span><span class="s">"/Admin"</span><span class="p">,</span> <span class="s">"Admin"</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/5/75.png" alt="" /></p>
   </li>
 </ol>
 
@@ -802,7 +808,12 @@ on form posts:
    <span class="k">return</span> <span class="nf">RedirectToPage</span><span class="p">(</span><span class="s">"/Index"</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/5/77.png" alt="" /></p>
   </li>
+</ol>
+
+<p><img src="/img/aspdotnetcore/confplanner/5/78.png" alt="" /></p>
+<ol>
   <li>
     <p>Update <code class="highlighter-rouge">EditSession.cshtml</code> to show the message after posting. Add the following code directly below the <code class="highlighter-rouge">&lt;h3&gt;</code> tag at the top:</p>
 
@@ -814,14 +825,11 @@ on form posts:
     <span class="nt">&lt;/div&gt;</span>
 }
 </code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/5/79.png" alt="" /></p>
+    <blockquote>
+      <p>TempData-backed properties also flow across pages, so we can update the Index page to show the message value too, e.g. when the session is deleted</p>
+    </blockquote>
   </li>
-</ol>
-
-<blockquote>
-  <p>TempData-backed properties also flow across pages, so we can update the Index page to show the message value too, e.g. when the session is deleted</p>
-</blockquote>
-
-<ol>
   <li>Copy the message display markup from the top of the <code class="highlighter-rouge">EditSession.cshtml</code> file to the top of the <code class="highlighter-rouge">Index.cshtml</code> file:
     <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code> @if (Model.ShowMessage)
  {
@@ -831,6 +839,7 @@ on form posts:
      <span class="nt">&lt;/div&gt;</span>
  }
 </code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/5/80.png" alt="" /></p>
   </li>
   <li>Copy the properties from the <code class="highlighter-rouge">EditSession.cshtml.cs</code> Page Model class file to the <code class="highlighter-rouge">Index.cshtml.cs</code> Page Model too:
     <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="p">[</span><span class="n">TempData</span><span class="p">]</span>
@@ -838,6 +847,7 @@ on form posts:
 
 <span class="k">public</span> <span class="kt">bool</span> <span class="n">ShowMessage</span> <span class="p">=&gt;</span> <span class="p">!</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">Message</span><span class="p">);</span>
 </code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/5/81.png" alt="" /></p>
   </li>
   <li>Rebuild and run the app then delete a session and observe it redirect to the home page and display the success message</li>
 </ol>
@@ -939,6 +949,15 @@ on form posts:
      <span class="nt">&lt;a</span> <span class="na">authz-policy=</span><span class="s">"Admin"</span> <span class="na">asp-page=</span><span class="s">"/Admin/EditSession"</span> <span class="na">asp-route-id=</span><span class="s">"@session.Id"</span> <span class="na">class=</span><span class="s">"btn btn-default btn-xs"</span><span class="nt">&gt;</span>Edit<span class="nt">&lt;/a&gt;</span>
  <span class="nt">&lt;/div&gt;</span>
 </code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/5/83.png" alt="" /> 
+ <img src="/img/aspdotnetcore/confplanner/5/85.png" alt="" /> 
+ <img src="/img/aspdotnetcore/confplanner/5/86.png" alt="" />
+ <img src="/img/aspdotnetcore/confplanner/5/87.png" alt="" />
+ <img src="/img/aspdotnetcore/confplanner/5/88.png" alt="" />
+ <img src="/img/aspdotnetcore/confplanner/5/89.png" alt="" />
+ <img src="/img/aspdotnetcore/confplanner/5/90.png" alt="" />
+ <img src="/img/aspdotnetcore/confplanner/5/91.png" alt="" />
+ <img src="/img/aspdotnetcore/confplanner/5/92.png" alt="" /></p>
   </li>
 </ol>
 

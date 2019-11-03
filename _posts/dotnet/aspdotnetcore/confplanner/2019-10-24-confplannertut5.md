@@ -291,6 +291,9 @@ In this module we're going to add the capability for users to register and sign-
     ```
 1. Re-launch the application and now you shouldn't get an exception.
 
+ ![](/img/aspdotnetcore/confplanner/5/69.png)
+
+  ![](/img/aspdotnetcore/confplanner/5/70.png)
 # Adding admin section
 
 ## Add an admin policy
@@ -377,6 +380,7 @@ In this module we're going to add the capability for users to register and sign-
         });
     });
     ```
+    ![](/img/aspdotnetcore/confplanner/5/71.png)
 1. Add `System.Security.Claims` to the list of usings in `Index.cshtml.cs`, then use the helper method in the page model to determine if the current user is an administrator.
 
     ```csharp
@@ -390,6 +394,7 @@ In this module we're going to add the capability for users to register and sign-
         // ...
     }
     ```
+    ![](/img/aspdotnetcore/confplanner/5/72.png)
 1. On the `Index` razor page, add an edit link to allow admins to edit sessions. You'll add the following code directly after the session `foreach` loop:
 
     ```html
@@ -419,7 +424,8 @@ In this module we're going to add the capability for users to register and sign-
        options.Conventions.AuthorizeFolder("/Admin", "Admin");
    });
    ```
-
+   ![](/img/aspdotnetcore/confplanner/5/75.png)
+    
 ## Add a form for editing a session
 1. Change `EditSession.cshtml.cs` to render the session in the edit form:
 
@@ -586,7 +592,9 @@ on form posts:
       return RedirectToPage("/Index");
    }
    ```
+ ![](/img/aspdotnetcore/confplanner/5/77.png)
 
+ ![](/img/aspdotnetcore/confplanner/5/78.png)
 1. Update `EditSession.cshtml` to show the message after posting. Add the following code directly below the `<h3>` tag at the top:
 
    ```html
@@ -598,7 +606,7 @@ on form posts:
        </div>
    }
    ```
-
+ ![](/img/aspdotnetcore/confplanner/5/79.png)
 > TempData-backed properties also flow across pages, so we can update the Index page to show the message value too, e.g. when the session is deleted
 
 1. Copy the message display markup from the top of the `EditSession.cshtml` file to the top of the `Index.cshtml` file:
@@ -611,6 +619,7 @@ on form posts:
         </div>
     }
     ```
+ ![](/img/aspdotnetcore/confplanner/5/80.png)   
 1. Copy the properties from the `EditSession.cshtml.cs` Page Model class file to the `Index.cshtml.cs` Page Model too:
     ``` csharp
     [TempData]
@@ -618,6 +627,7 @@ on form posts:
 
    public bool ShowMessage => !string.IsNullOrEmpty(Message);
     ```
+![](/img/aspdotnetcore/confplanner/5/81.png)     
 1. Rebuild and run the app then delete a session and observe it redirect to the home page and display the success message
 
 ## Create a Tag Helper for setting authorization requirements for UI elements
@@ -717,6 +727,15 @@ We're currently using `if` blocks to determine whether to show parts of the UI b
         <a authz-policy="Admin" asp-page="/Admin/EditSession" asp-route-id="@session.Id" class="btn btn-default btn-xs">Edit</a>
 	</div>
     ```
+    ![](/img/aspdotnetcore/confplanner/5/83.png) 
+    ![](/img/aspdotnetcore/confplanner/5/85.png) 
+    ![](/img/aspdotnetcore/confplanner/5/86.png)
+    ![](/img/aspdotnetcore/confplanner/5/87.png)
+    ![](/img/aspdotnetcore/confplanner/5/88.png)
+    ![](/img/aspdotnetcore/confplanner/5/89.png)
+    ![](/img/aspdotnetcore/confplanner/5/90.png)
+    ![](/img/aspdotnetcore/confplanner/5/91.png)
+    ![](/img/aspdotnetcore/confplanner/5/92.png)
 
 ---
 {% include conf_sessions.md %}
