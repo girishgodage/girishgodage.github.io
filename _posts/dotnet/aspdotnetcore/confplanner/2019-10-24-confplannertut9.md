@@ -6,7 +6,8 @@ categories:
 - AspDotnetCore
 tags:
 - learning
-summary: In this session, we'll add the code for the client application. Create a view for the conference sessions, details and speaker information.
+summary: In this session, we'll add the code for the client application. Create a
+  view for the conference sessions, details and speaker information.
 image: "/img/aspnetcore.png"
 author: Girish Godage
 layout: posts

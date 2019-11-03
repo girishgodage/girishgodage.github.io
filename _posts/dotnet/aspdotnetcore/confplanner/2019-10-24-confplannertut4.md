@@ -6,8 +6,8 @@ categories:
 - AspDotnetCore
 tags:
 - learning
-summary: "In this tutorial, we'll add the front end web site, with a public (anonymous)
-  home page showing the conference agenda"
+summary: In this tutorial, we'll add the front end web site, with a public (anonymous)
+  home page showing the conference agenda
 image: "/img/aspnetcore.png"
 author: Girish Godage
 layout: posts

@@ -6,7 +6,8 @@ categories:
 - AspDotnetCore
 tags:
 - learning
-summary: Now that we've built the basic site, there might be time for some challenges! Below are a list of feature ideas that take advantage of other ASP.NET Core features
+summary: Now that we've built the basic site, there might be time for some challenges!
+  Below are a list of feature ideas that take advantage of other ASP.NET Core features
 image: "/img/aspnetcore.png"
 author: Girish Godage
 layout: posts

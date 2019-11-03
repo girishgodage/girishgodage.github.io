@@ -6,7 +6,8 @@ categories:
 - AspDotnetCore
 tags:
 - learning
-summary: In this section we'll add features that track attendees who have registered on the site and allow them to create a personal agenda.
+summary: In this section we'll add features that track attendees who have registered
+  on the site and allow them to create a personal agenda.
 image: "/img/aspnetcore.png"
 author: Girish Godage
 layout: posts
