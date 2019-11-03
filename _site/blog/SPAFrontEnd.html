@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#2A80EE">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#2A80EE">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
+<title>Building a SPA Front End &#8211; Girish Godage</title>
+<meta name="description" content="In this session, we'll add the code for the client application. Create a view for the conference sessions, details and speaker information.">
+<meta name="keywords" content="AspDotnetCore">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all">
+
+<!-- Verifications -->
+    
+    
+        
+<!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Building a SPA Front End">
+    <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
+    <meta property="og:url" content="http://localhost:4000/blog/SPAFrontEnd">
+    <meta property="og:site_name" content="Girish Godage">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@GGodage" />
+    
+    <meta name="twitter:title" content="Building a SPA Front End" />
+    <meta name="twitter:description" content="In this session, we'll add the code for the client application. Create a view for the conference sessions, details and speaker information." />
+    <meta name="twitter:url" content="http://localhost:4000/blog/SPAFrontEnd" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/img/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/img/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    
+
+
+    <link rel="canonical" href="http://localhost:4000/blog/SPAFrontEnd">
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
+    <!-- Bootstrap CSS-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Google fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+   
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
+    
+    <!-- animate.css-->
+    <link rel="stylesheet" href="http://localhost:4000/sitejs/animate.css/animate.css">
+    <!-- theme stylesheet-->
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="http://localhost:4000/css/custom.css" as="style">
+    <link rel="stylesheet" href="http://localhost:4000/css/comments.css" as="style">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="http://localhost:4000/img/logo-big.png">
+    <!-- Fab Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
+    
+    
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    
+    <script type="text/javascript">
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+       ga('create', 'UA-130164763-2', 'auto');
+       ga('send', 'pageview');
+    </script>
+    
+    <!-- Typed.js DONT TOUCHHHHHHHHHHHHH!-->
+    <!--<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.9/typed.min.js"></script>
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+      </script>
+      
+      <!-- START OF RELEVANT PART -->
+    <script async src="https://just-comments.com/w2.js"></script>
+    <!-- END OF RELEVANT PART -->
+
+
+</head>
+
+<body>
+    
+<!-- navbar-->
+<header class="header">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container"><a class="navbar-brand" href="http://localhost:4000"><img
+          src="http://localhost:4000/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
+          alt="logo"> <img src="http://localhost:4000/img/girish_logo.png" height="30" alt="girilogo"></a>
+      <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span
+          class="fa fa-bars" style="color: white"></span></button>
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="http://localhost:4000#home" class="nav-link  link-scroll">Home</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#about" class="nav-link link-scroll">About</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#skills" class="nav-link link-scroll">Skills</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#services" class="nav-link link-scroll">Services</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#references" class="nav-link link-scroll">My
+              work</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#contact" class="nav-link link-scroll">Contact</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000/blog" class="nav-link link-scroll">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    
+    
+    
+    <div style="background-color:Gray;">
+        <div style="padding:0;min-height:95.05vh;display:flex;font-family: Poppins, sans-serif;margin-top: 5rem;"
+            class="container">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <p class="post-title">
+                    <h1><a href="/blog/SPAFrontEnd">Building a SPA Front End</a></h1>
+                </p>
+                
+                <span class="post-meta">
+              <span style="font-weight:600">October 24, 2019 Thursday</span>
+                    
+                       ( 8 minute read ) 
+                    
+                     
+                    <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">   by Girish Godage</a>
+                </span>
+                
+                <div class="site-category"> 
+                        <h5>AspDotnetCore</h5>
+                </div>
+                
+                <hr>
+                <div><img class="post-image" src="/img/aspnetcore.png" alt="Building a SPA Front End" height="250" /></div>
+                <div class="post-content">
+                    <br>                     
+                    <h1 id="building-a-spa-front-end">Building a SPA Front End</h1>
+
+<p>In this session, we’ll add the code for the client application. Create a view for the conference sessions, details and speaker information.</p>
+
+<blockquote>
+  <p>This example uses the SpaServices templates which combines the FrontEnd and Web API by default. In this code sample/lab, the API (BackEnd) is a separate project therefore unneeded portions of the generated code can be removed and setting the url for the API will be handled in a way more apt to a production setup.</p>
+</blockquote>
+
+<blockquote>
+  <p><em>Note:</em> This uses the 2.0 templates for SPA which are not included in .NET Core 2.0.x SDK. If you are on one of those SDKs you will need to follow the instructions <a href="https://docs.microsoft.com/en-us/aspnet/core/spa/index?view=aspnetcore-2.1#installation">here</a> to get the newer templates</p>
+</blockquote>
+
+<h2 id="creating-the-project">Creating the project</h2>
+
+<p>Create the new SPA application using the <code class="highlighter-rouge">dotnet</code> CLI in the <strong>ConferencePlanner</strong> folder.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet new angular <span class="nt">-n</span> FrontEndSpa <span class="nt">-o</span> src/FrontEndSpa
+</code></pre></div></div>
+
+<p>Add the new project to the solution</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet sln add src/FrontEnd/FrontEnd.csproj
+</code></pre></div></div>
+
+<h3 id="clean-up">Clean up</h3>
+
+<p>Since the API is a separate project, some initial setup and cleaning out the unnecessary files can be done.</p>
+
+<h4 id="remove-the-weather-components">Remove the Weather components</h4>
+
+<ul>
+  <li>delete the <strong>Controllers</strong> folder</li>
+  <li>delete <strong>ClientApp/src/app/fetch-data</strong> folder</li>
+  <li>remove all references (entire line) to <strong>FetchDataComponent</strong> in <strong>ClientApp/src/app/app.module.ts</strong></li>
+  <li>remove the link from the <strong>nav-menu.component.html</strong></li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;li</span> <span class="na">[routerLinkActive]=</span><span class="s">'["link-active"]'</span> <span class="na">[routerLinkActiveOptions]=</span><span class="s">'{ exact: true }'</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">[routerLink]=</span><span class="s">'["/"]'</span> <span class="na">(click)=</span><span class="s">'collapse()'</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">'glyphicon glyphicon-home'</span><span class="nt">&gt;&lt;/span&gt;</span> Counter
+  <span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/li&gt;</span>
+</code></pre></div></div>
+
+<h3 id="remove-the-counter-components">Remove the Counter components</h3>
+
+<ul>
+  <li>delete <strong>ClientApp/src/app/counter</strong> folder</li>
+  <li>remove all references (entire line) to <strong>CounterComponent</strong> in <strong>ClientApp/src/app/app.module.ts</strong></li>
+  <li>remove the link from the <strong>nav-menu.component.html</strong></li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;li</span> <span class="na">[routerLinkActive]=</span><span class="s">'["link-active"]'</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">[routerLink]=</span><span class="s">'["/counter"]'</span> <span class="na">(click)=</span><span class="s">'collapse()'</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">'glyphicon glyphicon-education'</span><span class="nt">&gt;&lt;/span&gt;</span> Counter
+  <span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/li&gt;</span>
+</code></pre></div></div>
+
+<h2 id="setup-the-url-for-the-web-api-service">Setup the URL for the Web API Service</h2>
+
+<p>The URL for the ASP.NET Core Web API service needs to be configured as a setting. Futhermore, makes sense to have the ability to use a different setting per environment. Angluar uses the <em>*environments</em> files to do so.</p>
+
+<p>Open <strong>ClientApp/src/environments/environments.ts</strong> and change it to the following.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">environment</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">production</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">API_URL</span><span class="p">:</span> <span class="dl">'</span><span class="s1">http://localhost:50069</span><span class="dl">'</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>For a production setting, add the <code class="highlighter-rouge">API_URL</code> value to the <strong>environment.prod.ts</strong> file as well.</p>
+
+<p>Open <strong>ClientApp/src/main.ts</strong> , add the <code class="highlighter-rouge">getApiUrl()</code> function and add the new <code class="highlighter-rouge">API_URL</code> to the providers</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">function</span> <span class="nx">getApiUrl</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">environment</span><span class="p">.</span><span class="nx">API_URL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">providers</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span> <span class="na">provide</span><span class="p">:</span> <span class="dl">'</span><span class="s1">BASE_URL</span><span class="dl">'</span><span class="p">,</span> <span class="na">useFactory</span><span class="p">:</span> <span class="nx">getBaseUrl</span><span class="p">,</span> <span class="na">deps</span><span class="p">:</span> <span class="p">[]</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">provide</span><span class="p">:</span> <span class="dl">'</span><span class="s1">API_URL</span><span class="dl">'</span><span class="p">,</span> <span class="na">useFactory</span><span class="p">:</span> <span class="nx">getApiUrl</span><span class="p">,</span> <span class="na">deps</span><span class="p">:</span> <span class="p">[]</span> <span class="p">}</span>
+<span class="p">];</span>
+</code></pre></div></div>
+
+<h2 id="create-and-wire-up-the-api-using-an-angular-service">Create and wire-up the API using an Angular Service</h2>
+
+<blockquote>
+  <p>We’ll create the models to map to the ConferenceDTO classes and a class to talk to the ASP.NET Core Web API service</p>
+</blockquote>
+
+<h3 id="create-the-model">Create the model</h3>
+
+<p>Using the Angular CLI, create the class for the model to map the ConferenceDTO classes to TypeScript classes. Change directory to ClientApp, and create a <strong>model.ts</strong> using the following command.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ng g class shared/model
+</code></pre></div></div>
+
+<p>Add the following code to the file.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">export</span> <span class="kd">class</span> <span class="nx">Track</span> <span class="p">{</span>
+    <span class="nl">trackID</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="nl">conferenceID</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="nl">name</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">export</span> <span class="kd">class</span> <span class="nx">Speaker</span> <span class="p">{</span>
+    <span class="nl">id</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="nl">name</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nx">bio</span><span class="p">?:</span> <span class="nx">any</span><span class="p">;</span>
+    <span class="nx">webSite</span><span class="p">?:</span> <span class="nx">any</span><span class="p">;</span>
+    <span class="nx">sessions</span><span class="p">?:</span> <span class="nx">Session</span><span class="p">[];</span>
+  <span class="p">}</span>
+
+  <span class="k">export</span> <span class="kd">class</span> <span class="nx">Session</span> <span class="p">{</span>
+    <span class="nl">track</span><span class="p">:</span> <span class="nx">Track</span><span class="p">;</span>
+    <span class="nl">speakers</span><span class="p">:</span> <span class="nx">Speaker</span><span class="p">[];</span>
+    <span class="nl">tags</span><span class="p">:</span> <span class="nx">any</span><span class="p">[];</span>
+    <span class="nl">id</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="nl">conferenceID</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="nl">title</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">abstract</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">startTime</span><span class="p">:</span> <span class="nb">Date</span><span class="p">;</span>
+    <span class="nl">endTime</span><span class="p">:</span> <span class="nb">Date</span><span class="p">;</span>
+    <span class="nl">duration</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">trackId</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="create-the-data-service">Create the data service</h3>
+
+<p>Create a data service to call the ASP.NET Core Web API.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ng g service shared/data
+</code></pre></div></div>
+
+<p>Update the code to the following.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Injectable</span><span class="p">,</span> <span class="nx">Inject</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@angular/core</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Headers</span><span class="p">,</span> <span class="nx">Http</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@angular/http</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="dl">'</span><span class="s1">rxjs/add/operator/toPromise</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Session</span><span class="p">,</span> <span class="nx">Speaker</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./model</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="p">@</span><span class="nd">Injectable</span><span class="p">()</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">DataService</span> <span class="p">{</span>
+
+  <span class="kr">private</span> <span class="nx">headers</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">({</span> <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span> <span class="p">});</span>
+  <span class="kr">private</span> <span class="nx">sessionUrl</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">api/sessions</span><span class="dl">'</span><span class="p">;</span>
+  <span class="kr">private</span> <span class="nx">speakerUrl</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">api/speakers</span><span class="dl">'</span><span class="p">;</span>
+  <span class="cm">/**
+   * init with Http
+   */</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">http</span><span class="p">:</span> <span class="nx">Http</span><span class="p">,</span> <span class="p">@</span><span class="nd">Inject</span><span class="p">(</span><span class="dl">'</span><span class="s1">API_URL</span><span class="dl">'</span><span class="p">)</span> <span class="kr">private</span> <span class="nx">baseUrl</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+  <span class="nx">getSessions</span><span class="p">():</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Session</span><span class="p">[]</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">baseUrl</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">sessionUrl</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">toPromise</span><span class="p">()</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">Session</span><span class="p">[]</span><span class="o">&gt;</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+      <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">handleError</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">getSession</span><span class="p">(</span><span class="na">id</span><span class="p">:</span> <span class="nx">number</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Session</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">baseUrl</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">sessionUrl</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">toPromise</span><span class="p">()</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">Session</span><span class="o">&gt;</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+      <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">handleError</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">getSpeaker</span><span class="p">(</span><span class="na">id</span><span class="p">:</span> <span class="nx">number</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Speaker</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">baseUrl</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">speakerUrl</span><span class="p">}</span><span class="s2">/</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">toPromise</span><span class="p">()</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">Speaker</span><span class="o">&gt;</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+      <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">handleError</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">getSpeakers</span><span class="p">():</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Speaker</span><span class="p">[]</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">http</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">baseUrl</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">speakerUrl</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">toPromise</span><span class="p">()</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">Speaker</span><span class="p">[]</span><span class="o">&gt;</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+      <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">handleError</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="kr">private</span> <span class="nx">getData</span><span class="p">(</span><span class="na">response</span><span class="p">:</span> <span class="nx">Response</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+  <span class="kr">private</span> <span class="nx">handleError</span><span class="p">(</span><span class="na">error</span><span class="p">:</span> <span class="nx">any</span><span class="p">):</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">An error occurred</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span> <span class="c1">// for demo purposes only</span>
+    <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span> <span class="o">||</span> <span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="list-the-sessions">List the sessions</h2>
+
+<blockquote>
+  <p>Now that we have a service to talk to the API, we’ll add the views to display a basic list of all sessions for the conference and validate the FrontEnd / API communication.</p>
+</blockquote>
+
+<h3 id="create-and-add-the-sessions-component">Create and add the Sessions component</h3>
+
+<ol>
+  <li>
+    <p>Create the sessions component</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ng g component sessions
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Update the <strong>sessions.component.ts</strong> file to the following</p>
+
+    <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@angular/core</span><span class="dl">'</span><span class="p">;</span>
+ <span class="k">import</span> <span class="p">{</span> <span class="nx">Router</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@angular/router</span><span class="dl">'</span><span class="p">;</span>
+
+ <span class="k">import</span> <span class="p">{</span> <span class="nx">DataService</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../shared/data.service</span><span class="dl">'</span><span class="p">;</span>
+ <span class="k">import</span> <span class="p">{</span> <span class="nx">Session</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../shared/model</span><span class="dl">'</span><span class="p">;</span>
+
+ <span class="p">@</span><span class="nd">Component</span><span class="p">({</span>
+     <span class="na">selector</span><span class="p">:</span> <span class="dl">'</span><span class="s1">conf-sessions</span><span class="dl">'</span><span class="p">,</span>
+     <span class="na">templateUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./sessions.component.html</span><span class="dl">'</span>
+ <span class="p">})</span>
+ <span class="k">export</span> <span class="kd">class</span> <span class="nx">SessionsComponent</span> <span class="kr">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+     <span class="nl">sessions</span><span class="p">:</span> <span class="nx">Session</span><span class="p">[];</span>
+
+     <span class="kd">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">dataService</span><span class="p">:</span> <span class="nx">DataService</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+     <span class="nx">getSessions</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+         <span class="k">this</span><span class="p">.</span><span class="nx">dataService</span>
+             <span class="p">.</span><span class="nx">getSessions</span><span class="p">()</span>
+             <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">sessions</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">sessions</span> <span class="o">=</span> <span class="nx">sessions</span><span class="p">);</span>
+     <span class="p">}</span>
+
+     <span class="nx">ngOnInit</span><span class="p">()</span> <span class="p">{</span>
+         <span class="k">this</span><span class="p">.</span><span class="nx">getSessions</span><span class="p">();</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Update the template <strong>sessions.component.html</strong></p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"agenda"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;h1&gt;</span>My Conference 2017<span class="nt">&lt;/h1&gt;</span>
+
+   <span class="nt">&lt;p</span> <span class="na">*ngIf=</span><span class="s">"!sessions"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;em&gt;</span>Loading...<span class="nt">&lt;/em&gt;</span>
+   <span class="nt">&lt;/p&gt;</span>
+
+   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;div</span> <span class="na">*ngFor=</span><span class="s">"let session of sessions"</span> <span class="na">class=</span><span class="s">"col-md-3"</span><span class="nt">&gt;</span>
+       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel panel-default session"</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel-body"</span><span class="nt">&gt;</span>
+           <span class="nt">&lt;p&gt;&lt;/p&gt;</span>
+           <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"panel-title"</span><span class="nt">&gt;</span>
+             <span class="nt">&lt;a</span> <span class="na">[routerLink]=</span><span class="s">"['/sessiondetail', session.id]"</span><span class="nt">&gt;&lt;/a&gt;</span>
+           <span class="nt">&lt;/h3&gt;</span>
+           <span class="nt">&lt;p</span> <span class="na">*ngFor=</span><span class="s">"let speaker of session.speakers"</span><span class="nt">&gt;</span>
+             <span class="nt">&lt;em&gt;</span>
+               <span class="nt">&lt;a</span> <span class="na">[routerLink]=</span><span class="s">"['/speaker', speaker.id]"</span><span class="nt">&gt;&lt;/a&gt;</span>
+             <span class="nt">&lt;/em&gt;</span>
+           <span class="nt">&lt;/p&gt;</span>
+         <span class="nt">&lt;/div&gt;</span>
+       <span class="nt">&lt;/div&gt;</span>
+     <span class="nt">&lt;/div&gt;</span>
+   <span class="nt">&lt;/div&gt;</span>
+ <span class="nt">&lt;/div&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Now that the components and data service is created, open <strong>app.module.ts</strong> to import the DataService component. Add the following to the top to import the module.</p>
+
+    <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">import</span> <span class="p">{</span> <span class="nx">DataService</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./components/shared/data.service</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>In the same file add the <strong>SessionsComponent</strong> in the <code class="highlighter-rouge">declarations</code> part of the <strong>@NgModule</strong></p>
+  </li>
+  <li>
+    <p>Add the route for the sessions page to the <strong>RouterModule</strong></p>
+
+    <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="p">{</span> <span class="nl">path</span><span class="p">:</span> <span class="dl">'</span><span class="s1">sessions</span><span class="dl">'</span><span class="p">,</span> <span class="nx">component</span><span class="p">:</span> <span class="nx">SessionsComponent</span> <span class="p">},</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Add the <strong>DataService</strong> as a provider after the imports.</p>
+
+    <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nx">providers</span><span class="p">:</span> <span class="p">[</span><span class="nx">DataService</span><span class="p">]</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Finally, add the following in <strong>nav-menu.component.html</strong> to add a link to the sessions list from the left nav:</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nt">&lt;li</span> <span class="na">[routerLinkActive]=</span><span class="s">"['link-active']"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;a</span> <span class="na">[routerLink]=</span><span class="s">"['/sessions']"</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">'glyphicon glyphicon-th-list'</span><span class="nt">&gt;&lt;/span&gt;</span> Sessions
+     <span class="nt">&lt;/a&gt;</span>
+ <span class="nt">&lt;/li&gt;</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h4 id="running-the-application">Running the application</h4>
+
+<p>Start the Web API Application using Visual Studio or VS Code. It should start on http://localhost:50069</p>
+
+<p>In another editor or process, start the FrontEndSpa application pressing F5 or running <code class="highlighter-rouge">dotnet run</code> and your SPA application will be available on http://localhost:5000. Since we are using Webpack with the hot module reload, you can continue to make changes to the Angular application and see the changes as you work through the rest of the code.</p>
+
+<h3 id="creating-the-session-detail-page">Creating the Session Detail Page</h3>
+
+<blockquote>
+  <p>Now that we have a home page showing all the sessions, we’ll create a page to show all the details of a specific session</p>
+</blockquote>
+
+<ol>
+  <li>
+    <p>Create the Session Detail component</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ng g component sessionDetail
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Update the component code to the following</p>
+
+    <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">import</span> <span class="dl">'</span><span class="s1">rxjs/add/operator/switchMap</span><span class="dl">'</span><span class="p">;</span>
+ <span class="k">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@angular/core</span><span class="dl">'</span><span class="p">;</span>
+ <span class="k">import</span> <span class="p">{</span> <span class="nx">ActivatedRoute</span><span class="p">,</span> <span class="nx">ParamMap</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@angular/router</span><span class="dl">'</span><span class="p">;</span>
+ <span class="k">import</span> <span class="p">{</span> <span class="nx">Location</span> <span class="p">}</span>                 <span class="k">from</span> <span class="dl">'</span><span class="s1">@angular/common</span><span class="dl">'</span><span class="p">;</span>
+
+ <span class="k">import</span> <span class="p">{</span> <span class="nx">Session</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../shared/model</span><span class="dl">'</span><span class="p">;</span>
+ <span class="k">import</span> <span class="p">{</span> <span class="nx">DataService</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../shared/data.service</span><span class="dl">'</span><span class="p">;</span>
+
+ <span class="p">@</span><span class="nd">Component</span><span class="p">({</span>
+   <span class="na">selector</span><span class="p">:</span> <span class="dl">'</span><span class="s1">session-detail</span><span class="dl">'</span><span class="p">,</span>
+   <span class="na">templateUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./sessiondetail.component.html</span><span class="dl">'</span>
+ <span class="p">})</span>
+ <span class="k">export</span> <span class="kd">class</span> <span class="nx">SessionDetailComponent</span> <span class="kr">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+   <span class="nl">session</span><span class="p">:</span> <span class="nx">Session</span><span class="p">;</span>
+
+   <span class="kd">constructor</span><span class="p">(</span>
+     <span class="kr">private</span> <span class="nx">sessionService</span><span class="p">:</span> <span class="nx">DataService</span><span class="p">,</span>
+     <span class="kr">private</span> <span class="nx">route</span><span class="p">:</span> <span class="nx">ActivatedRoute</span><span class="p">,</span>
+     <span class="kr">private</span> <span class="nx">location</span><span class="p">:</span> <span class="nx">Location</span>
+   <span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+   <span class="nx">ngOnInit</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+
+     <span class="k">this</span><span class="p">.</span><span class="nx">route</span><span class="p">.</span><span class="nx">paramMap</span>
+       <span class="p">.</span><span class="nx">switchMap</span><span class="p">((</span><span class="na">params</span><span class="p">:</span> <span class="nx">ParamMap</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">sessionService</span><span class="p">.</span><span class="nx">getSession</span><span class="p">(</span><span class="o">+</span><span class="nx">params</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">)</span><span class="o">!</span><span class="p">))</span>
+       <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">session</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">session</span> <span class="o">=</span> <span class="nx">session</span><span class="p">);</span>
+   <span class="p">}</span>
+
+   <span class="nx">goBack</span><span class="p">()</span> <span class="p">{</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">back</span><span class="p">();</span>
+   <span class="p">}</span>
+
+ <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Update the template <strong>session-detail.component.html</strong></p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nt">&lt;ol</span> <span class="na">class=</span><span class="s">"breadcrumb"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">(click)=</span><span class="s">"goBack()"</span> <span class="na">style=</span><span class="s">"cursor: pointer"</span><span class="nt">&gt;</span>Back<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+     <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">[routerLink]=</span><span class="s">"['/sessions']"</span><span class="nt">&gt;</span>Agenda<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+     <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"active"</span><span class="nt">&gt;&lt;/li&gt;</span>
+ <span class="nt">&lt;/ol&gt;</span>
+
+ <span class="nt">&lt;h1&gt;&lt;/h1&gt;</span>
+ <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"label label-default"</span><span class="nt">&gt;&lt;/span&gt;</span>
+
+ <span class="nt">&lt;p</span> <span class="na">*ngFor=</span><span class="s">"let speaker of session.speakers"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;em&gt;</span>
+       <span class="nt">&lt;a</span> <span class="na">[routerLink]=</span><span class="s">"['/speaker', speaker.id]"</span><span class="nt">&gt;&lt;/a&gt;</span>
+     <span class="nt">&lt;/em&gt;</span>
+   <span class="nt">&lt;/p&gt;</span>
+
+ <span class="nt">&lt;p&gt;&lt;/p&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Add the route for the session detail page to the <strong>RouterModule</strong> also adding the <code class="highlighter-rouge">/:id</code> parameter to be passed along for the specific session.</p>
+
+    <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="p">{</span> <span class="nl">path</span><span class="p">:</span> <span class="dl">'</span><span class="s1">sessiondetail/:id</span><span class="dl">'</span><span class="p">,</span> <span class="nx">component</span><span class="p">:</span> <span class="nx">SessionDetailComponent</span> <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="create-the-speaker-detail-page">Create the Speaker Detail Page</h3>
+
+<blockquote>
+  <p>We’ll add a page to show details for a given speaker</p>
+</blockquote>
+
+<ol>
+  <li>
+    <p>Create the Speaker Detail component</p>
+
+    <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nx">ng</span> <span class="nx">g</span> <span class="nx">component</span> <span class="nx">speakerDetail</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Update the code for the component to the following</p>
+
+    <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">import</span> <span class="dl">'</span><span class="s1">rxjs/add/operator/switchMap</span><span class="dl">'</span><span class="p">;</span>
+ <span class="k">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@angular/core</span><span class="dl">'</span><span class="p">;</span>
+ <span class="k">import</span> <span class="p">{</span> <span class="nx">ActivatedRoute</span><span class="p">,</span> <span class="nx">ParamMap</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@angular/router</span><span class="dl">'</span><span class="p">;</span>
+ <span class="k">import</span> <span class="p">{</span> <span class="nx">Location</span> <span class="p">}</span>                 <span class="k">from</span> <span class="dl">'</span><span class="s1">@angular/common</span><span class="dl">'</span><span class="p">;</span>
+
+ <span class="k">import</span> <span class="p">{</span> <span class="nx">DataService</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../shared/data.service</span><span class="dl">'</span><span class="p">;</span>
+ <span class="k">import</span> <span class="p">{</span> <span class="nx">Speaker</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../shared/model</span><span class="dl">'</span><span class="p">;</span>
+
+ <span class="p">@</span><span class="nd">Component</span><span class="p">({</span>
+   <span class="na">selector</span><span class="p">:</span> <span class="dl">'</span><span class="s1">conf-speakerdetail</span><span class="dl">'</span><span class="p">,</span>
+   <span class="na">templateUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./speakerdetail.component.html</span><span class="dl">'</span>
+ <span class="p">})</span>
+ <span class="k">export</span> <span class="kd">class</span> <span class="nx">SpeakerDetailComponent</span> <span class="kr">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+   <span class="nl">speaker</span><span class="p">:</span> <span class="nx">Speaker</span><span class="p">;</span>
+
+   <span class="kd">constructor</span><span class="p">(</span>
+     <span class="kr">private</span> <span class="nx">dataService</span><span class="p">:</span> <span class="nx">DataService</span><span class="p">,</span>
+     <span class="kr">private</span> <span class="nx">route</span><span class="p">:</span> <span class="nx">ActivatedRoute</span><span class="p">,</span>
+     <span class="kr">private</span> <span class="nx">location</span><span class="p">:</span> <span class="nx">Location</span>
+   <span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+   <span class="nx">ngOnInit</span><span class="p">()</span> <span class="p">{</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">route</span><span class="p">.</span><span class="nx">paramMap</span>
+     <span class="p">.</span><span class="nx">switchMap</span><span class="p">((</span><span class="nx">params</span><span class="p">:</span> <span class="nx">ParamMap</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">dataService</span><span class="p">.</span><span class="nx">getSpeaker</span><span class="p">(</span><span class="o">+</span><span class="nx">params</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">)</span><span class="o">!</span><span class="p">))</span>
+     <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">speaker</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">speaker</span><span class="o">=</span> <span class="nx">speaker</span><span class="p">);</span>
+   <span class="p">}</span>
+
+   <span class="nx">goBack</span><span class="p">()</span> <span class="p">{</span>
+     <span class="k">this</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">back</span><span class="p">();</span>
+   <span class="p">}</span>
+
+ <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Update the template <strong>speaker-detail.component.html</strong> to the following</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nt">&lt;ol</span> <span class="na">class=</span><span class="s">"breadcrumb"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">(click)=</span><span class="s">"goBack()"</span> <span class="na">style=</span><span class="s">"cursor: pointer"</span><span class="nt">&gt;</span>Back<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+   <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">[routerLink]=</span><span class="s">"['/speakers']"</span><span class="nt">&gt;</span>Speakers<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"active"</span><span class="nt">&gt;&lt;/li&gt;</span>
+ <span class="nt">&lt;/ol&gt;</span>
+
+ <span class="nt">&lt;h2&gt;&lt;/h2&gt;</span>
+
+ <span class="nt">&lt;p&gt;&lt;/p&gt;</span>
+
+ <span class="nt">&lt;h3&gt;</span>Sessions<span class="nt">&lt;/h3&gt;</span>
+ <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-5"</span><span class="nt">&gt;</span>
+       <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-group"</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;li</span> <span class="na">*ngFor=</span><span class="s">"let session of speaker.sessions"</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;</span>
+           <span class="nt">&lt;a</span> <span class="na">[routerLink]=</span><span class="s">"['/sessiondetail', session.id]"</span><span class="nt">&gt;&lt;/a&gt;</span>
+         <span class="nt">&lt;/li&gt;</span>
+     <span class="nt">&lt;/ul&gt;</span>
+   <span class="nt">&lt;/div&gt;</span>
+ <span class="nt">&lt;/div&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Add the route for the speaker detail page to the <strong>RouterModule</strong> also adding the <code class="highlighter-rouge">/:id</code> parameter to be passed along for the specific session.</p>
+
+    <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="p">{</span> <span class="nl">path</span><span class="p">:</span> <span class="dl">'</span><span class="s1">speaker/:id</span><span class="dl">'</span><span class="p">,</span> <span class="nx">component</span><span class="p">:</span> <span class="nx">SpeakerDetailComponent</span> <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="challenge--bonus">Challenge / Bonus</h3>
+
+<p>Add a Speakers Listing Page and link from it to the <code class="highlighter-rouge">/speakerdetail</code> route</p>
+
+<hr />
+<h2 id="sessions">Sessions</h2>
+
+<p>This is series of articles on Building Conf planner app with Asp.net Core:</p>
+
+<ul>
+  <li><a href="/blog/CreateBackEndAPIproject" target="_blank">1 - Build the back-end API with basic EF model</a></li>
+  <li><a href="/blog/BuildoutBackEndandRefactor" target="_blank">2 - Finish the back-end API and EF model, refactor into view modelsl</a></li>
+  <li><a href="/blog/Addfront-endrenderagendasetupfront-endmodels" target="_blank">3 - Add front-end, render agenda, set up front-end models</a></li>
+  <li><a href="/blog/Addauthfeatures" target="_blank">4 - Add authentication, add admin policy, allow editing sessions, users can sign-in with Identity, custom auth tag helper</a></li>
+  <li><a href="/blog/Addpersonalagenda" target="_blank">5 - Add user association and personal agenda</a></li>
+  <li><a href="/blog/ProductionReadinessandDeployment" target="_blank">6 - Deployment, Azure and other production environments, configuring environments, diagnostics</a></li>
+  <li><a href="/blog/Challenges" target="_blank">7 - Challenges</a></li>
+  <li><a href="/blog/SPAFrontEnd" target="_blank">8 - SPA front-end </a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/Challenges" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/SPAFrontEnd" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+
+                </div>
+
+                
+
+                <div id="disqus_thread"></div>
+                <script>
+                
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://girishgodage-github-io.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
+</button>
+<!-- Footer-->
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 text-center text-lg-left">
+                <p class="social">
+                    <a href="https://www.facebook.com/girish.godage.5" class="external facebook wow fadeInUp">
+                        <i class="fa fa-facebook"></i></a>
+                    <a href="https://instagram.com/girishgodage_007" data-wow-delay="0.2s" class="external instagram wow fadeInUp">
+                        <i class="fa fa-instagram"></i></a>
+                    <a href="https://youtube.com/girishgodage" data-wow-delay="0.4s" class="external youtube wow fadeInUp">
+                        <i class="fa fa-youtube-play"></i></a>
+                    <a href="https://twitter.com/GGodage" data-wow-delay="0.4s" class="external twitter wow fadeInUp">
+                            <i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/girishgodage" data-wow-delay="0.4s" class="external github wow fadeInUp">
+                                <i class="fa fa-github"></i></a>    
+                    <a href="mailto:girishgodage@gmail.com?subject=Hello%20Girish" data-wow-delay="0.6s" class="email wow fadeInUp">
+                        <i class="fa fa-envelope"></i></a></p>
+            </div>
+            <div class="col-12 col-md-2">
+            <h5>Quick Links</h5>
+            <ul>
+               <li><a href="http://localhost:4000#about">About</a></li>
+               <li><a href="http://localhost:4000#contact">Contact</a></li>
+               <li><a href="/sitemap.xml">Sitemap</a></li>               
+            </ul>
+         </div>
+            <div class="col-12 col-md-4 text-center text-lg-right mt-4 mt-lg-0">
+                <p> <b>©</b>2019 Girish Godage </p>
+                <p class="text-center, text-shadow"> Hosted On <a href="https://pages.github.com/">GitHub Pages</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Typed.js DONT TOUCH THIS! -->
+    <div id="typed-strings">
+    </div>
+
+        <!-- JavaScript files-->
+    <script src="http://localhost:4000/sitejs/jquery/jquery.min.js"></script>
+    <script src="http://localhost:4000/sitejs/popper.js/umd/popper.min.js"> </script>
+    <script src="http://localhost:4000/sitejs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="http://localhost:4000/sitejs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="http://localhost:4000/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.counterup/jquery.counterup.js"></script>
+    <script src="http://localhost:4000/js/front.js"></script>
+    <script src="http://localhost:4000/js/comment.js"></script>
+       <!-- Script pointing to search-script.js -->
+    <script src="http://localhost:4000/js/search-script.js" type="text/javascript"></script>
+   
+    <!-- Configuration -->
+    <script>
+         SimpleJekyllSearch({
+         searchInput: document.getElementById('search-input'),
+         resultsContainer: document.getElementById('results-container'),
+         json: '/search.json'
+         })
+         </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC36FUDDdOTidZJ8nzS5vfE7KVyayenKPE",
+    authDomain: "githubcontactlist.firebaseapp.com",
+    databaseURL: "https://githubcontactlist.firebaseio.com",
+    projectId: "githubcontactlist",
+    storageBucket: "githubcontactlist.appspot.com",
+    messagingSenderId: "899685398702",
+    appId: "1:899685398702:web:0c23c56d2d6d40df37553f",
+    measurementId: "G-YWBRCYJYFW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script>
+   $(function() {
+      
+    //make a variable to keep track of data coming from firebase
+    var data = [];
+
+    // Reference messages collection
+      var messagesRef = firebase.database().ref('contactformmessages');  
+
+
+    //listen to data updates from firebase
+    messagesRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+        //when the data updates at firebase, put it in the data variable
+        data = snapshot.val();
+    })
+    //Entire Contact Form (handler)
+    $('#contactForm').submit(function(e) {
+      e.preventDefault();
+
+        var $form = $(this);
+        console.log("Submit to Firebase");
+
+        //disable submit button
+        $form.find("#sendForm").prop('disabled', true);
+
+        //get values to send to Firebase
+        var name = $('#name').val();
+        console.log(name);
+		
+		var surname = $('#surname').val();
+        console.log(surname);
+		
+		var email = $('#email').val();
+        console.log(email);	
+		
+		var phone = $('#phone').val();
+        console.log(phone);
+
+        var message = $('#message').val();
+        console.log(message);
+
+       
+        //take the values from the form, and put them in an object
+        var newContact = {
+         "name": name,
+			"surname": surname,
+			"email": email,
+			"phone": phone,
+         "message": message
+        }
+        //put new object in data array
+        data.push(newContact);
+        console.log(data);
+
+        //send the new data to Firebase
+        messagesRef.set(data, function(err) {
+            if (err) {
+                alert("Data no go");
+            }else{
+            $("#form-wrapper").slideToggle();
+            $('#form-success-message').slideToggle();
+			}
+        });
+
+        return false;
+    })
+   
+    
+})
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";           
+        }else
+        {
+           myBtton.style.display="none";     
+          
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+      //  document.body.scrollTop =0;
+      //  document.documentElement.scrollTop=0;
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    }
+
+</script>
+
+    
+    
+
+
+</body>
+
+</html>

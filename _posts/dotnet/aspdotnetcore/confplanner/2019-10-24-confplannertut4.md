@@ -3,11 +3,11 @@ title: Building the Front End
 date: 2019-10-24 05:54:00 Z
 permalink: "/blog/Addfront-endrenderagendasetupfront-endmodels"
 categories:
-- Asp.net core
+- AspDotnetCore
 tags:
 - learning
-summary: In this tutorial, we'll add the front end web site, with a public (anonymous)
-  home page showing the conference agenda.
+summary: "In this tutorial, we'll add the front end web site, with a public (anonymous)
+  home page showing the conference agenda"
 image: "/img/aspnetcore.png"
 author: Girish Godage
 layout: posts
@@ -17,9 +17,11 @@ discussion_id: 2019-10-24-confplannertut4
 ---
 
 ## Building the Front End
-In this session, we'll add the front end web site, with a public (anonymous) home page showing the conference agenda.
+
+In this session, we'll add the front end web site, with a public anonymous home page showing the conference agenda.
 
 ## Add a FrontEnd project
+
 > We'll start by creating the new front end project for the web site.
 
 ### Adding the FrontEnd Project using Visual Studio

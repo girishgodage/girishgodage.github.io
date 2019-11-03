@@ -3,7 +3,7 @@ title: Build out BackEnd and Refactor
 date: 2019-10-24 05:54:00 Z
 permalink: "/blog/BuildoutBackEndandRefactor"
 categories:
-- Asp.net core
+- AspDotnetCore
 tags:
 - learning
 summary: In this tutorial, we'll add the rest of our models and controllers that expose

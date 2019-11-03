@@ -3,7 +3,7 @@ title: ASP.NET Core - App Building Workshop Tutorial
 date: 2019-10-24 05:54:00 Z
 permalink: "/blog/app-building-Workshop-start"
 categories:
-- Asp.net core
+- AspDotnetCore
 tags:
 - learning
 summary: In this workshop, you'll learn by building a full-featured ASP.NET Core application

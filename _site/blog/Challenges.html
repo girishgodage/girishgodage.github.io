@@ -11,8 +11,8 @@
 <meta name="msapplication-navbutton-color" content="#2A80EE">
 <!-- iOS Safari -->
 <meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
-<title>ASP.NET Core - App Building Workshop Tutorial &#8211; Girish Godage</title>
-<meta name="description" content="In this workshop, you'll learn by building a full-featured ASP.NET Core application from scratch. We'll start from File/ New and build up to an API back-end application, a web front-end application, and a common library for shared data transfer objects using .NET Standard..">
+<title>Challenges &#8211; Girish Godage</title>
+<meta name="description" content="Now that we've built the basic site, there might be time for some challenges! Below are a list of feature ideas that take advantage of other ASP.NET Core features">
 <meta name="keywords" content="AspDotnetCore">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,9 +26,9 @@
     <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="ASP.NET Core - App Building Workshop Tutorial">
+    <meta property="og:title" content="Challenges">
     <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
-    <meta property="og:url" content="http://localhost:4000/blog/app-building-Workshop-start">
+    <meta property="og:url" content="http://localhost:4000/blog/Challenges">
     <meta property="og:site_name" content="Girish Godage">
 
     <!-- Twitter Card -->
@@ -36,9 +36,9 @@
     
         <meta name="twitter:site" content="@GGodage" />
     
-    <meta name="twitter:title" content="ASP.NET Core - App Building Workshop Tutorial" />
-    <meta name="twitter:description" content="In this workshop, you'll learn by building a full-featured ASP.NET Core application from scratch. We'll start from File/ New and build up to an API back-end application, a web front-end application, and a common library for shared data transfer objects using .NET Standard.." />
-    <meta name="twitter:url" content="http://localhost:4000/blog/app-building-Workshop-start" />
+    <meta name="twitter:title" content="Challenges" />
+    <meta name="twitter:description" content="Now that we've built the basic site, there might be time for some challenges! Below are a list of feature ideas that take advantage of other ASP.NET Core features" />
+    <meta name="twitter:url" content="http://localhost:4000/blog/Challenges" />
 
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
@@ -58,7 +58,7 @@
     
 
 
-    <link rel="canonical" href="http://localhost:4000/blog/app-building-Workshop-start">
+    <link rel="canonical" href="http://localhost:4000/blog/Challenges">
 <link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
     <!-- Bootstrap CSS-->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -157,7 +157,7 @@
             class="container">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <p class="post-title">
-                    <h1><a href="/blog/app-building-Workshop-start">ASP.NET Core - App Building Workshop Tutorial</a></h1>
+                    <h1><a href="/blog/Challenges">Challenges</a></h1>
                 </p>
                 
                 <span class="post-meta">
@@ -174,27 +174,86 @@
                 </div>
                 
                 <hr>
-                <div><img class="post-image" src="/img/aspnetcore.png" alt="ASP.NET Core - App Building Workshop Tutorial" height="250" /></div>
+                <div><img class="post-image" src="/img/aspnetcore.png" alt="Challenges" height="250" /></div>
                 <div class="post-content">
                     <br>                     
-                    <h2 id="setup">Setup</h2>
+                    <h1 id="challenges">Challenges</h1>
 
-<p><a href="https://www.microsoft.com/net/download">Download</a> and install the .NET Core SDK and Visual Studio.</p>
+<p>Now that we’ve built the basic site, there might be time for some challenges! Below are a list of feature ideas that take advantage of other ASP.NET Core features:</p>
 
-<blockquote>
-  <p>Note: When installing Visual Studio you only need to install the <code class="highlighter-rouge">ASP.NET and web development</code> workload.</p>
-</blockquote>
+<h2 id="identity">Identity</h2>
+<ul>
+  <li>Add support external authentication like Google or Twitter authentication - https://docs.microsoft.com/en-us/aspnet/core/security/authentication/social/?view=aspnetcore-2.2</li>
+</ul>
 
-<p>If you have issues downloading the installers we may have USB sticks with offline installers for you to use.</p>
+<h2 id="logging">Logging</h2>
+<ul>
+  <li>Add <code class="highlighter-rouge">Serilog</code>, a 3rd party logger to the front end and disable built in console logging.</li>
+</ul>
 
-<h2 id="what-youll-be-building">What you’ll be building</h2>
-<p>In this workshop, you’ll learn by building a full-featured ASP.NET Core application from scratch. We’ll start from File/ New and build up to an API back-end application, a web front-end application, and a common library for shared data transfer objects using .NET Standard.</p>
+<h2 id="images">Images</h2>
+<ul>
+  <li>Allow attendees to upload images.</li>
+  <li>Resize the image using <a href="https://github.com/JimBobSquarePants/ImageSharp">ImageSharp</a></li>
+</ul>
 
-<h3 id="application-architecture">Application Architecture</h3>
-<p><img src="/img/aspdotnetcore/confplanner/1/ConferencePlannerArchitectureDiagram.svg" alt="Architecture Diagram" /></p>
+<h2 id="caching">Caching</h2>
+<ul>
+  <li>Add appropriate caching to FrontEnd site:
+    <ul>
+      <li><a href="https://docs.microsoft.com/en-us/aspnet/core/performance/caching/memory">Memory cache</a></li>
+      <li><a href="https://docs.microsoft.com/en-us/aspnet/core/performance/caching/distributed">Distributed cache</a></li>
+      <li><a href="https://docs.microsoft.com/en-us/aspnet/core/performance/caching/response">Response caching</a></li>
+    </ul>
+  </li>
+</ul>
 
-<h3 id="database-schema">Database Schema</h3>
-<p><img src="/img/aspdotnetcore/confplanner/1/conference-planner-db-diagram.png" alt="Database Schema Diagram" /></p>
+<h2 id="tag-helpers">Tag Helpers</h2>
+<ul>
+  <li>Render Markdown for the session Abstract (instead of HTML) using a custom markdown tag helper.</li>
+</ul>
+
+<h2 id="data">Data</h2>
+<ul>
+  <li>Change database provider to <a href="https://www.postgresql.org/">Postgres</a> - https://www.nuget.org/packages/Npgsql/</li>
+  <li>Change database provider to <a href="https://www.mysql.com/">MySql</a> - https://www.nuget.org/packages/MySql.Data/</li>
+</ul>
+
+<h2 id="testing">Testing</h2>
+<ul>
+  <li>Write unit tests for the BackEnd Controllers</li>
+  <li>Write unit tests for the FrontEnd Razor pages</li>
+  <li>Write functional tests</li>
+</ul>
+
+<h2 id="frontend-features">FrontEnd Features</h2>
+<ul>
+  <li>Make the names slugs instead of using IDs in the urls to navigate entities</li>
+  <li>Configure <a href="https://github.com/App-vNext/Polly/wiki/Polly-and-HttpClientFactory">retry policy using Polly library</a></li>
+  <li>Support multiple conferences
+    <ul>
+      <li>Add conference date</li>
+      <li>Make the home page show upcoming conferences (within 5 days)</li>
+      <li>Move agenda to separate page</li>
+    </ul>
+  </li>
+  <li>Add admin pages to manage:
+    <ul>
+      <li>Tracks</li>
+      <li>Attendees</li>
+      <li>Conferences</li>
+      <li>Sessions</li>
+      <li>Speakers (allow speaker image upload)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="backend-features">BackEnd Features</h2>
+<ul>
+  <li>Add date filtering to the BackEnd APIs</li>
+  <li>Add support for returning XML from the APIs</li>
+  <li>Add links to related entities in the responses e.g. Attendee has a list of sessions, return URLs for each of the session resources related to Attendee.</li>
+</ul>
 
 <hr />
 <h2 id="sessions">Sessions</h2>
@@ -218,13 +277,13 @@
    
     <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-6">
-            <a target="_blank" href="/blog/app-building-Workshop-start" class="btn  btn-sm" id="round-button">
+            <a target="_blank" href="/blog/ProductionReadinessandDeployment" class="btn  btn-sm" id="round-button">
                 <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
             </a>
         </div>
      
         <div class="col-lg-4 col-md-6 col-sm-6">
-            <a target="_blank" href="/blog/CreateBackEndAPIproject" class="btn btn-sm" id="round-button">Next Lesson
+            <a target="_blank" href="/blog/SPAFrontEnd" class="btn btn-sm" id="round-button">Next Lesson
                 <i class="fas fa-arrow-right ml-2"></i>
             </a>
         </div>       

@@ -3,7 +3,7 @@ title: Build the back-end API with basic EF model
 date: 2019-10-24 05:54:00 Z
 permalink: "/blog/CreateBackEndAPIproject"
 categories:
-- Asp.net core
+- AspDotnetCore
 tags:
 - learning
 summary: In this tutorial, you'll learn to build up to an API back-end application,
@@ -17,6 +17,7 @@ discussion_id: 2019-10-24-confplannertut2
 ---
 
 ## Creating a new project using Visual Studio
+
 1. Create and add a new project named `BackEnd` and name the solution `ConferencePlanner` using File / New / ASP.NET Core Web Application. Select the Web API template, No Auth, no Docker support.
    ##### Open a Visual Studio
    ![](/img/aspdotnetcore/confplanner/2/2.png "Open a Visual Studio")

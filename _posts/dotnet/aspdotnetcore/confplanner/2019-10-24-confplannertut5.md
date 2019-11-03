@@ -3,7 +3,7 @@ title: Add ability to log in to the website
 date: 2019-10-24 05:54:00 Z
 permalink: "/blog/Addauthfeatures"
 categories:
-- Asp.net core
+- AspDotnetCore
 tags:
 - learning
 summary: In this module we're going to add the capability for users to register and
