@@ -6,7 +6,9 @@ categories:
 - Asp.net core
 tags:
 - learning
-summary: In this module we're going to add the capability for users to register and sign-in on the front-end web app with a username and password. We'll do this using ASP.NET Core Identity.
+summary: In this module we're going to add the capability for users to register and
+  sign-in on the front-end web app with a username and password. We'll do this using
+  ASP.NET Core Identity.
 image: "/img/aspnetcore.png"
 author: Girish Godage
 layout: posts
