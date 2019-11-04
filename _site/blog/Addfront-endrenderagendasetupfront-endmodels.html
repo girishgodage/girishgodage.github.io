@@ -188,224 +188,250 @@
 </blockquote>
 
 <h3 id="adding-the-frontend-project-using-visual-studio">Adding the FrontEnd Project using Visual Studio</h3>
+
 <ol>
   <li>If using Visual Studio, right-click on the Solution and select <em>Add</em> / <em>New Project…</em>.</li>
-  <li>Select <em>.NET Core</em> from the project types on the left and select the <em>ASP.NET Core Web Application</em> template. Name the project “FrontEnd”, name the solution “ConferencePlanner”, and press OK.
-<img src="/img/aspdotnetcore/confplanner/4/45.png" alt="" /></li>
+  <li>Select <em>.NET Core</em> from the project types on the left and select the <em>ASP.NET Core Web Application</em> template. Name the project “FrontEnd”, name the solution “ConferencePlanner”, and press OK.</li>
+</ol>
+
+<p><img src="/img/aspdotnetcore/confplanner/4/45.png" alt="" /></p>
+
+<ol>
   <li>Select <em>ASP.NET Core 3.0</em> from the drop-down list in the top-left corner</li>
-  <li>Select the <em>Web Application</em> template and click <em>OK</em>
-<img src="/img/aspdotnetcore/confplanner/4/44.png" alt="" /></li>
+  <li>Select the <em>Web Application</em> template and click <em>OK</em></li>
+</ol>
+
+<p><img src="/img/aspdotnetcore/confplanner/4/44.png" alt="" /></p>
+
+<ol>
   <li>Right-click on the <em>FrontEnd</em> project and add a reference to the <em>ConferenceDTO</em> project.</li>
 </ol>
 
 <h3 id="adding-the-frontend-project-via-the-command-line">Adding the FrontEnd Project via the Command Line</h3>
+
 <ol>
   <li>Open a command prompt and navigate to the root <code class="highlighter-rouge">ConferencePlanner</code> directory.</li>
-  <li>Run the following command:
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">dotnet new webapp -o FrontEnd
-</span></code></pre></div>    </div>
-  </li>
-  <li>Next we’ll need to add a reference to the ConferenceDTO project from the new FrontEnd project. From the command line, navigate to the FrontEnd project directory and execute the following command:
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">dotnet add reference ../ConferenceDTO/ConferenceDTO.csproj
-</span></code></pre></div>    </div>
-  </li>
+  <li>Run the following command:</li>
 </ol>
 
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">   dotnet new webapp -o FrontEnd
+</span></code></pre></div></div>
+
+<ol>
+  <li>Next we’ll need to add a reference to the ConferenceDTO project from the new FrontEnd project. From the command line, navigate to the FrontEnd project directory and execute the following command:</li>
+</ol>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">   dotnet add reference ../ConferenceDTO/ConferenceDTO.csproj
+</span></code></pre></div></div>
+
 <h2 id="delete-unwanted-content">Delete unwanted content</h2>
+
 <blockquote>
   <p>We’ll clear out some content from the template that we don’t need</p>
-  <ol>
-    <li>Open <em>/Pages/Index.cshtml</em> and delete all the HTML content (after line 6)</li>
-  </ol>
 </blockquote>
 
+<ol>
+  <li>Open <em>/Pages/Index.cshtml</em> and delete all the HTML content (after line 6)</li>
+</ol>
+
 <p><img src="/img/aspdotnetcore/confplanner/4/46.png" alt="" /></p>
+
 <h2 id="create-and-wire-up-an-api-service-client">Create and wire-up an API service client</h2>
+
 <blockquote>
   <p>We’ll create a class to talk to our backend web API service</p>
 </blockquote>
 
 <h3 id="create-the-api-service-client-class">Create the API service client class</h3>
+
 <ol>
   <li>Create a folder called <em>Services</em> in the root of the project</li>
-  <li>In this folder, add a new interface called <code class="highlighter-rouge">IApiClient</code> with the following members:
-    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">ConferenceDTO</span><span class="p">;</span>
-
-<span class="k">namespace</span> <span class="nn">FrontEnd.Services</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">interface</span> <span class="nc">IApiClient</span>
-    <span class="p">{</span>
-       <span class="n">Task</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">SessionResponse</span><span class="p">&gt;&gt;</span> <span class="nf">GetSessionsAsync</span><span class="p">();</span>
-       <span class="n">Task</span><span class="p">&lt;</span><span class="n">SessionResponse</span><span class="p">&gt;</span> <span class="nf">GetSessionAsync</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">);</span>
-       <span class="n">Task</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">SpeakerResponse</span><span class="p">&gt;&gt;</span> <span class="nf">GetSpeakersAsync</span><span class="p">();</span>
-       <span class="n">Task</span><span class="p">&lt;</span><span class="n">SpeakerResponse</span><span class="p">&gt;</span> <span class="nf">GetSpeakerAsync</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">);</span>
-       <span class="n">Task</span> <span class="nf">PutSessionAsync</span><span class="p">(</span><span class="n">Session</span> <span class="n">session</span><span class="p">);</span>
-       <span class="n">Task</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="nf">AddAttendeeAsync</span><span class="p">(</span><span class="n">Attendee</span> <span class="n">attendee</span><span class="p">);</span>
-       <span class="n">Task</span><span class="p">&lt;</span><span class="n">AttendeeResponse</span><span class="p">&gt;</span> <span class="nf">GetAttendeeAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">);</span>
-       <span class="n">Task</span> <span class="nf">DeleteSessionAsync</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>    </div>
-    <p><img src="/img/aspdotnetcore/confplanner/4/47.png" alt="" /></p>
-  </li>
-  <li>
-    <p>Add a reference to the <em>Microsoft.AspNet.WebApi.Client</em> NuGet package in the FrontEnd project:</p>
-
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet add package Microsoft.AspNet.WebApi.Client
-</code></pre></div>    </div>
-    <p><img src="/img/aspdotnetcore/confplanner/4/48.png" alt="" /></p>
-  </li>
-  <li>Staying in this folder, add a new class called <code class="highlighter-rouge">ApiClient</code> that implements the <code class="highlighter-rouge">IApiClient</code> interface by using <code class="highlighter-rouge">HttpClient</code> to call out to our BackEnd API application and JSON serialize/deserialize the payloads:
-    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Net</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Net.Http</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">ConferenceDTO</span><span class="p">;</span>
-
-<span class="k">namespace</span> <span class="nn">FrontEnd.Services</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">class</span> <span class="nc">ApiClient</span> <span class="p">:</span> <span class="n">IApiClient</span>
-    <span class="p">{</span>
-        <span class="k">private</span> <span class="k">readonly</span> <span class="n">HttpClient</span> <span class="n">_httpClient</span><span class="p">;</span>
-
-        <span class="k">public</span> <span class="nf">ApiClient</span><span class="p">(</span><span class="n">HttpClient</span> <span class="n">httpClient</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">_httpClient</span> <span class="p">=</span> <span class="n">httpClient</span><span class="p">;</span>
-        <span class="p">}</span>
-
-        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="nf">AddAttendeeAsync</span><span class="p">(</span><span class="n">Attendee</span> <span class="n">attendee</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_httpClient</span><span class="p">.</span><span class="nf">PostAsJsonAsync</span><span class="p">(</span><span class="s">$"/api/attendees"</span><span class="p">,</span> <span class="n">attendee</span><span class="p">);</span>
-                
-            <span class="k">if</span> <span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">StatusCode</span> <span class="p">==</span> <span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">Conflict</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
-            <span class="p">}</span>
-
-            <span class="n">response</span><span class="p">.</span><span class="nf">EnsureSuccessStatusCode</span><span class="p">();</span>
-                
-            <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
-        <span class="p">}</span>
-
-        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">AttendeeResponse</span><span class="p">&gt;</span> <span class="nf">GetAttendeeAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
-            <span class="p">{</span>
-                <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
-            <span class="p">}</span>
-
-            <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_httpClient</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">(</span><span class="s">$"/api/attendees/</span><span class="p">{</span><span class="n">name</span><span class="p">}</span><span class="s">"</span><span class="p">);</span>
-
-            <span class="k">if</span> <span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">StatusCode</span> <span class="p">==</span> <span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">NotFound</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
-            <span class="p">}</span>
-
-            <span class="n">response</span><span class="p">.</span><span class="nf">EnsureSuccessStatusCode</span><span class="p">();</span>
-
-            <span class="k">return</span> <span class="k">await</span> <span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">ReadAsAsync</span><span class="p">&lt;</span><span class="n">AttendeeResponse</span><span class="p">&gt;();</span>
-        <span class="p">}</span>
-
-        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">SessionResponse</span><span class="p">&gt;</span> <span class="nf">GetSessionAsync</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_httpClient</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">(</span><span class="s">$"/api/sessions/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="s">"</span><span class="p">);</span>
-
-            <span class="k">if</span> <span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">StatusCode</span> <span class="p">==</span> <span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">NotFound</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
-            <span class="p">}</span>
-
-            <span class="n">response</span><span class="p">.</span><span class="nf">EnsureSuccessStatusCode</span><span class="p">();</span>
-
-            <span class="k">return</span> <span class="k">await</span> <span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">ReadAsAsync</span><span class="p">&lt;</span><span class="n">SessionResponse</span><span class="p">&gt;();</span>
-        <span class="p">}</span>
-
-        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">SessionResponse</span><span class="p">&gt;&gt;</span> <span class="nf">GetSessionsAsync</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_httpClient</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">(</span><span class="s">"/api/sessions"</span><span class="p">);</span>
-
-            <span class="n">response</span><span class="p">.</span><span class="nf">EnsureSuccessStatusCode</span><span class="p">();</span>
-
-            <span class="k">return</span> <span class="k">await</span> <span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">ReadAsAsync</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">SessionResponse</span><span class="p">&gt;&gt;();</span>
-        <span class="p">}</span>
-
-        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">DeleteSessionAsync</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_httpClient</span><span class="p">.</span><span class="nf">DeleteAsync</span><span class="p">(</span><span class="s">$"/api/sessions/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="s">"</span><span class="p">);</span>
-
-            <span class="k">if</span> <span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">StatusCode</span> <span class="p">==</span> <span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">NotFound</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="k">return</span><span class="p">;</span>
-            <span class="p">}</span>
-
-            <span class="n">response</span><span class="p">.</span><span class="nf">EnsureSuccessStatusCode</span><span class="p">();</span>
-        <span class="p">}</span>
-
-        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">SpeakerResponse</span><span class="p">&gt;</span> <span class="nf">GetSpeakerAsync</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_httpClient</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">(</span><span class="s">$"/api/speakers/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="s">"</span><span class="p">);</span>
-
-            <span class="k">if</span> <span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">StatusCode</span> <span class="p">==</span> <span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">NotFound</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
-            <span class="p">}</span>
-
-            <span class="n">response</span><span class="p">.</span><span class="nf">EnsureSuccessStatusCode</span><span class="p">();</span>
-
-            <span class="k">return</span> <span class="k">await</span> <span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">ReadAsAsync</span><span class="p">&lt;</span><span class="n">SpeakerResponse</span><span class="p">&gt;();</span>
-        <span class="p">}</span>
-
-        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">SpeakerResponse</span><span class="p">&gt;&gt;</span> <span class="nf">GetSpeakersAsync</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_httpClient</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">(</span><span class="s">"/api/speakers"</span><span class="p">);</span>
-
-            <span class="n">response</span><span class="p">.</span><span class="nf">EnsureSuccessStatusCode</span><span class="p">();</span>
-
-            <span class="k">return</span> <span class="k">await</span> <span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">ReadAsAsync</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">SpeakerResponse</span><span class="p">&gt;&gt;();</span>
-        <span class="p">}</span>
-
-        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">PutSessionAsync</span><span class="p">(</span><span class="n">Session</span> <span class="n">session</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_httpClient</span><span class="p">.</span><span class="nf">PutAsJsonAsync</span><span class="p">(</span><span class="s">$"/api/sessions/</span><span class="p">{</span><span class="n">session</span><span class="p">.</span><span class="n">Id</span><span class="p">}</span><span class="s">"</span><span class="p">,</span> <span class="n">session</span><span class="p">);</span>
-
-            <span class="n">response</span><span class="p">.</span><span class="nf">EnsureSuccessStatusCode</span><span class="p">();</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
+  <li>In this folder, add a new interface called <code class="highlighter-rouge">IApiClient</code> with the following members:</li>
 </ol>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+   <span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+   <span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+   <span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+   <span class="k">using</span> <span class="nn">ConferenceDTO</span><span class="p">;</span>
+
+   <span class="k">namespace</span> <span class="nn">FrontEnd.Services</span>
+   <span class="p">{</span>
+       <span class="k">public</span> <span class="k">interface</span> <span class="nc">IApiClient</span>
+       <span class="p">{</span>
+          <span class="n">Task</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">SessionResponse</span><span class="p">&gt;&gt;</span> <span class="nf">GetSessionsAsync</span><span class="p">();</span>
+          <span class="n">Task</span><span class="p">&lt;</span><span class="n">SessionResponse</span><span class="p">&gt;</span> <span class="nf">GetSessionAsync</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">);</span>
+          <span class="n">Task</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">SpeakerResponse</span><span class="p">&gt;&gt;</span> <span class="nf">GetSpeakersAsync</span><span class="p">();</span>
+          <span class="n">Task</span><span class="p">&lt;</span><span class="n">SpeakerResponse</span><span class="p">&gt;</span> <span class="nf">GetSpeakerAsync</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">);</span>
+          <span class="n">Task</span> <span class="nf">PutSessionAsync</span><span class="p">(</span><span class="n">Session</span> <span class="n">session</span><span class="p">);</span>
+          <span class="n">Task</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="nf">AddAttendeeAsync</span><span class="p">(</span><span class="n">Attendee</span> <span class="n">attendee</span><span class="p">);</span>
+          <span class="n">Task</span><span class="p">&lt;</span><span class="n">AttendeeResponse</span><span class="p">&gt;</span> <span class="nf">GetAttendeeAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">);</span>
+          <span class="n">Task</span> <span class="nf">DeleteSessionAsync</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">);</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
+</code></pre></div></div>
+
+<p><img src="/img/aspdotnetcore/confplanner/4/47.png" alt="" /></p>
+
+<ol>
+  <li>Add a reference to the <em>Microsoft.AspNet.WebApi.Client</em> NuGet package in the FrontEnd project:</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   dotnet add package Microsoft.AspNet.WebApi.Client
+</code></pre></div></div>
+
+<p><img src="/img/aspdotnetcore/confplanner/4/48.png" alt="" /></p>
+
+<ol>
+  <li>Staying in this folder, add a new class called <code class="highlighter-rouge">ApiClient</code> that implements the <code class="highlighter-rouge">IApiClient</code> interface by using <code class="highlighter-rouge">HttpClient</code> to call out to our BackEnd API application and JSON serialize/deserialize the payloads:</li>
+</ol>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+   <span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+   <span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+   <span class="k">using</span> <span class="nn">System.Net</span><span class="p">;</span>
+   <span class="k">using</span> <span class="nn">System.Net.Http</span><span class="p">;</span>
+   <span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+   <span class="k">using</span> <span class="nn">ConferenceDTO</span><span class="p">;</span>
+
+   <span class="k">namespace</span> <span class="nn">FrontEnd.Services</span>
+   <span class="p">{</span>
+       <span class="k">public</span> <span class="k">class</span> <span class="nc">ApiClient</span> <span class="p">:</span> <span class="n">IApiClient</span>
+       <span class="p">{</span>
+           <span class="k">private</span> <span class="k">readonly</span> <span class="n">HttpClient</span> <span class="n">_httpClient</span><span class="p">;</span>
+
+           <span class="k">public</span> <span class="nf">ApiClient</span><span class="p">(</span><span class="n">HttpClient</span> <span class="n">httpClient</span><span class="p">)</span>
+           <span class="p">{</span>
+               <span class="n">_httpClient</span> <span class="p">=</span> <span class="n">httpClient</span><span class="p">;</span>
+           <span class="p">}</span>
+
+           <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="nf">AddAttendeeAsync</span><span class="p">(</span><span class="n">Attendee</span> <span class="n">attendee</span><span class="p">)</span>
+           <span class="p">{</span>
+               <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_httpClient</span><span class="p">.</span><span class="nf">PostAsJsonAsync</span><span class="p">(</span><span class="s">$"/api/attendees"</span><span class="p">,</span> <span class="n">attendee</span><span class="p">);</span>
+                
+               <span class="k">if</span> <span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">StatusCode</span> <span class="p">==</span> <span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">Conflict</span><span class="p">)</span>
+               <span class="p">{</span>
+                   <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+               <span class="p">}</span>
+
+               <span class="n">response</span><span class="p">.</span><span class="nf">EnsureSuccessStatusCode</span><span class="p">();</span>
+                
+               <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+           <span class="p">}</span>
+
+           <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">AttendeeResponse</span><span class="p">&gt;</span> <span class="nf">GetAttendeeAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">)</span>
+           <span class="p">{</span>
+               <span class="k">if</span> <span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+               <span class="p">{</span>
+                   <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+               <span class="p">}</span>
+
+               <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_httpClient</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">(</span><span class="s">$"/api/attendees/</span><span class="p">{</span><span class="n">name</span><span class="p">}</span><span class="s">"</span><span class="p">);</span>
+
+               <span class="k">if</span> <span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">StatusCode</span> <span class="p">==</span> <span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">NotFound</span><span class="p">)</span>
+               <span class="p">{</span>
+                   <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+               <span class="p">}</span>
+
+               <span class="n">response</span><span class="p">.</span><span class="nf">EnsureSuccessStatusCode</span><span class="p">();</span>
+
+               <span class="k">return</span> <span class="k">await</span> <span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">ReadAsAsync</span><span class="p">&lt;</span><span class="n">AttendeeResponse</span><span class="p">&gt;();</span>
+           <span class="p">}</span>
+
+           <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">SessionResponse</span><span class="p">&gt;</span> <span class="nf">GetSessionAsync</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+           <span class="p">{</span>
+               <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_httpClient</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">(</span><span class="s">$"/api/sessions/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="s">"</span><span class="p">);</span>
+
+               <span class="k">if</span> <span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">StatusCode</span> <span class="p">==</span> <span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">NotFound</span><span class="p">)</span>
+               <span class="p">{</span>
+                   <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+               <span class="p">}</span>
+
+               <span class="n">response</span><span class="p">.</span><span class="nf">EnsureSuccessStatusCode</span><span class="p">();</span>
+
+               <span class="k">return</span> <span class="k">await</span> <span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">ReadAsAsync</span><span class="p">&lt;</span><span class="n">SessionResponse</span><span class="p">&gt;();</span>
+           <span class="p">}</span>
+
+           <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">SessionResponse</span><span class="p">&gt;&gt;</span> <span class="nf">GetSessionsAsync</span><span class="p">()</span>
+           <span class="p">{</span>
+               <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_httpClient</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">(</span><span class="s">"/api/sessions"</span><span class="p">);</span>
+
+               <span class="n">response</span><span class="p">.</span><span class="nf">EnsureSuccessStatusCode</span><span class="p">();</span>
+
+               <span class="k">return</span> <span class="k">await</span> <span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">ReadAsAsync</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">SessionResponse</span><span class="p">&gt;&gt;();</span>
+           <span class="p">}</span>
+
+           <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">DeleteSessionAsync</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+           <span class="p">{</span>
+               <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_httpClient</span><span class="p">.</span><span class="nf">DeleteAsync</span><span class="p">(</span><span class="s">$"/api/sessions/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="s">"</span><span class="p">);</span>
+
+               <span class="k">if</span> <span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">StatusCode</span> <span class="p">==</span> <span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">NotFound</span><span class="p">)</span>
+               <span class="p">{</span>
+                   <span class="k">return</span><span class="p">;</span>
+               <span class="p">}</span>
+
+               <span class="n">response</span><span class="p">.</span><span class="nf">EnsureSuccessStatusCode</span><span class="p">();</span>
+           <span class="p">}</span>
+
+           <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">SpeakerResponse</span><span class="p">&gt;</span> <span class="nf">GetSpeakerAsync</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+           <span class="p">{</span>
+               <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_httpClient</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">(</span><span class="s">$"/api/speakers/</span><span class="p">{</span><span class="n">id</span><span class="p">}</span><span class="s">"</span><span class="p">);</span>
+
+               <span class="k">if</span> <span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">StatusCode</span> <span class="p">==</span> <span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">NotFound</span><span class="p">)</span>
+               <span class="p">{</span>
+                   <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+               <span class="p">}</span>
+
+               <span class="n">response</span><span class="p">.</span><span class="nf">EnsureSuccessStatusCode</span><span class="p">();</span>
+
+               <span class="k">return</span> <span class="k">await</span> <span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">ReadAsAsync</span><span class="p">&lt;</span><span class="n">SpeakerResponse</span><span class="p">&gt;();</span>
+           <span class="p">}</span>
+
+           <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">SpeakerResponse</span><span class="p">&gt;&gt;</span> <span class="nf">GetSpeakersAsync</span><span class="p">()</span>
+           <span class="p">{</span>
+               <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_httpClient</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">(</span><span class="s">"/api/speakers"</span><span class="p">);</span>
+
+               <span class="n">response</span><span class="p">.</span><span class="nf">EnsureSuccessStatusCode</span><span class="p">();</span>
+
+               <span class="k">return</span> <span class="k">await</span> <span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">ReadAsAsync</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">SpeakerResponse</span><span class="p">&gt;&gt;();</span>
+           <span class="p">}</span>
+
+           <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">PutSessionAsync</span><span class="p">(</span><span class="n">Session</span> <span class="n">session</span><span class="p">)</span>
+           <span class="p">{</span>
+               <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_httpClient</span><span class="p">.</span><span class="nf">PutAsJsonAsync</span><span class="p">(</span><span class="s">$"/api/sessions/</span><span class="p">{</span><span class="n">session</span><span class="p">.</span><span class="n">Id</span><span class="p">}</span><span class="s">"</span><span class="p">,</span> <span class="n">session</span><span class="p">);</span>
+
+               <span class="n">response</span><span class="p">.</span><span class="nf">EnsureSuccessStatusCode</span><span class="p">();</span>
+           <span class="p">}</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
+</code></pre></div></div>
 
 <h3 id="configure-the-api-client">Configure the API client</h3>
 
 <ol>
   <li>Open the <em>Startup.cs</em> file</li>
-  <li>
-    <p>Locate the <code class="highlighter-rouge">ConfigureServices</code> method and add the following code to the bottom of it:</p>
-
-    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">services</span><span class="p">.</span><span class="n">AddHttpClient</span><span class="p">&lt;</span><span class="n">IApiClient</span><span class="p">,</span> <span class="n">ApiClient</span><span class="p">&gt;(</span><span class="n">client</span> <span class="p">=&gt;</span>
-<span class="p">{</span>
-    <span class="n">client</span><span class="p">.</span><span class="n">BaseAddress</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Uri</span><span class="p">(</span><span class="n">Configuration</span><span class="p">[</span><span class="s">"serviceUrl"</span><span class="p">]);</span>
-<span class="p">});</span>
-</code></pre></div>    </div>
-    <p><img src="/img/aspdotnetcore/confplanner/4/49.png" alt="" /></p>
-  </li>
-  <li>This adds an instance of <code class="highlighter-rouge">HttpClientFactory</code> with its base URL pulled from the application configuration, which will point to our BackEnd API application</li>
-  <li>
-    <p>Open the <em>appsettings.json</em> file and add the configuration key for <code class="highlighter-rouge">serviceUrl</code> pointing to the URL your specific BackEnd API application is configured to run in (check your <em>launchSettings.json</em> file for the specific port your BackEnd API application uses):</p>
-
-    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"ServiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost:44386/"</span><span class="w">
-</span></code></pre></div>    </div>
-    <p><img src="/img/aspdotnetcore/confplanner/4/50.png" alt="" /></p>
-    <h2 id="list-the-sessions-on-the-home-page">List the sessions on the home page</h2>
-  </li>
+  <li>Locate the <code class="highlighter-rouge">ConfigureServices</code> method and add the following code to the bottom of it:</li>
 </ol>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">services</span><span class="p">.</span><span class="n">AddHttpClient</span><span class="p">&lt;</span><span class="n">IApiClient</span><span class="p">,</span> <span class="n">ApiClient</span><span class="p">&gt;(</span><span class="n">client</span> <span class="p">=&gt;</span>
+   <span class="p">{</span>
+       <span class="n">client</span><span class="p">.</span><span class="n">BaseAddress</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Uri</span><span class="p">(</span><span class="n">Configuration</span><span class="p">[</span><span class="s">"serviceUrl"</span><span class="p">]);</span>
+   <span class="p">});</span>
+</code></pre></div></div>
+
+<p><img src="/img/aspdotnetcore/confplanner/4/49.png" alt="" /></p>
+
+<ol>
+  <li>This adds an instance of <code class="highlighter-rouge">HttpClientFactory</code> with its base URL pulled from the application configuration, which will point to our BackEnd API application</li>
+  <li>Open the <em>appsettings.json</em> file and add the configuration key for <code class="highlighter-rouge">serviceUrl</code> pointing to the URL your specific BackEnd API application is configured to run in (check your <em>launchSettings.json</em> file for the specific port your BackEnd API application uses):</li>
+</ol>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">   </span><span class="nl">"ServiceUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://localhost:44386/"</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/img/aspdotnetcore/confplanner/4/50.png" alt="" /></p>
+
+<h2 id="list-the-sessions-on-the-home-page">List the sessions on the home page</h2>
 
 <blockquote>
   <p>Now that we have an API client we can use to talk to our BackEnd API application, we’ll update the home page to show a basic list of all sessions for the conference to ensure the FrontEnd can talk to the BackEnd correctly.</p>
@@ -415,80 +441,85 @@
 
 <ol>
   <li>Open the <em>/Pages/Index.cshtml.cs</em> file</li>
-  <li>
-    <p>Edit the constructor to accept the <code class="highlighter-rouge">IApiClient</code> interface and store it in a local field:</p>
-
-    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">protected</span> <span class="k">readonly</span> <span class="n">IApiClient</span> <span class="n">_apiClient</span><span class="p">;</span>
-
-<span class="k">public</span> <span class="nf">IndexModel</span><span class="p">(</span><span class="n">IApiClient</span> <span class="n">apiClient</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">_apiClient</span> <span class="p">=</span> <span class="n">apiClient</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Add some properties to store sessions and other data we’ll need when rendering the page:</p>
-
-    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">IGrouping</span><span class="p">&lt;</span><span class="n">DateTimeOffset</span><span class="p">?,</span> <span class="n">SessionResponse</span><span class="p">&gt;&gt;</span> <span class="n">Sessions</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-
-<span class="k">public</span> <span class="n">IEnumerable</span><span class="p">&lt;(</span><span class="kt">int</span> <span class="n">Offset</span><span class="p">,</span> <span class="n">DayOfWeek</span><span class="p">?</span> <span class="n">DayofWeek</span><span class="p">)&gt;</span> <span class="n">DayOffsets</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-
-<span class="k">public</span> <span class="kt">int</span> <span class="n">CurrentDayOffset</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Add a page handler method to handle GET requests to the page, that loads the session data and calculates the data required to build the day navigation UI:</p>
-
-    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">OnGet</span><span class="p">(</span><span class="kt">int</span> <span class="n">day</span> <span class="p">=</span> <span class="m">0</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">CurrentDayOffset</span> <span class="p">=</span> <span class="n">day</span><span class="p">;</span>
-
-    <span class="kt">var</span> <span class="n">sessions</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_apiClient</span><span class="p">.</span><span class="nf">GetSessionsAsync</span><span class="p">();</span>
-
-    <span class="kt">var</span> <span class="n">startDate</span> <span class="p">=</span> <span class="n">sessions</span><span class="p">.</span><span class="nf">Min</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">StartTime</span><span class="p">?.</span><span class="n">Date</span><span class="p">);</span>
-
-    <span class="kt">var</span> <span class="n">offset</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
-    <span class="n">DayOffsets</span> <span class="p">=</span> <span class="n">sessions</span><span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">StartTime</span><span class="p">?.</span><span class="n">Date</span><span class="p">)</span>
-                         <span class="p">.</span><span class="nf">Distinct</span><span class="p">()</span>
-                         <span class="p">.</span><span class="nf">OrderBy</span><span class="p">(</span><span class="n">d</span> <span class="p">=&gt;</span> <span class="n">d</span><span class="p">)</span>
-                         <span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">day</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">offset</span><span class="p">++,</span> <span class="n">day</span><span class="p">?.</span><span class="n">DayOfWeek</span><span class="p">));</span>
-
-    <span class="kt">var</span> <span class="n">filterDate</span> <span class="p">=</span> <span class="n">startDate</span><span class="p">?.</span><span class="nf">AddDays</span><span class="p">(</span><span class="n">day</span><span class="p">);</span>
-
-    <span class="n">Sessions</span> <span class="p">=</span> <span class="n">sessions</span><span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">StartTime</span><span class="p">?.</span><span class="n">Date</span> <span class="p">==</span> <span class="n">filterDate</span><span class="p">)</span>
-                       <span class="p">.</span><span class="nf">OrderBy</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">TrackId</span><span class="p">)</span>
-                       <span class="p">.</span><span class="nf">GroupBy</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">StartTime</span><span class="p">)</span>
-                       <span class="p">.</span><span class="nf">OrderBy</span><span class="p">(</span><span class="n">g</span> <span class="p">=&gt;</span> <span class="n">g</span><span class="p">.</span><span class="n">Key</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
+  <li>Edit the constructor to accept the <code class="highlighter-rouge">IApiClient</code> interface and store it in a local field:</li>
 </ol>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="k">protected</span> <span class="k">readonly</span> <span class="n">IApiClient</span> <span class="n">_apiClient</span><span class="p">;</span>
+
+   <span class="k">public</span> <span class="nf">IndexModel</span><span class="p">(</span><span class="n">IApiClient</span> <span class="n">apiClient</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="n">_apiClient</span> <span class="p">=</span> <span class="n">apiClient</span><span class="p">;</span>
+   <span class="p">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Add some properties to store sessions and other data we’ll need when rendering the page:</li>
+</ol>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="k">public</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">IGrouping</span><span class="p">&lt;</span><span class="n">DateTimeOffset</span><span class="p">?,</span> <span class="n">SessionResponse</span><span class="p">&gt;&gt;</span> <span class="n">Sessions</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+   <span class="k">public</span> <span class="n">IEnumerable</span><span class="p">&lt;(</span><span class="kt">int</span> <span class="n">Offset</span><span class="p">,</span> <span class="n">DayOfWeek</span><span class="p">?</span> <span class="n">DayofWeek</span><span class="p">)&gt;</span> <span class="n">DayOffsets</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+   <span class="k">public</span> <span class="kt">int</span> <span class="n">CurrentDayOffset</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Add a page handler method to handle GET requests to the page, that loads the session data and calculates the data required to build the day navigation UI:</li>
+</ol>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">OnGet</span><span class="p">(</span><span class="kt">int</span> <span class="n">day</span> <span class="p">=</span> <span class="m">0</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="n">CurrentDayOffset</span> <span class="p">=</span> <span class="n">day</span><span class="p">;</span>
+
+       <span class="kt">var</span> <span class="n">sessions</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_apiClient</span><span class="p">.</span><span class="nf">GetSessionsAsync</span><span class="p">();</span>
+
+       <span class="kt">var</span> <span class="n">startDate</span> <span class="p">=</span> <span class="n">sessions</span><span class="p">.</span><span class="nf">Min</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">StartTime</span><span class="p">?.</span><span class="n">Date</span><span class="p">);</span>
+
+       <span class="kt">var</span> <span class="n">offset</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+       <span class="n">DayOffsets</span> <span class="p">=</span> <span class="n">sessions</span><span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">StartTime</span><span class="p">?.</span><span class="n">Date</span><span class="p">)</span>
+                            <span class="p">.</span><span class="nf">Distinct</span><span class="p">()</span>
+                            <span class="p">.</span><span class="nf">OrderBy</span><span class="p">(</span><span class="n">d</span> <span class="p">=&gt;</span> <span class="n">d</span><span class="p">)</span>
+                            <span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">day</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">offset</span><span class="p">++,</span> <span class="n">day</span><span class="p">?.</span><span class="n">DayOfWeek</span><span class="p">));</span>
+
+       <span class="kt">var</span> <span class="n">filterDate</span> <span class="p">=</span> <span class="n">startDate</span><span class="p">?.</span><span class="nf">AddDays</span><span class="p">(</span><span class="n">day</span><span class="p">);</span>
+
+       <span class="n">Sessions</span> <span class="p">=</span> <span class="n">sessions</span><span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">StartTime</span><span class="p">?.</span><span class="n">Date</span> <span class="p">==</span> <span class="n">filterDate</span><span class="p">)</span>
+                          <span class="p">.</span><span class="nf">OrderBy</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">TrackId</span><span class="p">)</span>
+                          <span class="p">.</span><span class="nf">GroupBy</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">StartTime</span><span class="p">)</span>
+                          <span class="p">.</span><span class="nf">OrderBy</span><span class="p">(</span><span class="n">g</span> <span class="p">=&gt;</span> <span class="n">g</span><span class="p">.</span><span class="n">Key</span><span class="p">);</span>
+   <span class="p">}</span>
+</code></pre></div></div>
 
 <h3 id="render-the-sessions-list-on-the-home-page">Render the sessions list on the home page</h3>
 
 <ol>
   <li>Open the <em>/Pages/Index.cshtml</em> Razor Page file</li>
-  <li>
-    <p>Add some Razor markup to show the sessions as a simple list, grouped by time-slot:</p>
+  <li>Add some Razor markup to show the sessions as a simple list, grouped by time-slot:</li>
+</ol>
 
-    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"agenda"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h1&gt;</span>My Conference @System.DateTime.Now.Year<span class="nt">&lt;/h1&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"agenda"</span><span class="nt">&gt;</span>
+       <span class="nt">&lt;h1&gt;</span>My Conference @System.DateTime.Now.Year<span class="nt">&lt;/h1&gt;</span>
 
-    @foreach (var timeSlot in Model.Sessions)
-    {
-        <span class="nt">&lt;h4&gt;</span>@timeSlot.Key?.ToString("HH:mm")<span class="nt">&lt;/h4&gt;</span>
-        <span class="nt">&lt;ul&gt;</span>
-            @foreach (var session in timeSlot)
-            {
-                <span class="nt">&lt;li&gt;</span>@session.Title<span class="nt">&lt;/li&gt;</span>
-            }
-        <span class="nt">&lt;/ul&gt;</span>
-    }
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>    </div>
-  </li>
-  <li>Right-click the solution, select Properties and set both BackEnd and FrontEnd as startup projects
-<img src="/img/aspdotnetcore/confplanner/4/52.png" alt="" /></li>
+       @foreach (var timeSlot in Model.Sessions)
+       {
+       <span class="nt">&lt;h4&gt;</span>@timeSlot.Key?.ToString("HH:mm")<span class="nt">&lt;/h4&gt;</span>
+       <span class="nt">&lt;ul&gt;</span>
+           @foreach (var session in timeSlot)
+           {
+           <span class="nt">&lt;li&gt;</span>@session.Title<span class="nt">&lt;/li&gt;</span>
+           }
+       <span class="nt">&lt;/ul&gt;</span>
+       }
+   <span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Right-click the solution, select Properties and set both BackEnd and FrontEnd as startup projects</li>
+</ol>
+
+<p><img src="/img/aspdotnetcore/confplanner/4/52.png" alt="" /></p>
+
+<ol>
   <li>Run the FrontEnd application at this stage and we should see the sessions listed on the home page</li>
 </ol>
 
@@ -497,431 +528,486 @@
 <h3 id="add-buttons-to-allow-showing-sessions-for-different-days">Add buttons to allow showing sessions for different days</h3>
 
 <ol>
-  <li>
-    <p>In <em>/Pages/Index.cshtml</em>, add some markup to allow the user to show sessions for the different days of the conference, below the <code class="highlighter-rouge">&lt;h1&gt;</code> we added previously:</p>
-
-    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-pills mb-3"</span><span class="nt">&gt;</span>
-    @foreach (var day in Model.DayOffsets)
-    {
-        <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">"presentation"</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link @(Model.CurrentDayOffset == day.Offset ? "</span><span class="na">active</span><span class="err">"</span> <span class="na">:</span> <span class="na">null</span><span class="err">)"</span> <span class="na">asp-route-day=</span><span class="s">"@day.Offset"</span><span class="nt">&gt;</span>@day.DayofWeek?.ToString()<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;/li&gt;</span>
-    }
-<span class="nt">&lt;/ul&gt;</span>
-</code></pre></div>    </div>
-  </li>
-  <li>Run the application again and try clicking the buttons to show sessions for the different days
-<img src="/img/aspdotnetcore/confplanner/4/54.png" alt="" />
-    <h2 id="update-the-sessions-list-ui">Update the sessions list UI</h2>
-  </li>
-  <li>
-    <p>Make the list of sessions better looking by updating the markup to use <a href="https://getbootstrap.com/docs/4.0/components/card/">Bootstrap cards</a>:</p>
-
-    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h4&gt;</span>@timeSlot.Key?.ToString("HH:mm")<span class="nt">&lt;/h4&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
-@foreach (var session in timeSlot)
- {
-     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-3 mb-4"</span><span class="nt">&gt;</span>
-         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card shadow session h-100"</span><span class="nt">&gt;</span>
-             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>@session.Track?.Name<span class="nt">&lt;/div&gt;</span>
-             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
-                 <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;&lt;a</span> <span class="na">asp-page=</span><span class="s">"Session"</span> <span class="na">asp-route-id=</span><span class="s">"@session.Id"</span><span class="nt">&gt;</span>@session.Title<span class="nt">&lt;/a&gt;&lt;/h5&gt;</span>
-             <span class="nt">&lt;/div&gt;</span>
-             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-footer"</span><span class="nt">&gt;</span>
-                 <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-inline mb-0"</span><span class="nt">&gt;</span>
-                     @foreach (var speaker in session.Speakers)
-                     {
-                         <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-inline-item"</span><span class="nt">&gt;</span>
-                             <span class="nt">&lt;a</span> <span class="na">asp-page=</span><span class="s">"Speaker"</span> <span class="na">asp-route-id=</span><span class="s">"@speaker.Id"</span><span class="nt">&gt;</span>@speaker.Name<span class="nt">&lt;/a&gt;</span>
-                         <span class="nt">&lt;/li&gt;</span>
-                     }
-                 <span class="nt">&lt;/ul&gt;</span>
-             <span class="nt">&lt;/div&gt;</span>
-         <span class="nt">&lt;/div&gt;</span>
-     <span class="nt">&lt;/div&gt;</span>
- }
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>    </div>
-  </li>
-  <li>Run the page again and see the updated sessions list UI. Click the buttons again to show sessions for the different days.
-<img src="/img/aspdotnetcore/confplanner/4/55.png" alt="" />
-    <h2 id="add-a-session-details-page">Add a session details page</h2>
-    <blockquote>
-      <p>Now that we have a home page showing all the sessions, we’ll create a page to show all the details of a specific session</p>
-    </blockquote>
-  </li>
+  <li>In <em>/Pages/Index.cshtml</em>, add some markup to allow the user to show sessions for the different days of the conference, below the <code class="highlighter-rouge">&lt;h1&gt;</code> we added previously:</li>
 </ol>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-pills mb-3"</span><span class="nt">&gt;</span>
+       @foreach (var day in Model.DayOffsets)
+       {
+       <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">"presentation"</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+           <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link @(Model.CurrentDayOffset == day.Offset ? "</span> <span class="na">active</span><span class="err">"</span> <span class="na">:</span> <span class="na">null</span><span class="err">)"</span> <span class="na">asp-route-day=</span><span class="s">"@day.Offset"</span><span class="nt">&gt;</span>@day.DayofWeek?.ToString()<span class="nt">&lt;/a&gt;</span>
+       <span class="nt">&lt;/li&gt;</span>
+       }
+   <span class="nt">&lt;/ul&gt;</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Run the application again and try clicking the buttons to show sessions for the different days</li>
+</ol>
+
+<p><img src="/img/aspdotnetcore/confplanner/4/54.png" alt="" /></p>
+
+<h2 id="update-the-sessions-list-ui">Update the sessions list UI</h2>
+
+<ol>
+  <li>Make the list of sessions better looking by updating the markup to use <a href="https://getbootstrap.com/docs/4.0/components/card/">Bootstrap cards</a>:</li>
+</ol>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="nt">&lt;h4&gt;</span>@timeSlot.Key?.ToString("HH:mm")<span class="nt">&lt;/h4&gt;</span>
+   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+       @foreach (var session in timeSlot)
+       {
+       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-3 mb-4"</span><span class="nt">&gt;</span>
+           <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card shadow session h-100"</span><span class="nt">&gt;</span>
+               <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>@session.Track?.Name<span class="nt">&lt;/div&gt;</span>
+               <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+                   <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;&lt;a</span> <span class="na">asp-page=</span><span class="s">"Session"</span> <span class="na">asp-route-id=</span><span class="s">"@session.Id"</span><span class="nt">&gt;</span>@session.Title<span class="nt">&lt;/a&gt;&lt;/h5&gt;</span>
+               <span class="nt">&lt;/div&gt;</span>
+               <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-footer"</span><span class="nt">&gt;</span>
+                   <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-inline mb-0"</span><span class="nt">&gt;</span>
+                       @foreach (var speaker in session.Speakers)
+                       {
+                       <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-inline-item"</span><span class="nt">&gt;</span>
+                           <span class="nt">&lt;a</span> <span class="na">asp-page=</span><span class="s">"Speaker"</span> <span class="na">asp-route-id=</span><span class="s">"@speaker.Id"</span><span class="nt">&gt;</span>@speaker.Name<span class="nt">&lt;/a&gt;</span>
+                       <span class="nt">&lt;/li&gt;</span>
+                       }
+                   <span class="nt">&lt;/ul&gt;</span>
+               <span class="nt">&lt;/div&gt;</span>
+           <span class="nt">&lt;/div&gt;</span>
+       <span class="nt">&lt;/div&gt;</span>
+       }
+   <span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Run the page again and see the updated sessions list UI. Click the buttons again to show sessions for the different days.</li>
+</ol>
+
+<p><img src="/img/aspdotnetcore/confplanner/4/55.png" alt="" /></p>
+
+<h2 id="add-a-session-details-page">Add a session details page</h2>
+
+<blockquote>
+  <p>Now that we have a home page showing all the sessions, we’ll create a page to show all the details of a specific session</p>
+</blockquote>
 
 <h3 id="add-a-session-razor-page">Add a Session Razor Page</h3>
+
 <ol>
   <li>Add a new Razor Page using the <em>Razor Page</em> template. Call the page <em>Session.cshtml</em> and save it in the <em>/Pages</em> directory.</li>
-  <li>Open <em>Session.cshtml.cs</em> and change the page model class to <code class="highlighter-rouge">SessionModel</code>.</li>
-  <li>Accept the <code class="highlighter-rouge">IApiClient</code> in the constructor and add supporting members to the Page model <code class="highlighter-rouge">SessionModel</code>:
-    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">SessionModel</span> <span class="p">:</span> <span class="n">PageModel</span>
-<span class="p">{</span>
-    <span class="k">private</span> <span class="k">readonly</span> <span class="n">IApiClient</span> <span class="n">_apiClient</span><span class="p">;</span>
-
-    <span class="k">public</span> <span class="nf">SessionModel</span><span class="p">(</span><span class="n">IApiClient</span> <span class="n">apiClient</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">_apiClient</span> <span class="p">=</span> <span class="n">apiClient</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">public</span> <span class="n">SessionResponse</span> <span class="n">Session</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-
-    <span class="k">public</span> <span class="kt">int</span><span class="p">?</span> <span class="n">DayOffset</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
-  <li>Add a page handler method to retrieve the Session details and set them on the model:
-    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="nf">OnGetAsync</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">Session</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_apiClient</span><span class="p">.</span><span class="nf">GetSessionAsync</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="n">Session</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nf">RedirectToPage</span><span class="p">(</span><span class="s">"/Index"</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="kt">var</span> <span class="n">allSessions</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_apiClient</span><span class="p">.</span><span class="nf">GetSessionsAsync</span><span class="p">();</span>
-
-    <span class="kt">var</span> <span class="n">startDate</span> <span class="p">=</span> <span class="n">allSessions</span><span class="p">.</span><span class="nf">Min</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">StartTime</span><span class="p">?.</span><span class="n">Date</span><span class="p">);</span>
-
-    <span class="n">DayOffset</span> <span class="p">=</span> <span class="n">Session</span><span class="p">.</span><span class="n">StartTime</span><span class="p">?.</span><span class="nf">Subtract</span><span class="p">(</span><span class="n">startDate</span> <span class="p">??</span> <span class="n">DateTimeOffset</span><span class="p">.</span><span class="n">MinValue</span><span class="p">).</span><span class="n">Days</span><span class="p">;</span>
-
-     <span class="k">return</span> <span class="nf">Page</span><span class="p">();</span>
- <span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
-  <li>Open the <em>Session.cshtml</em> file and add markup to display the details and navigation UI:
-    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@page "{id}"
-@model SessionModel
-
-<span class="nt">&lt;ol</span> <span class="na">class=</span><span class="s">"breadcrumb"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"breadcrumb-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">asp-page=</span><span class="s">"/Index"</span><span class="nt">&gt;</span>Agenda<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"breadcrumb-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">asp-page=</span><span class="s">"/Index"</span> <span class="na">asp-route-day=</span><span class="s">"@Model.DayOffset"</span><span class="nt">&gt;</span>Day @(Model.DayOffset + 1)<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"breadcrumb-item active"</span><span class="nt">&gt;</span>@Model.Session.Title<span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ol&gt;</span>
-
-<span class="nt">&lt;h1&gt;</span>@Model.Session.Title<span class="nt">&lt;/h1&gt;</span>
-<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"label label-default"</span><span class="nt">&gt;</span>@Model.Session.Track?.Name<span class="nt">&lt;/span&gt;</span>
-
-@foreach (var speaker in Model.Session.Speakers)
-{
-    <span class="nt">&lt;em&gt;&lt;a</span> <span class="na">asp-page=</span><span class="s">"Speaker"</span> <span class="na">asp-route-id=</span><span class="s">"@speaker.Id"</span><span class="nt">&gt;</span>@speaker.Name<span class="nt">&lt;/a&gt;&lt;/em&gt;</span>
-}
-
- @foreach (var para in Model.Session.Abstract.Split("\r\n", StringSplitOptions.RemoveEmptyEntries))
- {
-    <span class="nt">&lt;p&gt;</span>@para<span class="nt">&lt;/p&gt;</span>
- }
-</code></pre></div>    </div>
-    <p><img src="/img/aspdotnetcore/confplanner/4/56.png" alt="" /></p>
-    <h2 id="add-a-page-to-show-speaker-details">Add a page to show speaker details</h2>
-    <blockquote>
-      <p>We’ll add a page to show details for a given speaker</p>
-    </blockquote>
-  </li>
-  <li>Add a new Razor Page using the <em>Razor Page</em> template. Call the page <em>Speaker.cshtml</em> and save it in the <em>/Pages</em> directory.</li>
-  <li>Accept the <code class="highlighter-rouge">IApiClient</code> in the constructor and add supporting members to the Page model <code class="highlighter-rouge">SpeakerModel</code>:
-    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">SpeakerModel</span> <span class="p">:</span> <span class="n">PageModel</span>
-<span class="p">{</span>
-    <span class="k">private</span> <span class="k">readonly</span> <span class="n">IApiClient</span> <span class="n">_apiClient</span><span class="p">;</span>
-
-    <span class="k">public</span> <span class="nf">SpeakerModel</span><span class="p">(</span><span class="n">IApiClient</span> <span class="n">apiClient</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">_apiClient</span> <span class="p">=</span> <span class="n">apiClient</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">public</span> <span class="n">SpeakerResponse</span> <span class="n">Speaker</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
-  <li>Add a page handler method to retrieve the Speaker details and set them on the model:
-    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="nf">OnGet</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">Speaker</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_apiClient</span><span class="p">.</span><span class="nf">GetSpeakerAsync</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="n">Speaker</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="nf">Page</span><span class="p">();</span>
-<span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
-  <li>Open the <em>Speaker.cshtml</em> file and add markup to display the details and navigation UI:
-    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@page "{id}"
-@model SpeakerModel
-
-<span class="nt">&lt;ol</span> <span class="na">class=</span><span class="s">"breadcrumb"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"breadcrumb-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">asp-page=</span><span class="s">"/Speakers"</span><span class="nt">&gt;</span>Speakers<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"breadcrumb-item active"</span><span class="nt">&gt;</span>@Model.Speaker.Name<span class="nt">&lt;/li&gt;</span>
-<span class="nt">&lt;/ol&gt;</span>
-
-<span class="nt">&lt;h2&gt;</span>@Model.Speaker.Name<span class="nt">&lt;/h2&gt;</span>
-
-<span class="nt">&lt;p&gt;</span>@Model.Speaker.Bio<span class="nt">&lt;/p&gt;</span>
-
-<span class="nt">&lt;h3&gt;</span>Sessions<span class="nt">&lt;/h3&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-5"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-group"</span><span class="nt">&gt;</span>
-            @foreach (var session in Model.Speaker.Sessions)
-            {
-                <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">asp-page=</span><span class="s">"Session"</span> <span class="na">asp-route-id=</span><span class="s">"@session.Id"</span><span class="nt">&gt;</span>@session.Title<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-            }
-        <span class="nt">&lt;/ul&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>    </div>
-    <p><img src="/img/aspdotnetcore/confplanner/4/57.png" alt="" /></p>
-    <h2 id="add-search-functionality">Add search functionality</h2>
-    <blockquote>
-      <p>We’ll add a page to allow users to search the conference agenda, finding sessions and speakers that match the supplied search term.</p>
-    </blockquote>
-  </li>
+  <li>Open <em>Session.cshtml.cs</em> and change the page model class to <code class="highlighter-rouge">SessionModel</code> .</li>
+  <li>Accept the <code class="highlighter-rouge">IApiClient</code> in the constructor and add supporting members to the Page model <code class="highlighter-rouge">SessionModel</code> :</li>
 </ol>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="k">public</span> <span class="k">class</span> <span class="nc">SessionModel</span> <span class="p">:</span> <span class="n">PageModel</span>
+   <span class="p">{</span>
+       <span class="k">private</span> <span class="k">readonly</span> <span class="n">IApiClient</span> <span class="n">_apiClient</span><span class="p">;</span>
+
+       <span class="k">public</span> <span class="nf">SessionModel</span><span class="p">(</span><span class="n">IApiClient</span> <span class="n">apiClient</span><span class="p">)</span>
+       <span class="p">{</span>
+           <span class="n">_apiClient</span> <span class="p">=</span> <span class="n">apiClient</span><span class="p">;</span>
+       <span class="p">}</span>
+
+       <span class="k">public</span> <span class="n">SessionResponse</span> <span class="n">Session</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+       <span class="k">public</span> <span class="kt">int</span><span class="p">?</span> <span class="n">DayOffset</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+   <span class="p">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Add a page handler method to retrieve the Session details and set them on the model:</li>
+</ol>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="nf">OnGetAsync</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="n">Session</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_apiClient</span><span class="p">.</span><span class="nf">GetSessionAsync</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+
+       <span class="k">if</span> <span class="p">(</span><span class="n">Session</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+       <span class="p">{</span>
+           <span class="k">return</span> <span class="nf">RedirectToPage</span><span class="p">(</span><span class="s">"/Index"</span><span class="p">);</span>
+       <span class="p">}</span>
+
+       <span class="kt">var</span> <span class="n">allSessions</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_apiClient</span><span class="p">.</span><span class="nf">GetSessionsAsync</span><span class="p">();</span>
+
+       <span class="kt">var</span> <span class="n">startDate</span> <span class="p">=</span> <span class="n">allSessions</span><span class="p">.</span><span class="nf">Min</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">StartTime</span><span class="p">?.</span><span class="n">Date</span><span class="p">);</span>
+
+       <span class="n">DayOffset</span> <span class="p">=</span> <span class="n">Session</span><span class="p">.</span><span class="n">StartTime</span><span class="p">?.</span><span class="nf">Subtract</span><span class="p">(</span><span class="n">startDate</span> <span class="p">??</span> <span class="n">DateTimeOffset</span><span class="p">.</span><span class="n">MinValue</span><span class="p">).</span><span class="n">Days</span><span class="p">;</span>
+
+        <span class="k">return</span> <span class="nf">Page</span><span class="p">();</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Open the <em>Session.cshtml</em> file and add markup to display the details and navigation UI:</li>
+</ol>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   @page "{id}"
+   @model SessionModel
+
+   <span class="nt">&lt;ol</span> <span class="na">class=</span><span class="s">"breadcrumb"</span><span class="nt">&gt;</span>
+       <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"breadcrumb-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">asp-page=</span><span class="s">"/Index"</span><span class="nt">&gt;</span>Agenda<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+       <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"breadcrumb-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">asp-page=</span><span class="s">"/Index"</span> <span class="na">asp-route-day=</span><span class="s">"@Model.DayOffset"</span><span class="nt">&gt;</span>Day @(Model.DayOffset + 1)<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+       <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"breadcrumb-item active"</span><span class="nt">&gt;</span>@Model.Session.Title<span class="nt">&lt;/li&gt;</span>
+   <span class="nt">&lt;/ol&gt;</span>
+
+   <span class="nt">&lt;h1&gt;</span>@Model.Session.Title<span class="nt">&lt;/h1&gt;</span>
+   <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"label label-default"</span><span class="nt">&gt;</span>@Model.Session.Track?.Name<span class="nt">&lt;/span&gt;</span>
+
+   @foreach (var speaker in Model.Session.Speakers)
+   {
+   <span class="nt">&lt;em&gt;&lt;a</span> <span class="na">asp-page=</span><span class="s">"Speaker"</span> <span class="na">asp-route-id=</span><span class="s">"@speaker.Id"</span><span class="nt">&gt;</span>@speaker.Name<span class="nt">&lt;/a&gt;&lt;/em&gt;</span>
+   }
+
+   @foreach (var para in Model.Session.Abstract.Split("\r\n", StringSplitOptions.RemoveEmptyEntries))
+   {
+   <span class="nt">&lt;p&gt;</span>@para<span class="nt">&lt;/p&gt;</span>
+   }
+</code></pre></div></div>
+
+<p><img src="/img/aspdotnetcore/confplanner/4/56.png" alt="" /></p>
+
+<h2 id="add-a-page-to-show-speaker-details">Add a page to show speaker details</h2>
+
+<blockquote>
+  <p>We’ll add a page to show details for a given speaker</p>
+</blockquote>
+
+<ol>
+  <li>Add a new Razor Page using the <em>Razor Page</em> template. Call the page <em>Speaker.cshtml</em> and save it in the <em>/Pages</em> directory.</li>
+  <li>Accept the <code class="highlighter-rouge">IApiClient</code> in the constructor and add supporting members to the Page model <code class="highlighter-rouge">SpeakerModel</code> :</li>
+</ol>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="k">public</span> <span class="k">class</span> <span class="nc">SpeakerModel</span> <span class="p">:</span> <span class="n">PageModel</span>
+   <span class="p">{</span>
+       <span class="k">private</span> <span class="k">readonly</span> <span class="n">IApiClient</span> <span class="n">_apiClient</span><span class="p">;</span>
+
+       <span class="k">public</span> <span class="nf">SpeakerModel</span><span class="p">(</span><span class="n">IApiClient</span> <span class="n">apiClient</span><span class="p">)</span>
+       <span class="p">{</span>
+           <span class="n">_apiClient</span> <span class="p">=</span> <span class="n">apiClient</span><span class="p">;</span>
+       <span class="p">}</span>
+
+       <span class="k">public</span> <span class="n">SpeakerResponse</span> <span class="n">Speaker</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+   <span class="p">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Add a page handler method to retrieve the Speaker details and set them on the model:</li>
+</ol>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="nf">OnGet</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="n">Speaker</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_apiClient</span><span class="p">.</span><span class="nf">GetSpeakerAsync</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+
+       <span class="k">if</span> <span class="p">(</span><span class="n">Speaker</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+       <span class="p">{</span>
+           <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+       <span class="p">}</span>
+
+       <span class="k">return</span> <span class="nf">Page</span><span class="p">();</span>
+   <span class="p">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Open the <em>Speaker.cshtml</em> file and add markup to display the details and navigation UI:</li>
+</ol>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   @page "{id}"
+   @model SpeakerModel
+
+   <span class="nt">&lt;ol</span> <span class="na">class=</span><span class="s">"breadcrumb"</span><span class="nt">&gt;</span>
+       <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"breadcrumb-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">asp-page=</span><span class="s">"/Speakers"</span><span class="nt">&gt;</span>Speakers<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+       <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"breadcrumb-item active"</span><span class="nt">&gt;</span>@Model.Speaker.Name<span class="nt">&lt;/li&gt;</span>
+   <span class="nt">&lt;/ol&gt;</span>
+
+   <span class="nt">&lt;h2&gt;</span>@Model.Speaker.Name<span class="nt">&lt;/h2&gt;</span>
+
+   <span class="nt">&lt;p&gt;</span>@Model.Speaker.Bio<span class="nt">&lt;/p&gt;</span>
+
+   <span class="nt">&lt;h3&gt;</span>Sessions<span class="nt">&lt;/h3&gt;</span>
+   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-5"</span><span class="nt">&gt;</span>
+           <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-group"</span><span class="nt">&gt;</span>
+               @foreach (var session in Model.Speaker.Sessions)
+               {
+               <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">asp-page=</span><span class="s">"Session"</span> <span class="na">asp-route-id=</span><span class="s">"@session.Id"</span><span class="nt">&gt;</span>@session.Title<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+               }
+           <span class="nt">&lt;/ul&gt;</span>
+       <span class="nt">&lt;/div&gt;</span>
+   <span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p><img src="/img/aspdotnetcore/confplanner/4/57.png" alt="" /></p>
+
+<h2 id="add-search-functionality">Add search functionality</h2>
+
+<blockquote>
+  <p>We’ll add a page to allow users to search the conference agenda, finding sessions and speakers that match the supplied search term.</p>
+</blockquote>
 
 <h3 id="add-dtos-for-search">Add DTOs for search</h3>
+
 <ol>
-  <li>Add a new DTO class <code class="highlighter-rouge">SearchTerm</code> in the DTO project:
-<img src="/img/aspdotnetcore/confplanner/4/58.png" alt="" />
-    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
- <span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
- <span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
-
- <span class="k">namespace</span> <span class="nn">ConferenceDTO</span>
- <span class="p">{</span>
-     <span class="k">public</span> <span class="k">class</span> <span class="nc">SearchTerm</span>
-     <span class="p">{</span>
-         <span class="k">public</span> <span class="kt">string</span> <span class="n">Query</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-     <span class="p">}</span>
- <span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
-  <li>Add a new DTO class <code class="highlighter-rouge">SearchResult</code> in the DTO project:
-    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
-
-<span class="k">namespace</span> <span class="nn">ConferenceDTO</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">class</span> <span class="nc">SearchResult</span>
-    <span class="p">{</span>
-         <span class="k">public</span> <span class="n">SearchResultType</span> <span class="n">Type</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-
-         <span class="k">public</span> <span class="n">SessionResponse</span> <span class="n">Session</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-
-         <span class="k">public</span> <span class="n">SpeakerResponse</span> <span class="n">Speaker</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-     <span class="p">}</span>
-
-     <span class="k">public</span> <span class="k">enum</span> <span class="n">SearchResultType</span>
-     <span class="p">{</span>
-         <span class="n">Session</span><span class="p">,</span>
-         <span class="n">Speaker</span>
-     <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
+  <li>Add a new DTO class <code class="highlighter-rouge">SearchTerm</code> in the DTO project:</li>
 </ol>
+
+<p><img src="/img/aspdotnetcore/confplanner/4/58.png" alt="" /></p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+    <span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+    <span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
+
+    <span class="k">namespace</span> <span class="nn">ConferenceDTO</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">class</span> <span class="nc">SearchTerm</span>
+        <span class="p">{</span>
+            <span class="k">public</span> <span class="kt">string</span> <span class="n">Query</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="err">```</span>
+
+<span class="m">1.</span> <span class="n">Add</span> <span class="n">a</span> <span class="k">new</span> <span class="n">DTO</span> <span class="k">class</span> <span class="err">`</span><span class="nc">SearchResult</span><span class="err">`</span> <span class="k">in</span> <span class="n">the</span> <span class="n">DTO</span> <span class="n">project</span><span class="p">:</span>
+
+   
+
+<span class="err">```</span> <span class="n">csharp</span>
+   <span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+   <span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+   <span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
+
+   <span class="k">namespace</span> <span class="nn">ConferenceDTO</span>
+   <span class="p">{</span>
+       <span class="k">public</span> <span class="k">class</span> <span class="nc">SearchResult</span>
+       <span class="p">{</span>
+            <span class="k">public</span> <span class="n">SearchResultType</span> <span class="n">Type</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+            <span class="k">public</span> <span class="n">SessionResponse</span> <span class="n">Session</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+            <span class="k">public</span> <span class="n">SpeakerResponse</span> <span class="n">Speaker</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">enum</span> <span class="n">SearchResultType</span>
+        <span class="p">{</span>
+            <span class="n">Session</span><span class="p">,</span>
+            <span class="n">Speaker</span>
+        <span class="p">}</span>
+   <span class="p">}</span>
+</code></pre></div></div>
 
 <h3 id="add-a-search-controller">Add a search controller</h3>
+
 <ol>
-  <li>Add a <code class="highlighter-rouge">SearchController</code> with an action method that accepts a <code class="highlighter-rouge">SearchTerm</code> and searchs for sessions and speakers with matching titles or names, and concatenates the results as <code class="highlighter-rouge">SearchResult</code>s:
-    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">BackEnd.Data</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">ConferenceDTO</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Mvc</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">Microsoft.EntityFrameworkCore</span><span class="p">;</span>
-
-<span class="k">namespace</span> <span class="nn">BackEnd.Controllers</span>
-<span class="p">{</span>
-    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"api/[controller]"</span><span class="p">)]</span>
-    <span class="p">[</span><span class="n">ApiController</span><span class="p">]</span>
-    <span class="k">public</span> <span class="k">class</span> <span class="nc">SearchController</span> <span class="p">:</span> <span class="n">ControllerBase</span>
-    <span class="p">{</span>
-        <span class="k">private</span> <span class="k">readonly</span> <span class="n">ApplicationDbContext</span> <span class="n">_context</span><span class="p">;</span>
-
-        <span class="k">public</span> <span class="nf">SearchController</span><span class="p">(</span><span class="n">ApplicationDbContext</span> <span class="n">context</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">_context</span> <span class="p">=</span> <span class="n">context</span><span class="p">;</span>
-        <span class="p">}</span>
-
-        <span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span>
-        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">ActionResult</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">SearchResult</span><span class="p">&gt;&gt;&gt;</span> <span class="nf">Search</span><span class="p">(</span><span class="n">SearchTerm</span> <span class="n">term</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">query</span> <span class="p">=</span> <span class="n">term</span><span class="p">.</span><span class="n">Query</span><span class="p">;</span>
-            <span class="kt">var</span> <span class="n">sessionResults</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_context</span><span class="p">.</span><span class="n">Sessions</span><span class="p">.</span><span class="nf">Include</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">Track</span><span class="p">)</span>
-                                                <span class="p">.</span><span class="nf">Include</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">SessionSpeakers</span><span class="p">)</span>
-                                                    <span class="p">.</span><span class="nf">ThenInclude</span><span class="p">(</span><span class="n">ss</span> <span class="p">=&gt;</span> <span class="n">ss</span><span class="p">.</span><span class="n">Speaker</span><span class="p">)</span>
-                                                <span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span>
-                                                    <span class="n">s</span><span class="p">.</span><span class="n">Title</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="n">query</span><span class="p">)</span> <span class="p">||</span>
-                                                    <span class="n">s</span><span class="p">.</span><span class="n">Track</span><span class="p">.</span><span class="n">Name</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-                                                <span class="p">)</span>
-                                                <span class="p">.</span><span class="nf">ToListAsync</span><span class="p">();</span>
-
-            <span class="kt">var</span> <span class="n">speakerResults</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_context</span><span class="p">.</span><span class="n">Speakers</span><span class="p">.</span><span class="nf">Include</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">SessionSpeakers</span><span class="p">)</span>
-                                                    <span class="p">.</span><span class="nf">ThenInclude</span><span class="p">(</span><span class="n">ss</span> <span class="p">=&gt;</span> <span class="n">ss</span><span class="p">.</span><span class="n">Session</span><span class="p">)</span>
-                                                <span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span>
-                                                    <span class="n">s</span><span class="p">.</span><span class="n">Name</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="n">query</span><span class="p">)</span> <span class="p">||</span>
-                                                    <span class="n">s</span><span class="p">.</span><span class="n">Bio</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="n">query</span><span class="p">)</span> <span class="p">||</span>
-                                                    <span class="n">s</span><span class="p">.</span><span class="n">WebSite</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-                                                <span class="p">)</span>
-                                                <span class="p">.</span><span class="nf">ToListAsync</span><span class="p">();</span>
-
-            <span class="kt">var</span> <span class="n">results</span> <span class="p">=</span> <span class="n">sessionResults</span><span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="n">SearchResult</span>
-            <span class="p">{</span>
-                <span class="n">Type</span> <span class="p">=</span> <span class="n">SearchResultType</span><span class="p">.</span><span class="n">Session</span><span class="p">,</span>
-                <span class="n">Session</span> <span class="p">=</span> <span class="n">s</span><span class="p">.</span><span class="nf">MapSessionResponse</span><span class="p">()</span>
-            <span class="p">})</span>
-            <span class="p">.</span><span class="nf">Concat</span><span class="p">(</span><span class="n">speakerResults</span><span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="n">SearchResult</span>
-            <span class="p">{</span>
-                <span class="n">Type</span> <span class="p">=</span> <span class="n">SearchResultType</span><span class="p">.</span><span class="n">Speaker</span><span class="p">,</span>
-                <span class="n">Speaker</span> <span class="p">=</span> <span class="n">s</span><span class="p">.</span><span class="nf">MapSpeakerResponse</span><span class="p">()</span>
-            <span class="p">}));</span>
-
-            <span class="k">return</span> <span class="n">results</span><span class="p">.</span><span class="nf">ToList</span><span class="p">();</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
+  <li>Add a <code class="highlighter-rouge">SearchController</code> with an action method that accepts a <code class="highlighter-rouge">SearchTerm</code> and searchs for sessions and speakers with matching titles or names, and concatenates the results as <code class="highlighter-rouge">SearchResult</code> s:</li>
 </ol>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+   <span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+   <span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+   <span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+   <span class="k">using</span> <span class="nn">BackEnd.Data</span><span class="p">;</span>
+   <span class="k">using</span> <span class="nn">ConferenceDTO</span><span class="p">;</span>
+   <span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Mvc</span><span class="p">;</span>
+   <span class="k">using</span> <span class="nn">Microsoft.EntityFrameworkCore</span><span class="p">;</span>
+
+   <span class="k">namespace</span> <span class="nn">BackEnd.Controllers</span>
+   <span class="p">{</span>
+       <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"api/[controller]"</span><span class="p">)]</span>
+       <span class="p">[</span><span class="n">ApiController</span><span class="p">]</span>
+       <span class="k">public</span> <span class="k">class</span> <span class="nc">SearchController</span> <span class="p">:</span> <span class="n">ControllerBase</span>
+       <span class="p">{</span>
+           <span class="k">private</span> <span class="k">readonly</span> <span class="n">ApplicationDbContext</span> <span class="n">_context</span><span class="p">;</span>
+
+           <span class="k">public</span> <span class="nf">SearchController</span><span class="p">(</span><span class="n">ApplicationDbContext</span> <span class="n">context</span><span class="p">)</span>
+           <span class="p">{</span>
+               <span class="n">_context</span> <span class="p">=</span> <span class="n">context</span><span class="p">;</span>
+           <span class="p">}</span>
+
+           <span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span>
+           <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">ActionResult</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">SearchResult</span><span class="p">&gt;&gt;&gt;</span> <span class="nf">Search</span><span class="p">(</span><span class="n">SearchTerm</span> <span class="n">term</span><span class="p">)</span>
+           <span class="p">{</span>
+               <span class="kt">var</span> <span class="n">query</span> <span class="p">=</span> <span class="n">term</span><span class="p">.</span><span class="n">Query</span><span class="p">;</span>
+               <span class="kt">var</span> <span class="n">sessionResults</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_context</span><span class="p">.</span><span class="n">Sessions</span><span class="p">.</span><span class="nf">Include</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">Track</span><span class="p">)</span>
+                                                   <span class="p">.</span><span class="nf">Include</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">SessionSpeakers</span><span class="p">)</span>
+                                                       <span class="p">.</span><span class="nf">ThenInclude</span><span class="p">(</span><span class="n">ss</span> <span class="p">=&gt;</span> <span class="n">ss</span><span class="p">.</span><span class="n">Speaker</span><span class="p">)</span>
+                                                   <span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span>
+                                                       <span class="n">s</span><span class="p">.</span><span class="n">Title</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="n">query</span><span class="p">)</span> <span class="p">||</span>
+                                                       <span class="n">s</span><span class="p">.</span><span class="n">Track</span><span class="p">.</span><span class="n">Name</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+                                                   <span class="p">)</span>
+                                                   <span class="p">.</span><span class="nf">ToListAsync</span><span class="p">();</span>
+
+               <span class="kt">var</span> <span class="n">speakerResults</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_context</span><span class="p">.</span><span class="n">Speakers</span><span class="p">.</span><span class="nf">Include</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">SessionSpeakers</span><span class="p">)</span>
+                                                       <span class="p">.</span><span class="nf">ThenInclude</span><span class="p">(</span><span class="n">ss</span> <span class="p">=&gt;</span> <span class="n">ss</span><span class="p">.</span><span class="n">Session</span><span class="p">)</span>
+                                                   <span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span>
+                                                       <span class="n">s</span><span class="p">.</span><span class="n">Name</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="n">query</span><span class="p">)</span> <span class="p">||</span>
+                                                       <span class="n">s</span><span class="p">.</span><span class="n">Bio</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="n">query</span><span class="p">)</span> <span class="p">||</span>
+                                                       <span class="n">s</span><span class="p">.</span><span class="n">WebSite</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+                                                   <span class="p">)</span>
+                                                   <span class="p">.</span><span class="nf">ToListAsync</span><span class="p">();</span>
+
+               <span class="kt">var</span> <span class="n">results</span> <span class="p">=</span> <span class="n">sessionResults</span><span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="n">SearchResult</span>
+               <span class="p">{</span>
+                   <span class="n">Type</span> <span class="p">=</span> <span class="n">SearchResultType</span><span class="p">.</span><span class="n">Session</span><span class="p">,</span>
+                   <span class="n">Session</span> <span class="p">=</span> <span class="n">s</span><span class="p">.</span><span class="nf">MapSessionResponse</span><span class="p">()</span>
+               <span class="p">})</span>
+               <span class="p">.</span><span class="nf">Concat</span><span class="p">(</span><span class="n">speakerResults</span><span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="n">SearchResult</span>
+               <span class="p">{</span>
+                   <span class="n">Type</span> <span class="p">=</span> <span class="n">SearchResultType</span><span class="p">.</span><span class="n">Speaker</span><span class="p">,</span>
+                   <span class="n">Speaker</span> <span class="p">=</span> <span class="n">s</span><span class="p">.</span><span class="nf">MapSpeakerResponse</span><span class="p">()</span>
+               <span class="p">}));</span>
+
+               <span class="k">return</span> <span class="n">results</span><span class="p">.</span><span class="nf">ToList</span><span class="p">();</span>
+           <span class="p">}</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
+</code></pre></div></div>
 
 <h3 id="add-search-methods-to-the-iapiclient">Add search methods to the IApiClient</h3>
+
 <ol>
-  <li>Add the <code class="highlighter-rouge">SearchAsync</code> method to IApiClient:
-    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Task</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">SearchResult</span><span class="p">&gt;&gt;</span> <span class="nf">SearchAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">query</span><span class="p">);</span>
-</code></pre></div>    </div>
-  </li>
-  <li>Add the implementation to ApiClient:
-    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">SearchResult</span><span class="p">&gt;&gt;</span> <span class="nf">SearchAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">query</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">var</span> <span class="n">term</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SearchTerm</span>
-    <span class="p">{</span>
-        <span class="n">Query</span> <span class="p">=</span> <span class="n">query</span>
-    <span class="p">};</span>
-
-    <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_httpClient</span><span class="p">.</span><span class="nf">PostAsJsonAsync</span><span class="p">(</span><span class="s">$"/api/search"</span><span class="p">,</span> <span class="n">term</span><span class="p">);</span>
-
-    <span class="n">response</span><span class="p">.</span><span class="nf">EnsureSuccessStatusCode</span><span class="p">();</span>
-
-    <span class="k">return</span> <span class="k">await</span> <span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">ReadAsAsync</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">SearchResult</span><span class="p">&gt;&gt;();</span>
-<span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
+  <li>Add the <code class="highlighter-rouge">SearchAsync</code> method to IApiClient:</li>
 </ol>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">Task</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">SearchResult</span><span class="p">&gt;&gt;</span> <span class="nf">SearchAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">query</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Add the implementation to ApiClient:</li>
+</ol>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">SearchResult</span><span class="p">&gt;&gt;</span> <span class="nf">SearchAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">query</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="kt">var</span> <span class="n">term</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SearchTerm</span>
+       <span class="p">{</span>
+           <span class="n">Query</span> <span class="p">=</span> <span class="n">query</span>
+       <span class="p">};</span>
+
+       <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_httpClient</span><span class="p">.</span><span class="nf">PostAsJsonAsync</span><span class="p">(</span><span class="s">$"/api/search"</span><span class="p">,</span> <span class="n">term</span><span class="p">);</span>
+
+       <span class="n">response</span><span class="p">.</span><span class="nf">EnsureSuccessStatusCode</span><span class="p">();</span>
+
+       <span class="k">return</span> <span class="k">await</span> <span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">ReadAsAsync</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">SearchResult</span><span class="p">&gt;&gt;();</span>
+   <span class="p">}</span>
+</code></pre></div></div>
 
 <h3 id="add-a-search-page-to-the-front-end">Add a search page to the Front End</h3>
+
 <ol>
   <li>Add a new Razor Page using the <em>Razor Page</em> template. Call the page <em>Search.cshtml</em> and save it in the <em>/Pages</em> directory.</li>
-  <li>Accept the <code class="highlighter-rouge">IApiClient</code> in the constructor and add supporting members to the Page model <code class="highlighter-rouge">SearchModel</code>:
-    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">SearchModel</span> <span class="p">:</span> <span class="n">PageModel</span>
-<span class="p">{</span>
-    <span class="k">private</span> <span class="k">readonly</span> <span class="n">IApiClient</span> <span class="n">_apiClient</span><span class="p">;</span>
-
-    <span class="k">public</span> <span class="nf">SearchModel</span><span class="p">(</span><span class="n">IApiClient</span> <span class="n">apiClient</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">_apiClient</span> <span class="p">=</span> <span class="n">apiClient</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">public</span> <span class="kt">string</span> <span class="n">Term</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-
-    <span class="k">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">SearchResult</span><span class="p">&gt;</span> <span class="n">SearchResults</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
-  <li>Add a page handler method to retrieve the search results and set them on the model, deserializing the individual search items to the relevant model type:
-    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">OnGetAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">term</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">Term</span> <span class="p">=</span> <span class="n">term</span><span class="p">;</span>
-    <span class="n">SearchResults</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_apiClient</span><span class="p">.</span><span class="nf">SearchAsync</span><span class="p">(</span><span class="n">term</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
-  <li>Open the <em>Search.cshtml</em> file and add markup to allow users to enter a search term and display the results, casting each result to the relevant display model type:
-    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@page
-@using ConferenceDTO
-@model SearchModel
-
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h1&gt;</span>Search<span class="nt">&lt;/h1&gt;</span>
-    <span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"get"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"input-group mb-3"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;input</span> <span class="na">asp-for=</span><span class="s">"Term"</span> <span class="na">placeholder=</span><span class="s">"Search for sessions or speakers..."</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="nt">/&gt;</span>
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"input-group-append"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-outline-secondary"</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Go!<span class="nt">&lt;/button&gt;</span>
-            <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;/div&gt;</span>
-        @if (Model.SearchResults?.Count &gt; 0)
-        {
-            <span class="nt">&lt;p&gt;</span>
-                @Model.SearchResults.Count result(s)
-            <span class="nt">&lt;/p&gt;</span>
-        }
-    <span class="nt">&lt;/form&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
-    @foreach (var result in Model.SearchResults)
-    {
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-12"</span><span class="nt">&gt;</span>
-            @switch (result.Type)
-            {
-                case SearchResultType.Speaker:
-                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card shadow mb-3"</span><span class="nt">&gt;</span>
-                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>
-                            <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Speaker: <span class="nt">&lt;a</span> <span class="na">asp-page=</span><span class="s">"Speaker"</span> <span class="na">asp-route-id=</span><span class="s">"@result.Speaker.Id"</span><span class="nt">&gt;</span>@result.Speaker.Name<span class="nt">&lt;/a&gt;&lt;/h3&gt;</span>
-                        <span class="nt">&lt;/div&gt;</span>
-                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
-                            <span class="nt">&lt;p&gt;</span>
-                                @foreach (var session in result.Speaker.Sessions)
-                                {
-                                    <span class="nt">&lt;a</span> <span class="na">asp-page=</span><span class="s">"/Session"</span> <span class="na">asp-route-id=</span><span class="s">"@session.Id"</span><span class="nt">&gt;&lt;em&gt;</span>@session.Title<span class="nt">&lt;/em&gt;&lt;/a&gt;</span>
-                                }
-                            <span class="nt">&lt;/p&gt;</span>
-                            <span class="nt">&lt;p&gt;</span>
-                                @result.Speaker.Bio
-                            <span class="nt">&lt;/p&gt;</span>
-                        <span class="nt">&lt;/div&gt;</span>
-                    <span class="nt">&lt;/div&gt;</span>
-                    break;
-
-                case SearchResultType.Session:
-                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card shadow mb-3"</span><span class="nt">&gt;</span>
-                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>
-                            <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Session: <span class="nt">&lt;a</span> <span class="na">asp-page=</span><span class="s">"Session"</span> <span class="na">asp-route-id=</span><span class="s">"@result.Session.Id"</span><span class="nt">&gt;</span>@result.Session.Title<span class="nt">&lt;/a&gt;&lt;/h3&gt;</span>
-                            @foreach (var speaker in result.Session.Speakers)
-                            {
-                                <span class="nt">&lt;a</span> <span class="na">asp-page=</span><span class="s">"/Speaker"</span> <span class="na">asp-route-id=</span><span class="s">"@speaker.Id"</span><span class="nt">&gt;&lt;em&gt;</span>@speaker.Name<span class="nt">&lt;/em&gt;&lt;/a&gt;</span>
-                            }
-                        <span class="nt">&lt;/div&gt;</span>
-                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
-                            <span class="nt">&lt;p&gt;</span>
-                                @result.Session.Abstract
-                            <span class="nt">&lt;/p&gt;</span>
-                        <span class="nt">&lt;/div&gt;</span>
-                    <span class="nt">&lt;/div&gt;</span>
-                    break;
-            }
-        <span class="nt">&lt;/div&gt;</span>
-    }
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div>    </div>
-  </li>
-  <li>Add the search link to the navigation pane in <code class="highlighter-rouge">_Layout.cshtml</code>:
-    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-     <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link text-dark"</span> <span class="na">asp-page=</span><span class="s">"/Search"</span><span class="nt">&gt;</span>Search<span class="nt">&lt;/a&gt;</span>
- <span class="nt">&lt;/li&gt;</span>
-</code></pre></div>    </div>
-  </li>
-  <li>Click on the <code class="highlighter-rouge">Search</code> link to test the new search feature.
-<img src="/img/aspdotnetcore/confplanner/4/59.png" alt="" /></li>
+  <li>Accept the <code class="highlighter-rouge">IApiClient</code> in the constructor and add supporting members to the Page model <code class="highlighter-rouge">SearchModel</code> :</li>
 </ol>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="k">public</span> <span class="k">class</span> <span class="nc">SearchModel</span> <span class="p">:</span> <span class="n">PageModel</span>
+   <span class="p">{</span>
+       <span class="k">private</span> <span class="k">readonly</span> <span class="n">IApiClient</span> <span class="n">_apiClient</span><span class="p">;</span>
+
+       <span class="k">public</span> <span class="nf">SearchModel</span><span class="p">(</span><span class="n">IApiClient</span> <span class="n">apiClient</span><span class="p">)</span>
+       <span class="p">{</span>
+           <span class="n">_apiClient</span> <span class="p">=</span> <span class="n">apiClient</span><span class="p">;</span>
+       <span class="p">}</span>
+
+       <span class="k">public</span> <span class="kt">string</span> <span class="n">Term</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+       <span class="k">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">SearchResult</span><span class="p">&gt;</span> <span class="n">SearchResults</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+   <span class="p">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Add a page handler method to retrieve the search results and set them on the model, deserializing the individual search items to the relevant model type:</li>
+</ol>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">OnGetAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">term</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="n">Term</span> <span class="p">=</span> <span class="n">term</span><span class="p">;</span>
+       <span class="n">SearchResults</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_apiClient</span><span class="p">.</span><span class="nf">SearchAsync</span><span class="p">(</span><span class="n">term</span><span class="p">);</span>
+   <span class="p">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Open the <em>Search.cshtml</em> file and add markup to allow users to enter a search term and display the results, casting each result to the relevant display model type:</li>
+</ol>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   @page
+   @using ConferenceDTO
+   @model SearchModel
+
+   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"search"</span><span class="nt">&gt;</span>
+       <span class="nt">&lt;h1&gt;</span>Search<span class="nt">&lt;/h1&gt;</span>
+       <span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"get"</span><span class="nt">&gt;</span>
+           <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"input-group mb-3"</span><span class="nt">&gt;</span>
+               <span class="nt">&lt;input</span> <span class="na">asp-for=</span><span class="s">"Term"</span> <span class="na">placeholder=</span><span class="s">"Search for sessions or speakers..."</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="nt">/&gt;</span>
+               <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"input-group-append"</span><span class="nt">&gt;</span>
+                   <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-outline-secondary"</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Go!<span class="nt">&lt;/button&gt;</span>
+               <span class="nt">&lt;/div&gt;</span>
+           <span class="nt">&lt;/div&gt;</span>
+           @if (Model.SearchResults?.Count &gt; 0)
+           {
+           <span class="nt">&lt;p&gt;</span>
+               @Model.SearchResults.Count result(s)
+           <span class="nt">&lt;/p&gt;</span>
+           }
+       <span class="nt">&lt;/form&gt;</span>
+   <span class="nt">&lt;/div&gt;</span>
+
+   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+       @foreach (var result in Model.SearchResults)
+       {
+       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-12"</span><span class="nt">&gt;</span>
+           @switch (result.Type)
+           {
+           case SearchResultType.Speaker:
+           <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card shadow mb-3"</span><span class="nt">&gt;</span>
+               <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>
+                   <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Speaker: <span class="nt">&lt;a</span> <span class="na">asp-page=</span><span class="s">"Speaker"</span> <span class="na">asp-route-id=</span><span class="s">"@result.Speaker.Id"</span><span class="nt">&gt;</span>@result.Speaker.Name<span class="nt">&lt;/a&gt;&lt;/h3&gt;</span>
+               <span class="nt">&lt;/div&gt;</span>
+               <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+                   <span class="nt">&lt;p&gt;</span>
+                       @foreach (var session in result.Speaker.Sessions)
+                       {
+                       <span class="nt">&lt;a</span> <span class="na">asp-page=</span><span class="s">"/Session"</span> <span class="na">asp-route-id=</span><span class="s">"@session.Id"</span><span class="nt">&gt;&lt;em&gt;</span>@session.Title<span class="nt">&lt;/em&gt;&lt;/a&gt;</span>
+                       }
+                   <span class="nt">&lt;/p&gt;</span>
+                   <span class="nt">&lt;p&gt;</span>
+                       @result.Speaker.Bio
+                   <span class="nt">&lt;/p&gt;</span>
+               <span class="nt">&lt;/div&gt;</span>
+           <span class="nt">&lt;/div&gt;</span>
+           break;
+
+           case SearchResultType.Session:
+           <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card shadow mb-3"</span><span class="nt">&gt;</span>
+               <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>
+                   <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Session: <span class="nt">&lt;a</span> <span class="na">asp-page=</span><span class="s">"Session"</span> <span class="na">asp-route-id=</span><span class="s">"@result.Session.Id"</span><span class="nt">&gt;</span>@result.Session.Title<span class="nt">&lt;/a&gt;&lt;/h3&gt;</span>
+                   @foreach (var speaker in result.Session.Speakers)
+                   {
+                   <span class="nt">&lt;a</span> <span class="na">asp-page=</span><span class="s">"/Speaker"</span> <span class="na">asp-route-id=</span><span class="s">"@speaker.Id"</span><span class="nt">&gt;&lt;em&gt;</span>@speaker.Name<span class="nt">&lt;/em&gt;&lt;/a&gt;</span>
+                   }
+               <span class="nt">&lt;/div&gt;</span>
+               <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
+                   <span class="nt">&lt;p&gt;</span>
+                       @result.Session.Abstract
+                   <span class="nt">&lt;/p&gt;</span>
+               <span class="nt">&lt;/div&gt;</span>
+           <span class="nt">&lt;/div&gt;</span>
+           break;
+           }
+       <span class="nt">&lt;/div&gt;</span>
+       }
+   <span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Add the search link to the navigation pane in <code class="highlighter-rouge">_Layout.cshtml</code> :</li>
+</ol>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link text-dark"</span> <span class="na">asp-page=</span><span class="s">"/Search"</span><span class="nt">&gt;</span>Search<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Click on the <code class="highlighter-rouge">Search</code> link to test the new search feature.</li>
+</ol>
+
+<p><img src="/img/aspdotnetcore/confplanner/4/59.png" alt="" /></p>
 
 <hr />
 <h2 id="sessions">Sessions</h2>
