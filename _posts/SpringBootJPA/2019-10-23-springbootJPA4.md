@@ -7,7 +7,7 @@ categories:
 tags:
 - learning
 summary: Learn how to connect a Spring Boot application with relational databases like Oracle and MySQL. Learn how to setup a database schema for them and also what to configure in application configuration.
-image: "/img/springbootjpa.png"
+image: "/img/springbootJPA.png"
 author: Girish Godage
 layout: posts
 prevurl: "/blog/spring-boot-and-h2-in-memory-database"

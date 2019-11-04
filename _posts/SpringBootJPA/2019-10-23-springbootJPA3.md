@@ -8,7 +8,7 @@ tags:
 - learning
 summary: Learn how to connect a Spring Boot application to H2 in memory database. Understand why in memory databases are needed and the best practices in using them with Spring Boot.
 categories:  SpringBootJPA
-image: "/img/springbootjpa.png"
+image: "/img/springbootJPA.png"
 author: Girish Godage
 layout: posts
 prevurl: "/blog/spring-boot-and-iBatis-with-h2-tutorial"

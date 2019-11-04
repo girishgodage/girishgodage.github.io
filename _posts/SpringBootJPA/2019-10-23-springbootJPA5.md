@@ -7,7 +7,7 @@ categories:
 tags:
 - learning
 summary: Spring Data's mission is to provide a familiar and consistent, Spring-based programming model for data access. In this tutorial, we will explore the different interfaces provided by Spring Data. We will take a quick peek into Spring Data JPA and Spring Data for MongoDB.
-image: "/img/springbootjpa.png"
+image: "/img/springbootJPA.png"
 author: Girish Godage
 layout: posts
 prevurl: "/blog/spring-boot-with-mysql-and-oracle"
