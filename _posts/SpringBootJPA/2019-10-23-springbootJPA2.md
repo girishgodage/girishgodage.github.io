@@ -6,8 +6,8 @@ categories:
 - SpringBootJPA
 tags:
 - learning
-summary: Learn using Spring Boot Starter myBatis to connect Spring Boot to H2 (in memory database) using Object Mapping Framework - myBatis (iBatis).
-categories:  SpringBootJPA
+summary: Learn using Spring Boot Starter myBatis to connect Spring Boot to H2 (in
+  memory database) using Object Mapping Framework - myBatis (iBatis).
 image: "/img/springbootjpa.png"
 author: Girish Godage
 layout: posts
