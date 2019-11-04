@@ -6,8 +6,10 @@ categories:
 - SpringBootJPA
 tags:
 - learning
-summary: Learn using Spring Boot Starter JPA to connect Spring Boot to H2 (in memory database) using Hibernate/JPA. You will learn the basics of JPA and Hibernate - Entities and Keys. We will create a simple repository extending JPARepository and explore different
-categories:  SpringBootJPA
+summary: Learn using Spring Boot Starter JPA to connect Spring Boot to H2 (in memory
+  database) using Hibernate/JPA. You will learn the basics of JPA and Hibernate -
+  Entities and Keys. We will create a simple repository extending JPARepository and
+  explore different
 image: "/img/springbootJPA.png"
 author: Girish Godage
 layout: posts
