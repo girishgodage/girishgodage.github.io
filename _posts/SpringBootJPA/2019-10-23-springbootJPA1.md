@@ -24,6 +24,7 @@ This guide will help you create a simple project with Spring Boot and connect to
 ## Project Code Structure
 
 Following screenshot shows the structure of the project we will create.
+
 ![Image](/images/SpringBootwithJPA-ProjectStructure.png "Spring Boot with JPA - Project Structure") 
 
 A few details:

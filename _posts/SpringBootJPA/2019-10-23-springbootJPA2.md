@@ -29,6 +29,7 @@ This guide will help you create a simple project with Spring Boot. You will add 
 ## Project Code Structure
 
 Following screenshot shows the structure of the project we will create.
+
 ![Image](/images/SpringBootwithmyBatis-ProjectStructure.png "Spring Boot with myBatis - Project Structure") 
 
 A few details:
@@ -148,6 +149,7 @@ myBatis is not a standard Spring Boot Starter project. We would need to add it m
 ```
 
 Rebuild the project to see all the dependencies related to myBatis.
+
 ![Image](/images/myBatisDependencies.png "my Batis Dependencies")
 
 ## Initialize H2 in-memory database with the schema
