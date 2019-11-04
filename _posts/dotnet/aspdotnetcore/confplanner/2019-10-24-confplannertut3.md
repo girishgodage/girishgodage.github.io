@@ -18,7 +18,6 @@ discussion_id: 2019-10-24-confplannertut3
 ---
 
 ## Building out the Back End
-
 In this session, we'll add the rest of our models and controllers that expose them. We'll also refactor our application, moving our DTOs to a shared project so they can be used by our front-end application later.
 
 ## Add a ConferenceDTO project
