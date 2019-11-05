@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#2A80EE">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#2A80EE">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
+<title>ASP. NET Core - Customize Logging &#8211; Girish Godage</title>
+<meta name="description" content="In this first part of the series about customizing ASP.NET Core, I will show you how to customize the logging. The default logging only writes to the console or to the debug window. This is quite good for most cases, but maybe you need to log to a sink like a file or a database. Maybe you want to extend the logger with additional information. In these cases you need to know how to change the default logging.">
+<meta name="keywords" content="AspDotnetCoreCustomize">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all">
+
+<!-- Verifications -->
+    
+    
+        
+<!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="ASP. NET Core - Customize Logging">
+    <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
+    <meta property="og:url" content="http://localhost:4000/blog/customize-logging">
+    <meta property="og:site_name" content="Girish Godage">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@GGodage" />
+    
+    <meta name="twitter:title" content="ASP. NET Core - Customize Logging" />
+    <meta name="twitter:description" content="In this first part of the series about customizing ASP.NET Core, I will show you how to customize the logging. The default logging only writes to the console or to the debug window. This is quite good for most cases, but maybe you need to log to a sink like a file or a database. Maybe you want to extend the logger with additional information. In these cases you need to know how to change the default logging." />
+    <meta name="twitter:url" content="http://localhost:4000/blog/customize-logging" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/img/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/img/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    
+
+
+    <link rel="canonical" href="http://localhost:4000/blog/customize-logging">
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
+    <!-- Bootstrap CSS-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Google fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+   
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
+    
+    <!-- animate.css-->
+    <link rel="stylesheet" href="http://localhost:4000/sitejs/animate.css/animate.css">
+    <!-- theme stylesheet-->
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="http://localhost:4000/css/custom.css" as="style">
+    <link rel="stylesheet" href="http://localhost:4000/css/comments.css" as="style">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="http://localhost:4000/img/logo-big.png">
+    <!-- Fab Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
+    
+    
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    
+    <script type="text/javascript">
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+       ga('create', 'UA-130164763-2', 'auto');
+       ga('send', 'pageview');
+    </script>
+    
+    <!-- Typed.js DONT TOUCHHHHHHHHHHHHH!-->
+    <!--<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.9/typed.min.js"></script>
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+      </script>
+      
+      <!-- START OF RELEVANT PART -->
+    <script async src="https://just-comments.com/w2.js"></script>
+    <!-- END OF RELEVANT PART -->
+
+
+</head>
+
+<body>
+    
+<!-- navbar-->
+<header class="header">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container"><a class="navbar-brand" href="http://localhost:4000"><img
+          src="http://localhost:4000/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
+          alt="logo"> <img src="http://localhost:4000/img/girish_logo.png" height="30" alt="girilogo"></a>
+      <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span
+          class="fa fa-bars" style="color: white"></span></button>
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="http://localhost:4000#home" class="nav-link  link-scroll">Home</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#about" class="nav-link link-scroll">About</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#skills" class="nav-link link-scroll">Skills</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#services" class="nav-link link-scroll">Services</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#references" class="nav-link link-scroll">My
+              work</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#contact" class="nav-link link-scroll">Contact</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000/blog" class="nav-link link-scroll">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    
+    
+    
+    <div style="background-color:Gray;">
+        <div style="padding:0;min-height:95.05vh;display:flex;font-family: Poppins, sans-serif;margin-top: 5rem;"
+            class="container">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <p class="post-title">
+                    <h1><a href="/blog/customize-logging">ASP. NET Core - Customize Logging</a></h1>
+                </p>
+                
+                <span class="post-meta">
+              <span style="font-weight:600">November 01, 2019 Friday</span>
+                    
+                       ( 7 minute read ) 
+                    
+                     
+                    <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">   by Girish Godage</a>
+                </span>
+                
+                <div class="site-category"> 
+                        <h5>AspDotnetCoreCustomize</h5>
+                </div>
+                
+                <hr>
+                <div><img class="post-image" src="/img/aspnetcore.png" alt="ASP. NET Core - Customize Logging" height="250" /></div>
+                <div class="post-content">
+                    <br>                     
+                    <h2 id="logging">Logging</h2>
+
+<p>In this first part of the series about customizing ASP.NET Core, I will show you how to customize the logging. The default logging only writes to the console or to the debug window. This is quite good for most cases, but maybe you need to log to a sink like a file or a database. Maybe you want to extend the logger with additional information. In these cases you need to know how to change the default logging.</p>
+
+<h2 id="configure-logging">Configure logging</h2>
+
+<p>In previous versions of ASP.NET Core (pre 2.0) the logging was configured in the <code class="highlighter-rouge">Startup.cs</code>. Since 2.0 the <code class="highlighter-rouge">Startup.cs</code> was simplified and a lot of configurations where moved to a default <code class="highlighter-rouge">WebHostBuilder</code>, which is called in the <code class="highlighter-rouge">Program.cs</code>. Also the logging was moved to the default <code class="highlighter-rouge">WebHostBuilder</code>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nf">CreateWebHostBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">).</span><span class="nf">Build</span><span class="p">().</span><span class="nf">Run</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="n">IWebHostBuilder</span> <span class="nf">CreateWebHostBuilder</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">=&gt;</span>
+        <span class="n">WebHost</span><span class="p">.</span><span class="nf">CreateDefaultBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>                
+            <span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In ASP.NET Core 3.0 the <code class="highlighter-rouge">Program.cs</code> gets more generic and a <code class="highlighter-rouge">IHostBuilder</code> will be created first. The <code class="highlighter-rouge">IHostBuilder</code> is pretty useful to bootstrap an application without all the ASP.NET web stuff. We’ll learn a lot more about the <code class="highlighter-rouge">IHostBuilder</code> later on in the next chapters. With this <code class="highlighter-rouge">IHostBuilder</code> we create a <code class="highlighter-rouge">IWebHostBuilder</code> to configure ASP.NET Core. In ASP.NET Core 3.0 we get the <code class="highlighter-rouge">IWebHostBuilder</code> with the <code class="highlighter-rouge">webBuilder</code> variable:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nf">CreateWebHostBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">).</span><span class="nf">Build</span><span class="p">().</span><span class="nf">Run</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="n">IHostBuilder</span> <span class="nf">CreateHostBuilder</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">=&gt;</span>
+        <span class="n">Host</span><span class="p">.</span><span class="nf">CreateDefaultBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+            <span class="p">.</span><span class="nf">ConfigureWebHostDefaults</span><span class="p">(</span><span class="n">webBuilder</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>                
+                <span class="n">webBuilder</span><span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;();</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In ASP.NET Core you are able to override and customize almost everything. So you can with the logging. The <code class="highlighter-rouge">IWebHostBuilder</code> has a lot of extension methods to override the default behavior. To override the default settings for the logging we need to choose the <code class="highlighter-rouge">ConfigureLogging</code> method. The next snippet shows almost exactly the same logging as it was configured inside the <code class="highlighter-rouge">ConfigureWebHostDefaults()</code> method:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Host</span><span class="p">.</span><span class="nf">CreateDefaultBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">ConfigureWebHostDefaults</span><span class="p">(</span><span class="n">webBuilder</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">webBuilder</span>
+            <span class="p">.</span><span class="nf">ConfigureLogging</span><span class="p">((</span><span class="n">hostingContext</span><span class="p">,</span> <span class="n">logging</span><span class="p">)</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>
+                  <span class="n">logging</span><span class="p">.</span><span class="nf">AddConfiguration</span><span class="p">(</span>
+                            <span class="n">hostingContext</span><span class="p">.</span><span class="n">Configuration</span><span class="p">.</span><span class="nf">GetSection</span><span class="p">(</span><span class="s">"Logging"</span><span class="p">));</span>
+                  <span class="n">logging</span><span class="p">.</span><span class="nf">AddConsole</span><span class="p">();</span>
+                  <span class="n">logging</span><span class="p">.</span><span class="nf">AddDebug</span><span class="p">();</span>
+            <span class="p">})</span>
+            <span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;();</span>
+    <span class="p">});</span>
+</code></pre></div></div>
+
+<p>This method needs a lambda that gets a <code class="highlighter-rouge">WebHostBuilderContext</code> and a <code class="highlighter-rouge">LoggingBuilder</code> to configure the logging.</p>
+
+<h2 id="create-a-custom-logger">Create a custom logger</h2>
+
+<p>To demonstrate a custom logger, I created a small useless logger that is able to colorize log entries with an specific log level in the console. This so called <code class="highlighter-rouge">ColoredConsoleLogger</code> will be added and created using a LoggerProvider we also need to write by our own. To specify the color and the log level to colorize, we need to add a configuration class. In the next snippet all three parts (Logger, LoggerProvider and Configuration) are shown:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">ColoredConsoleLoggerConfiguration</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">LogLevel</span> <span class="n">LogLevel</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="n">LogLevel</span><span class="p">.</span><span class="n">Warning</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">EventId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+    <span class="k">public</span> <span class="n">ConsoleColor</span> <span class="n">Color</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="n">ConsoleColor</span><span class="p">.</span><span class="n">Yellow</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">ColoredConsoleLoggerProvider</span> <span class="p">:</span> <span class="n">ILoggerProvider</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="n">ColoredConsoleLoggerConfiguration</span> <span class="n">_config</span><span class="p">;</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="n">ConcurrentDictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">ColoredConsoleLogger</span><span class="p">&gt;</span> <span class="n">_loggers</span> <span class="p">=</span> 
+    	<span class="k">new</span> <span class="n">ConcurrentDictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">ColoredConsoleLogger</span><span class="p">&gt;();</span>
+
+    <span class="k">public</span> <span class="nf">ColoredConsoleLoggerProvider</span><span class="p">(</span><span class="n">ColoredConsoleLoggerConfiguration</span> <span class="n">config</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_config</span> <span class="p">=</span> <span class="n">config</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="n">ILogger</span> <span class="nf">CreateLogger</span><span class="p">(</span><span class="kt">string</span> <span class="n">categoryName</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">_loggers</span><span class="p">.</span><span class="nf">GetOrAdd</span><span class="p">(</span><span class="n">categoryName</span><span class="p">,</span> <span class="n">name</span> <span class="p">=&gt;</span> 
+        	<span class="k">new</span> <span class="nf">ColoredConsoleLogger</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">_config</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Dispose</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">_loggers</span><span class="p">.</span><span class="nf">Clear</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">ColoredConsoleLogger</span> <span class="p">:</span> <span class="n">ILogger</span>
+<span class="p">{</span>
+	<span class="k">private</span> <span class="k">static</span> <span class="kt">object</span> <span class="n">_lock</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Object</span><span class="p">();</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="kt">string</span> <span class="n">_name</span><span class="p">;</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="n">ColoredConsoleLoggerConfiguration</span> <span class="n">_config</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nf">ColoredConsoleLogger</span><span class="p">(</span>
+    	<span class="kt">string</span> <span class="n">name</span><span class="p">,</span> 
+    	<span class="n">ColoredConsoleLoggerConfiguration</span> <span class="n">config</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_name</span> <span class="p">=</span> <span class="n">name</span><span class="p">;</span>
+        <span class="n">_config</span> <span class="p">=</span> <span class="n">config</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="n">IDisposable</span> <span class="n">BeginScope</span><span class="p">&lt;</span><span class="n">TState</span><span class="p">&gt;(</span><span class="n">TState</span> <span class="n">state</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">IsEnabled</span><span class="p">(</span><span class="n">LogLevel</span> <span class="n">logLevel</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">logLevel</span> <span class="p">==</span> <span class="n">_config</span><span class="p">.</span><span class="n">LogLevel</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="n">Log</span><span class="p">&lt;</span><span class="n">TState</span><span class="p">&gt;(</span>
+    	<span class="n">LogLevel</span> <span class="n">logLevel</span><span class="p">,</span> 
+    	<span class="n">EventId</span> <span class="n">eventId</span><span class="p">,</span> 
+    	<span class="n">TState</span> <span class="n">state</span><span class="p">,</span> 
+    	<span class="n">Exception</span> <span class="n">exception</span><span class="p">,</span> 
+    	<span class="n">Func</span><span class="p">&lt;</span><span class="n">TState</span><span class="p">,</span> <span class="n">Exception</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="n">formatter</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(!</span><span class="nf">IsEnabled</span><span class="p">(</span><span class="n">logLevel</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">lock</span> <span class="p">(</span><span class="n">_lock</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">_config</span><span class="p">.</span><span class="n">EventId</span> <span class="p">==</span> <span class="m">0</span> <span class="p">||</span> <span class="n">_config</span><span class="p">.</span><span class="n">EventId</span> <span class="p">==</span> <span class="n">eventId</span><span class="p">.</span><span class="n">Id</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="kt">var</span> <span class="n">color</span> <span class="p">=</span> <span class="n">Console</span><span class="p">.</span><span class="n">ForegroundColor</span><span class="p">;</span>
+                <span class="n">Console</span><span class="p">.</span><span class="n">ForegroundColor</span> <span class="p">=</span> <span class="n">_config</span><span class="p">.</span><span class="n">Color</span><span class="p">;</span>
+                <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">$"</span><span class="p">{</span><span class="n">logLevel</span><span class="p">.</span><span class="nf">ToString</span><span class="p">()}</span><span class="s"> - </span><span class="p">{</span><span class="n">eventId</span><span class="p">.</span><span class="n">Id</span><span class="p">}</span><span class="s"> - </span><span class="p">{</span><span class="n">_name</span><span class="p">}</span><span class="s"> - </span><span class="p">{</span><span class="nf">formatter</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">exception</span><span class="p">)}</span><span class="s">"</span><span class="p">);</span>
+                <span class="n">Console</span><span class="p">.</span><span class="n">ForegroundColor</span> <span class="p">=</span> <span class="n">color</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>We need to lock the actual console output, because we will get some race conditions where wrong log entries get colored with the wrong color, because the console itself is not really thread save.</p>
+</blockquote>
+
+<p>If this is done we can start to plug in the new logger to the configuration in the <code class="highlighter-rouge">Program.cs</code>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">logging</span><span class="p">.</span><span class="nf">ClearProviders</span><span class="p">();</span>
+
+<span class="kt">var</span> <span class="n">config</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ColoredConsoleLoggerConfiguration</span>
+<span class="p">{</span>
+    <span class="n">LogLevel</span> <span class="p">=</span> <span class="n">LogLevel</span><span class="p">.</span><span class="n">Information</span><span class="p">,</span>
+    <span class="n">Color</span> <span class="p">=</span> <span class="n">ConsoleColor</span><span class="p">.</span><span class="n">Red</span>
+<span class="p">};</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">AddProvider</span><span class="p">(</span><span class="k">new</span> <span class="nf">ColoredConsoleLoggerProvider</span><span class="p">(</span><span class="n">config</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>If needed, you are able to clear all the previously added logger providers. Than we call <code class="highlighter-rouge">AddProvider</code> to add a new instance of our <code class="highlighter-rouge">ColoredConsoleLoggerProvider</code> with the specific settings. We could also add some more instances of the provider with different settings.</p>
+
+<p>This shows how to handle different log levels in a different way. You can use this to send emails on hard errors, to log debug messages to a different log sink than regular informational messages and so on.</p>
+
+<p><img src="/img/customize-aspnetcore/custom-logger.PNG" alt="" /></p>
+
+<p>In many cases it doesn’t make sense to write a custom logger because there are already many good third party loggers, like elmah, log4net and NLog. In the next section I’m going to show you how to use NLog in ASP.NET Core</p>
+
+<h2 id="plug-in-an-existing-third-party-logger-provider">Plug-in an existing third-party logger provider</h2>
+
+<p>NLog was one of the very first loggers, which was available as a .NET Standard library and usable in ASP.NET Core. NLog also already provides a Logger Provider to easily plug it into ASP.NET Core.</p>
+
+<p>You will find NLog via <a href="https://www.nuget.org/packages/NLog.Web.AspNetCore">NuGet</a> and on <a href="https://github.com/NLog/NLog.Web">GitHub</a>. Even if NLog is not yet explicitly available for ASP.NET Core 3.0 it will work anyway with this version.</p>
+
+<p>The next snippet shows a typical <code class="highlighter-rouge">NLog.Config</code> that defines two different sinks to log all messages in one log file and custom messages only into another file:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span>
+<span class="nt">&lt;nlog</span> <span class="na">xmlns=</span><span class="s">"http://www.nlog-project.org/schemas/NLog.xsd"</span>
+      <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+      <span class="na">autoReload=</span><span class="s">"true"</span>
+      <span class="na">internalLogLevel=</span><span class="s">"Warn"</span>
+      <span class="na">internalLogFile=</span><span class="s">"C:\git\dotnetconf\001-logging\internal-nlog.txt"</span><span class="nt">&gt;</span>
+
+  <span class="c">&lt;!-- Load the ASP.NET Core plugin --&gt;</span>
+  <span class="nt">&lt;extensions&gt;</span>
+    <span class="nt">&lt;add</span> <span class="na">assembly=</span><span class="s">"NLog.Web.AspNetCore"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/extensions&gt;</span>
+
+  <span class="c">&lt;!-- the targets to write to --&gt;</span>
+  <span class="nt">&lt;targets&gt;</span>
+     <span class="c">&lt;!-- write logs to file --&gt;</span>
+     <span class="nt">&lt;target</span> <span class="na">xsi:type=</span><span class="s">"File"</span> <span class="na">name=</span><span class="s">"allfile"</span> <span class="na">fileName=</span><span class="s">"C:\git\dotnetconf\001-logging\nlog-all-${shortdate}.log"</span>
+                 <span class="na">layout=</span><span class="s">"${longdate}|${event-properties:item=EventId.Id}|${logger}|${uppercase:${level}}|${message} ${exception}"</span> <span class="nt">/&gt;</span>
+
+   <span class="c">&lt;!-- another file log, only own logs. Uses some ASP.NET core renderers --&gt;</span>
+     <span class="nt">&lt;target</span> <span class="na">xsi:type=</span><span class="s">"File"</span> <span class="na">name=</span><span class="s">"ownFile-web"</span> <span class="na">fileName=</span><span class="s">"C:\git\dotnetconf\001-logging\nlog-own-${shortdate}.log"</span>
+             <span class="na">layout=</span><span class="s">"${longdate}|${event-properties:item=EventId.Id}|${logger}|${uppercase:${level}}|  ${message} ${exception}|url: ${aspnet-request-url}|action: ${aspnet-mvc-action}"</span> <span class="nt">/&gt;</span>
+
+     <span class="c">&lt;!-- write to the void aka just remove --&gt;</span>
+    <span class="nt">&lt;target</span> <span class="na">xsi:type=</span><span class="s">"Null"</span> <span class="na">name=</span><span class="s">"blackhole"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/targets&gt;</span>
+
+  <span class="c">&lt;!-- rules to map from logger name to target --&gt;</span>
+  <span class="nt">&lt;rules&gt;</span>
+    <span class="c">&lt;!--All logs, including from Microsoft--&gt;</span>
+    <span class="nt">&lt;logger</span> <span class="na">name=</span><span class="s">"*"</span> <span class="na">minlevel=</span><span class="s">"Trace"</span> <span class="na">writeTo=</span><span class="s">"allfile"</span> <span class="nt">/&gt;</span>
+
+    <span class="c">&lt;!--Skip Microsoft logs and so log only own logs--&gt;</span>
+    <span class="nt">&lt;logger</span> <span class="na">name=</span><span class="s">"Microsoft.*"</span> <span class="na">minlevel=</span><span class="s">"Trace"</span> <span class="na">writeTo=</span><span class="s">"blackhole"</span> <span class="na">final=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;logger</span> <span class="na">name=</span><span class="s">"*"</span> <span class="na">minlevel=</span><span class="s">"Trace"</span> <span class="na">writeTo=</span><span class="s">"ownFile-web"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/rules&gt;</span>
+<span class="nt">&lt;/nlog&gt;</span>
+</code></pre></div></div>
+
+<p>We then need to add the NLog ASP.NET Core package from NuGet:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet add package NLog.Web.AspNetCore
+</code></pre></div></div>
+
+<p>(Be sure you are in the project directory before you execute that command)</p>
+
+<p>Now you only need to clear all the other providers in the <code class="highlighter-rouge">ConfigureLogging</code> method in the <code class="highlighter-rouge">Program.cs</code> and to use NLog with the <code class="highlighter-rouge">IWebHostBuilder</code> using the method <code class="highlighter-rouge">UseNLog()</code>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Host</span><span class="p">.</span><span class="nf">CreateDefaultBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">ConfigureWebHostDefaults</span><span class="p">(</span><span class="n">webBuilder</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">webBuilder</span>
+            <span class="p">.</span><span class="nf">ConfigureLogging</span><span class="p">((</span><span class="n">hostingContext</span><span class="p">,</span> <span class="n">logging</span><span class="p">)</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>
+                <span class="n">logging</span><span class="p">.</span><span class="nf">ClearProviders</span><span class="p">();</span>
+                <span class="n">logging</span><span class="p">.</span><span class="nf">SetMinimumLevel</span><span class="p">(</span>
+                    <span class="n">Microsoft</span><span class="p">.</span><span class="n">Extensions</span><span class="p">.</span><span class="n">Logging</span><span class="p">.</span><span class="n">LogLevel</span><span class="p">.</span><span class="n">Trace</span><span class="p">);</span>
+
+            <span class="p">})</span>
+            <span class="p">.</span><span class="nf">UseNLog</span><span class="p">()</span>
+            <span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;();</span>
+    <span class="p">});</span>
+</code></pre></div></div>
+
+<p>The first line configures NLog to use the previously created <code class="highlighter-rouge">NLog.Config</code> and the second line adds the <code class="highlighter-rouge">NLogLoggerProvider</code> to the list of logging providers. Here you can add as many logger providers you need.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The good thing of hiding the basic configuration is only to clean up the newly scaffolded projects and to keep the actual start as simple as possible. The developer is able to focus on the actual features. But the more the application grows the more important is logging. The default logging configuration is easy and it works like charm, but in production you need a persisted log to see errors from the past. So you need to add a custom logging or a more flexible logger like NLog or log4net.</p>
+
+<p>To learn more about how to <strong>configure</strong> ASP.NET Core 3.0 in the next chapter.</p>
+
+<hr />
+<h2 id="sessions">Sessions</h2>
+
+<p>This is series of articles on Building Conf planner app with Asp.net Core:</p>
+
+<ul>
+  <li><a href="/blog/customize-logging" target="_blank">1 - Logging</a></li>
+  <li><a href="/blog/customize-configuration" target="_blank">2 - Configuration</a></li>
+  <li><a href="/blog/customize-dependency-injection" target="_blank">3 - Dependency Injection</a></li>
+  <li><a href="/blog/customize-https" target="_blank">4 - Https</a></li>
+  <li><a href="/blog/customize-hostedservices" target="_blank">5 - Hostedservices</a></li>
+  <li><a href="/blog/customize-middleware" target="_blank">6 - Middlewares</a></li>
+  <li><a href="/blog/customize-outputformatter" target="_blank">7 - Outputformatter</a></li>
+  <li><a href="/blog/customize-modelbinders" target="_blank">8 - Modelbinders </a></li>
+  <li><a href="/blog/customize-actionfilters" target="_blank">9 - Actionfilters</a></li>
+  <li><a href="/blog/customize-taghelpers" target="_blank">10 - Taghelpers</a></li>
+  <li><a href="/blog/customize-webhostbuilder" target="_blank">11 - Webhostbuilder</a></li>
+  <li><a href="/blog/customize-hosting" target="_blank">12 - Hosting </a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/customize-logging" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/customize-configuration" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+
+                </div>
+
+                
+
+                <div id="disqus_thread"></div>
+                <script>
+                
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://girishgodage-github-io.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
+</button>
+<!-- Footer-->
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 text-center text-lg-left">
+                <p class="social">
+                    <a href="https://www.facebook.com/girish.godage.5" class="external facebook wow fadeInUp">
+                        <i class="fa fa-facebook"></i></a>
+                    <a href="https://instagram.com/girishgodage_007" data-wow-delay="0.2s" class="external instagram wow fadeInUp">
+                        <i class="fa fa-instagram"></i></a>
+                    <a href="https://youtube.com/girishgodage" data-wow-delay="0.4s" class="external youtube wow fadeInUp">
+                        <i class="fa fa-youtube-play"></i></a>
+                    <a href="https://twitter.com/GGodage" data-wow-delay="0.4s" class="external twitter wow fadeInUp">
+                            <i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/girishgodage" data-wow-delay="0.4s" class="external github wow fadeInUp">
+                                <i class="fa fa-github"></i></a>    
+                    <a href="mailto:girishgodage@gmail.com?subject=Hello%20Girish" data-wow-delay="0.6s" class="email wow fadeInUp">
+                        <i class="fa fa-envelope"></i></a></p>
+            </div>
+            <div class="col-12 col-md-2">
+            <h5>Quick Links</h5>
+            <ul>
+               <li><a href="http://localhost:4000#about">About</a></li>
+               <li><a href="http://localhost:4000#contact">Contact</a></li>
+               <li><a href="/sitemap.xml">Sitemap</a></li>               
+            </ul>
+         </div>
+            <div class="col-12 col-md-4 text-center text-lg-right mt-4 mt-lg-0">
+                <p> <b>©</b>2019 Girish Godage </p>
+                <p class="text-center, text-shadow"> Hosted On <a href="https://pages.github.com/">GitHub Pages</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Typed.js DONT TOUCH THIS! -->
+    <div id="typed-strings">
+    </div>
+
+        <!-- JavaScript files-->
+    <script src="http://localhost:4000/sitejs/jquery/jquery.min.js"></script>
+    <script src="http://localhost:4000/sitejs/popper.js/umd/popper.min.js"> </script>
+    <script src="http://localhost:4000/sitejs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="http://localhost:4000/sitejs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="http://localhost:4000/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.counterup/jquery.counterup.js"></script>
+    <script src="http://localhost:4000/js/front.js"></script>
+    <script src="http://localhost:4000/js/comment.js"></script>
+       <!-- Script pointing to search-script.js -->
+    <script src="http://localhost:4000/js/search-script.js" type="text/javascript"></script>
+   
+    <!-- Configuration -->
+    <script>
+         SimpleJekyllSearch({
+         searchInput: document.getElementById('search-input'),
+         resultsContainer: document.getElementById('results-container'),
+         json: '/search.json'
+         })
+         </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC36FUDDdOTidZJ8nzS5vfE7KVyayenKPE",
+    authDomain: "githubcontactlist.firebaseapp.com",
+    databaseURL: "https://githubcontactlist.firebaseio.com",
+    projectId: "githubcontactlist",
+    storageBucket: "githubcontactlist.appspot.com",
+    messagingSenderId: "899685398702",
+    appId: "1:899685398702:web:0c23c56d2d6d40df37553f",
+    measurementId: "G-YWBRCYJYFW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script>
+   $(function() {
+      
+    //make a variable to keep track of data coming from firebase
+    var data = [];
+
+    // Reference messages collection
+      var messagesRef = firebase.database().ref('contactformmessages');  
+
+
+    //listen to data updates from firebase
+    messagesRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+        //when the data updates at firebase, put it in the data variable
+        data = snapshot.val();
+    })
+    //Entire Contact Form (handler)
+    $('#contactForm').submit(function(e) {
+      e.preventDefault();
+
+        var $form = $(this);
+        console.log("Submit to Firebase");
+
+        //disable submit button
+        $form.find("#sendForm").prop('disabled', true);
+
+        //get values to send to Firebase
+        var name = $('#name').val();
+        console.log(name);
+		
+		var surname = $('#surname').val();
+        console.log(surname);
+		
+		var email = $('#email').val();
+        console.log(email);	
+		
+		var phone = $('#phone').val();
+        console.log(phone);
+
+        var message = $('#message').val();
+        console.log(message);
+
+       
+        //take the values from the form, and put them in an object
+        var newContact = {
+         "name": name,
+			"surname": surname,
+			"email": email,
+			"phone": phone,
+         "message": message
+        }
+        //put new object in data array
+        data.push(newContact);
+        console.log(data);
+
+        //send the new data to Firebase
+        messagesRef.set(data, function(err) {
+            if (err) {
+                alert("Data no go");
+            }else{
+            $("#form-wrapper").slideToggle();
+            $('#form-success-message').slideToggle();
+			}
+        });
+
+        return false;
+    })
+   
+    
+})
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";           
+        }else
+        {
+           myBtton.style.display="none";     
+          
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+      //  document.body.scrollTop =0;
+      //  document.documentElement.scrollTop=0;
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    }
+
+</script>
+
+    
+    
+
+
+</body>
+
+</html>
