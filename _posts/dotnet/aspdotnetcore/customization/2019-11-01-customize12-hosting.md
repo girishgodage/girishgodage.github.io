@@ -7,7 +7,10 @@ categories:
 tags:
 - customization
 - learning
-summary: In this 12th part of this series, I'm going to write about how to customize hosting in ASP.NET Core. We will look into the hosting options, different kind of hosting and a quick look into hosting on the IIS. And while writing this post this again seems to get a long one.  
+summary: In this 12th part of this series, I'm going to write about how to customize
+  hosting in ASP.NET Core. We will look into the hosting options, different kind of
+  hosting and a quick look into hosting on the IIS. And while writing this post this
+  again seems to get a long one.
 image: "/img/aspnetcore.png"
 author: Girish Godage
 layout: posts

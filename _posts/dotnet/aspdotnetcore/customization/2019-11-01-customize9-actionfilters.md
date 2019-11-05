@@ -7,7 +7,9 @@ categories:
 tags:
 - customization
 - learning
-summary: We keep on customizing on the controller level in this ninth post of this series. I'll have a look into ActionFilters and how to create your own ActionFilter to keep your Actions small and readable.  
+summary: We keep on customizing on the controller level in this ninth post of this
+  series. I'll have a look into ActionFilters and how to create your own ActionFilter
+  to keep your Actions small and readable.
 image: "/img/aspnetcore.png"
 author: Girish Godage
 layout: posts

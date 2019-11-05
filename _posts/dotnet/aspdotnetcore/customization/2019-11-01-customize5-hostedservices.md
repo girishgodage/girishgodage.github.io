@@ -7,7 +7,10 @@ categories:
 tags:
 - customization
 - learning
-summary: This fifth part doesn't really show a customization. This part is more about a feature you can use to create background services to run tasks asynchronously inside your application. Actually I use this feature to regularly fetch data from a remote service in a small ASP.NET Core application.  
+summary: This fifth part doesn't really show a customization. This part is more about
+  a feature you can use to create background services to run tasks asynchronously
+  inside your application. Actually I use this feature to regularly fetch data from
+  a remote service in a small ASP.NET Core application.
 image: "/img/aspnetcore.png"
 author: Girish Godage
 layout: posts

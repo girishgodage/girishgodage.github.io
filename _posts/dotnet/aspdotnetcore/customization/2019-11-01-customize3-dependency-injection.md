@@ -7,7 +7,8 @@ categories:
 tags:
 - customization
 - learning
-summary: In the third part we'll take a look into the ASP.NET Core dependency injection and how to customize it to use a different dependency injection container if needed.
+summary: In the third part we'll take a look into the ASP.NET Core dependency injection
+  and how to customize it to use a different dependency injection container if needed.
 image: "/img/aspnetcore.png"
 author: Girish Godage
 layout: posts

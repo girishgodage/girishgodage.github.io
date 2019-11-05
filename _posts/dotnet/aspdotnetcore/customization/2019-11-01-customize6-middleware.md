@@ -7,7 +7,10 @@ categories:
 tags:
 - customization
 - learning
-summary: Wow, it is already the sixth part of this series. In this chapter I'm going to write about Middlewares and how you can use them to customize your app a little more. I quickly go through the basics about Middlewares and then I'll write about some more special things you can do with Middlewares.  
+summary: Wow, it is already the sixth part of this series. In this chapter I'm going
+  to write about Middlewares and how you can use them to customize your app a little
+  more. I quickly go through the basics about Middlewares and then I'll write about
+  some more special things you can do with Middlewares.
 image: "/img/aspnetcore.png"
 author: Girish Godage
 layout: posts

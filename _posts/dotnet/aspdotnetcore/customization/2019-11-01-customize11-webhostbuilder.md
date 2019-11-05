@@ -7,7 +7,8 @@ categories:
 tags:
 - customization
 - learning
-summary: When I wrote the blog post about HTTPS, a reader asked how to configure the HTTPS settings using user secrets.  
+summary: When I wrote the blog post about HTTPS, a reader asked how to configure the
+  HTTPS settings using user secrets.
 image: "/img/aspnetcore.png"
 author: Girish Godage
 layout: posts

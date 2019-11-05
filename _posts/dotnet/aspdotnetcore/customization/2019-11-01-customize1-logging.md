@@ -7,7 +7,12 @@ categories:
 tags:
 - customization
 - learning
-summary: In this first part of the series about customizing ASP.NET Core, I will show you how to customize the logging. The default logging only writes to the console or to the debug window. This is quite good for most cases, but maybe you need to log to a sink like a file or a database. Maybe you want to extend the logger with additional information. In these cases you need to know how to change the default logging.
+summary: In this first part of the series about customizing ASP.NET Core, I will show
+  you how to customize the logging. The default logging only writes to the console
+  or to the debug window. This is quite good for most cases, but maybe you need to
+  log to a sink like a file or a database. Maybe you want to extend the logger with
+  additional information. In these cases you need to know how to change the default
+  logging.
 image: "/img/aspnetcore.png"
 author: Girish Godage
 layout: posts

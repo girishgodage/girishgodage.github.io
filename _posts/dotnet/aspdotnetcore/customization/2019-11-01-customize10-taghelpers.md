@@ -7,7 +7,9 @@ categories:
 tags:
 - customization
 - learning
-summary: In this tenth part of this series I'm going to write about TagHelpers. The built in TagHelpers are pretty useful and making the razor more pretty and more readable. Creating custom TagHelpers will make your life much easier.  
+summary: In this tenth part of this series I'm going to write about TagHelpers. The
+  built in TagHelpers are pretty useful and making the razor more pretty and more
+  readable. Creating custom TagHelpers will make your life much easier.
 image: "/img/aspnetcore.png"
 author: Girish Godage
 layout: posts

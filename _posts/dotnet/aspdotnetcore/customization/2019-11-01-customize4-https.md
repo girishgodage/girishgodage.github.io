@@ -7,7 +7,10 @@ categories:
 tags:
 - customization
 - learning
-summary: HTTPS is on by default now and a first class feature. On Windows the certificate which is needed to enable HTTPS is loaded from the windows certificate store. If you create a project on Linux and Mac the certificate is loaded from a certificate file. 
+summary: HTTPS is on by default now and a first class feature. On Windows the certificate
+  which is needed to enable HTTPS is loaded from the windows certificate store. If
+  you create a project on Linux and Mac the certificate is loaded from a certificate
+  file.
 image: "/img/aspnetcore.png"
 author: Girish Godage
 layout: posts

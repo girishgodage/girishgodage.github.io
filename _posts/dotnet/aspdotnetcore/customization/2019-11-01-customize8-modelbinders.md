@@ -7,7 +7,11 @@ categories:
 tags:
 - customization
 - learning
-summary: In the last chapter about `OutputFormatters` I wrote about sending data out to the clients in different formats. In this post we are going to do it the other way. This post is about data you get into your Web API from outside. What if you get data in a special format or what if you get data you need to validate in a special way. `ModelBinders` will help you to handle this.  
+summary: In the last chapter about `OutputFormatters` I wrote about sending data out
+  to the clients in different formats. In this post we are going to do it the other
+  way. This post is about data you get into your Web API from outside. What if you
+  get data in a special format or what if you get data you need to validate in a special
+  way. `ModelBinders` will help you to handle this.
 image: "/img/aspnetcore.png"
 author: Girish Godage
 layout: posts

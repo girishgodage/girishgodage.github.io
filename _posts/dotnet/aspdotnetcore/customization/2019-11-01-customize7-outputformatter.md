@@ -7,7 +7,9 @@ categories:
 tags:
 - customization
 - learning
-summary: In this seventh chapter I want to write about, how to send your data in different formats and types to the client. By default the ASP.NET Core Web API sends the data as JSON, but there are some more ways to send the data.  
+summary: In this seventh chapter I want to write about, how to send your data in different
+  formats and types to the client. By default the ASP.NET Core Web API sends the data
+  as JSON, but there are some more ways to send the data.
 image: "/img/aspnetcore.png"
 author: Girish Godage
 layout: posts

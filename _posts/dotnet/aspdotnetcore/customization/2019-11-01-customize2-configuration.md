@@ -7,7 +7,14 @@ categories:
 tags:
 - customization
 - learning
-summary: This second part of the blog series about customizing ASP.NET Core is about the application configuration, how to use it and how to customize the configuration to use different ways to configure your app. Maybe you already have an existing XML configuration or want to share a YAML configuration file over different kind of applications. Sometimes it also makes sense to read configuration values out of a database. This second part of the blog series about customizing ASP.NET Core is about the application configuration, how to use it and how to customize the configuration to use different ways to configure your app.
+summary: This second part of the blog series about customizing ASP.NET Core is about
+  the application configuration, how to use it and how to customize the configuration
+  to use different ways to configure your app. Maybe you already have an existing
+  XML configuration or want to share a YAML configuration file over different kind
+  of applications. Sometimes it also makes sense to read configuration values out
+  of a database. This second part of the blog series about customizing ASP.NET Core
+  is about the application configuration, how to use it and how to customize the configuration
+  to use different ways to configure your app.
 image: "/img/aspnetcore.png"
 author: Girish Godage
 layout: posts
