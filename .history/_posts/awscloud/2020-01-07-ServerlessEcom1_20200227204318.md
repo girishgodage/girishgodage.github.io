@@ -6,7 +6,9 @@ categories:
 - AWSCloud
 tags:
 - learning
-summary: Learn how to build an ecommerce app using serverless architecture (reference architecture added). Start with an MVP and design the microservices using AWS Lambda functions to reap the benefits of event-driven architecture.
+summary: Learn how to build an ecommerce app using serverless architecture (reference
+  architecture added). Start with an MVP and design the microservices using AWS Lambda
+  functions to reap the benefits of event-driven architecture.
 image: "/img/sw_design.png"
 author: Girish Godage
 layout: posts
