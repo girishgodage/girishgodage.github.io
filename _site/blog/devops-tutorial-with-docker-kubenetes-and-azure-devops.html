@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#2A80EE">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#2A80EE">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
+<title>DevOps with Docker, Kubernetes and Azure DevOps &#8211; Girish Godage</title>
+<meta name="description" content="What is DevOps? How is it different from Agile? What are the popular DevOps Tools? What is the role of Docker, Kubernetes and Azure DevOps in DevOps. Let's get started with a simple usecase..">
+<meta name="keywords" content="Dev-Ops">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all">
+
+<!-- Verifications -->
+    
+    
+        
+<!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="DevOps with Docker, Kubernetes and Azure DevOps">
+    <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
+    <meta property="og:url" content="http://localhost:4000/blog/devops-tutorial-with-docker-kubenetes-and-azure-devops">
+    <meta property="og:site_name" content="Girish Godage">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@GGodage" />
+    
+    <meta name="twitter:title" content="DevOps with Docker, Kubernetes and Azure DevOps" />
+    <meta name="twitter:description" content="What is DevOps? How is it different from Agile? What are the popular DevOps Tools? What is the role of Docker, Kubernetes and Azure DevOps in DevOps. Let's get started with a simple usecase.." />
+    <meta name="twitter:url" content="http://localhost:4000/blog/devops-tutorial-with-docker-kubenetes-and-azure-devops" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/img/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/img/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    
+
+
+    <link rel="canonical" href="http://localhost:4000/blog/devops-tutorial-with-docker-kubenetes-and-azure-devops">
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
+    <!-- Bootstrap CSS-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Google fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+   
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
+    
+    <!-- animate.css-->
+    <link rel="stylesheet" href="http://localhost:4000/sitejs/animate.css/animate.css">
+    <!-- theme stylesheet-->
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="http://localhost:4000/css/custom.css" as="style">
+    <link rel="stylesheet" href="http://localhost:4000/css/comments.css" as="style">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="http://localhost:4000/img/logo-big.png">
+    <!-- Fab Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
+    
+    
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    
+    <script type="text/javascript">
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+       ga('create', 'UA-130164763-2', 'auto');
+       ga('send', 'pageview');
+    </script>
+    
+    <!-- Typed.js DONT TOUCHHHHHHHHHHHHH!-->
+    <!--<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.9/typed.min.js"></script>
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+      </script>
+      
+      <!-- START OF RELEVANT PART -->
+    <script async src="https://just-comments.com/w2.js"></script>
+    <!-- END OF RELEVANT PART -->
+
+
+</head>
+
+<body>
+    
+<!-- navbar-->
+<header class="header">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container"><a class="navbar-brand" href="http://localhost:4000"><img
+          src="http://localhost:4000/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
+          alt="logo"> <img src="http://localhost:4000/img/girish_logo.png" height="30" alt="girilogo"></a>
+      <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span
+          class="fa fa-bars" style="color: white"></span></button>
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="http://localhost:4000#home" class="nav-link  link-scroll">Home</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#about" class="nav-link link-scroll">About</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#skills" class="nav-link link-scroll">Skills</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#services" class="nav-link link-scroll">Services</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#references" class="nav-link link-scroll">My
+              work</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#contact" class="nav-link link-scroll">Contact</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000/blog" class="nav-link link-scroll">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    
+    
+    
+    <div style="background-color:Gray;">
+        <div style="padding:0;min-height:95.05vh;display:flex;font-family: Poppins, sans-serif;margin-top: 5rem;"
+            class="container">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <p class="post-title">
+                    <h1><a href="/blog/devops-tutorial-with-docker-kubenetes-and-azure-devops">DevOps with Docker, Kubernetes and Azure DevOps</a></h1>
+                </p>
+                
+                <span class="post-meta">
+              <span style="font-weight:600">January 01, 2020 Wednesday</span>
+                    
+                       ( 19 minute read ) 
+                    
+                     
+                    <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">   by Girish Godage</a>
+                </span>
+                
+                <div class="site-category"> 
+                        <h5>Dev-Ops</h5>
+                </div>
+                
+                <hr>
+                <div><img class="post-image" src="/img/sw_design.png" alt="DevOps with Docker, Kubernetes and Azure DevOps" height="250" /></div>
+                <div class="post-content">
+                    <br>                     
+                    <p>In this article, we focus our attention on the DevOps.</p>
+
+<p>What is DevOps? How is it different from Agile? What are the popular DevOps Tools? What is the role of Docker, Kubernetes and Azure DevOps in DevOps. Let’s get started with a simple usecase.</p>
+
+<h2 id="you-will-learn">You will learn</h2>
+<ul>
+  <li>What is DevOps?</li>
+  <li>Why do we need DevOps?</li>
+  <li>How is DevOps different from Agile?</li>
+  <li>What are the important DevOps tools?</li>
+  <li>How does Docker help DevOps?</li>
+  <li>How does Kubernetes help DevOps?</li>
+  <li>How does Azure DevOps help DevOps?</li>
+  <li>What is Continuous Integration, Continuous Delivery?</li>
+  <li>What is Infrastructure as Code?</li>
+  <li>How do Terraform and Ansible help DevOps?</li>
+</ul>
+
+<h2 id="what-is-devops">What is DevOps?</h2>
+
+<p>As with most buzzwords around software development, there is no accepted definition for DevOps.</p>
+
+<p>Definitions vary from simple ones, like these two, to complex definitions that last a complete page of a book.</p>
+
+<blockquote>
+  <p><strong>DevOps</strong> is the combination of <strong>cultural philosophies, practices, and tools</strong> 
+that <strong>increases</strong> an organization’s ability to <strong>deliver applications and services</strong> at <strong>high velocity</strong> - Amazon Web Services(AWS)</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>DevOps</strong> is a <strong>collaborative and multidisciplinary</strong> effort within an organization to <strong>automate continuous delivery</strong> of new software versions, while <strong>guaranteeing</strong> their <strong>correctness and reliability</strong> - A Survey of DevOps Concepts and Challenges - L Leite</p>
+</blockquote>
+
+<p><strong>Instead of trying define DevOps</strong>, let’s understand how Software Development evolved to DevOps.</p>
+
+<h3 id="waterfall-model">Waterfall Model</h3>
+
+<p>First few decades of software development was centered around the water fall model.</p>
+
+<p>Waterfall model approached software development the same way that you would approach building a real estate project - for example, building an amazing bridge.</p>
+
+<p>You will build software in multiple phases that can go on for a period any where between a few weeks to a few months.</p>
+
+<p><img src="/images/devops-01-waterfall.png" alt="Image" title="Waterfall Model" /></p>
+
+<p>In most waterfall projects, it would be months before the business sees a working version of an application.</p>
+
+<h3 id="key-elements-to-build-great-software">Key Elements to Build Great Software</h3>
+
+<p>While working in the waterfall model for a few decades, we understood a few key elements around developing great software:</p>
+<ul>
+  <li>Communication</li>
+  <li>Feedback</li>
+  <li>Automation</li>
+</ul>
+
+<h4 id="importance-of-communication">Importance of Communication</h4>
+
+<p>Software Development is a multi disciplinary effort involving a variety of skills.</p>
+
+<p><img src="/images/devops-06-teams.png" alt="Image" title="DevOps Teams" /></p>
+
+<p>Communication between people is essential for the success of a software project.</p>
+
+<p>In the waterfall model, we tried to enhance communication by trying to prepare 1000 page documents on Requirements, Design, Architecture and Deployment.</p>
+
+<p>But, over a period of time, we understood that</p>
+<ul>
+  <li>The best way to enhance communication within the team, is to get the team together. Get a variety of skills in the same team.</li>
+  <li>Cross functional teams - with wide range of skills - work great.</li>
+</ul>
+
+<h4 id="importance-of-early-feedback">Importance of Early Feedback</h4>
+
+<p>Getting Feedback Quickly is important. Building great software is all about getting quick feedback.</p>
+
+<blockquote>
+  <p>Are we building an application which meets the business expections?</p>
+</blockquote>
+
+<p>You cannot wait for months to get feedback. You would want to know quickly.</p>
+
+<blockquote>
+  <p>Will your application have problems if it is deployed to production?</p>
+</blockquote>
+
+<p>You don’t want to know it after a few months. You want to find it out as early as possible.</p>
+
+<p>The earlier we find a problem, the easier it is to fix it.</p>
+
+<p>We found that the best software teams are structured to enable quick feedback. Anything I’m working on, I would like to know if I’m doing the right thing as early as possible .</p>
+
+<h4 id="importance-of-automation">Importance of Automation</h4>
+
+<p>Automation is critical. Software Development involves a wide range of activities. Doing things manually is slow and error prone. We understood that it’s essential to always look for opportunities to introduce Automation.</p>
+
+<p><img src="/images/devops-05-continuous-delivery.png" alt="Image" title="DevOps Continuous Delivery" /></p>
+
+<p>Having understood the key elements to develop great software, lets look at how we evolved to Agile and DevOps.</p>
+
+<h3 id="evolution-to-agile">Evolution to Agile</h3>
+
+<p>Agile was the first step in evolution towards implementing our learnings with enhanced communication between teams, getting feedback and bringing in automation.</p>
+
+<p><img src="/images/devops-06-teams.png" alt="Image" title="DevOps Teams" /></p>
+
+<p>Agile brought the business and development teams together into one team which works to build great software in small iterations called sprints.</p>
+
+<p><img src="/images/devops-02-agile-2.png" alt="Image" title="Agile &amp; DevOps" /></p>
+
+<p>Instead of spending weeks or months on each phase of development, agile focuses on taking small requirements called user stories through the development cycle within a few days, sometimes within the same day.</p>
+
+<p><img src="/images/devops-02-agile-1.png" alt="Image" title="Agile &amp; DevOps" /></p>
+
+<h4 id="how-did-agile-enhance-communication-between-teams">How did Agile enhance communication between teams?</h4>
+
+<p>Agile brought the business and development teams together.</p>
+<ul>
+  <li>Business is responsible for defining what to build? What are the requirements?</li>
+  <li>Development is responsible for building a product that meets the requirements. Development includes everybody involved in Design, Coding, Testing and Packaging of your software.</li>
+</ul>
+
+<p>In Agile, a representative from Business, called a Product Owner, is always present with the team, the team understands the business objectives clearly.</p>
+
+<p>When the development team does not understand the requirements well and is going in a wrong path, Product Owner helps them do course correction and stay on the correct path.</p>
+
+<blockquote>
+  <p>Result : The final product the team builds is something that the business wants.</p>
+</blockquote>
+
+<p>Another important factor is that Agile Teams have cross functional skills - coding skills - front end, api and databases, testing skills and business skills. This enhances communication between people that have to work together to build great software.</p>
+
+<h4 id="agile-and-automation">Agile and Automation</h4>
+
+<p>What are the Automation areas where Agile Teams focused on?</p>
+
+<p>Software Products can have a variety of defects.</p>
+<ul>
+  <li>Functional Defects mean the product does not work as expected.</li>
+  <li>Technical Defects make the maintainence of the software difficult. For example, code quality problems.</li>
+</ul>
+
+<p>In general, agile teams were focused on using automation to find technical and functional defects as early as possible.</p>
+
+<p>Agile teams focused on automation tests. Writing great unit tests to test your methods and classes. Writing great integration tests to test your modules and applications. Agile teams also focused extensively on code quality. Tools like SONAR were used to assess the code quality of applications.</p>
+
+<p><img src="/images/devops-05-continuous-integration.png" alt="Image" title="Agile &amp; Continuous Integration" /></p>
+
+<p>Is it sufficient if you have great automation tests and great code quality checks? You would want to run them as often as possible. Agile Teams focused on Continuous Integration. You make a commit to version control. Your Unit Tests, Automation Tests and Code Quality Checks were automatically executed in a Continuous Integration Pipeline. Most popular CI/CD tool during the early agile time period was Jenkins.</p>
+
+<h4 id="how-did-agile-promote-immediate-feedback">How did Agile promote immediate feedback?</h4>
+
+<p>Most important factor is that Business does not need to wait for months to see the final product.  At the end of every sprint, the product is demoed to all stakeholders including Architecture and Business Teams. All feedback is taken in while prioritizing user stories for the next sprint. Result : The final product the team builds is something that the business wants.</p>
+
+<p>Another important factor that enables immediate feedback is continuous integration. Let’s say I commit some code into version control. Within 30 minutes, I get feedback if my code causes a unit test failure or a integration test failure. I will get feedback if my code does not meet code quality standards or does not have enough code coverage in the unit tests.</p>
+
+<p>Was agile successful? Yes. For sure. By focusing on improving the communication between business and development teams, and focusing on finding a variety of defects early, Agile took software development to the next level.</p>
+
+<p>I, personally, had a wonderful experience working with some amazing teams in the Agile model. Software Engineering, which for me represents all the efforts in building software from requirements to taking applications live, for the first time, was as enjoyable as programming.</p>
+
+<p>But, does evolution stop? Nope.</p>
+
+<p>New challenges emerged.</p>
+
+<h3 id="evolution-of-microservices-architectures">Evolution of Microservices Architectures</h3>
+
+<p>We started moving towards a microservices architecture and we started building a number of small api’s instead of building large monolith applications.</p>
+
+<p>What was the new challenge?</p>
+
+<p>Operations becomes more important. Instead of doing 1 monolith release a month, you are doing hundreds of small microservice releases every week. Debugging problems across microservices and getting visibility into what’s happening with the microservices became important.</p>
+
+<p><img src="/images/devops-06-microservices.png" alt="Image" title="DevOps and Microservices" /></p>
+
+<p>It was time for a new buzzword in software development. DevOps.</p>
+
+<h3 id="emergence-of-devops">Emergence of DevOps</h3>
+
+<p>What was the focus of DevOps?</p>
+
+<p>Focus of DevOps was on enhancing the communication between the Development and the Operations Team.</p>
+<ul>
+  <li>How do we make deployments easier?</li>
+  <li>How do we make the work operations team does more visible to the development team?</li>
+</ul>
+
+<h4 id="how-did-devops-enhance-communication-between-teams">How did DevOps enhance communication between teams?</h4>
+
+<p>DevOps brought Operations Teams closer to the Development Teams.</p>
+<ul>
+  <li>In more mature enterprises, Development and Operations Teams worked as one Team. They started sharing common goals and both teams started to understand the challenges the other team faces.</li>
+  <li>In enterprises in the early stages of devops evolution, a representative from the operations team can be involved in the sprints - standups and retrospectives.</li>
+</ul>
+
+<p><img src="/images/devops-06-teams.png" alt="Image" title="DevOps Teams" /></p>
+
+<h4 id="what-are-the-automation-areas-where-devops-teams-focused-on">What are the Automation areas where DevOps Teams focused on?</h4>
+
+<p>In addition to the focus areas of agile - Continuous Integration and Test Automation, the DevOps teams were focused on helping automate several of the Operation Teams Activities - Provisioning Servers, Configuring Software on Servers, Deploying Applications and Monitoring Production Environments. A few key terminology are Continuous Deployment, Continuous Delivery and Infrastructure as Code.</p>
+
+<p>Continuous Deployment is all about continuously deploying new version of software on Test Environments. In even more mature organizations like Google, Facebook, Continuous Delivery helps in continuously deploying software to production - maybe hundreds of production deployments per day.</p>
+
+<p><img src="/images/devops-05-continuous-delivery.png" alt="Image" title="DevOps Continuous Delivery" /></p>
+
+<p>Infrastructure as Code is all about treating your Infrastructure like you treat your application code. You create your infrastructure - servers, load balancers and database - in an automated way using configuration. You would version control your infrastructure - so that you can track your infrastructure changes over a period of time.</p>
+
+<p><img src="/images/devops-06-iaac-2-overview.png" alt="Image" title="DevOps and Infrastructure as Code" /></p>
+
+<h4 id="how-did-devops-promote-immediate-feedback">How did DevOps promote immediate feedback?</h4>
+
+<p>DevOps brings Operations and Development Teams Together. Because Operations and Development are part of the same team, the entire team understands the challenges associated with Operations and Development.</p>
+<ul>
+  <li>Any operational problems get quick attention of the developers.</li>
+  <li>Any challenges in taking software live get early attention of operations team.</li>
+</ul>
+
+<p>DevOps encouraged Continuous Integration, Continuous Delivery and Infrastructure as Code.</p>
+<ul>
+  <li>Because of Continous Delivery, If I make a code change or a configuration change that might break a test or a staging environment, I would know it within a few hours.</li>
+  <li>Because of Infrastructure As Code, Developers can self provision environments, deploy code and find problems on their own, without any help from operations team.</li>
+</ul>
+
+<p>While we talk as if agile and devops are two different things to make things simple, in reality, there is no accepted definition for what devops means.</p>
+
+<p>I see agile and devops as two phases that helped us improve how build great software. They don’t compete against each other but together they help us build amazing software products.</p>
+
+<p>As far as iam concerned the objective of Agile and DevOps together is to do things that</p>
+<ul>
+  <li>Promote Communication and Feedback between Business, Development and Operations Teams</li>
+  <li>Ease the painpoints with Automation. We will discuss about Unit Tests, Integration Tests, Code Quality Checks, Continuous Integration, Continuous Delivery, Infrastructure as Code and Standardization through Containerization during this amazing journey in this course.</li>
+</ul>
+
+<h2 id="a-devops-story">A DevOps Story</h2>
+
+<p>Here’s an amazing story:</p>
+
+<p>You are the star developer in a team and you would need to make a quick fix. You go to a github repository!</p>
+
+<p>You quickly checkout the project.</p>
+
+<p>You quickly create your local environment.</p>
+
+<p>You make a change. You test it. You update the unit and automation tests.</p>
+
+<p>You commit it.</p>
+
+<p><img src="/images/devops-05-continuous-delivery.png" alt="Image" title="DevOps Continuous Delivery" /></p>
+
+<p>You get an email saying it is deployed to QA.</p>
+
+<p>A few integration tests are automatically run.</p>
+
+<p>Your QA team gets an email asking for approval. They do a manual test and approve.</p>
+
+<p>Your code is live in production in a few minutes.</p>
+
+<p>You might think this is an ideal scenario. But, do you know that this is what is happening in innovative enterprises like Netflix, Amazon and Google day in and day out!</p>
+
+<p>This is the story of DevOps.</p>
+
+<h3 id="devops--development--operations">DevOps = Development + Operations</h3>
+
+<p>DevOps is a Natural Evolution of Software Development. DevOps is NOT JUST a tool, a framework or just automation. It is a combination of all these.</p>
+
+<p>DevOps focuses on People, Process and Products. People aspects of DevOps are all about Culture and Create a Great Mindset. A culture which promotes open communication and values quick feedback. A culture that value high quality software.</p>
+
+<p>Agile helped in bridging the gap between the business and development teams. Development Teams understood the priorities of the business and worked with the business to deliver the stories providing most value first. However, the Dev and Ops teams were not aligned.</p>
+
+<p>They had different goals.</p>
+
+<blockquote>
+  <p>The goal of Dev team is to take as many new features to production as possible.</p>
+</blockquote>
+
+<blockquote>
+  <p>The goal of Ops team was to keep the production environment as stable as possible.</p>
+</blockquote>
+
+<p>As you can see, if taking things to production is difficult, dev and ops are unaligned.</p>
+
+<blockquote>
+  <p>DevOps aims to align the Dev and Ops teams with shared goals.</p>
+</blockquote>
+
+<p>Dev team works with the Ops team to understand and solve operational challenges. Ops team is part of the scrum team and understands the features under development.</p>
+
+<blockquote>
+  <p>How can we make this possible?</p>
+</blockquote>
+
+<blockquote>
+  <p>Break down the wall between Dev and Ops!</p>
+</blockquote>
+
+<h4 id="getting-dev-and-ops-together---option-1">Getting Dev and Ops Together - Option 1</h4>
+
+<p>In matured Dev Ops enterprises, Dev and Ops work as part of the same scrum team and share each other responsibilities.</p>
+
+<h4 id="getting-dev-and-ops-together---option-2">Getting Dev and Ops Together - Option 2</h4>
+
+<p>However, if you are in the early stages of devops evolution, how can you get Dev and Ops have common objectives and work together?</p>
+
+<p>Here are some of the things you can do:</p>
+<ul>
+  <li>One of the things you can start with is to have the development team share some of the responsibilities of the operation team. For example, the dev team can take the responsibility of new release for the first week after production deployment. This helps the development team understand the challenges faced by operations in taking new releases live and help them come together and find better solutions.</li>
+  <li>Other thing you can do is to involve a representative of the operations team in the Scrum activities. Involve them in Standups and Retrospectives of the team.</li>
+  <li>The next thing you can do is to make the challenges faced by Operations team more visible to the Development team. When you face any challenges in operations, make development teams part of the teams working on solutions.</li>
+</ul>
+
+<p>Which way you take, find ways of breaking the wall and get the Development and Operations team together.</p>
+
+<p>Another interesting option emerges because of automation. By using Infrastructure as Code and enabling Self Provisioning for Developers, You can create common language that operations and development teams understand - code. More about this in the next couple of steps.</p>
+
+<h3 id="a-devops-use-case">A DevOps Use Case</h3>
+
+<p>Consider the picture below:</p>
+
+<p><img src="/images/devops-usecases-1-and-2.png" alt="Image" title="DevOps Use case with Docker and Kubernetes" /></p>
+
+<p>This picture show cases two simple workflows</p>
+<ul>
+  <li>No 1 : Infrastructure as Code using Terraform and Azure DevOps to provision Kubernetes Clusters</li>
+  <li>No 2 : Continuous Deployment of Microservices using Azure DevOps to build and deploy Docker images for microservices into Kubernetes Clusters</li>
+</ul>
+
+<p>Does this sound complex?</p>
+
+<p>Let’s break it down and try and understand them.</p>
+
+<p>Let’s start with No 2 - Continuous Deployment first.</p>
+
+<h4 id="no-2--devops-continuous-deployment-with-azure-devops-and-jenkins">No 2 : DevOps Continuous Deployment with Azure DevOps and Jenkins</h4>
+
+<p>What is the use of having great tests and code quality checks if you don’t run them often?</p>
+
+<p>What is the use of deployment automation if you dont deploy software often enough?</p>
+
+<p>As soon as a developer commits code into the version control system, the following steps are executed:</p>
+<ul>
+  <li>Unit Tests</li>
+  <li>Code Quality Checks</li>
+  <li>Integration Tests</li>
+  <li>Application Packaging - Building a deployable version of application. Tools - Maven, Gradle, Docker</li>
+  <li>Application Deployment - Putting new applications or new versions of application live.</li>
+  <li>An email to the testing team to test the application.</li>
+</ul>
+
+<p>As soon as there is an approval from the test team, the app is immediately deployed to the  Next Environment.</p>
+
+<p>This is called Continuous Deployment. If you continuously deploy upto production, it is called Continuous Delivery.</p>
+
+<p>The most popular CI CD Tools are Azure DevOps and Jenkins</p>
+
+<h4 id="no-1--devops-infrastructure-as-code-with-terraform">No 1 : DevOps Infrastructure as Code with Terraform</h4>
+
+<p>In older days, we used to create environments and deploy applications manually.</p>
+
+<p><img src="/images/devops-06-iaac-1-manual.png" alt="Image" title="DevOps and Iac - Manual" /></p>
+
+<p>Everytime you create a server, this needs to be done manually.</p>
+<ul>
+  <li>What if Java version needs to be updated?</li>
+  <li>A security patch needs to be applied?</li>
+</ul>
+
+<p>You do it manually.</p>
+
+<p>What is the result of this?</p>
+<ul>
+  <li>High Chance of Errors.</li>
+  <li>Replication environments is difficult.</li>
+</ul>
+
+<h4 id="infrastructure-as-code">Infrastructure as Code</h4>
+
+<p>Infrastructure as Code - Treat Infrastructure the same way as application code</p>
+
+<p>Here are some of the important things to understand with Infastructure as Code</p>
+<ul>
+  <li>Infra team focuses on value added work (instead of routine work)</li>
+  <li>Less Errors and Quick Recovery from Failures</li>
+  <li>Servers are Consistent (Avoids Configuration Drift)</li>
+</ul>
+
+<p><img src="/images/devops-06-iaac-2-overview.png" alt="Image" title="DevOps and Iac - Automated" /></p>
+
+<p>The most popular IaC tools are Ansible and Terraform.</p>
+
+<p>Typically these are the steps in IaC</p>
+<ul>
+  <li>Provision Servers(Enabled by Cloud) from a Template</li>
+  <li>Install Software</li>
+  <li>Configure Software</li>
+</ul>
+
+<h5 id="server-provisioning">Server Provisioning</h5>
+
+<p>Typically Provisioning Tools are used to provision servers and get new server ready with networking capabilities. The most popular provisioning tools are CloudFormation and Terraform.</p>
+
+<p>Using Terraform, you can provision servers and rest of your infrastructure, like load balancers, databases, networking configuration, etc. You can create servers using precreated images created using tools like Packer and AMI (Amazon Machine Image).</p>
+
+<h5 id="configuration-management">Configuration Management</h5>
+
+<p>Configuration Management tools are used to</p>
+<ul>
+  <li>Install Software</li>
+  <li>Configure Software</li>
+</ul>
+
+<p>Popular Configuration management tools are Chef, Puppet, Ansible, and SaltStack. These are designed to install and manage software on existing servers.</p>
+
+<h3 id="role-of-docker-and-kubernetes-in-devops">Role of Docker and Kubernetes in DevOps</h3>
+
+<p>What is the role of Docker and Kubernetes in DevOps?</p>
+
+<p><img src="/images/docker-intro.png" alt="Image" title="Docker" /></p>
+
+<p>In the microservices world, a few microservices might be built with Java, a few with Python and a few with JavaScript.</p>
+
+<p>Different microservices will have different ways of building applications and deploying them to servers.</p>
+
+<p>This makes operations team’s job difficult.</p>
+
+<p>How can we have similar way of deploying multiple types of applications? Enter Containers and Docker.</p>
+
+<p>Using Docker you can build images of microservices - irrespective of their language - Java, Python or JavaScript. You can run these images the same way on any infrastructure.</p>
+
+<p>This simplifies operations.</p>
+
+<p>Kubernetes adds on to this by helping to orchestrate different types of containers and deploying them to clusters.</p>
+
+<p><img src="/images/kubernetes-01-intro.png" alt="Image" title="Kubernetes" /></p>
+
+<p>Kubernetes also provides</p>
+<ul>
+  <li>Service Discovery</li>
+  <li>Load Balancing</li>
+  <li>Centralized Configuration</li>
+</ul>
+
+<p>Docker and Kubernetes make DevOps easy.</p>
+
+<p><img src="/images/devops-06-iaac-4-containers.png" alt="Image" title="Devops with Docker and Kubernetes" /></p>
+
+<h3 id="important-devops-metrics">Important DevOps Metrics</h3>
+
+<p>Following are some of the important DevOps metrics you can track and improve over a period of time.</p>
+<ul>
+  <li>Deployment Frequency - How often are applications deployed to production?</li>
+  <li>Time To Market - How long do you need to take a feature from coding to production?</li>
+  <li>Failure Rate of New Releases - How many of your releases fail?</li>
+  <li>Lead Time to Fixes - How long do you need to make a production fix and release it to production?</li>
+  <li>Mean Time to Recovery  - How long do you take to recover your production environment from a major issue?</li>
+</ul>
+
+<h3 id="devops-best-practices">DevOps Best Practices</h3>
+
+<p>Following are some of the best practices with DevOps</p>
+<ul>
+  <li>Standardization</li>
+  <li>Teams with Cross Function Skills</li>
+  <li>Focus on Culture</li>
+  <li>Automate, Automate and ..</li>
+  <li>Immutable Infrastructure</li>
+  <li>Dev Prod Parity</li>
+  <li>Version Control Everything</li>
+  <li>Self Provisioning</li>
+</ul>
+
+<h3 id="devops-maturity-signals">DevOps Maturity Signals</h3>
+
+<p>How do you measure the maturity of your DevOps Implementations. Here are some of the important questions to ask.</p>
+
+<h4 id="development">Development</h4>
+<ul>
+  <li>Does every commit trigger automated tests and automated code quality checks?</li>
+  <li>Is your code continuously delivered to production?</li>
+  <li>Do you use pair programming?</li>
+  <li>Do you use TDD and BDD?</li>
+  <li>Do you have a lot of re-usable modules?</li>
+  <li>Can development teams self provision environments?</li>
+  <li>How long does it take to deliver a quick fix to production?</li>
+</ul>
+
+<h4 id="test">Test</h4>
+<ul>
+  <li>Are your tests full automated with high quality production like test data?</li>
+  <li>Does your builds fail when your automated tests fail?</li>
+  <li>Are your testing cycles small?</li>
+  <li>Do you have automated NFR tests?</li>
+</ul>
+
+<h4 id="deployment">Deployment</h4>
+<ul>
+  <li>Do you have Dev Prod Parity?</li>
+  <li>Do you use A/B Testing?</li>
+  <li>Do you use canary deployments?</li>
+  <li>Can you deploy at the click of a button?</li>
+  <li>Can you rollback at the click of a button?</li>
+  <li>Can you provision and release infrastructure at the click of a button?</li>
+  <li>Do you use IAC and version control your infrastructure?</li>
+</ul>
+
+<h4 id="monitoring">Monitoring</h4>
+<ul>
+  <li>Does the team use a centralized monitoring system?</li>
+  <li>Can development team get access to logs at the click of a button?</li>
+  <li>Does the team get an automated alert if something goes wrong in production?</li>
+</ul>
+
+<h4 id="teams-and-processes">Teams and Processes</h4>
+<ul>
+  <li>Is the team looking to continuously improve?</li>
+  <li>Does the team have all the skills it needs from Business, Development and Operations?</li>
+  <li>Does the team track the key devops metrics and improve on them?</li>
+  <li>Do you have the culture of take Local Discoveries and using them to make Global Improvements?</li>
+</ul>
+
+<h3 id="devops-transformation-best-practices">DevOps Transformation Best Practices</h3>
+<ul>
+  <li>Leadership Buy-in is Critical</li>
+  <li>Involves Upfront Costs</li>
+  <li>Setup COEs to help teams</li>
+  <li>Choose the right application and team</li>
+  <li>Start Small</li>
+  <li>Sharing Learings (Newsletters, Communication, COEs)</li>
+  <li>Encourage People with Exploration and Automation Mindset</li>
+  <li>Recognize DevOps Teams</li>
+</ul>
+
+
+                </div>
+
+                
+
+                <div id="disqus_thread"></div>
+                <script>
+                
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://girishgodage-github-io.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
+</button>
+<!-- Footer-->
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 text-center text-lg-left">
+                <p class="social">
+                    <a href="https://www.facebook.com/girish.godage.5" class="external facebook wow fadeInUp">
+                        <i class="fa fa-facebook"></i></a>
+                    <a href="https://instagram.com/girishgodage_007" data-wow-delay="0.2s" class="external instagram wow fadeInUp">
+                        <i class="fa fa-instagram"></i></a>
+                    <a href="https://youtube.com/girishgodage" data-wow-delay="0.4s" class="external youtube wow fadeInUp">
+                        <i class="fa fa-youtube-play"></i></a>
+                    <a href="https://twitter.com/GGodage" data-wow-delay="0.4s" class="external twitter wow fadeInUp">
+                            <i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/girishgodage" data-wow-delay="0.4s" class="external github wow fadeInUp">
+                                <i class="fa fa-github"></i></a>    
+                    <a href="mailto:girishgodage@gmail.com?subject=Hello%20Girish" data-wow-delay="0.6s" class="email wow fadeInUp">
+                        <i class="fa fa-envelope"></i></a></p>
+            </div>
+            <div class="col-12 col-md-2">
+            <h5>Quick Links</h5>
+            <ul>
+               <li><a href="http://localhost:4000#about">About</a></li>
+               <li><a href="http://localhost:4000#contact">Contact</a></li>
+               <li><a href="/sitemap.xml">Sitemap</a></li>               
+            </ul>
+         </div>
+            <div class="col-12 col-md-4 text-center text-lg-right mt-4 mt-lg-0">
+                <p> <b>©</b>2019 Girish Godage </p>
+                <p class="text-center, text-shadow"> Hosted On <a href="https://pages.github.com/">GitHub Pages</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Typed.js DONT TOUCH THIS! -->
+    <div id="typed-strings">
+    </div>
+
+        <!-- JavaScript files-->
+    <script src="http://localhost:4000/sitejs/jquery/jquery.min.js"></script>
+    <script src="http://localhost:4000/sitejs/popper.js/umd/popper.min.js"> </script>
+    <script src="http://localhost:4000/sitejs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="http://localhost:4000/sitejs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="http://localhost:4000/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.counterup/jquery.counterup.js"></script>
+    <script src="http://localhost:4000/js/front.js"></script>
+    <script src="http://localhost:4000/js/comment.js"></script>
+       <!-- Script pointing to search-script.js -->
+    <script src="http://localhost:4000/js/search-script.js" type="text/javascript"></script>
+   
+    <!-- Configuration -->
+    <script>
+         SimpleJekyllSearch({
+         searchInput: document.getElementById('search-input'),
+         resultsContainer: document.getElementById('results-container'),
+         json: '/search.json'
+         })
+         </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC36FUDDdOTidZJ8nzS5vfE7KVyayenKPE",
+    authDomain: "githubcontactlist.firebaseapp.com",
+    databaseURL: "https://githubcontactlist.firebaseio.com",
+    projectId: "githubcontactlist",
+    storageBucket: "githubcontactlist.appspot.com",
+    messagingSenderId: "899685398702",
+    appId: "1:899685398702:web:0c23c56d2d6d40df37553f",
+    measurementId: "G-YWBRCYJYFW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script>
+   $(function() {
+      
+    //make a variable to keep track of data coming from firebase
+    var data = [];
+
+    // Reference messages collection
+      var messagesRef = firebase.database().ref('contactformmessages');  
+
+
+    //listen to data updates from firebase
+    messagesRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+        //when the data updates at firebase, put it in the data variable
+        data = snapshot.val();
+    })
+    //Entire Contact Form (handler)
+    $('#contactForm').submit(function(e) {
+      e.preventDefault();
+
+        var $form = $(this);
+        console.log("Submit to Firebase");
+
+        //disable submit button
+        $form.find("#sendForm").prop('disabled', true);
+
+        //get values to send to Firebase
+        var name = $('#name').val();
+        console.log(name);
+		
+		var surname = $('#surname').val();
+        console.log(surname);
+		
+		var email = $('#email').val();
+        console.log(email);	
+		
+		var phone = $('#phone').val();
+        console.log(phone);
+
+        var message = $('#message').val();
+        console.log(message);
+
+       
+        //take the values from the form, and put them in an object
+        var newContact = {
+         "name": name,
+			"surname": surname,
+			"email": email,
+			"phone": phone,
+         "message": message
+        }
+        //put new object in data array
+        data.push(newContact);
+        console.log(data);
+
+        //send the new data to Firebase
+        messagesRef.set(data, function(err) {
+            if (err) {
+                alert("Data no go");
+            }else{
+            $("#form-wrapper").slideToggle();
+            $('#form-success-message').slideToggle();
+			}
+        });
+
+        return false;
+    })
+   
+    
+})
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";           
+        }else
+        {
+           myBtton.style.display="none";     
+          
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+      //  document.body.scrollTop =0;
+      //  document.documentElement.scrollTop=0;
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    }
+
+</script>
+
+    
+    
+
+
+</body>
+
+</html>
