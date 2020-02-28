@@ -1,25 +1,23 @@
 ---
-title: How to Build an E-commerce App using Serverless Technology?
-date: 2020-01-07 10:41:00 Z
-permalink: "/blog/ecommerce-app-using-serverless"
+title: 10 AWS Lambda Use Cases to Start Your Serverless Journey
+date: 2020-01-07 10:49:00 Z
+permalink: "/blog/serverless-examples-aws-lambda-use-cases"
 categories:
 - AWSCloud
 tags:
 - learning
-summary: Learn how to build an ecommerce app using serverless architecture (reference
-  architecture added). Start with an MVP and design the microservices using AWS Lambda
-  functions to reap the benefits of event-driven architecture.
+summary: Many big companies such as Netflix, Conde Nast and NY Times are migrating their compute services to serverless. But sometimes the cloud architects are confused about the application of serverless technologies such as AWS Lambda and Azure functions. This blog explains 10 AWS Lambda Use Cases to help you get started with serverless. Some of the use cases are Serverless Website | App Authentication | Mass Emailing | Real-time Data Transformation | CRON Jobs | Chatbot | IoT.
 image: "/img/sw_design.png"
 author: Girish Godage
 layout: posts
 prevurl: ""
 nexturl: ""
-discussion_id: 2020-01-07-Serverlessecom1
+discussion_id: 2020-01-07-serverless-examples
 ---
 
-### How to Build an E-commerce App using Serverless ?
+### AWS Lambda Use Cases to Start Your Serverless Journey
 
- Learn how to build an ecommerce app using serverless architecture (reference architecture added). Start with an MVP and design the microservices using AWS Lambda functions to reap the benefits of event-driven architecture.
+ Many big companies such as Netflix, Conde Nast and NY Times are migrating their compute services to serverless. But sometimes the cloud architects are confused about the application of serverless technologies such as AWS Lambda and Azure functions. This blog explains 10 AWS Lambda Use Cases to help you get started with serverless. Some of the use cases are Serverless Website | App Authentication | Mass Emailing | Real-time Data Transformation | CRON Jobs | Chatbot | IoT.
 
  ![image info](/img/awscloud/1/cover-image-1.png)
 

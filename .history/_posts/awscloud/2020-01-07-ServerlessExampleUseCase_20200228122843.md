@@ -1,31 +1,41 @@
 ---
-title: How to Build an E-commerce App using Serverless Technology?
-date: 2020-01-07 10:41:00 Z
-permalink: "/blog/ecommerce-app-using-serverless"
+title: 10 AWS Lambda Use Cases to Start Your Serverless Journey
+date: 2020-01-07 10:49:00 Z
+permalink: "/blog/serverless-examples-aws-lambda-use-cases"
 categories:
 - AWSCloud
 tags:
 - learning
-summary: Learn how to build an ecommerce app using serverless architecture (reference
-  architecture added). Start with an MVP and design the microservices using AWS Lambda
-  functions to reap the benefits of event-driven architecture.
+summary: Many big companies such as Netflix, Conde Nast and NY Times are migrating their compute services to serverless. But sometimes the cloud architects are confused about the application of serverless technologies such as AWS Lambda and Azure functions. This blog explains 10 AWS Lambda Use Cases to help you get started with serverless. Some of the use cases are Serverless Website | App Authentication | Mass Emailing | Real-time Data Transformation | CRON Jobs | Chatbot | IoT.
 image: "/img/sw_design.png"
 author: Girish Godage
 layout: posts
 prevurl: ""
 nexturl: ""
-discussion_id: 2020-01-07-Serverlessecom1
+discussion_id: 2020-01-07-serverless-examples
 ---
 
-### How to Build an E-commerce App using Serverless ?
+### AWS Lambda Use Cases to Start Your Serverless Journey
 
- Learn how to build an ecommerce app using serverless architecture (reference architecture added). Start with an MVP and design the microservices using AWS Lambda functions to reap the benefits of event-driven architecture.
+ Many big companies such as Netflix, Conde Nast and NY Times are migrating their compute services to serverless. But sometimes the cloud architects are confused about the application of serverless technologies such as AWS Lambda and Azure functions. This blog explains 10 AWS Lambda Use Cases to help you get started with serverless. Some of the use cases are Serverless Website | App Authentication | Mass Emailing | Real-time Data Transformation | CRON Jobs | Chatbot | IoT.
 
- ![image info](/img/awscloud/1/cover-image-1.png)
+ ![image info](/img/awscloud/2/Serverless-Examples-with-AWS-Lambda-Use-Cases.png)
 
- Serverless Architecture- the term which has been added to the technology stack, a few years ago, is becoming a common use since the launch of AWS Lambda in 2014.
+ Netflix, Mapbox, A Cloud Guru, BlackBoard, Conde Nast, and New York Times. Do you know what these companies have in common?
 
-The evidence is- Raymond Camden, Serverless Developer Advocate quoting that serverless will become ‘less of a hot new thing’ and more of a ‘just another option’ and it is becoming a reality now. One of the main reason is that it provocatively illustrates one of the biggest headaches of the IT industry- server administration. In short, write your code and run your applications without provisioning or managing anything on the server side.
+All migrated to serverless architecture and have immensely benefitted from this decision.
+
+At the recently held ServerlessConf, ‘A Cloud Guru’ gave a proof of serverless promise saying they were never required to change their architecture due to performance reasons. They are running 287 Lambda functions, 19 microservices with 3.68 TB of data at the mere cost of $580 per month. Read that again!
+
+**Why we use AWS Lambda?**
+
+AWS Lambda removes the need for the traditional compute services, thus reducing operational costs and complexity. This results in many benefits such as faster development, easier operational management, scaling, and reduction in operational costs.
+
+Moreover if you have frequent changes in memory usage, Lambda takes care of that as well. It has “Pay as you go” model whose billing is based on used memory, number of request and execution duration rounded up to nearest 100 milliseconds. Its huge leap forward in comparison to EC2.
+
+We are well aware of how serverless helps in elevating our focus to more business-critical tasks by empowering developers and offering cost-friendly solutions. However, we have still observed confusion among people who want to get started with serverless adoption but don’t know where, when and how! This blog post is about them.
+
+Let’s start unfolding each of them with practical examples and benefits it brings to the organizations as well as development teams.
 
 > But is the sweet reality is good as it is promised?
 

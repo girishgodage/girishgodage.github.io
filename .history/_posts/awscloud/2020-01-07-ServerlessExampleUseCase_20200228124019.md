@@ -1,37 +1,72 @@
 ---
-title: How to Build an E-commerce App using Serverless Technology?
-date: 2020-01-07 10:41:00 Z
-permalink: "/blog/ecommerce-app-using-serverless"
+title: 10 AWS Lambda Use Cases to Start Your Serverless Journey
+date: 2020-01-07 10:49:00 Z
+permalink: "/blog/serverless-examples-aws-lambda-use-cases"
 categories:
 - AWSCloud
 tags:
 - learning
-summary: Learn how to build an ecommerce app using serverless architecture (reference
-  architecture added). Start with an MVP and design the microservices using AWS Lambda
-  functions to reap the benefits of event-driven architecture.
+summary: Many big companies such as Netflix, Conde Nast and NY Times are migrating their compute services to serverless. But sometimes the cloud architects are confused about the application of serverless technologies such as AWS Lambda and Azure functions. This blog explains 10 AWS Lambda Use Cases to help you get started with serverless. Some of the use cases are Serverless Website | App Authentication | Mass Emailing | Real-time Data Transformation | CRON Jobs | Chatbot | IoT.
 image: "/img/sw_design.png"
 author: Girish Godage
 layout: posts
 prevurl: ""
 nexturl: ""
-discussion_id: 2020-01-07-Serverlessecom1
+discussion_id: 2020-01-07-serverless-examples
 ---
 
-### How to Build an E-commerce App using Serverless ?
+### AWS Lambda Use Cases to Start Your Serverless Journey
 
- Learn how to build an ecommerce app using serverless architecture (reference architecture added). Start with an MVP and design the microservices using AWS Lambda functions to reap the benefits of event-driven architecture.
+ Many big companies such as Netflix, Conde Nast and NY Times are migrating their compute services to serverless. But sometimes the cloud architects are confused about the application of serverless technologies such as AWS Lambda and Azure functions. This blog explains 10 AWS Lambda Use Cases to help you get started with serverless. Some of the use cases are Serverless Website | App Authentication | Mass Emailing | Real-time Data Transformation | CRON Jobs | Chatbot | IoT.
 
- ![image info](/img/awscloud/1/cover-image-1.png)
+ ![image info](/img/awscloud/2/Serverless-Examples-with-AWS-Lambda-Use-Cases.png)
 
- Serverless Architecture- the term which has been added to the technology stack, a few years ago, is becoming a common use since the launch of AWS Lambda in 2014.
+ Netflix, Mapbox, A Cloud Guru, BlackBoard, Conde Nast, and New York Times. Do you know what these companies have in common?
 
-The evidence is- Raymond Camden, Serverless Developer Advocate quoting that serverless will become ‘less of a hot new thing’ and more of a ‘just another option’ and it is becoming a reality now. One of the main reason is that it provocatively illustrates one of the biggest headaches of the IT industry- server administration. In short, write your code and run your applications without provisioning or managing anything on the server side.
+All migrated to serverless architecture and have immensely benefitted from this decision.
 
-> But is the sweet reality is good as it is promised?
+At the recently held ServerlessConf, ‘A Cloud Guru’ gave a proof of serverless promise saying they were never required to change their architecture due to performance reasons. They are running 287 Lambda functions, 19 microservices with 3.68 TB of data at the mere cost of $580 per month. Read that again!
 
-Well, let’s put this question on the test as we build an e-commerce app based upon serverless architecture using AWS stack.
+**Why we use AWS Lambda?**
 
-Over the years, I’ve observed that many enterprises don’t know how to build such apps and ignore the massive benefits they have to offer due to insufficient knowledge. And that’s what I will be sharing with you in this post.
+AWS Lambda removes the need for the traditional compute services, thus reducing operational costs and complexity. This results in many benefits such as faster development, easier operational management, scaling, and reduction in operational costs.
+
+Moreover if you have frequent changes in memory usage, Lambda takes care of that as well. It has “Pay as you go” model whose billing is based on used memory, number of request and execution duration rounded up to nearest 100 milliseconds. Its huge leap forward in comparison to EC2.
+
+We are well aware of how serverless helps in elevating our focus to more business-critical tasks by empowering developers and offering cost-friendly solutions. However, we have still observed confusion among people who want to get started with serverless adoption but don’t know where, when and how! This blog post is about them.
+
+Let’s start unfolding each of them with practical examples and benefits it brings to the organizations as well as development teams.
+
+* Serverless Website Example with AWS Lambda
+* Serverless Authentication Using AWS Cognito
+* Multi-Location Media Transformation
+* Mass Emailing using AWS Lambda & SES
+* AWS Lambda Use Case for Real-time Data Transformation
+* Serverless CRON Jobs*
+* AWS Lambda Use Case for Efficient Monitoring
+* Real-time Notifications with AWS Lambda and SNS
+* Building a Serverless Chatbot
+* Serverless IoT Backend
+
+**#1. Serverless Website Example with AWS Lambda**
+
+Maintaining a dedicated server is outdated, in fact, even a virtual server. Not only it’s tiresome but provisioning the instances, updating the OS, etc. takes a lot of time and distracts you from focusing on the core functionalities.
+
+**AWS Lambda** along with other AWS services can be used to build a powerful website without having to manage a single server or an operating system. For a basic version, we will use **AWS API Gateway, DynamoDB, Amazon S3 and Amazon Cognito User Pool.**
+
+![image info](/img/awscloud/2/Serverless-Website-Example.png)
+
+The components used here are used for executing the following functionalities:
+
+* JavaScript in the browser exchanges the data from a backend API built through API Gateway and AWS Lambda.
+* DynamoDB is a NoSQL database which is used for storing data through API’s Lambda function.
+* Amazon S3 is used for hosting the static website content like HTML, media files, CSS, JavaScript which acts as a front end in the user’s browser.
+* Amazon Cognito is used for user authentication and management with the help of secured backend API.
+
+The architecture here depicts a basic version of a serverless website. It can be elaborated into a full-fledged multi-functional website by adding other AWS services. Some of the distinguished examples of Serverless websites are:
+
+Serverless E-commerce Website which uses AWS Lambda use cases for payment management, cart management and recommendation engine.
+
 
 ### Features for Building an MVP for a Serverless E-commerce Application
 

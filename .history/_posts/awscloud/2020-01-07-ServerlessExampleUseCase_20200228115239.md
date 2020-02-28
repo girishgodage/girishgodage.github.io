@@ -1,7 +1,7 @@
 ---
-title: How to Build an E-commerce App using Serverless Technology?
-date: 2020-01-07 10:41:00 Z
-permalink: "/blog/ecommerce-app-using-serverless"
+title: 10 AWS Lambda Use Cases to Start Your Serverless Journey
+date: 2020-01-07 10:49:00 Z
+permalink: "/blog/serverless-examples-aws-lambda-use-cases"
 categories:
 - AWSCloud
 tags:
@@ -14,7 +14,7 @@ author: Girish Godage
 layout: posts
 prevurl: ""
 nexturl: ""
-discussion_id: 2020-01-07-Serverlessecom1
+discussion_id: 2020-01-07-serverless-examples
 ---
 
 ### How to Build an E-commerce App using Serverless ?

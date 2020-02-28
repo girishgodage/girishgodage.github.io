@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#2A80EE">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#2A80EE">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
+<title>10 AWS Lambda Use Cases to Start Your Serverless Journey &#8211; Girish Godage</title>
+<meta name="description" content="Many big companies such as Netflix, Conde Nast and NY Times are migrating their compute services to serverless. But sometimes the cloud architects are confused about the application of serverless technologies such as AWS Lambda and Azure functions. This blog explains 10 AWS Lambda Use Cases to help you get started with serverless. Some of the use cases are Serverless Website | App Authentication | Mass Emailing | Real-time Data Transformation | CRON Jobs | Chatbot | IoT.">
+<meta name="keywords" content="AWSCloud">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all">
+
+<!-- Verifications -->
+    
+    
+        
+<!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="10 AWS Lambda Use Cases to Start Your Serverless Journey">
+    <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
+    <meta property="og:url" content="http://localhost:4000/blog/serverless-examples-aws-lambda-use-cases">
+    <meta property="og:site_name" content="Girish Godage">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@GGodage" />
+    
+    <meta name="twitter:title" content="10 AWS Lambda Use Cases to Start Your Serverless Journey" />
+    <meta name="twitter:description" content="Many big companies such as Netflix, Conde Nast and NY Times are migrating their compute services to serverless. But sometimes the cloud architects are confused about the application of serverless technologies such as AWS Lambda and Azure functions. This blog explains 10 AWS Lambda Use Cases to help you get started with serverless. Some of the use cases are Serverless Website | App Authentication | Mass Emailing | Real-time Data Transformation | CRON Jobs | Chatbot | IoT." />
+    <meta name="twitter:url" content="http://localhost:4000/blog/serverless-examples-aws-lambda-use-cases" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/img/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/img/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    
+
+
+    <link rel="canonical" href="http://localhost:4000/blog/serverless-examples-aws-lambda-use-cases">
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
+    <!-- Bootstrap CSS-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Google fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+   
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
+    
+    <!-- animate.css-->
+    <link rel="stylesheet" href="http://localhost:4000/sitejs/animate.css/animate.css">
+    <!-- theme stylesheet-->
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="http://localhost:4000/css/custom.css" as="style">
+    <link rel="stylesheet" href="http://localhost:4000/css/comments.css" as="style">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="http://localhost:4000/img/logo-big.png">
+    <!-- Fab Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
+    
+    
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    
+    <script type="text/javascript">
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+       ga('create', 'UA-130164763-2', 'auto');
+       ga('send', 'pageview');
+    </script>
+    
+    <!-- Typed.js DONT TOUCHHHHHHHHHHHHH!-->
+    <!--<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.9/typed.min.js"></script>
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+      </script>
+      
+      <!-- START OF RELEVANT PART -->
+    <script async src="https://just-comments.com/w2.js"></script>
+    <!-- END OF RELEVANT PART -->
+
+
+</head>
+
+<body>
+    
+<!-- navbar-->
+<header class="header">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container"><a class="navbar-brand" href="http://localhost:4000"><img
+          src="http://localhost:4000/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
+          alt="logo"> <img src="http://localhost:4000/img/girish_logo.png" height="30" alt="girilogo"></a>
+      <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span
+          class="fa fa-bars" style="color: white"></span></button>
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="http://localhost:4000#home" class="nav-link  link-scroll">Home</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#about" class="nav-link link-scroll">About</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#skills" class="nav-link link-scroll">Skills</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#services" class="nav-link link-scroll">Services</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#references" class="nav-link link-scroll">My
+              work</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#contact" class="nav-link link-scroll">Contact</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000/blog" class="nav-link link-scroll">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    
+    
+    
+    <div style="background-color:Gray;">
+        <div style="padding:0;min-height:95.05vh;display:flex;font-family: Poppins, sans-serif;margin-top: 5rem;"
+            class="container">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <p class="post-title">
+                    <h1><a href="/blog/serverless-examples-aws-lambda-use-cases">10 AWS Lambda Use Cases to Start Your Serverless Journey</a></h1>
+                </p>
+                
+                <span class="post-meta">
+              <span style="font-weight:600">January 07, 2020 Tuesday</span>
+                    
+                       ( 14 minute read ) 
+                    
+                     
+                    <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">   by Girish Godage</a>
+                </span>
+                
+                <div class="site-category"> 
+                        <h5>AWSCloud</h5>
+                </div>
+                
+                <hr>
+                <div><img class="post-image" src="/img/sw_design.png" alt="10 AWS Lambda Use Cases to Start Your Serverless Journey" height="250" /></div>
+                <div class="post-content">
+                    <br>                     
+                    <h3 id="aws-lambda-use-cases-to-start-your-serverless-journey">AWS Lambda Use Cases to Start Your Serverless Journey</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Many big companies such as Netflix, Conde Nast and NY Times are migrating their compute services to serverless. But sometimes the cloud architects are confused about the application of serverless technologies such as AWS Lambda and Azure functions. This blog explains 10 AWS Lambda Use Cases to help you get started with serverless. Some of the use cases are Serverless Website</td>
+      <td>App Authentication</td>
+      <td>Mass Emailing</td>
+      <td>Real-time Data Transformation</td>
+      <td>CRON Jobs</td>
+      <td>Chatbot</td>
+      <td>IoT.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="/img/awscloud/2/Serverless-Examples-with-AWS-Lambda-Use-Cases.png" alt="image info" /></p>
+
+<p>Netflix, Mapbox, A Cloud Guru, BlackBoard, Conde Nast, and New York Times. Do you know what these companies have in common?</p>
+
+<p>All migrated to serverless architecture and have immensely benefitted from this decision.</p>
+
+<p>At the recently held ServerlessConf, ‘A Cloud Guru’ gave a proof of serverless promise saying they were never required to change their architecture due to performance reasons. They are running 287 Lambda functions, 19 microservices with 3.68 TB of data at the mere cost of $580 per month. Read that again!</p>
+
+<p><strong>Why we use AWS Lambda?</strong></p>
+
+<p>AWS Lambda removes the need for the traditional compute services, thus reducing operational costs and complexity. This results in many benefits such as faster development, easier operational management, scaling, and reduction in operational costs.</p>
+
+<p>Moreover if you have frequent changes in memory usage, Lambda takes care of that as well. It has “Pay as you go” model whose billing is based on used memory, number of request and execution duration rounded up to nearest 100 milliseconds. Its huge leap forward in comparison to EC2.</p>
+
+<p>We are well aware of how serverless helps in elevating our focus to more business-critical tasks by empowering developers and offering cost-friendly solutions. However, we have still observed confusion among people who want to get started with serverless adoption but don’t know where, when and how! This blog post is about them.</p>
+
+<p>Let’s start unfolding each of them with practical examples and benefits it brings to the organizations as well as development teams.</p>
+
+<ul>
+  <li>Serverless Website Example with AWS Lambda</li>
+  <li>Serverless Authentication Using AWS Cognito</li>
+  <li>Multi-Location Media Transformation</li>
+  <li>Mass Emailing using AWS Lambda &amp; SES</li>
+  <li>AWS Lambda Use Case for Real-time Data Transformation</li>
+  <li>Serverless CRON Jobs*</li>
+  <li>AWS Lambda Use Case for Efficient Monitoring</li>
+  <li>Real-time Notifications with AWS Lambda and SNS</li>
+  <li>Building a Serverless Chatbot</li>
+  <li>Serverless IoT Backend</li>
+</ul>
+
+<p><strong>#1. Serverless Website Example with AWS Lambda</strong></p>
+
+<p>Maintaining a dedicated server is outdated, in fact, even a virtual server. Not only it’s tiresome but provisioning the instances, updating the OS, etc. takes a lot of time and distracts you from focusing on the core functionalities.</p>
+
+<p><strong>AWS Lambda</strong> along with other AWS services can be used to build a powerful website without having to manage a single server or an operating system. For a basic version, we will use <strong>AWS API Gateway, DynamoDB, Amazon S3 and Amazon Cognito User Pool.</strong></p>
+
+<p><img src="/img/awscloud/2/Serverless-Website-Example.png" alt="image info" /></p>
+
+<p>The components used here are used for executing the following functionalities:</p>
+
+<ul>
+  <li>JavaScript in the browser exchanges the data from a backend API built through API Gateway and AWS Lambda.</li>
+  <li>DynamoDB is a NoSQL database which is used for storing data through API’s Lambda function.</li>
+  <li>Amazon S3 is used for hosting the static website content like HTML, media files, CSS, JavaScript which acts as a front end in the user’s browser.</li>
+  <li>Amazon Cognito is used for user authentication and management with the help of secured backend API.</li>
+</ul>
+
+<p>The architecture here depicts a basic version of a serverless website. It can be elaborated into a full-fledged multi-functional website by adding other AWS services. Some of the distinguished examples of Serverless websites are:</p>
+
+<ul>
+  <li>Serverless E-commerce Website which uses AWS Lambda use cases for payment management, cart management and recommendation engine.</li>
+</ul>
+
+<p><img src="/img/awscloud/2/cover-image-1.png" alt="image info" /></p>
+
+<ul>
+  <li><strong>Serverless Dynamic Web Page</strong> built using two Lambda functions to monitor internal services at Monsanto.</li>
+  <li><strong>Serverless Single Page Website</strong> a practical example to develop a low latency website with Lambda functions, S3 and CloudFront.</li>
+  <li><strong>Bustle.com</strong> (news &amp; entertainment website run entirely on serverless) More information can be found here.</li>
+</ul>
+
+<p><strong>#2. Serverless Authentication Example Using AWS Cognito</strong>
+Whether you’re running New York Times or a personal blog, personalization plays a huge role when you interact with your users. <strong>Amazon Cognito</strong> when used with <strong>AWS Lambda</strong>, can empower you to add pre and post-login hooks to execute your custom logic.</p>
+
+<p>After creating an AWS Lambda function, you can trigger it based on various user pool operations such as user sign-up, user confirmation, sign-in, etc. Not only that, you can experiment with your authentication procedure and make it more challenging, migrate the users and send out personalized verification messages, to name a few.</p>
+
+<p><img src="/img/awscloud/2/Serverless-Authentication-Example-Using-AWS-Cognito.png" alt="image info" /></p>
+
+<p>The following are the common triggering sources from where you can hook your Lambda function:</p>
+
+<ul>
+  <li>Sign-up, confirmation and sign-in</li>
+  <li>Pre and post authentication</li>
+  <li>Custom authentication challenge</li>
+  <li>Pre token generation</li>
+  <li>Migrate user</li>
+  <li>Custom message</li>
+</ul>
+
+<p>Let’s understand how custom message works. Amazon Cognito will trigger your Lambda function before sending an email or phone verification text or multi-factor authentication which allows you to customize the message as per the requirements. The triggering source for the custom message are:</p>
+
+<ul>
+  <li>Confirmation code post-sign-up</li>
+  <li>Temporary password for new users</li>
+  <li>Resending confirmation code</li>
+  <li>Confirmation code to forget password request</li>
+  <li>Manual request for new email/phone</li>
+  <li>Multi-factor authentication</li>
+</ul>
+
+<p><strong>#3. AWS Lambda Use Case for Multi-Location Media Transformation</strong></p>
+
+<p>With the rising number of global viewership, we all know how difficult a task it is to facilitate media files in multiple formats on multiple locations. With the prerequisite of least processing time, reducing the latency and minimizing the bandwidth is important than ever. Here are some common scenarios which you might have come across:</p>
+
+<ul>
+  <li>Resizing image based on the query parameter</li>
+  <li>Serving appropriate file format based on browser characteristics, for example, WebP for Chrome/Android browsers and JPEG for the rest</li>
+  <li>Defining whitelist of dimensions to be generated</li>
+</ul>
+
+<p>This problem can be simplified with the help of Lambda@Edge and CloudFront. This process can be executed by adding four Lambda triggers to CloudFront. Here’s how it works:</p>
+
+<p><img src="/img/awscloud/2/AWS-Lambda-Edge-Multi-Location-Media-Transform-Example-768x239.png" alt="image info" /></p>
+
+<ul>
+  <li><strong>Lambda 1 (viewer request):</strong> This function is executed to serve the media file in the requested format from the CloudFront cache. No further functions will be executed.</li>
+  <li><strong>Lambda 2 (origin request):</strong> If the requested format is not available, this function fetches the media file with requested configurations from the Amazon S3 bucket and cache it to CloudFront. If the file doesn’t exist, Lambda 3 executed.</li>
+  <li><strong>Lambda 3 (origin response):</strong> This function makes a network call which fetches the original image from the S2 bucket, transforms it as per the requirement and uploads it back.</li>
+  <li><strong>Lambda 4 (viewer response):</strong> This function serves the requested media file from the CloudFront cache.</li>
+</ul>
+
+<p>Note: Lambda 2,3 and 4 are executed only when the requested media file isn’t available in the cache. Here’s more you can do with Lambda@Edge:</p>
+
+<ul>
+  <li>Inspect cookies and rewrite URLs to perform A/B testing.</li>
+  <li>Send specific objects to your users based on the User-Agent header.</li>
+  <li>Implement access control by looking for specific headers before passing requests to the origin.</li>
+  <li>Add, drop, or modify headers to direct users to different cached objects.</li>
+  <li>Generate new HTTP responses.</li>
+  <li>Cleanly support legacy URLs.</li>
+  <li>Modify or condense headers or URLs to improve cache utilization.</li>
+  <li>Make HTTP requests to other Internet resources and use the results to customize responses.</li>
+</ul>
+
+<p><strong>#4. Mass Emailing using AWS Lambda &amp; SES</strong>
+New York Times sends our 4 Billion emails per year which includes newsletters, breaking news and transactional emails. Mass mailing is an integrated part of marketing services for any organizations. Traditional solutions often require hardware expenditure, license costs and technical expertise.</p>
+
+<p>With <strong>AWS Lambda</strong> and <strong>Simple Email Service SES</strong>, you can build a cost-effective and in-house serverless email platform. Along with S3 (where your mailing list will be stored) you can quickly send HTML or text-based emails to a large number of recipients.</p>
+
+<p><img src="/img/awscloud/2/Serverless-Email-Example-using-SES-768x205.png" alt="image info" /></p>
+
+<p>Whenever a user uploads a CSV file, it triggers an S3 event. This event triggers another Lambda function which imports the file into the database and will start sending email to all the addresses. For sending our scheduled newsletters, you can integrate it with CloudWatch Events.</p>
+
+<p>Here’s an example of MoonMail’s (email marketing platform) serverless technology stack built using AWS Lambda use cases and SES. The primary reason for them to switch to serverless is extremely fast performance and infinite scalability.</p>
+
+<p><strong>#5. AWS Lambda Use Case for Real-time Data Transformation</strong></p>
+
+<p><strong>Amazon Kinesis Firehose</strong> is basically used for writing real-time streaming data to <strong>Amazon S3, Redshift or Elasticsearch</strong>. But business requirements have changed over the time.</p>
+
+<p>Sometimes it is required to amend or restructure the raw data for before writing it to the destination. Some of the common use cases that have emerged over the time are:</p>
+
+<ul>
+  <li>Normalize the data acquired from different touchpoints</li>
+  <li>Adding metadata to the recorded data</li>
+  <li>Converting or restructuring the data as per the destination prerequisites</li>
+  <li>Performing ETL functionality</li>
+  <li>Combine data from another data source</li>
+</ul>
+
+<p>Fulfilling such requirements is now possible with <strong>AWS Lambda</strong> use cases. It helps you create a powerful and scalable way to execute data transformations on the clickstream data.</p>
+
+<p>After buffering the incoming data from the source destinations, Firehose invokes a Lambda function asynchronously over a specified batch period. This Lambda function transforms the data as per the custom logic and sends it back to Firehose. From here, the data is written to the specified destination.</p>
+
+<p><img src="/img/awscloud/2/Real-time-Data-Transform-AWS-Lambda-Kinesis-Firehose.png" alt="image info" /></p>
+
+<p>Along with this, you also have an option to store the raw data (source data backup) to S3 and create a raw data lake before transforming. This process happens concurrently along with your data transformation.</p>
+
+<p>To help you get started with this functionality, AWS provides you with predefined Lambda blueprints in the following format.</p>
+
+<ul>
+  <li>Syslog to JSON</li>
+  <li>Syslog to CSV</li>
+  <li>Apache Log to JSON</li>
+  <li>Apache Log to CSV</li>
+  <li>General Firehose Processing</li>
+</ul>
+
+<p>With 5 more use cases left in the Serverless journey, I expect some of you to be slightly anxious of the cost of running a serverless application.</p>
+
+<p><img src="/img/awscloud/2/AWS-Lambda-pricing-768x368.png" alt="image info" /></p>
+
+<p><strong>#6. Serverless CRON Jobs Example</strong></p>
+
+<p>CRON or scheduled jobs which are executed based on different parameters are used widely for executing simple time-based tasks. CloudWatch Events now supports cron-like expressions which can be used to trigger a Lambda function periodically.</p>
+
+<p><img src="/img/awscloud/2/Serverless-CRON-Jobs-Example.png" alt="image info" /></p>
+
+<p>Simply create a Lambda function and direct AWS Lambda to execute it on a regular schedule by specifying a fixed rate or cron expression. While creating your Lambda function,  you need to provide CloudWatch Events as an event source and specify a time interval. For example, create a new event every y and invoke this Lambda function with it. Some real-life use case could be:</p>
+
+<ul>
+  <li>If you are running a membership site where accounts have an expiration date, you can schedule a cron job to regularly deactivate the expired account</li>
+  <li>Sending out the newsletter on fixed timings</li>
+  <li>Cleaning up the database cache on the regular interval</li>
+</ul>
+
+<p>Here’s an example to help you get started with CRON jobs in CloudWatch and AWS Lambda with Node.Js</p>
+
+<p><strong>#7. AWS Lambda Use Case for Efficient Monitoring</strong>
+<strong>CloudWatch Events</strong> delivers a real-time stream of system events that depicts changes in AWS resources.  Before the CloudWatch was launched as an event source, you needed to use the CloudWatch Event console or APIs to integrate it with Lambda.</p>
+
+<p>By creating CloudWatch Event rules, you can monitor and create Lambda functions for processing. Two general scenarios where you can use this possibility:</p>
+
+<p><img src="/img/awscloud/2/AWS-Lambda-Triggers-using-CloudWatch-Metrics-768x499.png" alt="image info" /></p>
+
+<ul>
+  <li>
+    <p><strong>Alarm Threshold Breaches:</strong> Let’s imagine where your CPU is running beyond its specified limits or you’re seeing more/ fewer events than what you’re expecting, CloudWatch can trigger a Lambda function for you which will notify the team through an email or terminate the underperforming resources.</p>
+  </li>
+  <li>
+    <p><strong>Cloudwatch Logs:</strong> To monitor the incoming CloudWatch logs in realtime, by integrating it with a function which will keep track of any anomaly and notify the team if detected or you can program it to write these logs to your database for a backup.</p>
+  </li>
+</ul>
+
+<p><strong>#8. Real-time Notifications with AWS Lambda &amp; SNS</strong>
+Real-time notification saves a lot of our manual work and we all know how inevitable they are in our hyper-connected world.  ChatOps is becoming the most effective procedure to DevOps. Saying that it’d be an added advantage to receive real-time notifications on 3rd-party platforms like Slack.</p>
+
+<p>When using <strong>SNS</strong>, you create a topic and control access to it by defining policies that determine the subscribers and publishers to be communicated with the topic. When an SNS topic has Lambda function subscribed to it, it invokes the function with the payload of a published message.</p>
+
+<p>Upon invocation, the function can manipulate the information in the message, publish the message to the other SNS topics and/or send the message to other AWS services or endpoints.</p>
+
+<p><img src="/img/awscloud/2/Serverless-SNS-Example-for-Real-time-Notifications-768x205.png" alt="image info" /></p>
+
+<p>An interesting example is to receive your infrastructural alerts as a Slack notification. Whenever a CloudWatch alarms trigger, it will send a message to the SNS topic. Upon receiving the message, SNS topic will invoke a Lambda function which will call the Slack API to post a message to Slack channel.</p>
+
+<p><strong>#9. AWS Lambda Use Case for Building Serverless Chatbot</strong>
+Building and running chatbots is not only time consuming but expensive also. Developers must provision, run and scale the infrastructural resources that run the chatbot code. However, with AWS Lambda you can run a scalable chatbot architecture. Here’s how to get started:</p>
+
+<p><img src="/img/awscloud/2/AWS-Lambda-Chatbot-768x319.png" alt="image info" /></p>
+
+<ul>
+  <li>Enter your code logic to the Lambda function.</li>
+  <li>Set up your code to trigger when user commands are sent to the bot. The commands are API requests (from Slack, Messenger, etc) routed through API Gateway to Lambda function.</li>
+  <li>Lambda runs only when it is commanded and hence using the resources when needed. You pay for the time it runs your code.</li>
+</ul>
+
+<p><strong>#10. Serverless IoT Backend</strong>
+Scaling an IoT device fleet to hundreds and thousands of devices isn’t an easy job. Along with that, it is somewhat challenging to extract the details for multiple devices in a single solution.</p>
+
+<p>Suppose your fleet of devices here are smart light bulbs,  internet-connected robot, music player, etc. and you want to register specific information for all of them in your database.</p>
+
+<p><img src="/img/awscloud/2/Serverless-IoT-Backend-Example-768x319.png" alt="image info" /></p>
+
+<p>As shown in the above diagram, you can create <strong>AWS IoT</strong> rules to trigger specific device registration logic using Lambda function to the <strong>DynamoDB</strong> table. Along with this, you can use an another Lambda function which will search the database for device-specific serial number and a randomly generated activation code to activate your device.</p>
+
+<p>In this similar manner, you can create your own IoT backend solution and logic instead of managing the infrastructure.</p>
+
+<p>Also, you can use AWS IoT 1-Click with <strong>AWS Lambda</strong> use cases to create business logic as per your requirements. This was launched at AWS re-Invent 2017 and since then people have been coming up with creative ways to use it. This works over the common WiFi platform and executes a customized Lambda function on triggering.</p>
+
+<p><strong>Take Away!</strong>
+Presently, AWS Lambda use cases include workloads that are asynchronous, concurrent, infrequent, in sporadic demand, unpredictable traffic in scaling requirements, stateless, ephemeral and highly dynamic. That might sound like a lot in a single sentence, I understand.</p>
+
+<p>Confused regarding where to start? Go small so that you can experiment and mature over the time. Or want more serverless examples to help you get started? Connect with me on Twitter @GGodage or send me an email on girishgodage@gmail.com</p>
+
+<p>Though serverless examples serve for diverse use cases, it might not come off as the perfect solution always. But one thing is for sure, if you have a specific use case which has dominated the enterprise environment and you’re looking forward to moving towards a utility-based computing service model, you’re on the right path!</p>
+
+                </div>
+
+                
+
+                <div id="disqus_thread"></div>
+                <script>
+                
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://girishgodage-github-io.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
+</button>
+<!-- Footer-->
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 text-center text-lg-left">
+                <p class="social">
+                    <a href="https://www.facebook.com/girish.godage.5" class="external facebook wow fadeInUp">
+                        <i class="fa fa-facebook"></i></a>
+                    <a href="https://instagram.com/girishgodage_007" data-wow-delay="0.2s" class="external instagram wow fadeInUp">
+                        <i class="fa fa-instagram"></i></a>
+                    <a href="https://youtube.com/girishgodage" data-wow-delay="0.4s" class="external youtube wow fadeInUp">
+                        <i class="fa fa-youtube-play"></i></a>
+                    <a href="https://twitter.com/GGodage" data-wow-delay="0.4s" class="external twitter wow fadeInUp">
+                            <i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/girishgodage" data-wow-delay="0.4s" class="external github wow fadeInUp">
+                                <i class="fa fa-github"></i></a>    
+                    <a href="mailto:girishgodage@gmail.com?subject=Hello%20Girish" data-wow-delay="0.6s" class="email wow fadeInUp">
+                        <i class="fa fa-envelope"></i></a></p>
+            </div>
+            <div class="col-12 col-md-2">
+            <h5>Quick Links</h5>
+            <ul>
+               <li><a href="http://localhost:4000#about">About</a></li>
+               <li><a href="http://localhost:4000#contact">Contact</a></li>
+               <li><a href="/sitemap.xml">Sitemap</a></li>               
+            </ul>
+         </div>
+            <div class="col-12 col-md-4 text-center text-lg-right mt-4 mt-lg-0">
+                <p> <b>©</b>2019 Girish Godage </p>
+                <p class="text-center, text-shadow"> Hosted On <a href="https://pages.github.com/">GitHub Pages</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Typed.js DONT TOUCH THIS! -->
+    <div id="typed-strings">
+    </div>
+
+        <!-- JavaScript files-->
+    <script src="http://localhost:4000/sitejs/jquery/jquery.min.js"></script>
+    <script src="http://localhost:4000/sitejs/popper.js/umd/popper.min.js"> </script>
+    <script src="http://localhost:4000/sitejs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="http://localhost:4000/sitejs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="http://localhost:4000/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.counterup/jquery.counterup.js"></script>
+    <script src="http://localhost:4000/js/front.js"></script>
+    <script src="http://localhost:4000/js/comment.js"></script>
+       <!-- Script pointing to search-script.js -->
+    <script src="http://localhost:4000/js/search-script.js" type="text/javascript"></script>
+   
+    <!-- Configuration -->
+    <script>
+         SimpleJekyllSearch({
+         searchInput: document.getElementById('search-input'),
+         resultsContainer: document.getElementById('results-container'),
+         json: '/search.json'
+         })
+         </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC36FUDDdOTidZJ8nzS5vfE7KVyayenKPE",
+    authDomain: "githubcontactlist.firebaseapp.com",
+    databaseURL: "https://githubcontactlist.firebaseio.com",
+    projectId: "githubcontactlist",
+    storageBucket: "githubcontactlist.appspot.com",
+    messagingSenderId: "899685398702",
+    appId: "1:899685398702:web:0c23c56d2d6d40df37553f",
+    measurementId: "G-YWBRCYJYFW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script>
+   $(function() {
+      
+    //make a variable to keep track of data coming from firebase
+    var data = [];
+
+    // Reference messages collection
+      var messagesRef = firebase.database().ref('contactformmessages');  
+
+
+    //listen to data updates from firebase
+    messagesRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+        //when the data updates at firebase, put it in the data variable
+        data = snapshot.val();
+    })
+    //Entire Contact Form (handler)
+    $('#contactForm').submit(function(e) {
+      e.preventDefault();
+
+        var $form = $(this);
+        console.log("Submit to Firebase");
+
+        //disable submit button
+        $form.find("#sendForm").prop('disabled', true);
+
+        //get values to send to Firebase
+        var name = $('#name').val();
+        console.log(name);
+		
+		var surname = $('#surname').val();
+        console.log(surname);
+		
+		var email = $('#email').val();
+        console.log(email);	
+		
+		var phone = $('#phone').val();
+        console.log(phone);
+
+        var message = $('#message').val();
+        console.log(message);
+
+       
+        //take the values from the form, and put them in an object
+        var newContact = {
+         "name": name,
+			"surname": surname,
+			"email": email,
+			"phone": phone,
+         "message": message
+        }
+        //put new object in data array
+        data.push(newContact);
+        console.log(data);
+
+        //send the new data to Firebase
+        messagesRef.set(data, function(err) {
+            if (err) {
+                alert("Data no go");
+            }else{
+            $("#form-wrapper").slideToggle();
+            $('#form-success-message').slideToggle();
+			}
+        });
+
+        return false;
+    })
+   
+    
+})
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";           
+        }else
+        {
+           myBtton.style.display="none";     
+          
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+      //  document.body.scrollTop =0;
+      //  document.documentElement.scrollTop=0;
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    }
+
+</script>
+
+    
+    
+
+
+</body>
+
+</html>
