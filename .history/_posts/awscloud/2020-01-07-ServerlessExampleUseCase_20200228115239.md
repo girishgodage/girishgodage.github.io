@@ -12,8 +12,8 @@ summary: Learn how to build an ecommerce app using serverless architecture (refe
 image: "/img/sw_design.png"
 author: Girish Godage
 layout: posts
-prevurl: ""
-nexturl: ""
+prevurl: ''
+nexturl: ''
 discussion_id: 2020-01-07-serverless-examples
 ---
 

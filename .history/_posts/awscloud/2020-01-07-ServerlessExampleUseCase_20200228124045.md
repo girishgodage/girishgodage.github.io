@@ -6,12 +6,17 @@ categories:
 - AWSCloud
 tags:
 - learning
-summary: Many big companies such as Netflix, Conde Nast and NY Times are migrating their compute services to serverless. But sometimes the cloud architects are confused about the application of serverless technologies such as AWS Lambda and Azure functions. This blog explains 10 AWS Lambda Use Cases to help you get started with serverless. Some of the use cases are Serverless Website | App Authentication | Mass Emailing | Real-time Data Transformation | CRON Jobs | Chatbot | IoT.
+summary: Many big companies such as Netflix, Conde Nast and NY Times are migrating
+  their compute services to serverless. But sometimes the cloud architects are confused
+  about the application of serverless technologies such as AWS Lambda and Azure functions.
+  This blog explains 10 AWS Lambda Use Cases to help you get started with serverless.
+  Some of the use cases are Serverless Website | App Authentication | Mass Emailing
+  | Real-time Data Transformation | CRON Jobs | Chatbot | IoT.
 image: "/img/sw_design.png"
 author: Girish Godage
 layout: posts
-prevurl: ""
-nexturl: ""
+prevurl: ''
+nexturl: ''
 discussion_id: 2020-01-07-serverless-examples
 ---
 
