@@ -1,4 +1,500 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-28T13:21:05+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">10 AWS Lambda Use Cases to Start Your Serverless Journey</title><link href="http://localhost:4000/blog/serverless-examples-aws-lambda-use-cases" rel="alternate" type="text/html" title="10 AWS Lambda Use Cases to Start Your Serverless Journey" /><published>2020-01-07T10:49:00+00:00</published><updated>2020-01-07T10:49:00+00:00</updated><id>http://localhost:4000/blog/ServerlessExampleUseCase</id><content type="html" xml:base="http://localhost:4000/blog/serverless-examples-aws-lambda-use-cases">&lt;h3 id=&quot;aws-lambda-use-cases-to-start-your-serverless-journey&quot;&gt;AWS Lambda Use Cases to Start Your Serverless Journey&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-01T07:00:48+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">Serverless Architecture A Comprehensive Guide</title><link href="http://localhost:4000/blog/serverless-architecture-guide" rel="alternate" type="text/html" title="Serverless Architecture A Comprehensive Guide" /><published>2020-01-10T10:41:00+00:00</published><updated>2020-01-10T10:41:00+00:00</updated><id>http://localhost:4000/blog/Serverlessarchguide</id><content type="html" xml:base="http://localhost:4000/blog/serverless-architecture-guide">&lt;h3 id=&quot;serverless-architecture&quot;&gt;Serverless Architecture:&lt;/h3&gt;
+
+&lt;p&gt;Read this comprehensive guide to understand Serverless Technology. Get to know what is function-as-a-service, how do serverless architecture works, its benefits &amp;amp; drawbacks and an in-depth case study on PhotoVogue.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/3/serverless-application-2.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Since the launch of serverless architecture in 2014, it is continuously redining the ways in which we develop and deploy our software products. One such revolutionary story surfaced while I was interacting with one of our client, a startup CTO.&lt;/p&gt;
+
+&lt;p&gt;“I recall how hard was it to build a prototype for production system which resulted in launching things even before they were ready, poorly managed continuous integration/development processes and bug fix systems that were created by an intern who left almost a year ago.&lt;/p&gt;
+
+&lt;p&gt;But now, due to serverless architecture, &lt;strong&gt;I can spontaneously take up an idea&lt;/strong&gt;, transform into a scalable solution and outlast the business decision being taken to develop it!”&lt;/p&gt;
+
+&lt;p&gt;Being a startup CTO, this is a huge win when faster time-to-market is a key factor for thriving in the competing economy. However, serverless architecture brings more than just faster time-to-market and you’ll definitely need some help in getting started with this new concept.&lt;/p&gt;
+
+&lt;p&gt;Let’s get started and examine how serverless architecture is exactly defined!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Table of Contents&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;What is Serverless Architecture?&lt;/li&gt;
+  &lt;li&gt;FaaS: Function as a Service&lt;/li&gt;
+  &lt;li&gt;What about microservices?&lt;/li&gt;
+  &lt;li&gt;How does the serverless app works?&lt;/li&gt;
+  &lt;li&gt;Case Study: Unpacking Serverless Architecture&lt;/li&gt;
+  &lt;li&gt;Benefits of serverless&lt;/li&gt;
+  &lt;li&gt;Drawbacks of serverless&lt;/li&gt;
+  &lt;li&gt;Conclusion&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;what-is-serverless-architecture&quot;&gt;What is Serverless Architecture?&lt;/h3&gt;
+&lt;p&gt;“Serverless computation is going to fundamentally not only change the economics of what is back-end computing, but it’s going to be the core of the future of distributed computing.” — &lt;strong&gt;Satya Nadella, CEO Microsoft&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Methodology, mindset, culture–the heart of serverless is the approach. But taking the approach to its logical extreme yields technologies. This tech can be called serverless &amp;amp; they should become &amp;gt; the yardstick by which other technologies are measured (i.e., define the spectrum)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;— Ben Kehoe (@ben11kehoe) December 21, 2018&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The world is still revolving around servers even with the rise of cloud computing. But it isn’t going to last for a longer time. Cloud apps are shifting into the serverless world and it will indeed bring about dramatic changes in how we create and distribute software and applications.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Once Upon a Server Time&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Before the cloud-y days (pun intended), servers were one of the major parts, for developers,  when it came to building an application or software. You needed a budget, good plan, connect the dots, supply the power and provide them with a house.&lt;/p&gt;
+
+&lt;p&gt;You’d have to buy or lease the servers, arrange the power, supplies, cooling, cabling- and then construct them all up in a data centre or a colocation facility.&lt;/p&gt;
+
+&lt;p&gt;Over time, the colocation facilities started providing extra facilities like racks, power, internet access, etc. But it wasn’t sufficient.&lt;/p&gt;
+
+&lt;p&gt;And it still required a lot of detailed planning, a huge amount of time and, most importantly, money. Hence, &lt;strong&gt;a shift was inevitable!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Entering the Cloud&lt;/strong&gt;
+Infrastructure-as-a-service (IaaS) came to the rescue!&lt;/p&gt;
+
+&lt;p&gt;Since the last 2 years, the way you do computing has been changed drastically. It’s not about ‘Why cloud?’ or ‘How cloud?’ anymore.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;IaaS served a perfect recipe for cost improvement&lt;/strong&gt;, agility and scalability with added spices of reliability and perfect architecture. (I’m now hungry, maybe!)&lt;/p&gt;
+
+&lt;p&gt;With a limitless supply of virtual machines, no upfront cost and a little bit of effort, developers were able to fire up servers with their choice of operating system and they’re off running.&lt;/p&gt;
+
+&lt;p&gt;Moreover, &lt;strong&gt;the total cost of ownership has reduced dramatically.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I remember buying servers at the cost of hundreds of dollars for my first company with the investment of a lot of efforts in their maintenance. For the second company, I leased the servers for years but still had to put a considerable amount of efforts.&lt;/p&gt;
+
+&lt;p&gt;For the third company, I leased them by month and for my current company, I’ve leased them by the hour, as per demand, on pennies.&lt;/p&gt;
+
+&lt;p&gt;But this was from the perspective of architecture and pricing. Anyways, the overall &lt;strong&gt;concept of ‘application/software’&lt;/strong&gt; in the cloud is quickly evolving. It’s no longer about building on a web. It’s more about building a distributed system of loosely coupled components in the cloud.&lt;/p&gt;
+
+&lt;p&gt;The user apps and back-end data storage are still prevailing, but the processing is increasingly taking place asynchronously outside of an app framework. And hence, the worldview is increasingly around tasks and process flows, not applications and servers.&lt;/p&gt;
+
+&lt;p&gt;Moreover, their units of measures for compute cycles is in seconds and minutes, not hours. In short, &lt;strong&gt;apps are becoming serverless&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Thinking Serverless&lt;/strong&gt;
+For the past 14 months or so, I’ve been working on serverless technology and let me tell you, it’s a very large break from the way we build our software/applications and deploy them.&lt;/p&gt;
+
+&lt;p&gt;But the phrase ‘serverless’ doesn’t mean servers are no longer involved. It just means that developers no longer have to worry about managing them. Without thinking much about their maintenance, computing resources get used as services.&lt;/p&gt;
+
+&lt;p&gt;Though, serverless can be understood as an amalgamation of two distinct points as follows:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#1. BaaS&lt;/strong&gt;: First meaning of serverless could be taken as the &lt;strong&gt;use of 3rd party services/applications (in the cloud) to handle the server-side logic and state&lt;/strong&gt;. For example, consider a mobile app with quite a broad ecosystem of cloud-based databases, authentication services, etc.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#2. FaaS&lt;/strong&gt;: Second meaning of serverless could be taken as the &lt;strong&gt;use of 3rd party stateless compute containers to handle the server-side logic&lt;/strong&gt;. These containers are event-triggered and may last for only one invocation i.e. ephemeral.&lt;/p&gt;
+
+&lt;p&gt;In this blog, you would be coming across FaaS quite frequently as it is a newer technology that is bringing about a significant change in the way we think about technical architecture and has been at the core of serverless.&lt;/p&gt;
+
+&lt;p&gt;Though, &lt;strong&gt;both BaaS and FaaS are interrelated and overlapping&lt;/strong&gt;. For example, Auth0 started off as a BaaS ‘Authentication-as-a-Service’ but with Auth Webtask they have entered the FaaS space.&lt;/p&gt;
+
+&lt;h3 id=&quot;faas-function-as-a-service&quot;&gt;FaaS: Function-as-a-Service&lt;/h3&gt;
+&lt;p&gt;FaaS is a new and improved way to build and deploy your server-side software which is more focused around deploying individual functions or operations.&lt;/p&gt;
+
+&lt;p&gt;FaaS is where you hear a lot of buzz about serverless comes from. I remember one of our developer saying that &lt;strong&gt;serverless is,in fact, FaaS&lt;/strong&gt;. If you are thinking the same, well let me correct you, you’re missing out the complete picture.&lt;/p&gt;
+
+&lt;p&gt;Anyways, &lt;strong&gt;let’s get back to what is function-as-a-service about?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;FaaS is inherently an event-driven approach&lt;/strong&gt;. But let’s understand it better by taking an example.&lt;/p&gt;
+
+&lt;p&gt;When we traditionally deploy a server-side application, we start with microservices. Digging deep, we start with host instance, usually a virtual machine instance or a container.&lt;/p&gt;
+
+&lt;p&gt;We then deploy our application within the host. If, in case, our host is a VM or a container, then out the application is an operating system process. Usually, our application contains the code for multiple interrelated operations as shown in the below figure.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/3/traditional-server-side-1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;FaaS changes this model of deployment. We would shift our focus from both host instance and application process of our model to the individual operations or functions that express our application’s logic. We upload those functions, one-by-one, to a vendor-supplied FaaS platform.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/3/faas-platform-1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;These &lt;strong&gt;functions are not continuously active in a server&lt;/strong&gt; process though, sitting idle until they need to be run as they would be in a traditional system.&lt;/p&gt;
+
+&lt;p&gt;Instead, the &lt;strong&gt;FaaS platform is configured in such a manner that it responds to a specific event for each operation&lt;/strong&gt;. When that event occurs, the vendor platform initiates the function and then calls it to the triggering event.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/3/faas-function-lifecycle-1-1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once the function has finished executing, the &lt;strong&gt;FaaS platform is free to tear it down&lt;/strong&gt;. Alternatively, as an optimization, it might keep it for a while until there is another event to be processed.&lt;/p&gt;
+
+&lt;p&gt;As I said earlier, this is an event-driven approach. Moreover, FaaS vendor also integrates with various synchronous (HTTP API Gateway)  and asynchronous (hosted message) event sources apart from providing a platform to host and execute the code.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-about-microservices&quot;&gt;What about Microservices?&lt;/h3&gt;
+
+&lt;p&gt;I am sure you must be wondering where microservices would go?&lt;/p&gt;
+
+&lt;p&gt;They are here to stay! Do not worry!&lt;/p&gt;
+
+&lt;p&gt;This approach to digital transformation representing &lt;strong&gt;monolithic —&amp;gt; microservices —&amp;gt; serverless&lt;/strong&gt; is driven by the need for greater agility and scalability. To keep up with the competition, the organizations need to update its technology stack quickly, eventually making the software a differentiating factor.&lt;/p&gt;
+
+&lt;p&gt;Thus microservices architecture emerged as a key &lt;strong&gt;method of providing development teams with flexibility&lt;/strong&gt; and other benefits, such as the ability to deliver applications at warp speed using infrastructure as a service (IaaS) and platform as a service (PaaS) environments.&lt;/p&gt;
+
+&lt;p&gt;The concept of this idea was to break the monolithic applications into smaller services each with its own business logic. With a monolithic architecture, a single faulty service can bring down the entire app server and all the services running on it.&lt;/p&gt;
+
+&lt;p&gt;While in a microservice each service runs in its own container and thus application architects can develop, manage and scale these services independently.&lt;/p&gt;
+
+&lt;p&gt;The microservices can be scaled and deployed separately and written in different programming languages. But a key decision many organizations face when deploying their microservices architecture is choosing between IaaS and PaaS environments.&lt;/p&gt;
+
+&lt;p&gt;Microservices involve source code management, a build server, code repository, image repository, cluster manager, container scheduler, dynamic service discovery, software load balancer and a cloud load balancer. It also needs a mature agile and DevOps team to support continuous delivery.&lt;/p&gt;
+
+&lt;p&gt;As explained earlier &lt;strong&gt;FaaS takes the step further by making an application more granular to the level of functions and events&lt;/strong&gt;. Thus, it is pretty clear that the unit of work is getting smaller and smaller.&lt;/p&gt;
+
+&lt;p&gt;We’ve gone from monoliths to microservices to functions. FaaS also improves the shortcoming of PaaS model ie. scaling and friction between development and operations.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Scaling a microservice hosted on PaaS is challenging and complex&lt;/strong&gt;. The architecture might have elements written in different programming languages, deployed across multiple clouds and on-premise locations, running on different containers.&lt;/p&gt;
+
+&lt;p&gt;When demand increases for the app, all the underlying components have to be coordinated to scale, or you have to be able to identify which individual elements need to scale to address the surge in demand.&lt;/p&gt;
+
+&lt;p&gt;Even if you set up your PaaS application to auto-scale you won’t be doing this to the level of individual requests unless you know the traffic trend. So a FaaS application is much more efficient when it comes to costs.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/3/complexity.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;But still, there will be always space for both microservices and FaaS to co-exist because there are certain things which you can’t do with functions at all. For example, an API/Microservice will always be to respond faster since it can keep connections to databases and other things open and ready.&lt;/p&gt;
+
+&lt;p&gt;Moreover, one more thing to note here is that by &lt;strong&gt;grouping a bundle of functions together behind an API gateway, you’ve created a microservice&lt;/strong&gt;. This shows that both of these can co-exist in a nice way.&lt;/p&gt;
+
+&lt;p&gt;This high-level flow remains the same as the traditional approach. The key difference is that, in case of a function, the container is created and destroyed by algorithms used in FaaS platforms and the operational team have no control over that.&lt;/p&gt;
+
+&lt;p&gt;And hence, it is here to stay!&lt;/p&gt;
+
+&lt;p&gt;But with ease of function and reduced cost comes increasing complexity about which we will discuss later in the blog.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-does-serverless-app-works&quot;&gt;How does Serverless App Works?&lt;/h3&gt;
+&lt;p&gt;Serverless might look like a bright sunny day but it isn’t that sunny after all. It has brought about a big difference when it comes to application architecture.&lt;/p&gt;
+
+&lt;p&gt;Moreover, &lt;strong&gt;the change with serverless isn’t gradual&lt;/strong&gt;, but with a jolt. FaaS drives a totally different type of application architecture through a fundamentally event-driven model, a much more granular form of deployment.&lt;/p&gt;
+
+&lt;p&gt;So,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;How does serverless app work in actual?&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;What does serverless architecture look like?&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;How is it different from non-serverless architecture?&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These are the questions that we’re going to tackle in this chapter. Let’s dive deeper and understand the serverless architecture and its working.&lt;/p&gt;
+
+&lt;h3 id=&quot;reference-application&quot;&gt;Reference Application&lt;/h3&gt;
+&lt;p&gt;Let’s make some assumptions about our reference application.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;It is a multi-user app.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;It has a mobile-friendly user interface.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;User management and authentication are required.&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We’ve certainly overlooked some other features that you might expect in a basic app, but the point of this exercise is not to actually build an app but to compare a serverless application architecture with a legacy, non-serverless architecture.&lt;/p&gt;
+
+&lt;h3 id=&quot;monolithic-architecture&quot;&gt;Monolithic Architecture&lt;/h3&gt;
+&lt;p&gt;Given those requirements, a monolithic architecture for our app might look something like the below figure.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/3/monolithic-Architecture.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;serverless architecture&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;A native mobile app for iOS or Android&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;A backend is written in Java &amp;amp; HTML&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;A relational database&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In this architecture, a mobile app is responsible for handling app interface and input from the user, but it delegates most actual logic to the backend. From the perspective of code, the mobile app is lightweight and quite simple. It uses HTTP to make a request to multiple API endpoints served by the backend Java application.&lt;/p&gt;
+
+&lt;p&gt;Authentication and user management are encapsulated with the Java application code. Moreover, it also interacts with the relational database in order to store user data.&lt;/p&gt;
+
+&lt;h3 id=&quot;why-change&quot;&gt;Why Change?&lt;/h3&gt;
+&lt;p&gt;You might say, &lt;strong&gt;“I am perfectly fine with this architecture as it meets all my requirements, so why just not stop there and call it a good?”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;To which I will reply that there are multiple challenges and operational pitfalls which I will discuss in this section to which you might relate. Go on!&lt;/p&gt;
+
+&lt;p&gt;In building this app, you’ll need to have hands-on expertise in iOS and Java, don’t you? Apart from that, you need to have good experience in configuring, deploying and operating Java application servers as well as a relational database. Moreover, think about their host systems, whether container-based or running directly on virtual or physical hardware?&lt;/p&gt;
+
+&lt;p&gt;We’ve not yet touched scalability, security or high availability, all of which are critical aspects of the modern production system. The bottom line- &lt;strong&gt;all these complexities, at one point in time, will become friction&lt;/strong&gt; when you’ll be fixing bugs, adding features or trying to rapidly prototype new ideas.&lt;/p&gt;
+
+&lt;p&gt;And hence, you need a change!&lt;/p&gt;
+
+&lt;h3 id=&quot;serverless-architecture-1&quot;&gt;Serverless Architecture&lt;/h3&gt;
+&lt;p&gt;A serverless architecture of our basic application would look something like the below figure.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/3/user-flow-768x632.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;According to this architecture, while the user interface will still remain a part of the native mobile app, user authentication and management will be handled by a BaaS service like AWS Cognito. These services can be called directly from the mobile app to handle user-facing tasks like registration and authentication.&lt;/p&gt;
+
+&lt;p&gt;Moreover, the same BaaS can be used by other backend components to retrieve user information.&lt;/p&gt;
+
+&lt;p&gt;With &lt;strong&gt;user management and authentication now handle by BaaS&lt;/strong&gt;, the logic which was previously handled by backend Java application is simplified. You can use another amazing serverless component, AWS API Gateway, to handle routing HTTP requests between a mobile app and your backend in a secure and scalable manner.&lt;/p&gt;
+
+&lt;p&gt;Each distinct operation can be encapsulated in a function. A FaaS platform such as AWS Lambda takes each of these functions and runs them in parallel ‘containers’ that can be monitored and scaled separately.&lt;/p&gt;
+
+&lt;p&gt;Those backend FaaS functions can interact seamlessly with a NoSQL, BaaS database like AWS DynamoDB. In fact, one drastic change is that &lt;strong&gt;we no longer store any session state within our server-side application code&lt;/strong&gt;, and instead will persist in NoSQL store.&lt;/p&gt;
+
+&lt;p&gt;While it may seem to you like a minute change but believe me, it will help you significantly with scaling.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-got-better&quot;&gt;What got better?&lt;/h3&gt;
+&lt;p&gt;You might say, “There is no significant difference in terms of complexity and it has, in fact, more specific application components that our traditional monolithic architecture?”&lt;/p&gt;
+
+&lt;p&gt;To which I will reply that &lt;strong&gt;the code we will write now will be solely focused on the logic of the app&lt;/strong&gt;. What’s more? Our components are now decoupled and separate, due to that, we can switch them or add new logic very fast without the inherent friction in the non-serverless architecture.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Scaling, high availability and security are the areas all backed up with the serverless architecture&lt;/strong&gt;. This means that as the popularity of your app grows, you needn’t worry about renting more powerful servers, or failure in a database or troubleshoot a firewall configuration.&lt;/p&gt;
+
+&lt;p&gt;In short, &lt;strong&gt;labour cost has reduced&lt;/strong&gt;, as well as, the risk and resources cost of running it. All of its constituent components will scale flexibly. What’s more? If you have an idea for a new feature, our lead time is highly decreased, hence, we can start getting feedback and work on it efficiently.&lt;/p&gt;
+
+&lt;p&gt;Pretty exciting, right?&lt;/p&gt;
+
+&lt;p&gt;We have more discussion on benefits and drawbacks of serverless. Stay tuned!&lt;/p&gt;
+
+&lt;p&gt;Before that, let’s discover more about serverless architecture through serverless architecture case study.&lt;/p&gt;
+
+&lt;h3 id=&quot;case-study-unpacking-serverless-architecture&quot;&gt;Case Study: Unpacking Serverless Architecture&lt;/h3&gt;
+
+&lt;p&gt;When PhotoVogue, part of Vogue Italia,  launched in 2011, it was woefully unprepared to become the next rags-to-riches online photography platform.&lt;/p&gt;
+
+&lt;p&gt;Within a year, &lt;strong&gt;the popularity increased and skyrocketing traffic overwhelmed the Italy based company&lt;/strong&gt;. Moreover, the user experience went lethargic and its pre-existing backend limited the scalability.&lt;/p&gt;
+
+&lt;p&gt;Liking it to open-heart surgery, Marco Vigano, Head of Digital Development at Conde Nast Italia, was forced to perform an emergency migration from local server to AWS in just 3 months. &lt;strong&gt;PhotoVogue’s quick switch to the serverless likely saved it from death-by-desertion after its homebrew server failed to keep the pace.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This trend has further decreased time-to-market and delivers the scaling necessary for Uber, Pokemon Go, Airbnb, ‘Clash of Clans’ and numerous other apps characterised by large user bases and real-time data. With more than 4 million apps struggling for attention on Apple’s App Store and Google’s Play Store, developers are turning to serverless for a competitive advantage.&lt;/p&gt;
+
+&lt;p&gt;Sounds like a fascinating story? Let’s have a closer look!&lt;/p&gt;
+
+&lt;h3 id=&quot;about-the-platform&quot;&gt;About the Platform&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;PhotoVogue is an online photography platform&lt;/strong&gt;. It is a part of Vogue Italia which is owned by Conde Nast Italia. It allows upcoming photographers to showcase their work.&lt;/p&gt;
+
+&lt;p&gt;It also gives them the chance to have their photos published in Vogue or to be picked up by photography agencies. Each picture is curated by Vogue’s editorial staff and it ensures that highest quality photographs appear online&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Challenge&lt;/strong&gt;
+Let’s have a look at some of the key challenges faced by the PhotoVogue team.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It currently showcases images from around &lt;strong&gt;130,000 photographers&lt;/strong&gt; from around the world. This jumbo collection houses more than &lt;strong&gt;400,000 images&lt;/strong&gt;, each of which can be &lt;strong&gt;up to 50 MB in size&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;With the growing demand, it failed to meet user demands. Moreover, the pre-existing IT infrastructure restricted the growth of the site.&lt;/li&gt;
+  &lt;li&gt;The need for providing better and faster experience to both photographers and editorial staff wasn’t feasible at all.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;The Solution&lt;/strong&gt;
+Vigano identified AWS as the perfect cloud provider that suited the firm requirements which provided them with an amazing solution.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;It offered flexible scalability, ease of maintenance and cost-effectiveness than the pre-existing physical infrastructure that supported PhotoVogue.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Presently, it uses Amazon Simple Storage Service (Amazon S3) to store all its photos where its ability to generate a URL enabled users to upload their photos really fast.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;But, &lt;strong&gt;do they even use FaaS? Or any serverless components?&lt;/strong&gt; Yes!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/3/Figure-9.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;From Amazon S3, an &lt;strong&gt;AWS Lambda function is triggered,&lt;/strong&gt; which automatically &lt;strong&gt;converts the uploaded image into multiple digital formats&lt;/strong&gt;– such as GIF, JPEG, PNG and TIFF- and allows the images to be edited by PhotoVogue staff.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The Amazon API Gateway is used as the caching layer for the REST API, and Amazon CloudFront facilitates the content delivery network (CDN).&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;The Benefits&lt;/strong&gt;
+“With Amazon API Gateway and AWS Lambda, the user experience is up to 90% faster. That’s for both photographers uploading images and the editorial team processing them.”- &lt;strong&gt;Marco Viagano, Head of Digital Development.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Not just that, he has more things to say!&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Quicker provisioning of resources supports growth.&lt;/strong&gt; “With the traditional infrastructure, it would take days to set up which now can be done in hours. IT is no longer holding back the business, in fact, we can grow faster.”&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Making savings, enabling innovation, boosting revenue.&lt;/strong&gt; “We’ve cut IT costs by around 30%. We used to spend more time in maintaining the infrastructure which now has reduced drastically and hence we can explore new services.”&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Successful events further promoted the online platform.&lt;/strong&gt; In November 2016, PhotoVogue held an event in Milan. “During the event, we experienced about 20% more uploads than normal daily traffic and we dealt with it seamlessly.”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Wow!&lt;/p&gt;
+
+&lt;h3 id=&quot;benefits-of-serverless-technology&quot;&gt;Benefits of Serverless Technology&lt;/h3&gt;
+&lt;p&gt;Now, it’s time to move on to the benefits that serverless brings on the table. Since, serverless in still in evolution, some of the benefits that we will be considering might not be available after 2 years.&lt;/p&gt;
+
+&lt;p&gt;Moreover, this is an unproven concept and hence, before moving on to serverless, you should definitely consider its significant facets. I hope that discussing benefits and drawbacks will you in clearing the confused air regarding serverless.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Reduced Infrastructure Costs&lt;/strong&gt;
+Before you set up your servers, there are various things that you need to consider. Some of them might look like below:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How many and on what type of hosts our servers are going to run on?&lt;/li&gt;
+  &lt;li&gt;How much CPU &amp;amp; RAM your database needs?&lt;/li&gt;
+  &lt;li&gt;How many instances will you be provided to support scaling?&lt;/li&gt;
+  &lt;li&gt;What about high availability?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Once you figure out all these things, comes the time of planning, allocation and provisioning. Tiresome, isn’t it?&lt;/p&gt;
+
+&lt;p&gt;Indeed! And most of the time we overestimate things and end up paying for all those resources that we never use in the future. Sounds familiar?&lt;/p&gt;
+
+&lt;p&gt;On the other side, the magnanimous benefit that serverless brings to the table is that we don’t plan, allocate or provision resources. We let the vendors facilitate us precisely the amount of capacity we need at any point in time.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;If we don’t have any load, we don’t use any and hence, we don’t pay for any!&lt;/strong&gt; As simple as that! If we only have 1 TB of data, we don’t need the capacity to store 100 TB. We trust our vendors that service will be provided, on demand, and this is equally true for FaaS &amp;amp; BaaS services both.&lt;/p&gt;
+
+&lt;p&gt;For example, AWS Lambda is charged by 100 milliseconds of use, 36,000 times more precise than the hourly billing of EC2.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Flexible Scaling&lt;/strong&gt;
+All of this reduction in infrastructure cost comes with the added benefit of automatic scaling.&lt;/p&gt;
+
+&lt;p&gt;Let me remind you, with serverless, &lt;strong&gt;horizontal scaling is completely automatic, elastic and managed by the provider&lt;/strong&gt;. But how does this all happen? Let’s take an example!&lt;/p&gt;
+
+&lt;p&gt;When your platform receives the first event to trigger a function, it will initiate the container to run your code. If another event is triggered while the previous one is still in process, it will initiate another container to run your code. This automation will enable horizontal scaling until there are enough containers to run your code.&lt;/p&gt;
+
+&lt;p&gt;Pretty flexible, right?&lt;/p&gt;
+
+&lt;p&gt;Reduced Scaling Costs
+Due to this pay-as-you-go model, you save a lot with high scalability. Isn’t this a huge economic win?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#1. Infrequent requests:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;If you’re using a server application, that processes 2 requests every single minute and takes 100 ms to process each request. This means, your CPU usage over an hour is 0.1%. This is highly inefficient and only if you’d wish that much other application could use your server as well.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;But serverless encaptures this efficiency and gives you the benefit in the form of reduced cost&lt;/strong&gt;. In this case, if you’d be paying for just 200ms of computing every minute, which is 0.15% of your overall time.&lt;/p&gt;
+
+&lt;p&gt;Such benefits in cost prove to be an amazing democratizer. As production teams have the extremely tiny amount of operational cost to bear to try out something new. In fact, if your total workload is relatively small, you have to provide nothing considering the ‘free tier’ services from some vendors.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#2. Fluctuating traffic:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s assume that your website traffic spikes once in a while. The basic traffic that you receive during the day is around 10 requests/sec. but that increases to 10 times by 100 requests/sec. every 5 min. for 10 sec.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Let’s assume that during the peak hours your servers get exhausted and at the same time you don’t want to reduce your response time&lt;/strong&gt;. Do you have any solution? I do.&lt;/p&gt;
+
+&lt;p&gt;If you’re functioning in a traditional environment, you may need to upgrade your hardware by the factor of 10 to handle the sudden increase in traffic.&lt;/p&gt;
+
+&lt;p&gt;Auto-scaling isn’t a favourable option here as it is highly unlikely to predict the time taken by the new instances of servers to come up, and moreover, by the time those servers are ready, the traffic spike phase will be over.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/3/serverless-graph.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;However, with serverless, this doesn’t seem to be an issue. You have to do nothing whether your traffic is uniform or it is at peak. All you do is &lt;strong&gt;pay for the extra compute capacity that you use during the spike phase&lt;/strong&gt;. And hence, this is a huge cost saving for your company.&lt;/p&gt;
+
+&lt;p&gt;But wait! You’ll receive significant economic benefits only if your traffic is inconsistent. If you have stable traffic and you’re using FaaS, you may end up paying more than you should. Hence, do your math first!&lt;/p&gt;
+
+&lt;h3 id=&quot;ease-of-operation-management&quot;&gt;Ease of Operation Management&lt;/h3&gt;
+&lt;p&gt;As I said earlier, scaling is automatic and hence, FaaS has more benefits than just scaling costs. You ask me how? Let me explain.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#1. Benefit of auto-scaling&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Consider a case where you’re manually managing your app server where you will need a specific person to add and remove instances to an array of servers. While with FaaS, you don’t have to worry about that as your vendor do all the things related to scaling.&lt;/p&gt;
+
+&lt;p&gt;Moreover, this lets you get out of the bubble of worrying about &lt;strong&gt;how many concurrent requests you can handle until you run out of memory with a performance hit?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#2. Reduction in packaging and deployment complexity&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Packaging and deploying an API gateways aren’t simple, admit that! At the same time, FaaS functions are pretty simple in comparison to deploying an entire server.  If you are just getting started with FaaS, you don’t even need to package anything, &lt;strong&gt;write your code in the vendor console and you’re ready to go!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;If your team is quite efficient- this benefit could be as huge as- a fully serverless solution aka zero system administration.&lt;/p&gt;
+
+&lt;h3 id=&quot;lower-risk-of-failure&quot;&gt;Lower Risk of Failure&lt;/h3&gt;
+&lt;p&gt;The chances of problems to occur increases when your team manages multiple systems and components. However, this is not the case with serverless. With serverless, &lt;strong&gt;you outsource the management and operation part, plus, you outsource having to solve any problems that occur in those systems.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This brings the added benefit as you rely on the expertise of others in solving unpredictable problems rather than solving it yourself. This sounds like a good idea because many elements of the technical ‘stack’ are the ones that we rarely alter. When a problem occurs, we may not know how to solve them which leads to prolonged and indeterminate downtime.&lt;/p&gt;
+
+&lt;p&gt;With serverless, there is a considerable decrease in the number of techniques that you’ll have to manage directly. And moreover, you’ll be dealing with the ones which are frequently used by your team which makes it much easier to handle.&lt;/p&gt;
+
+&lt;p&gt;And hence, &lt;strong&gt;there are rare chances of failure when you go serverless.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;shorter-lead-time&quot;&gt;Shorter Lead Time&lt;/h3&gt;
+&lt;p&gt;To provide enough space for innovation in our production environment, short lead time is as important as short cycle time. Lead Time means, the time from the foundation of a new product or feature to having it deployed in a minimum viable way to a production environment.&lt;/p&gt;
+
+&lt;p&gt;The fact that serverless architecture totally wipes out the inherent complexity of building, launching, scaling and operations is very amazing in itself. Not only that, it gives you space enough that you can change the way you deliver your product in a totally upside down manner.&lt;/p&gt;
+
+&lt;p&gt;And this is &lt;strong&gt;why I am so excited about serverless&lt;/strong&gt; because of the ability it unleashes in a production environment. Plus, we can focus more now delivering awesome products to our customers!&lt;/p&gt;
+
+&lt;p&gt;I said enough! Let’s say what people have to say about it!AWS&lt;/p&gt;
+
+&lt;p&gt;“Now is a pretty great time to have your data stack on AWS. I’ve rarely felt so empowered to build a ton of things with almost literally ZERO infrastructure concerns. Serverless + data engineering is quite the combo.” &lt;strong&gt;Chris, Director of Data Engineering at Textio&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;“We are starting to see applications built in a ridiculously short time period” &lt;strong&gt;Adrian Cockcroft, VP at AWS Cloud Architecture Strategy&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;drawbacks-of-serverless-technology&quot;&gt;Drawbacks of Serverless Technology&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;**Built-in Drawbacks&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#1. Vendor lock-in:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Serverless, in other words, means outsourcing your services to a 3rd party vendor. Moreover, that means that you won’t be having much control over many key aspects of system downtime, forced API upgrades, loss of functionality and much more.&lt;/p&gt;
+
+&lt;p&gt;This seems to be an inherent limitation that serverless applications face. Through multiple choice of integration patterns, APIs and documents, different vendors enforce different levels of lock-in models.&lt;/p&gt;
+
+&lt;p&gt;What lock-in means is that if you want to move from one vendor to another, you’ll need to update your operational tools, change your code and may even require changing the architecture. The fear of vendor lock-in is one of the major drawbacks of serverless.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#2. Statelessness:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This is a huge benefit which enables scaling easily as a matter of increasing concurrency but managing it is quite tricky. And moreover, it comes with the drawback of inconsistent performance which we will discuss later.&lt;/p&gt;
+
+&lt;p&gt;Apart from the components that are designed to store data,&lt;strong&gt;most of the other serverless parts are stateless&lt;/strong&gt;. By definition, the information in stateless functions doesn’t persist beyond their immediate lifespan. And hence, this gives the birth to complexity while we consider the interaction of these components with another.&lt;/p&gt;
+
+&lt;p&gt;With the implementation of FaaS functions, you can have a code in your app but the cache is rarely of any use. As soon as your cache is ‘heated’ for the initial usage, it is likely to be thrown away as the FaaS instance is torn down.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#3. Local testing:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This is &lt;strong&gt;one of the most mind-numbing difficulties of serverless application architectures&lt;/strong&gt;. In case of non-serverless applications, developers have local options on-hand where they can test the application and observer whether it will work or not during and after the deployment. However, with serverless architecture,&lt;strong&gt;end-to-end testing of application is quite more difficult.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Because, at present, most of the vendors aren’t providing with the local implementation which, in turn, forces developers to use the regular production implementation. This means remote testing for all your integrations. Sounds like a big deal? It is.&lt;/p&gt;
+
+&lt;p&gt;Because the &lt;strong&gt;units of integration with FaaS functions are a lot smaller than with other architecture&lt;/strong&gt;. These typically consist of separate pieces and hence managing them is quite challenging. And therefore, we rely on remote testing a lot more than we do for other types of architectural style&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#4. ‘Cold/Warm’ start: Serverless performance is quite inconsistent&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;One of the most common issues is how long does it take for a FaaS function to start which is referred to as a cold start. On the AWS Lambda, this means initialisation of our code as well as initialization of our container which houses the code. The cold starts happens when lambda function hasn’t been invoked for a while or if its configurations have been altered.&lt;/p&gt;
+
+&lt;p&gt;Once it has been invoked, the container can handle events without going through that same process and these ‘warm’ invocations of the Lambda functions are quite faster. &lt;strong&gt;It is recommended that 99.99% of events should be processed by a warm container.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;However, the uncertainty between ‘cold’ and ‘warm’ is difficult to predict which leads to inconsistent serverless performance issues.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#5. Security:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;As soon as you consider the serverless approach, you are exposed to a whole new level of security issues which can be summed up in the following points:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;With serverless, &lt;strong&gt;data is now in transit between various functions&lt;/strong&gt;. Each time we transit data from one place to another, the chances of the data to be leaked and tampered with increases since the surface area increases.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;With &lt;strong&gt;greater flexibility, comes the greater opportunities for attackers&lt;/strong&gt; to get to your system. The only way to tackle this is to treat each function with its own security protocols.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;No wonder, &lt;strong&gt;serverless has made the motoring extremely hard&lt;/strong&gt;. With more number of functions, comes the hardship of monitoring them. Remember, you may create tons of functions due to its low operational cost, but keep in mind the total cost of ownership, including the increased risk of having unused, vulnerable and stale code in production.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;production-drawbacks&quot;&gt;Production Drawbacks&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;#1. Deployment:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The interaction between the underlying platform and the application is facilitated via API calls. Since serverless applications are, in fact, a bundle of many small individual components, deploying an entire application is typically not a good idea.&lt;/p&gt;
+
+&lt;p&gt;Due to this basic difference in the architecture, it is often a &lt;strong&gt;challenging task to align the deployments of large-scale serverless applications.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#2. Execution:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;One of the publicly criticised limitations of serverless is &lt;strong&gt;limited execution environment of FaaS function&lt;/strong&gt;. Unlike legacy servers, they don’t have an indefinite amount of resources and they are executed on limited CPU, I/O resources, memory and discs.&lt;/p&gt;
+
+&lt;p&gt;For instance, AWS Lambda functions come with an inherited memory of 1.5 GB and will be terminated after a maximum of 5 minutes. As the FaaS platform is evolving, you can expect some expansion in the execution environment. Moreover, designing the architecture within the limit of this environment will add you the benefit of more scalable architecture.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#3. Monitoring:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;While you may not like the limited execution environment but at the same time monitoring of these metrics is out of your concern. However, metrics responsible for business functionality still needs to be monitored.&lt;/p&gt;
+
+&lt;p&gt;But the limit to which the monitoring is well supported of these functions is a mix-and-match. For example, &lt;strong&gt;AWS Lambda has multiple ways of monitoring can be performed but some of these are poorly documented&lt;/strong&gt;. Also, there is a considerable lack of support at present in distributed monitoring. And hence, once all of these functions are in the commonplace, serverless systems will come off as an easy operation.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#4. Remote testing:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The ability to perform remote testing comes along with its inherent inability of local testing. This is due to the fact that certain vendors make the remote testing possible but up to a very lesser extent. For example, &lt;strong&gt;you can do remote testing at component level but not at the serverless application level.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;It is quite exhaustive to test a series of serverless components without setting up an account with the vendor to make sure that testing isn’t affecting the production resources and also, that the limitations provided by the platform are equally met.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#5. Debugging:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;At present, we are stuck on the debugging part as we have to accept whatever the vendor provides us. This might be okay in certain cases but AWS Lambda provides you with extremely basic functionalities and hence it is a big turnoff.&lt;/p&gt;
+
+&lt;p&gt;What we are looking for really is integration with 3rd party services for debugging and open APIs.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+&lt;p&gt;The aim of this blog is to clear the confusing clouds over the mind of people who are not sure about serverless adoption! But I am sure all those techies who are ready to roll their sleeve and eager to embrace &amp;amp; experiment as the way to an amazing product, will say ‘Yes!’&lt;/p&gt;
+
+&lt;p&gt;Though serverless architecture might not come off as a perfect solution to all your worries, it surely will decrease them. But be careful before you plunge yourself into the world of serverless and FaaS. &lt;strong&gt;While there are gold mines to be plundered (deployment, scaling), there are dragons as well (serverless security, debugging).&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;From the business perspective, &lt;strong&gt;the best benefit I can see is the space to experiment new features with reduced time-to-market&lt;/strong&gt;, which is the most critical point in today’s world where new technology is released every day.&lt;/p&gt;
+
+&lt;p&gt;Serverless systems are still in its infancy stage and it will be wonderful to witness how they solve and fit into our architectural requirements.&lt;/p&gt;
+
+&lt;p&gt;Until then, subscribe to our blog and keep yourself one step ahead with updates on serverless technology and much more!&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Serverless Architecture:</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/sw_design.png" /></entry><entry><title type="html">10 AWS Lambda Use Cases to Start Your Serverless Journey</title><link href="http://localhost:4000/blog/serverless-examples-aws-lambda-use-cases" rel="alternate" type="text/html" title="10 AWS Lambda Use Cases to Start Your Serverless Journey" /><published>2020-01-07T10:49:00+00:00</published><updated>2020-01-07T10:49:00+00:00</updated><id>http://localhost:4000/blog/ServerlessExampleUseCase</id><content type="html" xml:base="http://localhost:4000/blog/serverless-examples-aws-lambda-use-cases">&lt;h3 id=&quot;aws-lambda-use-cases-to-start-your-serverless-journey&quot;&gt;AWS Lambda Use Cases to Start Your Serverless Journey&lt;/h3&gt;
 &lt;p&gt;Many big companies such as Netflix, Conde Nast and NY Times are migrating their compute services to serverless. But sometimes the cloud architects are confused about the application of serverless technologies such as AWS Lambda and Azure functions.This blog explains 10 AWS Lambda Use Cases to help you get started with serverless. Some of the use cases are Serverless Website,App Authentication,Mass Emailing, Real-time Data Transformation, CRON Jobs,Chatbot,IoT.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/awscloud/2/Serverless-Examples-with-AWS-Lambda-Use-Cases.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
@@ -2682,249 +3178,4 @@ dotnet add package CsvHelper
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="customization" /><category term="learning" /><summary type="html">HTTPS</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aspnetcore.png" /></entry><entry><title type="html">ASP. NET Core - Dependency-injection</title><link href="http://localhost:4000/blog/customize-dependency-injection" rel="alternate" type="text/html" title="ASP. NET Core - Dependency-injection" /><published>2019-11-01T05:54:00+00:00</published><updated>2019-11-01T05:54:00+00:00</updated><id>http://localhost:4000/blog/customize3-dependency-injection</id><content type="html" xml:base="http://localhost:4000/blog/customize-dependency-injection">&lt;h2 id=&quot;dependency-injection&quot;&gt;Dependency Injection&lt;/h2&gt;
-
-&lt;p&gt;In the third part we’ll take a look into the ASP.NET Core dependency injection and how to customize it to use a different dependency injection container if needed.&lt;/p&gt;
-
-&lt;h2 id=&quot;why-using-a-different-dependency-injection-container&quot;&gt;Why using a different dependency injection container?&lt;/h2&gt;
-
-&lt;p&gt;In the most projects you don’t really need to use a different dependency injection container than the exiting one. The DI implementation in ASP.NET Core supports the main basic features and works well and pretty fast. Anyway, some other DI container support some interesting features you maybe want to use in your application.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Maybe you like to create an application that supports modules as lightweight dependencies.
-    &lt;ul&gt;
-      &lt;li&gt;E.g. modules you want to put into a specific directory and they get automatically registered in your application&lt;/li&gt;
-      &lt;li&gt;This could be done with NInject.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Maybe you want to configure the services in a configuration file outside the application, in an XML or JSON file instead in C# only
-    &lt;ul&gt;
-      &lt;li&gt;This is a common feature in various DI containers, but not yet supported in ASP.NET Core.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Maybe you don’t want to have an immutable DI container, because you want to add services at runtime.
-    &lt;ul&gt;
-      &lt;li&gt;This is also a common feature in some DI containers.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;a-look-at-the-configureservices-method&quot;&gt;A look at the ConfigureServices Method&lt;/h2&gt;
-
-&lt;p&gt;Create a new ASP.NET Core project and open the &lt;code class=&quot;highlighter-rouge&quot;&gt;Startup.cs&lt;/code&gt;, you will find the method to configure the services which looks like this:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ConfigureServices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IServiceCollection&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Configure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CookiePolicyOptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;// This lambda determines whether user &lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;// consent for non-essential cookies is &lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;// needed for a given request.&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CheckConsentNeeded&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-    
-    &lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AddTransient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MyService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// custom service&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AddControllersWithViews&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AddRazorPages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This method gets the &lt;code class=&quot;highlighter-rouge&quot;&gt;IServiceCollection&lt;/code&gt;, which already filled with a bunch of services which are needed by ASP.NET Core. This services got added by the hosting services and parts of ASP.NET Core that got executed before the method &lt;code class=&quot;highlighter-rouge&quot;&gt;ConfigureSercices&lt;/code&gt; is called.&lt;/p&gt;
-
-&lt;p&gt;Inside the method some more services gets added. First a configuration class that contains cookie policy options is added to the &lt;code class=&quot;highlighter-rouge&quot;&gt;ServiceCollection&lt;/code&gt;. In this sample I also add a custom service called &lt;code class=&quot;highlighter-rouge&quot;&gt;MyService&lt;/code&gt; that implements the &lt;code class=&quot;highlighter-rouge&quot;&gt;IService&lt;/code&gt; interface. After that the method &lt;code class=&quot;highlighter-rouge&quot;&gt;AddMvc()&lt;/code&gt; adds another bunch of services needed by the MVC framework. Until yet we have around 140 services registered to the &lt;code class=&quot;highlighter-rouge&quot;&gt;IServiceCollection&lt;/code&gt;. But the service collections isn’t the actual dependency injection container.&lt;/p&gt;
-
-&lt;p&gt;The actual DI container is wrapped in the so called service provider, which will be created out of the service collection. The &lt;code class=&quot;highlighter-rouge&quot;&gt;IServiceCollection&lt;/code&gt; has an extension method registered to create a &lt;code class=&quot;highlighter-rouge&quot;&gt;IServiceProvider&lt;/code&gt; out of the service collection.&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;IServiceProvider&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;provider&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;BuildServiceProvider&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;ServiceProvider&lt;/code&gt; than contains the immutable container that cannot be changed at runtime. With the default method &lt;code class=&quot;highlighter-rouge&quot;&gt;ConfigureServices&lt;/code&gt; the &lt;code class=&quot;highlighter-rouge&quot;&gt;IServiceProvider&lt;/code&gt; gets created in the background after this method was called, but it is possible to change the method a little bit:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IServiceProvider&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ConfigureServices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IServiceCollection&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Configure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CookiePolicyOptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;// This lambda determines whether user &lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;// consent for non-essential cookies is &lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;// needed for a given request.&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CheckConsentNeeded&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-    
-    &lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AddTransient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MyService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// custom service&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AddControllersWithViews&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AddRazorPages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;BuildServiceProvider&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;I changed the return type to &lt;code class=&quot;highlighter-rouge&quot;&gt;IServiceProvider&lt;/code&gt; and return the &lt;code class=&quot;highlighter-rouge&quot;&gt;ServiceProvider&lt;/code&gt; created with the method &lt;code class=&quot;highlighter-rouge&quot;&gt;BuildServiceProvider()&lt;/code&gt;. This change will still work in ASP.NET Core.&lt;/p&gt;
-
-&lt;h2 id=&quot;use-a-different-serviceprovider&quot;&gt;Use a different &lt;code class=&quot;highlighter-rouge&quot;&gt;ServiceProvider&lt;/code&gt;&lt;/h2&gt;
-
-&lt;p&gt;To change to a different or custom DI container you need to replace the default implementation of the &lt;code class=&quot;highlighter-rouge&quot;&gt;IServiceProvider&lt;/code&gt; with a different one. Additionally you need to find a way to move the already registered services to the new container.&lt;/p&gt;
-
-&lt;p&gt;The next code sample uses Autofac as a third party container.&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dotnet add package Autofac.Extensions.DependencyInjection
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;I use Autofac in this snippet because you are easily able to see what is happening here:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IServiceProvider&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ConfigureServices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IServiceCollection&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-     &lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Configure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CookiePolicyOptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;// This lambda determines whether user &lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;// consent for non-essential cookies is &lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;// needed for a given request.&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CheckConsentNeeded&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-    
-    &lt;span class=&quot;c1&quot;&gt;// services.AddTransient&amp;lt;IService, MyService&amp;gt;(); // custom service&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AddControllersWithViews&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AddRazorPages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;// create a Autofac container builder&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;builder&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ContainerBuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;// read service collection to Autofac&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Populate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;// use and configure Autofac&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RegisterType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MyService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;As&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// custom service&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;// build the Autofac container&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;ApplicationContainer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Build&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;// creating the IServiceProvider out of the Autofac container&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;AutofacServiceProvider&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ApplicationContainer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// IContainer instance in the Startup class &lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IContainer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ApplicationContainer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Also Autofac works with a kind of a service collection inside the &lt;code class=&quot;highlighter-rouge&quot;&gt;ContainerBuilder&lt;/code&gt; and it creates the actual container out of the &lt;code class=&quot;highlighter-rouge&quot;&gt;ContainerBuilder&lt;/code&gt;. To get the registered services out of the &lt;code class=&quot;highlighter-rouge&quot;&gt;IServiceCollection&lt;/code&gt; into the &lt;code class=&quot;highlighter-rouge&quot;&gt;ContainerBuilder&lt;/code&gt;, Autofac uses the &lt;code class=&quot;highlighter-rouge&quot;&gt;Populate()&lt;/code&gt; method. This copies all the existing services to the Autofac container.&lt;/p&gt;
-
-&lt;p&gt;Our custom service &lt;code class=&quot;highlighter-rouge&quot;&gt;MyService&lt;/code&gt; now gets registered using the Autofac way.&lt;/p&gt;
-
-&lt;p&gt;After that, the container gets build and stored in a property of type &lt;code class=&quot;highlighter-rouge&quot;&gt;IContainer&lt;/code&gt;. In the last line of the method &lt;code class=&quot;highlighter-rouge&quot;&gt;ConfigureServices&lt;/code&gt; we create a &lt;code class=&quot;highlighter-rouge&quot;&gt;AutofacServiceProvider&lt;/code&gt; and pass in the &lt;code class=&quot;highlighter-rouge&quot;&gt;IContainer&lt;/code&gt;. This is the &lt;code class=&quot;highlighter-rouge&quot;&gt;IServiceProvider&lt;/code&gt; we need to return to use Autofac within our application.&lt;/p&gt;
-
-&lt;h2 id=&quot;introducing-scrutor&quot;&gt;Introducing Scrutor&lt;/h2&gt;
-
-&lt;p&gt;You don’t always need to replace the existing .NET Core DI container to get and use nice features. In the beginning I mentioned the auto registration of services. This can also be done with a nice NuGet package called &lt;a href=&quot;https://www.nuget.org/packages/Scrutor/&quot;&gt;Scrutor&lt;/a&gt; by &lt;a href=&quot;https://twitter.com/khellang&quot;&gt;Kristian Hellang&lt;/a&gt; (&lt;a href=&quot;https://kristian.hellang.com/&quot;&gt;https://kristian.hellang.com/&lt;/a&gt;). Scrutor extends the IServiceCollection to automatically register services to the .NET Core DI container.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;“Assembly scanning and decoration extensions for Microsoft.Extensions.DependencyInjection”
-https://github.com/khellang/Scrutor&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://andrewlock.net&quot;&gt;Andrew Lock&lt;/a&gt; published a pretty detailed blog post about Scrutor. It doesn’t make sense to repeat that. Read that awesome post and learn more about it: &lt;a href=&quot;https://andrewlock.net/using-scrutor-to-automatically-register-your-services-with-the-asp-net-core-di-container/&quot;&gt;Using Scrutor to automatically register your services with the ASP.NET Core DI container&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;update-on-aspnet-core-30&quot;&gt;Update on ASP.NET Core 3.0&lt;/h2&gt;
-
-&lt;p&gt;The last sections only work in ASP.NET Core prior to version 3.0. Since the Hosting model changed in ASP.NET Core 3.0 the Startup method &lt;code class=&quot;highlighter-rouge&quot;&gt;ConfigureService()&lt;/code&gt;, cannot return an &lt;code class=&quot;highlighter-rouge&quot;&gt;IServiceProvider&lt;/code&gt; anymore. To register a custom IoC container you need to register a different &lt;code class=&quot;highlighter-rouge&quot;&gt;IServiceProviderFactory&lt;/code&gt;. In that case an &lt;code class=&quot;highlighter-rouge&quot;&gt;AutofacServiceProviderFactory&lt;/code&gt;, if you use Autofac.&lt;/p&gt;
-
-&lt;p&gt;I created a small extension method to register Autofac:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IHostBuilderExtension&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IHostBuilder&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;UseAutofacServiceProviderFactory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IHostBuilder&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hostbuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;hostbuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UseServiceProviderFactory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ContainerBuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;(&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;AutofacServiceProviderFactory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hostbuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;AutofacServiceProviderFactory&lt;/code&gt; is provided by the latest version of the &lt;code class=&quot;highlighter-rouge&quot;&gt;Autofac.Extensions.DependencyInjection&lt;/code&gt; package.&lt;/p&gt;
-
-&lt;p&gt;And this is used in the &lt;code class=&quot;highlighter-rouge&quot;&gt;Program.cs&lt;/code&gt; like this:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Program&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nf&quot;&gt;CreateHostBuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Build&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IHostBuilder&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;CreateHostBuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;Host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;CreateDefaultBuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;UseAutofacServiceProviderFactory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ConfigureWebHostDefaults&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;webBuilder&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;webBuilder&lt;/span&gt;
-                    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UseStartup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Startup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;();&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;If you have this in place you are able to use Autofac as you like. In the &lt;code class=&quot;highlighter-rouge&quot;&gt;Startup.cs&lt;/code&gt; you are able to use the &lt;code class=&quot;highlighter-rouge&quot;&gt;IServiceCollection&lt;/code&gt; to register the dependencies or to add an additional method called &lt;code class=&quot;highlighter-rouge&quot;&gt;ConfigureContainer&lt;/code&gt; to do it the Autofac way:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// ConfigureContainer is where you can register things directly&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// with Autofac. This runs after ConfigureServices so the things&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// here will override registrations made in ConfigureServices.&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Don't build the container; that gets done for you. If you&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// need a reference to the container, you need to use the&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// &quot;Without ConfigureContainer&quot; mechanism shown later.&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ConfigureContainer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ContainerBuilder&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RegisterType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MyService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;As&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// custom service&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;Using this approach you are able to use any .NET Standard compatible DI container to replace the existing one. If the container of your choice doesn’t provide a &lt;code class=&quot;highlighter-rouge&quot;&gt;ServiceProvider&lt;/code&gt;, create your own that implements &lt;code class=&quot;highlighter-rouge&quot;&gt;IServiceProvider&lt;/code&gt; and uses the DI container inside. If the container of your choice doesn’t provide a method to populate the registered services into the container, create your own method. Loop over the registered services and add them to the other container.&lt;/p&gt;
-
-&lt;p&gt;Actually the last step sounds easy, but can be a hard task. Because you need to translate all the possible &lt;code class=&quot;highlighter-rouge&quot;&gt;IServiceCollection&lt;/code&gt; registrations into registrations of the different container. The complexity of that task depends on the implementation details of the other one.&lt;/p&gt;
-
-&lt;p&gt;Anyway, you have the choice to use any DI container which is compatible to the .NET Standard. You have the choice to change a lot of default implementations in ASP.NET Core.&lt;/p&gt;
-
-&lt;p&gt;So you can with the default HTTPS behavior on Windows. To learn more about that please read the next chapter.&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;sessions&quot;&gt;Sessions&lt;/h2&gt;
-
-&lt;p&gt;This is series of articles on Building Conf planner app with Asp.net Core:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-logging&quot; target=&quot;_blank&quot;&gt;1 - Logging&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-configuration&quot; target=&quot;_blank&quot;&gt;2 - Configuration&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-dependency-injection&quot; target=&quot;_blank&quot;&gt;3 - Dependency Injection&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-https&quot; target=&quot;_blank&quot;&gt;4 - Https&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-hostedservices&quot; target=&quot;_blank&quot;&gt;5 - Hostedservices&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-middleware&quot; target=&quot;_blank&quot;&gt;6 - Middlewares&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-outputformatter&quot; target=&quot;_blank&quot;&gt;7 - Outputformatter&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-modelbinders&quot; target=&quot;_blank&quot;&gt;8 - Modelbinders &lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-actionfilters&quot; target=&quot;_blank&quot;&gt;9 - Actionfilters&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-taghelpers&quot; target=&quot;_blank&quot;&gt;10 - Taghelpers&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-webhostbuilder&quot; target=&quot;_blank&quot;&gt;11 - Webhostbuilder&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-hosting&quot; target=&quot;_blank&quot;&gt;12 - Hosting &lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr /&gt;
-   
-    &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/customize-configuration&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/customize-https&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="customization" /><category term="learning" /><summary type="html">Dependency Injection</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aspnetcore.png" /></entry></feed>
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="customization" /><category term="learning" /><summary type="html">HTTPS</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aspnetcore.png" /></entry></feed>
