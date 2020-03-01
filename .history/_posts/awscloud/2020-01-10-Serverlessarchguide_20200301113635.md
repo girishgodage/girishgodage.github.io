@@ -6,7 +6,9 @@ categories:
 - AWSCloud
 tags:
 - learning
-summary: Read this comprehensive guide to understand Serverless Technology. Get to know what is function-as-a-service, how do serverless architecture works, its benefits & drawbacks and an in-depth case study on PhotoVogue.
+summary: Read this comprehensive guide to understand Serverless Technology. Get to
+  know what is function-as-a-service, how do serverless architecture works, its benefits
+  & drawbacks and an in-depth case study on PhotoVogue.
 image: "/img/sw_design.png"
 author: Girish Godage
 layout: posts
