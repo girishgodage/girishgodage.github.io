@@ -6,7 +6,10 @@ categories:
 - AWSCloud
 tags:
 - learning
-summary: Scalability of an application is equally important as its features and user interface. It becomes even more important if your app is going to serve more than a million users in the future. In this blog, you will learn how to scale your app up to 1 million users on AWS.
+summary: Scalability of an application is equally important as its features and user
+  interface. It becomes even more important if your app is going to serve more than
+  a million users in the future. In this blog, you will learn how to scale your app
+  up to 1 million users on AWS.
 image: "/img/sw_design.png"
 author: Girish Godage
 layout: posts
