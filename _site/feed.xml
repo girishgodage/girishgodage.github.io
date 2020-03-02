@@ -1,4 +1,402 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-01T11:11:48+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">How to Build a Scalable Application up to 1 Million Users on AWS</title><link href="http://localhost:4000/blog/building-scalable-application-aws-platform" rel="alternate" type="text/html" title="How to Build a Scalable Application up to 1 Million Users on AWS" /><published>2020-01-12T10:41:00+00:00</published><updated>2020-01-12T10:41:00+00:00</updated><id>http://localhost:4000/blog/ScalableawsApp</id><content type="html" xml:base="http://localhost:4000/blog/building-scalable-application-aws-platform">&lt;h3 id=&quot;build-a-scalable-application&quot;&gt;Build a Scalable Application&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-02T12:05:01+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">AWS Lambda vs Azure Functions vs Google Cloud Functions,Comparing Serverless Providers</title><link href="http://localhost:4000/blog/aws-lambda-vs-azure-functions-vs-google-functions" rel="alternate" type="text/html" title="AWS Lambda vs Azure Functions vs Google Cloud Functions,Comparing Serverless Providers" /><published>2020-01-15T10:41:00+00:00</published><updated>2020-01-15T10:41:00+00:00</updated><id>http://localhost:4000/blog/CloudFunctionCompare</id><content type="html" xml:base="http://localhost:4000/blog/aws-lambda-vs-azure-functions-vs-google-functions">&lt;h2 id=&quot;comparing-serverless-providers&quot;&gt;Comparing Serverless Providers&lt;/h2&gt;
+
+&lt;p&gt;Wondering which serverless provider is right for you? Read this blog to understand and analyze the comparison between AWS Lambda vs Azure Functions vs Google Cloud Functions. Get to know their current version and compare performance, security, pricing and scalability.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/5/Serverless-Platform-Comparison-1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When it comes to serverless providers, there are many popular opinions based on various biases. Yet, while choosing the serverless there are many things that go on than the surface picture.&lt;/p&gt;
+
+&lt;p&gt;Considering how critical this is for long-term success, platforms should be evaluated based on their functionalities and service integrations. The potential backlash in choosing a serverless platform is high. Some of them are vendor lock-in and data lock-in, as Patrick Debois, CTO at Zender, mentions in his tweet.&lt;/p&gt;
+
+&lt;p&gt;So how do you select the right serverless provider? The answer is in this article. Here we discuss the major serverless provider considering their technical empowerment which will help you to equally weigh the selection process directed towards your specific needs.&lt;/p&gt;
+
+&lt;h3 id=&quot;current-version&quot;&gt;Current Version:&lt;/h3&gt;
+
+&lt;p&gt;As of today, AWS Lambda vs Azure Functions vs Google Cloud Functions all are production ready and generally available. Reflecting over the timeline, AWS Lambda became publicly available in early 2015, Azure Functions in late 2016 while Google Cloud Functions, just recently, in July 2018.&lt;/p&gt;
+
+&lt;p&gt;With such a big difference in their timeline, it is evident that AWS Lambda dominates the &lt;em&gt;serverless landscape&lt;/em&gt; with the huge developer community and the wide spectrum of use cases. Moreover, it has advanced functionalities like edge processing and chaining.&lt;/p&gt;
+
+&lt;p&gt;Azure Functions supports the variety of supported runtime environment. The current approach of Azure is to provide a functional IDE in their portal to help you prototype and deploy functions.&lt;/p&gt;
+
+&lt;p&gt;When it comes to picking anyone out of this, the prerequisites and the evaluation criteria that you’ll employ will be unique to your organization. However, there are some common areas that these serverless providers fall into. Let’s discuss some of them.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/5/Dia1-5-1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;language-support--deployment&quot;&gt;Language Support &amp;amp; Deployment&lt;/h3&gt;
+
+&lt;p&gt;AWS Lambda currently has native support for code written in JavaScript, Node.js, Python, Java and C#, along with releasing support for Golang earlier this year. These wide choices of runtime environments and its versatility makes it the first choice for developers.&lt;/p&gt;
+
+&lt;p&gt;AWS Lambda provides API operations that you can use to create and update Lambda functions with the help of a deployment package uploaded to the console in a ZIP file or edited within the console itself.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Dependency management aside the biggest barrier to entry is language runtime support. Most FaaS platforms only support a handful of language runtimes. AWS Lambda and Azure Functions being the exceptions as both platforms support most popular language runtimes.— Kelsey Hightower (@kelseyhightower) February 26, 2018&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;On the other hand, Azure Function supports C#, F#, Python, Java, Node.js, Python &amp;amp; PHP. Contrary to AWS Lambda, Azure Functions provides you with multiple options for deploying your function, such as GitHub, DropBox, Visual Studio, Kudu Console, Zip deployment and One Drive.&lt;/p&gt;
+
+&lt;p&gt;With Google Cloud Functions, your function execution varies by your chosen language. Currently, it supports Node.js 6, Node.js 7 and Python 3.7 with more to be supported soon. For deployment, you can choose either of these: CLI, Zip upload, inline web editor, Cloud Storage and Cloud Storage Repositories.&lt;/p&gt;
+
+&lt;p&gt;Truple.io is currently using AWS Lambda with Serverless Framework. According to its cloud architect, they used Azure Functions for 6 months but didn’t have a good experience. Eventually, they abandoned Azure Functions and moved to  Kubernetes. Here why,&lt;/p&gt;
+
+&lt;p&gt;“&lt;em&gt;AWS Lambda had most of the problems solved already for Node.Js. It has good scalability without any resource issues. AWS Lambda, I feel it works as it is promised. However, with C#, I did use it on AWS Lambda the week after it was released. However, it had some issues that were solved after almost 8 months.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;On the contrary, in Azure Functions, I was using C#  and we continually had issue after issue. Due to lack of documentation, we were constantly running into issues. Not only that, App Insights (monitoring platform for Azure Functions) took 5+ minutes to load the logs.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Apart from this, we recently faced issues with Azure CDN, where we were unable to purge files so old, outdated files continued to be served up for 16+ hours after the purge. Cloudfront in AWS invalidates works in less than 15 minutes every time I do it”&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;dependencies-management&quot;&gt;Dependencies Management&lt;/h3&gt;
+&lt;p&gt;With AWS Lambda, dependencies are packaged within the deployment packages itself. To do it successfully, you first need to organize your code and dependencies in a certain way.&lt;/p&gt;
+
+&lt;p&gt;Guidelines for creating the deployment package varies depending upon your choice of language. You may also use build plugins such as Jenkins (for Node.js and Python) and Maven (Java) to create the packages.&lt;/p&gt;
+
+&lt;p&gt;With Azure Functions, You can include your package.json in your function directory and run npm install as you normally would with Node.js projects using Kudu or the Console in the Azure portal. This process is similar irrespective of your runtime language.&lt;/p&gt;
+
+&lt;p&gt;Google Cloud Functions let you manage your dependencies with npm and are expressed in a metadata file called package.json. Your function also has an option to downloads the dependencies declared in package.json using npm.&lt;/p&gt;
+
+&lt;p&gt;Google Cloud Functions install dependencies on behalf of the user, which means that they do not need to take awkward steps like “vendoring” them locally (required for AWS Lambda) and they also avoid potential pitfalls, e.g., if the developer is using a Windows machine and vendors a library with native extensions (C code), there’s a high probability that it will not work on AWS Lambda when deployed.&lt;/p&gt;
+
+&lt;h3 id=&quot;persistent-storage&quot;&gt;Persistent Storage&lt;/h3&gt;
+&lt;p&gt;The essence of serverless functions lies in its statelessness. Saying that an ideal function would be the one written in a stateless style which has no affinity to the underlying compute infrastructure or other variables.&lt;/p&gt;
+
+&lt;p&gt;With AWS Lambda, the function is required to be written without any variables. At the same time, you have an option for storage of variables in the persistent storage such as S3, DynamoDB or any other cloud storage services.&lt;/p&gt;
+
+&lt;p&gt;With Azure Functions to store the persistent data that needs to be constant across numerous instances, you may use Azure Blob Storage or Azure Table Storage.&lt;/p&gt;
+
+&lt;p&gt;If you want to “cache” data, for instance, a DB connection, you can use static variables. For Google Cloud Functions, if you require to share state across function invocations, your function should use services such as Cloud Datastore, Cloud Firestore, Cloud Storage and Cloud SQL to persist data.&lt;/p&gt;
+
+&lt;h3 id=&quot;identity--access-management&quot;&gt;Identity &amp;amp; Access Management&lt;/h3&gt;
+&lt;p&gt;For Identity and access management, IAM system provides you with an authorization layer that allows you to exercise fine-grained access management for your functions.&lt;/p&gt;
+
+&lt;p&gt;For example, what they can do with those resources (read-only or write-only access), and what areas they have access to (specific function or whole project).&lt;/p&gt;
+
+&lt;p&gt;AWS Lambda provides you with the facility to create your own custom IAM policies and attach them with your Lambda functions. This allows permissions for AWS Lambda API actions, users, groups, roles and resources.&lt;/p&gt;
+
+&lt;p&gt;While Azure Functions lets you control your function policies through Resource Based Access Control. It is supported at Subscription and ResourceGroup. Though at the moment, you can give permission to read/write access both to your functions as read-only access disables some of the app’s features.&lt;/p&gt;
+
+&lt;p&gt;However, with Google Cloud Functions’ IAM roles you can list the permissions that are contained in each role. Roles can be granted to users on an entire project or on individual functions. Though there are more features in Alpha version soon to be released publicly.&lt;/p&gt;
+
+&lt;h3 id=&quot;triggers--types&quot;&gt;Triggers &amp;amp; Types&lt;/h3&gt;
+&lt;p&gt;Event sources (triggers) are custom events that invoke your serverless function. AWS Lambda gives you the feature for invocation over HTTPS defined by a custom REST API and an endpoint using API Gateway.&lt;/p&gt;
+
+&lt;p&gt;Other than that, AWS Lambda supports a plethora of other AWS service that you can configure as an event source. Lambdas can also be invoked through AWS SDKs given that it has the necessary permission for invocations.&lt;/p&gt;
+
+&lt;p&gt;With Azure Functions, there are few Microsoft services such as CosmosDB, Queue Storage, Service Bus and Table Storage. However, one advance feature is that external HTTP and Webhooks (from GitHub) can be used for invocation, along with APIM, function proxy and bindings.&lt;/p&gt;
+
+&lt;p&gt;Google Cloud Functions supports HTTP triggers provides that you need to specify while creating your function endpoint and these works only synchronously. Apart from this, Cloud Storage and Cloud Pub/Sub can work as event sources. There are more event sources though they are in Beta version: Firebase Authentication, Real-time Database, Analytics for Firebase and Cloud Firestore.&lt;/p&gt;
+
+&lt;h3 id=&quot;orchestration&quot;&gt;Orchestration&lt;/h3&gt;
+&lt;p&gt;Applications with serverless architecture, where functions start, execute and finish in a matter of milliseconds, do not preserve state. Each function is completely independent and data cannot be saved in the container, which is demolished when the function completes its task.&lt;/p&gt;
+
+&lt;p&gt;For enabling state in a stateless architecture and orchestrate functions, AWS created Step Functions. This module logs the state of each function so it can be used by subsequent functions or for root-cause analysis.&lt;/p&gt;
+
+&lt;p&gt;With Azure Functions, you can orchestrate and automate the tasks using Azure Logic Apps as well as Durable Functions. You can easily integrate different services of cloud and on-premise through connectors.  Google Cloud Functions at present doesn’t support integration with Cloud Composer, GCP’s workflow orchestration services.&lt;/p&gt;
+
+&lt;p&gt;Laurens Van Houtven, Principal at Latacora, faced quite a few problems with functions orchestration and monitoring. Here’s what he has to say,&lt;/p&gt;
+
+&lt;p&gt;“&lt;em&gt;With Google Cloud Functions, there were two major problems that we faced, first, there isn’t a straightforward way to integrate it with any mail services (like SES + AWS Lambda), secondly, it has limited runtime support for the function written in JS.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Other problems our clients have seen include e.g. limited orchestration support (step functions) and that API Gateway doesn’t scale down to very simple things.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;They’re hard to monitor because most security monitoring tools don’t deal with them (AWS Config finally got Lambda support last week) but we solve that problem with internal tooling. The annoyances with Lambda (e.g. API Gateway) you can mostly work around by using e.g. Terraform to orchestrate which you should be doing anyway. The limitations with alternatives are pretty fundamental.&lt;/em&gt;”&lt;/p&gt;
+
+&lt;h3 id=&quot;concurrency--execution-time&quot;&gt;Concurrency &amp;amp; Execution Time&lt;/h3&gt;
+&lt;p&gt;Concurrency refers to the parallel number of executions that happens at any given time. You can estimate the concurrent execution count, but this count differs depending upon the type of event source.&lt;/p&gt;
+
+&lt;p&gt;Also, you functions scale automatically based on incoming request rate, but not all resources in your architecture may be able to do so. Hence, concurrency is also dependent on downstream resources support.&lt;/p&gt;
+
+&lt;p&gt;Currently, AWS Lambda limits the total concurrent executions across the functions within a given region to 1000. You can control concurrency in two ways, for individual functional level and account level. Also, the maximum function execution time is 900 seconds or 15 minutes.&lt;/p&gt;
+
+&lt;p&gt;At present, Azure functions support multiple functions concurrently provided they are within a single app instance which has no limit. The number of concurrent activity and orchestrator function executions is capped at 10X the number of cores on the VM. Like AWS Lambda, this also has an execution time limit of 300 seconds or 5 minutes which is upgradeable to 600 seconds or 10 minutes within consumption plan.&lt;/p&gt;
+
+&lt;p&gt;Likewise, with Google Cloud Functions, there is no concurrent limit for HTTP invocation. For other types of invocation, the maximum number of concurrent function requests is 1000. However, the maximum execution time, unlike other service providers, is 60 seconds by default which can be upgraded to 540 seconds or 9 minutes.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note: An important difference between AWS and Google Cloud Functions is that concurrency is measured at the account level for AWS but at the project level for Cloud Functions&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;This means that, for AWS, if a function executes, the total number of available executions for all functions is reduced by 1 for the account. For Google Cloud Functions, if a function executes, the number of available executions for only that function is reduced by 1 and not for the account.&lt;/p&gt;
+
+&lt;p&gt;In theory, you could have 10 functions, each with 1,000 concurrent executions on Cloud Functions whereas you could only have 1 such function on AWS.&lt;/p&gt;
+
+&lt;h3 id=&quot;scalability--availability&quot;&gt;Scalability &amp;amp; Availability&lt;/h3&gt;
+&lt;p&gt;AWS Lambda supports dynamic scalability in response to the increased traffic. However, this is subjected to an individual account level concurrent execution limit.&lt;/p&gt;
+
+&lt;p&gt;To manage traffic burst, AWS Lambda will immediately increase your concurrently executing functions by a predetermined amount, dependent on which region it’s executed. If there is no predefined limit, it keeps on increasing the number of functions by 500 per minute until your demand is met.&lt;/p&gt;
+
+&lt;p&gt;Currently, Azure Functions are available based upon two different plans. First, the consumption plan which scales your function automatically where a function execution times out after a configurable period of time. Second, the app service plan which runs your functions on the dedicated VMs.&lt;/p&gt;
+
+&lt;p&gt;Dedicated VMs are allocated to every function app, which means the function’s host can be always up and running.&lt;/p&gt;
+
+&lt;p&gt;With Google Cloud Functions, you have the novelty of automatic scalability. However, the background functions scale more gradually and it depends on the duration of functions and longer functions will scale slightly slower. Also, maximum scalability is based upon the rate limits.&lt;/p&gt;
+
+&lt;h3 id=&quot;logging--monitoring&quot;&gt;Logging &amp;amp; Monitoring&lt;/h3&gt;
+&lt;p&gt;AWS Lambda has inbuilt functionality of monitoring Lambda functions by reporting metrics through Amazon CloudWatch. These metrics include a number of requests, latency per request, number of requests resulting in an error.&lt;/p&gt;
+
+&lt;p&gt;It automatically integrates with Amazon CloudWatch Logs and pushes all logs from your code to a CloudWatch Logs group associated with a Lambda function. You can also use AWS X-Ray to leverage end-to-end monitoring of your functions, however, it comes with the extra price.&lt;/p&gt;
+
+&lt;p&gt;Azure Functions comes with built-in integration with Azure Application Insights for monitoring functions. Functions also have built-in monitoring that doesn’t use Application Insights. If you do not want to use Application Insights, you can opt for a built-in logging system, however, that uses Azure Storage.&lt;/p&gt;
+
+&lt;p&gt;Google Cloud Platform provides you with Google Stackdriver which is a suite of monitoring tools (Stackdriver Logging, Stackdriver Error Reporting, Stackdriver Monitoring) that helps you understand what’s going on in your Cloud Functions. It has in-built tools for logging, reporting errors and monitoring. Apart from Stackdriver, you can view execution times, execution counts and memory usage in the GCP Console.&lt;/p&gt;
+
+&lt;h3 id=&quot;aws-lambda-vs-azure-functions-vs-google-cloud-functions-pricing-comparison&quot;&gt;AWS Lambda vs Azure Functions vs Google Cloud Functions: Pricing Comparison&lt;/h3&gt;
+&lt;p&gt;Before we jump on to the exact dollars, let’s understand the execution environment in a better manner.&lt;/p&gt;
+
+&lt;p&gt;Execution time is directly proportional to the execution environment. For example, if you’re dealing with a function which is computation heavy and takes a few milliseconds of time to execute. This might prompt you to opt for lower memory sizes as it will cost you less but it is a double-edged sword. The smaller the machine, the more time it will take to execute a function.&lt;/p&gt;
+
+&lt;p&gt;AWS Lambda has a free-tier under which it covers first 1M function requests &amp;amp; 400,000 GB-secs per month. Thereafter, you will be required to pay $0.20 per 1M requests or $0.0000002 per request. Also, $0.00001667 for every GB-secs used.&lt;/p&gt;
+
+&lt;p&gt;Azure Functions’ free tier covers 1M requests and 400,000 GB-secs on the monthly basis. Afterwards, you will pay $0.000016/GB-secs and $0.20 per 1M executions.&lt;/p&gt;
+
+&lt;p&gt;Google Cloud Functions are priced on the execution time (GB-sec), the number of invocations and how many resources you provision for the function (GHz-secs).&lt;/p&gt;
+
+&lt;p&gt;The free tier includes first 2M requests and $0.40 beyond that. Compute time is measured in two units: GB-secs &amp;amp; GHz-secs. Moreover, networking outbound data is charged flatly at $0.12/Gb with first 5GB free. This pricing model makes it a little different than the rest of the contenders.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note: One another important pricing factor we shouldn’t ignore is API Gateway. For example, with AWS Lambda, API Gateway is a prerequisite and is required for HTTP &amp;amp; HTTPS invocations both. However, with Google Cloud Functions, HTTP requests don’t require an API Gateway.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;This is one of the major benefits of Google Cloud Functions: HTTP functions do not require an API Gateway. For AWS, this contributes a significant amount of cost and complexity in running your function. With Google Cloud Functions, you get an HTTP endpoint and routing/networking are set up for you automatically. You don’t need to pay an additional cost to an API Gateway.&lt;/p&gt;
+
+&lt;p&gt;Read more: For a detailed analysis of serverless pricing refer to this blog. If you’re keen on what it takes to run serverless applications, here is an in-depth resource.&lt;/p&gt;
+
+&lt;h3 id=&quot;aws-lambda-vs-azure-functions-vs-google-cloud-functions-performance-comparison&quot;&gt;AWS Lambda vs Azure Functions vs Google Cloud Functions: Performance Comparison&lt;/h3&gt;
+&lt;p&gt;Recently at USENIX Annual Technical Conference 2018, an academic report was published about the performance of various serverless platforms. The research was conducted on a single “measurement function” which performed the two basic tasks:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Collect invocation timing and runtime information of function instance&lt;/li&gt;
+  &lt;li&gt;Run specified tasks (measuring local disk I/O throughput, network throughput) based on received messages.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;#1. Concurrency &amp;amp; Scalability&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;For AWS, 3328 MB was the maximum aggregate memory that can be allocated across all function instances on any VM in AWS Lambda. This perhaps suggests that AWS Lambda tries to place a new function instance on the top of the existing VM so as to increase the memory utilization rates.&lt;/p&gt;
+
+&lt;p&gt;Despite Azure Functions claiming to scale 200 instances for a single Node.js function, it fails to do in practice. In this experiment, it was able to scale at most 10 function instances running concurrently for a single function.&lt;/p&gt;
+
+&lt;p&gt;With Google Cloud Functions, only half of the expected number of instances, even for a low concurrency level, could be launched at the same time. The remaining requests were queued.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#2. Cold Start&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Speaking of AWS Lambda, there wasn’t any major cold start difference between the launching of existing and new instance. In fact, the median cold start time i.e. latency between the two cases was only 39 ms.&lt;/p&gt;
+
+&lt;p&gt;On the contrary, it took a long time for the Azure instances to launch despite the fact that 1.5 GB memory was allocated to them. Median cold start latency was observed at 3640 ms in Azure.&lt;/p&gt;
+
+&lt;p&gt;Surprisingly, with Google Cloud Functions, the median cold start latency ranged from 110 ms to 493 ms. At present, it allocated memory proportionally to CPU, but in Google, memory size has more impact on cold start latency than in AWS.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/5/academic2-1-610x467.jpg&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#3. Instance Maximum Idle Time&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This can be loosely defined as the maximum time an instance can stay idle before it shuts down. Here are the results:&lt;/p&gt;
+
+&lt;p&gt;For AWS, an instance was able to stay active for 27 minutes. Notably, in 80% of the cases, instances were shut down after 26 minutes. With Azure Functions, no consistent idle time was discovered.&lt;/p&gt;
+
+&lt;p&gt;For Google Cloud Functions, the idle time was as huge as 120 minutes. Even after 120 minutes, in 18% of the cases, the instances remained active.&lt;/p&gt;
+
+&lt;p&gt;However, this data may contradict when you put your specific needs in practice. Not only that, but the platform’s internal security practices also play a major role.&lt;/p&gt;
+
+&lt;p&gt;Recently I came across an opinion where a company had to move a large SaaS application from AWS to Azure. The tech stack included 80% Linux/OSS and 20% .NET.&lt;/p&gt;
+
+&lt;p&gt;The organization switched to Azure due to its affinity for security compliance and data sovereignty. After the switch, they came to realize that Azure is much stronger in support and in an ability to interact with Azure product teams to help guide the direction of the platform.&lt;/p&gt;
+
+&lt;p&gt;It is evident from the recent reports Azure is keeping up with the face in the serverless landscape and there is no way to neglect them.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+&lt;p&gt;According to the latest study by CNCF, AWS leads the serverless race with almost 70% of the production deployment done using AWS Lambda.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;AWS Lambda owns 70% percent of the active serverless platform user base – https://t.co/oTqy1sN1Wm … let me translate that for you. Amazon is currently positioned to own 70% of the future of ALL software.— Simon Wardley #Labour #EEA #Exit #Attlee #Disraeli (@swardley) April 19, 2018&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The 2-year head start (launched in 2014), quick implementation of new features and performance are the major factors in AWS Lambda’s pole position.&lt;/p&gt;
+
+&lt;p&gt;Presently serverless is driven by cloud-native practitioners, but as serverless adoption increases the organizations will continue to utilize multiple clouds, with AWS usually being part of the mix. Thus in the future, we are likely to see Azure and Google Cloud Functions catching up with AWS Lambda.&lt;/p&gt;
+
+&lt;p&gt;If you are diving into serverless with no platform preference, I would encourage everyone to explore and try each of these before incorporating them into their custom software development services. Understand the use cases why and when serverless can help you.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Comparing Serverless Providers</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/sw_design.png" /></entry><entry><title type="html">Serverless vs Containers A Face-off between your Application Deployment Options</title><link href="http://localhost:4000/blog/serverlessVScontainers" rel="alternate" type="text/html" title="Serverless vs Containers A Face-off between your Application Deployment Options" /><published>2020-01-15T10:41:00+00:00</published><updated>2020-01-15T10:41:00+00:00</updated><id>http://localhost:4000/blog/ServerlessVsContainerCompare</id><content type="html" xml:base="http://localhost:4000/blog/serverlessVScontainers">&lt;h2 id=&quot;serverless-vs-containers&quot;&gt;Serverless-vs-containers&lt;/h2&gt;
+
+&lt;p&gt;Like most of the existing cloud application development trends, Serverless and Containers have been widely spoken-of and discussed among developers. Some feel that Serverless originated as an alternative to containerization and some feel serverless can be used with containers for application deployment.&lt;/p&gt;
+
+&lt;p&gt;The difference between Serverless and Containerization is not limited to performance, but also applicable for longevity limitations, application scalability, time-of-deployment etc.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/6/container-function-1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It’s 2019 and like most of the ongoing trends of devops, going serverless or using containers for application deployment seem to be a common point of debate among all new kids (pun intended!) on the block right now! And we still feel it’s not going to end anytime soon.&lt;/p&gt;
+
+&lt;p&gt;However, Is the Serverless vs Container comparison popular just because some cloud enthusiasts feel that serverless computing is a replacement for containers? OR Is it because some people feel that serverless is just another technology that can be used inside containers?&lt;/p&gt;
+
+&lt;p&gt;In this article, we’ll compare both these technologies and try to find out which one (if any!) is better. What are the common and distinct qualities? Which one is suitable for what application use case? But first, let’s start with some background.&lt;/p&gt;
+
+&lt;h3 id=&quot;why-do-we-need-serverless-computing&quot;&gt;Why do we need Serverless computing?&lt;/h3&gt;
+&lt;p&gt;Over the past few years, we used to deploy our applications over big servers where the overall responsibility for managing or provisioning the resources is upon us. There are few issues with it:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Unnecessary charges for keeping the server up even when we are not consuming any resources&lt;/li&gt;
+  &lt;li&gt;Overall responsibility for maintenance and uptime of the server is upon us&lt;/li&gt;
+  &lt;li&gt;We are also responsible for applying the appropriate security updates to the server.&lt;/li&gt;
+  &lt;li&gt;As our usage scales we need to manage scaling up our server as well. And as a result manage scaling it down when we don’t have as much usage.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;With so many issues (like the ones mentioned above), it’s a lot of work to handle for smaller companies and individuals. Moreover, as a result this impacts the overall Time to market and cost of delivery which is otherwise the most important factors in &lt;strong&gt;Custom software development&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;This is where “Serverless computing” comes into play. With Serverless computing, you are provided with an execution model where your cloud provider (AWS, Azure or Google cloud) is executing a piece of code by dynamically allocating the resources. This only charge you for the amount of resources that are used to run the application code. That’s a lot of cost cutting when you compare the &lt;em&gt;compute cost&lt;/em&gt; with traditional servers. This way, your overall experience of computing is “serverless” (as the cost of managing server resources is less) but the infrastructure is not. If you want to know A-Z of serverless architecture, &lt;a href=&quot;blog/serverless-architecture-guide&quot;&gt;&lt;em&gt;read our Comprehensive Guide to Serverless Architecture&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;why-do-we-need-containerization&quot;&gt;Why do we need Containerization?&lt;/h3&gt;
+&lt;p&gt;Containerization is needed because it intends to solve an important problem: to ensure that a software runs correctly when it is moved from one computing environment to another.  Containerization an application also enables different teams to work on different parts of the application independently, as far as there is no major change in the way how they interact with each other. As a result, it is easier to develop a software and testing it faster for all the possible errors.&lt;/p&gt;
+
+&lt;p&gt;In a world such as agile, DevOps, this has become more critical than ever. Containers simply make it simple for developers to know that their software will run without worrying about where it will be deployed. They also enable that we have commonly known as ‘microservices’.&lt;/p&gt;
+
+&lt;p&gt;Following are the items that are usually bundled in a container:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Application&lt;/li&gt;
+  &lt;li&gt;Dependencies&lt;/li&gt;
+  &lt;li&gt;Libraries&lt;/li&gt;
+  &lt;li&gt;Binaries&lt;/li&gt;
+  &lt;li&gt;Configuration files&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To manage all these containers, you are required to have another set of specialized software like Docker Swarm, Kubernetes, etc. This software helps you orchestrate these containers so that you can push them out to different machines while making sure that they run.&lt;/p&gt;
+
+&lt;p&gt;The Image attached below represents how Containerization works:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/6/Artboard-6.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now that we now why do we need serverless and containers, let’s have a feature by feature comparison of Serverless vs Containers so as to get a proper idea about each deployment option:&lt;/p&gt;
+
+&lt;h4 id=&quot;1-longevity-limitations-in-containers-vs-serverless&quot;&gt;#1. Longevity Limitations in Containers vs Serverless&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Serverless&lt;/strong&gt;: As you may know, functions live very ‘short’. Here, short can be defined as 5 minutes or less. Functions are ephemeral, means, the container running the function may live for only once and die after its execution.&lt;/p&gt;
+
+&lt;p&gt;Shorter lifespan is one of the caveats of functions but it also provides agility which gives devs freedom and flexibility to push apps into the production which are easy to scale.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Containers&lt;/strong&gt;: This is not the case with containers. Containers are always running and spinning and they do not die once their execution is done. This empowers them to leverage the benefit of caching, about which we will discuss later, but at the same time, scaling is not instantaneous.&lt;/p&gt;
+
+&lt;h4 id=&quot;2-state-persistency&quot;&gt;#2. State persistency&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Serverless&lt;/strong&gt;: As discussed in the above point, functions are ephemeral or ‘short-lived’ which in turn, makes them stateless. The more stateless your functions are, the more ways there are to put them together and build something powerful.&lt;/p&gt;
+
+&lt;p&gt;The power of stateless computing lies in the ability to empower developers to write powerful, reusable functions and combine them. But it comes with the downside of caching. Since functions are stateless, you cannot cache anything for the further use, as a result, it faces high latency about which we will discuss in next point.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Containers&lt;/strong&gt;: With containers, you can leverage the benefits of caching. To allow the data to be stored even when the containers are terminated, you’ll need to use a storage mechanism that will manage the data outside of the container. Anyways, why caching is so important?&lt;/p&gt;
+
+&lt;p&gt;If the objects on the object file that container is about to produce is same as the previous builds, reusing a cache from the previous result is a great time saver in terms of computing. This enables the building of new containers extremely fast.&lt;/p&gt;
+
+&lt;h4 id=&quot;3-latency--startup-time&quot;&gt;#3. Latency &amp;amp; Startup Time&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Serverless&lt;/strong&gt;: Since functions are stateless, caching is unavailable and they don’t have copies of your functions running on standby, it results in higher invocation time. Functions stay warm, or your code is running while getting a command to be executed, for 15 minutes and die, hence, if you call it after the specified time, it will be a cold start.&lt;/p&gt;
+
+&lt;p&gt;As a result, you may face latency issues especially when there are concurrent users. To tackle this, you can add the following code to it to keep it warm all the time as mentioned in our previous blog: Serverless Performance: Challenges and Best Practices.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/6/serverless.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;However, this is temporary and can be used while you’re dealing with fewer functions. If you’re using it for all the functions, soon there will be a lot of dummy functions and then you won’t be able to manage it properly. However, the number of the function is quite small, it makes sense to use functions rather than spinning a whole container.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Containers&lt;/strong&gt;: Considering the pre-serverless era of containers, these are always sitting there and all you have to do is send an HTTPS request to it and you get an instant response and low latency time. With caching at the advantage, containers can be spun fast with none of the files to be created again, as a reference to them is sufficient to locate and reuse the already built structures.&lt;/p&gt;
+
+&lt;h4 id=&quot;-scalability-in-serverless-and-containers&quot;&gt;# Scalability in Serverless and Containers&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Serverless&lt;/strong&gt;: In serverless architecture, the backend of an application automatically and inherently scales to meet demand of the desired scalability. Moreover, Serverless Computing can be compared to the functioning manner of a water supply: your supply provider turn the tap on and your consumers can acquire as much water they need at any time. They only pay for what they use. This concept is far more scalable than the attempt to buy water one bucket, or shipping one container at at time.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Containers&lt;/strong&gt;: While using a container-based architecture, it’s the job of a developer to determine the number of containers to be deployed in advance when it comes to scale the application according to the desired needs. Moreover, with the increased demand a shipping company would try to ship more containers to the destination to meet that demand. But this won’t be much scalable either when demand of consumers exceeds the shipping company’s expectation.&lt;/p&gt;
+
+&lt;h4 id=&quot;4-portability--migration&quot;&gt;#4. Portability &amp;amp; Migration&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;Serverless&lt;/strong&gt;: Let’s assume you’re already using many different services of AWS. If this is the case, then opting for Lambda functions would be extremely easy as it facilitates fast and accessible integration with its other services.&lt;/p&gt;
+
+&lt;p&gt;Even if it’s not the case and you fear vendor lock-in, what you can do is to make sure all API endpoints and URLs used in your code get mapped through a domain/change via DNS is under your control.&lt;/p&gt;
+
+&lt;p&gt;This gives you an option of cutting off a particular service or redirecting them to a different endpoint of your choice (eg. an another BaaS provider). This is better than hard coding your code in an endpoint which is not under your control or is unalterable.&lt;/p&gt;
+
+&lt;p&gt;However, there are many FaaS providers and your concern for vendor lock-in is quite obvious. In case of Lambda, if it isn’t meeting your region specific requirements, here is what you can do. All Lambda handler code should be isolated and extremely thin shims to logic that is locked up in other modules/classes.&lt;/p&gt;
+
+&lt;p&gt;This increases reusability and in the event that a refactor is necessary to move out of Lambda, makes that work much easier and straightforward. This also facilitates unit testing. An example of a thin Lambda handler:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/6/code.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Speaking of migration, it is still hazy how to fit FaaS into the current DevOps framework. It might happen that your organisation will write hundreds of function and after a time, nobody knows what functionalities were included in which functions and how many of them are still in use.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Containers&lt;/strong&gt;: If you’re opting for container-based microservices architecture, these provide great portability. The time and efforts to move the code from developer’s laptop to your internal datacenter or out to different cloud providers are minimal.&lt;/p&gt;
+
+&lt;p&gt;With the immense stress on innovation and time to market are getting lesser and lesser, opting for microservices empowers you to spin up new versions of your application.&lt;/p&gt;
+
+&lt;p&gt;Hence microservices sounds like a good option to get started if you’re moving from monoliths due to ease in migration and various option for technology stack for multiple containers.&lt;/p&gt;
+
+&lt;p&gt;However, running a container on a cloud platform has a huge amount of interdependencies. Such as upgrades need to be planned together which includes container hosts, container images, container engine and container orchestration.&lt;/p&gt;
+
+&lt;p&gt;For some legacy applications that you want to shift to microservices, ‘containerizing’ them might be an easy and cheap option than to re-architecting the whole application into functions.&lt;/p&gt;
+
+&lt;p&gt;#5. Development Environments &amp;amp; Language support for Serverless and Containers
+Serverless: The language supported by popular FaaS providers are quite limited which mainly includes Node.js, Python, Java, C# and Go (in case of AWS Lambda).&lt;/p&gt;
+
+&lt;p&gt;Containers: While containers empowers you with heterogeneous development environments and you can work on any technology stack you want. It might not sound like a huge benefit since developers these days are well-versed with multiple languages, but it is!&lt;/p&gt;
+
+&lt;p&gt;When you’ll be hiring for your new project, you won’t be required to take language into considerations for microservice architecture. Since microservices are independently deployable and scalable with each service providing a firm module boundary, services can be written in the language of any choice and can be managed by different teams.&lt;/p&gt;
+
+&lt;h4 id=&quot;6-system-control&quot;&gt;#6. System control&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Serverless&lt;/strong&gt;: Dealing with functions such as AWS Lambda doesn’t come off as a hard task as it eliminates the infrastructure complexity, as a result, you can focus more on developing your product and business outcomes. It significantly reduces the time to market which is not the case with containers. However, there is a long list of things that should not be done while using AWS Lambda.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Containers&lt;/strong&gt;: Plus, management of cluster configuration is a serious challenge as it prerequisites solid background in container technology. Talking about the control, microservices are comparatively easy to handle. Plus, orchestration framework like Kubernetes accelerates your governance and control over the architecture.&lt;/p&gt;
+
+&lt;p&gt;Container-based microservice architecture imparts you full control over the individual as well as the whole system. This enables you to set policies, allocate and manage resources. Plus, having fine grain control over the security and migration services.&lt;/p&gt;
+
+&lt;p&gt;With the full control over the container system comes the ability to see inside and outside of the containers. This allows comprehensive and effective testing &amp;amp; debugging using multiple environments and extensive resources. Whereas actual implementation and local testing of functions aren’t possible and hence it is hard to guess the performance issues.&lt;/p&gt;
+
+&lt;h4 id=&quot;7-resource-heavy-processing-in-serverless-and-containers&quot;&gt;#7. Resource heavy processing in Serverless and Containers&lt;/h4&gt;
+&lt;p&gt;Let’s take an example of AWS Lambda, if the function is taking more than 5 minutes, you’ll be mandated to dissect these tasks into smaller ones, plus, these are not the only limitations while working with them.&lt;/p&gt;
+
+&lt;p&gt;You can allocate the maximum of 1.5 GB of RAM for executing a single function, your deployment package should not exceed the maximum size of 50 MB. Whereas with containers, you can allocate the computing resources as per your application requirements.&lt;/p&gt;
+
+&lt;h4 id=&quot;8-testing-in-serverless-vs-containers&quot;&gt;#8 Testing in Serverless vs Containers&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Serverless&lt;/strong&gt;: Testing is difficult in serverless based web applications as it often becomes hard for developers to replicate the backend environment on an local environment.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Containers&lt;/strong&gt;: Since containers run on the same platform where they are deployed, it’s relatively simple to test a container-based application before deploying it to the production.&lt;/p&gt;
+
+&lt;h4 id=&quot;9-maintenance-in-containers-and-serverless&quot;&gt;#9. Maintenance in Containers and Serverless&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Serverless&lt;/strong&gt;: Maintenance in Serverless based applications is much easier than you can ever imagine. Since your serverless vendor such as AWS lambda takes care of all sort of things such as management and software updates to the server, overall maintenance is less.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Containers&lt;/strong&gt;: Unlike Serverless – with which a developer don’t have to think about maintenance – it’s a developer job to to manage and update each container he deploy.&lt;/p&gt;
+
+&lt;h4 id=&quot;10-cost-comparison-in-serverless-and-containers&quot;&gt;#10. Cost comparison in Serverless and Containers&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Serverless&lt;/strong&gt;: As already mentioned above, using Serverless functions such as AWS lambda for application deployment prevents you for bearing unnecessary expenses of resources because application code does not run unless it is called. Instead, you will be charged for the server capacity that your application is going to use, anyways. If you want to have a clear overview regarding &lt;em&gt;AWS lambda pricing&lt;/em&gt;, we’ve already covered that in our previous blog post.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Containers&lt;/strong&gt;: Containers are constantly running, and therefore cloud providers have to charge for the server space even if no one is using the application at the time.&lt;/p&gt;
+
+&lt;h4 id=&quot;11-time-of-deployment-difference-in-containers-vs-serverless&quot;&gt;#11. Time of deployment difference in Containers vs Serverless&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Serverless&lt;/strong&gt;: Since serverless functions are smaller than container microservices and they do not come bundled with system dependencies, it takes only milliseconds to deploy an application. Moreover, Serverless applications goes live as soon as the code is deployed.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Containers&lt;/strong&gt;: Although, Containers take longer to setup at the initial stages of development but once configured they only take few seconds to deploy.&lt;/p&gt;
+
+&lt;h2 id=&quot;when-to-use-serverless--serverless-use&quot;&gt;When to Use Serverless? : Serverless Use&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/6/what-function-can-do-better.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Serverless Computing is perfect fit for the following use-cases:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If your traffic pattern changes automatically. Not only it will be handled automatically, it will even shut down when there is no traffic at all.&lt;/li&gt;
+  &lt;li&gt;If you are worried about the cost of maintenance of servers and the resources your application consume, serverless will be great fit for such use-case&lt;/li&gt;
+  &lt;li&gt;If you don’t want to spend much time in thinking where your code is running and how!&lt;/li&gt;
+  &lt;li&gt;Serverless websites and applications can be written and deployed without handling the work of setting up infrastructure. As such, it is possible to launch a fully-functional app or website in days using serverless.&lt;/li&gt;
+  &lt;li&gt;Serverless architecture allows you to build performance-enhancing image and video services for any application. You can use its services to do things like dynamically resize images or change video transcoding for different target devices.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;when-to-use-containers--containers-use-case&quot;&gt;When to Use Containers? : Containers Use Case&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/6/What-containers-can-do-better-Copy.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Containers are best to use for Application deployment in following use cases:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If you want to use the operating system of your own choice and leverage full control over the installed programming language and runtime version.&lt;/li&gt;
+  &lt;li&gt;If you want to use software with specific version requirements, containers are great to start with.&lt;/li&gt;
+  &lt;li&gt;If you are okay in bearing cost of using big yet traditional servers for anything such as Web APIs, machine learning computations, and long-running processes, then you might also want to try out containers as well (They will cost you less than servers anyways)&lt;/li&gt;
+  &lt;li&gt;If you want to develop new container-native applications&lt;/li&gt;
+  &lt;li&gt;If you need to refactor a very large and complicated monolithic application, then it’s better to use container as it’s better for complex applications&lt;/li&gt;
+  &lt;li&gt;Some organizations still use containers to migrate existing applications into more modern environments. Container orchestration tools like Kubernetes comes with already defined best practices which provide ease in managing large-scale container set-up.&lt;/li&gt;
+  &lt;li&gt;Container orchestration platforms such as Docker can solve your issues with unpredictable traffic (auto-scaling), however, the process of spinning containers up or down won’t be instantaneous.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;Which one should you choose? It looks like both have its own benefits. Both can be best or worse solution depending on the use case and there can’t be anything predefined.&lt;/p&gt;
+
+&lt;p&gt;If your existing application is big and it exists on-premise, you may first want to run in containers and then slowly move some of its parts towards functions. If you already have a microservice based application and you do not mind vendor lock-in, you can think of going serverless.&lt;/p&gt;
+
+&lt;p&gt;Serverless architecture definitely worths your attention especially due to its cost-effectiveness.&lt;/p&gt;
+
+&lt;p&gt;As discussed in the introduction, we can’t really say that serverless means the death of containers. Not as of now. However, containers and serverless are both growing technology and it will be interesting to see what each one of them behold.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Serverless-vs-containers</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/sw_design.png" /></entry><entry><title type="html">How to Build a Scalable Application up to 1 Million Users on AWS</title><link href="http://localhost:4000/blog/building-scalable-application-aws-platform" rel="alternate" type="text/html" title="How to Build a Scalable Application up to 1 Million Users on AWS" /><published>2020-01-12T10:41:00+00:00</published><updated>2020-01-12T10:41:00+00:00</updated><id>http://localhost:4000/blog/ScalableawsApp</id><content type="html" xml:base="http://localhost:4000/blog/building-scalable-application-aws-platform">&lt;h3 id=&quot;build-a-scalable-application&quot;&gt;Build a Scalable Application&lt;/h3&gt;
 
 &lt;p&gt;Scalability of an application is equally important as its features and user interface. It becomes even more important if your app is going to serve more than a million users in the future. In this blog, you will learn how to scale your app up to 1 million users on AWS.&lt;/p&gt;
 
@@ -2749,570 +3147,4 @@ dotnet add package CsvHelper
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="customization" /><category term="learning" /><summary type="html">OutputFormatter</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aspnetcore.png" /></entry><entry><title type="html">ASP. NET Core - Middlewares</title><link href="http://localhost:4000/blog/customize-middleware" rel="alternate" type="text/html" title="ASP. NET Core - Middlewares" /><published>2019-11-01T05:54:00+00:00</published><updated>2019-11-01T05:54:00+00:00</updated><id>http://localhost:4000/blog/customize6-middleware</id><content type="html" xml:base="http://localhost:4000/blog/customize-middleware">&lt;h2 id=&quot;middlewares&quot;&gt;Middlewares&lt;/h2&gt;
-
-&lt;p&gt;Wow, it is already the sixth part of this series. In this chapter I’m going to write about Middlewares and how you can use them to customize your app a little more. I quickly go through the basics about Middlewares and then I’ll write about some more special things you can do with Middlewares.&lt;/p&gt;
-
-&lt;h2 id=&quot;about-middlewares&quot;&gt;About Middlewares&lt;/h2&gt;
-
-&lt;p&gt;The most of you already know what Middlewares are, but some of you maybe not. Even if you already use ASP.NET Core for a while, you don’t really need to know details about Middlewares, because they are mostly hidden behind nicely named extension methods like &lt;code class=&quot;highlighter-rouge&quot;&gt;UseMvc()&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;UseAuthentication()&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;UseDeveloperExceptionPage()&lt;/code&gt; and so on. Every time you call a &lt;code class=&quot;highlighter-rouge&quot;&gt;Use&lt;/code&gt;-method in the &lt;code class=&quot;highlighter-rouge&quot;&gt;Startup.cs&lt;/code&gt; in the &lt;code class=&quot;highlighter-rouge&quot;&gt;Configure&lt;/code&gt; method, you’ll implicitly use at least one or maybe more Middlewares.&lt;/p&gt;
-
-&lt;p&gt;A middleware is a peace of code that handles the request pipeline. Imagine the request pipeline as huge tube where you can call something in and where an echo comes back. The Middlewares are responsible for the creation of this echo or to manipulate the sound, to enrich the information or to handle the source sound or to handle the echo.&lt;/p&gt;
-
-&lt;p&gt;Middlewares are executed in the order they are configured. The first configured middleware is the first that gets executed.&lt;/p&gt;
-
-&lt;p&gt;In an ASP.NET Core web, if the client requests an image or any other static file, the &lt;code class=&quot;highlighter-rouge&quot;&gt;StaticFileMiddleware&lt;/code&gt; searches for that resource and return that resource if it finds one. If not this middleware does nothing except to call the next one. If there is no last middleware that handles the request pipeline, the request returns nothing. The &lt;code class=&quot;highlighter-rouge&quot;&gt;MvcMiddleware&lt;/code&gt; also checks the requested resource, tries to map it to a configured route, executes the controller, creates a view and returns a HTML or Web API result. If the &lt;code class=&quot;highlighter-rouge&quot;&gt;MvcMiddleware&lt;/code&gt; does not find a matching controller, it anyway will return a result in this case it is a 404 Status result. It returns an echo in any case. This is why the &lt;code class=&quot;highlighter-rouge&quot;&gt;MvcMiddleware&lt;/code&gt; is the last configured middleware.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/index/_static/request-delegate-pipeline.png?view=aspnetcore-2.1&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;(Image source: &lt;a href=&quot;https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-2.1&quot;&gt;https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-2.1&lt;/a&gt;)&lt;/p&gt;
-
-&lt;p&gt;An exception handling middleware is usually one of the first configured middlewares, but it is not because it gets executed first, but at last. The first configured middleware is also the last one if the echo comes back from the tube. An exception handling middleware validates the result and displays a possible exception in a browser and client friendly way. This is where a runtime error gets a 500 Status.&lt;/p&gt;
-
-&lt;p&gt;You are able to see how the pipeline is executed if you create an empty ASP.NET Core application. I usually use the console and the .NET CLI tools:&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dotnet new web &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; MiddlewaresSample &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; MiddlewaresSample
-&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;MiddlewaresSample
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Open the Startup.cs with your favorite editor. It should be pretty empty compared to a regular ASP.NET Core application. Rewrite the &lt;code class=&quot;highlighter-rouge&quot;&gt;Configure()&lt;/code&gt; method like this:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Startup&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// This method gets called by the runtime. &lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Use this method to add services to the container.&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// For more information on how to configure your application, &lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// visit https://go.microsoft.com/fwlink/?LinkID=398940&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ConfigureServices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IServiceCollection&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;// This method gets called by the runtime. &lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Use this method to configure the HTTP request pipeline.&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Configure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IApplicationBuilder&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IWebHostEnvironment&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;IsDevelopment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;UseDeveloperExceptionPage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; 
-        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WriteAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello World!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;There is the &lt;code class=&quot;highlighter-rouge&quot;&gt;DeveloperExceptionPageMiddleware&lt;/code&gt; used and a special lambda Middleware that only writes “Hello World!” to the response stream. The response stream is the echo I wrote about previously. This special middleware stops the pipeline and returns something like an echo. So it is the last one.&lt;/p&gt;
-
-&lt;p&gt;Leave this middleware and add the following lines right before the &lt;code class=&quot;highlighter-rouge&quot;&gt;app.Run()&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WriteAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;===&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WriteAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;===&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WriteAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt; &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WriteAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot; &amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;These two calls of &lt;code class=&quot;highlighter-rouge&quot;&gt;app.Use()&lt;/code&gt; also create two lambda Middlewares, but this time the Middlewares are calling the next ones. Each middleware knows the next one and calls it. Both middlewares writing to the response stream before and after the next middleware are called. This should demonstrate how the pipeline works. Before the next middleware is called the actual request is handled and after the next middleware is called, the response (echo) is handled.&lt;/p&gt;
-
-&lt;p&gt;If you now run the application (using &lt;code class=&quot;highlighter-rouge&quot;&gt;dotnet run&lt;/code&gt;) and open the displayed URL in the browser, you should see a plain text result like this:&lt;/p&gt;
-
-&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;===&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt; Hello World! &amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;===
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Does this make sense to you? If yes, let’s see how to use this concept to add some additional functionality to the request pipeline.&lt;/p&gt;
-
-&lt;h2 id=&quot;writing-a-custom-middleware&quot;&gt;Writing a custom middleware&lt;/h2&gt;
-
-&lt;p&gt;ASP.NET Core is based on Middlewares. All the logic that gets executed during a request is somehow based on a middleware. So we are able to use this to add custom functionality to the web. We want to know the execution time of every request that goes through the request pipeline. I do this by creating and starting a &lt;code class=&quot;highlighter-rouge&quot;&gt;Stopwatch&lt;/code&gt; before the next middleware is called and by stop measuring the execution time after the next middleware is called:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Stopwatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    
-    &lt;span class=&quot;c1&quot;&gt;// execute the rest of the pipeline&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    
-    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Stop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//stop measuring&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ElapsedMilliseconds&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    
-    &lt;span class=&quot;c1&quot;&gt;// write out the milliseconds needed&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WriteAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;$&quot;Time needed: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;After that I write out the elapsed milliseconds to the response stream.&lt;/p&gt;
-
-&lt;p&gt;If you write some more Middlewares the &lt;code class=&quot;highlighter-rouge&quot;&gt;Configure&lt;/code&gt; method in the &lt;code class=&quot;highlighter-rouge&quot;&gt;Startup.cs&lt;/code&gt; gets pretty messy. This is why the most Middlewares are written as separate classes. This could look like this:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;StopwatchMiddleWare&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;readonly&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RequestDelegate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;StopwatchMiddleWare&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RequestDelegate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;_next&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Task&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Invoke&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HttpContext&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Stopwatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-        &lt;span class=&quot;c1&quot;&gt;// execute the rest of the pipeline&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Stop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//stop measuring&lt;/span&gt;
-        &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ElapsedMilliseconds&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-        &lt;span class=&quot;c1&quot;&gt;// write out the milliseconds needed&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WriteAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;$&quot;Time needed: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This way we get the next middleware via the constructor and the current context in the &lt;code class=&quot;highlighter-rouge&quot;&gt;Invoke()&lt;/code&gt; method.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Note: The Middleware is initialized on the start of the application and exists once during the application lifetime. The constructor gets called once. On the other hand the Invoke() method is called once per request.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;To use this middleware, there is a generic &lt;code class=&quot;highlighter-rouge&quot;&gt;UseMiddleware()&lt;/code&gt; method available you can use in the configure method:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UseMiddleware&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StopwatchMiddleware&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The more elegant way is to create an extensions method that encapsulates this call:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;StopwatchMiddlewareExtension&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IApplicationBuilder&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;UseStopwatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IApplicationBuilder&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UseMiddleware&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StopwatchMiddleware&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;();&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Now you can simply call it like this:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;UseStopwatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This is the way you can provide additional functionality to a ASP.NET Core web through the request pipeline. You are able to manipulate the request or even the response using Middlewares.&lt;/p&gt;
-
-&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;AuthenticationMiddleware&lt;/code&gt; for example tries to request user information from the request. If it doesn’t find any, it asked the client about it by sending a specific response back to the client. If it finds some, it adds the information to the request context and makes it available to the entire application this way.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-else-can-we-do-using-middlewares&quot;&gt;What else can we do using Middlewares?&lt;/h2&gt;
-
-&lt;p&gt;Did you know that you can divert the request pipeline into two or more branches?&lt;/p&gt;
-
-&lt;p&gt;The next snippet shows how to create branches based on specific paths:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/map1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// some more Middlewares&lt;/span&gt;
-    
-    &lt;span class=&quot;n&quot;&gt;app1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WriteAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Map Test 1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/map2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// some more Middlewares&lt;/span&gt;
-    
-    &lt;span class=&quot;n&quot;&gt;app2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WriteAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Map Test 2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// some more Middlewares&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WriteAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello World!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The path “/map1” is a specific branch that continues the request pipeline inside. The same with “/map2”. Both maps have their own middleware configurations inside. All other not specified paths will follow the main branch.&lt;/p&gt;
-
-&lt;p&gt;There is also a &lt;code class=&quot;highlighter-rouge&quot;&gt;MapWhen()&lt;/code&gt; method to branch the pipeline based on a condition instead of branch based on a path:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Configure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IApplicationBuilder&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;MapWhen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ContainsKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;branch&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;app1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;// some more Middlewares&lt;/span&gt;
-    
-        &lt;span class=&quot;n&quot;&gt;app1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WriteAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MapBranch Test&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;// some more Middlewares&lt;/span&gt;
-    
-    &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WriteAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello from non-Map delegate. &amp;lt;p&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You can create conditions based on configuration values or as shown here, based on properties of the request context. In this case a query string property is used. You can use HTTP headers, form properties or any other property of the request context.&lt;/p&gt;
-
-&lt;p&gt;You are also able to nest the maps to create child and grandchild branches if needed.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Map()&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;MapWhen()&lt;/code&gt; is used to provide a special API or resource based an a specific path or a specific condition. The ASP.NET Core HealthCheck API is done like this. It first uses &lt;code class=&quot;highlighter-rouge&quot;&gt;MapWhen()&lt;/code&gt; to specify the port to use and then the &lt;code class=&quot;highlighter-rouge&quot;&gt;Map()&lt;/code&gt; to set the path for the HealthCheck API, or it uses &lt;code class=&quot;highlighter-rouge&quot;&gt;Map()&lt;/code&gt; only if no port is specified. At the end the HealthCheckMiddleware is used:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;UseHealthChecksCore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IApplicationBuilder&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PathString&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UseMiddleware&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HealthCheckMiddleware&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;MapWhen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Connection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LocalPort&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;b0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UseMiddleware&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HealthCheckMiddleware&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)));&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;(See &lt;a href=&quot;https://github.com/aspnet/Diagnostics/blob/release/2.2/src/Microsoft.AspNetCore.Diagnostics.HealthChecks/Builder/HealthCheckApplicationBuilderExtensions.cs&quot;&gt;here on GitHib&lt;/a&gt;)&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Another question that is Middlewares related, I am not sure why I never seen anyone using IMiddleware instead of writing InvokeAsync manually?!!&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;IMiddleware&lt;/code&gt; is new in ASP.NET Core 2.0 and actually I never knew that it existed before he tweeted about it. I’ll definitely have a deeper look into &lt;code class=&quot;highlighter-rouge&quot;&gt;IMiddleware&lt;/code&gt; and will write about it. Until that you should read Hishams really good post about it: &lt;a href=&quot;http://www.hishambinateya.com/why-you-arenot-using-imiddleware&quot;&gt;Why you aren’t using IMiddleware?&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;update-on-aspnet-core-30&quot;&gt;Update on ASP.NET Core 3.0&lt;/h2&gt;
-
-&lt;p&gt;In new ASP.NET Core 3.0 projects the Configure() method looks different. There are two new kind off Middleware elements called:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Configure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IApplicationBuilder&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IWebHostEnvironment&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;IsDevelopment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;UseDeveloperExceptionPage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;UseRouting&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;UseEndpoints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endpoints&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;endpoints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;MapGet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WriteAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello World!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The first one is a middleware that uses routing and the other one uses endpoints. What exactly is this?&lt;/p&gt;
-
-&lt;p&gt;This is the new so called endpoint routing. In ASP.NET Core 3.0 routing got moved out of the MVC framework. Previously it was part of MVC and only worked with MVC, Web API and frameworks that are based on the MVC Framework. Now MVC and the other frameworks are mapped to a specific route or endpoint. There are different kinds of endpoint definitions available.&lt;/p&gt;
-
-&lt;p&gt;In the snippet above a GET request gets mapped to the page root URL. In the next snippet MVC is mapped to a route pattern and Razor Pages are mapped to the razor pages specific file structure based routes:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;UseEndpoints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endpoints&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;endpoints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;MapControllerRoute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;default&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;pattern&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;{controller=Home}/{action=Index}/{id?}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;endpoints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;MapRazorPages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Yes. There is no &lt;code class=&quot;highlighter-rouge&quot;&gt;UseMvc()&lt;/code&gt; used anymore, even if it still exists and is still working on the &lt;code class=&quot;highlighter-rouge&quot;&gt;IApplicationBiulder&lt;/code&gt; level to not break existing code. Now there are new methods to activate ASP.NET Core features more granularly.&lt;/p&gt;
-
-&lt;p&gt;These are the most used new Map methods for ASP.NET Core 3.0:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;endpoints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;MapAreaControllerRoute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Areas for MVC &amp;amp; WebAPI&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;endpoints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;MapControllerRoute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// MVC &amp;amp; WebAPI&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;endpoints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;MapBlazorHub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Blazor Server Side&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;endpoints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;MapHub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// SignalR&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;endpoints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;MapRazorPages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Razor PAges&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;endpoints&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;MapHealthChecks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Health Checks&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;There are a lot more methods to define fallback endpoints, to map routes and HTTP methods to delegates and middlewares.&lt;/p&gt;
-
-&lt;p&gt;If you want to create middlewares that work on all request, like the &lt;code class=&quot;highlighter-rouge&quot;&gt;StopWatchMiddleware&lt;/code&gt;, this will work as before on the &lt;code class=&quot;highlighter-rouge&quot;&gt;IApplicationBuilder&lt;/code&gt;. If you have a Middleware that should work on a specific path or route, you should create a Map method for it to map it to that route. It is not longer recommended to handle the route inside the middleware. With this approach the middlewares are a lot more generic and they will work on multiple routes with a single configuration.&lt;/p&gt;
-
-&lt;p&gt;I recently wrote a Middleware to provide a GraphQL endpoint in a ASP.NET Core application. I wrote a Middleware for it and I needed to rewrite it to follow the ASP.NET Core 3.0 way of routing. The old way would still work, but will handle the paths and routes separately from the new ASP.NET Core routing.&lt;/p&gt;
-
-&lt;p&gt;Let’s quickly see how it looks like to write a Middleware that supports the new endpoint routing:&lt;/p&gt;
-
-&lt;p&gt;[TODO: Code]&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;Most of the ASP.NET Core features are based on middlewares and we are able to extend ASP.NET Core by creating our own middlewares.&lt;/p&gt;
-
-&lt;p&gt;In the next two chapters I will have a look into different data types and how to handle them. I will create API outputs with any format and data type.&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;sessions&quot;&gt;Sessions&lt;/h2&gt;
-
-&lt;p&gt;This is series of articles on Building Conf planner app with Asp.net Core:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-logging&quot; target=&quot;_blank&quot;&gt;1 - Logging&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-configuration&quot; target=&quot;_blank&quot;&gt;2 - Configuration&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-dependency-injection&quot; target=&quot;_blank&quot;&gt;3 - Dependency Injection&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-https&quot; target=&quot;_blank&quot;&gt;4 - Https&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-hostedservices&quot; target=&quot;_blank&quot;&gt;5 - Hostedservices&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-middleware&quot; target=&quot;_blank&quot;&gt;6 - Middlewares&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-outputformatter&quot; target=&quot;_blank&quot;&gt;7 - Outputformatter&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-modelbinders&quot; target=&quot;_blank&quot;&gt;8 - Modelbinders &lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-actionfilters&quot; target=&quot;_blank&quot;&gt;9 - Actionfilters&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-taghelpers&quot; target=&quot;_blank&quot;&gt;10 - Taghelpers&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-webhostbuilder&quot; target=&quot;_blank&quot;&gt;11 - Webhostbuilder&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-hosting&quot; target=&quot;_blank&quot;&gt;12 - Hosting &lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr /&gt;
-   
-    &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/customize-hostedservices&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/customize-outputformatter&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="customization" /><category term="learning" /><summary type="html">Middlewares</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aspnetcore.png" /></entry><entry><title type="html">ASP. NET Core - IHostedService and BackgroundService</title><link href="http://localhost:4000/blog/customize-hostedservices" rel="alternate" type="text/html" title="ASP. NET Core - IHostedService and BackgroundService" /><published>2019-11-01T05:54:00+00:00</published><updated>2019-11-01T05:54:00+00:00</updated><id>http://localhost:4000/blog/customize5-hostedservices</id><content type="html" xml:base="http://localhost:4000/blog/customize-hostedservices">&lt;h2 id=&quot;ihostedservice-and-backgroundservice&quot;&gt;IHostedService and BackgroundService&lt;/h2&gt;
-
-&lt;p&gt;This fifth part doesn’t really show a customization. This part is more about a feature you can use to create background services to run tasks asynchronously inside your application. Actually I use this feature to regularly fetch data from a remote service in a small ASP.NET Core application.&lt;/p&gt;
-
-&lt;h2 id=&quot;about-ihostedservice&quot;&gt;About IHostedService&lt;/h2&gt;
-
-&lt;p&gt;Hosted service are a new thing in ASP.NET Core 2.0 and can be used to run tasks asynchronously in the background of your application. This can be used to fetch data periodically, do some calculations in the background or to do some cleanups. This can also be used to send preconfigured emails or whatever you need to do in the background.&lt;/p&gt;
-
-&lt;p&gt;Hosted services are basically simple classes, which implements the &lt;code class=&quot;highlighter-rouge&quot;&gt;IHostedService&lt;/code&gt; interface.&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SampleHostedService&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IHostedService&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Task&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;StartAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CancellationToken&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cancellationToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-	
-	&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Task&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;StopAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CancellationToken&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cancellationToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;A &lt;code class=&quot;highlighter-rouge&quot;&gt;IHostedService&lt;/code&gt; needs to implement a &lt;code class=&quot;highlighter-rouge&quot;&gt;StartAsync()&lt;/code&gt; and a &lt;code class=&quot;highlighter-rouge&quot;&gt;StopAsync()&lt;/code&gt; method. The &lt;code class=&quot;highlighter-rouge&quot;&gt;StartAsync()&lt;/code&gt; is the place where you implement the logic to execute. This method gets executed once immediately after the application starts. The method &lt;code class=&quot;highlighter-rouge&quot;&gt;StopAsync()&lt;/code&gt; on the other hand gets executed just before the application stops. This also means, to start a kind of a scheduled service you need to implement it by your own. You will need to implement a loop which executes the code regularly.&lt;/p&gt;
-
-&lt;p&gt;To get a &lt;code class=&quot;highlighter-rouge&quot;&gt;IHostedService&lt;/code&gt; executed you need to register it in the ASP.NET Core dependency injection container as a singleton instance:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AddSingleton&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IHostedService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SampleHostedService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;To see how a hosted service works, I created the next snippet. It writes a log message on start, on stop and every two seconds to the console:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SampleHostedService&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IHostedService&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;readonly&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ILogger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SampleHostedService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	
-	&lt;span class=&quot;c1&quot;&gt;// inject a logger&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;SampleHostedService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ILogger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SampleHostedService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-	&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Task&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;StartAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CancellationToken&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cancellationToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;LogInformation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hosted service starting&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Factory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;StartNew&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-			&lt;span class=&quot;c1&quot;&gt;// loop until a cancalation is requested&lt;/span&gt;
-			&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cancellationToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IsCancellationRequested&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-			&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-				&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;LogInformation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hosted service executing - {0}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DateTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-				&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;
-				&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-					&lt;span class=&quot;c1&quot;&gt;// wait for 3 seconds&lt;/span&gt;
-					&lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Delay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TimeSpan&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;FromSeconds&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cancellationToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-				&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-				&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OperationCanceledException&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-			&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cancellationToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-	&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Task&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;StopAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CancellationToken&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cancellationToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;LogInformation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hosted service stopping&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CompletedTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;To test this, I simply created a new ASP.NET Core application, placed this snippet inside, registered the &lt;code class=&quot;highlighter-rouge&quot;&gt;HostedService&lt;/code&gt; and started the application by calling the next command in the console:&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dotnet run
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This results in the following console output:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;images/customize-aspnetcore/hosted-service.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;As you can see the log output is written to the console every two seconds.&lt;/p&gt;
-
-&lt;h2 id=&quot;about-backgroundservice&quot;&gt;About BackgroundService&lt;/h2&gt;
-
-&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;BackgroundService&lt;/code&gt; class is new in ASP.NET Core 3.0 and is basically an abstract class that already implements the &lt;code class=&quot;highlighter-rouge&quot;&gt;IHostedService&lt;/code&gt; Interface. It also provides an abstract method &lt;code class=&quot;highlighter-rouge&quot;&gt;ExecuteAsync()&lt;/code&gt; that returns a &lt;code class=&quot;highlighter-rouge&quot;&gt;Task&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;To rewrite the hosted service from the last section it would look like this:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SampleBackgroundService&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BackgroundService&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;readonly&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ILogger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SampleHostedService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	
-	&lt;span class=&quot;c1&quot;&gt;// inject a logger&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;SampleBackgroundService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ILogger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SampleHostedService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-	&lt;span class=&quot;k&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Task&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ExecuteAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CancellationToken&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cancellationToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;LogInformation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hosted service starting&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Factory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;StartNew&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-			&lt;span class=&quot;c1&quot;&gt;// loop until a cancalation is requested&lt;/span&gt;
-			&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cancellationToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IsCancellationRequested&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-			&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-				&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;LogInformation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hosted service executing - {0}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DateTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-				&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;
-				&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-					&lt;span class=&quot;c1&quot;&gt;// wait for 3 seconds&lt;/span&gt;
-					&lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Delay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TimeSpan&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;FromSeconds&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cancellationToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-				&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-				&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OperationCanceledException&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-			&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cancellationToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Task&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;StopAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CancellationToken&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cancellationToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;LogInformation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Background service stopping&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CompletedTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Even the registration is new. In ASP.NET Core 3.0 the &lt;code class=&quot;highlighter-rouge&quot;&gt;ServiceCollection&lt;/code&gt; has a new extension method to register hosted services or background worker:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AddHostedService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Worker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;the-new-worker-service-projects&quot;&gt;The new worker service projects&lt;/h2&gt;
-
-&lt;p&gt;The new worker services and the generic hosting in ASP.NET Core 3.0 makes it pretty easy to create simple service like applications that only do some stuff without the full blown ASP.NET stack and without a web server. This project is simply created with the following command:&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dotnet new worker &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; BackgroundServiceSample &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; BackgroundServiceSample
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Basically this created a console application with a &lt;code class=&quot;highlighter-rouge&quot;&gt;Program.cs&lt;/code&gt; and a &lt;code class=&quot;highlighter-rouge&quot;&gt;Worker.cs&lt;/code&gt;. The &lt;code class=&quot;highlighter-rouge&quot;&gt;Worker.cs&lt;/code&gt; is the &lt;code class=&quot;highlighter-rouge&quot;&gt;BackgrounService&lt;/code&gt; and the program looks pretty familiar but without the &lt;code class=&quot;highlighter-rouge&quot;&gt;WebHostBuilder&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Program&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nf&quot;&gt;CreateHostBuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Build&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IHostBuilder&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;CreateHostBuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;Host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;CreateDefaultBuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ConfigureServices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hostContext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AddHostedService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Worker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;();&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This creates a &lt;code class=&quot;highlighter-rouge&quot;&gt;IHostBuilder&lt;/code&gt; with a dependency injection enabled. This means we are able to use dependency injection in any kind of application, not only in ASP.NET Core applications.&lt;/p&gt;
-
-&lt;p&gt;Than the &lt;code class=&quot;highlighter-rouge&quot;&gt;Worker&lt;/code&gt; gets added to the service collection.&lt;/p&gt;
-
-&lt;p&gt;Where is this useful? You can run this app as a Windows service or as a background application in a docker container, which doesn’t need a HTTP endpoint.&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;You can now start to do some more complex things with the &lt;code class=&quot;highlighter-rouge&quot;&gt;IHostedServices&lt;/code&gt; and the &lt;code class=&quot;highlighter-rouge&quot;&gt;BackgroundService&lt;/code&gt;. Be careful with background services, because they run all in the same application. Don’t use too much CPU or memory, this could slow down your application.&lt;/p&gt;
-
-&lt;p&gt;For bigger applications I would suggest to move such tasks in a separate application that is specialized to execute background tasks. A separate Docker container, a BackroundWorker on Azure, Azure Functions or something like this. However it should be separated from the main application in that case.&lt;/p&gt;
-
-&lt;p&gt;In the next chapter I’m going to write about &lt;code class=&quot;highlighter-rouge&quot;&gt;Middlewares&lt;/code&gt; and how you can use them to implement special logic to the request pipeline, or how you are able to serve specific logic on different paths.&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;sessions&quot;&gt;Sessions&lt;/h2&gt;
-
-&lt;p&gt;This is series of articles on Building Conf planner app with Asp.net Core:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-logging&quot; target=&quot;_blank&quot;&gt;1 - Logging&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-configuration&quot; target=&quot;_blank&quot;&gt;2 - Configuration&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-dependency-injection&quot; target=&quot;_blank&quot;&gt;3 - Dependency Injection&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-https&quot; target=&quot;_blank&quot;&gt;4 - Https&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-hostedservices&quot; target=&quot;_blank&quot;&gt;5 - Hostedservices&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-middleware&quot; target=&quot;_blank&quot;&gt;6 - Middlewares&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-outputformatter&quot; target=&quot;_blank&quot;&gt;7 - Outputformatter&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-modelbinders&quot; target=&quot;_blank&quot;&gt;8 - Modelbinders &lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-actionfilters&quot; target=&quot;_blank&quot;&gt;9 - Actionfilters&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-taghelpers&quot; target=&quot;_blank&quot;&gt;10 - Taghelpers&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-webhostbuilder&quot; target=&quot;_blank&quot;&gt;11 - Webhostbuilder&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-hosting&quot; target=&quot;_blank&quot;&gt;12 - Hosting &lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr /&gt;
-   
-    &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/customize-https&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/customize-middleware&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="customization" /><category term="learning" /><summary type="html">IHostedService and BackgroundService</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aspnetcore.png" /></entry></feed>
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="customization" /><category term="learning" /><summary type="html">OutputFormatter</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aspnetcore.png" /></entry></feed>
