@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#2A80EE">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#2A80EE">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
+<title>Serverless Performance Tuning with AWS Lambda &#8211; Girish Godage</title>
+<meta name="description" content="Efficient configuration of AWS Lambda functions is highly critical when you're expecting an optimal performance of your serverless applications. This blog discusses potential serverless performance bottlenecks and ways through which you can finetune AWS Lambda performance.">
+<meta name="keywords" content="AWSCloud">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all">
+
+<!-- Verifications -->
+    
+    
+        
+<!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Serverless Performance Tuning with AWS Lambda">
+    <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
+    <meta property="og:url" content="http://localhost:4000/blog/serverless-performance">
+    <meta property="og:site_name" content="Girish Godage">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@GGodage" />
+    
+    <meta name="twitter:title" content="Serverless Performance Tuning with AWS Lambda" />
+    <meta name="twitter:description" content="Efficient configuration of AWS Lambda functions is highly critical when you're expecting an optimal performance of your serverless applications. This blog discusses potential serverless performance bottlenecks and ways through which you can finetune AWS Lambda performance." />
+    <meta name="twitter:url" content="http://localhost:4000/blog/serverless-performance" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/img/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/img/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    
+
+
+    <link rel="canonical" href="http://localhost:4000/blog/serverless-performance">
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
+    <!-- Bootstrap CSS-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Google fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+   
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
+    
+    <!-- animate.css-->
+    <link rel="stylesheet" href="http://localhost:4000/sitejs/animate.css/animate.css">
+    <!-- theme stylesheet-->
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="http://localhost:4000/css/custom.css" as="style">
+    <link rel="stylesheet" href="http://localhost:4000/css/comments.css" as="style">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="http://localhost:4000/img/logo-big.png">
+    <!-- Fab Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
+    
+    
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    
+    <script type="text/javascript">
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+       ga('create', 'UA-130164763-2', 'auto');
+       ga('send', 'pageview');
+    </script>
+    
+    <!-- Typed.js DONT TOUCHHHHHHHHHHHHH!-->
+    <!--<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.9/typed.min.js"></script>
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+      </script>
+      
+      <!-- START OF RELEVANT PART -->
+    <script async src="https://just-comments.com/w2.js"></script>
+    <!-- END OF RELEVANT PART -->
+
+
+</head>
+
+<body>
+    
+<!-- navbar-->
+<header class="header">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container"><a class="navbar-brand" href="http://localhost:4000"><img
+          src="http://localhost:4000/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
+          alt="logo"> <img src="http://localhost:4000/img/girish_logo.png" height="30" alt="girilogo"></a>
+      <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span
+          class="fa fa-bars" style="color: white"></span></button>
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="http://localhost:4000#home" class="nav-link  link-scroll">Home</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#about" class="nav-link link-scroll">About</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#skills" class="nav-link link-scroll">Skills</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#services" class="nav-link link-scroll">Services</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#references" class="nav-link link-scroll">My
+              work</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#contact" class="nav-link link-scroll">Contact</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000/blog" class="nav-link link-scroll">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    
+    
+    
+    <div style="background-color:Gray;">
+        <div style="padding:0;min-height:95.05vh;display:flex;font-family: Poppins, sans-serif;margin-top: 5rem;"
+            class="container">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <p class="post-title">
+                    <h1><a href="/blog/serverless-performance">Serverless Performance Tuning with AWS Lambda</a></h1>
+                </p>
+                
+                <span class="post-meta">
+              <span style="font-weight:600">January 15, 2020 Wednesday</span>
+                    
+                       ( 14 minute read ) 
+                    
+                     
+                    <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">   by Girish Godage</a>
+                </span>
+                
+                <div class="site-category"> 
+                        <h5>AWSCloud</h5>
+                </div>
+                
+                <hr>
+                <div><img class="post-image" src="/img/sw_design.png" alt="Serverless Performance Tuning with AWS Lambda" height="250" /></div>
+                <div class="post-content">
+                    <br>                     
+                    <h2 id="serverless-performance-tuning">Serverless Performance Tuning</h2>
+
+<p>Efficient configuration of AWS Lambda functions is highly critical when you’re expecting an optimal performance of your serverless applications. This blog discusses potential serverless performance bottlenecks and ways through which you can finetune AWS Lambda performance.</p>
+
+<p><img src="/img/awscloud/7/serverless-performance-1024x555.png" alt="image info" /></p>
+
+<p>We’ve seen some remarkable and exponential client growth. Months over months, the number of projects that we are handling is growing at an exponential rate. And so is the expectation of exceptional service.</p>
+
+<p>As we move into this article, you’ll discover that predicting the performance of Serverless systems is quite a difficult job, especially for lower-memory functions. And hence, in this blog, we’ll try to set some concrete benchmarks which you can use to configure the performance of your serverless system.</p>
+
+<h3 id="aws-lambda-performance-benchmark-2019">AWS Lambda Performance Benchmark 2019</h3>
+
+<ul>
+  <li>Optimal Memory Size</li>
+  <li>Language Runtime</li>
+  <li>Parallel Version Invocation</li>
+  <li>Concurrency Issues</li>
+  <li>Cold vs Hot Startups</li>
+  <li>Code Optimization for Efficient Performance</li>
+</ul>
+
+<h3 id="optimal-memory-size">Optimal memory size</h3>
+<p>Well, with some serverless vendors, you have the limit for choosing the memory from 128 MB to 1308 MB while some vendors select the memory automatically according to your function.</p>
+
+<p>This leaves the question of how to choose the optimal memory size for your functions. What I have observed is that simply choosing the memory size that sufficiently runs your function isn’t going to work. In fact, that’s an anti-pattern. Here’s why!</p>
+
+<p>Let’s take the example of AWS Lambda. Lambda provides you with a single dial to allocate the number of computing resources (RAM) to your function. This RAM allocation also impacts the amount of CPU time and network bandwidth received by your function.</p>
+
+<p>Now, why is it an anti-pattern? Because Lambda billing is as accurate as 100-ms increments. Hence, opting for the smallest sufficient amount of RAM might add latency to your application. If the increase in latency outweighs the resource cost savings, it might come off as more expensive.</p>
+
+<p>Well, the noteworthy point here is that you should test your lambda functions at all available resources level so as to determine the excellent level of price/performance for your application. You will observe that the performance level of your functions will increase logarithmically over time.</p>
+
+<p><strong>System Specification</strong></p>
+
+<p>The limits that you’ll set initially will be working as base limits. As you move on, you’ll come across a resource threshold where any additional RAM/CPU/Bandwidth available to your functions no longer provides any significant performance gain.</p>
+
+<p>However, the prices of lambda functions increase linearly with the increase in computing resources. And that is why your test should be able to determine the logarithmic function bend to choose the excellent configuration of your function.</p>
+
+<p><strong>Performance Results</strong></p>
+
+<p>Here’s the experiment was done by AWS which clearly shows that ideal memory allocation can be cost-effective with lower latency as well. Moreover, the additional cost of computing per 100 ms for using 512 MB over the lower memory options is far better than the amount of latency reduced in the function by allocating more resources.</p>
+
+<p><img src="/img/awscloud/7/121.png" alt="image info" /></p>
+
+<p><strong>Conclusion</strong></p>
+
+<p>Though there is no significant performance gain after 512 MB for this particular logic and hence the additional cost per 100 ms now drives the total cost higher. This means, 512 MB is the optimal choice for minimising total cost.</p>
+
+<p><strong>Language runtime</strong>
+It could be definitely a concern of everybody, whether the chosen language will perform the performance of functions or not! But before moving on to that section, let us see which platforms support which languages.</p>
+
+<p><strong>Performance Result</strong></p>
+
+<p>This is what users from around the world have to say about language runtime performance!</p>
+
+<h4 id="1-aws-lambda">#1. AWS Lambda:</h4>
+
+<p>As per the benchmark studies were done in 2017, compiled languages (Java &amp; .NET) were significantly more consistent than dynamic languages (Python &amp; Node.Js). However, one of the key advantages of writing code in Node.js and Python is that they produce much smaller size packages which result in lower cold start time.</p>
+
+<p>However, according to the latest 2018 benchmark studies, there is no significant difference between newer compiled languages (.NET Core 2.0 &amp; Go) and the original dynamic languages.</p>
+
+<p>This is a remarkable achievement from AWS which gives a new level of assurance to its users. Thus, it is safer to assume that while new languages are being added to AWS Lambda, older languages are being improved at the same time.</p>
+
+<h4 id="2-microsoft-azure-functions">#2. Microsoft Azure Functions:</h4>
+
+<p>You may come across a thin performance difference across C# and Node.js which obviously depends on each case.</p>
+
+<p>At the present moment, slower startup time is observed with C# due to compilation requirements. C# does offer some deeper integration with the model exposed by the WebJobs SDK, allowing you to bind to any supported binding type, but in Node, Microsoft offers mechanisms to address most of the scenarios that would require specific binding types.</p>
+
+<p><strong>Pro tips</strong>:</p>
+
+<p>Choosing a language for functions is totally dependent on your comfort and your resources.</p>
+
+<p>But if the performance is the driving considerations, then you need to closely map out the performance characteristics of the languages you’re interested in and then choose the best one from them.</p>
+
+<p>The compiled languages (Java and .NET) shows the best performance for subsequent invocations but for that, you’ll have to incur the largest initial startup cost for container’s first invocation. The initial invocation time of the interpreted languages (Node.js and Python) are very fast compared to compiled languages, but can’t reach the same level of maximum performance as the compiled languages do.</p>
+
+<p>If your application may come across very spiky traffic or very infrequent use, we recommend one of the interpreted languages. If your application does not experience large peaks or valleys within its traffic patterns or does not have user experiences blocked on function response times, we recommend you choose the language you’re already most comfortable with.</p>
+
+<h4 id="parallel-version-invocation">Parallel version invocation</h4>
+<p>The deployment process in cloud functions is pretty straightforward and simple: Upload a new function code package → Publish a new version → Update your aliases. However, these steps are just the pieces of your deployment process with function.</p>
+
+<p>Each deployment process would be application specific. But the cloud architects should understand the relationship between function and it’s event sources and dependencies.</p>
+
+<p>Once such a concept in the deployment phase is parallel version invocation. When multiple triggering events occur faster than a single-threaded function runtime can process them, the runtime may invoke the function multiple times in parallel.</p>
+
+<p>Here an existing function container containing the previous source code package will continue to invoke along with the new function version. This occurs asynchronously on the service side while updating an alias to point to a new version of the function.</p>
+
+<p>The process of parallel function invocation though short-lived can affect the performance of the serverless architecture. It’s important that your application continues to operate as expected during this process. An artefact of this might be that any stack dependencies being decommissioned after a deployment (for example, database tables, a message queue, etc.) not be decommissioned until after you’ve observed all invocations targeting the new function version.</p>
+
+<p>In Azure functions, if a function app is using the Consumption hosting plan, the function app could scale out automatically. Each instance of the function app, whether the app runs on the Consumption hosting plan or a regular App Service hosting plan, might process concurrent function invocations in parallel using multiple threads. The maximum number of concurrent function invocations in each function app instance varies based on the type of trigger being used as well as the resources used by other functions within the function app.</p>
+
+<p>You may also like:  Serverless vs Containers: Comparing your Application Deployment Options</p>
+
+<p><strong>Concurrency issues</strong></p>
+
+<p>For any basic application, multiple functions are going to execute transactions at the same time. Each transaction will perform multiple functions and may separate only by microseconds. To the users, the operations appear concurrent.</p>
+
+<p>However, concurrency is one of the most important performance issues which you need to closely monitor. Otherwise, your data is vulnerable possibly undesirable effects on reads and access to uncommitted data.</p>
+
+<p>Let’s compare concurrency issues by taking the example of an experiment. This experiment will help you understand the comparison of execution performance (concurrency and hot/cold startup) between AWS Lambda, Apache OpenWhisk, Google Cloud Functions and Azure Functions.</p>
+
+<p><strong>System specifications</strong></p>
+
+<p>The performance tool measures the latency and throughput of the Serverless Framework. This tool uses the Serverless Framework to deploy Node.js function to different services. It sends synchronous invocation calls by executing the function with HTTP events/triggers as per the requirements of the multiple platforms.</p>
+
+<p>The memory size for all the platforms is 512 MB except Microsoft Azure, which has auto-discovering requirements of functions.</p>
+
+<p>The test begins by maintaining the invocation calls to test the function by reissuing each request just after receiving the response from the preceding call.  Along with this, at every 10 seconds, it adds an additional concurrent call but only up to 15 concurrent requests to the test function. Moreover, this test was repeated 10 times per platform.</p>
+
+<p><strong>Performance Results</strong></p>
+
+<p>The below figure shows the results of the execution performance which measures the ability of serverless platforms.</p>
+
+<p><img src="/img/awscloud/7/concurrency-768x495.png" alt="image info" /></p>
+
+<p><strong>Conclusion</strong></p>
+
+<p>Here is what we can conclude from the above graph.</p>
+
+<ul>
+  <li><strong>AWS Lambda</strong>: It shows to scale linearly and exhibits the highest throughput of the commercial platform even at 15 concurrent requests.</li>
+  <li><strong>Google Cloud Functions</strong>: It shows a sublinear scaling and appears to taper off as the number of concurrent requests approaches to 15.</li>
+  <li><strong>Microsoft Azure Functions</strong>: Its performance is highly fluctuating, however, the throughput observed is quite high in places, outperforming the other platforms while the concurrency level is low.</li>
+  <li><strong>Apache OpenWhisk</strong>: Its performance depicts a low throughput and no scalability until 8 concurrent requests and then function scales sublinearly.</li>
+</ul>
+
+<p><strong>Cold vs Hot startups</strong></p>
+
+<p>As we’ve discussed this inherent drawback in my previous blog about Serverless Architecture, I’ll just brief you on it.</p>
+
+<p>A cold startup occurs when you execute an inactive function for the first time. This occurs when your cloud service provider provisions the runtime container selected by your function and then runs it. This process is popularly referred to as a ‘cold start’ and is known for increasing your execution time</p>
+
+<p><img src="/img/awscloud/7/AWS-lambda-1024x555.png" alt="image info" /></p>
+
+<p>Whenever your function is running, it will stay hot, or in other sense, your container stays alive and waiting for you to command another execution. However, gradually and eventually, if there is no activity, your cloud provider will drop the container and hence, your function will become cold again.</p>
+
+<p>Let’s compare concurrency issues by taking the example of an experiment. This experiment will help you understand the cold start times and expiration behaviours of function instances between AWS Lambda, Apache OpenWhisk, Google Cloud Functions and Azure Functions.</p>
+
+<p><strong>System Specification</strong></p>
+
+<p>System specification is the same as the above experiment.</p>
+
+<p>This test sends a single signal execution requests to the test function at increasing intervals in the range of 1-30 minutes. Moreover, the function containers expire after 15 minutes of inactivity.</p>
+
+<p><strong>Performance Results</strong></p>
+
+<p>The below figure depicts the performance results of various platforms.</p>
+
+<p><img src="/img/awscloud/7/gp2-610x420.png" alt="image info" /></p>
+
+<p><strong>Conclusion</strong></p>
+
+<p>Here’s what we can conclude from the above test:</p>
+
+<ul>
+  <li><strong>AWS Lambda</strong>: It shows no effect of function idling.</li>
+  <li><strong>Google Cloud Functions</strong>: It shows no effect of function idling.</li>
+  <li><strong>Microsoft Azure Functions</strong>: It appears that it expires after few minutes.</li>
+  <li><strong>Apache OpenWhisk</strong>: It appears that it deallocates the container within around 10 minutes.</li>
+</ul>
+
+<p>The noteworthy performance of AWS Lambda and Google Cloud Functions can be credited to the extremely fast container start times or preallocation of containers even before its execution.</p>
+
+<p><strong>Pro Tip</strong></p>
+
+<ul>
+  <li>Minimize the deployment package size of your function.</li>
+  <li>Make sure you use modularity of the AWS SDK for Java and .NET.</li>
+  <li>Also, reduce the complexities of your dependencies.</li>
+  <li>If this isn’t sufficient, leverage the container reuse by lazily loading variables so that your function stays warm for several minutes.</li>
+</ul>
+
+<p><img src="/img/awscloud/7/code-image-1024x555.png" alt="image info" /></p>
+
+<p><strong>Code Optimisation for efficient performance</strong></p>
+
+<p>Performance of your serverless application is hugely dependent on the logic you need the cloud function to execute and what the dependencies are. The serverless developers should understand the granularity in a microservices architecture.</p>
+
+<p>If there are many function invocations it would make the application complex to run and debug. While the scope of optimization is different for each application, there are some best practices to optimize your code for functions.</p>
+
+<p>Following are some of the best practices-</p>
+
+<p><strong>#1. Container reuse</strong>: Any externalized configuration or dependencies that your code retrieves should be stored and referenced locally after initial execution. The cloud architect should limit the re-initialization of variables on every invocation and use static initialization, global/static variables and singletons instead. Also, keep alive and reuse connections (HTTP, database, etc.) that were established during a previous invocation.</p>
+
+<p><strong>#2. Optimize the coding practices for deployment</strong>: The cloud functions will support many language-specific SDKs. To enable the latest set of features and security updates, cloud provider (eg. AWS Lambda or Azure functions) will periodically update these libraries. These updates may introduce subtle changes to the behaviour of your function.</p>
+
+<p>To have full control of the dependencies your function uses, it is recommended to package all your dependencies with your deployment code. It is also important to minimize the package size to its runtime necessities. This will reduce the amount of time that it takes for your deployment package to be downloaded and unpacked ahead of invocation.</p>
+
+<p>For example- Google functions authored in Java or .NET Core, avoid uploading the entire GCP SDK library as part of your deployment package. Instead, selectively depend on the modules which pick up components of the SDK you need (e.g. Datastore, Google cloud storage SDK modules and Google function libraries). Prefer simpler frameworks that load quickly on container startups such as Dagger and Guice.</p>
+
+<p><strong>#3.Separate the point of entry for function and core logic</strong>: For example, keep the AWS Lambda handle separate from core logic. This makes unit-testing of the function easier.</p>
+
+<p><strong>#4. Avoid long-running functions</strong>: Functions can become large and long-running due to language and external dependencies. This can cause unexpected timeout issues. Refactor large functions into smaller function sets that work together and return faster responses.</p>
+
+<p>For example, an HTTP trigger function might require an acknowledgement response within a certain time limit. The HTTP trigger payload is queued to be processed by a queue trigger function. This way you can defer the actual task and return an immediate response.</p>
+
+<p><strong>#5. Initializing database connections</strong>: After a function is executed, the serverless provider (AWS Lambda) maintains the runtime container for some time. This is done in anticipation of another function invocation. So for establishing database connection leveraging global scope is very important. Instead of re-establishing the connection, the original connection should be used in the subsequent invocations.</p>
+
+<p>Declare database connections and other objects/variables outside the Lambda function handler code to provide additional optimization when the function is invoked again. You can add logic to your code to check if a connection already exists before creating one.</p>
+
+<h3 id="take-away">Take Away!</h3>
+<p>Armed with this knowledge, now you can take the better decision on how to configure your functions.</p>
+
+<p>The other lesson, I’d like to impart you is that function benchmarks are supposed to be gathered over the course of time and not in hours and minutes. Hence, AWS Lambda performance monitoring is a continuous process.</p>
+
+<p>We’ll be refurbishing this blog from time to time and try to be updated in our custom software development practices. So, keep in touch to stay updated about AWS Lambda performance.</p>
+
+                </div>
+
+                
+
+                <div id="disqus_thread"></div>
+                <script>
+                
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://girishgodage-github-io.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
+</button>
+<!-- Footer-->
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 text-center text-lg-left">
+                <p class="social">
+                    <a href="https://www.facebook.com/girish.godage.5" class="external facebook wow fadeInUp">
+                        <i class="fa fa-facebook"></i></a>
+                    <a href="https://instagram.com/girishgodage_007" data-wow-delay="0.2s" class="external instagram wow fadeInUp">
+                        <i class="fa fa-instagram"></i></a>
+                    <a href="https://youtube.com/girishgodage" data-wow-delay="0.4s" class="external youtube wow fadeInUp">
+                        <i class="fa fa-youtube-play"></i></a>
+                    <a href="https://twitter.com/GGodage" data-wow-delay="0.4s" class="external twitter wow fadeInUp">
+                            <i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/girishgodage" data-wow-delay="0.4s" class="external github wow fadeInUp">
+                                <i class="fa fa-github"></i></a>    
+                    <a href="mailto:girishgodage@gmail.com?subject=Hello%20Girish" data-wow-delay="0.6s" class="email wow fadeInUp">
+                        <i class="fa fa-envelope"></i></a></p>
+            </div>
+            <div class="col-12 col-md-2">
+            <h5>Quick Links</h5>
+            <ul>
+               <li><a href="http://localhost:4000#about">About</a></li>
+               <li><a href="http://localhost:4000#contact">Contact</a></li>
+               <li><a href="/sitemap.xml">Sitemap</a></li>               
+            </ul>
+         </div>
+            <div class="col-12 col-md-4 text-center text-lg-right mt-4 mt-lg-0">
+                <p> <b>©</b>2019 Girish Godage </p>
+                <p class="text-center, text-shadow"> Hosted On <a href="https://pages.github.com/">GitHub Pages</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Typed.js DONT TOUCH THIS! -->
+    <div id="typed-strings">
+    </div>
+
+        <!-- JavaScript files-->
+    <script src="http://localhost:4000/sitejs/jquery/jquery.min.js"></script>
+    <script src="http://localhost:4000/sitejs/popper.js/umd/popper.min.js"> </script>
+    <script src="http://localhost:4000/sitejs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="http://localhost:4000/sitejs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="http://localhost:4000/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.counterup/jquery.counterup.js"></script>
+    <script src="http://localhost:4000/js/front.js"></script>
+    <script src="http://localhost:4000/js/comment.js"></script>
+       <!-- Script pointing to search-script.js -->
+    <script src="http://localhost:4000/js/search-script.js" type="text/javascript"></script>
+   
+    <!-- Configuration -->
+    <script>
+         SimpleJekyllSearch({
+         searchInput: document.getElementById('search-input'),
+         resultsContainer: document.getElementById('results-container'),
+         json: '/search.json'
+         })
+         </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC36FUDDdOTidZJ8nzS5vfE7KVyayenKPE",
+    authDomain: "githubcontactlist.firebaseapp.com",
+    databaseURL: "https://githubcontactlist.firebaseio.com",
+    projectId: "githubcontactlist",
+    storageBucket: "githubcontactlist.appspot.com",
+    messagingSenderId: "899685398702",
+    appId: "1:899685398702:web:0c23c56d2d6d40df37553f",
+    measurementId: "G-YWBRCYJYFW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script>
+   $(function() {
+      
+    //make a variable to keep track of data coming from firebase
+    var data = [];
+
+    // Reference messages collection
+      var messagesRef = firebase.database().ref('contactformmessages');  
+
+
+    //listen to data updates from firebase
+    messagesRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+        //when the data updates at firebase, put it in the data variable
+        data = snapshot.val();
+    })
+    //Entire Contact Form (handler)
+    $('#contactForm').submit(function(e) {
+      e.preventDefault();
+
+        var $form = $(this);
+        console.log("Submit to Firebase");
+
+        //disable submit button
+        $form.find("#sendForm").prop('disabled', true);
+
+        //get values to send to Firebase
+        var name = $('#name').val();
+        console.log(name);
+		
+		var surname = $('#surname').val();
+        console.log(surname);
+		
+		var email = $('#email').val();
+        console.log(email);	
+		
+		var phone = $('#phone').val();
+        console.log(phone);
+
+        var message = $('#message').val();
+        console.log(message);
+
+       
+        //take the values from the form, and put them in an object
+        var newContact = {
+         "name": name,
+			"surname": surname,
+			"email": email,
+			"phone": phone,
+         "message": message
+        }
+        //put new object in data array
+        data.push(newContact);
+        console.log(data);
+
+        //send the new data to Firebase
+        messagesRef.set(data, function(err) {
+            if (err) {
+                alert("Data no go");
+            }else{
+            $("#form-wrapper").slideToggle();
+            $('#form-success-message').slideToggle();
+			}
+        });
+
+        return false;
+    })
+   
+    
+})
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";           
+        }else
+        {
+           myBtton.style.display="none";     
+          
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+      //  document.body.scrollTop =0;
+      //  document.documentElement.scrollTop=0;
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    }
+
+</script>
+
+    
+    
+
+
+</body>
+
+</html>

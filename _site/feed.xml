@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-02T12:05:01+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">AWS Lambda vs Azure Functions vs Google Cloud Functions,Comparing Serverless Providers</title><link href="http://localhost:4000/blog/aws-lambda-vs-azure-functions-vs-google-functions" rel="alternate" type="text/html" title="AWS Lambda vs Azure Functions vs Google Cloud Functions,Comparing Serverless Providers" /><published>2020-01-15T10:41:00+00:00</published><updated>2020-01-15T10:41:00+00:00</updated><id>http://localhost:4000/blog/CloudFunctionCompare</id><content type="html" xml:base="http://localhost:4000/blog/aws-lambda-vs-azure-functions-vs-google-functions">&lt;h2 id=&quot;comparing-serverless-providers&quot;&gt;Comparing Serverless Providers&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-02T13:35:42+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">AWS Lambda vs Azure Functions vs Google Cloud Functions,Comparing Serverless Providers</title><link href="http://localhost:4000/blog/aws-lambda-vs-azure-functions-vs-google-functions" rel="alternate" type="text/html" title="AWS Lambda vs Azure Functions vs Google Cloud Functions,Comparing Serverless Providers" /><published>2020-01-15T10:41:00+00:00</published><updated>2020-01-15T10:41:00+00:00</updated><id>http://localhost:4000/blog/CloudFunctionCompare</id><content type="html" xml:base="http://localhost:4000/blog/aws-lambda-vs-azure-functions-vs-google-functions">&lt;h2 id=&quot;comparing-serverless-providers&quot;&gt;Comparing Serverless Providers&lt;/h2&gt;
 
 &lt;p&gt;Wondering which serverless provider is right for you? Read this blog to understand and analyze the comparison between AWS Lambda vs Azure Functions vs Google Cloud Functions. Get to know their current version and compare performance, security, pricing and scalability.&lt;/p&gt;
 
@@ -396,7 +396,213 @@ Serverless: The language supported by popular FaaS providers are quite limited w
 
 &lt;p&gt;Serverless architecture definitely worths your attention especially due to its cost-effectiveness.&lt;/p&gt;
 
-&lt;p&gt;As discussed in the introduction, we can’t really say that serverless means the death of containers. Not as of now. However, containers and serverless are both growing technology and it will be interesting to see what each one of them behold.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Serverless-vs-containers</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/sw_design.png" /></entry><entry><title type="html">How to Build a Scalable Application up to 1 Million Users on AWS</title><link href="http://localhost:4000/blog/building-scalable-application-aws-platform" rel="alternate" type="text/html" title="How to Build a Scalable Application up to 1 Million Users on AWS" /><published>2020-01-12T10:41:00+00:00</published><updated>2020-01-12T10:41:00+00:00</updated><id>http://localhost:4000/blog/ScalableawsApp</id><content type="html" xml:base="http://localhost:4000/blog/building-scalable-application-aws-platform">&lt;h3 id=&quot;build-a-scalable-application&quot;&gt;Build a Scalable Application&lt;/h3&gt;
+&lt;p&gt;As discussed in the introduction, we can’t really say that serverless means the death of containers. Not as of now. However, containers and serverless are both growing technology and it will be interesting to see what each one of them behold.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Serverless-vs-containers</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/sw_design.png" /></entry><entry><title type="html">Serverless Performance Tuning with AWS Lambda</title><link href="http://localhost:4000/blog/serverless-performance" rel="alternate" type="text/html" title="Serverless Performance Tuning with AWS Lambda" /><published>2020-01-15T10:41:00+00:00</published><updated>2020-01-15T10:41:00+00:00</updated><id>http://localhost:4000/blog/ServerlessPerformanceTuning</id><content type="html" xml:base="http://localhost:4000/blog/serverless-performance">&lt;h2 id=&quot;serverless-performance-tuning&quot;&gt;Serverless Performance Tuning&lt;/h2&gt;
+
+&lt;p&gt;Efficient configuration of AWS Lambda functions is highly critical when you’re expecting an optimal performance of your serverless applications. This blog discusses potential serverless performance bottlenecks and ways through which you can finetune AWS Lambda performance.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/7/serverless-performance-1024x555.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We’ve seen some remarkable and exponential client growth. Months over months, the number of projects that we are handling is growing at an exponential rate. And so is the expectation of exceptional service.&lt;/p&gt;
+
+&lt;p&gt;As we move into this article, you’ll discover that predicting the performance of Serverless systems is quite a difficult job, especially for lower-memory functions. And hence, in this blog, we’ll try to set some concrete benchmarks which you can use to configure the performance of your serverless system.&lt;/p&gt;
+
+&lt;h3 id=&quot;aws-lambda-performance-benchmark-2019&quot;&gt;AWS Lambda Performance Benchmark 2019&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Optimal Memory Size&lt;/li&gt;
+  &lt;li&gt;Language Runtime&lt;/li&gt;
+  &lt;li&gt;Parallel Version Invocation&lt;/li&gt;
+  &lt;li&gt;Concurrency Issues&lt;/li&gt;
+  &lt;li&gt;Cold vs Hot Startups&lt;/li&gt;
+  &lt;li&gt;Code Optimization for Efficient Performance&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;optimal-memory-size&quot;&gt;Optimal memory size&lt;/h3&gt;
+&lt;p&gt;Well, with some serverless vendors, you have the limit for choosing the memory from 128 MB to 1308 MB while some vendors select the memory automatically according to your function.&lt;/p&gt;
+
+&lt;p&gt;This leaves the question of how to choose the optimal memory size for your functions. What I have observed is that simply choosing the memory size that sufficiently runs your function isn’t going to work. In fact, that’s an anti-pattern. Here’s why!&lt;/p&gt;
+
+&lt;p&gt;Let’s take the example of AWS Lambda. Lambda provides you with a single dial to allocate the number of computing resources (RAM) to your function. This RAM allocation also impacts the amount of CPU time and network bandwidth received by your function.&lt;/p&gt;
+
+&lt;p&gt;Now, why is it an anti-pattern? Because Lambda billing is as accurate as 100-ms increments. Hence, opting for the smallest sufficient amount of RAM might add latency to your application. If the increase in latency outweighs the resource cost savings, it might come off as more expensive.&lt;/p&gt;
+
+&lt;p&gt;Well, the noteworthy point here is that you should test your lambda functions at all available resources level so as to determine the excellent level of price/performance for your application. You will observe that the performance level of your functions will increase logarithmically over time.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;System Specification&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The limits that you’ll set initially will be working as base limits. As you move on, you’ll come across a resource threshold where any additional RAM/CPU/Bandwidth available to your functions no longer provides any significant performance gain.&lt;/p&gt;
+
+&lt;p&gt;However, the prices of lambda functions increase linearly with the increase in computing resources. And that is why your test should be able to determine the logarithmic function bend to choose the excellent configuration of your function.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Performance Results&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Here’s the experiment was done by AWS which clearly shows that ideal memory allocation can be cost-effective with lower latency as well. Moreover, the additional cost of computing per 100 ms for using 512 MB over the lower memory options is far better than the amount of latency reduced in the function by allocating more resources.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/7/121.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Conclusion&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Though there is no significant performance gain after 512 MB for this particular logic and hence the additional cost per 100 ms now drives the total cost higher. This means, 512 MB is the optimal choice for minimising total cost.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Language runtime&lt;/strong&gt;
+It could be definitely a concern of everybody, whether the chosen language will perform the performance of functions or not! But before moving on to that section, let us see which platforms support which languages.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Performance Result&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This is what users from around the world have to say about language runtime performance!&lt;/p&gt;
+
+&lt;h4 id=&quot;1-aws-lambda&quot;&gt;#1. AWS Lambda:&lt;/h4&gt;
+
+&lt;p&gt;As per the benchmark studies were done in 2017, compiled languages (Java &amp;amp; .NET) were significantly more consistent than dynamic languages (Python &amp;amp; Node.Js). However, one of the key advantages of writing code in Node.js and Python is that they produce much smaller size packages which result in lower cold start time.&lt;/p&gt;
+
+&lt;p&gt;However, according to the latest 2018 benchmark studies, there is no significant difference between newer compiled languages (.NET Core 2.0 &amp;amp; Go) and the original dynamic languages.&lt;/p&gt;
+
+&lt;p&gt;This is a remarkable achievement from AWS which gives a new level of assurance to its users. Thus, it is safer to assume that while new languages are being added to AWS Lambda, older languages are being improved at the same time.&lt;/p&gt;
+
+&lt;h4 id=&quot;2-microsoft-azure-functions&quot;&gt;#2. Microsoft Azure Functions:&lt;/h4&gt;
+
+&lt;p&gt;You may come across a thin performance difference across C# and Node.js which obviously depends on each case.&lt;/p&gt;
+
+&lt;p&gt;At the present moment, slower startup time is observed with C# due to compilation requirements. C# does offer some deeper integration with the model exposed by the WebJobs SDK, allowing you to bind to any supported binding type, but in Node, Microsoft offers mechanisms to address most of the scenarios that would require specific binding types.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Pro tips&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;Choosing a language for functions is totally dependent on your comfort and your resources.&lt;/p&gt;
+
+&lt;p&gt;But if the performance is the driving considerations, then you need to closely map out the performance characteristics of the languages you’re interested in and then choose the best one from them.&lt;/p&gt;
+
+&lt;p&gt;The compiled languages (Java and .NET) shows the best performance for subsequent invocations but for that, you’ll have to incur the largest initial startup cost for container’s first invocation. The initial invocation time of the interpreted languages (Node.js and Python) are very fast compared to compiled languages, but can’t reach the same level of maximum performance as the compiled languages do.&lt;/p&gt;
+
+&lt;p&gt;If your application may come across very spiky traffic or very infrequent use, we recommend one of the interpreted languages. If your application does not experience large peaks or valleys within its traffic patterns or does not have user experiences blocked on function response times, we recommend you choose the language you’re already most comfortable with.&lt;/p&gt;
+
+&lt;h4 id=&quot;parallel-version-invocation&quot;&gt;Parallel version invocation&lt;/h4&gt;
+&lt;p&gt;The deployment process in cloud functions is pretty straightforward and simple: Upload a new function code package → Publish a new version → Update your aliases. However, these steps are just the pieces of your deployment process with function.&lt;/p&gt;
+
+&lt;p&gt;Each deployment process would be application specific. But the cloud architects should understand the relationship between function and it’s event sources and dependencies.&lt;/p&gt;
+
+&lt;p&gt;Once such a concept in the deployment phase is parallel version invocation. When multiple triggering events occur faster than a single-threaded function runtime can process them, the runtime may invoke the function multiple times in parallel.&lt;/p&gt;
+
+&lt;p&gt;Here an existing function container containing the previous source code package will continue to invoke along with the new function version. This occurs asynchronously on the service side while updating an alias to point to a new version of the function.&lt;/p&gt;
+
+&lt;p&gt;The process of parallel function invocation though short-lived can affect the performance of the serverless architecture. It’s important that your application continues to operate as expected during this process. An artefact of this might be that any stack dependencies being decommissioned after a deployment (for example, database tables, a message queue, etc.) not be decommissioned until after you’ve observed all invocations targeting the new function version.&lt;/p&gt;
+
+&lt;p&gt;In Azure functions, if a function app is using the Consumption hosting plan, the function app could scale out automatically. Each instance of the function app, whether the app runs on the Consumption hosting plan or a regular App Service hosting plan, might process concurrent function invocations in parallel using multiple threads. The maximum number of concurrent function invocations in each function app instance varies based on the type of trigger being used as well as the resources used by other functions within the function app.&lt;/p&gt;
+
+&lt;p&gt;You may also like:  Serverless vs Containers: Comparing your Application Deployment Options&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Concurrency issues&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;For any basic application, multiple functions are going to execute transactions at the same time. Each transaction will perform multiple functions and may separate only by microseconds. To the users, the operations appear concurrent.&lt;/p&gt;
+
+&lt;p&gt;However, concurrency is one of the most important performance issues which you need to closely monitor. Otherwise, your data is vulnerable possibly undesirable effects on reads and access to uncommitted data.&lt;/p&gt;
+
+&lt;p&gt;Let’s compare concurrency issues by taking the example of an experiment. This experiment will help you understand the comparison of execution performance (concurrency and hot/cold startup) between AWS Lambda, Apache OpenWhisk, Google Cloud Functions and Azure Functions.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;System specifications&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The performance tool measures the latency and throughput of the Serverless Framework. This tool uses the Serverless Framework to deploy Node.js function to different services. It sends synchronous invocation calls by executing the function with HTTP events/triggers as per the requirements of the multiple platforms.&lt;/p&gt;
+
+&lt;p&gt;The memory size for all the platforms is 512 MB except Microsoft Azure, which has auto-discovering requirements of functions.&lt;/p&gt;
+
+&lt;p&gt;The test begins by maintaining the invocation calls to test the function by reissuing each request just after receiving the response from the preceding call.  Along with this, at every 10 seconds, it adds an additional concurrent call but only up to 15 concurrent requests to the test function. Moreover, this test was repeated 10 times per platform.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Performance Results&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The below figure shows the results of the execution performance which measures the ability of serverless platforms.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/7/concurrency-768x495.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Conclusion&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is what we can conclude from the above graph.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;AWS Lambda&lt;/strong&gt;: It shows to scale linearly and exhibits the highest throughput of the commercial platform even at 15 concurrent requests.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Google Cloud Functions&lt;/strong&gt;: It shows a sublinear scaling and appears to taper off as the number of concurrent requests approaches to 15.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Microsoft Azure Functions&lt;/strong&gt;: Its performance is highly fluctuating, however, the throughput observed is quite high in places, outperforming the other platforms while the concurrency level is low.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Apache OpenWhisk&lt;/strong&gt;: Its performance depicts a low throughput and no scalability until 8 concurrent requests and then function scales sublinearly.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cold vs Hot startups&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;As we’ve discussed this inherent drawback in my previous blog about Serverless Architecture, I’ll just brief you on it.&lt;/p&gt;
+
+&lt;p&gt;A cold startup occurs when you execute an inactive function for the first time. This occurs when your cloud service provider provisions the runtime container selected by your function and then runs it. This process is popularly referred to as a ‘cold start’ and is known for increasing your execution time&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/7/AWS-lambda-1024x555.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Whenever your function is running, it will stay hot, or in other sense, your container stays alive and waiting for you to command another execution. However, gradually and eventually, if there is no activity, your cloud provider will drop the container and hence, your function will become cold again.&lt;/p&gt;
+
+&lt;p&gt;Let’s compare concurrency issues by taking the example of an experiment. This experiment will help you understand the cold start times and expiration behaviours of function instances between AWS Lambda, Apache OpenWhisk, Google Cloud Functions and Azure Functions.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;System Specification&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;System specification is the same as the above experiment.&lt;/p&gt;
+
+&lt;p&gt;This test sends a single signal execution requests to the test function at increasing intervals in the range of 1-30 minutes. Moreover, the function containers expire after 15 minutes of inactivity.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Performance Results&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The below figure depicts the performance results of various platforms.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/7/gp2-610x420.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Conclusion&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Here’s what we can conclude from the above test:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;AWS Lambda&lt;/strong&gt;: It shows no effect of function idling.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Google Cloud Functions&lt;/strong&gt;: It shows no effect of function idling.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Microsoft Azure Functions&lt;/strong&gt;: It appears that it expires after few minutes.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Apache OpenWhisk&lt;/strong&gt;: It appears that it deallocates the container within around 10 minutes.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The noteworthy performance of AWS Lambda and Google Cloud Functions can be credited to the extremely fast container start times or preallocation of containers even before its execution.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Pro Tip&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Minimize the deployment package size of your function.&lt;/li&gt;
+  &lt;li&gt;Make sure you use modularity of the AWS SDK for Java and .NET.&lt;/li&gt;
+  &lt;li&gt;Also, reduce the complexities of your dependencies.&lt;/li&gt;
+  &lt;li&gt;If this isn’t sufficient, leverage the container reuse by lazily loading variables so that your function stays warm for several minutes.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/7/code-image-1024x555.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Code Optimisation for efficient performance&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Performance of your serverless application is hugely dependent on the logic you need the cloud function to execute and what the dependencies are. The serverless developers should understand the granularity in a microservices architecture.&lt;/p&gt;
+
+&lt;p&gt;If there are many function invocations it would make the application complex to run and debug. While the scope of optimization is different for each application, there are some best practices to optimize your code for functions.&lt;/p&gt;
+
+&lt;p&gt;Following are some of the best practices-&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#1. Container reuse&lt;/strong&gt;: Any externalized configuration or dependencies that your code retrieves should be stored and referenced locally after initial execution. The cloud architect should limit the re-initialization of variables on every invocation and use static initialization, global/static variables and singletons instead. Also, keep alive and reuse connections (HTTP, database, etc.) that were established during a previous invocation.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#2. Optimize the coding practices for deployment&lt;/strong&gt;: The cloud functions will support many language-specific SDKs. To enable the latest set of features and security updates, cloud provider (eg. AWS Lambda or Azure functions) will periodically update these libraries. These updates may introduce subtle changes to the behaviour of your function.&lt;/p&gt;
+
+&lt;p&gt;To have full control of the dependencies your function uses, it is recommended to package all your dependencies with your deployment code. It is also important to minimize the package size to its runtime necessities. This will reduce the amount of time that it takes for your deployment package to be downloaded and unpacked ahead of invocation.&lt;/p&gt;
+
+&lt;p&gt;For example- Google functions authored in Java or .NET Core, avoid uploading the entire GCP SDK library as part of your deployment package. Instead, selectively depend on the modules which pick up components of the SDK you need (e.g. Datastore, Google cloud storage SDK modules and Google function libraries). Prefer simpler frameworks that load quickly on container startups such as Dagger and Guice.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#3.Separate the point of entry for function and core logic&lt;/strong&gt;: For example, keep the AWS Lambda handle separate from core logic. This makes unit-testing of the function easier.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#4. Avoid long-running functions&lt;/strong&gt;: Functions can become large and long-running due to language and external dependencies. This can cause unexpected timeout issues. Refactor large functions into smaller function sets that work together and return faster responses.&lt;/p&gt;
+
+&lt;p&gt;For example, an HTTP trigger function might require an acknowledgement response within a certain time limit. The HTTP trigger payload is queued to be processed by a queue trigger function. This way you can defer the actual task and return an immediate response.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#5. Initializing database connections&lt;/strong&gt;: After a function is executed, the serverless provider (AWS Lambda) maintains the runtime container for some time. This is done in anticipation of another function invocation. So for establishing database connection leveraging global scope is very important. Instead of re-establishing the connection, the original connection should be used in the subsequent invocations.&lt;/p&gt;
+
+&lt;p&gt;Declare database connections and other objects/variables outside the Lambda function handler code to provide additional optimization when the function is invoked again. You can add logic to your code to check if a connection already exists before creating one.&lt;/p&gt;
+
+&lt;h3 id=&quot;take-away&quot;&gt;Take Away!&lt;/h3&gt;
+&lt;p&gt;Armed with this knowledge, now you can take the better decision on how to configure your functions.&lt;/p&gt;
+
+&lt;p&gt;The other lesson, I’d like to impart you is that function benchmarks are supposed to be gathered over the course of time and not in hours and minutes. Hence, AWS Lambda performance monitoring is a continuous process.&lt;/p&gt;
+
+&lt;p&gt;We’ll be refurbishing this blog from time to time and try to be updated in our custom software development practices. So, keep in touch to stay updated about AWS Lambda performance.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Serverless Performance Tuning</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/sw_design.png" /></entry><entry><title type="html">How to Build a Scalable Application up to 1 Million Users on AWS</title><link href="http://localhost:4000/blog/building-scalable-application-aws-platform" rel="alternate" type="text/html" title="How to Build a Scalable Application up to 1 Million Users on AWS" /><published>2020-01-12T10:41:00+00:00</published><updated>2020-01-12T10:41:00+00:00</updated><id>http://localhost:4000/blog/ScalableawsApp</id><content type="html" xml:base="http://localhost:4000/blog/building-scalable-application-aws-platform">&lt;h3 id=&quot;build-a-scalable-application&quot;&gt;Build a Scalable Application&lt;/h3&gt;
 
 &lt;p&gt;Scalability of an application is equally important as its features and user interface. It becomes even more important if your app is going to serve more than a million users in the future. In this blog, you will learn how to scale your app up to 1 million users on AWS.&lt;/p&gt;
 
@@ -2809,342 +3015,4 @@ that &lt;strong&gt;increases&lt;/strong&gt; an organization’s ability to &lt;s
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="customization" /><category term="learning" /><summary type="html">ModelBinders</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aspnetcore.png" /></entry><entry><title type="html">ASP. NET Core -OutputFormatter</title><link href="http://localhost:4000/blog/customize-outputformatter" rel="alternate" type="text/html" title="ASP. NET Core -OutputFormatter" /><published>2019-11-01T05:54:00+00:00</published><updated>2019-11-01T05:54:00+00:00</updated><id>http://localhost:4000/blog/customize7-outputformatter</id><content type="html" xml:base="http://localhost:4000/blog/customize-outputformatter">&lt;h2 id=&quot;outputformatter&quot;&gt;OutputFormatter&lt;/h2&gt;
-
-&lt;p&gt;In this seventh chapter I want to write about, how to send your data in different formats and types to the client. By default the ASP.NET Core Web API sends the data as JSON, but there are some more ways to send the data.&lt;/p&gt;
-
-&lt;h2 id=&quot;about-outputformatters&quot;&gt;About OutputFormatters&lt;/h2&gt;
-
-&lt;p&gt;OutputFormatters are classes that turn your data into a different format to sent them trough HTTP to the clients. Web API uses a default OutputFormatter to turn objects into JSON, which is the default format to send data in a structured way. Other built-in formatters are a XML formatter and a plain text formatter.&lt;/p&gt;
-
-&lt;p&gt;With the - so called - content negotiation the client is able to decide which format he wants to retrieve .The client needs to specify the content type of the format in the Accept-Header. The content negotiation is implemented in the ObjectResult.&lt;/p&gt;
-
-&lt;p&gt;By default the Web API always returns JSON, even if you accept &lt;code class=&quot;highlighter-rouge&quot;&gt;text/xml&lt;/code&gt; in the header. This is why the build in XML formatter is not registered by default. There are two ways to add a &lt;code class=&quot;highlighter-rouge&quot;&gt;XmlSerializerOutputFormatter&lt;/code&gt; to ASP.NET Core:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AddControllers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AddXmlSerializerFormatters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;or&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AddControllers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AddMvcOptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OutputFormatters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;XmlSerializerOutputFormatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;There is also a XmlDataContractSerializerOutputFormatter available.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Also any Accept header gets turned into &lt;code class=&quot;highlighter-rouge&quot;&gt;application/json&lt;/code&gt;. If you want to allow the clients to accept different headers, you need to switch that translation off:&lt;/p&gt;
-
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;services.AddControllers()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;.AddMvcOptions(options&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;options.RespectBrowserAcceptHeader&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;by&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Some third party components that don’t completely support ASP.NET Core 3.0, don’t write asynchronously to the response stream, but ASP.NET Core 3.0 doesn’t allow to write synchronously by default. To enable synchronous writing access you need to add these lines to the &lt;code class=&quot;highlighter-rouge&quot;&gt;ConfigureServices&lt;/code&gt; method:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Configure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;KestrelServerOptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AllowSynchronousIO&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;To try the formatters let’s setup a small test project.&lt;/p&gt;
-
-&lt;h2 id=&quot;prepare-a-test-project&quot;&gt;Prepare a test project&lt;/h2&gt;
-
-&lt;p&gt;Using the console we will create a small ASP.NET Core Web API project. Execute the following commands line by line:&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dotnet new webapi &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; OutputFormatterSample &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; OutputFormatterSample
-&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;WebApiTest
-dotnet add package GenFu
-dotnet add package CsvHelper
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This creates a new Web API projects and adds two NuGet packages to it. GenFu is an awesome library to easily create test data. The second one helps us to easily write CSV data.&lt;/p&gt;
-
-&lt;p&gt;Now open the project in Visual Studio or in Visual Studio Code and open the &lt;code class=&quot;highlighter-rouge&quot;&gt;ValuesController.cs&lt;/code&gt; and change the &lt;code class=&quot;highlighter-rouge&quot;&gt;Get()&lt;/code&gt; method like this:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HttpGet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ActionResult&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;persons&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ListOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;persons&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This crates a list of 25 Persons using GenFu. The properties get automatically filled with almost realistic data. You’ll see the magic of GenFu and the results later on.&lt;/p&gt;
-
-&lt;p&gt;In the models folder create a new file &lt;code class=&quot;highlighter-rouge&quot;&gt;Person.cs&lt;/code&gt; with the the &lt;code class=&quot;highlighter-rouge&quot;&gt;Person&lt;/code&gt; class inside:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Id&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FirstName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LastName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Age&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EmailAddress&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Address&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;City&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Phone&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Open the &lt;code class=&quot;highlighter-rouge&quot;&gt;Startup.cs&lt;/code&gt; as well and add the Xml formatters and allow other accept headers as described earlier:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AddControllers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AddMvcOptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;	
-        &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RespectBrowserAcceptHeader&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// false by default&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OutputFormatters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;XmlSerializerOutputFormatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;That’s it for now. Now you are able to retrieve the data from the Web API. Start the project by using the &lt;code class=&quot;highlighter-rouge&quot;&gt;dotnet run&lt;/code&gt; command.&lt;/p&gt;
-
-&lt;p&gt;The best tools to test a web API are Fiddler or Postman. I prefer Postman because it is easy to use. At the end it doesn’t matter which tool you want to use. In these demos here I’m going to use Postman.&lt;/p&gt;
-
-&lt;p&gt;Inside Postman I create a new request. I write the API url into the address field, which is https://localhost:5001/api/values and I add a header with the key &lt;code class=&quot;highlighter-rouge&quot;&gt;Accept&lt;/code&gt; and the Value &lt;code class=&quot;highlighter-rouge&quot;&gt;application/json&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;After I press send I will see the JSON result in the response body below:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;images/customize-aspnetcore/custom-formatter-json.PNG&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Here you can see the auto generated values. GenFu puts the data in based on the property type and the property name. So it puts real first names and real last names as well as real cities and phone numbers into the Person’s properties.&lt;/p&gt;
-
-&lt;p&gt;Now let’s test the XML output formatter.&lt;/p&gt;
-
-&lt;p&gt;In postman change the Accept header form &lt;code class=&quot;highlighter-rouge&quot;&gt;application/json&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;text/xml&lt;/code&gt; and press send:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;images/customize-aspnetcore/custom-formatter-xml.PNG&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;We now have an XML formatted output.&lt;/p&gt;
-
-&lt;p&gt;Now let’s go a step aheads and create some custom OutputFormatters.&lt;/p&gt;
-
-&lt;h2 id=&quot;custom-outputformatters&quot;&gt;Custom OutputFormatters&lt;/h2&gt;
-
-&lt;p&gt;The plan is to create an VCard output to be able to import the person’s contacts directly to outlook or any other contact database that supports VCards. Later in this section we also want to create a CSV output formatter.&lt;/p&gt;
-
-&lt;p&gt;Both are text based output formatters and will derive from &lt;code class=&quot;highlighter-rouge&quot;&gt;TextOutputFormatter&lt;/code&gt;. Create a new class in a new file called &lt;code class=&quot;highlighter-rouge&quot;&gt;VcardOutputFormatter.cs&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;VcardOutputFormatter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TextOutputFormatter&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ContentType&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;VcardOutputFormatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;SupportedMediaTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MediaTypeHeaderValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/vcard&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;SupportedEncodings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UTF8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;SupportedEncodings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Unicode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;// optional, but makes sense to restrict to a specific condition&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;CanWriteType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;IsAssignableFrom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
-            &lt;span class=&quot;p&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;IsAssignableFrom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;CanWriteType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;// this needs to be overwritten&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Task&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;WriteResponseBodyAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    	&lt;span class=&quot;n&quot;&gt;OutputFormatterWriteContext&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
-    	&lt;span class=&quot;n&quot;&gt;Encoding&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selectedEncoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;serviceProvider&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HttpContext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RequestServices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;serviceProvider&lt;/span&gt;
-        	&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;GetService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ILogger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;VcardOutputFormatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ILogger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-        &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HttpContext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-        &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;StringBuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;)&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;)&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;nf&quot;&gt;FormatVcard&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;nf&quot;&gt;FormatVcard&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WriteAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;FormatVcard&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    	&lt;span class=&quot;n&quot;&gt;StringBuilder&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
-    	&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
-    	&lt;span class=&quot;n&quot;&gt;ILogger&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AppendLine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;BEGIN:VCARD&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AppendLine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;VERSION:2.1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AppendLine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;$&quot;FN:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FirstName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LastName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AppendLine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;$&quot;N:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LastName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FirstName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AppendLine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;$&quot;EMAIL:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EmailAddress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AppendLine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;$&quot;TEL;TYPE=VOICE,HOME:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Phone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AppendLine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;$&quot;ADR;TYPE=home:;;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Address&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;City&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;            
-		&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AppendLine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;$&quot;UID:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AppendLine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;END:VCARD&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;LogInformation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;$&quot;Writing &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FirstName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LastName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In the constructor we need to specify the supported media types and encodings. In the method &lt;code class=&quot;highlighter-rouge&quot;&gt;CanWriteType()&lt;/code&gt; we need to check whether the current type is supported within this output formatters. Here we only want to format a single &lt;code class=&quot;highlighter-rouge&quot;&gt;Person&lt;/code&gt; or a list of &lt;code class=&quot;highlighter-rouge&quot;&gt;Persons&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;The method &lt;code class=&quot;highlighter-rouge&quot;&gt;WriteResponseBodyAsync()&lt;/code&gt; then actually writes the list of persons out to the response stream via a &lt;code class=&quot;highlighter-rouge&quot;&gt;StringBuilder&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;At least we need to register the new &lt;code class=&quot;highlighter-rouge&quot;&gt;VcardOutputFormatter&lt;/code&gt; in the &lt;code class=&quot;highlighter-rouge&quot;&gt;Startup.cs&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AddControllers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AddMvcOptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RespectBrowserAcceptHeader&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// false by default&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OutputFormatters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;XmlSerializerOutputFormatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-
-        &lt;span class=&quot;c1&quot;&gt;// register the VcardOutputFormatter&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OutputFormatters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;VcardOutputFormatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt; 
-    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Start the app again using &lt;code class=&quot;highlighter-rouge&quot;&gt;dotnet run&lt;/code&gt;. Now change the Accept header to &lt;code class=&quot;highlighter-rouge&quot;&gt;text/vcard&lt;/code&gt; and let’s see what happens:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;images/customize-aspnetcore/custom-formatter-vcard.PNG&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;We now should see our date in the VCard format.&lt;/p&gt;
-
-&lt;p&gt;Let’s do the same for a CSV output. We already added the CsvHelper library to the project, so you can just copy the next snippet into your project:&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CsvOutputFormatter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TextOutputFormatter&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ContentType&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;CsvOutputFormatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;SupportedMediaTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MediaTypeHeaderValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/csv&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;SupportedEncodings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UTF8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;SupportedEncodings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Unicode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;// optional, but makes sense to restrict to a specific condition&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;CanWriteType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;IsAssignableFrom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;IsAssignableFrom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;CanWriteType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;// this needs to be overwritten&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Task&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;WriteResponseBodyAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    	&lt;span class=&quot;n&quot;&gt;OutputFormatterWriteContext&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
-    	&lt;span class=&quot;n&quot;&gt;Encoding&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selectedEncoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;serviceProvider&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HttpContext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RequestServices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;serviceProvider&lt;/span&gt;
-        	&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;GetService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ILogger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CsvOutputFormatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ILogger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-        &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HttpContext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-        &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;csv&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;CsvWriter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;StreamWriter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;)&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;persons&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IEnumerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;;&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;csv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;WriteRecords&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;persons&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;csv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WriteRecord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CompletedTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This almost works the same way. We can pass the response stream via a &lt;code class=&quot;highlighter-rouge&quot;&gt;StreamWriter&lt;/code&gt; directly into the &lt;code class=&quot;highlighter-rouge&quot;&gt;CsvWriter&lt;/code&gt;. After that we are able to feed the writer with the persons or the list of persons. That’s it.&lt;/p&gt;
-
-&lt;p&gt;We also need to register the &lt;code class=&quot;highlighter-rouge&quot;&gt;CsvOutputFormatter&lt;/code&gt; before we can test it.&lt;/p&gt;
-
-&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AddControllers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AddMvcOptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RespectBrowserAcceptHeader&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// false by default&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OutputFormatters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;XmlSerializerOutputFormatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-
-        &lt;span class=&quot;c1&quot;&gt;// register the VcardOutputFormatter&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OutputFormatters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;VcardOutputFormatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt; 
-        &lt;span class=&quot;c1&quot;&gt;// register the CsvOutputFormatter&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OutputFormatters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;CsvOutputFormatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt; 
-    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In Postman change the &lt;code class=&quot;highlighter-rouge&quot;&gt;Accept&lt;/code&gt; header to &lt;code class=&quot;highlighter-rouge&quot;&gt;text/csv&lt;/code&gt; and press send again:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;images/customize-aspnetcore/custom-formatter-csv.PNG&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;Isn’t that cool? I really like the way to change the format based on the except header. This way you are able to create an Web API for many different clients and one that accepts many different formats. There are still a lot of potential clients out there which don’t use JSON and prefer XML or CSV.&lt;/p&gt;
-
-&lt;p&gt;The other way around would be an option to consume CSV or any other format inside the Web API. Let’s assume your client would send you a list of persons in CSV format. How would you solve this? Parsing the string manually in the action method would work, but it’s not a nice option. This is what &lt;strong&gt;ModelBinders&lt;/strong&gt; can do for us. Let’s see how this works in the next chapter.&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;sessions&quot;&gt;Sessions&lt;/h2&gt;
-
-&lt;p&gt;This is series of articles on Building Conf planner app with Asp.net Core:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-logging&quot; target=&quot;_blank&quot;&gt;1 - Logging&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-configuration&quot; target=&quot;_blank&quot;&gt;2 - Configuration&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-dependency-injection&quot; target=&quot;_blank&quot;&gt;3 - Dependency Injection&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-https&quot; target=&quot;_blank&quot;&gt;4 - Https&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-hostedservices&quot; target=&quot;_blank&quot;&gt;5 - Hostedservices&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-middleware&quot; target=&quot;_blank&quot;&gt;6 - Middlewares&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-outputformatter&quot; target=&quot;_blank&quot;&gt;7 - Outputformatter&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-modelbinders&quot; target=&quot;_blank&quot;&gt;8 - Modelbinders &lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-actionfilters&quot; target=&quot;_blank&quot;&gt;9 - Actionfilters&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-taghelpers&quot; target=&quot;_blank&quot;&gt;10 - Taghelpers&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-webhostbuilder&quot; target=&quot;_blank&quot;&gt;11 - Webhostbuilder&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/blog/customize-hosting&quot; target=&quot;_blank&quot;&gt;12 - Hosting &lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr /&gt;
-   
-    &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/customize-middleware&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/customize-modelbinders&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="customization" /><category term="learning" /><summary type="html">OutputFormatter</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aspnetcore.png" /></entry></feed>
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="customization" /><category term="learning" /><summary type="html">ModelBinders</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aspnetcore.png" /></entry></feed>
