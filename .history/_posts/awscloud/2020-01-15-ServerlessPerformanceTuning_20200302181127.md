@@ -6,7 +6,10 @@ categories:
 - AWSCloud
 tags:
 - learning
-summary: Efficient configuration of AWS Lambda functions is highly critical when you're expecting an optimal performance of your serverless applications. This blog discusses potential serverless performance bottlenecks and ways through which you can finetune AWS Lambda performance.
+summary: Efficient configuration of AWS Lambda functions is highly critical when you're
+  expecting an optimal performance of your serverless applications. This blog discusses
+  potential serverless performance bottlenecks and ways through which you can finetune
+  AWS Lambda performance.
 image: "/img/sw_design.png"
 author: Girish Godage
 layout: posts
