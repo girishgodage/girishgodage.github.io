@@ -6,7 +6,10 @@ categories:
 - Web Development
 tags:
 - learning
-summary: React, Angular, and Vue –– all these frontend frameworks are good for building eCommerce applications. But what about Backend? Node.js is one such framework that allows you to build scalable eCommerce backends. This article provides you all the necessary information you need to use Nodejs in eCommerce web application development.
+summary: React, Angular, and Vue –– all these frontend frameworks are good for building
+  eCommerce applications. But what about Backend? Node.js is one such framework that
+  allows you to build scalable eCommerce backends. This article provides you all the
+  necessary information you need to use Nodejs in eCommerce web application development.
 image: "/img/sw_design.png"
 author: Girish Godage
 layout: posts
