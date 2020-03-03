@@ -6,7 +6,12 @@ categories:
 - Web Development
 tags:
 - learning
-summary: If Node.js has ever been on your mind –– or you’ve recently started learning it –– you might be asking yourself :- where can I use Node.js? If the stats are to be believed, among three in four software engineers incorporate node either in the full stack or in the backend. With the thumping majority of apps using the popular JS run-time environment, it’s a great opportunity to understand all existing Node.js use case and implement it in your organization.
+summary: If Node.js has ever been on your mind –– or you’ve recently started learning
+  it –– you might be asking yourself :- where can I use Node.js? If the stats are
+  to be believed, among three in four software engineers incorporate node either in
+  the full stack or in the backend. With the thumping majority of apps using the popular
+  JS run-time environment, it’s a great opportunity to understand all existing Node.js
+  use case and implement it in your organization.
 image: "/img/sw_design.png"
 author: Girish Godage
 layout: posts
