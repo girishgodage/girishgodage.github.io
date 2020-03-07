@@ -6,7 +6,15 @@ categories:
 - AWSCloud
 tags:
 - learning
-summary: Documents are a primary tool for record keeping, communication, collaboration, and transactions across many industries, including financial, medical, legal, and real estate. The millions of mortgage applications and hundreds of millions of W2 tax forms processed each year are just a few examples of such documents. A lot of information is locked in unstructured documents.It usually requires time-consuming and complex processes to enable search and discovery, business process automation, and compliance control for these documents.In this post, I show how you can take advantage of Amazon Textract to automatically extract text and data from scanned documents without any machine learning (ML) experience.
+summary: Documents are a primary tool for record keeping, communication, collaboration,
+  and transactions across many industries, including financial, medical, legal, and
+  real estate. The millions of mortgage applications and hundreds of millions of W2
+  tax forms processed each year are just a few examples of such documents. A lot of
+  information is locked in unstructured documents.It usually requires time-consuming
+  and complex processes to enable search and discovery, business process automation,
+  and compliance control for these documents.In this post, I show how you can take
+  advantage of Amazon Textract to automatically extract text and data from scanned
+  documents without any machine learning (ML) experience.
 image: "/img/sw_design.png"
 author: Girish Godage
 layout: posts
