@@ -6,7 +6,8 @@ categories:
 - AWSCloud
 tags:
 - learning
-summary: AWS announced Amazon Personalize, which allows you to get your first recommendation engine running quickly, to deliver immediate value to your end user or business.
+summary: AWS announced Amazon Personalize, which allows you to get your first recommendation
+  engine running quickly, to deliver immediate value to your end user or business.
 image: "/img/sw_design.png"
 author: Girish Godage
 layout: posts
