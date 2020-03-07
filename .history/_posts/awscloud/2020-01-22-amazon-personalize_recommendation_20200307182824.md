@@ -1,12 +1,21 @@
 ---
-title: Amazon Personalize can now use 10X more item attributes to improve relevance of recommendations
+title: Amazon Personalize can now use 10X more item attributes to improve relevance
+  of recommendations
 date: 2020-01-22 10:41:00 Z
 permalink: "/blog/amazon-personalize-can-now-use-10x-more-item-attributes-to-improve-relevance-of-recommendations"
 categories:
 - AWSCloud
 tags:
 - learning
-summary: Amazon Personalize is a machine learning service which enables you to personalize your website, app, ads, emails, and more, with custom machine learning models which can be created in Amazon Personalize, with no prior machine learning experience. AWS is pleased to announce that Amazon Personalize now supports ten times more item attributes for modeling in Personalize. Previously, you could use up to five item attributes while building an ML model in Amazon Personalize. This limit is now 50 attributes. You can now use more information about your items, for example, category, brand, price, duration, size, author, year of release etc., to increase the relevance of recommendations..
+summary: Amazon Personalize is a machine learning service which enables you to personalize
+  your website, app, ads, emails, and more, with custom machine learning models which
+  can be created in Amazon Personalize, with no prior machine learning experience.
+  AWS is pleased to announce that Amazon Personalize now supports ten times more item
+  attributes for modeling in Personalize. Previously, you could use up to five item
+  attributes while building an ML model in Amazon Personalize. This limit is now 50
+  attributes. You can now use more information about your items, for example, category,
+  brand, price, duration, size, author, year of release etc., to increase the relevance
+  of recommendations..
 image: "/img/sw_design.png"
 author: Girish Godage
 layout: posts
