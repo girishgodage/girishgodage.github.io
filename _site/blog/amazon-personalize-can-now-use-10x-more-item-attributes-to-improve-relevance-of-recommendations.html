@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#2A80EE">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#2A80EE">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
+<title>Amazon Personalize can now use 10X more item attributes to improve relevance of recommendations &#8211; Girish Godage</title>
+<meta name="description" content="Amazon Personalize is a machine learning service which enables you to personalize your website, app, ads, emails, and more, with custom machine learning models which can be created in Amazon Personalize, with no prior machine learning experience. AWS is pleased to announce that Amazon Personalize now supports ten times more item attributes for modeling in Personalize. Previously, you could use up to five item attributes while building an ML model in Amazon Personalize. This limit is now 50 attributes. You can now use more information about your items, for example, category, brand, price, duration, size, author, year of release etc., to increase the relevance of recommendations..">
+<meta name="keywords" content="AWSCloud">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all">
+
+<!-- Verifications -->
+    
+    
+        
+<!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Amazon Personalize can now use 10X more item attributes to improve relevance of recommendations">
+    <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
+    <meta property="og:url" content="http://localhost:4000/blog/amazon-personalize-can-now-use-10x-more-item-attributes-to-improve-relevance-of-recommendations">
+    <meta property="og:site_name" content="Girish Godage">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@GGodage" />
+    
+    <meta name="twitter:title" content="Amazon Personalize can now use 10X more item attributes to improve relevance of recommendations" />
+    <meta name="twitter:description" content="Amazon Personalize is a machine learning service which enables you to personalize your website, app, ads, emails, and more, with custom machine learning models which can be created in Amazon Personalize, with no prior machine learning experience. AWS is pleased to announce that Amazon Personalize now supports ten times more item attributes for modeling in Personalize. Previously, you could use up to five item attributes while building an ML model in Amazon Personalize. This limit is now 50 attributes. You can now use more information about your items, for example, category, brand, price, duration, size, author, year of release etc., to increase the relevance of recommendations.." />
+    <meta name="twitter:url" content="http://localhost:4000/blog/amazon-personalize-can-now-use-10x-more-item-attributes-to-improve-relevance-of-recommendations" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/img/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/img/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    
+
+
+    <link rel="canonical" href="http://localhost:4000/blog/amazon-personalize-can-now-use-10x-more-item-attributes-to-improve-relevance-of-recommendations">
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
+    <!-- Bootstrap CSS-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Google fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+   
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
+    
+    <!-- animate.css-->
+    <link rel="stylesheet" href="http://localhost:4000/sitejs/animate.css/animate.css">
+    <!-- theme stylesheet-->
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="http://localhost:4000/css/custom.css" as="style">
+    <link rel="stylesheet" href="http://localhost:4000/css/comments.css" as="style">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="http://localhost:4000/img/logo-big.png">
+    <!-- Fab Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
+    
+    
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    
+    <script type="text/javascript">
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+       ga('create', 'UA-130164763-2', 'auto');
+       ga('send', 'pageview');
+    </script>
+    
+    <!-- Typed.js DONT TOUCHHHHHHHHHHHHH!-->
+    <!--<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.9/typed.min.js"></script>
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+      </script>
+      
+      <!-- START OF RELEVANT PART -->
+    <script async src="https://just-comments.com/w2.js"></script>
+    <!-- END OF RELEVANT PART -->
+
+
+</head>
+
+<body>
+    
+<!-- navbar-->
+<header class="header">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container"><a class="navbar-brand" href="http://localhost:4000"><img
+          src="http://localhost:4000/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
+          alt="logo"> <img src="http://localhost:4000/img/girish_logo.png" height="30" alt="girilogo"></a>
+      <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span
+          class="fa fa-bars" style="color: white"></span></button>
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="http://localhost:4000#home" class="nav-link  link-scroll">Home</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#about" class="nav-link link-scroll">About</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#skills" class="nav-link link-scroll">Skills</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#services" class="nav-link link-scroll">Services</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#references" class="nav-link link-scroll">My
+              work</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#contact" class="nav-link link-scroll">Contact</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000/blog" class="nav-link link-scroll">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    
+    
+    
+    <div style="background-color:Gray;">
+        <div style="padding:0;min-height:95.05vh;display:flex;font-family: Poppins, sans-serif;margin-top: 5rem;"
+            class="container">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <p class="post-title">
+                    <h1><a href="/blog/amazon-personalize-can-now-use-10x-more-item-attributes-to-improve-relevance-of-recommendations">Amazon Personalize can now use 10X more item attributes to improve relevance of recommendations</a></h1>
+                </p>
+                
+                <span class="post-meta">
+              <span style="font-weight:600">January 22, 2020 Wednesday</span>
+                    
+                       ( 6 minute read ) 
+                    
+                     
+                    <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">   by Girish Godage</a>
+                </span>
+                
+                <div class="site-category"> 
+                        <h5>AWSCloud</h5>
+                </div>
+                
+                <hr>
+                <div><img class="post-image" src="/img/sw_design.png" alt="Amazon Personalize can now use 10X more item attributes to improve relevance of recommendations" height="250" /></div>
+                <div class="post-content">
+                    <br>                     
+                    <h2 id="amazon-personalize---can-now-use-10x-more-item-attributes-to-improve-relevance-of-recommendations">Amazon Personalize - can now use 10X more item attributes to improve relevance of recommendations</h2>
+
+<p><strong>Amazon Personalize</strong> is a machine learning service which enables you to <strong>personalize your website, app, ads, emails, and more,</strong> with custom machine learning models which can be created in Amazon Personalize, with no prior machine learning experience. AWS is pleased to announce that Amazon Personalize now supports ten times more item attributes for modeling in Personalize. Previously, you could use up to five item attributes while building an ML model in Amazon Personalize. This limit is now 50 attributes. You can now use more information about your items, <strong><em>for example, category, brand, price, duration, size, author, year of release etc., to increase the relevance of recommendations.</em></strong></p>
+
+<p>In this post, you learn how to add item metadata with custom attributes to Amazon Personalize and create a model using this data and user interactions. This post uses the Amazon customer reviews data for beauty products. For more information and to download this data, see <strong>Amazon Customer Reviews Dataset</strong>. We will use the history of what items the users have reviewed along with user and item metadata to generate product recommendations for them.</p>
+
+<h2 id="pre-processing-the-data">Pre-processing the data</h2>
+
+<p>To model the data in Amazon Personalize, you need to break it into the following datasets:</p>
+
+<ul>
+  <li><strong>Users</strong> – Contains metadata about the users</li>
+  <li><strong>Items</strong> – Contains metadata about the items</li>
+  <li><strong>Interactions</strong> – Contains interactions (for this post, reviews) and metadata about the interactions</li>
+</ul>
+
+<p>For each respective dataset, this post uses the following attributes:</p>
+
+<ul>
+  <li><strong>Users</strong> – customer_id, helpful_votes, and total_votes</li>
+  <li><strong>Items</strong> – product_id, product_category, and product_parent</li>
+  <li><strong>Interactions</strong> – product_id, customer_id, review_date, and star_rating</li>
+</ul>
+
+<p>This post does not use the other attributes available, which include <em>marketplace, review_id, product_title, vine, verified_purchase, review_headline, and review_body.</em></p>
+
+<p>Additionally, to conform with the keywords in <strong>Amazon Personalize</strong>, this post <strong>renames customer_id to USER_ID, product_id to ITEM_ID, and review_date to TIMESTAMP.</strong></p>
+
+<p>To download and process the data for input to Amazon Personalize, use the following Python example codes.</p>
+
+<p>For the Users dataset, enter the following code:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bash
+#Downloading data
+$aws s3 cp s3://amazon-reviews-pds/tsv/amazon_reviews_us_Beauty_v1_00.tsv.gz .
+$gunzip amazon_reviews_us_Beauty_v1_00.tsv.gz 
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#Generating the user dataset
+</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s">'customer_id'</span><span class="p">,</span> <span class="s">'helpful_votes'</span><span class="p">,</span> <span class="s">'total_votes'</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'amazon_reviews_us_Beauty_v1_00.tsv'</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">'</span><span class="se">\t</span><span class="s">'</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="n">fields</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'customer_id'</span><span class="p">:</span><span class="s">'USER_ID'</span><span class="p">})</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">'User_dataset.csv'</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>The following screenshot shows the Users dataset. This output can be generated by</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="/img/awscloud/10/personalize-10x-1.gif" alt="image info" /></p>
+
+<p>For the Items dataset, enter the following code:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#Generating the item dataset
+</span><span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s">'product_id'</span><span class="p">,</span> <span class="s">'product_category'</span><span class="p">,</span> <span class="s">'product_parent'</span><span class="p">]</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'amazon_reviews_us_Beauty_v1_00.tsv'</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">'</span><span class="se">\t</span><span class="s">'</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="n">fields</span><span class="p">)</span>
+<span class="n">df1</span><span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'product_id'</span><span class="p">:</span><span class="s">'ITEM_ID'</span><span class="p">})</span>
+
+<span class="c1">#Clip category names to 999 characters to confirm to Personalize limits
+</span><span class="n">maxlen</span> <span class="o">=</span> <span class="mi">999</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df1</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">product_category</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s">'product_category'</span><span class="p">][:</span><span class="n">maxlen</span><span class="p">]</span>
+    <span class="n">df1</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="s">'product_category'</span><span class="p">,</span> <span class="n">product_category</span><span class="p">)</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">'Item_dataset.csv'</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>The following screenshot shows the Items dataset. This output can be generated by</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="/img/awscloud/10/personalize-10x-2.gif" alt="image info" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#Generating the interactions dataset
+</span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s">'product_id'</span><span class="p">,</span> <span class="s">'customer_id'</span><span class="p">,</span> <span class="s">'review_date'</span><span class="p">,</span> <span class="s">'star_rating'</span><span class="p">]</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'amazon_reviews_us_Beauty_v1_00.tsv'</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">'</span><span class="se">\t</span><span class="s">'</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="n">fields</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">df2</span><span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'product_id'</span><span class="p">:</span><span class="s">'ITEM_ID'</span><span class="p">,</span> <span class="s">'customer_id'</span><span class="p">:</span><span class="s">'USER_ID'</span><span class="p">,</span> <span class="s">'review_date'</span><span class="p">:</span><span class="s">'TIMESTAMP'</span><span class="p">})</span>
+
+<span class="c1">#Converting timstamp to UNIX timestamp and rounding milliseconds
+</span><span class="n">num_errors</span> <span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df2</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span> 
+    <span class="n">time_input</span><span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s">"TIMESTAMP"</span><span class="p">]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">time_input</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">time_input</span><span class="p">,</span> <span class="s">"</span><span class="si">%</span><span class="s">Y-</span><span class="si">%</span><span class="s">m-</span><span class="si">%</span><span class="s">d"</span><span class="p">)</span>
+        <span class="n">timestamp</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">timestamp</span><span class="p">(</span><span class="n">time_input</span><span class="p">))</span>
+        <span class="n">df2</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="s">"TIMESTAMP"</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"exception at index: {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">index</span><span class="p">))</span>
+        <span class="n">num_errors</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Total rows in error: {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">num_errors</span><span class="p">))</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">"Interaction_dataset.csv"</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+</code></pre></div></div>
+<p>The following screenshot shows the Items dataset. This output can be generated by</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="/img/awscloud/10/personalize-10x-3.gif" alt="image info" /></p>
+
+<h3 id="ingesting-the-data">Ingesting the data</h3>
+
+<p>After you process the preceding data, you can ingest it in Amazon Personalize.</p>
+
+<h3 id="creating-a-dataset-group">Creating a dataset group</h3>
+<p>To create a dataset group to store events (user interactions) sent by your application and the metadata for users and items, complete the following steps:</p>
+<ul>
+  <li>On the Amazon Personalize console, under <strong>Dataset groups</strong>, choose <strong>Create dataset group</strong>.</li>
+  <li>For <strong>Dataset group name</strong>, enter the name of your dataset group. This post enters the name <em>DemoLimitIncrease</em>.</li>
+  <li>Choose <strong>Next</strong>.</li>
+</ul>
+
+<p><img src="/img/awscloud/10/personalize-10x-4.gif" alt="image info" /></p>
+
+<h3 id="creating-a-dataset-and-defining-schema">Creating a dataset and defining schema</h3>
+
+<p>After you create the dataset group, create a dataset and define schema for each of them. The following steps are for your Items dataset:</p>
+
+<ul>
+  <li>For <strong>Dataset name</strong>, enter a name.</li>
+  <li>Under <strong>Schema details</strong>, select <strong>Create new schema</strong>.</li>
+  <li>For <strong>New schema name</strong>, enter a name.</li>
+  <li>For <strong>Schema definition</strong>, enter the following code:</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    "type": "record",
+    "name": "Items",
+    "namespace": "com.amazonaws.personalize.schema",
+    "fields": [
+        {
+            "name": "ITEM_ID",
+            "type": "string"
+        },
+        {
+            "name": "product_parent",
+            "type": "string",
+            "categorical": true
+        },
+        {
+            "name": "product_category",
+            "type": "string",
+            "categorical": true
+        }
+    ],
+    "version": "1.0"}
+
+</code></pre></div></div>
+<ul>
+  <li>
+    <p>Choose Next.</p>
+
+    <p><img src="/img/awscloud/10/personalize-10x-5.gif" alt="image info" /></p>
+  </li>
+</ul>
+
+<p>Follow the same steps for the Users and Interactions datasets and define the schema to conform to the columns you want to import.</p>
+
+<h3 id="importing-the-data">Importing the data</h3>
+
+<p>After you create the dataset, import the data from Amazon S3. Make sure you provide Amazon Personalize read access to your bucket. To import your Items data, complete the following steps:</p>
+
+<ul>
+  <li>Under <strong>Dataset import job details</strong>, for <strong>Dataset import job name</strong>, enter a name.</li>
+  <li>For <strong>IAM Service role</strong>, choose <strong>AmazonPersonalize-ExecutionRole</strong>.</li>
+  <li>For <strong>Data location</strong>, enter the location of your S3 bucket.</li>
+  <li>Choose <strong>Create dataset import job.</strong></li>
+</ul>
+
+<p><img src="/img/awscloud/10/personalize-10x-6-2.gif" alt="image info" /></p>
+
+<p>Follow the same steps to import your Users and Interactions datasets.</p>
+
+<h3 id="training-a-model">Training a model</h3>
+
+<p>After you ingest the data into Amazon Personalize, you are ready to train a model (solutionVersion). To do so, map the recipe (algorithm) you want to use to your use case. The following are your available options:</p>
+
+<ul>
+  <li>For user personalization, such as recommending items to a user, use one of the following recipes:
+    <ul>
+      <li>HRNN – Trains only on interaction data and provides a baseline</li>
+      <li>HRNN-Metadata – Trains on interaction+user, item, and interaction metadata and is recommended when you have such data available</li>
+      <li>HRNN-Coldstart – Use when you want to recommend cold (new) items to a user</li>
+    </ul>
+  </li>
+  <li>For recommending items similar to an input item, use SIMS.</li>
+  <li>For reranking a list of input items for a given user, use Personalized-Ranking.</li>
+</ul>
+
+<p>This post uses the HRNN-Metadata recipe to define a solution and then train a solutionVersion (model). Complete the following steps:</p>
+
+<ul>
+  <li>On the Amazon Personalize console, under <strong>Dataset groups</strong>, choose <strong>DemoLimitIncrease</strong>.</li>
+  <li>Choose <strong>Solutions</strong>.</li>
+  <li>Choose <strong>Create solution</strong>.</li>
+  <li>Under <strong>Solution configuration</strong>, for <strong>Solution name</strong>, enter a name</li>
+  <li>For <strong>Recipe selection</strong>, select Manual.</li>
+  <li>For <strong>Recipe</strong>, choose aws-hrnn-metadata.</li>
+  <li>Choose <strong>Next</strong>.</li>
+</ul>
+
+<p><img src="/img/awscloud/10/personalize-10x-7.gif" alt="image info" /></p>
+
+<p>You can also change the default hyperparameters or perform hyperparameter optimization for a solution.</p>
+
+<h3 id="getting-recommendations">Getting recommendations</h3>
+<p>To get recommendations, create a campaign using the solution and solution version you just created. Complete the following steps:</p>
+
+<ul>
+  <li>Under <strong>Dataset groups</strong>, under <strong>DemoLimitIncrease</strong>, choose Campaigns.</li>
+  <li>Choose <strong>Create new campaign</strong>.</li>
+  <li>Under <strong>Campaign details</strong>, for <strong>Campaign name</strong>, enter a name</li>
+  <li>For <strong>Solution</strong>, choose the <strong>solution name</strong> from previous step.</li>
+  <li>For <strong>Solution version ID</strong>, choose the <strong>solution version</strong> you just created.</li>
+  <li>For <strong>Minimum provisioned transactions per second</strong>, enter 1.</li>
+  <li>Choose <strong>Create campaign</strong>.</li>
+</ul>
+
+<p><img src="/img/awscloud/10/personalize-10x-8.gif" alt="image info" /></p>
+
+<ul>
+  <li>After the campaign is created you can see the details in the console and use it to get recommendations.</li>
+</ul>
+
+<p><img src="/img/awscloud/10/personalize-10x-9.gif" alt="image info" /></p>
+
+<p>After you set up the campaign, you can programmatically call the campaign to get recommendations in form of item IDs. You can also use the console to get the recommendations and perform spot checks. Additionally, Amazon Personalize offers the ability to batch process recommendations. For more information, see Now available: Batch Recommendations in Amazon Personalize.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>You can now use these recommendations to power display experiences, such as personalize the homepage of your beauty website based on what you know about the user or send a promotional email with recommendations. Performing real-time recommendations with Amazon Personalize requires you to also send user events as they occur. For more information, see Amazon Personalize is Now Generally Available. Get started with Amazon Personalize today!</p>
+
+                </div>
+
+                
+
+                <div id="disqus_thread"></div>
+                <script>
+                
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://girishgodage-github-io.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
+</button>
+<!-- Footer-->
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 text-center text-lg-left">
+                <p class="social">
+                    <a href="https://www.facebook.com/girish.godage.5" class="external facebook wow fadeInUp">
+                        <i class="fa fa-facebook"></i></a>
+                    <a href="https://instagram.com/girishgodage_007" data-wow-delay="0.2s" class="external instagram wow fadeInUp">
+                        <i class="fa fa-instagram"></i></a>
+                    <a href="https://youtube.com/girishgodage" data-wow-delay="0.4s" class="external youtube wow fadeInUp">
+                        <i class="fa fa-youtube-play"></i></a>
+                    <a href="https://twitter.com/GGodage" data-wow-delay="0.4s" class="external twitter wow fadeInUp">
+                            <i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/girishgodage" data-wow-delay="0.4s" class="external github wow fadeInUp">
+                                <i class="fa fa-github"></i></a>    
+                    <a href="mailto:girishgodage@gmail.com?subject=Hello%20Girish" data-wow-delay="0.6s" class="email wow fadeInUp">
+                        <i class="fa fa-envelope"></i></a></p>
+            </div>
+            <div class="col-12 col-md-2">
+            <h5>Quick Links</h5>
+            <ul>
+               <li><a href="http://localhost:4000#about">About</a></li>
+               <li><a href="http://localhost:4000#contact">Contact</a></li>
+               <li><a href="/sitemap.xml">Sitemap</a></li>               
+            </ul>
+         </div>
+            <div class="col-12 col-md-4 text-center text-lg-right mt-4 mt-lg-0">
+                <p> <b>©</b>2019 Girish Godage </p>
+                <p class="text-center, text-shadow"> Hosted On <a href="https://pages.github.com/">GitHub Pages</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Typed.js DONT TOUCH THIS! -->
+    <div id="typed-strings">
+    </div>
+
+        <!-- JavaScript files-->
+    <script src="http://localhost:4000/sitejs/jquery/jquery.min.js"></script>
+    <script src="http://localhost:4000/sitejs/popper.js/umd/popper.min.js"> </script>
+    <script src="http://localhost:4000/sitejs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="http://localhost:4000/sitejs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="http://localhost:4000/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.counterup/jquery.counterup.js"></script>
+    <script src="http://localhost:4000/js/front.js"></script>
+    <script src="http://localhost:4000/js/comment.js"></script>
+       <!-- Script pointing to search-script.js -->
+    <script src="http://localhost:4000/js/search-script.js" type="text/javascript"></script>
+   
+    <!-- Configuration -->
+    <script>
+         SimpleJekyllSearch({
+         searchInput: document.getElementById('search-input'),
+         resultsContainer: document.getElementById('results-container'),
+         json: '/search.json'
+         })
+         </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC36FUDDdOTidZJ8nzS5vfE7KVyayenKPE",
+    authDomain: "githubcontactlist.firebaseapp.com",
+    databaseURL: "https://githubcontactlist.firebaseio.com",
+    projectId: "githubcontactlist",
+    storageBucket: "githubcontactlist.appspot.com",
+    messagingSenderId: "899685398702",
+    appId: "1:899685398702:web:0c23c56d2d6d40df37553f",
+    measurementId: "G-YWBRCYJYFW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script>
+   $(function() {
+      
+    //make a variable to keep track of data coming from firebase
+    var data = [];
+
+    // Reference messages collection
+      var messagesRef = firebase.database().ref('contactformmessages');  
+
+
+    //listen to data updates from firebase
+    messagesRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+        //when the data updates at firebase, put it in the data variable
+        data = snapshot.val();
+    })
+    //Entire Contact Form (handler)
+    $('#contactForm').submit(function(e) {
+      e.preventDefault();
+
+        var $form = $(this);
+        console.log("Submit to Firebase");
+
+        //disable submit button
+        $form.find("#sendForm").prop('disabled', true);
+
+        //get values to send to Firebase
+        var name = $('#name').val();
+        console.log(name);
+		
+		var surname = $('#surname').val();
+        console.log(surname);
+		
+		var email = $('#email').val();
+        console.log(email);	
+		
+		var phone = $('#phone').val();
+        console.log(phone);
+
+        var message = $('#message').val();
+        console.log(message);
+
+       
+        //take the values from the form, and put them in an object
+        var newContact = {
+         "name": name,
+			"surname": surname,
+			"email": email,
+			"phone": phone,
+         "message": message
+        }
+        //put new object in data array
+        data.push(newContact);
+        console.log(data);
+
+        //send the new data to Firebase
+        messagesRef.set(data, function(err) {
+            if (err) {
+                alert("Data no go");
+            }else{
+            $("#form-wrapper").slideToggle();
+            $('#form-success-message').slideToggle();
+			}
+        });
+
+        return false;
+    })
+   
+    
+})
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";           
+        }else
+        {
+           myBtton.style.display="none";     
+          
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+      //  document.body.scrollTop =0;
+      //  document.documentElement.scrollTop=0;
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    }
+
+</script>
+
+    
+    
+
+
+</body>
+
+</html>
