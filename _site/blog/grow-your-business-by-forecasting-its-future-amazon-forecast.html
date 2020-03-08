@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#2A80EE">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#2A80EE">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
+<title>Grow your business by forecasting its future Amazon Forecast &#8211; Girish Godage</title>
+<meta name="description" content="Amazon Forecast is a fully managed service that uses machine learning to deliver highly accurate forecasts. It can achieve forecasting accuracy levels that used to take months of engineering in as little as a few hours with no machine learning experience to get started.">
+<meta name="keywords" content="AWSCloud">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all">
+
+<!-- Verifications -->
+    
+    
+        
+<!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Grow your business by forecasting its future Amazon Forecast">
+    <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
+    <meta property="og:url" content="http://localhost:4000/blog/grow-your-business-by-forecasting-its-future-amazon-forecast">
+    <meta property="og:site_name" content="Girish Godage">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@GGodage" />
+    
+    <meta name="twitter:title" content="Grow your business by forecasting its future Amazon Forecast" />
+    <meta name="twitter:description" content="Amazon Forecast is a fully managed service that uses machine learning to deliver highly accurate forecasts. It can achieve forecasting accuracy levels that used to take months of engineering in as little as a few hours with no machine learning experience to get started." />
+    <meta name="twitter:url" content="http://localhost:4000/blog/grow-your-business-by-forecasting-its-future-amazon-forecast" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/img/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/img/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    
+
+
+    <link rel="canonical" href="http://localhost:4000/blog/grow-your-business-by-forecasting-its-future-amazon-forecast">
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
+    <!-- Bootstrap CSS-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Google fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+   
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
+    
+    <!-- animate.css-->
+    <link rel="stylesheet" href="http://localhost:4000/sitejs/animate.css/animate.css">
+    <!-- theme stylesheet-->
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="http://localhost:4000/css/custom.css" as="style">
+    <link rel="stylesheet" href="http://localhost:4000/css/comments.css" as="style">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="http://localhost:4000/img/logo-big.png">
+    <!-- Fab Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
+    
+    
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    
+    <script type="text/javascript">
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+       ga('create', 'UA-130164763-2', 'auto');
+       ga('send', 'pageview');
+    </script>
+    
+    <!-- Typed.js DONT TOUCHHHHHHHHHHHHH!-->
+    <!--<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.9/typed.min.js"></script>
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+      </script>
+      
+      <!-- START OF RELEVANT PART -->
+    <script async src="https://just-comments.com/w2.js"></script>
+    <!-- END OF RELEVANT PART -->
+
+
+</head>
+
+<body>
+    
+<!-- navbar-->
+<header class="header">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container"><a class="navbar-brand" href="http://localhost:4000"><img
+          src="http://localhost:4000/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
+          alt="logo"> <img src="http://localhost:4000/img/girish_logo.png" height="30" alt="girilogo"></a>
+      <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span
+          class="fa fa-bars" style="color: white"></span></button>
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="http://localhost:4000#home" class="nav-link  link-scroll">Home</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#about" class="nav-link link-scroll">About</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#skills" class="nav-link link-scroll">Skills</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#services" class="nav-link link-scroll">Services</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#references" class="nav-link link-scroll">My
+              work</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#contact" class="nav-link link-scroll">Contact</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000/blog" class="nav-link link-scroll">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    
+    
+    
+    <div style="background-color:Gray;">
+        <div style="padding:0;min-height:95.05vh;display:flex;font-family: Poppins, sans-serif;margin-top: 5rem;"
+            class="container">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <p class="post-title">
+                    <h1><a href="/blog/grow-your-business-by-forecasting-its-future-amazon-forecast">Grow your business by forecasting its future Amazon Forecast</a></h1>
+                </p>
+                
+                <span class="post-meta">
+              <span style="font-weight:600">January 24, 2020 Friday</span>
+                    
+                       ( 4 minute read ) 
+                    
+                     
+                    <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">   by Girish Godage</a>
+                </span>
+                
+                <div class="site-category"> 
+                        <h5>AWSCloud</h5>
+                </div>
+                
+                <hr>
+                <div><img class="post-image" src="/img/sw_design.png" alt="Grow your business by forecasting its future Amazon Forecast" height="250" /></div>
+                <div class="post-content">
+                    <br>                     
+                    <h2 id="amazon-forecast----grow-your-business-by-forecasting-its-future">Amazon Forecast -  Grow your business by forecasting its future</h2>
+
+<hr />
+
+<p>Want to predict your upcoming sales revenue??</p>
+
+<p>Want to know appropriate inventory levels of a particular item to stock??</p>
+
+<p>Want to predict the right level of available resources, such as staffing levels, raw material etc. to maximize revenue and control costs??</p>
+
+<hr />
+
+<p>To run a successful business, you should be ready for the future. No matter the scale of the business, you should be ready for any circumstance. Almost all companies have been facing the problem of predicting its sales revenue, inventory management, workforce and resource management, financial planning, supply chain, healthcare, etc.</p>
+
+<p>Before machine learning, people could only predict based on their experiences. But obviously, that cannot be precise. Since all the companies have been storing all these transactions (sales figures, inventory data) for a long time, this can be used to forecast the future using machine learning.</p>
+
+<blockquote>
+  <p>A good forecaster is not smarter than everyone else. He merely has his ignorance better organized.</p>
+</blockquote>
+
+<h2 id="amazon-forecast">Amazon Forecast:</h2>
+
+<p>Amazon Forecast is a fully managed service that uses machine learning to deliver highly accurate forecasts. It can achieve forecasting accuracy levels that used to take months of engineering in as little as a few hours with no machine learning experience to get started.</p>
+
+<p><em>Amazon Forecast supports the following dataset domains:</em></p>
+
+<ul>
+  <li><strong>RETAIL Domain</strong> — For retail demand forecasting</li>
+  <li><strong>INVENTORY_PLANNING Domain</strong> — For supply chain and inventory planning</li>
+  <li><strong>EC2 CAPACITY Domain</strong> — For forecasting Amazon Elastic Compute Cloud (Amazon EC2) capacity</li>
+  <li><strong>WORK_FORCE Domain</strong> — For workforce planning</li>
+  <li><strong>WEB_TRAFFIC Domain</strong> — For estimating future web traffic</li>
+  <li><strong>METRICS Domain</strong> — For forecasting metrics, such as revenue and cash flow</li>
+  <li><strong>CUSTOM Domain</strong> — For all other types of time-series forecasting</li>
+</ul>
+
+<h3 id="steps">Steps:</h3>
+
+<ul>
+  <li><strong>Create Dataset and Import data</strong></li>
+  <li><strong>Train a Predictor</strong></li>
+  <li><strong>Generate Forecasts</strong></li>
+</ul>
+
+<h3 id="problem-statement-download-dataset">Problem Statement (<a href="https://drive.google.com/open?id=1vel5vEv12hW5QM8SMiThbFPKoAbpNL7F">Download Dataset</a>):</h3>
+
+<p>Predicting the sales of an item for the next 10 days based on past sales records for 30 months.</p>
+
+<h3 id="create-dataset-and-import-data">Create Dataset and Import data:</h3>
+
+<p>To Start Forecasting your data, Upload it to an S3 Bucket.</p>
+
+<p>Open <strong>Amazon Forecast console</strong> and select “Create Dataset Group”.</p>
+
+<p>To create a dataset group, there are 3 more steps:</p>
+
+<ol>
+  <li><strong>Create Dataset Group</strong></li>
+  <li><strong>Create Target Time Series Dataset</strong></li>
+  <li><strong>Import Target Time Series Data</strong></li>
+</ol>
+
+<h3 id="1create-dataset-group">1.Create Dataset Group:</h3>
+
+<p>You can give any Dataset Group Name and since our dataset is of forecasting retail we have selected Domain as “Retail”.</p>
+
+<p><img src="/img/awscloud/11/1_T0zQWSxDGPxfySrGi_sdhw.png" alt="image info" /></p>
+
+<h3 id="2create-target-time-series-dataset">2.Create Target Time Series Dataset:</h3>
+
+<p>In this step, you have to describe the Data scheme and the Frequency of your data needs to be given to Amazon Forecast.</p>
+
+<p><img src="/img/awscloud/11/1_HxGfagvGpJOp0f11pnzeEQ.png" alt="image info" /></p>
+
+<h3 id="3import-target-time-series-data">3.Import Target Time Series Data:</h3>
+
+<p>In this step, Give the timestamp format of your dataset. It has to be a form of “yyyy-MM-dd” or “yyyy-MM-dd HH:mm:ss”.</p>
+
+<p>You can create a new IAM role or select an existing role.</p>
+
+<p>In the Data Location field, enter the path of your dataset present in S3.</p>
+
+<p><img src="/img/awscloud/11/1_XW4MCKIUNBQ1wX3vA2_2Iw.png" alt="image info" /></p>
+
+<p>To complete your first step, click on “Start Import” and wait for the import to complete.</p>
+
+<h3 id="train-a-predictor">Train a Predictor:</h3>
+
+<p>After the import is done, you would see a screen as shown below. Click on the “Start” button beside “Predictor Training”.</p>
+
+<p><img src="/img/awscloud/11/1_AqJFbioVP_GBSdGEGBa8Kw.png" alt="image info" /></p>
+
+<p>In this step, we will forecast for the next 10 days. So we’ve set the Forecast horizon as 10. For the “Algorithm Selection” you can select a manual algorithm or select “AutoML”. The rest of the things can be kept as default and click “Train Predictor”.</p>
+
+<p>Amazon Forecast will now start to train the forecasting model by understanding the data and forming an algorithm that fits best for the provided dataset. It might take around 10–20 minutes depending on the size of your dataset.</p>
+
+<p><img src="/img/awscloud/11/1_JfjomGjqHuAuMpg2PlBOvw.png" alt="image info" /></p>
+
+<h3 id="generate-forecasts">Generate Forecasts:</h3>
+
+<p>After training your dataset, It’s finally time to generate the forecast and have a look into the future!!</p>
+
+<p><img src="/img/awscloud/11/1_79SgZBhVXO7l6nzq5rmheg.png" alt="image info" /></p>
+
+<p>After the training, you would see the above screen. Click on the “Start” button right next to “Forecast Generation”.</p>
+
+<p>Here you can enter any name for your forecast and select the Training model that we have just trained.</p>
+
+<p><img src="/img/awscloud/11/1_DjLCbgSe42NOUl2bvlQ5Hg.png" alt="image info" /></p>
+
+<p>Once that is done. It’s time to now forecast sales.</p>
+
+<p>Click on “Lookup Forecast” as seen below.</p>
+
+<p><img src="/img/awscloud/11/1_bUapDWkcRcviTJk8ypPWMQ.png" alt="image info" /></p>
+
+<p>Here you would be asked for the select your forecaster. Select a start date and end date. Remember, That the difference between the start and end date should not be greater than the “Forecast Horizon” that you had mentioned while training your model.</p>
+
+<p>Since in our data we had only one item. We had to put the item_id as 1. Now hit “Get Forecast” and scroll down to see the results.</p>
+
+<p><img src="/img/awscloud/11/1_ctjZv-2Q8AFLKtsZIye6wQ.png" alt="image info" /></p>
+
+<p>You would see something the result as mentioned below. The results have Time on the X-axis and the expected sales on the Y-axis.</p>
+
+<p><img src="/img/awscloud/11/1_-2KHqVwyn5oMEfx1fiLO_w.png" alt="image info" /></p>
+
+
+                </div>
+
+                
+
+                <div id="disqus_thread"></div>
+                <script>
+                
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://girishgodage-github-io.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
+</button>
+<!-- Footer-->
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 text-center text-lg-left">
+                <p class="social">
+                    <a href="https://www.facebook.com/girish.godage.5" class="external facebook wow fadeInUp">
+                        <i class="fa fa-facebook"></i></a>
+                    <a href="https://instagram.com/girishgodage_007" data-wow-delay="0.2s" class="external instagram wow fadeInUp">
+                        <i class="fa fa-instagram"></i></a>
+                    <a href="https://youtube.com/girishgodage" data-wow-delay="0.4s" class="external youtube wow fadeInUp">
+                        <i class="fa fa-youtube-play"></i></a>
+                    <a href="https://twitter.com/GGodage" data-wow-delay="0.4s" class="external twitter wow fadeInUp">
+                            <i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/girishgodage" data-wow-delay="0.4s" class="external github wow fadeInUp">
+                                <i class="fa fa-github"></i></a>    
+                    <a href="mailto:girishgodage@gmail.com?subject=Hello%20Girish" data-wow-delay="0.6s" class="email wow fadeInUp">
+                        <i class="fa fa-envelope"></i></a></p>
+            </div>
+            <div class="col-12 col-md-2">
+            <h5>Quick Links</h5>
+            <ul>
+               <li><a href="http://localhost:4000#about">About</a></li>
+               <li><a href="http://localhost:4000#contact">Contact</a></li>
+               <li><a href="/sitemap.xml">Sitemap</a></li>               
+            </ul>
+         </div>
+            <div class="col-12 col-md-4 text-center text-lg-right mt-4 mt-lg-0">
+                <p> <b>©</b>2019 Girish Godage </p>
+                <p class="text-center, text-shadow"> Hosted On <a href="https://pages.github.com/">GitHub Pages</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Typed.js DONT TOUCH THIS! -->
+    <div id="typed-strings">
+    </div>
+
+        <!-- JavaScript files-->
+    <script src="http://localhost:4000/sitejs/jquery/jquery.min.js"></script>
+    <script src="http://localhost:4000/sitejs/popper.js/umd/popper.min.js"> </script>
+    <script src="http://localhost:4000/sitejs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="http://localhost:4000/sitejs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="http://localhost:4000/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.counterup/jquery.counterup.js"></script>
+    <script src="http://localhost:4000/js/front.js"></script>
+    <script src="http://localhost:4000/js/comment.js"></script>
+       <!-- Script pointing to search-script.js -->
+    <script src="http://localhost:4000/js/search-script.js" type="text/javascript"></script>
+   
+    <!-- Configuration -->
+    <script>
+         SimpleJekyllSearch({
+         searchInput: document.getElementById('search-input'),
+         resultsContainer: document.getElementById('results-container'),
+         json: '/search.json'
+         })
+         </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC36FUDDdOTidZJ8nzS5vfE7KVyayenKPE",
+    authDomain: "githubcontactlist.firebaseapp.com",
+    databaseURL: "https://githubcontactlist.firebaseio.com",
+    projectId: "githubcontactlist",
+    storageBucket: "githubcontactlist.appspot.com",
+    messagingSenderId: "899685398702",
+    appId: "1:899685398702:web:0c23c56d2d6d40df37553f",
+    measurementId: "G-YWBRCYJYFW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script>
+   $(function() {
+      
+    //make a variable to keep track of data coming from firebase
+    var data = [];
+
+    // Reference messages collection
+      var messagesRef = firebase.database().ref('contactformmessages');  
+
+
+    //listen to data updates from firebase
+    messagesRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+        //when the data updates at firebase, put it in the data variable
+        data = snapshot.val();
+    })
+    //Entire Contact Form (handler)
+    $('#contactForm').submit(function(e) {
+      e.preventDefault();
+
+        var $form = $(this);
+        console.log("Submit to Firebase");
+
+        //disable submit button
+        $form.find("#sendForm").prop('disabled', true);
+
+        //get values to send to Firebase
+        var name = $('#name').val();
+        console.log(name);
+		
+		var surname = $('#surname').val();
+        console.log(surname);
+		
+		var email = $('#email').val();
+        console.log(email);	
+		
+		var phone = $('#phone').val();
+        console.log(phone);
+
+        var message = $('#message').val();
+        console.log(message);
+
+       
+        //take the values from the form, and put them in an object
+        var newContact = {
+         "name": name,
+			"surname": surname,
+			"email": email,
+			"phone": phone,
+         "message": message
+        }
+        //put new object in data array
+        data.push(newContact);
+        console.log(data);
+
+        //send the new data to Firebase
+        messagesRef.set(data, function(err) {
+            if (err) {
+                alert("Data no go");
+            }else{
+            $("#form-wrapper").slideToggle();
+            $('#form-success-message').slideToggle();
+			}
+        });
+
+        return false;
+    })
+   
+    
+})
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";           
+        }else
+        {
+           myBtton.style.display="none";     
+          
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+      //  document.body.scrollTop =0;
+      //  document.documentElement.scrollTop=0;
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    }
+
+</script>
+
+    
+    
+
+
+</body>
+
+</html>
