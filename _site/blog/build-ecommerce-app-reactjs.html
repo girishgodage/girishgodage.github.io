@@ -163,7 +163,7 @@
                 <span class="post-meta">
               <span style="font-weight:600">October 15, 2019 Tuesday</span>
                     
-                       ( 13 minute read ) 
+                       ( 20 minute read ) 
                     
                      
                     <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">   by Girish Godage</a>
@@ -441,7 +441,190 @@
 
 <h3 id="product-description-page">Product Description Page</h3>
 
-<p><img src="/img/webdevelopment/3/States-of-ecommerce-web-app.png" alt="image info" /></p>
+<p><img src="/img/webdevelopment/3/State-Tree-of-ecommerce-catalog-page.png" alt="image info" /></p>
+
+<h3 id="product-catalog-page">Product Catalog Page</h3>
+
+<p><img src="/img/webdevelopment/3/State-Tree-of-Catalog-Page.png" alt="image info" /></p>
+
+<h3 id="login-page">Login Page</h3>
+
+<p><img src="/img/webdevelopment/3/Login-Page.png" alt="image info" /></p>
+
+<h3 id="payment-page">Payment Page</h3>
+
+<p><img src="/img/webdevelopment/3/Payment-page.png" alt="image info" /></p>
+
+<p>Now that we are done with the state visualisation, let’s jump to the
+step#2 which is designing the reducers.</p>
+
+<h2 id="step2--designing-the-reducers">Step#2 : Designing the Reducers</h2>
+
+<p>Designing the Reducers is one of an important step putting out eCommerce web app architecture.</p>
+
+<p>To design our Reducers in a correct way, we need to make them as single source of Truth.</p>
+
+<p>By the single source of truth, we are implying here that our app state should be stored in a single place so that if we need to access that state anywhere else in your app, then we can do it by reference to its single source of truth.</p>
+
+<p>If reading all this makes your head spin then don’t worry I will explain it in a more neat way.</p>
+
+<p><strong>Every state of your app that seems important to us can have their own reducers</strong>. To represent the single source of truth, we can combine them in one root reduce which will eventually define the store.
+By doing so, we will have a total control over our eCommerce app states and their behaviour.</p>
+
+<p>Referring to the wireframe of our application, we can have our Reducer’s designed and combined in one single file:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Root Reducer
+const rootReducer = combineReducer({
+header: headerReducer,
+login: loginReducer,
+footer: footerReducer,
+common: commonReducer,
+product: productReducer,
+catalog: catalogReducer,
+payment: paymentReducer
+});
+</code></pre></div></div>
+
+<p>Now you got my point?</p>
+
+<p><strong>Combining all the reducers to form a single source of truth i.e our Root Reducer will make it easier for the store to know everything about the application.</strong></p>
+
+<p>Let’s now design our Reducers. To make things more easier for you, I would like to mention one interesting bit which will help us design them in a more convenient way:</p>
+
+<p><strong>Reducer will be just a replica of what we designed earlier in our state tree.</strong></p>
+
+<p>So, let’s have a look at how our headerReducer from Image will look like:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Header Reducer
+const headerReducer = combineReducer({
+menu: menuReducer,
+search: searchReducer,
+location: locationReducer
+});
+</code></pre></div></div>
+
+<p><em>[ <strong>Note</strong>: A rule of thumb to design the reducer in a correct way would be to broke it into some smaller reducers, as each of them would represent individual identities that are responsible for their specific operations. This helps us to enforce better separation of concerns in our eCommerce app ]</em></p>
+
+<h2 id="step3--implement-actions">Step#3 : Implement Actions</h2>
+
+<p>Now that we have learned how to design our reducers the correct way, let’s now learn how to implement Actions which will make sure we make correct calls to our API:</p>
+
+<p>Each and every typical action that serves API calls in an app would go through three defined stages:</p>
+
+<ul>
+  <li>Loading state -&gt; FETCH_SEARCH_DATA</li>
+  <li>Success -&gt; FETCH_SEARCH_SUCCESS</li>
+  <li>Failure -&gt; FETCH_SEARCH_FAILURE</li>
+</ul>
+
+<p>A recommended method to apply to our eCommerce app is to define and maintain these three actions so as to check the correct data flow from the API.</p>
+
+<p>Here’s a typical example of these actions that calls the search API of our eCommerce app:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export function fetchSearchData(args) {
+return async (dispatch) =&gt; {
+// Initiate loading state
+dispatch({
+type: FETCH_SEARCH_DATA
+});
+try {
+// Call the API
+const result = await fetchSearchData(args.pageCount, args.itemsPerPage);
+
+// Update payload in reducer on success
+dispatch({
+type: FETCH_SEARCH_SUCCESS,
+payload: result,
+currentPage: args.pageCount
+});
+} catch (err) {
+// Update error in reducer on failure
+dispatch({
+type: FETCH_SEARCH_FAILURE,
+error: err
+});
+}
+};
+}
+</code></pre></div></div>
+<h2 id="step-4--integrating-react-with-redux-store-using-react-redux">Step #4 : Integrating React with Redux store using React-Redux</h2>
+
+<p>At the beginning of the article, I mentioned how well React pairs with Redux to develop an eCommerce web application. Now is the time for us to integrate React with Redux which we can do seamlessly by using react-redux package.</p>
+
+<h3 id="using-provider-class-to-let-our-app-know-of-redux-store">Using Provider class to let our app know of Redux store</h3>
+
+<p>In order to integrate React with Redux store, we first have to let our app know that this store exists. This is where the Provider-class of react-redux package comes handy. One interesting bit to be note down for Provider class of react-redux package is that it can only makes the store accessible to its children.</p>
+
+<p>Since, we would ideally want our entire eCommerce app to access the Redux store, it’ll be a great idea to put our App component within Provider class.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// src/index.js // //
+…
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+const App = &lt;h1&gt;React-Redux eCommerce app&lt;/h1&gt;;
+ReactDOM.render(
+&lt;Provider store={store}&gt;
+{ App }
+&lt;/Provider&gt; ,
+document.getElementById('root')
+);
+</code></pre></div></div>
+<p>Now that we’ve completed the initial part of the React-Redux integration i.e using the Provider class, now is the time for us to connect React components with the Redux store we created earlier.</p>
+
+<h3 id="using-connect-component-to-link-react-components-with-redux-store">Using Connect component to link React components with Redux store</h3>
+
+<p>We established previously that there is no way to directly interact with the store. We can either retrieve data by obtaining its current state, or change its state by dispatching an action (we only have access to the top and bottom component of the Redux flow diagram shown previously).</p>
+
+<p>This is precisely what connect component does.
+Consider this piece of code, which uses connect to map the stores state and dispatch to the props of a component named SearchData to fetch search data:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import fetchSearchData from './action/fetchSearchData';
+import SearchData from './SearchData';
+const Search = (props) =&gt; (
+&lt;SearchData
+search={props.search}
+fetchSearchData={props.fetchSearchData}
+/&gt;
+);
+const mapStateToProps = (state) =&gt; ({
+search: state.header.search.payload
+});
+const mapDispatchToProps = {
+fetchSearchData
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Search)
+</code></pre></div></div>
+
+<p>In the above code snippets, <em>mapStateToProps</em> and <em>mapDispatchToProps</em> are both pure functions that are provided the stores “state” and “dispatch” respectively.</p>
+
+<p>The connected component (which is exported) provides <em>fetchSearchData</em> as props to Search component.</p>
+
+<p>It’s important to note that only components within the Provider can be connected.</p>
+
+<p>The following image will give you a definite explanation of the working of connect component.</p>
+
+<p><img src="/img/webdevelopment/3/Connecting-UI-components-to-Redux-in-eCommerce.png" alt="image info" /></p>
+
+<p><em>[ <strong>Note</strong>: It should be note that only components within the Provider class can be connected using Connect ]</em></p>
+
+<p>Now, we have learned how to connect our React components to Redux.</p>
+
+<p>Until here, we have learned how to make a React eCommerce application frontend. But what about Backend?</p>
+
+<p>How can we make sensitive API calls?</p>
+
+<p>How about handling and validating form submissions?</p>
+
+<p>Well, this is where we need to setup an API using Express or a framework like Feathers. The API will provide our application with access to a database service such as MongoDB. I will suggest you to go through the tutorial (in the link) to setup the same.</p>
+
+<p>After doing all these, you can make your app up and going.</p>
+
+<h2 id="summing-up">Summing Up</h2>
+
+<p>As you can see, developing an eCommerce app is much easier with a framework like React and a tiny library such as Redux.  I will be covering more tutorials on React regarding Server side rendering (SSR) and Progressive Web App in my upcoming blogs, so make sure to sign-up so as to read it earlier.</p>
 
 
                 </div>
