@@ -6,7 +6,11 @@ categories:
 - Web Development
 tags:
 - learning
-summary: Why use React for eCommerce" is the one of the biggest question clients ask to a developer. Built by Facebook, ReactJS is one of the largely used UI Library that helps with the creation of beautiful web applications requiring minimal effort and coding. Things like Atomic design principles, component-driven approach, high-speed etc, make React js a popular choice of framework for building eCommerce web applications.
+summary: Why use React for eCommerce" is the one of the biggest question clients ask
+  to a developer. Built by Facebook, ReactJS is one of the largely used UI Library
+  that helps with the creation of beautiful web applications requiring minimal effort
+  and coding. Things like Atomic design principles, component-driven approach, high-speed
+  etc, make React js a popular choice of framework for building eCommerce web applications.
 image: "/img/sw_design.png"
 author: Girish Godage
 layout: posts
