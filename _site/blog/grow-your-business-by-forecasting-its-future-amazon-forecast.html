@@ -163,7 +163,7 @@
                 <span class="post-meta">
               <span style="font-weight:600">January 24, 2020 Friday</span>
                     
-                       ( 4 minute read ) 
+                       ( 5 minute read ) 
                     
                      
                     <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">   by Girish Godage</a>
@@ -302,6 +302,17 @@
 <p>You would see something the result as mentioned below. The results have Time on the X-axis and the expected sales on the Y-axis.</p>
 
 <p><img src="/img/awscloud/11/1_-2KHqVwyn5oMEfx1fiLO_w.png" alt="image info" /></p>
+
+<p>The result does look confusing as to what is P10, P50 and P90 forecasts. These are the Prediction quantiles. By calculating prediction quantiles, the model shows how much uncertainty is associated with each forecast.</p>
+
+<p>For the P10 prediction, the true value is expected to be lower than the predicted value, 10% of the time. For the P50 prediction, the true value is expected to be lower than the predicted value, 50% of the time. For the P90 prediction, the true value is expected to be lower than the predicted value, 90% of the time.</p>
+
+<p>If you think you might face a problem of storage space or cost of investment if you overstock the item, you might wanna choose the P10 forecast. as you will be overstock for only 10% of the time else you would be sold out every day.
+But on the other hand, the cost of not selling the item is extremely high or the cost of invested capital is low or it would result in huge amounts of lost revenue you might wanna choose the P90 forecast.</p>
+
+<h2 id="summary">Summary:</h2>
+
+<p>We have imported the data to an S3 bucket and uploaded them to the Forecast dataset. Trained the model using the AutoML predictor and used that to generate a forecast. You have successfully built your first “Time Series Forecasting” model, using Amazon Forecast.</p>
 
 
                 </div>
