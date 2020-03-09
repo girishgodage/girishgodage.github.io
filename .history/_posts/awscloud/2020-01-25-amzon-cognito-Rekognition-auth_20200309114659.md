@@ -1,12 +1,16 @@
 ---
-title: Authenticate applications through facial recognition with Amazon Cognito and Amazon Rekognition 
+title: Authenticate applications through facial recognition with Amazon Cognito and
+  Amazon Rekognition
 date: 2020-01-25 10:41:00 Z
 permalink: "/blog/authenticate-applications-through-facial-recognition-with-amazon-cognito-and-amazon-rekognition"
 categories:
 - AWSCloud
 tags:
 - learning
-summary: we implemented an authentication mechanism using facial recognition using the custom authentication flows provided by Amazon Cognito combined with Amazon Rekognition. Depending on your organization and workload security criteria and requirements, this scenario might work from both security and user experience point of views.
+summary: we implemented an authentication mechanism using facial recognition using
+  the custom authentication flows provided by Amazon Cognito combined with Amazon
+  Rekognition. Depending on your organization and workload security criteria and requirements,
+  this scenario might work from both security and user experience point of views.
 image: "/img/sw_design.png"
 author: Girish Godage
 layout: posts
