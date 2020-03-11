@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#2A80EE">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#2A80EE">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
+<title>How to Make an eCommerce App &#8211; Girish Godage</title>
+<meta name="description" content="While all eCommerce apps differ by what they sell, they definitely face almost similar challenges when it comes to developing and maintaining them. After analyzing 150+ eCommerce apps, I wrote this guide on how to develop eCommerce applications. It walks you through everything you need to build a eCommerce app.">
+<meta name="keywords" content="Mobility">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all">
+
+<!-- Verifications -->
+    
+    
+        
+<!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How to Make an eCommerce App">
+    <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
+    <meta property="og:url" content="http://localhost:4000/blog/how-to-develop-ecommerce-apps">
+    <meta property="og:site_name" content="Girish Godage">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@GGodage" />
+    
+    <meta name="twitter:title" content="How to Make an eCommerce App" />
+    <meta name="twitter:description" content="While all eCommerce apps differ by what they sell, they definitely face almost similar challenges when it comes to developing and maintaining them. After analyzing 150+ eCommerce apps, I wrote this guide on how to develop eCommerce applications. It walks you through everything you need to build a eCommerce app." />
+    <meta name="twitter:url" content="http://localhost:4000/blog/how-to-develop-ecommerce-apps" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/img/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/img/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    
+
+
+    <link rel="canonical" href="http://localhost:4000/blog/how-to-develop-ecommerce-apps">
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
+    <!-- Bootstrap CSS-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Google fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+   
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
+    
+    <!-- animate.css-->
+    <link rel="stylesheet" href="http://localhost:4000/sitejs/animate.css/animate.css">
+    <!-- theme stylesheet-->
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="http://localhost:4000/css/custom.css" as="style">
+    <link rel="stylesheet" href="http://localhost:4000/css/comments.css" as="style">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="http://localhost:4000/img/logo-big.png">
+    <!-- Fab Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
+    
+    
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    
+    <script type="text/javascript">
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+       ga('create', 'UA-130164763-2', 'auto');
+       ga('send', 'pageview');
+    </script>
+    
+    <!-- Typed.js DONT TOUCHHHHHHHHHHHHH!-->
+    <!--<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.9/typed.min.js"></script>
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+      </script>
+      
+      <!-- START OF RELEVANT PART -->
+    <script async src="https://just-comments.com/w2.js"></script>
+    <!-- END OF RELEVANT PART -->
+
+
+</head>
+
+<body>
+    
+<!-- navbar-->
+<header class="header">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container"><a class="navbar-brand" href="http://localhost:4000"><img
+          src="http://localhost:4000/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
+          alt="logo"> <img src="http://localhost:4000/img/girish_logo.png" height="30" alt="girilogo"></a>
+      <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span
+          class="fa fa-bars" style="color: white"></span></button>
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="http://localhost:4000#home" class="nav-link  link-scroll">Home</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#about" class="nav-link link-scroll">About</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#skills" class="nav-link link-scroll">Skills</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#services" class="nav-link link-scroll">Services</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#references" class="nav-link link-scroll">My
+              work</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#contact" class="nav-link link-scroll">Contact</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000/blog" class="nav-link link-scroll">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    
+    
+    
+    <div style="background-color:Gray;">
+        <div style="padding:0;min-height:95.05vh;display:flex;font-family: Poppins, sans-serif;margin-top: 5rem;"
+            class="container">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <p class="post-title">
+                    <h1><a href="/blog/how-to-develop-ecommerce-apps">How to Make an eCommerce App</a></h1>
+                </p>
+                
+                <span class="post-meta">
+              <span style="font-weight:600">October 15, 2019 Tuesday</span>
+                    
+                       ( 25 minute read ) 
+                    
+                     
+                    <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">   by Girish Godage</a>
+                </span>
+                
+                <div class="site-category"> 
+                        <h5>Mobility</h5>
+                </div>
+                
+                <hr>
+                <div><img class="post-image" src="/img/sw_design.png" alt="How to Make an eCommerce App" height="250" /></div>
+                <div class="post-content">
+                    <br>                     
+                    <h1 id="how-to-make-an-ecommerce-app">How to Make an eCommerce App</h1>
+
+<p>While all eCommerce apps differ by what they sell, they definitely face almost similar challenges when it comes to developing and maintaining them. After analyzing 150+ eCommerce apps, I wrote this guide on how to develop eCommerce applications. It walks you through everything you need to build a eCommerce app.</p>
+
+<p>If you have to take lessons on developing eCommerce apps, you should take a look at these eCommerce apps</p>
+
+<p><img src="/img/mobility/3/developing-ecommerce-appl.png" alt="image info" /></p>
+
+<p>While these apps differ by what they sell, they definitely face almost similar challenges when it comes to developing and maintaining them. <strong>What starts as a simple app built on top of iOS, Android Java, couple of backend languages and databases, quickly evolves into a complicated technology</strong> piece that can have as many as 15+ programming languages supporting it.</p>
+
+<p>If you aren’t careful enough while building eCommerce apps, you can end up making more mistakes than you can count. Consider the example below.</p>
+
+<h2 id="johns-empty-cart-problem">John’s empty cart problem</h2>
+
+<p>John adds an item to cart when he was in London. He then travels to New York and logs into his account to complete the purchase.</p>
+
+<p><img src="/img/mobility/3/how-not-to-develop-an-ecommece-app-part-1.png" alt="image info" /></p>
+
+<p><img src="/img/mobility/3/how-not-to-develop-an-ecommece-app-part-2.png" alt="image info" /></p>
+
+<p>When he logs in, he sees an empty cart!</p>
+
+<p><img src="/img/mobility/3/how-not-to-develop-an-ecommece-app-part-3.png" alt="image info" /></p>
+
+<h3 id="what-do-you-think-happened-here">What do you think happened here?</h3>
+
+<p>(The answer is in the architecture section of this blog post).</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ul>
+  <li>How not to Develop eCommerce Apps</li>
+  <li>A Better Way to Build eCommerce Apps</li>
+  <li>Ecommerce App Scalability &amp; Performance Challenges with this Architecture</li>
+  <li>Benchmarks for Developing eCommerce Apps</li>
+  <li>Using Domain Driven Design for developing eCommerce Apps</li>
+  <li>Developing your eCommerce mobile application</li>
+</ul>
+
+<h3 id="how-not-to-develop-ecommerce-apps">How not to Develop eCommerce Apps</h3>
+
+<p>There are no highs and lows of the scale at which an eCommerce app should perform. But, right from the start, don’t just end up building something that looks like this.</p>
+
+<p><img src="/img/mobility/3/eCommerce-monolithic-architecture-for-apps.png" alt="image info" /></p>
+
+<p>There are probably hundreds of reasons on why we shouldn’t build an eCommerce app like that. Some of the most commonly known reasons are:</p>
+
+<p><strong>1. Pushing changes gets difficult</strong> – No matter how small the change is, it gets difficult to push it across this app. It takes a lot of time for your development to modify this app for even tiniest bit of changes</p>
+
+<p><strong>2.</strong> At times it <strong>isn’t easy to figure out</strong> what’s causing your entire app to perform poorly</p>
+
+<p><strong>3.</strong> This app <strong>won’t scale</strong> beyond a certain number of users</p>
+
+<p><strong>4.</strong> Even if your brute force scalability, it will come <strong>at 10x the cost</strong> of what it should be</p>
+
+<p><strong>5.</strong> The development team <strong>cannot implement testing easily</strong>. Even if you want to follow TDD, ATDD or BDD, you won’t be able to, as the tests your developers would write won’t be able to cover entire code base</p>
+
+<p><strong>6.</strong> If one of the functionality fails to work, it could <strong>potentially take down the entire app</strong></p>
+
+<p><strong>7.</strong> <strong>If a third party service breaks</strong>, it could potentially break your entire app</p>
+
+<p><strong>8.</strong> <strong>You will be forced to do</strong> everything in one language, one version and pretty much will have to use the same libraries. You won’t be able to leverage a diverse ecosystem</p>
+
+<p><strong>9.</strong> <strong>Your database will break</strong>, users will find that the flash sale discount that he just applied to a TV isn’t valid anymore</p>
+
+<p><strong>10.</strong> <strong>Search performance is poor</strong> as we have to pull information from a single database that will grow extremely large as the ecommerce platform usage increases</p>
+
+<p><strong>11.</strong> All you rely on is a fixed number of servers that are <strong>either overestimated or underestimated for the target delivery</strong>. To handle increased loads, you need to manual add more servers and take them down when the load fluctuates. This is time consuming and extremely capital intensive</p>
+
+<p>I can go on, but you get the idea, right?</p>
+
+<h2 id="a-better-way-to-build-ecommerce-apps">A Better Way to Build eCommerce Apps</h2>
+
+<p><img src="/img/mobility/3/eCommerce-app-technical-architecture.png" alt="image info" /></p>
+
+<p>Now, with this type of an architectural layer, we improved the foundation of our system. When you compare this architecture with the previous system, the capabilities have been improved by:</p>
+
+<p><strong>1. Servers and load handling capabilities</strong></p>
+
+<p>If any ecommerce app was built on an architecture that we saw previously, we couldn’t increase or decrease servers to match the server load fast enough. But, now we have a load balancer in place. It helps you define:</p>
+
+<ul>
+  <li>how you prefer to handle the incoming loads</li>
+  <li>how to add or remove servers when there’s a fluctuating traffic</li>
+  <li>how to set thresholds for costs</li>
+</ul>
+
+<p><strong>2. You don’t have to rely on a single language anymore</strong></p>
+
+<p><strong><em>You can use Node.JS for API design and Python for server side programs – your choice!</em></strong></p>
+
+<p>If you understand what performance you can get from a particular language or a server framework, you are no longer bound by limitations to only use a few of them.</p>
+
+<p><strong>3. Can use different (types) databases to handle and store different information</strong></p>
+
+<p>Unstructured data like emails, customer data can be stored in a NoSQL database. Whereas any structured information will now be stored into a MySQL database. Using specific databases for specific usage not only improves performance, but also reliability in case of eCommerce apps.</p>
+
+<p>We call this a Polygot database approach, you can read more about it here https://en.wikipedia.org/wiki/Polyglot_persistence</p>
+
+<p><strong>4. Partial separation of concerns</strong></p>
+
+<p>We have third party services operating in a separate server(s) from our core service. As we don’t control 3rd party services, they are a significant risk to our core infrastructure. If not well separated from our app infrastructure, their failures might cause your entire app to break down. Having third party services on a separate servers eliminates this risk.</p>
+
+<p><strong>5. Faster search performance with ElasticSearch</strong></p>
+
+<p>We now are using a <strong>Search as a service – ElasticSearch</strong>. It speeds up the way your system pulls information from your database using highly optimised indexing. It is worth noting here that search is one of the most frequently used part of an eCommerce app and has to perform really well.</p>
+
+<p><strong>6. Cache service</strong></p>
+
+<p>With a caching service, we look at the most frequently requested information, and create a data store (cache) for it separately. Now, when the same information is being requested by a user, it won’t go to your database, but, would instead be delivered from the cache.</p>
+
+<p><strong>But…</strong></p>
+
+<p>While this might seems like a good architecture for a proof of concept or an MVP, but it won’t work in cases where you are trying to achieve high growth or volume. eCommerce apps are supposed to follow a MVAP (Minimum Viable Awesome Product) philosophy right from the start.</p>
+
+<p>Our diagram is fairly complex, let’s break it down step by step to see where it lacks.</p>
+
+<h2 id="ecommerce-app-scalability--performance-challenges-with-this-architecture">Ecommerce App Scalability &amp; Performance Challenges with this Architecture</h2>
+
+<p><strong>1. No Benchmarks of for code scalability and performance</strong></p>
+
+<p><img src="/img/mobility/3/eCommerce-app-architecture-and-scalability.png" alt="image info" /></p>
+
+<p>We do see information on how load balancers, server capacity and storage that we have – but we don’t exactly see how internal services are going to work with each other. So, that leads to a situation where we don’t know how to ensure “Adding items to the cart” works all the time, especially during a high velocity sale.</p>
+
+<p><strong>2. Database scalability and performance is not benchmark driven</strong></p>
+
+<p><img src="/img/mobility/3/ecommerce-app-database-scalabilty-and-performance-challenges.png" alt="image info" /></p>
+
+<p>In this diagram we see that we have Database clusters that are connected with our services. There would be situations in which a particular database is heavily occupied by search queries, but our other services also need it for processing transactions. How are we going to determine which service to prefer? How are we going to decide from millions of possible problems which service to prefer? How are we going to make sure that information delivery is fast enough under all loads?</p>
+
+<p>There are no definition of any of these things.</p>
+
+<p><strong>3. Resource and cost allocation of the system is unclear</strong></p>
+
+<p><img src="/img/mobility/3/eCommerce-app-architectural-problems-overall.png" alt="image info" /></p>
+
+<p>Simply put, <strong>we don’t know predictably how this system would perform at all.</strong> While we do expect it to perform relatively well, but it wouldn’t do so without having you bleed capital on unnecessary resources like costly servers, load balancers, etc without any empathy towards engineering best practices.</p>
+
+<p>Let’s say thousands of dollars spent on advertising and influencer marketing did brought in 100,000+ potential buyers to your eCommerce app. If you don’t have a tech infrastructure that can scale reliably, what’s the point of spending all of this capital?</p>
+
+<h3 id="benchmarks-for-developing-ecommerce-apps">Benchmarks for Developing eCommerce Apps</h3>
+<p>From my experience of developing and scaling ecommerce apps, I will share a realistic scenario for a Black Friday sale. <strong>If you are doing decent volumes with your eCommerce store, these are the numbers that you are most likely to face:</strong></p>
+
+<ul>
+  <li>200,000+ orders per day</li>
+  <li>20+ orders per second</li>
+  <li>2000+ product search requests per second</li>
+  <li>More than 100M total server requests in a day</li>
+</ul>
+
+<p>Now, this is a scale that most eCommerce apps have to develop keeping in mind.</p>
+
+<p><strong>Your goal is to make sure that your entire system is and what capacity it is capable of serving.</strong> And, now that we have these numbers with us, our thinking would shift from scaling entire stack to scaling different services (cart, product search, etc) to match these benchmarks.</p>
+
+<p>We will now break down our app into different services each of which has its own goals to serve. This is called following a microservices approach.</p>
+
+<h3 id="using-domain-driven-design-for-developing-ecommerce-apps">Using Domain Driven Design for Developing eCommerce Apps</h3>
+
+<p>Since eCommerce apps are extremely complex and they keep evolving, it makes sense for us to follow a domain driven design here. With a domain driven design, we have specific teams and stakeholders responsible for each services.</p>
+
+<p>Based on domain driven design, let’s evolve our eCommerce app’s server code into microservices.</p>
+
+<p>This is what the evolved architecture would look like</p>
+
+<p><img src="/img/mobility/3/Microservice-based-architecture-for-ecommerce-apps.png" alt="image info" /></p>
+
+<p>You’ll notice that our code is now divided into a bunch of well defined microservices. The image below shows you the top 10 microsevices that you would absolutely need in order to build a high performing, scalable ecommerce app.</p>
+
+<p><img src="/img/mobility/3/Developign-eCommerce-app-with-a-domain-driven-design.png" alt="image info" /></p>
+
+<p>While, I am going to cover developing eCommerce microservices in another blog post, I walk you through why they are extremely important for eCommerce apps.</p>
+
+<p><strong>Lets take a look at the Product search services</strong> – It should be able to handle <strong>100M+ requests</strong> in a day. If we break down this microservice, you will find this service has:</p>
+
+<p><strong>1.</strong> <strong>It’s own parameters</strong> for load balancers and scaling</p>
+
+<p><strong>2.</strong> <strong>Well defined server RAM</strong> and <strong>Memory</strong> consumption</p>
+
+<p><strong>3.</strong> <strong>Has its own dedicated database</strong> from where it can pull and show information. No other service can use this database</p>
+
+<p><strong>4.</strong> <strong>Its own API</strong> to communicate and respond to user search requests</p>
+
+<p><strong>5.</strong> Has a well defined boundary of what it can or can’t do</p>
+
+<p>Now, let’s say if from a single server based service, you can at max only deliver product search to 1000 concurrent customers, <strong>you easily know how many servers it would take to handle 10,000 concurrent product search requests</strong> (1000 requests ~ 1 server, 10,000 requests ~ 10 servers). And thus you can reliably scale each of these services.</p>
+
+<p>Another benefit of following a domain driven design is that the app becomes 100% testable. And, if you are planning to automate code deployment to your app, this would be extremely helpful.</p>
+
+<p>All in all, this is what this architectural was actually benchmarked and tested for.</p>
+
+<p><img src="/img/mobility/3/developing-ecommerce-apps-with-microservices.png" alt="image info" /></p>
+
+<p>If you interested in reading about eCommerce frontend development of your app, here’s a blog post that I wrote on <a href="&quot;/blog/build-ecommerce-app-reactjs&quot;">How to make an eCommerce site using ReactJS?</a></p>
+
+<h3 id="scaling-services-for-demand-and-performance">Scaling services for demand and performance</h3>
+
+<p>Now that we know what each service is capable of, individual stakeholders of each services can now scale these services up and down independent of entire ecosystem. This would also tell you what parts of your ecommerce app aren’t good enough for business requirements. You can exclusively focus and improve those parts.</p>
+
+<p>For example, if you see your implementation of ElasticSearch isn’t good enough to deliver product search results in less than 200ms with a load of 1,000 concurrent users, you can look for alternative solutions. <strong>You can test alternatives and see how they work and deliver results, without significant investment and without breaking anything else.</strong></p>
+
+<h2 id="what-really-happened-with-johns-empty-cart">What really happened with John’s empty cart?</h2>
+
+<p>Coming back to the empty cart problem that I shared at the start. Without well defined microservices, when John added an item to his cart, it was added to a geo-local database.</p>
+
+<p>Our app assumed that John lives in this region and won’t move out. <strong>Without domain driven design, stakeholders, product managers and developers had no idea that this could actually happen</strong> to them.</p>
+
+<p>We usually build a golden record to handle such use cases. When we do that, we have a well defined and controlled boundary of data and John would be able to see this cart no matter where John lives.</p>
+
+<p>I hope what you have learned so far improves upon your understanding to how to build a cloud backend for eCommerce apps.</p>
+
+<p>If you are interested in evaluating Serverless tech, you should definitely checkout this blog on <a href="&quot;/blog/ecommerce-app-using-serverless&quot;">building eCommerce apps using Serverless</a></p>
+
+<h2 id="developing-your-ecommerce-mobile-application">Developing your eCommerce Mobile Application</h2>
+<p>We will now start working towards building your understanding of ecommerce mobile apps. The way we will move forward now is by looking at the following aspects of ecommerce apps that are extremely critical to get right:</p>
+
+<ul>
+  <li>Dynamic UI</li>
+  <li>Building Product screens</li>
+  <li>Elements of your app and how you should develop them</li>
+  <li>Implementing reusability within your ecommerce app
+Offline capabilities to improve app user experience</li>
+</ul>
+
+<h3 id="ecommerce-apps-with-dynamic-ui">Ecommerce apps with Dynamic UI</h3>
+<p>A consumer usually may or may not notice this, but as an ecommerce app developer you should know this. eCommerce apps undergo constant UI changes, some are a part of improving user experience, others are there simply because they are for a one time observable event like Black Friday.</p>
+
+<p>Now, <strong>simply pushing UI updates to your app each time a new event is near isn’t possible</strong> because:</p>
+
+<p><strong>1.</strong> <em>App Stores aren’t very reliable in release management</em>, and approval of an updated app version could happen sooner or later.</p>
+
+<p><strong>2.</strong> <em>Asking users to update their apps for an event like Black Friday</em> or a UI intended for a Flash sale <em>would only result in user churn</em></p>
+
+<p>So, how would you solve this?</p>
+
+<p><strong>One way to do that is to plan upfront and compile all app UI in a quarterly app update</strong>. You can change this update frequency based on how frequently your users would be willing to update their app. But as a benchmark, don’t go below less than 2 months.</p>
+
+<p>Now, <strong>when an app user updates their app, this is all what they are going to see.</strong></p>
+
+<p><img src="/img/mobility/3/ecommerce-app-code.png" alt="image info" /></p>
+
+<p>While, <strong>this is what we are actually shipping</strong></p>
+
+<p><img src="/img/mobility/3/ecommerce-app-ui-updating-package.png" alt="image info" /></p>
+
+<p>These user interfaces can be activated remotely when you wish to. <strong>Here’s what a user that has received a dynamic UI based ecommerce app sees</strong> during Black Friday, Halloween, Flash Sales and Christmas.</p>
+
+<p><img src="/img/mobility/3/sale-offer.-1.gif" alt="image info" /></p>
+
+<h3 id="how-do-dynamic-uis-work">How do dynamic UIs work?</h3>
+<p>No matter how complicated this may sound to you, they are not that difficult to implement. While we package all of these UIs in one single app update, <strong>all we have to do to activate or deactivate these contextual user interfaces is just pass a message from our servers to the app</strong>.</p>
+
+<p>A simple JSON message is sent over the app and activates a UI. The illustration below shows how it works.</p>
+
+<p><img src="/img/mobility/3/dynamically-updating-ecommerce-app-ui.gif" alt="image info" /></p>
+
+<h3 id="bloated-app-size">Bloated app size</h3>
+<p>A huge concern here is that with dynamic UIs, we often end up increasing the app size. And increasing app size is one of the many criteria’s that violates the principles of developing an eCommerce app.</p>
+
+<p><strong>This is where we see React Native significantly outperform native.</strong> We will talk about that in a bit more detail in the next section.</p>
+
+<h3 id="app-updates-over-the-air">App updates over the AIR</h3>
+<p>If we have to push updates to your app, we either have to do it using upfront heavily bloated app size or with lengthy (unpredictable?) app store/Play store review processes.</p>
+
+<p>If you are planning to use React native for ecommerce application development, you can simply integrate your app with a service like CodePush. Using CodePush you can deliver small scale UI updates directly to your app users.</p>
+
+<p><strong>React native again reduces the app size here as we don’t need to package everything in UI upfront,</strong> we can simply push the UI using internet.</p>
+
+<h3 id="further-reducing-your-app-size">Further reducing your app size</h3>
+
+<p>Ecommerce apps uses a lot of images, and you won’t believe how unoptimized images are still being pushed to eCommerce apps. <strong>Optimizing images can reduce the app size by 20% in eCommerce apps</strong>.</p>
+
+<p>To reduce image size, consider the following:</p>
+
+<ul>
+  <li><strong>Use compression tools like TinyPNG,</strong> compress image without losing any quality</li>
+  <li>Ensure that very large images are not added to the app. <strong>Have image size validation scripts that triggers an alert</strong> if the images getting added are more than 50KB</li>
+  <li><strong>Avoid adding image resources,</strong> instead use XML drawable and vector drawable wherever possible</li>
+  <li><strong>Reuse same image in multiple places,</strong> color filter and rotation logic should be used</li>
+</ul>
+
+<p>If you want to develop your app with best practices when it comes to app size. <strong>It is recommended that you should write a script, an app size watcher to keep track of app size with each build.</strong> There are several plugins available that integrate easily with your CI tools and can keep track of your app size.</p>
+
+<h2 id="how-to-build-your-product-details-screen">How to build your product details screen?</h2>
+
+<p>One of the most important parts of an eCommerce app is the product details screen. <strong>If you plan to serve a large customer base, be prepared to have a screen that evolves extremely fast.</strong> With developers pushing minimum 10 different updates/changes to this screen everyday.</p>
+
+<p>Product details screen is where users are going to decide whether they want to buy the product you are selling or not.</p>
+
+<p>Let’s take the example of Groupon’s product listing screen here. There’s whole lot of design aspect that was applied by Groupon here to scale and deliver a product screen that could supports more than 200M app users.</p>
+
+<p>Here’s how it looks:</p>
+
+<p><img src="/img/mobility/3/developing-ecommerce-app-product-features-screen.gif" alt="image info" /></p>
+
+<p>Now, this may not be the traditional illustration of design to many. What I instead mean’t here in context to design was the UI engineering design. Let me explain you a bit more:</p>
+
+<ul>
+  <li>Product screens are often <strong>not developed by one, but many teams</strong></li>
+  <li>They <strong>evolve quickly and require high agility</strong></li>
+  <li>Each and every aspect of this screen has <strong>to be optimized for memory and load times</strong></li>
+  <li>Handling <strong>complicated edge cases</strong></li>
+</ul>
+
+<p>Clearly, if you don’t deal with this properly – you are in a for a ride of your life!</p>
+
+<p>Groupon takes an entirely different approach to what most other eCommerce providers do while developing this screen. They break this screen into small subunits that work perfectly with each other, but are developed independently and are handled by separate teams.</p>
+
+<p>So, a screen like this can be broken up into small components like these:</p>
+
+<p><img src="/img/mobility/3/how-to-develop-ecommerce-app-screen.png" alt="image info" /></p>
+
+<p>I won’t get into deep technical details here. But, this separation is the exact reason why developers working on “highlights”  can update “highlights” section and not impact the overall performance of the screen. Whatever they do in “highlights” section is optimized and tested for performance. And the new “highlights” code can be reliably released and integrated with the rest of the screen.</p>
+
+<h4 id="optimized-performance">Optimized performance</h4>
+
+<p>Following this modular approach to developing eCommerce app product screen not only helps you efficiently showcase long lists of items, but it also helps you efficient show only the part that’s available to the app’s screen</p>
+
+<h4 id="add-or-subtract-features-with-ease">Add or subtract features with ease</h4>
+
+<p>As screen elements are independent of each other, adding or removing them takes 10% of the original effort had this practice not been in place. All of the features of the screen can be developed in total isolation.</p>
+
+<h4 id="better-utilize-phones-memory">Better utilize phone’s memory</h4>
+
+<p>Apart from optimized consumption, we get a lot more control over what we can do with the phone’s memory here. Groupon effectively pre-load elements of the product screen on phone memory that are yet to be displayed. They do that to drastically improve the load time to 1/10 of what it would otherwise be.</p>
+
+<h4 id="reliable-cache">Reliable cache</h4>
+
+<p>Groupon takes it a step further while developing their product screen. They have implemented a reliable cache and recycle information that they use effectively re-display list items efficiently.</p>
+
+<h3 id="how-to-develop-product-image-elements">How to develop Product Image elements?</h3>
+<p>I talked about the product feature screen in the section above, and I will now pickup an element from it and walk you through real life complexities here. For the sake of simplicity, I’ll go with developing product image elements for an iOS based eCommerce app as I feel it would be a lot more intuitive for everyone reading this.</p>
+
+<p><img src="/img/mobility/3/amazon-screen.png" alt="image info" /></p>
+
+<p><strong>Challenge</strong>: Optimize a high performing image screen and eliminate uncertainty in performance</p>
+
+<p>To build an image viewing element in our iOS app, <strong>we usually have three options:</strong></p>
+
+<ul>
+  <li>ScrollView</li>
+  <li>CollectionView</li>
+  <li>UIPageViewController</li>
+</ul>
+
+<p>If these are new to you, don’t get discouraged by their names. Think of them simply as the way to implement image view elements in your app.</p>
+
+<p><strong>Let’s now evaluate each of them as we move forward and find out which one will give you the best performance.</strong></p>
+
+<h3 id="scrollview">ScrollView</h3>
+
+<p>Your developer places all of these images inside of ScrollView, the functionality would work fine and the performance for most parts would look just about right as well.</p>
+
+<p><em>But then, you hear an app user complaining about app taking too long time to show images</em>. You went back to your QA and dev team, raised some tickets on your project management system, only to find out automation tests and manual tests returning the results with no errors.</p>
+
+<p><em>So, what’s really happening here?</em></p>
+
+<p>When your developer built this product image screen in your app it was implemented using ScrollView. <em>This ScrollView works fine for around 5-10 images with varying degree of results</em>, but for most of the part it won’t show you any flags initially. But when you have a customer that is going to upload 30-40 images of a product, downloading these images in ScrollView gets extremely expensive for your app’s performance.</p>
+
+<p>This is exactly what you weren’t aware of, your developers weren’t aware of, and your QA wasn’t aware of.</p>
+
+<h3 id="using-collectionview">Using CollectionView</h3>
+
+<p>Now, you can build this using CollectionView as well. But according to me, it’s an overkill. It was built for not just left and right, but up and down movements as well. I will get back to you on why I wouldn’t go with CollectionView at the end of this section.</p>
+
+<h3 id="on-using-uipageviewcontroller">On using UIPageViewController</h3>
+
+<p>I would straightaway recommend you to go for UIPageViewController instead. It is the same exact thing that you see when you scroll left on AppStore. And, It is also the same implementation that you find in iBooks app as well. iBooks can help you scroll through hundreds of pages without any performance issues or apparent lags.</p>
+
+<p><img src="/img/mobility/3/App-Store.gif" alt="image info" /></p>
+
+<p>Now, getting back to why I wouldn’t go with CollectionView? First reason, engineering is about avoiding overdesign. Second reason, every unused or partially used library increases the size of your application. App size is a major concern for eCommerce apps as each and every percentage reduction in size leads to high sales and more adoption.</p>
+
+<h3 id="standardizing-icon-images-across-screens-on-your-app">Standardizing icon images across screens on your app</h3>
+
+<p>So far we’ve talked about perfect components across a screen. But, let’s now look into a completely different type of optimization that you can do with your eCommerce app – Standardized icon images.</p>
+
+<p><img src="/img/mobility/3/standard-icons-for-developing-ecommerce-apps.png" alt="image info" /></p>
+
+<p>What I prefer here is to define upfront:</p>
+
+<p><strong>1.How these icons would be displayed</strong>– This includes defining all business rules for display and settings that should applied to the images</p>
+
+<p><strong>2.</strong> Make sure that the element that’s going to use these icons doesn’t have to worry or do anything to load and display these icons</p>
+
+<p>I do that because after years of developing ecommerce apps, I’ve observed:</p>
+
+<ul>
+  <li>
+    <p><strong>Developers have their own ways of implementing even the simplest possible things.</strong> The performance, code quality and consistency of doing something in this case depends upon the skill of developer. This could potentially induce a risk.</p>
+  </li>
+  <li><strong>Using modular approach towards developing apps result in higher quality</strong>. For example, if an image (icon23.png) is attached to an element, there’s no possible way for anyone to know how deleting this file system image would actually impact the app. <strong>Icon23.png could be attached any of the 200 screens that we have in our app.</strong></li>
+  <li>You can’t document enough in the software world. And, even if you do, <strong>documentation alone isn’t enough to resolve challenges</strong> that are widespread in the software development world.</li>
+</ul>
+
+<p>When I look into images that are extremely commonly used across the app, I see that the following are extremely common:</p>
+
+<ul>
+  <li>Loading spinners</li>
+  <li>Downloaded product images</li>
+  <li>Placeholder images</li>
+  <li>Download failure icon</li>
+  <li>Feature icons</li>
+</ul>
+
+<p>After building a list of such images, <strong><em>I would define one central place for each of them where I define how they would be loaded and displayed.</em></strong> Even the elements in which they will be loaded won’t have to worry about how this will happen.</p>
+
+<p><strong>If in future, If I decide to increase the size of icons from 12px to 14px in length, I won’t have to worry about applying the same change to 100s of screen.</strong> This not only saves a lot of time, but also helps us avoid the chances of any degree of compromise on performance or code quality when a developer updates this. Any changes would eventually be tracked an linked to this central location, and we can control what happens here.</p>
+
+<h3 id="offline-persistence-in-your-app">Offline persistence in your app</h3>
+
+<p>If you are building an app for shopping for users on the go, giving them the ability to shop from whenever they want – you better be prepared for poor and intermittent network connections. Most likely, <strong>your app users won’t know if they have a poor network coverage, or whether your app isn’t working.</strong> They are most likely to blame your app!</p>
+
+<p>Your app’s user would find it irrational to lose information that was just there a few seconds ago. Even if it vanished as he/she moved from one screen to another or minimized his app. Now, this is actually a poor implementation even from an engineering standpoint as well. As engineers, we don’t control the network, but we do definitely control some of the information that the app fetches from the server.** If done properly, the app can actually retain some information and function well even when there’s no network connection.**</p>
+
+<p>I’ve written an extremely detailed blog post around this a few months ago, if you want to read it in detail, here’s my take on building offline mobile apps.</p>
+
+<h3 id="increasing-reusability-for-ecommerce-apps">Increasing reusability for eCommerce apps</h3>
+<p>For organizations that have multiple eCommerce apps, it often gets too expensive to develop these apps from scratch and maintain them. If that’s your use case, <strong>I would focus on identifying the foundational parts that are often common across these apps and just induce redundancy.</strong></p>
+
+<p>Once identified, I prefer to <strong>package them in form of an SDK and consume it across multiple apps.</strong></p>
+
+<p>Take the example of offline catalog storage services in your apps. You can easily see that this is something most of your apps would have as a feature. Now, while building this offline catalog service for the first time, you can carefully package it in form of an SDK.</p>
+
+<p>When you build another app that needs a catalogue functionality, all your developer would need to do is to call this code and that’s it, it will work out of the box.</p>
+
+<p><strong>Adidas and other pioneers of mobile technologies in eCommerce</strong> leverage this extensively, they <strong>have SDKs that are being consumed in multiple other apps.</strong></p>
+
+<h2 id="concluding">Concluding</h2>
+
+<p>That’s pretty much it for the blog post. I hope that I was able to walk you through the complexities involved in ecommerce application development, and when you develop ecommerce apps I hope some of these strategies would solve real growth problems for you.</p>
+
+                </div>
+
+                
+
+                <div id="disqus_thread"></div>
+                <script>
+                
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://girishgodage-github-io.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
+</button>
+<!-- Footer-->
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 text-center text-lg-left">
+                <p class="social">
+                    <a href="https://www.facebook.com/girish.godage.5" class="external facebook wow fadeInUp">
+                        <i class="fa fa-facebook"></i></a>
+                    <a href="https://instagram.com/girishgodage_007" data-wow-delay="0.2s" class="external instagram wow fadeInUp">
+                        <i class="fa fa-instagram"></i></a>
+                    <a href="https://youtube.com/girishgodage" data-wow-delay="0.4s" class="external youtube wow fadeInUp">
+                        <i class="fa fa-youtube-play"></i></a>
+                    <a href="https://twitter.com/GGodage" data-wow-delay="0.4s" class="external twitter wow fadeInUp">
+                            <i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/girishgodage" data-wow-delay="0.4s" class="external github wow fadeInUp">
+                                <i class="fa fa-github"></i></a>    
+                    <a href="mailto:girishgodage@gmail.com?subject=Hello%20Girish" data-wow-delay="0.6s" class="email wow fadeInUp">
+                        <i class="fa fa-envelope"></i></a></p>
+            </div>
+            <div class="col-12 col-md-2">
+            <h5>Quick Links</h5>
+            <ul>
+               <li><a href="http://localhost:4000#about">About</a></li>
+               <li><a href="http://localhost:4000#contact">Contact</a></li>
+               <li><a href="/sitemap.xml">Sitemap</a></li>               
+            </ul>
+         </div>
+            <div class="col-12 col-md-4 text-center text-lg-right mt-4 mt-lg-0">
+                <p> <b>©</b>2019 Girish Godage </p>
+                <p class="text-center, text-shadow"> Hosted On <a href="https://pages.github.com/">GitHub Pages</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Typed.js DONT TOUCH THIS! -->
+    <div id="typed-strings">
+    </div>
+
+        <!-- JavaScript files-->
+    <script src="http://localhost:4000/sitejs/jquery/jquery.min.js"></script>
+    <script src="http://localhost:4000/sitejs/popper.js/umd/popper.min.js"> </script>
+    <script src="http://localhost:4000/sitejs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="http://localhost:4000/sitejs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="http://localhost:4000/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.counterup/jquery.counterup.js"></script>
+    <script src="http://localhost:4000/js/front.js"></script>
+    <script src="http://localhost:4000/js/comment.js"></script>
+       <!-- Script pointing to search-script.js -->
+    <script src="http://localhost:4000/js/search-script.js" type="text/javascript"></script>
+   
+    <!-- Configuration -->
+    <script>
+         SimpleJekyllSearch({
+         searchInput: document.getElementById('search-input'),
+         resultsContainer: document.getElementById('results-container'),
+         json: 'http://localhost:4000/search.json'
+         })
+         </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC36FUDDdOTidZJ8nzS5vfE7KVyayenKPE",
+    authDomain: "githubcontactlist.firebaseapp.com",
+    databaseURL: "https://githubcontactlist.firebaseio.com",
+    projectId: "githubcontactlist",
+    storageBucket: "githubcontactlist.appspot.com",
+    messagingSenderId: "899685398702",
+    appId: "1:899685398702:web:0c23c56d2d6d40df37553f",
+    measurementId: "G-YWBRCYJYFW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script>
+   $(function() {
+      
+    //make a variable to keep track of data coming from firebase
+    var data = [];
+
+    // Reference messages collection
+      var messagesRef = firebase.database().ref('contactformmessages');  
+
+
+    //listen to data updates from firebase
+    messagesRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+        //when the data updates at firebase, put it in the data variable
+        data = snapshot.val();
+    })
+    //Entire Contact Form (handler)
+    $('#contactForm').submit(function(e) {
+      e.preventDefault();
+
+        var $form = $(this);
+        console.log("Submit to Firebase");
+
+        //disable submit button
+        $form.find("#sendForm").prop('disabled', true);
+
+        //get values to send to Firebase
+        var name = $('#name').val();
+        console.log(name);
+		
+		var surname = $('#surname').val();
+        console.log(surname);
+		
+		var email = $('#email').val();
+        console.log(email);	
+		
+		var phone = $('#phone').val();
+        console.log(phone);
+
+        var message = $('#message').val();
+        console.log(message);
+
+       
+        //take the values from the form, and put them in an object
+        var newContact = {
+         "name": name,
+			"surname": surname,
+			"email": email,
+			"phone": phone,
+         "message": message
+        }
+        //put new object in data array
+        data.push(newContact);
+        console.log(data);
+
+        //send the new data to Firebase
+        messagesRef.set(data, function(err) {
+            if (err) {
+                alert("Data no go");
+            }else{
+            $("#form-wrapper").slideToggle();
+            $('#form-success-message').slideToggle();
+			}
+        });
+
+        return false;
+    })
+   
+    
+})
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";           
+        }else
+        {
+           myBtton.style.display="none";     
+          
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+      //  document.body.scrollTop =0;
+      //  document.documentElement.scrollTop=0;
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    }
+
+</script>
+
+    
+    
+
+
+</body>
+
+</html>
