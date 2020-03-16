@@ -1,4 +1,298 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-16T01:55:30+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">6 Multi-Cloud Architecture Designs for an Effective Cloud Strategy</title><link href="http://localhost:4000/blog/multi-cloud-architecture" rel="alternate" type="text/html" title="6 Multi-Cloud Architecture Designs for an Effective Cloud Strategy" /><published>2020-01-25T11:41:00+00:00</published><updated>2020-01-25T11:41:00+00:00</updated><id>http://localhost:4000/blog/multi-cloud-architecture</id><content type="html" xml:base="http://localhost:4000/blog/multi-cloud-architecture">&lt;h2 id=&quot;6-multi-cloud-architecture-designs-for-an-effective-cloud-strategy&quot;&gt;6 Multi-Cloud Architecture Designs for an Effective Cloud Strategy&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-16T03:25:32+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">Cloud Cost Optimization Strategies (Even AWS won’t Tell you!)</title><link href="http://localhost:4000/blog/cloud-cost-optimization-strategies" rel="alternate" type="text/html" title="Cloud Cost Optimization Strategies (Even AWS won't Tell you!)" /><published>2020-01-25T11:41:00+00:00</published><updated>2020-01-25T11:41:00+00:00</updated><id>http://localhost:4000/blog/cloud-cost-optimization-strategies</id><content type="html" xml:base="http://localhost:4000/blog/cloud-cost-optimization-strategies">&lt;h2 id=&quot;6-cloud-cost-optimization-strategies-even-aws-wont-tell-you&quot;&gt;6 Cloud Cost Optimization Strategies (Even AWS won’t Tell you!)&lt;/h2&gt;
+
+&lt;p&gt;Fine-tuning your cloud infrastructure is critical to make sure that your overall bill keeps up to its limit. Read this blog to find out proven cloud cost optimization strategies to help you cut down on the bill and save money by eliminating unused resources.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/16/Diagram1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Stanford University researcher and lecturer Dr. Jonathan Koomey presented a report last year which stated a surprising fact that only 20 per cent of organizations would save money if they transferred their server data directly to the cloud, whereas 80 per cent would see an increase in the annual costs.&lt;/p&gt;
+
+&lt;p&gt;For those organizations comprising of 80 per cent, the extra cost rolls over when they move on to the cloud, Koomey found, which results in organizations paying an average of 36 per cent more of cloud services than they actually need to. Given Gartner’s projection that data storage will be a $173 billion business in 2018, companies globally could save $62 billion on storage just by optimizing their workloads. This is understandable since, for organizations using cloud resources aggressively, it becomes difficult to keep the cloud bills in check.&lt;/p&gt;
+
+&lt;p&gt;If your organization is one of those who overspend on the cloud resources, this blog is for you where we discuss some of the prominent strategies that I put into practice so that our clients get the best result in the lease possible spending.&lt;/p&gt;
+
+&lt;p&gt;For any organization, the major spend of 70-80 per cent comprises of the storage and compute resources. And hence, this makes it inherently important to monitor these aspects closely. However, the first step towards keeping a strict eye on the bill is to increase the visibility into the cloud costs and understanding the total cost of ownership. Let’s get started!&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;cost-optimization-strategies-for-compute&quot;&gt;Cost Optimization Strategies for compute&lt;/h2&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;cost-optimization-strategies-for-storage&quot;&gt;Cost Optimization Strategies for Storage&lt;/h2&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;cost-optimization-tools&quot;&gt;Cost Optimization Tools&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;aws-cloud-cost-optimization-strategies&quot;&gt;AWS Cloud Cost Optimization Strategies&lt;/h2&gt;
+
+&lt;p&gt;The majority of spending for most users is on compute, making it a key area of focus for cost reductions.&lt;/p&gt;
+
+&lt;h3 id=&quot;1-downsize-under-utilized-instances&quot;&gt;1. Downsize under-utilized instances&lt;/h3&gt;
+&lt;p&gt;Downsizing one size in an instance family reduces costs by 50 per cent. Let’s take one example of m4.large and t2.small.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/16/Scale.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As shown in the image, m4.large is utilized less than 50% between 0 to 9 am. Server usage increases from 9 am to 2 pm. Here it requires two m4.large instances. Again, usage starts decreasing till 6 pm and increases in the night. As per the graph, it is clear that during some specific time span single m4.large can’t be utilized even 50% of its capacity. It costs $4.1/day.&lt;/p&gt;
+
+&lt;p&gt;Under-utilized instances should be considered as candidates for downsizing either one or two instance sizes. Keep in mind that downsizing one size in an instance family reduces costs by 50 per cent.&lt;/p&gt;
+
+&lt;p&gt;According to server load graph, we can use t2.small for utmost utilization. As t2.small has a half compute capacity than m4.large so 70 t2.small instances are required instead of 41 m4.large instances. Using t2.small instances the decision makers can save more than 60% of the instance cost.&lt;/p&gt;
+
+&lt;h3 id=&quot;2-turn-off-unused-instances&quot;&gt;2. Turn off unused instances&lt;/h3&gt;
+
+&lt;p&gt;Organizations use instances according to the highest peak of requirement which is not constant. Due to variation in the requirement, organizations have to pay for non-utilized instances. To fully optimize cloud spend, turn instances off that are no longer being used. The below image shows how servers load varies on a particular day and then turn off instances.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/16/Scale-2.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As you can see in the above image, server load can be handled by 1 instance so you can turn off 2nd instance to save the cost. During the next 8 hours server load increases and requires two instances. Again, server load decreases from 16 to 24 and you can turn off 2nd instance.&lt;/p&gt;
+
+&lt;p&gt;Production instances should be auto-scaled to meet demand. Shutting down development and test instances in the evenings and on weekends when developers are no longer working can save 65 per cent or more of costs. And instances for training, demos, and development must be terminated once projects are completed.&lt;/p&gt;
+
+&lt;h3 id=&quot;3-use-discounted-instances&quot;&gt;3. Use discounted instances&lt;/h3&gt;
+&lt;p&gt;It is very important to understand Discount options of Instances. In detail for AWS. With AWS Reserved Instances, you get the discount in exchange for making a one-year or three-year commitment with the longer commitment giving a higher discount. Discounts range from 24 to 75 per cent depending on the RI term, the instance type, and the region.&lt;/p&gt;
+
+&lt;h3 id=&quot;4-aws-spot-instances&quot;&gt;4. AWS spot instances&lt;/h3&gt;
+&lt;p&gt;On the AWS spot market, the traded products are EC2 instances, and they’re delivered by starting an EC2 instance. It is very common to see 15-60% savings, and in some cases, you can save up to 90% with spot instances.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;How does it work?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;You set a maximal bid price and optionally a period up to 6 hours. The price you pay is the spot price each hour. When this price goes above your specified maximum bid price, the instance is terminated. Be careful that the new console for spot creates you a fleet, and even terminating the instance yourself, the fleet remains open. You need to cancel the “spot request” (the fleet), as well as terminate the instance(s) when you are done. The instances are guaranteed to remain active for the specified amount of time up to 6 hours. See below image for more understanding.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/16/Scale-2-1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Cloud Cost Optimization Strategies
+You may also like: &lt;strong&gt;How to Choose the Right Cloud Deployment Model for your Application?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;There are many different spot markets available. A spot market is defined by:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Instance type (e.g. m3.medium)&lt;/li&gt;
+  &lt;li&gt;Region (e.g. eu-west-1)&lt;/li&gt;
+  &lt;li&gt;Availability Zone (e.g. eu-west-1a)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Each spot market is offering a separate current price. So when using spot instances it is an advantage to be able to use different instance types, in different availability zones or even regions, as this allows you to pick the lowest price available.&lt;/p&gt;
+
+&lt;h3 id=&quot;5-minimizing-data-transfer-costs&quot;&gt;5. Minimizing data transfer costs&lt;/h3&gt;
+&lt;p&gt;Make sure your Object Storage and Compute Services in the same region because Data transfer is free in the same region. For example, AWS charges $0.02/GB to download the file from another AWS region.&lt;/p&gt;
+
+&lt;p&gt;If you do a lot of cross-region transfers it may be cheaper to replicate your Object Storage bucket to a different region than download each between regions each time. Let’s understand it with AWS S3’s example.&lt;/p&gt;
+
+&lt;p&gt;1GB data in us-west-2 is anticipated to be transferred 20 times to EC2 in us-east-1. If you initiate inter-region transfer, you will pay $0.20 for data transfer (20 * 0.02). However, if you first download it to mirror S3 bucket in us-east-1 then you just pay $0.02 for transfer and $0.03 for storage over a month. It is 75% cheaper. This feature is built into S3 called &lt;strong&gt;cross-region replication&lt;/strong&gt;. You will also get better performance along with cost benefit.&lt;/p&gt;
+
+&lt;p&gt;Use AWS content delivery network called CloudFront If there are a lot of downloads from the servers which are stored in S3 (e.g. images on consumer site).&lt;/p&gt;
+
+&lt;p&gt;There are CDN providers such as CloudFlare who charge a flat fee. If you have a lot of static assets then CDN can give huge savings over S3, as just a tiny per cent of original requests will hit your S3 bucket.&lt;/p&gt;
+
+&lt;h3 id=&quot;6-delete-or-migrate-unwanted-files-after-a-certain-date&quot;&gt;6. Delete or migrate unwanted files after a certain date&lt;/h3&gt;
+&lt;p&gt;Cloud architects can programmatically configure rules for data deletion or migration between types of storage. This drastically reduces the long-term storage costs. All the major cloud providers have the feature of Lifecycle Management. For instance, active data can remain in Azure Blob Standard storage. But, if certain data begin to show signs of infrequent access, users can program rules to migrate that data over Azure Cool Blob storage to incur a cheaper storage rate.&lt;/p&gt;
+
+&lt;p&gt;A lot of deployments uses Object Storage for log collection. You may automate deletion using life cycles. Delete objects 7 days after their creation time. E.g. if you use S3 for backups, it makes sense to delete them after a year. Similarly, you can use the Object Lifecycle management feature in Google cloud and expiration of Blobs in Azure.&lt;/p&gt;
+
+&lt;h3 id=&quot;7-compress-data-before-storage&quot;&gt;7. Compress Data Before Storage&lt;/h3&gt;
+&lt;p&gt;Compressing data reduces your storage requirements. Subsequently reducing the cost of storage. Using fast compression algorithm such as LZ4 gives better performance. LZ4 is a lossless compression algorithm, providing compression speed at 400 MB/s per core (0.16 Bytes/cycle). It features an extremely fast decoder, with speed in multiple GB/s per core (0.71 Bytes/cycle). In many use cases, it makes sense to use compute-intensive compressions such as GZIP or ZSTD.&lt;/p&gt;
+
+&lt;h3 id=&quot;8-take-care-of-incomplete-multipart-uploads&quot;&gt;8. Take care of incomplete multipart uploads&lt;/h3&gt;
+&lt;p&gt;There are many partial objects in Object Storage which had been interrupted while uploading. If you have a petabyte Object Storage bucket, then even 1% of incomplete uploads may end up wasting terabytes of space. You should clean up incomplete uploads after 7 days.&lt;/p&gt;
+
+&lt;h3 id=&quot;9-reduce-cost-on-api-access&quot;&gt;9. Reduce cost on API access&lt;/h3&gt;
+&lt;p&gt;Cost on API access can be reduced by using batch objects and avoiding a large number of small files. Since API calls are charged per object, regardless of its size. Uploading 1-byte costs the same as uploading 1GB. So usually small objects can cause API costs to soar.&lt;/p&gt;
+
+&lt;p&gt;For example in AWS S3, PUT calls cost $0.005/1000 calls. So to upload a 10GB file in 5MB chunks it will cost roughly $0.01. Whereas, for 10KB file chunks, it will cost approximately $5.00.&lt;/p&gt;
+
+&lt;p&gt;Similarly, it is a bad practice to use CALL/PUT options with tiny files using S3. It makes sense to use batch objects or a database such as DynamoDB or MySQL instead of S3. 1 writes per second in DynamoDB costs $0.00065/hour. Assuming 80% utilization, DynamoDB will cost $0.000226/1000 calls. This is 95% cheaper to use DynamoDB compared to AWS S3.&lt;/p&gt;
+
+&lt;p&gt;The S3 file names are not a database. Relying too much on S3 LIST calls is not the right design and using a proper database can typically be 10-20 times cheaper.&lt;/p&gt;
+
+&lt;h3 id=&quot;10-design-workloads-for-scalability&quot;&gt;10. Design workloads for scalability&lt;/h3&gt;
+&lt;p&gt;For any public cloud, scalability is a critical aspect. Scalability uses event-driven compute instances like AWS Lambda or containers like Google Container Engine to scale core services for important workloads, such as microservices. These techniques are intended to utilize more computing when it is needed. Once the requirement increases, those additional resources are released for reuse.&lt;/p&gt;
+
+&lt;h3 id=&quot;11-cache-storage-strategically&quot;&gt;11. Cache storage strategically&lt;/h3&gt;
+&lt;p&gt;Use memory-based caching, such as AWS ElastiCache. Caching improves data accessibility by moving important or frequently accessed in-memory instead of retrieving data from storage instances. This can reduce the expense of higher-tier cloud storage and improve the performance of some applications.&lt;/p&gt;
+
+&lt;p&gt;It gives best results for performance-sensitive workloads which run in remote regions or when efficient replication is needed for resilience.&lt;/p&gt;
+
+&lt;h3 id=&quot;12-use-auto-scaling-to-reduce-costs-during-off-hours&quot;&gt;12. Use auto-scaling to reduce costs during off hours&lt;/h3&gt;
+&lt;p&gt;Most apps have busier and slower periods throughout a week or day. Take advantage of auto-scaling to save some money during slow periods.&lt;/p&gt;
+
+&lt;p&gt;These deployment types all support auto-scaling:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cloud Services&lt;/li&gt;
+  &lt;li&gt;App Services&lt;/li&gt;
+  &lt;li&gt;VM Scale Sets (Including Batch, Service Fabric, Container Service)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Scaling could also mean shutting your app down completely. You can use “AlwaysOn” feature provides by App Services that controls if the app should shut down due to no activity. You could also schedule shutting down your dev/QA servers with something like DevTest Labs.&lt;/p&gt;
+
+&lt;h2 id=&quot;aws-cost-optimization-tools&quot;&gt;AWS Cost Optimization Tools&lt;/h2&gt;
+
+&lt;p&gt;AWS inherently provides a list of tools to helps you in tracking on your AWS bill. Some of these can also generate AWS cloud cost optimization report for you as well.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;AWS Cost Optimization Explorer&lt;/strong&gt; – This helps you in observing patterns on your AWS bill, forecast future costs and identify areas that needs further improvement. In short, this works as a AWS cost optimization calculator.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;AWS Budgets&lt;/strong&gt; – This allows you to set custom budgets limits and notification mechanism when your spends exceed the limits. Budgets can be set on tags, accounts and resource types.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Amazon CloudWatch&lt;/strong&gt; – Apart from collecting and tracking metrics, this helps you in setting custom alarms that automatically reacts to the changes in AWS resources.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Cost Optimization Monitor&lt;/strong&gt; – This automatically processes the detailed billing remetrics ports so that you get granular metrics which can be searched, analysed and visualised in a customizable dashboard.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;EC2 Right Sizing:&lt;/strong&gt; Quickly analyze the EC2 utilization data and receive reporting recommendations for choosing the correct EC2 instances.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;The key to using the above methods and any other cost optimization ideas is to have a proactive approach for your custom software development practices. These methods are some of the quintessential Cloud cost optimization techniques you can inculcate in your regular tasks.&lt;/p&gt;
+
+&lt;p&gt;We’ve developed this AWS cloud cost optimization guide by closely understanding the existing cost and what changes are critical in both estimating and delivering real cost savings. We hope these will prove useful to you as well.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">6 Cloud Cost Optimization Strategies (Even AWS won’t Tell you!)</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/sw_design.png" /></entry><entry><title type="html">Multi-Cloud Management Platforms, Challenges and Best Practices</title><link href="http://localhost:4000/blog/multi-cloud-management" rel="alternate" type="text/html" title="Multi-Cloud Management Platforms, Challenges and Best Practices" /><published>2020-01-25T11:41:00+00:00</published><updated>2020-01-25T11:41:00+00:00</updated><id>http://localhost:4000/blog/multi-cloud-management</id><content type="html" xml:base="http://localhost:4000/blog/multi-cloud-management">&lt;h2 id=&quot;6-multi-cloud-management-platforms-challenges-and-best-practices&quot;&gt;6 Multi-Cloud Management Platforms, Challenges and Best Practices&lt;/h2&gt;
+
+&lt;p&gt;Multi-cloud management is one of the biggest challenges for enterprises. It can be difficult and often requires the use of third-party tools. This blog consists of some popular multi-cloud management tools and key features you should look while selecting the tool.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/15/Blog-Diagram-4-2-1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It is evident that multi-cloud strategy eliminates crucial challenges in cloud computing like vendor lock-in, latency, and higher cost. In addition, organizations can leverage vendors’ unique capabilities in artificial intelligence, serverless computing or augmented reality.&lt;/p&gt;
+
+&lt;p&gt;However, building applications that are truly built on multi-cloud architecture are challenging. The reason is that the different clouds and on-premises resources use different APIs and management interfaces.&lt;/p&gt;
+
+&lt;p&gt;For example, &lt;strong&gt;&lt;em&gt;Amazon S3 obviously supports the Amazon S3 API, but Azure Blob Storage and Google Cloud Storage do not. Dealing with multiple APIs and management interfaces has always been anathema for application developers who want to avoid the vendor lock-in of a single API, as well as the added development, support, and time costs associated with supporting multiple APIs.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;With proper multi-cloud management, organizations can deal with multi-cloud challenges. According to Judith Hurwitz, CEO of Hurwitz &amp;amp; Associates:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The real value of multi-cloud management is the opportunity to mix and match — to get the most cost-effective services, the most innovative services — and to tailor those services to the problem at hand and to changing business demands.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;There are many platforms available to manage multiple cloud providers via a single interface. These tools include cloud management platforms (CMPs), cloud services brokers (CSBs), and other tools that provide an abstraction layer between two or more public-cloud providers. There are also tools that manage, monitor, and utilize those services.&lt;/p&gt;
+
+&lt;p&gt;To help you choose the right multi-cloud management platform, I’ve divided the blog into the following parts:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What is Multi-cloud Management?&lt;/li&gt;
+  &lt;li&gt;Challenges in Multi-Cloud management&lt;/li&gt;
+  &lt;li&gt;Multi Cloud Management Platforms&lt;/li&gt;
+  &lt;li&gt;Features to Consider While Choosing a Multi-Cloud Management Platform&lt;/li&gt;
+  &lt;li&gt;Best Practices to Manage Multi-Cloud Environment&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;what-is-multi-cloud-management&quot;&gt;What is Multi-cloud Management?&lt;/h2&gt;
+
+&lt;p&gt;Multi-cloud management is a practice of developing consistent workflows for managing infrastructure provisioning (set-up/tear-down), security, connectivity, and service discovery across cloud platforms. A well defined multi-cloud management provides the visibility required to prevent challenges that lead to a complex multi-cloud architecture.&lt;/p&gt;
+
+&lt;p&gt;A well-defined cloud management strategy helps organizations achieve the following primary goals.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Self-service capabilities&lt;/strong&gt;: Self-service capabilities eliminate the traditional processes related to IT resource provisioning.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Workflow automation&lt;/strong&gt;: Cloud management enables workflow automation. Organizations can take actionable steps needed to create and manage computing instances, without human intervention.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Cloud analysis&lt;/strong&gt;: By doing cloud analysis and monitoring, organizations can use the best available services according to requirements. Also, with the use of metrics, organizations can change cloud providers or migrate workloads from the public to private clouds if they don’t get optimal performance.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;challenges-in-multi-cloud-management&quot;&gt;Challenges in Multi-Cloud Management&lt;/h2&gt;
+&lt;h3 id=&quot;cost&quot;&gt;Cost&lt;/h3&gt;
+&lt;p&gt;Many companies suffer from the large expenses of using cloud services due to poor multi-cloud management. In multi-cloud, organizations use multiple services from different cloud providers. Many times, it becomes difficult to utilize all the services as per demand and hence companies have to pay for the services which have been not used.&lt;/p&gt;
+
+&lt;h3 id=&quot;performance&quot;&gt;Performance&lt;/h3&gt;
+
+&lt;p&gt;IT operations teams need to ensure the speed and performance of applications delivered to end users from complex multi-cloud environments. The scale at which IT needs to monitor data and identify problems cannot be effectively managed by humans alone. They must leverage artificial intelligence (AI) and machine learning.&lt;/p&gt;
+
+&lt;p&gt;For example, if you are building an e-commerce app on a multi-cloud environment then performance would be a major challenge.&lt;/p&gt;
+
+&lt;h3 id=&quot;automation&quot;&gt;Automation&lt;/h3&gt;
+
+&lt;p&gt;Managing workloads that span multiple disparate platforms creates the need to address real-time processing and orchestration. Application development organizations, especially in a multi-cloud environment, are slowed by their manual processes for creating and modifying workflows and getting applications into production.&lt;/p&gt;
+
+&lt;h3 id=&quot;cloud-sprawl&quot;&gt;Cloud Sprawl&lt;/h3&gt;
+
+&lt;p&gt;While adopting multi-cloud strategy, organizations have to prevent app sprawl. Cloud sprawl occurs when users fail to decommission unused cloud computing instances or services. The main reason is that the workloads will move between clouds frequently. Cloud Sprawl create resource visibility issues which affect your cloud bill.&lt;/p&gt;
+
+&lt;p&gt;For example, &lt;em&gt;in an organization, employees may be partial to a particular cloud for specific workloads, and this choice may not be consistent across the entire organization. This means the same app might be open across multiple public cloud platforms.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;migration&quot;&gt;Migration&lt;/h3&gt;
+&lt;p&gt;For most organizations, migrating to the multi-cloud is a significant challenge especially when the migration involves multiple data centers, remote locations, and mobile users. Ensuring secure access to cloud assets with legacy networks often leads to two choices — backhauling cloud traffic to a central Internet access point or sending cloud traffic directly onto the Internet.&lt;/p&gt;
+
+&lt;p&gt;Planning plays a huge role in the migration process. The right multi-cloud management solution can help you migrate applications with existing standards and policies across your new cloud network.&lt;/p&gt;
+
+&lt;h3 id=&quot;compliance&quot;&gt;Compliance&lt;/h3&gt;
+&lt;p&gt;As Cloud Computing provides the agility and ­flexibility, it also breaks the planning and approval process which gives rise to compliance issues in multi-cloud environment which leads to shadow IT, budget overrun, and security issues.&lt;/p&gt;
+
+&lt;p&gt;Organizations need to define standards for the consumption of cloud services and resources as they define for their business processes. With cloud’s shared responsibility model, choosing the right configuration for services and resources, optimizing resource utilization &amp;amp; cost, and securing data on cloud resources comes under the ownership of cloud consumers for both public and private cloud platforms.&lt;/p&gt;
+
+&lt;h3 id=&quot;data-security&quot;&gt;Data Security&lt;/h3&gt;
+&lt;p&gt;As with your own data centers, in multi-cloud also you should have a security framework to rely on. The more levels an attacker has to penetrate to access a valuable resource, the better the chances are that the attack will not be successful.&lt;/p&gt;
+
+&lt;p&gt;Consequently, you should design your service to have numerous layers protecting any sensitive data. This way, you can ensure that if one security measure is breached, other obstacles will be in place to keep the attacker at bay.&lt;/p&gt;
+
+&lt;h2 id=&quot;multi-cloud-management-platforms&quot;&gt;Multi Cloud Management Platforms&lt;/h2&gt;
+
+&lt;p&gt;When an organization’s users take the initiative to adopt infrastructure and solutions from different cloud vendors, challenges emerge. Each new cloud service comes with its own tools that can increase complexity. Multi-cloud environments require new management solutions to optimize performance, control costs and secure complicated mixes of applications and environments, regardless of whether they are inside the data center or in the cloud.&lt;/p&gt;
+
+&lt;h3 id=&quot;bmc&quot;&gt;BMC&lt;/h3&gt;
+&lt;p&gt;BMC provides different solutions to address multi-cloud management challenges like migration, automated cost reporting, service management, performance, visibility, automation, and security.&lt;/p&gt;
+
+&lt;h3 id=&quot;appformix&quot;&gt;AppFormix&lt;/h3&gt;
+&lt;p&gt;AppFormix is a product of Juniper Networks which provides end-to-end visibility into your multi-cloud environment to eliminate any potential issues, rendering your operations simpler and more effective. It enables you to visualize and analyze both physical and virtual environments. Through monitoring and intent-based analytics, AppFormix transforms raw data from a diverse set of resources into a format that you can use immediately.&lt;/p&gt;
+
+&lt;h3 id=&quot;divvycloud&quot;&gt;DivvyCloud&lt;/h3&gt;
+&lt;p&gt;DivvyCloud’s multi-cloud platform helps customers manage AWS, Azure, GCP, VMware, and OpenStack. Developers have the freedom to choose which clouds are best suited for their company’s needs without IT having to develop policy automation and compliance solutions for each cloud.&lt;/p&gt;
+
+&lt;h3 id=&quot;embotics&quot;&gt;Embotics&lt;/h3&gt;
+&lt;p&gt;Embotics’s vCommander leverages a comprehensive set of multi-hypervisor virtualization and cloud management capabilities to allow organizations at any stage of cloud adoption to build and implement the framework, process, automation, and policies that will result in an optimized hybrid cloud environment. It provides support for:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;VMware vSphere&lt;/li&gt;
+  &lt;li&gt;Microsoft Hyper-V&lt;/li&gt;
+  &lt;li&gt;Amazon Web Services (AWS)&lt;/li&gt;
+  &lt;li&gt;Microsoft Azure&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;harmony-controller-by-a10-networks&quot;&gt;Harmony Controller by A10 Networks&lt;/h2&gt;
+&lt;p&gt;Harmony Controller platform introduces a new paradigm for centralized management with granular L4-7 analytics across essentially any deployment–on-premise or cloud. Available in a software or hardware form factor, the controller performs the control plane function and dynamically interacts with and oversees the various A10 Networks-based secure application services residing in the data plane. The Harmony Controller is highly scalable and based on a distributed microservices architecture with clustering to scale to the necessary capacity. The easy to use operator console provides monitoring for controller sub-systems, troubleshooting help, and assistance with recovery mechanisms.&lt;/p&gt;
+
+&lt;h3 id=&quot;zenko&quot;&gt;Zenko&lt;/h3&gt;
+&lt;p&gt;Developed by Scality, Zenko is Open Source Multi-Cloud Data Controller. It allows customers to manage storage across in-house storage and public cloud tiers. Zenko stores information locally and to Amazon S3, Azure Blob storage, Google Cloud Storage or any S3-compatible cloud storage platform (Ceph, Minio and more).&lt;/p&gt;
+
+&lt;h3 id=&quot;cloudyn&quot;&gt;Cloudyn&lt;/h3&gt;
+&lt;p&gt;Cloudyn is an enterprise-grade, SaaS solution that pioneered the single-pane-of-glass approach to managing and optimizing multi-platform, hybrid cloud environments. Supporting Microsoft Azure, Amazon Web Services, Google Cloud and OpenStack, Cloudyn delivers measurable cloud success by enabling full visibility and accountability packaged with continuous optimization across all clouds. The solution provides insights into usage, performance, and cost coupled with actionable recommendations for smart cloud optimization. Cloudyn enables accountability through comprehensive cost allocation and management helping enterprises get to cloud ROI more rapidly.&lt;/p&gt;
+
+&lt;h3 id=&quot;ibm-cloud-manager&quot;&gt;IBM Cloud Manager&lt;/h3&gt;
+&lt;p&gt;IBM Multicloud Manager is a tool for monitoring and managing Kubernetes environments, pinpointing component and service health, and managing applications across clusters and clouds. It includes capabilities for setting security policies and workload management. IBM’s value proposition is that providing a cross-cluster, the cross-cloud view becomes more manageable than handling it individually, within each cloud or cloud service.&lt;/p&gt;
+
+&lt;h2 id=&quot;features-to-consider-while-choosing-a-multi-cloud-management-platform&quot;&gt;Features to consider while choosing a multi-cloud management platform&lt;/h2&gt;
+&lt;h3 id=&quot;service-provisioning&quot;&gt;Service provisioning&lt;/h3&gt;
+&lt;p&gt;The platform should have the feature to launch and allocate the cloud services according to demand. This tool can translate a provisioning request from the console, or an API, and translate that request into the cloud-native API of the target cloud within the multi-cloud architecture.&lt;/p&gt;
+
+&lt;h3 id=&quot;service-monitoring&quot;&gt;Service monitoring&lt;/h3&gt;
+&lt;p&gt;The ability to measure and visualize application and network-layer performance between their hybrid cloud, private cloud, and public cloud services. This includes reporting on what occurs to determine the future use of that service, including reliability, cost metrics, etc.&lt;/p&gt;
+
+&lt;h3 id=&quot;service-performance&quot;&gt;Service performance&lt;/h3&gt;
+&lt;p&gt;The ability to monitor service performance and then log resulting data. Poor-performing services should be blacklisted until the issues have been resolved.&lt;/p&gt;
+
+&lt;h3 id=&quot;service-governancepolicy&quot;&gt;Service governance/policy&lt;/h3&gt;
+&lt;p&gt;The ability to define and leverage policies around the use and execution of the service or services.&lt;/p&gt;
+
+&lt;h3 id=&quot;service-orchestration&quot;&gt;Service orchestration&lt;/h3&gt;
+&lt;p&gt;The ability to orchestrate the cloud service to meet the needs of a core business application or business process.&lt;/p&gt;
+
+&lt;h3 id=&quot;monitoring-analytics&quot;&gt;Monitoring analytics&lt;/h3&gt;
+&lt;p&gt;A detailed analysis of how the clouds under management are behaving, key metrics, and predictions around future behaviors such as performance or reliability.&lt;/p&gt;
+
+&lt;h3 id=&quot;integration-with-security&quot;&gt;Integration with Security&lt;/h3&gt;
+&lt;p&gt;The ability to operate seamlessly with the existing cloud security infrastructure. In most cases, this will be identity access management, but it could also deal with compliance systems as well.&lt;/p&gt;
+
+&lt;h2 id=&quot;best-practices-to-manage-multi-cloud-environment&quot;&gt;Best Practices to Manage Multi-Cloud Environment&lt;/h2&gt;
+&lt;p&gt;Map your architecture according to requirements
+Map your entire network, and then identify where the cloud fits in it. Get a clear picture of the cloud’s role in your overall system-management strategy to avoid having to backfill gaps in the data needs of business managers and other customers. Different lines of business will be best served by different cloud providers.&lt;/p&gt;
+
+&lt;h3 id=&quot;standardized-consumption&quot;&gt;Standardized consumption&lt;/h3&gt;
+&lt;p&gt;In a multi-cloud environment, each business unit in an organization might use services from several different providers—for example, an analytics platform from Azure, storage from AWS and AI capabilities from the IBM Cloud. Business units often pay for these services in different ways.&lt;/p&gt;
+
+&lt;h3 id=&quot;integration-remains-a-necessity&quot;&gt;Integration remains a necessity&lt;/h3&gt;
+&lt;p&gt;In multi-cloud, developers require common standards for integrating and managing the supplier ecosystem to help address these issues. A cohesive multi-sourced ecosystem requires integration in six key areas including business, organization, information, governance, processes, and tools.&lt;/p&gt;
+
+&lt;p&gt;For example, the Network layer is critical integration component of the multi-cloud and also need to be designed to let companies run their applications in a hybrid computing environment. The network control, security, and visibility need to extend into public and multi-clouds, making these environments look like a single network, with a single pane of glass management functionalities.&lt;/p&gt;
+
+&lt;h3 id=&quot;use-containers&quot;&gt;Use containers&lt;/h3&gt;
+&lt;p&gt;Having applications packaged with all their dependencies increases portability and can simplify management.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Multi-cloud is a solution where multiple clouds from different providers are used for separate tasks. To automate the task and optimize cost, enterprises need a robust multi-cloud management platform. The rising need for different applications is driving the adoption of multi-cloud management platform among end users. With the availability of multi-cloud management platform, enterprises can significantly reduce their dependency on a single provider.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">6 Multi-Cloud Management Platforms, Challenges and Best Practices</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/sw_design.png" /></entry><entry><title type="html">6 Multi-Cloud Architecture Designs for an Effective Cloud Strategy</title><link href="http://localhost:4000/blog/multi-cloud-architecture" rel="alternate" type="text/html" title="6 Multi-Cloud Architecture Designs for an Effective Cloud Strategy" /><published>2020-01-25T11:41:00+00:00</published><updated>2020-01-25T11:41:00+00:00</updated><id>http://localhost:4000/blog/multi-cloud-architecture</id><content type="html" xml:base="http://localhost:4000/blog/multi-cloud-architecture">&lt;h2 id=&quot;6-multi-cloud-architecture-designs-for-an-effective-cloud-strategy&quot;&gt;6 Multi-Cloud Architecture Designs for an Effective Cloud Strategy&lt;/h2&gt;
 
 &lt;p&gt;Deploying a multi-tenant application across multiple cloud platforms can be very challenging. In this blog, we’ve explained 6 multi-cloud architecture designs which can help businesses to build an effective multi-cloud strategy.&lt;/p&gt;
 
@@ -212,157 +506,7 @@
 &lt;p&gt;In a multi-cloud environment, cloud architects can deploy data centers to multiple regions according to user locations. The datacenter closest to end-users can serve the requested data with minimum server hops. This capability is especially useful for global organizations that need to serve data across geographically disparate locations while maintaining a unified end-user experience.&lt;/p&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;Multi-Cloud architecture provides an environment where businesses can build secure and powerful cloud environments outside the traditional infrastructure. Maximizing the impact of multi-cloud, however, means tackling the challenges of app sprawl, unique portals, compliance, migration and security head-on. The main goal multi-cloud strategy is to use as many clouds as per requirements to address the limitations of using one cloud from a single provider. Though toggling between cloud providers to perform tasks can be complicated, especially right out of the gate, cloud service providers are working to make toggling between clouds increasingly efficient. The more efficient it becomes; the more multi-cloud computing will evolve.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">6 Multi-Cloud Architecture Designs for an Effective Cloud Strategy</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/sw_design.png" /></entry><entry><title type="html">Multi-Cloud Management Platforms, Challenges and Best Practices</title><link href="http://localhost:4000/blog/multi-cloud-managemen" rel="alternate" type="text/html" title="Multi-Cloud Management Platforms, Challenges and Best Practices" /><published>2020-01-25T11:41:00+00:00</published><updated>2020-01-25T11:41:00+00:00</updated><id>http://localhost:4000/blog/multi-cloud-managemen</id><content type="html" xml:base="http://localhost:4000/blog/multi-cloud-managemen">&lt;h2 id=&quot;6-multi-cloud-management-platforms-challenges-and-best-practices&quot;&gt;6 Multi-Cloud Management Platforms, Challenges and Best Practices&lt;/h2&gt;
-
-&lt;p&gt;Multi-cloud management is one of the biggest challenges for enterprises. It can be difficult and often requires the use of third-party tools. This blog consists of some popular multi-cloud management tools and key features you should look while selecting the tool.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/15/Blog-Diagram-4-2-1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;It is evident that multi-cloud strategy eliminates crucial challenges in cloud computing like vendor lock-in, latency, and higher cost. In addition, organizations can leverage vendors’ unique capabilities in artificial intelligence, serverless computing or augmented reality.&lt;/p&gt;
-
-&lt;p&gt;However, building applications that are truly built on multi-cloud architecture are challenging. The reason is that the different clouds and on-premises resources use different APIs and management interfaces.&lt;/p&gt;
-
-&lt;p&gt;For example, &lt;strong&gt;&lt;em&gt;Amazon S3 obviously supports the Amazon S3 API, but Azure Blob Storage and Google Cloud Storage do not. Dealing with multiple APIs and management interfaces has always been anathema for application developers who want to avoid the vendor lock-in of a single API, as well as the added development, support, and time costs associated with supporting multiple APIs.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;With proper multi-cloud management, organizations can deal with multi-cloud challenges. According to Judith Hurwitz, CEO of Hurwitz &amp;amp; Associates:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The real value of multi-cloud management is the opportunity to mix and match — to get the most cost-effective services, the most innovative services — and to tailor those services to the problem at hand and to changing business demands.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;There are many platforms available to manage multiple cloud providers via a single interface. These tools include cloud management platforms (CMPs), cloud services brokers (CSBs), and other tools that provide an abstraction layer between two or more public-cloud providers. There are also tools that manage, monitor, and utilize those services.&lt;/p&gt;
-
-&lt;p&gt;To help you choose the right multi-cloud management platform, I’ve divided the blog into the following parts:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;What is Multi-cloud Management?&lt;/li&gt;
-  &lt;li&gt;Challenges in Multi-Cloud management&lt;/li&gt;
-  &lt;li&gt;Multi Cloud Management Platforms&lt;/li&gt;
-  &lt;li&gt;Features to Consider While Choosing a Multi-Cloud Management Platform&lt;/li&gt;
-  &lt;li&gt;Best Practices to Manage Multi-Cloud Environment&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;what-is-multi-cloud-management&quot;&gt;What is Multi-cloud Management?&lt;/h2&gt;
-
-&lt;p&gt;Multi-cloud management is a practice of developing consistent workflows for managing infrastructure provisioning (set-up/tear-down), security, connectivity, and service discovery across cloud platforms. A well defined multi-cloud management provides the visibility required to prevent challenges that lead to a complex multi-cloud architecture.&lt;/p&gt;
-
-&lt;p&gt;A well-defined cloud management strategy helps organizations achieve the following primary goals.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;Self-service capabilities&lt;/strong&gt;: Self-service capabilities eliminate the traditional processes related to IT resource provisioning.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Workflow automation&lt;/strong&gt;: Cloud management enables workflow automation. Organizations can take actionable steps needed to create and manage computing instances, without human intervention.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Cloud analysis&lt;/strong&gt;: By doing cloud analysis and monitoring, organizations can use the best available services according to requirements. Also, with the use of metrics, organizations can change cloud providers or migrate workloads from the public to private clouds if they don’t get optimal performance.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;challenges-in-multi-cloud-management&quot;&gt;Challenges in Multi-Cloud Management&lt;/h2&gt;
-&lt;h3 id=&quot;cost&quot;&gt;Cost&lt;/h3&gt;
-&lt;p&gt;Many companies suffer from the large expenses of using cloud services due to poor multi-cloud management. In multi-cloud, organizations use multiple services from different cloud providers. Many times, it becomes difficult to utilize all the services as per demand and hence companies have to pay for the services which have been not used.&lt;/p&gt;
-
-&lt;h3 id=&quot;performance&quot;&gt;Performance&lt;/h3&gt;
-
-&lt;p&gt;IT operations teams need to ensure the speed and performance of applications delivered to end users from complex multi-cloud environments. The scale at which IT needs to monitor data and identify problems cannot be effectively managed by humans alone. They must leverage artificial intelligence (AI) and machine learning.&lt;/p&gt;
-
-&lt;p&gt;For example, if you are building an e-commerce app on a multi-cloud environment then performance would be a major challenge.&lt;/p&gt;
-
-&lt;h3 id=&quot;automation&quot;&gt;Automation&lt;/h3&gt;
-
-&lt;p&gt;Managing workloads that span multiple disparate platforms creates the need to address real-time processing and orchestration. Application development organizations, especially in a multi-cloud environment, are slowed by their manual processes for creating and modifying workflows and getting applications into production.&lt;/p&gt;
-
-&lt;h3 id=&quot;cloud-sprawl&quot;&gt;Cloud Sprawl&lt;/h3&gt;
-
-&lt;p&gt;While adopting multi-cloud strategy, organizations have to prevent app sprawl. Cloud sprawl occurs when users fail to decommission unused cloud computing instances or services. The main reason is that the workloads will move between clouds frequently. Cloud Sprawl create resource visibility issues which affect your cloud bill.&lt;/p&gt;
-
-&lt;p&gt;For example, &lt;em&gt;in an organization, employees may be partial to a particular cloud for specific workloads, and this choice may not be consistent across the entire organization. This means the same app might be open across multiple public cloud platforms.&lt;/em&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;migration&quot;&gt;Migration&lt;/h3&gt;
-&lt;p&gt;For most organizations, migrating to the multi-cloud is a significant challenge especially when the migration involves multiple data centers, remote locations, and mobile users. Ensuring secure access to cloud assets with legacy networks often leads to two choices — backhauling cloud traffic to a central Internet access point or sending cloud traffic directly onto the Internet.&lt;/p&gt;
-
-&lt;p&gt;Planning plays a huge role in the migration process. The right multi-cloud management solution can help you migrate applications with existing standards and policies across your new cloud network.&lt;/p&gt;
-
-&lt;h3 id=&quot;compliance&quot;&gt;Compliance&lt;/h3&gt;
-&lt;p&gt;As Cloud Computing provides the agility and ­flexibility, it also breaks the planning and approval process which gives rise to compliance issues in multi-cloud environment which leads to shadow IT, budget overrun, and security issues.&lt;/p&gt;
-
-&lt;p&gt;Organizations need to define standards for the consumption of cloud services and resources as they define for their business processes. With cloud’s shared responsibility model, choosing the right configuration for services and resources, optimizing resource utilization &amp;amp; cost, and securing data on cloud resources comes under the ownership of cloud consumers for both public and private cloud platforms.&lt;/p&gt;
-
-&lt;h3 id=&quot;data-security&quot;&gt;Data Security&lt;/h3&gt;
-&lt;p&gt;As with your own data centers, in multi-cloud also you should have a security framework to rely on. The more levels an attacker has to penetrate to access a valuable resource, the better the chances are that the attack will not be successful.&lt;/p&gt;
-
-&lt;p&gt;Consequently, you should design your service to have numerous layers protecting any sensitive data. This way, you can ensure that if one security measure is breached, other obstacles will be in place to keep the attacker at bay.&lt;/p&gt;
-
-&lt;h2 id=&quot;multi-cloud-management-platforms&quot;&gt;Multi Cloud Management Platforms&lt;/h2&gt;
-
-&lt;p&gt;When an organization’s users take the initiative to adopt infrastructure and solutions from different cloud vendors, challenges emerge. Each new cloud service comes with its own tools that can increase complexity. Multi-cloud environments require new management solutions to optimize performance, control costs and secure complicated mixes of applications and environments, regardless of whether they are inside the data center or in the cloud.&lt;/p&gt;
-
-&lt;h3 id=&quot;bmc&quot;&gt;BMC&lt;/h3&gt;
-&lt;p&gt;BMC provides different solutions to address multi-cloud management challenges like migration, automated cost reporting, service management, performance, visibility, automation, and security.&lt;/p&gt;
-
-&lt;h3 id=&quot;appformix&quot;&gt;AppFormix&lt;/h3&gt;
-&lt;p&gt;AppFormix is a product of Juniper Networks which provides end-to-end visibility into your multi-cloud environment to eliminate any potential issues, rendering your operations simpler and more effective. It enables you to visualize and analyze both physical and virtual environments. Through monitoring and intent-based analytics, AppFormix transforms raw data from a diverse set of resources into a format that you can use immediately.&lt;/p&gt;
-
-&lt;h3 id=&quot;divvycloud&quot;&gt;DivvyCloud&lt;/h3&gt;
-&lt;p&gt;DivvyCloud’s multi-cloud platform helps customers manage AWS, Azure, GCP, VMware, and OpenStack. Developers have the freedom to choose which clouds are best suited for their company’s needs without IT having to develop policy automation and compliance solutions for each cloud.&lt;/p&gt;
-
-&lt;h3 id=&quot;embotics&quot;&gt;Embotics&lt;/h3&gt;
-&lt;p&gt;Embotics’s vCommander leverages a comprehensive set of multi-hypervisor virtualization and cloud management capabilities to allow organizations at any stage of cloud adoption to build and implement the framework, process, automation, and policies that will result in an optimized hybrid cloud environment. It provides support for:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;VMware vSphere&lt;/li&gt;
-  &lt;li&gt;Microsoft Hyper-V&lt;/li&gt;
-  &lt;li&gt;Amazon Web Services (AWS)&lt;/li&gt;
-  &lt;li&gt;Microsoft Azure&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;harmony-controller-by-a10-networks&quot;&gt;Harmony Controller by A10 Networks&lt;/h2&gt;
-&lt;p&gt;Harmony Controller platform introduces a new paradigm for centralized management with granular L4-7 analytics across essentially any deployment–on-premise or cloud. Available in a software or hardware form factor, the controller performs the control plane function and dynamically interacts with and oversees the various A10 Networks-based secure application services residing in the data plane. The Harmony Controller is highly scalable and based on a distributed microservices architecture with clustering to scale to the necessary capacity. The easy to use operator console provides monitoring for controller sub-systems, troubleshooting help, and assistance with recovery mechanisms.&lt;/p&gt;
-
-&lt;h3 id=&quot;zenko&quot;&gt;Zenko&lt;/h3&gt;
-&lt;p&gt;Developed by Scality, Zenko is Open Source Multi-Cloud Data Controller. It allows customers to manage storage across in-house storage and public cloud tiers. Zenko stores information locally and to Amazon S3, Azure Blob storage, Google Cloud Storage or any S3-compatible cloud storage platform (Ceph, Minio and more).&lt;/p&gt;
-
-&lt;h3 id=&quot;cloudyn&quot;&gt;Cloudyn&lt;/h3&gt;
-&lt;p&gt;Cloudyn is an enterprise-grade, SaaS solution that pioneered the single-pane-of-glass approach to managing and optimizing multi-platform, hybrid cloud environments. Supporting Microsoft Azure, Amazon Web Services, Google Cloud and OpenStack, Cloudyn delivers measurable cloud success by enabling full visibility and accountability packaged with continuous optimization across all clouds. The solution provides insights into usage, performance, and cost coupled with actionable recommendations for smart cloud optimization. Cloudyn enables accountability through comprehensive cost allocation and management helping enterprises get to cloud ROI more rapidly.&lt;/p&gt;
-
-&lt;h3 id=&quot;ibm-cloud-manager&quot;&gt;IBM Cloud Manager&lt;/h3&gt;
-&lt;p&gt;IBM Multicloud Manager is a tool for monitoring and managing Kubernetes environments, pinpointing component and service health, and managing applications across clusters and clouds. It includes capabilities for setting security policies and workload management. IBM’s value proposition is that providing a cross-cluster, the cross-cloud view becomes more manageable than handling it individually, within each cloud or cloud service.&lt;/p&gt;
-
-&lt;h2 id=&quot;features-to-consider-while-choosing-a-multi-cloud-management-platform&quot;&gt;Features to consider while choosing a multi-cloud management platform&lt;/h2&gt;
-&lt;h3 id=&quot;service-provisioning&quot;&gt;Service provisioning&lt;/h3&gt;
-&lt;p&gt;The platform should have the feature to launch and allocate the cloud services according to demand. This tool can translate a provisioning request from the console, or an API, and translate that request into the cloud-native API of the target cloud within the multi-cloud architecture.&lt;/p&gt;
-
-&lt;h3 id=&quot;service-monitoring&quot;&gt;Service monitoring&lt;/h3&gt;
-&lt;p&gt;The ability to measure and visualize application and network-layer performance between their hybrid cloud, private cloud, and public cloud services. This includes reporting on what occurs to determine the future use of that service, including reliability, cost metrics, etc.&lt;/p&gt;
-
-&lt;h3 id=&quot;service-performance&quot;&gt;Service performance&lt;/h3&gt;
-&lt;p&gt;The ability to monitor service performance and then log resulting data. Poor-performing services should be blacklisted until the issues have been resolved.&lt;/p&gt;
-
-&lt;h3 id=&quot;service-governancepolicy&quot;&gt;Service governance/policy&lt;/h3&gt;
-&lt;p&gt;The ability to define and leverage policies around the use and execution of the service or services.&lt;/p&gt;
-
-&lt;h3 id=&quot;service-orchestration&quot;&gt;Service orchestration&lt;/h3&gt;
-&lt;p&gt;The ability to orchestrate the cloud service to meet the needs of a core business application or business process.&lt;/p&gt;
-
-&lt;h3 id=&quot;monitoring-analytics&quot;&gt;Monitoring analytics&lt;/h3&gt;
-&lt;p&gt;A detailed analysis of how the clouds under management are behaving, key metrics, and predictions around future behaviors such as performance or reliability.&lt;/p&gt;
-
-&lt;h3 id=&quot;integration-with-security&quot;&gt;Integration with Security&lt;/h3&gt;
-&lt;p&gt;The ability to operate seamlessly with the existing cloud security infrastructure. In most cases, this will be identity access management, but it could also deal with compliance systems as well.&lt;/p&gt;
-
-&lt;h2 id=&quot;best-practices-to-manage-multi-cloud-environment&quot;&gt;Best Practices to Manage Multi-Cloud Environment&lt;/h2&gt;
-&lt;p&gt;Map your architecture according to requirements
-Map your entire network, and then identify where the cloud fits in it. Get a clear picture of the cloud’s role in your overall system-management strategy to avoid having to backfill gaps in the data needs of business managers and other customers. Different lines of business will be best served by different cloud providers.&lt;/p&gt;
-
-&lt;h3 id=&quot;standardized-consumption&quot;&gt;Standardized consumption&lt;/h3&gt;
-&lt;p&gt;In a multi-cloud environment, each business unit in an organization might use services from several different providers—for example, an analytics platform from Azure, storage from AWS and AI capabilities from the IBM Cloud. Business units often pay for these services in different ways.&lt;/p&gt;
-
-&lt;h3 id=&quot;integration-remains-a-necessity&quot;&gt;Integration remains a necessity&lt;/h3&gt;
-&lt;p&gt;In multi-cloud, developers require common standards for integrating and managing the supplier ecosystem to help address these issues. A cohesive multi-sourced ecosystem requires integration in six key areas including business, organization, information, governance, processes, and tools.&lt;/p&gt;
-
-&lt;p&gt;For example, the Network layer is critical integration component of the multi-cloud and also need to be designed to let companies run their applications in a hybrid computing environment. The network control, security, and visibility need to extend into public and multi-clouds, making these environments look like a single network, with a single pane of glass management functionalities.&lt;/p&gt;
-
-&lt;h3 id=&quot;use-containers&quot;&gt;Use containers&lt;/h3&gt;
-&lt;p&gt;Having applications packaged with all their dependencies increases portability and can simplify management.&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;Multi-cloud is a solution where multiple clouds from different providers are used for separate tasks. To automate the task and optimize cost, enterprises need a robust multi-cloud management platform. The rising need for different applications is driving the adoption of multi-cloud management platform among end users. With the availability of multi-cloud management platform, enterprises can significantly reduce their dependency on a single provider.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">6 Multi-Cloud Management Platforms, Challenges and Best Practices</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/sw_design.png" /></entry><entry><title type="html">Authenticate applications through facial recognition with Amazon Cognito and Amazon Rekognition</title><link href="http://localhost:4000/blog/authenticate-applications-through-facial-recognition-with-amazon-cognito-and-amazon-rekognition" rel="alternate" type="text/html" title="Authenticate applications through facial recognition with Amazon Cognito and Amazon Rekognition" /><published>2020-01-25T10:41:00+00:00</published><updated>2020-01-25T10:41:00+00:00</updated><id>http://localhost:4000/blog/amzon-cognito-Rekognition-auth</id><content type="html" xml:base="http://localhost:4000/blog/authenticate-applications-through-facial-recognition-with-amazon-cognito-and-amazon-rekognition">&lt;h2 id=&quot;authenticate-applications-through-facial-recognition-with-amazon-cognito-and-amazon-rekognition&quot;&gt;Authenticate applications through facial recognition with Amazon Cognito and Amazon Rekognition&lt;/h2&gt;
+&lt;p&gt;Multi-Cloud architecture provides an environment where businesses can build secure and powerful cloud environments outside the traditional infrastructure. Maximizing the impact of multi-cloud, however, means tackling the challenges of app sprawl, unique portals, compliance, migration and security head-on. The main goal multi-cloud strategy is to use as many clouds as per requirements to address the limitations of using one cloud from a single provider. Though toggling between cloud providers to perform tasks can be complicated, especially right out of the gate, cloud service providers are working to make toggling between clouds increasingly efficient. The more efficient it becomes; the more multi-cloud computing will evolve.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">6 Multi-Cloud Architecture Designs for an Effective Cloud Strategy</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/sw_design.png" /></entry><entry><title type="html">Authenticate applications through facial recognition with Amazon Cognito and Amazon Rekognition</title><link href="http://localhost:4000/blog/authenticate-applications-through-facial-recognition-with-amazon-cognito-and-amazon-rekognition" rel="alternate" type="text/html" title="Authenticate applications through facial recognition with Amazon Cognito and Amazon Rekognition" /><published>2020-01-25T10:41:00+00:00</published><updated>2020-01-25T10:41:00+00:00</updated><id>http://localhost:4000/blog/amzon-cognito-Rekognition-auth</id><content type="html" xml:base="http://localhost:4000/blog/authenticate-applications-through-facial-recognition-with-amazon-cognito-and-amazon-rekognition">&lt;h2 id=&quot;authenticate-applications-through-facial-recognition-with-amazon-cognito-and-amazon-rekognition&quot;&gt;Authenticate applications through facial recognition with Amazon Cognito and Amazon Rekognition&lt;/h2&gt;
 
 &lt;p&gt;With increased use of different applications, social networks, financial platforms, emails and cloud storage solutions, managing different passwords and credentials can become a burden. In many cases, sharing one password across all these applications and platforms is just not possible. Different security standards may be required, such as passwords composed by only numeric characters, password renewal policies, and providing security questions.&lt;/p&gt;
 
@@ -2537,192 +2681,4 @@ The following image is an employment application with form fields and a table.&l
 
 &lt;p&gt;Presently serverless is driven by cloud-native practitioners, but as serverless adoption increases the organizations will continue to utilize multiple clouds, with AWS usually being part of the mix. Thus in the future, we are likely to see Azure and Google Cloud Functions catching up with AWS Lambda.&lt;/p&gt;
 
-&lt;p&gt;If you are diving into serverless with no platform preference, I would encourage everyone to explore and try each of these before incorporating them into their custom software development services. Understand the use cases why and when serverless can help you.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Comparing Serverless Providers</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/sw_design.png" /></entry><entry><title type="html">Serverless vs Containers A Face-off between your Application Deployment Options</title><link href="http://localhost:4000/blog/serverlessVScontainers" rel="alternate" type="text/html" title="Serverless vs Containers A Face-off between your Application Deployment Options" /><published>2020-01-15T10:41:00+00:00</published><updated>2020-01-15T10:41:00+00:00</updated><id>http://localhost:4000/blog/ServerlessVsContainerCompare</id><content type="html" xml:base="http://localhost:4000/blog/serverlessVScontainers">&lt;h2 id=&quot;serverless-vs-containers&quot;&gt;Serverless-vs-containers&lt;/h2&gt;
-
-&lt;p&gt;Like most of the existing cloud application development trends, Serverless and Containers have been widely spoken-of and discussed among developers. Some feel that Serverless originated as an alternative to containerization and some feel serverless can be used with containers for application deployment.&lt;/p&gt;
-
-&lt;p&gt;The difference between Serverless and Containerization is not limited to performance, but also applicable for longevity limitations, application scalability, time-of-deployment etc.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/6/container-function-1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;It’s 2019 and like most of the ongoing trends of devops, going serverless or using containers for application deployment seem to be a common point of debate among all new kids (pun intended!) on the block right now! And we still feel it’s not going to end anytime soon.&lt;/p&gt;
-
-&lt;p&gt;However, Is the Serverless vs Container comparison popular just because some cloud enthusiasts feel that serverless computing is a replacement for containers? OR Is it because some people feel that serverless is just another technology that can be used inside containers?&lt;/p&gt;
-
-&lt;p&gt;In this article, we’ll compare both these technologies and try to find out which one (if any!) is better. What are the common and distinct qualities? Which one is suitable for what application use case? But first, let’s start with some background.&lt;/p&gt;
-
-&lt;h3 id=&quot;why-do-we-need-serverless-computing&quot;&gt;Why do we need Serverless computing?&lt;/h3&gt;
-&lt;p&gt;Over the past few years, we used to deploy our applications over big servers where the overall responsibility for managing or provisioning the resources is upon us. There are few issues with it:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Unnecessary charges for keeping the server up even when we are not consuming any resources&lt;/li&gt;
-  &lt;li&gt;Overall responsibility for maintenance and uptime of the server is upon us&lt;/li&gt;
-  &lt;li&gt;We are also responsible for applying the appropriate security updates to the server.&lt;/li&gt;
-  &lt;li&gt;As our usage scales we need to manage scaling up our server as well. And as a result manage scaling it down when we don’t have as much usage.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;With so many issues (like the ones mentioned above), it’s a lot of work to handle for smaller companies and individuals. Moreover, as a result this impacts the overall Time to market and cost of delivery which is otherwise the most important factors in &lt;strong&gt;Custom software development&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;This is where “Serverless computing” comes into play. With Serverless computing, you are provided with an execution model where your cloud provider (AWS, Azure or Google cloud) is executing a piece of code by dynamically allocating the resources. This only charge you for the amount of resources that are used to run the application code. That’s a lot of cost cutting when you compare the &lt;em&gt;compute cost&lt;/em&gt; with traditional servers. This way, your overall experience of computing is “serverless” (as the cost of managing server resources is less) but the infrastructure is not. If you want to know A-Z of serverless architecture, &lt;a href=&quot;blog/serverless-architecture-guide&quot;&gt;&lt;em&gt;read our Comprehensive Guide to Serverless Architecture&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;why-do-we-need-containerization&quot;&gt;Why do we need Containerization?&lt;/h3&gt;
-&lt;p&gt;Containerization is needed because it intends to solve an important problem: to ensure that a software runs correctly when it is moved from one computing environment to another.  Containerization an application also enables different teams to work on different parts of the application independently, as far as there is no major change in the way how they interact with each other. As a result, it is easier to develop a software and testing it faster for all the possible errors.&lt;/p&gt;
-
-&lt;p&gt;In a world such as agile, DevOps, this has become more critical than ever. Containers simply make it simple for developers to know that their software will run without worrying about where it will be deployed. They also enable that we have commonly known as ‘microservices’.&lt;/p&gt;
-
-&lt;p&gt;Following are the items that are usually bundled in a container:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Application&lt;/li&gt;
-  &lt;li&gt;Dependencies&lt;/li&gt;
-  &lt;li&gt;Libraries&lt;/li&gt;
-  &lt;li&gt;Binaries&lt;/li&gt;
-  &lt;li&gt;Configuration files&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;To manage all these containers, you are required to have another set of specialized software like Docker Swarm, Kubernetes, etc. This software helps you orchestrate these containers so that you can push them out to different machines while making sure that they run.&lt;/p&gt;
-
-&lt;p&gt;The Image attached below represents how Containerization works:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/6/Artboard-6.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Now that we now why do we need serverless and containers, let’s have a feature by feature comparison of Serverless vs Containers so as to get a proper idea about each deployment option:&lt;/p&gt;
-
-&lt;h4 id=&quot;1-longevity-limitations-in-containers-vs-serverless&quot;&gt;#1. Longevity Limitations in Containers vs Serverless&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;Serverless&lt;/strong&gt;: As you may know, functions live very ‘short’. Here, short can be defined as 5 minutes or less. Functions are ephemeral, means, the container running the function may live for only once and die after its execution.&lt;/p&gt;
-
-&lt;p&gt;Shorter lifespan is one of the caveats of functions but it also provides agility which gives devs freedom and flexibility to push apps into the production which are easy to scale.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Containers&lt;/strong&gt;: This is not the case with containers. Containers are always running and spinning and they do not die once their execution is done. This empowers them to leverage the benefit of caching, about which we will discuss later, but at the same time, scaling is not instantaneous.&lt;/p&gt;
-
-&lt;h4 id=&quot;2-state-persistency&quot;&gt;#2. State persistency&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;Serverless&lt;/strong&gt;: As discussed in the above point, functions are ephemeral or ‘short-lived’ which in turn, makes them stateless. The more stateless your functions are, the more ways there are to put them together and build something powerful.&lt;/p&gt;
-
-&lt;p&gt;The power of stateless computing lies in the ability to empower developers to write powerful, reusable functions and combine them. But it comes with the downside of caching. Since functions are stateless, you cannot cache anything for the further use, as a result, it faces high latency about which we will discuss in next point.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Containers&lt;/strong&gt;: With containers, you can leverage the benefits of caching. To allow the data to be stored even when the containers are terminated, you’ll need to use a storage mechanism that will manage the data outside of the container. Anyways, why caching is so important?&lt;/p&gt;
-
-&lt;p&gt;If the objects on the object file that container is about to produce is same as the previous builds, reusing a cache from the previous result is a great time saver in terms of computing. This enables the building of new containers extremely fast.&lt;/p&gt;
-
-&lt;h4 id=&quot;3-latency--startup-time&quot;&gt;#3. Latency &amp;amp; Startup Time&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;Serverless&lt;/strong&gt;: Since functions are stateless, caching is unavailable and they don’t have copies of your functions running on standby, it results in higher invocation time. Functions stay warm, or your code is running while getting a command to be executed, for 15 minutes and die, hence, if you call it after the specified time, it will be a cold start.&lt;/p&gt;
-
-&lt;p&gt;As a result, you may face latency issues especially when there are concurrent users. To tackle this, you can add the following code to it to keep it warm all the time as mentioned in our previous blog: Serverless Performance: Challenges and Best Practices.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/6/serverless.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;However, this is temporary and can be used while you’re dealing with fewer functions. If you’re using it for all the functions, soon there will be a lot of dummy functions and then you won’t be able to manage it properly. However, the number of the function is quite small, it makes sense to use functions rather than spinning a whole container.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Containers&lt;/strong&gt;: Considering the pre-serverless era of containers, these are always sitting there and all you have to do is send an HTTPS request to it and you get an instant response and low latency time. With caching at the advantage, containers can be spun fast with none of the files to be created again, as a reference to them is sufficient to locate and reuse the already built structures.&lt;/p&gt;
-
-&lt;h4 id=&quot;-scalability-in-serverless-and-containers&quot;&gt;# Scalability in Serverless and Containers&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;Serverless&lt;/strong&gt;: In serverless architecture, the backend of an application automatically and inherently scales to meet demand of the desired scalability. Moreover, Serverless Computing can be compared to the functioning manner of a water supply: your supply provider turn the tap on and your consumers can acquire as much water they need at any time. They only pay for what they use. This concept is far more scalable than the attempt to buy water one bucket, or shipping one container at at time.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Containers&lt;/strong&gt;: While using a container-based architecture, it’s the job of a developer to determine the number of containers to be deployed in advance when it comes to scale the application according to the desired needs. Moreover, with the increased demand a shipping company would try to ship more containers to the destination to meet that demand. But this won’t be much scalable either when demand of consumers exceeds the shipping company’s expectation.&lt;/p&gt;
-
-&lt;h4 id=&quot;4-portability--migration&quot;&gt;#4. Portability &amp;amp; Migration&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;Serverless&lt;/strong&gt;: Let’s assume you’re already using many different services of AWS. If this is the case, then opting for Lambda functions would be extremely easy as it facilitates fast and accessible integration with its other services.&lt;/p&gt;
-
-&lt;p&gt;Even if it’s not the case and you fear vendor lock-in, what you can do is to make sure all API endpoints and URLs used in your code get mapped through a domain/change via DNS is under your control.&lt;/p&gt;
-
-&lt;p&gt;This gives you an option of cutting off a particular service or redirecting them to a different endpoint of your choice (eg. an another BaaS provider). This is better than hard coding your code in an endpoint which is not under your control or is unalterable.&lt;/p&gt;
-
-&lt;p&gt;However, there are many FaaS providers and your concern for vendor lock-in is quite obvious. In case of Lambda, if it isn’t meeting your region specific requirements, here is what you can do. All Lambda handler code should be isolated and extremely thin shims to logic that is locked up in other modules/classes.&lt;/p&gt;
-
-&lt;p&gt;This increases reusability and in the event that a refactor is necessary to move out of Lambda, makes that work much easier and straightforward. This also facilitates unit testing. An example of a thin Lambda handler:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/6/code.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Speaking of migration, it is still hazy how to fit FaaS into the current DevOps framework. It might happen that your organisation will write hundreds of function and after a time, nobody knows what functionalities were included in which functions and how many of them are still in use.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Containers&lt;/strong&gt;: If you’re opting for container-based microservices architecture, these provide great portability. The time and efforts to move the code from developer’s laptop to your internal datacenter or out to different cloud providers are minimal.&lt;/p&gt;
-
-&lt;p&gt;With the immense stress on innovation and time to market are getting lesser and lesser, opting for microservices empowers you to spin up new versions of your application.&lt;/p&gt;
-
-&lt;p&gt;Hence microservices sounds like a good option to get started if you’re moving from monoliths due to ease in migration and various option for technology stack for multiple containers.&lt;/p&gt;
-
-&lt;p&gt;However, running a container on a cloud platform has a huge amount of interdependencies. Such as upgrades need to be planned together which includes container hosts, container images, container engine and container orchestration.&lt;/p&gt;
-
-&lt;p&gt;For some legacy applications that you want to shift to microservices, ‘containerizing’ them might be an easy and cheap option than to re-architecting the whole application into functions.&lt;/p&gt;
-
-&lt;p&gt;#5. Development Environments &amp;amp; Language support for Serverless and Containers
-Serverless: The language supported by popular FaaS providers are quite limited which mainly includes Node.js, Python, Java, C# and Go (in case of AWS Lambda).&lt;/p&gt;
-
-&lt;p&gt;Containers: While containers empowers you with heterogeneous development environments and you can work on any technology stack you want. It might not sound like a huge benefit since developers these days are well-versed with multiple languages, but it is!&lt;/p&gt;
-
-&lt;p&gt;When you’ll be hiring for your new project, you won’t be required to take language into considerations for microservice architecture. Since microservices are independently deployable and scalable with each service providing a firm module boundary, services can be written in the language of any choice and can be managed by different teams.&lt;/p&gt;
-
-&lt;h4 id=&quot;6-system-control&quot;&gt;#6. System control&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;Serverless&lt;/strong&gt;: Dealing with functions such as AWS Lambda doesn’t come off as a hard task as it eliminates the infrastructure complexity, as a result, you can focus more on developing your product and business outcomes. It significantly reduces the time to market which is not the case with containers. However, there is a long list of things that should not be done while using AWS Lambda.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Containers&lt;/strong&gt;: Plus, management of cluster configuration is a serious challenge as it prerequisites solid background in container technology. Talking about the control, microservices are comparatively easy to handle. Plus, orchestration framework like Kubernetes accelerates your governance and control over the architecture.&lt;/p&gt;
-
-&lt;p&gt;Container-based microservice architecture imparts you full control over the individual as well as the whole system. This enables you to set policies, allocate and manage resources. Plus, having fine grain control over the security and migration services.&lt;/p&gt;
-
-&lt;p&gt;With the full control over the container system comes the ability to see inside and outside of the containers. This allows comprehensive and effective testing &amp;amp; debugging using multiple environments and extensive resources. Whereas actual implementation and local testing of functions aren’t possible and hence it is hard to guess the performance issues.&lt;/p&gt;
-
-&lt;h4 id=&quot;7-resource-heavy-processing-in-serverless-and-containers&quot;&gt;#7. Resource heavy processing in Serverless and Containers&lt;/h4&gt;
-&lt;p&gt;Let’s take an example of AWS Lambda, if the function is taking more than 5 minutes, you’ll be mandated to dissect these tasks into smaller ones, plus, these are not the only limitations while working with them.&lt;/p&gt;
-
-&lt;p&gt;You can allocate the maximum of 1.5 GB of RAM for executing a single function, your deployment package should not exceed the maximum size of 50 MB. Whereas with containers, you can allocate the computing resources as per your application requirements.&lt;/p&gt;
-
-&lt;h4 id=&quot;8-testing-in-serverless-vs-containers&quot;&gt;#8 Testing in Serverless vs Containers&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;Serverless&lt;/strong&gt;: Testing is difficult in serverless based web applications as it often becomes hard for developers to replicate the backend environment on an local environment.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Containers&lt;/strong&gt;: Since containers run on the same platform where they are deployed, it’s relatively simple to test a container-based application before deploying it to the production.&lt;/p&gt;
-
-&lt;h4 id=&quot;9-maintenance-in-containers-and-serverless&quot;&gt;#9. Maintenance in Containers and Serverless&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;Serverless&lt;/strong&gt;: Maintenance in Serverless based applications is much easier than you can ever imagine. Since your serverless vendor such as AWS lambda takes care of all sort of things such as management and software updates to the server, overall maintenance is less.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Containers&lt;/strong&gt;: Unlike Serverless – with which a developer don’t have to think about maintenance – it’s a developer job to to manage and update each container he deploy.&lt;/p&gt;
-
-&lt;h4 id=&quot;10-cost-comparison-in-serverless-and-containers&quot;&gt;#10. Cost comparison in Serverless and Containers&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;Serverless&lt;/strong&gt;: As already mentioned above, using Serverless functions such as AWS lambda for application deployment prevents you for bearing unnecessary expenses of resources because application code does not run unless it is called. Instead, you will be charged for the server capacity that your application is going to use, anyways. If you want to have a clear overview regarding &lt;em&gt;AWS lambda pricing&lt;/em&gt;, we’ve already covered that in our previous blog post.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Containers&lt;/strong&gt;: Containers are constantly running, and therefore cloud providers have to charge for the server space even if no one is using the application at the time.&lt;/p&gt;
-
-&lt;h4 id=&quot;11-time-of-deployment-difference-in-containers-vs-serverless&quot;&gt;#11. Time of deployment difference in Containers vs Serverless&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;Serverless&lt;/strong&gt;: Since serverless functions are smaller than container microservices and they do not come bundled with system dependencies, it takes only milliseconds to deploy an application. Moreover, Serverless applications goes live as soon as the code is deployed.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Containers&lt;/strong&gt;: Although, Containers take longer to setup at the initial stages of development but once configured they only take few seconds to deploy.&lt;/p&gt;
-
-&lt;h2 id=&quot;when-to-use-serverless--serverless-use&quot;&gt;When to Use Serverless? : Serverless Use&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/6/what-function-can-do-better.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Serverless Computing is perfect fit for the following use-cases:&lt;/em&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;If your traffic pattern changes automatically. Not only it will be handled automatically, it will even shut down when there is no traffic at all.&lt;/li&gt;
-  &lt;li&gt;If you are worried about the cost of maintenance of servers and the resources your application consume, serverless will be great fit for such use-case&lt;/li&gt;
-  &lt;li&gt;If you don’t want to spend much time in thinking where your code is running and how!&lt;/li&gt;
-  &lt;li&gt;Serverless websites and applications can be written and deployed without handling the work of setting up infrastructure. As such, it is possible to launch a fully-functional app or website in days using serverless.&lt;/li&gt;
-  &lt;li&gt;Serverless architecture allows you to build performance-enhancing image and video services for any application. You can use its services to do things like dynamically resize images or change video transcoding for different target devices.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;when-to-use-containers--containers-use-case&quot;&gt;When to Use Containers? : Containers Use Case&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/6/What-containers-can-do-better-Copy.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Containers are best to use for Application deployment in following use cases:&lt;/em&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;If you want to use the operating system of your own choice and leverage full control over the installed programming language and runtime version.&lt;/li&gt;
-  &lt;li&gt;If you want to use software with specific version requirements, containers are great to start with.&lt;/li&gt;
-  &lt;li&gt;If you are okay in bearing cost of using big yet traditional servers for anything such as Web APIs, machine learning computations, and long-running processes, then you might also want to try out containers as well (They will cost you less than servers anyways)&lt;/li&gt;
-  &lt;li&gt;If you want to develop new container-native applications&lt;/li&gt;
-  &lt;li&gt;If you need to refactor a very large and complicated monolithic application, then it’s better to use container as it’s better for complex applications&lt;/li&gt;
-  &lt;li&gt;Some organizations still use containers to migrate existing applications into more modern environments. Container orchestration tools like Kubernetes comes with already defined best practices which provide ease in managing large-scale container set-up.&lt;/li&gt;
-  &lt;li&gt;Container orchestration platforms such as Docker can solve your issues with unpredictable traffic (auto-scaling), however, the process of spinning containers up or down won’t be instantaneous.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
-
-&lt;p&gt;Which one should you choose? It looks like both have its own benefits. Both can be best or worse solution depending on the use case and there can’t be anything predefined.&lt;/p&gt;
-
-&lt;p&gt;If your existing application is big and it exists on-premise, you may first want to run in containers and then slowly move some of its parts towards functions. If you already have a microservice based application and you do not mind vendor lock-in, you can think of going serverless.&lt;/p&gt;
-
-&lt;p&gt;Serverless architecture definitely worths your attention especially due to its cost-effectiveness.&lt;/p&gt;
-
-&lt;p&gt;As discussed in the introduction, we can’t really say that serverless means the death of containers. Not as of now. However, containers and serverless are both growing technology and it will be interesting to see what each one of them behold.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Serverless-vs-containers</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/sw_design.png" /></entry></feed>
+&lt;p&gt;If you are diving into serverless with no platform preference, I would encourage everyone to explore and try each of these before incorporating them into their custom software development services. Understand the use cases why and when serverless can help you.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Comparing Serverless Providers</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/sw_design.png" /></entry></feed>

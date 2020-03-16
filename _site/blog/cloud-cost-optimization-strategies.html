@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#2A80EE">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#2A80EE">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
+<title>Cloud Cost Optimization Strategies (Even AWS won't Tell you!) &#8211; Girish Godage</title>
+<meta name="description" content="Fine-tuning your cloud infrastructure is critical to make sure that your overall bill keeps up to its limit. Read this blog to find out proven cloud cost optimization strategies to help you cut down on the bill and save money by eliminating unused resources.">
+<meta name="keywords" content="AWSCloud">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all">
+
+<!-- Verifications -->
+    
+    
+        
+<!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Cloud Cost Optimization Strategies (Even AWS won't Tell you!)">
+    <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
+    <meta property="og:url" content="http://localhost:4000/blog/cloud-cost-optimization-strategies">
+    <meta property="og:site_name" content="Girish Godage">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@GGodage" />
+    
+    <meta name="twitter:title" content="Cloud Cost Optimization Strategies (Even AWS won't Tell you!)" />
+    <meta name="twitter:description" content="Fine-tuning your cloud infrastructure is critical to make sure that your overall bill keeps up to its limit. Read this blog to find out proven cloud cost optimization strategies to help you cut down on the bill and save money by eliminating unused resources." />
+    <meta name="twitter:url" content="http://localhost:4000/blog/cloud-cost-optimization-strategies" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/img/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/img/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    
+
+
+    <link rel="canonical" href="http://localhost:4000/blog/cloud-cost-optimization-strategies">
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
+    <!-- Bootstrap CSS-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Google fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+   
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
+    
+    <!-- animate.css-->
+    <link rel="stylesheet" href="http://localhost:4000/sitejs/animate.css/animate.css">
+    <!-- theme stylesheet-->
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="http://localhost:4000/css/custom.css" as="style">
+    <link rel="stylesheet" href="http://localhost:4000/css/comments.css" as="style">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="http://localhost:4000/img/logo-big.png">
+    <!-- Fab Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
+    
+    
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    
+    <script type="text/javascript">
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+       ga('create', 'UA-130164763-2', 'auto');
+       ga('send', 'pageview');
+    </script>
+    
+    <!-- Typed.js DONT TOUCHHHHHHHHHHHHH!-->
+    <!--<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.9/typed.min.js"></script>
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+      </script>
+      
+      <!-- START OF RELEVANT PART -->
+    <script async src="https://just-comments.com/w2.js"></script>
+    <!-- END OF RELEVANT PART -->
+
+
+</head>
+
+<body>
+    
+<!-- navbar-->
+<header class="header">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container"><a class="navbar-brand" href="http://localhost:4000"><img
+          src="http://localhost:4000/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
+          alt="logo"> <img src="http://localhost:4000/img/girish_logo.png" height="30" alt="girilogo"></a>
+      <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span
+          class="fa fa-bars" style="color: white"></span></button>
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="http://localhost:4000#home" class="nav-link  link-scroll">Home</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#about" class="nav-link link-scroll">About</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#skills" class="nav-link link-scroll">Skills</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#services" class="nav-link link-scroll">Services</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#references" class="nav-link link-scroll">My
+              work</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#contact" class="nav-link link-scroll">Contact</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000/blog" class="nav-link link-scroll">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    
+    
+    
+    <div style="background-color:Gray;">
+        <div style="padding:0;min-height:95.05vh;display:flex;font-family: Poppins, sans-serif;margin-top: 5rem;"
+            class="container">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <p class="post-title">
+                    <h1><a href="/blog/cloud-cost-optimization-strategies">Cloud Cost Optimization Strategies (Even AWS won't Tell you!)</a></h1>
+                </p>
+                
+                <span class="post-meta">
+              <span style="font-weight:600">January 25, 2020 Saturday</span>
+                    
+                       ( 11 minute read ) 
+                    
+                     
+                    <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">   by Girish Godage</a>
+                </span>
+                
+                <div class="site-category"> 
+                        <h5>AWSCloud</h5>
+                </div>
+                
+                <hr>
+                <div><img class="post-image" src="/img/sw_design.png" alt="Cloud Cost Optimization Strategies (Even AWS won't Tell you!)" height="250" /></div>
+                <div class="post-content">
+                    <br>                     
+                    <h2 id="6-cloud-cost-optimization-strategies-even-aws-wont-tell-you">6 Cloud Cost Optimization Strategies (Even AWS won’t Tell you!)</h2>
+
+<p>Fine-tuning your cloud infrastructure is critical to make sure that your overall bill keeps up to its limit. Read this blog to find out proven cloud cost optimization strategies to help you cut down on the bill and save money by eliminating unused resources.</p>
+
+<p><img src="/img/awscloud/16/Diagram1.png" alt="image info" /></p>
+
+<p>Stanford University researcher and lecturer Dr. Jonathan Koomey presented a report last year which stated a surprising fact that only 20 per cent of organizations would save money if they transferred their server data directly to the cloud, whereas 80 per cent would see an increase in the annual costs.</p>
+
+<p>For those organizations comprising of 80 per cent, the extra cost rolls over when they move on to the cloud, Koomey found, which results in organizations paying an average of 36 per cent more of cloud services than they actually need to. Given Gartner’s projection that data storage will be a $173 billion business in 2018, companies globally could save $62 billion on storage just by optimizing their workloads. This is understandable since, for organizations using cloud resources aggressively, it becomes difficult to keep the cloud bills in check.</p>
+
+<p>If your organization is one of those who overspend on the cloud resources, this blog is for you where we discuss some of the prominent strategies that I put into practice so that our clients get the best result in the lease possible spending.</p>
+
+<p>For any organization, the major spend of 70-80 per cent comprises of the storage and compute resources. And hence, this makes it inherently important to monitor these aspects closely. However, the first step towards keeping a strict eye on the bill is to increase the visibility into the cloud costs and understanding the total cost of ownership. Let’s get started!</p>
+
+<ul>
+  <li>
+    <h2 id="cost-optimization-strategies-for-compute">Cost Optimization Strategies for compute</h2>
+  </li>
+  <li>
+    <h2 id="cost-optimization-strategies-for-storage">Cost Optimization Strategies for Storage</h2>
+  </li>
+  <li>
+    <h2 id="cost-optimization-tools">Cost Optimization Tools</h2>
+  </li>
+</ul>
+
+<h2 id="aws-cloud-cost-optimization-strategies">AWS Cloud Cost Optimization Strategies</h2>
+
+<p>The majority of spending for most users is on compute, making it a key area of focus for cost reductions.</p>
+
+<h3 id="1-downsize-under-utilized-instances">1. Downsize under-utilized instances</h3>
+<p>Downsizing one size in an instance family reduces costs by 50 per cent. Let’s take one example of m4.large and t2.small.</p>
+
+<p><img src="/img/awscloud/16/Scale.png" alt="image info" /></p>
+
+<p>As shown in the image, m4.large is utilized less than 50% between 0 to 9 am. Server usage increases from 9 am to 2 pm. Here it requires two m4.large instances. Again, usage starts decreasing till 6 pm and increases in the night. As per the graph, it is clear that during some specific time span single m4.large can’t be utilized even 50% of its capacity. It costs $4.1/day.</p>
+
+<p>Under-utilized instances should be considered as candidates for downsizing either one or two instance sizes. Keep in mind that downsizing one size in an instance family reduces costs by 50 per cent.</p>
+
+<p>According to server load graph, we can use t2.small for utmost utilization. As t2.small has a half compute capacity than m4.large so 70 t2.small instances are required instead of 41 m4.large instances. Using t2.small instances the decision makers can save more than 60% of the instance cost.</p>
+
+<h3 id="2-turn-off-unused-instances">2. Turn off unused instances</h3>
+
+<p>Organizations use instances according to the highest peak of requirement which is not constant. Due to variation in the requirement, organizations have to pay for non-utilized instances. To fully optimize cloud spend, turn instances off that are no longer being used. The below image shows how servers load varies on a particular day and then turn off instances.</p>
+
+<p><img src="/img/awscloud/16/Scale-2.png" alt="image info" /></p>
+
+<p>As you can see in the above image, server load can be handled by 1 instance so you can turn off 2nd instance to save the cost. During the next 8 hours server load increases and requires two instances. Again, server load decreases from 16 to 24 and you can turn off 2nd instance.</p>
+
+<p>Production instances should be auto-scaled to meet demand. Shutting down development and test instances in the evenings and on weekends when developers are no longer working can save 65 per cent or more of costs. And instances for training, demos, and development must be terminated once projects are completed.</p>
+
+<h3 id="3-use-discounted-instances">3. Use discounted instances</h3>
+<p>It is very important to understand Discount options of Instances. In detail for AWS. With AWS Reserved Instances, you get the discount in exchange for making a one-year or three-year commitment with the longer commitment giving a higher discount. Discounts range from 24 to 75 per cent depending on the RI term, the instance type, and the region.</p>
+
+<h3 id="4-aws-spot-instances">4. AWS spot instances</h3>
+<p>On the AWS spot market, the traded products are EC2 instances, and they’re delivered by starting an EC2 instance. It is very common to see 15-60% savings, and in some cases, you can save up to 90% with spot instances.</p>
+
+<p><strong>How does it work?</strong></p>
+
+<p>You set a maximal bid price and optionally a period up to 6 hours. The price you pay is the spot price each hour. When this price goes above your specified maximum bid price, the instance is terminated. Be careful that the new console for spot creates you a fleet, and even terminating the instance yourself, the fleet remains open. You need to cancel the “spot request” (the fleet), as well as terminate the instance(s) when you are done. The instances are guaranteed to remain active for the specified amount of time up to 6 hours. See below image for more understanding.</p>
+
+<p><img src="/img/awscloud/16/Scale-2-1.png" alt="image info" /></p>
+
+<p>Cloud Cost Optimization Strategies
+You may also like: <strong>How to Choose the Right Cloud Deployment Model for your Application?</strong></p>
+
+<p>There are many different spot markets available. A spot market is defined by:</p>
+
+<ul>
+  <li>Instance type (e.g. m3.medium)</li>
+  <li>Region (e.g. eu-west-1)</li>
+  <li>Availability Zone (e.g. eu-west-1a)</li>
+</ul>
+
+<p>Each spot market is offering a separate current price. So when using spot instances it is an advantage to be able to use different instance types, in different availability zones or even regions, as this allows you to pick the lowest price available.</p>
+
+<h3 id="5-minimizing-data-transfer-costs">5. Minimizing data transfer costs</h3>
+<p>Make sure your Object Storage and Compute Services in the same region because Data transfer is free in the same region. For example, AWS charges $0.02/GB to download the file from another AWS region.</p>
+
+<p>If you do a lot of cross-region transfers it may be cheaper to replicate your Object Storage bucket to a different region than download each between regions each time. Let’s understand it with AWS S3’s example.</p>
+
+<p>1GB data in us-west-2 is anticipated to be transferred 20 times to EC2 in us-east-1. If you initiate inter-region transfer, you will pay $0.20 for data transfer (20 * 0.02). However, if you first download it to mirror S3 bucket in us-east-1 then you just pay $0.02 for transfer and $0.03 for storage over a month. It is 75% cheaper. This feature is built into S3 called <strong>cross-region replication</strong>. You will also get better performance along with cost benefit.</p>
+
+<p>Use AWS content delivery network called CloudFront If there are a lot of downloads from the servers which are stored in S3 (e.g. images on consumer site).</p>
+
+<p>There are CDN providers such as CloudFlare who charge a flat fee. If you have a lot of static assets then CDN can give huge savings over S3, as just a tiny per cent of original requests will hit your S3 bucket.</p>
+
+<h3 id="6-delete-or-migrate-unwanted-files-after-a-certain-date">6. Delete or migrate unwanted files after a certain date</h3>
+<p>Cloud architects can programmatically configure rules for data deletion or migration between types of storage. This drastically reduces the long-term storage costs. All the major cloud providers have the feature of Lifecycle Management. For instance, active data can remain in Azure Blob Standard storage. But, if certain data begin to show signs of infrequent access, users can program rules to migrate that data over Azure Cool Blob storage to incur a cheaper storage rate.</p>
+
+<p>A lot of deployments uses Object Storage for log collection. You may automate deletion using life cycles. Delete objects 7 days after their creation time. E.g. if you use S3 for backups, it makes sense to delete them after a year. Similarly, you can use the Object Lifecycle management feature in Google cloud and expiration of Blobs in Azure.</p>
+
+<h3 id="7-compress-data-before-storage">7. Compress Data Before Storage</h3>
+<p>Compressing data reduces your storage requirements. Subsequently reducing the cost of storage. Using fast compression algorithm such as LZ4 gives better performance. LZ4 is a lossless compression algorithm, providing compression speed at 400 MB/s per core (0.16 Bytes/cycle). It features an extremely fast decoder, with speed in multiple GB/s per core (0.71 Bytes/cycle). In many use cases, it makes sense to use compute-intensive compressions such as GZIP or ZSTD.</p>
+
+<h3 id="8-take-care-of-incomplete-multipart-uploads">8. Take care of incomplete multipart uploads</h3>
+<p>There are many partial objects in Object Storage which had been interrupted while uploading. If you have a petabyte Object Storage bucket, then even 1% of incomplete uploads may end up wasting terabytes of space. You should clean up incomplete uploads after 7 days.</p>
+
+<h3 id="9-reduce-cost-on-api-access">9. Reduce cost on API access</h3>
+<p>Cost on API access can be reduced by using batch objects and avoiding a large number of small files. Since API calls are charged per object, regardless of its size. Uploading 1-byte costs the same as uploading 1GB. So usually small objects can cause API costs to soar.</p>
+
+<p>For example in AWS S3, PUT calls cost $0.005/1000 calls. So to upload a 10GB file in 5MB chunks it will cost roughly $0.01. Whereas, for 10KB file chunks, it will cost approximately $5.00.</p>
+
+<p>Similarly, it is a bad practice to use CALL/PUT options with tiny files using S3. It makes sense to use batch objects or a database such as DynamoDB or MySQL instead of S3. 1 writes per second in DynamoDB costs $0.00065/hour. Assuming 80% utilization, DynamoDB will cost $0.000226/1000 calls. This is 95% cheaper to use DynamoDB compared to AWS S3.</p>
+
+<p>The S3 file names are not a database. Relying too much on S3 LIST calls is not the right design and using a proper database can typically be 10-20 times cheaper.</p>
+
+<h3 id="10-design-workloads-for-scalability">10. Design workloads for scalability</h3>
+<p>For any public cloud, scalability is a critical aspect. Scalability uses event-driven compute instances like AWS Lambda or containers like Google Container Engine to scale core services for important workloads, such as microservices. These techniques are intended to utilize more computing when it is needed. Once the requirement increases, those additional resources are released for reuse.</p>
+
+<h3 id="11-cache-storage-strategically">11. Cache storage strategically</h3>
+<p>Use memory-based caching, such as AWS ElastiCache. Caching improves data accessibility by moving important or frequently accessed in-memory instead of retrieving data from storage instances. This can reduce the expense of higher-tier cloud storage and improve the performance of some applications.</p>
+
+<p>It gives best results for performance-sensitive workloads which run in remote regions or when efficient replication is needed for resilience.</p>
+
+<h3 id="12-use-auto-scaling-to-reduce-costs-during-off-hours">12. Use auto-scaling to reduce costs during off hours</h3>
+<p>Most apps have busier and slower periods throughout a week or day. Take advantage of auto-scaling to save some money during slow periods.</p>
+
+<p>These deployment types all support auto-scaling:</p>
+
+<ul>
+  <li>Cloud Services</li>
+  <li>App Services</li>
+  <li>VM Scale Sets (Including Batch, Service Fabric, Container Service)</li>
+</ul>
+
+<p>Scaling could also mean shutting your app down completely. You can use “AlwaysOn” feature provides by App Services that controls if the app should shut down due to no activity. You could also schedule shutting down your dev/QA servers with something like DevTest Labs.</p>
+
+<h2 id="aws-cost-optimization-tools">AWS Cost Optimization Tools</h2>
+
+<p>AWS inherently provides a list of tools to helps you in tracking on your AWS bill. Some of these can also generate AWS cloud cost optimization report for you as well.</p>
+
+<ol>
+  <li><strong>AWS Cost Optimization Explorer</strong> – This helps you in observing patterns on your AWS bill, forecast future costs and identify areas that needs further improvement. In short, this works as a AWS cost optimization calculator.</li>
+  <li><strong>AWS Budgets</strong> – This allows you to set custom budgets limits and notification mechanism when your spends exceed the limits. Budgets can be set on tags, accounts and resource types.</li>
+  <li><strong>Amazon CloudWatch</strong> – Apart from collecting and tracking metrics, this helps you in setting custom alarms that automatically reacts to the changes in AWS resources.</li>
+  <li><strong>Cost Optimization Monitor</strong> – This automatically processes the detailed billing remetrics ports so that you get granular metrics which can be searched, analysed and visualised in a customizable dashboard.</li>
+  <li><strong>EC2 Right Sizing:</strong> Quickly analyze the EC2 utilization data and receive reporting recommendations for choosing the correct EC2 instances.</li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The key to using the above methods and any other cost optimization ideas is to have a proactive approach for your custom software development practices. These methods are some of the quintessential Cloud cost optimization techniques you can inculcate in your regular tasks.</p>
+
+<p>We’ve developed this AWS cloud cost optimization guide by closely understanding the existing cost and what changes are critical in both estimating and delivering real cost savings. We hope these will prove useful to you as well.</p>
+
+                </div>
+
+                
+
+                <div id="disqus_thread"></div>
+                <script>
+                
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://girishgodage-github-io.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
+</button>
+<!-- Footer-->
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 text-center text-lg-left">
+                <p class="social">
+                    <a href="https://www.facebook.com/girish.godage.5" class="external facebook wow fadeInUp">
+                        <i class="fa fa-facebook"></i></a>
+                    <a href="https://instagram.com/girishgodage_007" data-wow-delay="0.2s" class="external instagram wow fadeInUp">
+                        <i class="fa fa-instagram"></i></a>
+                    <a href="https://youtube.com/girishgodage" data-wow-delay="0.4s" class="external youtube wow fadeInUp">
+                        <i class="fa fa-youtube-play"></i></a>
+                    <a href="https://twitter.com/GGodage" data-wow-delay="0.4s" class="external twitter wow fadeInUp">
+                            <i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/girishgodage" data-wow-delay="0.4s" class="external github wow fadeInUp">
+                                <i class="fa fa-github"></i></a>    
+                    <a href="mailto:girishgodage@gmail.com?subject=Hello%20Girish" data-wow-delay="0.6s" class="email wow fadeInUp">
+                        <i class="fa fa-envelope"></i></a></p>
+            </div>
+            <div class="col-12 col-md-2">
+            <h5>Quick Links</h5>
+            <ul>
+               <li><a href="http://localhost:4000#about">About</a></li>
+               <li><a href="http://localhost:4000#contact">Contact</a></li>
+               <li><a href="/sitemap.xml">Sitemap</a></li>               
+            </ul>
+         </div>
+            <div class="col-12 col-md-4 text-center text-lg-right mt-4 mt-lg-0">
+                <p> <b>©</b>2019 Girish Godage </p>
+                <p class="text-center, text-shadow"> Hosted On <a href="https://pages.github.com/">GitHub Pages</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Typed.js DONT TOUCH THIS! -->
+    <div id="typed-strings">
+    </div>
+
+        <!-- JavaScript files-->
+    <script src="http://localhost:4000/sitejs/jquery/jquery.min.js"></script>
+    <script src="http://localhost:4000/sitejs/popper.js/umd/popper.min.js"> </script>
+    <script src="http://localhost:4000/sitejs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="http://localhost:4000/sitejs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="http://localhost:4000/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.counterup/jquery.counterup.js"></script>
+    <script src="http://localhost:4000/js/front.js"></script>
+    <script src="http://localhost:4000/js/comment.js"></script>
+       <!-- Script pointing to search-script.js -->
+    <script src="http://localhost:4000/js/search-script.js" type="text/javascript"></script>
+   
+    <!-- Configuration -->
+    <script>
+         SimpleJekyllSearch({
+         searchInput: document.getElementById('search-input'),
+         resultsContainer: document.getElementById('results-container'),
+         json: 'http://localhost:4000/search.json'
+         })
+         </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC36FUDDdOTidZJ8nzS5vfE7KVyayenKPE",
+    authDomain: "githubcontactlist.firebaseapp.com",
+    databaseURL: "https://githubcontactlist.firebaseio.com",
+    projectId: "githubcontactlist",
+    storageBucket: "githubcontactlist.appspot.com",
+    messagingSenderId: "899685398702",
+    appId: "1:899685398702:web:0c23c56d2d6d40df37553f",
+    measurementId: "G-YWBRCYJYFW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script>
+   $(function() {
+      
+    //make a variable to keep track of data coming from firebase
+    var data = [];
+
+    // Reference messages collection
+      var messagesRef = firebase.database().ref('contactformmessages');  
+
+
+    //listen to data updates from firebase
+    messagesRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+        //when the data updates at firebase, put it in the data variable
+        data = snapshot.val();
+    })
+    //Entire Contact Form (handler)
+    $('#contactForm').submit(function(e) {
+      e.preventDefault();
+
+        var $form = $(this);
+        console.log("Submit to Firebase");
+
+        //disable submit button
+        $form.find("#sendForm").prop('disabled', true);
+
+        //get values to send to Firebase
+        var name = $('#name').val();
+        console.log(name);
+		
+		var surname = $('#surname').val();
+        console.log(surname);
+		
+		var email = $('#email').val();
+        console.log(email);	
+		
+		var phone = $('#phone').val();
+        console.log(phone);
+
+        var message = $('#message').val();
+        console.log(message);
+
+       
+        //take the values from the form, and put them in an object
+        var newContact = {
+         "name": name,
+			"surname": surname,
+			"email": email,
+			"phone": phone,
+         "message": message
+        }
+        //put new object in data array
+        data.push(newContact);
+        console.log(data);
+
+        //send the new data to Firebase
+        messagesRef.set(data, function(err) {
+            if (err) {
+                alert("Data no go");
+            }else{
+            $("#form-wrapper").slideToggle();
+            $('#form-success-message').slideToggle();
+			}
+        });
+
+        return false;
+    })
+   
+    
+})
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";           
+        }else
+        {
+           myBtton.style.display="none";     
+          
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+      //  document.body.scrollTop =0;
+      //  document.documentElement.scrollTop=0;
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    }
+
+</script>
+
+    
+    
+
+
+</body>
+
+</html>
