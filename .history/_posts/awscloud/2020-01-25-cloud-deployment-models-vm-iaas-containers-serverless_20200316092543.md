@@ -1,7 +1,7 @@
 ---
-title: Multi-Cloud Management Platforms, Challenges and Best Practices
+title: How to Choose the Right Cloud Deployment Model for your Application?
 date: 2020-01-25 11:41:00 Z
-permalink: "/blog/multi-cloud-management"
+permalink: "/blog/cloud-deployment-models-vm-iaas-containers-serverless"
 categories:
 - AWSCloud
 tags:
@@ -12,10 +12,10 @@ author: Girish Godage
 layout: posts
 prevurl: ''
 nexturl: ''
-discussion_id: 2020-01-25-multi-cloud-management
+discussion_id: 2020-01-25-cloud-deployment-models-vm-iaas-containers-serverless
 ---
 
-## Multi-Cloud Management Platforms, Challenges and Best Practices
+## How to Choose the Right Cloud Deployment Model for your Application?
 
 Multi-cloud management is one of the biggest challenges for enterprises. It can be difficult and often requires the use of third-party tools. This blog consists of some popular multi-cloud management tools and key features you should look while selecting the tool.
 

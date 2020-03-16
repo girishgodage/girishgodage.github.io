@@ -15,7 +15,7 @@ nexturl: ''
 discussion_id: 2020-01-25-multi-cloud-management
 ---
 
-## Multi-Cloud Management Platforms, Challenges and Best Practices
+## 6 Multi-Cloud Management Platforms, Challenges and Best Practices
 
 Multi-cloud management is one of the biggest challenges for enterprises. It can be difficult and often requires the use of third-party tools. This blog consists of some popular multi-cloud management tools and key features you should look while selecting the tool.
 

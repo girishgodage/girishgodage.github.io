@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#2A80EE">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#2A80EE">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
+<title>How to Choose the Right Cloud Deployment Model for your Application? &#8211; Girish Godage</title>
+<meta name="description" content="Understand and analyze different Cloud Deployment Models- public, private, hybrid and community. Select the perfect Cloud Deployment Models based on your App Architecture,VMs vs IaaS vs Containers vs Serverless. Read more to find out their performance &amp; potential use cases.">
+<meta name="keywords" content="AWSCloud">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all">
+
+<!-- Verifications -->
+    
+    
+        
+<!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How to Choose the Right Cloud Deployment Model for your Application?">
+    <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
+    <meta property="og:url" content="http://localhost:4000/blog/cloud-deployment-models-vm-iaas-containers-serverless">
+    <meta property="og:site_name" content="Girish Godage">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@GGodage" />
+    
+    <meta name="twitter:title" content="How to Choose the Right Cloud Deployment Model for your Application?" />
+    <meta name="twitter:description" content="Understand and analyze different Cloud Deployment Models- public, private, hybrid and community. Select the perfect Cloud Deployment Models based on your App Architecture,VMs vs IaaS vs Containers vs Serverless. Read more to find out their performance & potential use cases." />
+    <meta name="twitter:url" content="http://localhost:4000/blog/cloud-deployment-models-vm-iaas-containers-serverless" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/img/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/img/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    
+
+
+    <link rel="canonical" href="http://localhost:4000/blog/cloud-deployment-models-vm-iaas-containers-serverless">
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
+    <!-- Bootstrap CSS-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Google fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+   
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
+    
+    <!-- animate.css-->
+    <link rel="stylesheet" href="http://localhost:4000/sitejs/animate.css/animate.css">
+    <!-- theme stylesheet-->
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="http://localhost:4000/css/custom.css" as="style">
+    <link rel="stylesheet" href="http://localhost:4000/css/comments.css" as="style">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="http://localhost:4000/img/logo-big.png">
+    <!-- Fab Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
+    
+    
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    
+    <script type="text/javascript">
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+       ga('create', 'UA-130164763-2', 'auto');
+       ga('send', 'pageview');
+    </script>
+    
+    <!-- Typed.js DONT TOUCHHHHHHHHHHHHH!-->
+    <!--<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.9/typed.min.js"></script>
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+      </script>
+      
+      <!-- START OF RELEVANT PART -->
+    <script async src="https://just-comments.com/w2.js"></script>
+    <!-- END OF RELEVANT PART -->
+
+
+</head>
+
+<body>
+    
+<!-- navbar-->
+<header class="header">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container"><a class="navbar-brand" href="http://localhost:4000"><img
+          src="http://localhost:4000/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
+          alt="logo"> <img src="http://localhost:4000/img/girish_logo.png" height="30" alt="girilogo"></a>
+      <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span
+          class="fa fa-bars" style="color: white"></span></button>
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="http://localhost:4000#home" class="nav-link  link-scroll">Home</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#about" class="nav-link link-scroll">About</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#skills" class="nav-link link-scroll">Skills</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#services" class="nav-link link-scroll">Services</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#references" class="nav-link link-scroll">My
+              work</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#contact" class="nav-link link-scroll">Contact</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000/blog" class="nav-link link-scroll">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    
+    
+    
+    <div style="background-color:Gray;">
+        <div style="padding:0;min-height:95.05vh;display:flex;font-family: Poppins, sans-serif;margin-top: 5rem;"
+            class="container">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <p class="post-title">
+                    <h1><a href="/blog/cloud-deployment-models-vm-iaas-containers-serverless">How to Choose the Right Cloud Deployment Model for your Application?</a></h1>
+                </p>
+                
+                <span class="post-meta">
+              <span style="font-weight:600">January 25, 2020 Saturday</span>
+                    
+                       ( 19 minute read ) 
+                    
+                     
+                    <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">   by Girish Godage</a>
+                </span>
+                
+                <div class="site-category"> 
+                        <h5>AWSCloud</h5>
+                </div>
+                
+                <hr>
+                <div><img class="post-image" src="/img/sw_design.png" alt="How to Choose the Right Cloud Deployment Model for your Application?" height="250" /></div>
+                <div class="post-content">
+                    <br>                     
+                    <h2 id="how-to-choose-the-right-cloud-deployment-model-for-your-application">How to Choose the Right Cloud Deployment Model for your Application?</h2>
+
+<p>Understand and analyze different Cloud Deployment Models: public, private, hybrid and community. Select the perfect Cloud Deployment Models based on your App Architecture: VMs vs IaaS vs Containers vs Serverless. Read more to find out their performance &amp; potential use cases.</p>
+
+<p><img src="/img/awscloud/17/cover-image4.png" alt="image info" /></p>
+
+<p>When companies talk about moving to the cloud, it is a general assumption that they are bringing their on-premise workload to the public cloud and not switching clouds. However, GitLab, a startup famous for providing developers tools, announced earlier this year that they are abandoning Microsoft Azure and moving to Google Cloud Platform, as mentioned in the official GitLab statement.</p>
+
+<p>This step took place because GitLab wanted to adopt cloud-native practices with the best use of microservices and containers. The same approach used by GitLab is becoming a critical factor for modern software development. Also, Kubernetes turned out their preferable choice since it allows elastic scaling from a couple of users to millions.</p>
+
+<p>GitLab is just not one example! There are many organizations who switch their cloud deployment models amid the requirements demanded by the modern application users.</p>
+
+<p>You could be also one of the people who is reconsidering their public cloud choices. Maybe because your needs have changed? Or you could be one wondering to re-architect an application? The possibilities are endless.</p>
+
+<p>If you are one of those people, this blog is about you. There are many considerations which need to be overlooked when you’re deciding the architecture, technology and cloud deployment models for your application.</p>
+
+<p>Before we move further, let’s discuss the four basic cloud deployment models:</p>
+
+<h2 id="what-are-cloud-deployment-models">What are Cloud Deployment Models?</h2>
+
+<p>Cloud Deployment models are a particular type of cloud environments. They are basically classified based on access, proprietorship and size of the environment. There are four types of cloud deployment models:</p>
+
+<ul>
+  <li>Public Cloud Deployment Model</li>
+  <li>Private Cloud Deployment Model</li>
+  <li>Hybrid Cloud Deployment Model</li>
+  <li>Community Cloud Deployment Model</li>
+</ul>
+
+<p>There are many cloud deployment models, each one with their own specifications, benefits and trade-offs for the people who are reconsidering their options. Since each one should be used for the different set of requirements, it is highly critical for you to have a clear understanding of your options. Let’s discuss all of them.</p>
+
+<h3 id="1-public-cloud-deployment-model">#1. Public Cloud Deployment Model</h3>
+<p>This is the type of cloud deployment model in which the infrastructure is open for anybody to use. This has a distinct benefit of being more secure than transferring information via the Internet. This also costs less than the private cloud deployment model since the services are more commoditized. This is used by businesses which require on-demand scaling, for example, social networking, CRM, storage, etc.</p>
+
+<h3 id="2-private-cloud-deployment-model">#2. Private Cloud Deployment Model</h3>
+<p>This is a type of cloud deployment model in which the infrastructure is provisioned exclusively for a single company which may or may not include consumption through multiple business units.</p>
+
+<p>It can be either on or off premises. This type of cloud deployment model is incorporated when sensitive or mission-critical information is involved. This allows for higher security, reliability and performance. This is mostly incorporated by governments and scientific laboratories.</p>
+
+<h3 id="3-hybrid-cloud-deployment-model">#3. Hybrid Cloud Deployment Model</h3>
+<p>This consists of two or more than two cloud deployment models. All these models are unique but are bound by certain standard protocols. There are very few companies which have the ability to switch over all of their technology stacks to the cloud in one go.</p>
+
+<p>For such companies, a hybrid cloud deployment model provides a smooth transition with the mix of on-premise and cloud options. NASA uses a hybrid cloud deployment model. <strong><em>For example, Nebula, an open-source cloud computing project employs a private cloud for research and development purposes while uses the public cloud to share datasets with the external public and partners.</em></strong></p>
+
+<h3 id="4-community-cloud-deployment-model">#4. Community Cloud Deployment Model</h3>
+<p>This is a type of a cloud deployment model in which the cloud hosting is shared between many companies provided that they are operating within the same domain, for example, banking, government, educational institution, etc.</p>
+
+<p>In other words, a group of several companies share a multi-tenant setup where they have the same privacy, security and performance concerns. This is used by businesses in joint ventures and research firms that require centralized cloud computing systems.</p>
+
+<p>This was to give you a basic idea of the cloud deployment options that are available to you. But selecting the right one for your business is a tricky subject. Foremost of them, it highly depends on your application architecture. Especially when there are multiple viable and noble options depending upon whether you’re a well-established organization with million users or you’re a startup who are trying to build their MVP.</p>
+
+<p>In this blog, we are going to discuss that! Which architecture you should opt for? What are the possible cloud deployment models available? What are the pros and cons? Let’s figure out.</p>
+
+<p><img src="/img/awscloud/17/4-1.png" alt="image info" /></p>
+
+<p>Considering the above flowchart, I assume you have got a better idea about which cloud deployment model you want to use. However, we will discuss each of the points in detail in the following section.</p>
+
+<h2 id="1-right-way-monolithic--stateful-architecture">#1. Right Way: Monolithic &amp; Stateful Architecture</h2>
+<p>Before starting, we assume that you already have a functional app. If not, #2 would be appropriate for you to get started.</p>
+
+<p>The first aspect that we will be evaluating is whether you want to keep the application monolithic and stateful.</p>
+
+<p>Monoliths will require you to compose all of your application within a single piece. It is designed to be served as a self-contained. Different components of the program are interdependent and interconnected to each other.</p>
+
+<p>If any program is to be updated, the whole application has to be rewritten.</p>
+
+<p>However, monoliths have their own benefits. They have better throughput than other architectural patterns. These are also easier to test and debug.</p>
+
+<p>After all these considerations, do you want to keep your architecture monolithic? Are these benefits tops on the list of your application priority? This leads us to our next point.</p>
+
+<p>In case, if you already have an application and want to re-architect the app, may be opting for updated architectural patterns would be the best solution.</p>
+
+<h2 id="2-when-re-architecting-is-not-an-option">#2. When Re-architecting is Not an Option</h2>
+<p>In this section, we will discuss two types of cases. Firstly, what option do you have available if you are not ready to re-architect the app? Secondly, what if you are getting started from scratch?</p>
+
+<p>To discuss the second case, we assume that the application’s first build would be a minimum viable product (MVP). Thus your goal would be to produce an efficient application with faster time to market. In this case, a monolith architecture will be suitable.</p>
+
+<p>Another consideration is feature changes. Sometimes, you’ll be at a place where you’ve bootstrapped an app with well-written specifications and abruptly, there’s a change in one of the specs. This is easy with monolithic.</p>
+
+<p>Here is an interesting image by Martin Fowler which states why going directly to microservices is a dangerous thing:</p>
+
+<p><img src="/img/awscloud/17/path.png" alt="image info" /></p>
+
+<p>Coming to the case where you don’t want to re-architect the app, opting for a service-oriented architecture would be a better solution.</p>
+
+<p><strong><em>Mark Richards in his book Microservices vs Service Oriented Architecture suggests that SOA is better suited for comparatively large, enterprise-wide systems that require integration with many heterogeneous applications and services.</em></strong></p>
+
+<h2 id="3-publicprivate-cloud-options-vms-vs-iaas">#3. Public/Private Cloud Options: VMs vs IaaS</h2>
+
+<p>Public clouds are the most common way of deploying your applications since everything is owned and operated by third-party service providers.</p>
+
+<p>Or maybe if you want to increase your current capacity without much investment, IaaS provides you with the on-demand services. Saying this, it is ideal for a small startup of a mid-sized business.</p>
+
+<p>Another reason being there are no upfront costs to get yourself started and you pay for what your use. Resources are available on-demand to meet your business needs. Some of the IaaS providers are <strong>AWS, DigitalOcean, Microsoft Azure, Rackspace Open Cloud, Alibaba Cloud, Google Compute Engine, etc.</strong></p>
+
+<p>If you do not want to opt for public cloud offerings, VMs could be a probable solution for you. They are suitable if latency is a key factor in your application.</p>
+
+<p>Some of the prominent VMs providers are RedHat, Oracle, VMWare and many more.</p>
+
+<h2 id="4-analyzing-requirements-of-event-driven-architecture">#4. Analyzing Requirements of Event-driven Architecture</h2>
+<p>An event-driven architecture is a development technique where your architecture orchestration will revolve around the production, detection and consumption of events along with the responses they evoke. It works on the principle of event publisher/subscriber and with an event manager which is a middleman between both.</p>
+
+<p>A few questions to ask before you consider opting for event-driven architecture:</p>
+
+<ul>
+  <li>
+    <p><strong><em>Is your current app a small and usable building block? Can it be broken down into small blocks any further?</em></strong></p>
+  </li>
+  <li><strong><em>The outputs and inputs of all the blocks are well-defined?</em></strong></li>
+  <li>
+    <p><strong><em>Would you be able to use current development and build tools?</em></strong></p>
+  </li>
+  <li><strong><em>Does the serverless platform you’re opting for supports the following:</em></strong></li>
+</ul>
+
+<p><strong>#1.</strong> Receiving and sending connections from the current APIs/clients?</p>
+
+<p><strong>#2.</strong> Interacting with the current database?</p>
+
+<p><strong>#3.</strong> Languages you’ve hands-on experience with?</p>
+
+<p>If you think event-driven architecture is your potential option, you may go for <strong>microservices or serverless deployment options</strong> about which we will discuss in the next section. If no, modular/microservices are better-suited options for you? Let’s find out.</p>
+
+<h2 id="5-faas-deployment-options-public-vs-private">#5. FaaS Deployment Options: Public vs Private</h2>
+<p>Now that you’ve decided to opt for event-driven architecture. There are many serverless providers which offer functions-as-a-service on pay-per-use billing model. Or you can also opt for open source options to use at your on-premise data-centres.</p>
+
+<p>FaaS has its own benefits like easy integration, no resource management, extremely inexpensive (based on your usage though) and on-demand scalability. Some of the major FaaS providers are <strong>AWS Lambda, Azure Functions, Cloud Functions, IBM Cloud, Nano Lambda, Syncano, Twilio and many more.</strong></p>
+
+<p>However, if you deploy functions on your on-premise data centres, you have the freedom of unlimited runtime and no cold start issues. <strong><em>Here are some of your options: Apache OpenWhisk, Oracle Fn Project, Kubeless, OpenFaas, Nuclio and many more. For more information on open source serverless options, visit here: Today in Serverless &amp; Open Source</em></strong></p>
+
+<p>Before you opt for either of the cloud deployment model: public or private cloud, I’d suggest having a basic understanding of how vendor lock-in can affect your choices.</p>
+
+<p><strong><em>For example, if you’ve got a common standard then you have multiple vendors to choose from. If you’re self-hosting and can run on any x64 box then it doesn’t matter if HP (say) decides they want to increase the price of their servers, you just buy them from somewhere else</em></strong>.</p>
+
+<p>If you’ve got a rack of servers in a managed datacenter you can put them in a truck and move them to another rack at a competitor (the rack fittings are standard). If you’re running basic VM images and AWS prices rise then you can take those same images to Azure.</p>
+
+<p>But there’s not yet anything like that for lambda: code that uses lambda only runs on AWS because there’s no common standard for the serverless/lambda interface, each cloud provider has their own way of doing it.</p>
+
+<h2 id="6-modular-services--microservices">#6. Modular Services &amp; Microservices</h2>
+<p>Microservice architecture is a distinct method of developing the software/apps wherein organizations who want to work into an agile environment and move towards DevOps and continuous testing.</p>
+
+<p>This allows you to create scalable solutions. It enables you to deliver new features into their live production systems multiple times a day, as well as to support web-scale traffic volumes. This is one of the major reasons why tech giants like <strong>Netflix, eBay, Amazon, Twitter, PayPal and many others work upon this.</strong></p>
+
+<p>Hence, here are the 5 point roadmap you need to answer to analyze whether you’re microservice ready or not?</p>
+
+<ol>
+  <li>Determine whether your team is mature enough to adopt microservices. Whether or not you have a strong and disciplined architectural practice.</li>
+  <li>Do you have a mature agile and DevOps practice? Is your data management team supporting it?</li>
+  <li>If yes, take the process slowly. Initially, use the microservices only for the part where you need it, for examples, in applications with scalability and web-scale agility requirements.</li>
+  <li>What will be your deployment environments? About which we will talk further. However, you will need to supplement it with capabilities such as API gateways, service discovery, monitoring and telemetry, build and test automation, messaging and data persistence.</li>
+  <li>If your team isn’t ready to adopt the microservices architecture in its entirely, consider using modular services to gain relevant experience and significantly agility benefits.</li>
+</ol>
+
+<p>Modular services, on the other hand, are loosely coupled arrangement of objects. This has no specific architecture like SOA, however, do not have the granularity as much as microservices. All the objects are defined according to business capabilities. All these objects interact with each other through the well-defined common interface.</p>
+
+<p>If this sounds good for you, let’s analyze this aspect with little more considerations in the next section.</p>
+
+<h2 id="7-microservices-deployment-containers--orchestration">#7. Microservices Deployment: Containers &amp; Orchestration</h2>
+<p>The most adapted cloud deployment model for microservices architecture is containers. Containers help you in having a focused business scope to meet agility in the development and delivery of services.</p>
+
+<p>If you want to use containers on your on-premise data centre or your private cloud, your options include OpenShift Container Platform, Pivotal Container Service or other Kubernetes based platforms.</p>
+
+<p>On the other hand, if you’re ready to use the public cloud, your container management options include AWS Fargate, Azure Container Instances, Google App Engine Flex, OpenShift Online, etc. These are simplified container management options at a lower cost but with a loss of control. If you need high control over your container management, your options include Amazon EKS, Google GKS and Azure AKS.</p>
+
+<p>Nevertheless, in the below section, we will have a walk through what technology can be used under what prerequisites and where.</p>
+
+<h2 id="when-to-use-vms">When to use VMs?</h2>
+<p>VMs are the heart of cloud computing. Significant adoption of virtualization has led to major changes in the processor architecture. Let’s discuss some of the scenarios where you should be using VMs:</p>
+
+<ul>
+  <li>
+    <p>High Security: With no added alterations, virtual machines provide greater security than other cloud deployment models. The major advantage here is that it has isolated hardware. On the other side, containers have shared kernel resources and application libraries. That says if security is an adamant prerequisite for you, VMs would be the best solution.</p>
+  </li>
+  <li>Disaster Recovery: Major benefit of VM is the low turnaround time for site recovery and high availability. Although physical infrastructure also offers these capabilities, however, virtualization offers a wide range of options.</li>
+  <li>Portable Environments: VMs are basically self-contained packages which are transferable. Virtualization offers you the ability to easily move from one server to another. This is highly critical when you want to balance the workload.</li>
+  <li>Testing Environment: VMs offers multiple test environments. With VMs you can try different operating systems or may just different versions of a single operating system rather than having different computers for each one of them.</li>
+</ul>
+
+<h2 id="when-to-use-iaas">When to use IaaS?</h2>
+<p>IaaS in other sense is a virtual data centre. It can be used for a variety of purposes. You can install and make use of the operating system you like.</p>
+
+<ul>
+  <li>
+    <p><strong>Temporary Workload</strong>: <em>Unlike VMs, servers, storage, network resources and data centre is managed by the service providers. This makes IaaS a perfect option to opt for in cases where you want to deal with the temporary workload (say, during Christmas or Black Friday Sale) without much of a hassle. This lets you extend your data centre capabilities.</em></p>
+  </li>
+  <li><strong>Data analysis:</strong> <em>To perform a huge analysis of the data, large computing power is required. IaaS provides you with the option to buy that computing power on demand in the most economical way. There are plenty of organizations using IaaS for data analysis and mining purposes be it for structured data or unstructured.</em></li>
+  <li><strong>Networking Services:</strong> <em>IaaS provides you to expand your networking services whenever the complexity grows. This could be for a short-term big data project or to support the ongoing services. This can free up internal IT staff for other priorities.</em></li>
+  <li><strong>High Scalability:</strong> <em>Instead of investing upfront in purchasing the hardware, IaaS provides you with the virtualized computing resources. This lets you scale your workloads as you move forward on the pay-for-use model.</em></li>
+</ul>
+
+<h2 id="when-to-use-containers">When to use Containers?</h2>
+
+<p>If you are a mid-sized company and wants to run an application without the need for virtual machines, containers are for you. Operating through multiple operating systems can be a tedious task, containers let you run everything on a single host with access to the single kernel.</p>
+
+<ul>
+  <li><strong>Single OS:</strong> <em>If you want to make use of an operating system of your own choice and want full control over your runtime language and version, containers work for you. Containers are great to start with when you want to run your software with specific version requirements.</em></li>
+  <li><strong>High Agility:</strong> <em>Containers are comparatively faster than virtual machines because they have less overhead. This makes the development teams move fast, deploy software efficiently and operate at an unprecedented scale.</em></li>
+  <li><strong>Isolated &amp; consistent environment:</strong> <em>Containers provide a predictable environment to the development teams which are isolated from the other applications. These can also include software libraries, programming language runtimes and software dependencies with itself.</em></li>
+  <li><strong>High Portability:</strong> <em>Containers can run anywhere you want which includes operating systems like Linux, Windows and Mac. On VMs or bare metal, in data centres on-premise or cloud and, of course, on the developer’s machine. This provides a highly portable environment for you to run your software.</em></li>
+</ul>
+
+<blockquote>
+  <p>It’s kind of embarrassing when you’re the premiere cloud infrastructure vendor in the world and you can’t keep up with demand on your own major shopping day, when scaling on demand is, you know one of the primary benefits of IaaS.
+— Ron Miller (@ron_miller) July 18, 2018</p>
+</blockquote>
+
+<p>Let’s understand more from the example of Github moving to Container Orchestration Framework: As the number of services they ran increased, the SRE team began supporting similar configurations for dozens of other applications, increasing the percentage of our time we spent on server maintenance, provisioning, and other work not directly related to improving the overall GitHub experience.</p>
+
+<p>New services took days, weeks, or months to deploy depending on their complexity and the SRE team’s availability. Over time, it became clear that this approach did not provide our engineers with the flexibility they needed to continue building a world-class service.</p>
+
+<p>Their engineers needed a cloud deployment model which acts as a self-service platform they could use to experiment, deploy, and scale new services. Thee also needed that same platform to fit the needs of their core Ruby on Rails application so that engineers and/or robots could respond to changes in demand by allocating additional compute resources in seconds instead of hours, days, or longer.</p>
+
+<h2 id="when-to-use-serverless">When to use Serverless?</h2>
+
+<p>If you’re a company already using microservices and want to take advantage of the event-driven architecture, serverless is your option. This is especially true when you’re dealing with unpredictable traffic, releasing quicker updates and anything in between.</p>
+
+<ul>
+  <li>
+    <p>Variable and irregular workloads: For example, a website which doesn’t get much or any traffic during the nights. Since you’re required to pay only for the time your code runs, this is a potential cost optimizer.</p>
+  </li>
+  <li>
+    <p>Critical developer productivity: If you do not have the example in either Serverless or Containers, serverless would be a far better option for you to ship your Hello World application. However, if you want to run a complex application, a container-based application is a better option. When you use containers, you will have to create a cluster, configure your orchestration framework and then deploy the first container. On the other hand, serverless platforms use web CLI provided by the cloud provider to get started in minutes.</p>
+  </li>
+  <li>
+    <p>In-built auto-scalability: The greatest benefit of serverless is its auto-scalability. If you’re a developer you probably don’t want to manage anything. FaaS providers manage everything for you and provide seamless auto-scalability.</p>
+  </li>
+  <li>
+    <p>Frequent updates: Serverless doesn’t require you to upload your code to the servers or do any backend configuration in order to release a working version of an application. This lets you release quicker releases on your product. You can either upload code all at once or a function at a time since your application isn’t a monolithic stack but rather a collection of functions provisioned by the vendor.</p>
+  </li>
+</ul>
+
+<h2 id="take-away">Take Away!</h2>
+<p>While you evaluate your cloud deployment model, it is critical to consider your application architecture as well. If you haven’t already upgraded your application architecture and respective cloud deployment model, it’s likely just a matter of time before you do.</p>
+
+<p>Choosing the best possible deployment options for your business is vital to your company’s success, meaning you need to fully understand all the advantages and disadvantages of various options to make the right choice.</p>
+
+                </div>
+
+                
+
+                <div id="disqus_thread"></div>
+                <script>
+                
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://girishgodage-github-io.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
+</button>
+<!-- Footer-->
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 text-center text-lg-left">
+                <p class="social">
+                    <a href="https://www.facebook.com/girish.godage.5" class="external facebook wow fadeInUp">
+                        <i class="fa fa-facebook"></i></a>
+                    <a href="https://instagram.com/girishgodage_007" data-wow-delay="0.2s" class="external instagram wow fadeInUp">
+                        <i class="fa fa-instagram"></i></a>
+                    <a href="https://youtube.com/girishgodage" data-wow-delay="0.4s" class="external youtube wow fadeInUp">
+                        <i class="fa fa-youtube-play"></i></a>
+                    <a href="https://twitter.com/GGodage" data-wow-delay="0.4s" class="external twitter wow fadeInUp">
+                            <i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/girishgodage" data-wow-delay="0.4s" class="external github wow fadeInUp">
+                                <i class="fa fa-github"></i></a>    
+                    <a href="mailto:girishgodage@gmail.com?subject=Hello%20Girish" data-wow-delay="0.6s" class="email wow fadeInUp">
+                        <i class="fa fa-envelope"></i></a></p>
+            </div>
+            <div class="col-12 col-md-2">
+            <h5>Quick Links</h5>
+            <ul>
+               <li><a href="http://localhost:4000#about">About</a></li>
+               <li><a href="http://localhost:4000#contact">Contact</a></li>
+               <li><a href="/sitemap.xml">Sitemap</a></li>               
+            </ul>
+         </div>
+            <div class="col-12 col-md-4 text-center text-lg-right mt-4 mt-lg-0">
+                <p> <b>©</b>2019 Girish Godage </p>
+                <p class="text-center, text-shadow"> Hosted On <a href="https://pages.github.com/">GitHub Pages</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Typed.js DONT TOUCH THIS! -->
+    <div id="typed-strings">
+    </div>
+
+        <!-- JavaScript files-->
+    <script src="http://localhost:4000/sitejs/jquery/jquery.min.js"></script>
+    <script src="http://localhost:4000/sitejs/popper.js/umd/popper.min.js"> </script>
+    <script src="http://localhost:4000/sitejs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="http://localhost:4000/sitejs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="http://localhost:4000/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.counterup/jquery.counterup.js"></script>
+    <script src="http://localhost:4000/js/front.js"></script>
+    <script src="http://localhost:4000/js/comment.js"></script>
+       <!-- Script pointing to search-script.js -->
+    <script src="http://localhost:4000/js/search-script.js" type="text/javascript"></script>
+   
+    <!-- Configuration -->
+    <script>
+         SimpleJekyllSearch({
+         searchInput: document.getElementById('search-input'),
+         resultsContainer: document.getElementById('results-container'),
+         json: 'http://localhost:4000/search.json'
+         })
+         </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC36FUDDdOTidZJ8nzS5vfE7KVyayenKPE",
+    authDomain: "githubcontactlist.firebaseapp.com",
+    databaseURL: "https://githubcontactlist.firebaseio.com",
+    projectId: "githubcontactlist",
+    storageBucket: "githubcontactlist.appspot.com",
+    messagingSenderId: "899685398702",
+    appId: "1:899685398702:web:0c23c56d2d6d40df37553f",
+    measurementId: "G-YWBRCYJYFW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script>
+   $(function() {
+      
+    //make a variable to keep track of data coming from firebase
+    var data = [];
+
+    // Reference messages collection
+      var messagesRef = firebase.database().ref('contactformmessages');  
+
+
+    //listen to data updates from firebase
+    messagesRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+        //when the data updates at firebase, put it in the data variable
+        data = snapshot.val();
+    })
+    //Entire Contact Form (handler)
+    $('#contactForm').submit(function(e) {
+      e.preventDefault();
+
+        var $form = $(this);
+        console.log("Submit to Firebase");
+
+        //disable submit button
+        $form.find("#sendForm").prop('disabled', true);
+
+        //get values to send to Firebase
+        var name = $('#name').val();
+        console.log(name);
+		
+		var surname = $('#surname').val();
+        console.log(surname);
+		
+		var email = $('#email').val();
+        console.log(email);	
+		
+		var phone = $('#phone').val();
+        console.log(phone);
+
+        var message = $('#message').val();
+        console.log(message);
+
+       
+        //take the values from the form, and put them in an object
+        var newContact = {
+         "name": name,
+			"surname": surname,
+			"email": email,
+			"phone": phone,
+         "message": message
+        }
+        //put new object in data array
+        data.push(newContact);
+        console.log(data);
+
+        //send the new data to Firebase
+        messagesRef.set(data, function(err) {
+            if (err) {
+                alert("Data no go");
+            }else{
+            $("#form-wrapper").slideToggle();
+            $('#form-success-message').slideToggle();
+			}
+        });
+
+        return false;
+    })
+   
+    
+})
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";           
+        }else
+        {
+           myBtton.style.display="none";     
+          
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+      //  document.body.scrollTop =0;
+      //  document.documentElement.scrollTop=0;
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    }
+
+</script>
+
+    
+    
+
+
+</body>
+
+</html>

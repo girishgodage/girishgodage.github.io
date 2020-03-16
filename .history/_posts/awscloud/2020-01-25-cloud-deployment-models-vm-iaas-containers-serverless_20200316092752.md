@@ -1,25 +1,25 @@
 ---
-title: Multi-Cloud Management Platforms, Challenges and Best Practices
+title: How to Choose the Right Cloud Deployment Model for your Application?
 date: 2020-01-25 11:41:00 Z
-permalink: "/blog/multi-cloud-management"
+permalink: "/blog/cloud-deployment-models-vm-iaas-containers-serverless"
 categories:
 - AWSCloud
 tags:
 - learning
-summary: Multi-cloud management is one of the biggest challenges for enterprises. It can be difficult and often requires the use of third-party tools. This blog consists of some popular multi-cloud management tools and key features you should look while selecting the tool.
+summary: Understand and analyze different Cloud Deployment Models- public, private, hybrid and community. Select the perfect Cloud Deployment Models based on your App Architecture,VMs vs IaaS vs Containers vs Serverless. Read more to find out their performance & potential use cases.
 image: "/img/sw_design.png"
 author: Girish Godage
 layout: posts
 prevurl: ''
 nexturl: ''
-discussion_id: 2020-01-25-multi-cloud-management
+discussion_id: 2020-01-25-cloud-deployment-models-vm-iaas-containers-serverless
 ---
 
-## Multi-Cloud Management Platforms, Challenges and Best Practices
+## How to Choose the Right Cloud Deployment Model for your Application?
 
-Multi-cloud management is one of the biggest challenges for enterprises. It can be difficult and often requires the use of third-party tools. This blog consists of some popular multi-cloud management tools and key features you should look while selecting the tool.
+Understand and analyze different Cloud Deployment Models: public, private, hybrid and community. Select the perfect Cloud Deployment Models based on your App Architecture: VMs vs IaaS vs Containers vs Serverless. Read more to find out their performance & potential use cases.
 
-![image info](/img/awscloud/15/Blog-Diagram-4-2-1.png)
+![image info](/img/awscloud/cover-image4.png)
 
 It is evident that multi-cloud strategy eliminates crucial challenges in cloud computing like vendor lock-in, latency, and higher cost. In addition, organizations can leverage vendors' unique capabilities in artificial intelligence, serverless computing or augmented reality.
 
