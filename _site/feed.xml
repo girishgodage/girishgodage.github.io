@@ -1,4 +1,218 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-14T07:37:51+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">Authenticate applications through facial recognition with Amazon Cognito and Amazon Rekognition</title><link href="http://localhost:4000/blog/authenticate-applications-through-facial-recognition-with-amazon-cognito-and-amazon-rekognition" rel="alternate" type="text/html" title="Authenticate applications through facial recognition with Amazon Cognito and Amazon Rekognition" /><published>2020-01-25T10:41:00+00:00</published><updated>2020-01-25T10:41:00+00:00</updated><id>http://localhost:4000/blog/amzon-cognito-Rekognition-auth</id><content type="html" xml:base="http://localhost:4000/blog/authenticate-applications-through-facial-recognition-with-amazon-cognito-and-amazon-rekognition">&lt;h2 id=&quot;authenticate-applications-through-facial-recognition-with-amazon-cognito-and-amazon-rekognition&quot;&gt;Authenticate applications through facial recognition with Amazon Cognito and Amazon Rekognition&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-16T01:02:35+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">6 Multi-Cloud Architecture Designs for an Effective Cloud Strategy</title><link href="http://localhost:4000/blog/multi-cloud-architecture" rel="alternate" type="text/html" title="6 Multi-Cloud Architecture Designs for an Effective Cloud Strategy" /><published>2020-01-25T11:41:00+00:00</published><updated>2020-01-25T11:41:00+00:00</updated><id>http://localhost:4000/blog/multi-cloud-architecture</id><content type="html" xml:base="http://localhost:4000/blog/multi-cloud-architecture">&lt;h2 id=&quot;6-multi-cloud-architecture-designs-for-an-effective-cloud-strategy&quot;&gt;6 Multi-Cloud Architecture Designs for an Effective Cloud Strategy&lt;/h2&gt;
+
+&lt;p&gt;Deploying a multi-tenant application across multiple cloud platforms can be very challenging. In this blog, we’ve explained 6 multi-cloud architecture designs which can help businesses to build an effective multi-cloud strategy.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/14/Blog-Diagram1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Enterprises increasingly want to take advantage of the flexibility and choice of multiple cloud offerings in order to use best cloud services while achieving satisfactory cost reduction benefits. In fact, the International Data Corporation predicted in a futurescape report last year that multi-cloud adoption will increase drastically and more than 85% of enterprise IT corporations will invest in multi-cloud architecture by 2020. With the enterprise hurtling towards digital transformation at breakneck speeds, the adoption of cloud, both public and private, has accelerated. And working across different clouds across various platforms brings a whole lot of challenges in its wake. &lt;strong&gt;Lack of understanding of cloud technology&lt;/strong&gt; is the most basic one which CTO’s face.&lt;/p&gt;
+
+&lt;p&gt;This is the first blog of our three blog series on multi-cloud system architecture. In this blog, you will get to know about multi-cloud architecture design for different organizational requirements. In the second blog, we have discussed &lt;strong&gt;Strategies to manage Multi-cloud environment effectively.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Now before moving to the Multi-cloud architecture, just have a brief understanding of basic cloud architecture models.&lt;/p&gt;
+
+&lt;h2 id=&quot;table-of-contents&quot;&gt;Table of Contents&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;How Basic Cloud Architecture Looks Like?&lt;/li&gt;
+  &lt;li&gt;Multi-cloud Strategy&lt;/li&gt;
+  &lt;li&gt;Multi-cloud Architecture&lt;/li&gt;
+  &lt;li&gt;Multi-cloud vs Hybrid cloud&lt;/li&gt;
+  &lt;li&gt;Tips for Managing Your Multi-Cloud Environment&lt;/li&gt;
+  &lt;li&gt;Benefits of Multi-cloud Architecture&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;how-basic-cloud-architecture-looks-like&quot;&gt;How Basic Cloud Architecture Looks Like?&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/14/Basic-Cloud-Architecture.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The basic cloud architecture which is quite common around the web is 3-Tier architecture.&lt;/p&gt;
+
+&lt;p&gt;The architecture consists of 3 major tiers – Load balancer server, Application Server, Database Server. There is one dedicated server for each tier.&lt;/p&gt;
+
+&lt;p&gt;As in the above cloud architecture diagram, for failover and recovery purpose we have used redundant server at each tier. This is called Redundant 3-Tier architecture, used in production environment. Non-redundant architecture which consist of single server for each tier are only for testing the interactivity between each tier of your application.&lt;/p&gt;
+
+&lt;p&gt;This is the most basic one, you can use additional server depending on the application. For example, to add faster backup functionality in my app, I have used Striped Volume set at the database tier.&lt;/p&gt;
+
+&lt;p&gt;Now let’s take an &lt;strong&gt;&lt;em&gt;example of Netflix&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;How Netflix manages such a huge collection of videos and provides a great streaming experience without disruptions?&lt;/p&gt;
+
+&lt;p&gt;This is because of its multi-data centers located geographically around the world which backups each other in case of any disaster. Also streaming from local datacenter giver faster viewing experience.&lt;/p&gt;
+
+&lt;p&gt;In the above architecture we can have multi-datacenter, each having its own load balancer tier, Application tier and Database tier.&lt;/p&gt;
+
+&lt;p&gt;How it can be done? Look at the below image.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/14/Multi-data-Centers-Architecture.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The most fascinating experience of cloud is its horizontal Auto Scaling feature. This gives you the ability to grow or shrink number of server resources on demand, and this work is done by load balancer. We have added Server Arrays to set up a particular tier of architecture to autoscale based on predefined alert conditions.&lt;/p&gt;
+
+&lt;h2 id=&quot;multi-cloud-strategy&quot;&gt;Multi-Cloud Strategy&lt;/h2&gt;
+
+&lt;p&gt;Multi-cloud strategy is the concomitant use of two or more cloud services such as &lt;strong&gt;AWS, Azure, Google Cloud and more&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;This means you can use &lt;strong&gt;Google cloud to serve your US users&lt;/strong&gt; and &lt;strong&gt;Microsoft Azure for your customers in Europe&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Or you might &lt;strong&gt;use Azure SQL for your databases and Cognito for user management while using AWS EC2 instances and Load Balancing, all for a single application&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;In addition, you can run your app primarily on Digital Ocean but is completely replicated and backed up on AWS.&lt;/p&gt;
+
+&lt;p&gt;You can run different app on different clouds. You can have &lt;strong&gt;&lt;em&gt;your development and test environments on one cloud, and your production environment on another&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Multi-cloud management is another aspect, which involves &lt;strong&gt;monitoring the cost of cloud deployment&lt;/strong&gt;. It is important to reap benefits of multi-cloud.&lt;/p&gt;
+
+&lt;p&gt;But to take advantage of multi-cloud benefits, it is very important to manage and monitor your cloud deployment and costs.&lt;/p&gt;
+
+&lt;p&gt;Multi-cloud strategy is particularly effective if enterprises dealing with below challenges:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Users are not located near any data center, or widely distributed geographically.&lt;/li&gt;
+  &lt;li&gt;Facing regulations limit in particular countries for storing data, e.g., EU.&lt;/li&gt;
+  &lt;li&gt;Environment where public clouds are used with on-premises resources.&lt;/li&gt;
+  &lt;li&gt;Cloud-based application is not resilient which can affect disaster recovery when loss of a single data center.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;multi-cloud-architecture&quot;&gt;Multi-Cloud Architecture&lt;/h2&gt;
+&lt;p&gt;In order to build highly scalable and reliable applications, a multi-cloud architecture design is appropriate. Our objective is to provide architectural guidance for migrating cloud-based systems that run on multiple independent clouds. Let’s take a look at some of the prominent multi-cloud architectures and migration strategy.&lt;/p&gt;
+
+&lt;h3 id=&quot;cloudification&quot;&gt;Cloudification&lt;/h3&gt;
+&lt;p&gt;In this architecture, application component is hosted on-premise and after migration, it can use different cloud services of other cloud platforms to improve performance.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/14/Cloudification.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here application component C1 is been hosted on-premise but after adopting multi-cloud, it uses AWS storage service AWS S3 and for compute, it uses Azure virtual machines.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Benefits: Improves availability as application re-hosting in multiple cloud platforms and avoid vendor lock-in.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;multi-cloud-relocation&quot;&gt;Multi-Cloud Relocation&lt;/h2&gt;
+&lt;p&gt;In this architecture application component is re-hosted on cloud platform and use other cloud services of multiple cloud platform to enhance capabilities.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/14/Multi-Cloud-Relocation.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here application component C1 is re-hosted on AWS platform after migration and open to use environmental services of Azure. It is using AWS S3 for storage and has option available for compute either AWS or Azure.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Benefits: Improves availability as application re-hosting in multiple cloud platforms and avoid vendor lock-in.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;multi-cloud-refactor&quot;&gt;Multi-Cloud Refactor&lt;/h2&gt;
+
+&lt;p&gt;To provide better QoS, an on-premise application is re-architected for deployment on multiple cloud platforms. Here application needs to re-architected as fine-grained components so that deployment of high-usage components can be optimized independently. Here deployment of high-usage components is optimized independently of low-usage ones. The parallel design enables better throughput to multi-cloud platforms.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/14/Multi-Cloud-Relocation.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here AC1 and AC2 are two application components hosted on-premise before migration. As both the components are independent integrity units, AC1 is deployed on AWS using AWS S3. On the other hand, AC2 is deployed on Azure and it can use any Azure’s cloud service as per requirements.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Benefits: Optimal scalability/performance, range of multi-cloud deployment options, agility to respond to business/IT change.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Challenges&lt;/strong&gt;: On-premise application is modernized in isolation. Modernization is performed primarily for technical reasons. Component architecture which is only determined bottom-up may need to be re-evaluated because of multi-cloud environment.&lt;/p&gt;
+
+&lt;h2 id=&quot;multi-cloud-rebinding&quot;&gt;Multi-Cloud Rebinding&lt;/h2&gt;
+&lt;p&gt;A re-architected application is deployed partially on multiple cloud environments and enables the application to continue to function using secondary deployment when there is a failure with the primary platform.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/14/Multi-Cloud-Rebinding.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here AC1 and AC2 are two application components hosted on-premise before migration. As both the components are independent integrity units, AC1 is remains on-premise while two AC2 are deployed on AWS and Azure for disaster recovery. AC1 and two AC2 components are connected via EBS or Service bus.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Benefits: As unhealthy services become healthy again, traffic can be delivered, returning system responsiveness to maximum.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Challenges&lt;/strong&gt;: This architecture does not guarantee seamless failover. There will be downtime.&lt;/p&gt;
+
+&lt;h2 id=&quot;multi-cloud-rebinding-with-cloud-brokerage&quot;&gt;Multi-Cloud Rebinding with Cloud Brokerage&lt;/h2&gt;
+
+&lt;p&gt;A re-architected application is deployed partially on multiple cloud environments. This enables the application to continue to function using secondary deployment when there is a failure with the primary platform using cloud brokerage services.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/14/Rebinding-with-Cloud-Brokerage.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In this architecture AC1 has been deployed on-premise and two re-architected AC2 are deployed on two cloud platforms AWS and Azure. Here Cloud broker services integrates all three components and provides flexibility to choose services from multiple providers &lt;strong&gt;(Cloud platforms AWS and Azure)&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Benefits: As unhealthy services become healthy again, traffic can be delivered, returning system responsiveness to maximum.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Challenges&lt;/strong&gt;: This architecture does not guarantee seamless failover. There will be downtime.&lt;/p&gt;
+
+&lt;h2 id=&quot;multi-application-modernization&quot;&gt;Multi-Application Modernization&lt;/h2&gt;
+
+&lt;p&gt;Different on-premise applications A1/A2, AC1 are re-architected as a portfolio and deployed on cloud environment.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/14/Multi-Application-Modernization.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Benefits: It provides consistent information and rules in shared components. Reduced operation and maintenance costs for shared components is another benefit.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Challenges&lt;/strong&gt;: Lack of business commitment to shared capabilities.&lt;/p&gt;
+
+&lt;h2 id=&quot;multi-cloud-vs-hybrid-cloud&quot;&gt;Multi-cloud vs Hybrid cloud&lt;/h2&gt;
+&lt;p&gt;On the first pass, both may appear same and these terms used interchangeably by some, but they are not the same. Here we’ve explained the differences, which are subtle but very distinct, between the two.&lt;/p&gt;
+
+&lt;h3 id=&quot;hybrid-cloud&quot;&gt;Hybrid cloud&lt;/h3&gt;
+&lt;p&gt;Hybrid cloud is a mix of public and private cloud that connects the public cloud such as AWS to your on-premise system and is orchestrated to perform together for a single task. In this scenario, you’re optimizing your workload so it runs in the right environment at the right time. Using Hybrid cloud, organizations can access highly elastic compute resources from the chosen provider, perhaps for managing and storing additional workloads at peak times and for general day to applications. But all the mission-critical stuff remains on-premise infrastructure for multiple reasons like privacy regulations and security.&lt;/p&gt;
+
+&lt;p&gt;Why implement Hybrid cloud?&lt;/p&gt;
+
+&lt;p&gt;For certain use cases, organizations require a combination of a private and public cloud to leverage unique benefits offered by them.&lt;/p&gt;
+
+&lt;p&gt;Organizations can leverage cloudbusting, in which application workloads burst into the public cloud for additional compute resources after they reach a threshold level in private cloud.&lt;/p&gt;
+
+&lt;p&gt;It makes sense for organizations to use public cloud resources for a new, untested application before embarking on the capital expenditure associated with launching in a private cloud. Once an organization defines a steady-state workload pipeline to run an application, it may choose to bring the application to on-premise systems.&lt;/p&gt;
+
+&lt;p&gt;Moreover, cloud customers can use hybrid clouds to promote high availability (HA) and disaster recovery (DR). &lt;strong&gt;&lt;em&gt;For example, in a Disaster recovery scenario, an organization can keep its recovery environment in a public cloud and production environment in a private cloud, ready to spin up as necessary. The organization replicates data across to the public cloud, but all other resources remain non-operational until needed.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Hybrid cloud architecture provides maximum agility for meeting the needs of the organizations by providing infrastructure where IT operations can be automated to improve the user experience.&lt;/p&gt;
+
+&lt;h3 id=&quot;multi-cloud&quot;&gt;Multi-cloud&lt;/h3&gt;
+&lt;p&gt;Multi-cloud represents more than 1 cloud deployment of the same type and it can be public or private cloud, sourced from different cloud providers. Business adopt Multi-cloud to mix and match a range of public and private clouds to use best of breed applications and services.&lt;/p&gt;
+
+&lt;p&gt;Both Multi and Hybrid cloud approaches are not mutually exclusive: You can have both, simultaneously. In fact, Most organizations seek to improve security and performance through an expanded portfolio of environments.&lt;/p&gt;
+
+&lt;p&gt;Just for the info, multi-cloud architecture is different from multi tenant architecture. Former we have already discussed, later refers to software architecture in which a single instance of software runs on a server and serves multiple tenants.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Why implement Multi-cloud?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Different Multi-cloud use cases can be leveraged to offer IT teams increases flexibility and control over workloads and data.&lt;/p&gt;
+
+&lt;p&gt;As multi-cloud offers flexible cloud environment, organizations can meet specific workload or application requirements- both technically and commercially- by adopting it.&lt;/p&gt;
+
+&lt;p&gt;Organizations also see geographic advantages to using multiple cloud providers, to address app latency problems. Also, some companies may start using specific cloud providers for short time to achieve short-term goals and then stop using it.&lt;/p&gt;
+
+&lt;p&gt;Additionally, vendor lock-in concerns and possible cloud provider outages are two issues that pop up frequently when IT leaders advocate for multi-cloud strategy.&lt;/p&gt;
+
+&lt;h2 id=&quot;tips-for-managing-your-multi-cloud-environment&quot;&gt;Tips for Managing Your Multi-Cloud Environment&lt;/h2&gt;
+
+&lt;p&gt;Multi-cloud environments come with their challenges—complexity, resources, expertise, cost, and management issues, to name a few—and management seems to be the common denominator.&lt;/p&gt;
+
+&lt;p&gt;Consider this situation.&lt;/p&gt;
+
+&lt;p&gt;You are running a workload that requires large pools of storage and networking resources on a private cloud. At the same time, you have another workload running on Amazon’s service and yet another on Microsoft’s. Each workload is running on the ideal cloud, but now you have multiple clouds to manage.&lt;/p&gt;
+
+&lt;p&gt;How would you do that effectively?&lt;/p&gt;
+
+&lt;p&gt;Here are 5 things to keep in mind when building an effective multi-cloud environment.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;Analyze your entire network, and then identify which service of particular cloud provider is the best for your specific requirement, to avoid system complexity and poor utilization of resources.&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Having multiple cloud providers increases low-level maintenance and monitoring tasks. It’s better to automate them.&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Focus on policy standardisation that are applied automatically to each cloud environment. The policies cover such areas as data storage, workloads, traffic flows, virtual servers, compliance/ regulations, security and reporting.&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Use integrated data center management system designed for virtual environments. It helps building system in which your server, network, storage, operations, security, and applications teams work according to common goals.&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Identify the apps in your organization that are best suited for multi-cloud environment. Unlike traditional apps, cloud-native apps are flexible and service-oriented, comprised of collections of containers and services, based on a scale-out architecture. Also, these are easy to automate, move, and scale.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;benefits-of-multi-cloud-architecture&quot;&gt;Benefits of Multi-cloud Architecture&lt;/h3&gt;
+
+&lt;h4 id=&quot;disaster-recovery&quot;&gt;Disaster recovery&lt;/h4&gt;
+&lt;p&gt;It gets risky when an organization uses one cloud platform to manage all organisational resources. A cyber attack can take down all the operations for a long-time leaving end users inaccessible until it resolves. When you use multi-cloud architecture, it makes your company’s services resilient against these types of cyber attacks because there are other clouds available to take the workloads when one cloud goes down.&lt;/p&gt;
+
+&lt;h5 id=&quot;avoiding-vendor-lock-in&quot;&gt;Avoiding vendor lock-in&lt;/h5&gt;
+&lt;p&gt;The multi-cloud platform allows organizations to select the best services from every cloud platform, create custom infrastructure specific to their organizational goals. Rather than managing business processes to fit a specific provider’s setup and execution, businesses can explore different providers to find the best match for each part of business operations.&lt;/p&gt;
+
+&lt;h4 id=&quot;data-management&quot;&gt;Data management&lt;/h4&gt;
+&lt;p&gt;There are different data types generated in the organization. For example, some database requires cold storage which is not accessed regularly while hot data accessed 10 times a day and must be stored in frequently-accessed storage, e.g., AWS S3 standard storage. Rather than lump all your data into one cloud, you can diversify to take advantage of the right service for the right function.&lt;/p&gt;
+
+&lt;h4 id=&quot;cloud-cost-optimization&quot;&gt;Cloud cost optimization&lt;/h4&gt;
+&lt;p&gt;Before adopting the Multicloud strategy, you should do a performance analysis of your workloads that are either on-premises or already in the cloud and comparing that to what’s available in each cloud. As a result, you can identify the options that will meet your workload performance requirements at the cheapest cost. For example, You can save money by running spot instances for workloads designed to be fault tolerant, while running legacy workloads on reserved instances.&lt;/p&gt;
+
+&lt;h4 id=&quot;low-latency&quot;&gt;Low latency&lt;/h4&gt;
+&lt;p&gt;When application users are distributed worldwide and data transfer is done from single data center, lots of users will experience slow response time. There will delays when data traffic has to travel across several nodes before reaching end-users. This delay, called latency is inherent in cloud services delivered from servers at distant locations.&lt;/p&gt;
+
+&lt;p&gt;In a multi-cloud environment, cloud architects can deploy data centers to multiple regions according to user locations. The datacenter closest to end-users can serve the requested data with minimum server hops. This capability is especially useful for global organizations that need to serve data across geographically disparate locations while maintaining a unified end-user experience.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Multi-Cloud architecture provides an environment where businesses can build secure and powerful cloud environments outside the traditional infrastructure. Maximizing the impact of multi-cloud, however, means tackling the challenges of app sprawl, unique portals, compliance, migration and security head-on. The main goal multi-cloud strategy is to use as many clouds as per requirements to address the limitations of using one cloud from a single provider. Though toggling between cloud providers to perform tasks can be complicated, especially right out of the gate, cloud service providers are working to make toggling between clouds increasingly efficient. The more efficient it becomes; the more multi-cloud computing will evolve.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">6 Multi-Cloud Architecture Designs for an Effective Cloud Strategy</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/sw_design.png" /></entry><entry><title type="html">Authenticate applications through facial recognition with Amazon Cognito and Amazon Rekognition</title><link href="http://localhost:4000/blog/authenticate-applications-through-facial-recognition-with-amazon-cognito-and-amazon-rekognition" rel="alternate" type="text/html" title="Authenticate applications through facial recognition with Amazon Cognito and Amazon Rekognition" /><published>2020-01-25T10:41:00+00:00</published><updated>2020-01-25T10:41:00+00:00</updated><id>http://localhost:4000/blog/amzon-cognito-Rekognition-auth</id><content type="html" xml:base="http://localhost:4000/blog/authenticate-applications-through-facial-recognition-with-amazon-cognito-and-amazon-rekognition">&lt;h2 id=&quot;authenticate-applications-through-facial-recognition-with-amazon-cognito-and-amazon-rekognition&quot;&gt;Authenticate applications through facial recognition with Amazon Cognito and Amazon Rekognition&lt;/h2&gt;
 
 &lt;p&gt;With increased use of different applications, social networks, financial platforms, emails and cloud storage solutions, managing different passwords and credentials can become a burden. In many cases, sharing one password across all these applications and platforms is just not possible. Different security standards may be required, such as passwords composed by only numeric characters, password renewal policies, and providing security questions.&lt;/p&gt;
 
@@ -2567,257 +2781,4 @@ It could be definitely a concern of everybody, whether the chosen language will 
 
 &lt;p&gt;Presently serverless is driven by cloud-native practitioners, but as serverless adoption increases the organizations will continue to utilize multiple clouds, with AWS usually being part of the mix. Thus in the future, we are likely to see Azure and Google Cloud Functions catching up with AWS Lambda.&lt;/p&gt;
 
-&lt;p&gt;If you are diving into serverless with no platform preference, I would encourage everyone to explore and try each of these before incorporating them into their custom software development services. Understand the use cases why and when serverless can help you.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Comparing Serverless Providers</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/sw_design.png" /></entry><entry><title type="html">How to Build a Scalable Application up to 1 Million Users on AWS</title><link href="http://localhost:4000/blog/building-scalable-application-aws-platform" rel="alternate" type="text/html" title="How to Build a Scalable Application up to 1 Million Users on AWS" /><published>2020-01-12T10:41:00+00:00</published><updated>2020-01-12T10:41:00+00:00</updated><id>http://localhost:4000/blog/ScalableawsApp</id><content type="html" xml:base="http://localhost:4000/blog/building-scalable-application-aws-platform">&lt;h3 id=&quot;build-a-scalable-application&quot;&gt;Build a Scalable Application&lt;/h3&gt;
-
-&lt;p&gt;Scalability of an application is equally important as its features and user interface. It becomes even more important if your app is going to serve more than a million users in the future. In this blog, you will learn how to scale your app up to 1 million users on AWS.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/4/User-scale-1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Suppose you’ve built a web application and started getting few customers. After some feedback and suggestions, you are ready with the full-fledged product. Now, your marketing team shares your app on product hunt to acquire new customers. Suddenly, thousands of visitors are using your app and at one point they are unable to use your app.&lt;/p&gt;
-
-&lt;p&gt;You’ve tested your app and it is working fine. So what happened?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;“This is not a bug but a problem of scalability. Your cloud architecture is not designed to scale with increasing load.”&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;I’ve seen many companies which usually focus more on features and less on scalability. Creating applications that are both resilient and scalable is an essential part of any application architecture. In this blog, you will learn how to build highly scalable web application architecture that can scale with increasing load.&lt;/p&gt;
-
-&lt;h3 id=&quot;what-is-a-scalable-application&quot;&gt;What is a Scalable Application?&lt;/h3&gt;
-&lt;p&gt;Scalability refers to the ability of a system to give a reasonable performance under growing demands (This can be larger data-sets, higher request rates, the combination of size and velocity, etc). It should work well with 1 user or 1 million users and handles spikes in traffic automatically. By adding and removing the resources only when needed, scalable apps consume only the resources necessary to meet demand.&lt;/p&gt;
-
-&lt;p&gt;When talking about scalability in cloud computing, you will often hear about two main ways of scaling – horizontal or vertical. Let’s look deeper into these terms.&lt;/p&gt;
-
-&lt;h4 id=&quot;vertical-scaling-scaling-up&quot;&gt;Vertical scaling (Scaling Up)&lt;/h4&gt;
-
-&lt;p&gt;Scaling up or vertical scaling refers to resource maximization of a single unit to expand its ability to handle the increasing load. In hardware terms, this includes adding processing power and memory to the physical machine running the server. In software terms, scaling up may include optimizing algorithms and application code.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/4/Single-Host-Vertical-Scalibility.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;horizontal-scaling-scaling-out&quot;&gt;Horizontal scaling (Scaling Out)&lt;/h4&gt;
-
-&lt;p&gt;Scaling out or horizontal scaling refers to resource increment by the addition of units to the app’s cloud architecture. This means adding more units of smaller capacity instead of adding a single unit of larger capacity. The requests for resources are then spread across multiple units thus reducing the excess load on a single machine.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/4/Single-Host-Horizontal-Scalibility.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;characteristics-of-the-scalable-application&quot;&gt;Characteristics of the Scalable Application&lt;/h3&gt;
-&lt;p&gt;What does scalability look like? There are some areas where an app needs to excel to be considered scalable.&lt;/p&gt;
-
-&lt;h4 id=&quot;performance&quot;&gt;Performance&lt;/h4&gt;
-&lt;p&gt;First and foremost, the application must operate well under stress with low latency. The speed of a website affects usage and user satisfaction, as well as search engine rankings, a factor that directly correlates to revenue and retention. As a result, creating a scalable web application architecture that is optimized for fast responses and low latency is key.&lt;/p&gt;
-
-&lt;h4 id=&quot;availability-and-reliability&quot;&gt;Availability and Reliability&lt;/h4&gt;
-&lt;p&gt;These are closely related and equally necessary. Scalable apps rarely if ever go down under stress. They need to reliably produce data upon request and not lose stored information.&lt;/p&gt;
-
-&lt;h4 id=&quot;manageability&quot;&gt;Manageability&lt;/h4&gt;
-&lt;p&gt;The manageability of the cloud architecture equates to the scalability of operations: maintenance and updates. Things to consider for manageability are the ease of diagnosing and understanding problems when they occur, ease of making updates or modifications, and how simple the system is to operate. (i.e., does it routinely operate without failure or exceptions?)&lt;/p&gt;
-
-&lt;h4 id=&quot;cost&quot;&gt;Cost&lt;/h4&gt;
-&lt;p&gt;Highly scalable applications don’t have to be unreasonably expensive to build, maintain, or scale. Planning for scalability during development allows the app to expand as demand increases without causing undue expenses.&lt;/p&gt;
-
-&lt;p&gt;You’ve plenty of options to choose the cloud provider while building the high-performance web application architecture. The three leading cloud computing vendors, AWS, Microsoft Azure and Google Cloud, each have their own strengths and weaknesses that make them ideal for different use cases.&lt;/p&gt;
-
-&lt;p&gt;In this blog, I’ve chosen AWS to show you how to build web scalable application. AWS is a subsidiary of the renowned company, Amazon, it provides different services that are cloud-centered for various requirements. AWS holds the highest 33% market share of cloud computing. They provide excellent documentation on each of their services, helpful guides and white papers, reference architectures for common apps.&lt;/p&gt;
-
-&lt;h3 id=&quot;steps-to-build-a-scalable-application-based-on-increasing-users-from-1-to-1-million&quot;&gt;Steps to build a scalable application based on increasing users from 1 to 1 million&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Step1 : Initial Setup of Cloud Architecture&lt;/li&gt;
-  &lt;li&gt;Step2 : Create a Multiple Hosts and Choose Database&lt;/li&gt;
-  &lt;li&gt;Step3 : Store database on Amazon RDS&lt;/li&gt;
-  &lt;li&gt;Step4 : Create a multiple avialibility zones&lt;/li&gt;
-  &lt;li&gt;Step5 : Move Static content to Object-based Storage&lt;/li&gt;
-  &lt;li&gt;Step6 : Auto Scaling&lt;/li&gt;
-  &lt;li&gt;Step7 : Service Oriented Architecture(SOA)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;h3 id=&quot;1-user&quot;&gt;1 User&lt;/h3&gt;
-  &lt;p&gt;### Initial Setup of Cloud Architecture&lt;/p&gt;
-  &lt;ul&gt;
-    &lt;li&gt;Amazon Machine Images (AMI)&lt;/li&gt;
-    &lt;li&gt;Amazon EC2&lt;/li&gt;
-    &lt;li&gt;Amazon VPC&lt;/li&gt;
-    &lt;li&gt;Amazon Route 53&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;Amazon Machine Images (AMI)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Amazon Machine Image (AMI) gives the information required to launch an instance, which is a virtual server in the cloud. You can specify an AMI during the launch an instance. An AMI includes a template for the root volume for the instance, launch permissions that control which AWS accounts can use the AMI to launch instances and a block device mapping that specifies the volumes to attach to the instance when it’s launched.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Amazon Elastic Compute Cloud (Amazon EC2)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Amazon Elastic Compute Cloud provides the scalable computing capacity in the AWS cloud. This eliminates the hardware upfront so that you can develop and deploy applications faster.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Amazon Virtual Private Cloud (Amazon VPC)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Amazon Virtual Private Cloud gives a provision to launch AWS resources in a virtual network. It gives complete control over the virtual networking environment including a selection of IP address range, subnet creation, the configuration of route tables and network gateways.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Amazon Route 53&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Amazon Route 53 is a highly available and scalable cloud DNS web service. Amazon Route 53 effectively connects user requests to infrastructure running in AWS – such as Amazon EC2 instances, Elastic Load Balancing load balancers or Amazon S3 buckets.&lt;/p&gt;
-
-&lt;p&gt;Here you need a bigger box. You can simply choose the larger instance type which is called vertical scaling. At the initial stage, vertical scaling is enough but we can’t scale vertically indefinitely. Eventually, you’ll hit the wall. Also, it doesn’t address failover and redundancy.&lt;/p&gt;
-
-&lt;h3 id=&quot;users--10&quot;&gt;USERS &amp;gt; 10&lt;/h3&gt;
-&lt;h3 id=&quot;create-multiple-hosts-and-choose-the-database&quot;&gt;Create multiple hosts and choose the database&lt;/h3&gt;
-&lt;p&gt;First, you need to choose the database as users are increasing and generating data. It’s advisable to start with SQL Database first because of the following reasons:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Established and well-worn technology.&lt;/li&gt;
-  &lt;li&gt;Community support and latest tools.&lt;/li&gt;
-  &lt;li&gt;We aren’t going to break SQL DBs in our first 10 million users.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Note, you can choose the NoSQL database if your users are going to generate a large volume of data in various forms.&lt;/p&gt;
-
-&lt;p&gt;At this stage, you have everything in a single bucket. This architecture is harder to scale and complex to manage in the long run. It’s time to introduce the multi-tier architecture to separate the database from the application.&lt;/p&gt;
-
-&lt;h3 id=&quot;users--100&quot;&gt;USERS &amp;gt; 100&lt;/h3&gt;
-&lt;h3 id=&quot;store-database-on-amazon-rds-to-ease-the-operations&quot;&gt;Store database on Amazon RDS to ease the operations&lt;/h3&gt;
-&lt;p&gt;When users increase to 100, Database deployment is the first thing which needs to be done. There are two general directions to deploy a database on AWS. The foremost option is to use a managed database service such as Amazon Relational Database Service (Amazon RDS) or Amazon Dynamo DB and the second step is to host your own database software on Amazon EC2.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Amazon RDS&lt;/li&gt;
-  &lt;li&gt;Amazon DynamoDB&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Amazon RDS&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Amazon Relational Database Service (Amazon RDS) makes it easy to set up, operate, and scale a relational database in the cloud. Amazon RDS provides six familiar database engines to choose from, including Amazon Aurora, Oracle, Microsoft SQL Server, PostgreSQL, MySQL and MariaDB.&lt;/p&gt;
-
-&lt;h3 id=&quot;user--1000&quot;&gt;User &amp;gt; 1000&lt;/h3&gt;
-&lt;h3 id=&quot;create-multiple-availability-zones-to-improve-availability&quot;&gt;Create multiple availability zones to improve availability&lt;/h3&gt;
-&lt;p&gt;As per current architecture, you may face availability issues. If the host for your web app fails then it may go down. So you need another web instance in another Availability Zone where you will put the slave database to RDS.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Elastic Load Balancer (ELB)&lt;/li&gt;
-  &lt;li&gt;Multi – AZ Deployment&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Here you’ve to use Elastic Load Balancer (ELB) to balance the load between the two web host instances in the two AZs.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Elastic Load Balancer (ELB)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;ELB distributes the incoming application traffic across EC2 instances. It is horizontally scaled, imposes no bandwidth limit, supports SSL termination, and performs health checks so that only healthy instances receive traffic.&lt;/p&gt;
-
-&lt;p&gt;This configuration has 2 instances behind the ELB. We can have 1000s of instances behind the ELB. This is Horizontal Scaling.&lt;/p&gt;
-
-&lt;p&gt;At this stage, you’ve multiple EC2 instances to serve thousands of users which ultimately increases your cloud cost. To reduce the cost, you have to optimize instances’ usage based on varying load.&lt;/p&gt;
-
-&lt;h3 id=&quot;users-10000s--100000&quot;&gt;Users: 10,000s – 100,000&lt;/h3&gt;
-&lt;h3 id=&quot;move-static-content-to-object-based-storage-for-better-performance&quot;&gt;Move static content to object-based storage for better performance&lt;/h3&gt;
-&lt;p&gt;To improve performance and efficiency, you’ll need to add more read replicas to RDS. This will take load off the write master database. Furthermore, you can reduce the load from web servers by moving static content to Amazon S3 and Amazon CloudFront.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Amazon S3&lt;/li&gt;
-  &lt;li&gt;Amazon CloudFront&lt;/li&gt;
-  &lt;li&gt;Amazon DynamoDB&lt;/li&gt;
-  &lt;li&gt;Amazon ElastiCache&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Amazon S3&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Amazon S3 is object-based storage. It is not attached to EC2 instance which makes it best suitable to store static content, like javascript, CSS, images, videos. It is designed for 99.999999999% of durability and can store multiple petabytes of data.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Amazon CloudFront&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Amazon CloudFront is a Content Delivery Network(CDN). It retrieves data from Amazon S3 bucket and distributes it to multiple data center locations. It caches content at the edge locations to provide our users with the lowest latency access.&lt;/p&gt;
-
-&lt;p&gt;Furthermore, to reduce the load from database servers, you can use DynamoDB(managed NoSQL database) to store session state. For caching data from the database, you can use Amazon ElastiCache.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Amazon DynamoDB&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Amazon DynamoDB is a fast and flexible NoSQL database service for applications that need consistent, single-digit millisecond latency. It is a completely managed cloud database and supports document and key-value store models.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Amazon ElastiCache&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Amazon ElastiCache is a Caching-as-a-Service. It removes the complexity associated with deploying and managing a distributed cache environment. It’s a self-healing infrastructure if nodes fail new nodes are started automatically.&lt;/p&gt;
-
-&lt;h3 id=&quot;users--500000&quot;&gt;Users &amp;gt; 500,000&lt;/h3&gt;
-&lt;h3 id=&quot;setting-up-auto-scaling-to-meet-the-varying-demand-automatically&quot;&gt;Setting up Auto Scaling to meet the varying demand automatically&lt;/h3&gt;
-&lt;p&gt;At this stage, your architecture is quite complex to be managed by the small team and without proper monitoring, analyzing it’s difficult to move forward.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Amazon CloudWatch&lt;/li&gt;
-  &lt;li&gt;AWS Elastic Beanstalk&lt;/li&gt;
-  &lt;li&gt;AWS OpsWorks&lt;/li&gt;
-  &lt;li&gt;AWS Cloud Formation&lt;/li&gt;
-  &lt;li&gt;AWS&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Now that the web tier is much more lightweight, it’s time for Auto Scaling!&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;“Auto Scaling is nothing but an automatic resizing of compute clusters based on demand.”&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Auto Scaling enables “just-in-time provisioning,” allowing users to scale infrastructure dynamically as load demands. It can launch or terminate EC2 instances automatically based on Spikes in Traffic. You pay only for the resources which are enough to handle the load.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/4/Amazon-1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;For monitoring you can use the following AWS services:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Amazon CloudWatch&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;AWS CloudWatch provides a rich set of tools to monitor the health and resource utilization of various AWS services. The metrics collected by CloudWatch can be used to set up alarms, send notifications, and trigger actions upon alarms firing. Amazon EC2 sends metrics to CloudWatch that describe your Auto Scaling instances.&lt;/p&gt;
-
-&lt;p&gt;The autoscaling group can include multiple AZs, up to as many as are in the same region. Instances can pop up in multiple AZs not just for scalability, but for availability.&lt;/p&gt;
-
-&lt;p&gt;We need to add monitoring, metrics, and logging to optimize Auto Scaling efficiently.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Host-level metrics&lt;/strong&gt;. Look at a single CPU instance within an autoscaling group and figure out what’s going wrong.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Aggregate level metrics&lt;/strong&gt;. Look at metrics on the Elastic Load Balancer to understand the performance of the entire set of instances.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Log analysis&lt;/strong&gt;. Look at what the application is telling you using CloudWatch Logs. CloudTrail helps you analyze and manage logs. If you have set up region-specific configurations in CloudWatch, it is not easy to combine metrics from different regions within an AWS monitoring tool. In that case you can use Loggly, a log management tool. You can send logs and metrics from CloudWatch and CloudTrail to Loggly and unify these logs with other data for a better understanding of your infrastructure and applications.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Squeeze as much performance as you can from your configuration. Auto Scaling can help with that. You don’t want systems that are at 20% CPU utilization.&lt;/p&gt;
-
-&lt;p&gt;The infrastructure is getting big, it can scale to 1000s of instances. We have read replicas, we have horizontal scaling, but we need some automation to help manage it all, we don’t want to manage each individual instance. Here some automation tools:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;AWS Elastic Beanstalk&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;AWS Elastic Beanstalk is a service that allows users to deploy code written in Java, .NET, PHP, Node.js, Python, Ruby, Go, and Docker on familiar servers such as Apache, NGINX, Passenger, and IIS.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;AWS OpsWorks&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;AWS OpsWorks provides a unique approach to application management. Additionally, AWS OpsWorks auto-heals application stack, giving scaling based on time or workload demand and generates metrics to facilitate monitoring.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;AWS Cloud Formation&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;AWS Cloud Formation provides resources using a template in JSON format. You have the option to choose from a collection of sample templates to get started on common tasks.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;AWS CodeDeploy&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;AWS Code Deploy is a platform service for automating code deployment to Amazon EC2 instances and instances running on premises.&lt;/p&gt;
-
-&lt;h3 id=&quot;users--1-million&quot;&gt;Users &amp;gt; 1 million&lt;/h3&gt;
-&lt;h3 id=&quot;use-service-oriented-architecturesoa-for-better-flexibility&quot;&gt;Use Service Oriented Architecture(SOA) for better flexibility&lt;/h3&gt;
-&lt;p&gt;To serve more than 1 million users you need to use Service Oriented Architecture(SOA) while designing large scale web applications.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Amazon Simple Queue Service (SQS)&lt;/li&gt;
-  &lt;li&gt;Amazon Simple Notification Service (SNS)&lt;/li&gt;
-  &lt;li&gt;AWS Lambda&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;In SOA, we need to separate each component from the respective tiers and create separate services. The individual services can then be scaled independently. Web and application tiers will have different resource requirements and different services. This gives you a lot of flexibility for scaling and high availability.&lt;/p&gt;
-
-&lt;p&gt;AWS provides a host of generic services to help you build SOA infrastructure quickly. They are:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Amazon Simple Queue Service (SQS)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;It is a simple and cost-effective service to decouple and coordinate the components of a cloud application. Using SQS sending, storing, and receiving messages can be executed easily between software components of any size.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Amazon Simple Notification Service (SNS)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;With SNS you can send messages to a large number of subscribers. The benefits are easy setup, smooth operation, and high reliability to send notifications to all endpoints.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;AWS Lambda&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;AWS Lambda is a compute service that lets you run code without provisioning or managing servers. AWS Lambda executes your code only when needed and scales automatically, from a few requests per day to thousands per second. You pay only for the compute time you consume – there is no charge when your code is not running. You can also build serverless architecture composed of functions that are triggered by events.&lt;/p&gt;
-
-&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
-&lt;p&gt;The decision about how to approach scaling should be made up front because you never know when you are going to get popular! Also, crashing (or even just slow) pages leave your users unhappy and your app with a bad reputation. It ultimately affects your revenue.&lt;/p&gt;
-
-&lt;p&gt;Learning how to build scalable websites takes time, a lot of practice, and a good amount of money. For companies that have a need and struggling to get this done, We are your best option for such a project. We’ve created Scalable Web Apps for clients having millions of users. Contact us for a consultation and price quote.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Build a Scalable Application</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/sw_design.png" /></entry></feed>
+&lt;p&gt;If you are diving into serverless with no platform preference, I would encourage everyone to explore and try each of these before incorporating them into their custom software development services. Understand the use cases why and when serverless can help you.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Comparing Serverless Providers</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/sw_design.png" /></entry></feed>
