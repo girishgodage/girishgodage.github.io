@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#2A80EE">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#2A80EE">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
+<title>Multi-Cloud Management Platforms, Challenges and Best Practices &#8211; Girish Godage</title>
+<meta name="description" content="Multi-cloud management is one of the biggest challenges for enterprises. It can be difficult and often requires the use of third-party tools. This blog consists of some popular multi-cloud management tools and key features you should look while selecting the tool.">
+<meta name="keywords" content="AWSCloud">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all">
+
+<!-- Verifications -->
+    
+    
+        
+<!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Multi-Cloud Management Platforms, Challenges and Best Practices">
+    <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
+    <meta property="og:url" content="http://localhost:4000/blog/multi-cloud-managemen">
+    <meta property="og:site_name" content="Girish Godage">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@GGodage" />
+    
+    <meta name="twitter:title" content="Multi-Cloud Management Platforms, Challenges and Best Practices" />
+    <meta name="twitter:description" content="Multi-cloud management is one of the biggest challenges for enterprises. It can be difficult and often requires the use of third-party tools. This blog consists of some popular multi-cloud management tools and key features you should look while selecting the tool." />
+    <meta name="twitter:url" content="http://localhost:4000/blog/multi-cloud-managemen" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/img/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/img/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    
+
+
+    <link rel="canonical" href="http://localhost:4000/blog/multi-cloud-managemen">
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
+    <!-- Bootstrap CSS-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Google fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+   
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
+    
+    <!-- animate.css-->
+    <link rel="stylesheet" href="http://localhost:4000/sitejs/animate.css/animate.css">
+    <!-- theme stylesheet-->
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="http://localhost:4000/css/custom.css" as="style">
+    <link rel="stylesheet" href="http://localhost:4000/css/comments.css" as="style">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="http://localhost:4000/img/logo-big.png">
+    <!-- Fab Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
+    
+    
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    
+    <script type="text/javascript">
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+       ga('create', 'UA-130164763-2', 'auto');
+       ga('send', 'pageview');
+    </script>
+    
+    <!-- Typed.js DONT TOUCHHHHHHHHHHHHH!-->
+    <!--<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.9/typed.min.js"></script>
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+      </script>
+      
+      <!-- START OF RELEVANT PART -->
+    <script async src="https://just-comments.com/w2.js"></script>
+    <!-- END OF RELEVANT PART -->
+
+
+</head>
+
+<body>
+    
+<!-- navbar-->
+<header class="header">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container"><a class="navbar-brand" href="http://localhost:4000"><img
+          src="http://localhost:4000/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
+          alt="logo"> <img src="http://localhost:4000/img/girish_logo.png" height="30" alt="girilogo"></a>
+      <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span
+          class="fa fa-bars" style="color: white"></span></button>
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="http://localhost:4000#home" class="nav-link  link-scroll">Home</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#about" class="nav-link link-scroll">About</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#skills" class="nav-link link-scroll">Skills</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#services" class="nav-link link-scroll">Services</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#references" class="nav-link link-scroll">My
+              work</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#contact" class="nav-link link-scroll">Contact</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000/blog" class="nav-link link-scroll">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    
+    
+    
+    <div style="background-color:Gray;">
+        <div style="padding:0;min-height:95.05vh;display:flex;font-family: Poppins, sans-serif;margin-top: 5rem;"
+            class="container">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <p class="post-title">
+                    <h1><a href="/blog/multi-cloud-managemen">Multi-Cloud Management Platforms, Challenges and Best Practices</a></h1>
+                </p>
+                
+                <span class="post-meta">
+              <span style="font-weight:600">January 25, 2020 Saturday</span>
+                    
+                       ( 11 minute read ) 
+                    
+                     
+                    <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">   by Girish Godage</a>
+                </span>
+                
+                <div class="site-category"> 
+                        <h5>AWSCloud</h5>
+                </div>
+                
+                <hr>
+                <div><img class="post-image" src="/img/sw_design.png" alt="Multi-Cloud Management Platforms, Challenges and Best Practices" height="250" /></div>
+                <div class="post-content">
+                    <br>                     
+                    <h2 id="6-multi-cloud-management-platforms-challenges-and-best-practices">6 Multi-Cloud Management Platforms, Challenges and Best Practices</h2>
+
+<p>Multi-cloud management is one of the biggest challenges for enterprises. It can be difficult and often requires the use of third-party tools. This blog consists of some popular multi-cloud management tools and key features you should look while selecting the tool.</p>
+
+<p><img src="/img/awscloud/15/Blog-Diagram-4-2-1.png" alt="image info" /></p>
+
+<p>It is evident that multi-cloud strategy eliminates crucial challenges in cloud computing like vendor lock-in, latency, and higher cost. In addition, organizations can leverage vendors’ unique capabilities in artificial intelligence, serverless computing or augmented reality.</p>
+
+<p>However, building applications that are truly built on multi-cloud architecture are challenging. The reason is that the different clouds and on-premises resources use different APIs and management interfaces.</p>
+
+<p>For example, <strong><em>Amazon S3 obviously supports the Amazon S3 API, but Azure Blob Storage and Google Cloud Storage do not. Dealing with multiple APIs and management interfaces has always been anathema for application developers who want to avoid the vendor lock-in of a single API, as well as the added development, support, and time costs associated with supporting multiple APIs.</em></strong></p>
+
+<p>With proper multi-cloud management, organizations can deal with multi-cloud challenges. According to Judith Hurwitz, CEO of Hurwitz &amp; Associates:</p>
+
+<blockquote>
+  <p>The real value of multi-cloud management is the opportunity to mix and match — to get the most cost-effective services, the most innovative services — and to tailor those services to the problem at hand and to changing business demands.</p>
+</blockquote>
+
+<p>There are many platforms available to manage multiple cloud providers via a single interface. These tools include cloud management platforms (CMPs), cloud services brokers (CSBs), and other tools that provide an abstraction layer between two or more public-cloud providers. There are also tools that manage, monitor, and utilize those services.</p>
+
+<p>To help you choose the right multi-cloud management platform, I’ve divided the blog into the following parts:</p>
+
+<ul>
+  <li>What is Multi-cloud Management?</li>
+  <li>Challenges in Multi-Cloud management</li>
+  <li>Multi Cloud Management Platforms</li>
+  <li>Features to Consider While Choosing a Multi-Cloud Management Platform</li>
+  <li>Best Practices to Manage Multi-Cloud Environment</li>
+</ul>
+
+<h2 id="what-is-multi-cloud-management">What is Multi-cloud Management?</h2>
+
+<p>Multi-cloud management is a practice of developing consistent workflows for managing infrastructure provisioning (set-up/tear-down), security, connectivity, and service discovery across cloud platforms. A well defined multi-cloud management provides the visibility required to prevent challenges that lead to a complex multi-cloud architecture.</p>
+
+<p>A well-defined cloud management strategy helps organizations achieve the following primary goals.</p>
+
+<ol>
+  <li><strong>Self-service capabilities</strong>: Self-service capabilities eliminate the traditional processes related to IT resource provisioning.</li>
+  <li><strong>Workflow automation</strong>: Cloud management enables workflow automation. Organizations can take actionable steps needed to create and manage computing instances, without human intervention.</li>
+  <li><strong>Cloud analysis</strong>: By doing cloud analysis and monitoring, organizations can use the best available services according to requirements. Also, with the use of metrics, organizations can change cloud providers or migrate workloads from the public to private clouds if they don’t get optimal performance.</li>
+</ol>
+
+<h2 id="challenges-in-multi-cloud-management">Challenges in Multi-Cloud Management</h2>
+<h3 id="cost">Cost</h3>
+<p>Many companies suffer from the large expenses of using cloud services due to poor multi-cloud management. In multi-cloud, organizations use multiple services from different cloud providers. Many times, it becomes difficult to utilize all the services as per demand and hence companies have to pay for the services which have been not used.</p>
+
+<h3 id="performance">Performance</h3>
+
+<p>IT operations teams need to ensure the speed and performance of applications delivered to end users from complex multi-cloud environments. The scale at which IT needs to monitor data and identify problems cannot be effectively managed by humans alone. They must leverage artificial intelligence (AI) and machine learning.</p>
+
+<p>For example, if you are building an e-commerce app on a multi-cloud environment then performance would be a major challenge.</p>
+
+<h3 id="automation">Automation</h3>
+
+<p>Managing workloads that span multiple disparate platforms creates the need to address real-time processing and orchestration. Application development organizations, especially in a multi-cloud environment, are slowed by their manual processes for creating and modifying workflows and getting applications into production.</p>
+
+<h3 id="cloud-sprawl">Cloud Sprawl</h3>
+
+<p>While adopting multi-cloud strategy, organizations have to prevent app sprawl. Cloud sprawl occurs when users fail to decommission unused cloud computing instances or services. The main reason is that the workloads will move between clouds frequently. Cloud Sprawl create resource visibility issues which affect your cloud bill.</p>
+
+<p>For example, <em>in an organization, employees may be partial to a particular cloud for specific workloads, and this choice may not be consistent across the entire organization. This means the same app might be open across multiple public cloud platforms.</em></p>
+
+<h3 id="migration">Migration</h3>
+<p>For most organizations, migrating to the multi-cloud is a significant challenge especially when the migration involves multiple data centers, remote locations, and mobile users. Ensuring secure access to cloud assets with legacy networks often leads to two choices — backhauling cloud traffic to a central Internet access point or sending cloud traffic directly onto the Internet.</p>
+
+<p>Planning plays a huge role in the migration process. The right multi-cloud management solution can help you migrate applications with existing standards and policies across your new cloud network.</p>
+
+<h3 id="compliance">Compliance</h3>
+<p>As Cloud Computing provides the agility and ­flexibility, it also breaks the planning and approval process which gives rise to compliance issues in multi-cloud environment which leads to shadow IT, budget overrun, and security issues.</p>
+
+<p>Organizations need to define standards for the consumption of cloud services and resources as they define for their business processes. With cloud’s shared responsibility model, choosing the right configuration for services and resources, optimizing resource utilization &amp; cost, and securing data on cloud resources comes under the ownership of cloud consumers for both public and private cloud platforms.</p>
+
+<h3 id="data-security">Data Security</h3>
+<p>As with your own data centers, in multi-cloud also you should have a security framework to rely on. The more levels an attacker has to penetrate to access a valuable resource, the better the chances are that the attack will not be successful.</p>
+
+<p>Consequently, you should design your service to have numerous layers protecting any sensitive data. This way, you can ensure that if one security measure is breached, other obstacles will be in place to keep the attacker at bay.</p>
+
+<h2 id="multi-cloud-management-platforms">Multi Cloud Management Platforms</h2>
+
+<p>When an organization’s users take the initiative to adopt infrastructure and solutions from different cloud vendors, challenges emerge. Each new cloud service comes with its own tools that can increase complexity. Multi-cloud environments require new management solutions to optimize performance, control costs and secure complicated mixes of applications and environments, regardless of whether they are inside the data center or in the cloud.</p>
+
+<h3 id="bmc">BMC</h3>
+<p>BMC provides different solutions to address multi-cloud management challenges like migration, automated cost reporting, service management, performance, visibility, automation, and security.</p>
+
+<h3 id="appformix">AppFormix</h3>
+<p>AppFormix is a product of Juniper Networks which provides end-to-end visibility into your multi-cloud environment to eliminate any potential issues, rendering your operations simpler and more effective. It enables you to visualize and analyze both physical and virtual environments. Through monitoring and intent-based analytics, AppFormix transforms raw data from a diverse set of resources into a format that you can use immediately.</p>
+
+<h3 id="divvycloud">DivvyCloud</h3>
+<p>DivvyCloud’s multi-cloud platform helps customers manage AWS, Azure, GCP, VMware, and OpenStack. Developers have the freedom to choose which clouds are best suited for their company’s needs without IT having to develop policy automation and compliance solutions for each cloud.</p>
+
+<h3 id="embotics">Embotics</h3>
+<p>Embotics’s vCommander leverages a comprehensive set of multi-hypervisor virtualization and cloud management capabilities to allow organizations at any stage of cloud adoption to build and implement the framework, process, automation, and policies that will result in an optimized hybrid cloud environment. It provides support for:</p>
+
+<ul>
+  <li>VMware vSphere</li>
+  <li>Microsoft Hyper-V</li>
+  <li>Amazon Web Services (AWS)</li>
+  <li>Microsoft Azure</li>
+</ul>
+
+<h2 id="harmony-controller-by-a10-networks">Harmony Controller by A10 Networks</h2>
+<p>Harmony Controller platform introduces a new paradigm for centralized management with granular L4-7 analytics across essentially any deployment–on-premise or cloud. Available in a software or hardware form factor, the controller performs the control plane function and dynamically interacts with and oversees the various A10 Networks-based secure application services residing in the data plane. The Harmony Controller is highly scalable and based on a distributed microservices architecture with clustering to scale to the necessary capacity. The easy to use operator console provides monitoring for controller sub-systems, troubleshooting help, and assistance with recovery mechanisms.</p>
+
+<h3 id="zenko">Zenko</h3>
+<p>Developed by Scality, Zenko is Open Source Multi-Cloud Data Controller. It allows customers to manage storage across in-house storage and public cloud tiers. Zenko stores information locally and to Amazon S3, Azure Blob storage, Google Cloud Storage or any S3-compatible cloud storage platform (Ceph, Minio and more).</p>
+
+<h3 id="cloudyn">Cloudyn</h3>
+<p>Cloudyn is an enterprise-grade, SaaS solution that pioneered the single-pane-of-glass approach to managing and optimizing multi-platform, hybrid cloud environments. Supporting Microsoft Azure, Amazon Web Services, Google Cloud and OpenStack, Cloudyn delivers measurable cloud success by enabling full visibility and accountability packaged with continuous optimization across all clouds. The solution provides insights into usage, performance, and cost coupled with actionable recommendations for smart cloud optimization. Cloudyn enables accountability through comprehensive cost allocation and management helping enterprises get to cloud ROI more rapidly.</p>
+
+<h3 id="ibm-cloud-manager">IBM Cloud Manager</h3>
+<p>IBM Multicloud Manager is a tool for monitoring and managing Kubernetes environments, pinpointing component and service health, and managing applications across clusters and clouds. It includes capabilities for setting security policies and workload management. IBM’s value proposition is that providing a cross-cluster, the cross-cloud view becomes more manageable than handling it individually, within each cloud or cloud service.</p>
+
+<h2 id="features-to-consider-while-choosing-a-multi-cloud-management-platform">Features to consider while choosing a multi-cloud management platform</h2>
+<h3 id="service-provisioning">Service provisioning</h3>
+<p>The platform should have the feature to launch and allocate the cloud services according to demand. This tool can translate a provisioning request from the console, or an API, and translate that request into the cloud-native API of the target cloud within the multi-cloud architecture.</p>
+
+<h3 id="service-monitoring">Service monitoring</h3>
+<p>The ability to measure and visualize application and network-layer performance between their hybrid cloud, private cloud, and public cloud services. This includes reporting on what occurs to determine the future use of that service, including reliability, cost metrics, etc.</p>
+
+<h3 id="service-performance">Service performance</h3>
+<p>The ability to monitor service performance and then log resulting data. Poor-performing services should be blacklisted until the issues have been resolved.</p>
+
+<h3 id="service-governancepolicy">Service governance/policy</h3>
+<p>The ability to define and leverage policies around the use and execution of the service or services.</p>
+
+<h3 id="service-orchestration">Service orchestration</h3>
+<p>The ability to orchestrate the cloud service to meet the needs of a core business application or business process.</p>
+
+<h3 id="monitoring-analytics">Monitoring analytics</h3>
+<p>A detailed analysis of how the clouds under management are behaving, key metrics, and predictions around future behaviors such as performance or reliability.</p>
+
+<h3 id="integration-with-security">Integration with Security</h3>
+<p>The ability to operate seamlessly with the existing cloud security infrastructure. In most cases, this will be identity access management, but it could also deal with compliance systems as well.</p>
+
+<h2 id="best-practices-to-manage-multi-cloud-environment">Best Practices to Manage Multi-Cloud Environment</h2>
+<p>Map your architecture according to requirements
+Map your entire network, and then identify where the cloud fits in it. Get a clear picture of the cloud’s role in your overall system-management strategy to avoid having to backfill gaps in the data needs of business managers and other customers. Different lines of business will be best served by different cloud providers.</p>
+
+<h3 id="standardized-consumption">Standardized consumption</h3>
+<p>In a multi-cloud environment, each business unit in an organization might use services from several different providers—for example, an analytics platform from Azure, storage from AWS and AI capabilities from the IBM Cloud. Business units often pay for these services in different ways.</p>
+
+<h3 id="integration-remains-a-necessity">Integration remains a necessity</h3>
+<p>In multi-cloud, developers require common standards for integrating and managing the supplier ecosystem to help address these issues. A cohesive multi-sourced ecosystem requires integration in six key areas including business, organization, information, governance, processes, and tools.</p>
+
+<p>For example, the Network layer is critical integration component of the multi-cloud and also need to be designed to let companies run their applications in a hybrid computing environment. The network control, security, and visibility need to extend into public and multi-clouds, making these environments look like a single network, with a single pane of glass management functionalities.</p>
+
+<h3 id="use-containers">Use containers</h3>
+<p>Having applications packaged with all their dependencies increases portability and can simplify management.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>Multi-cloud is a solution where multiple clouds from different providers are used for separate tasks. To automate the task and optimize cost, enterprises need a robust multi-cloud management platform. The rising need for different applications is driving the adoption of multi-cloud management platform among end users. With the availability of multi-cloud management platform, enterprises can significantly reduce their dependency on a single provider.</p>
+
+
+                </div>
+
+                
+
+                <div id="disqus_thread"></div>
+                <script>
+                
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://girishgodage-github-io.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
+</button>
+<!-- Footer-->
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 text-center text-lg-left">
+                <p class="social">
+                    <a href="https://www.facebook.com/girish.godage.5" class="external facebook wow fadeInUp">
+                        <i class="fa fa-facebook"></i></a>
+                    <a href="https://instagram.com/girishgodage_007" data-wow-delay="0.2s" class="external instagram wow fadeInUp">
+                        <i class="fa fa-instagram"></i></a>
+                    <a href="https://youtube.com/girishgodage" data-wow-delay="0.4s" class="external youtube wow fadeInUp">
+                        <i class="fa fa-youtube-play"></i></a>
+                    <a href="https://twitter.com/GGodage" data-wow-delay="0.4s" class="external twitter wow fadeInUp">
+                            <i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/girishgodage" data-wow-delay="0.4s" class="external github wow fadeInUp">
+                                <i class="fa fa-github"></i></a>    
+                    <a href="mailto:girishgodage@gmail.com?subject=Hello%20Girish" data-wow-delay="0.6s" class="email wow fadeInUp">
+                        <i class="fa fa-envelope"></i></a></p>
+            </div>
+            <div class="col-12 col-md-2">
+            <h5>Quick Links</h5>
+            <ul>
+               <li><a href="http://localhost:4000#about">About</a></li>
+               <li><a href="http://localhost:4000#contact">Contact</a></li>
+               <li><a href="/sitemap.xml">Sitemap</a></li>               
+            </ul>
+         </div>
+            <div class="col-12 col-md-4 text-center text-lg-right mt-4 mt-lg-0">
+                <p> <b>©</b>2019 Girish Godage </p>
+                <p class="text-center, text-shadow"> Hosted On <a href="https://pages.github.com/">GitHub Pages</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Typed.js DONT TOUCH THIS! -->
+    <div id="typed-strings">
+    </div>
+
+        <!-- JavaScript files-->
+    <script src="http://localhost:4000/sitejs/jquery/jquery.min.js"></script>
+    <script src="http://localhost:4000/sitejs/popper.js/umd/popper.min.js"> </script>
+    <script src="http://localhost:4000/sitejs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="http://localhost:4000/sitejs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="http://localhost:4000/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.counterup/jquery.counterup.js"></script>
+    <script src="http://localhost:4000/js/front.js"></script>
+    <script src="http://localhost:4000/js/comment.js"></script>
+       <!-- Script pointing to search-script.js -->
+    <script src="http://localhost:4000/js/search-script.js" type="text/javascript"></script>
+   
+    <!-- Configuration -->
+    <script>
+         SimpleJekyllSearch({
+         searchInput: document.getElementById('search-input'),
+         resultsContainer: document.getElementById('results-container'),
+         json: 'http://localhost:4000/search.json'
+         })
+         </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC36FUDDdOTidZJ8nzS5vfE7KVyayenKPE",
+    authDomain: "githubcontactlist.firebaseapp.com",
+    databaseURL: "https://githubcontactlist.firebaseio.com",
+    projectId: "githubcontactlist",
+    storageBucket: "githubcontactlist.appspot.com",
+    messagingSenderId: "899685398702",
+    appId: "1:899685398702:web:0c23c56d2d6d40df37553f",
+    measurementId: "G-YWBRCYJYFW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script>
+   $(function() {
+      
+    //make a variable to keep track of data coming from firebase
+    var data = [];
+
+    // Reference messages collection
+      var messagesRef = firebase.database().ref('contactformmessages');  
+
+
+    //listen to data updates from firebase
+    messagesRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+        //when the data updates at firebase, put it in the data variable
+        data = snapshot.val();
+    })
+    //Entire Contact Form (handler)
+    $('#contactForm').submit(function(e) {
+      e.preventDefault();
+
+        var $form = $(this);
+        console.log("Submit to Firebase");
+
+        //disable submit button
+        $form.find("#sendForm").prop('disabled', true);
+
+        //get values to send to Firebase
+        var name = $('#name').val();
+        console.log(name);
+		
+		var surname = $('#surname').val();
+        console.log(surname);
+		
+		var email = $('#email').val();
+        console.log(email);	
+		
+		var phone = $('#phone').val();
+        console.log(phone);
+
+        var message = $('#message').val();
+        console.log(message);
+
+       
+        //take the values from the form, and put them in an object
+        var newContact = {
+         "name": name,
+			"surname": surname,
+			"email": email,
+			"phone": phone,
+         "message": message
+        }
+        //put new object in data array
+        data.push(newContact);
+        console.log(data);
+
+        //send the new data to Firebase
+        messagesRef.set(data, function(err) {
+            if (err) {
+                alert("Data no go");
+            }else{
+            $("#form-wrapper").slideToggle();
+            $('#form-success-message').slideToggle();
+			}
+        });
+
+        return false;
+    })
+   
+    
+})
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";           
+        }else
+        {
+           myBtton.style.display="none";     
+          
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+      //  document.body.scrollTop =0;
+      //  document.documentElement.scrollTop=0;
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    }
+
+</script>
+
+    
+    
+
+
+</body>
+
+</html>
