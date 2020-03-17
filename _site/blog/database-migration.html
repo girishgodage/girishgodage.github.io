@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#2A80EE">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#2A80EE">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
+<title>What is Database Migration? Understanding Needs and Challenges &#8211; Girish Godage</title>
+<meta name="description" content="Adopting emerging technologies have helped businesses in leveraging their overall performance. Database Migration is one of those. If you are planning a migration, what are the challenges involved during database migration? What is the need to do it? Let me walk you through the essentialities before performing database migration.">
+<meta name="keywords" content="Database">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all">
+
+<!-- Verifications -->
+    
+    
+        
+<!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="What is Database Migration? Understanding Needs and Challenges">
+    <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
+    <meta property="og:url" content="http://localhost:4000/blog/database-migration">
+    <meta property="og:site_name" content="Girish Godage">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@GGodage" />
+    
+    <meta name="twitter:title" content="What is Database Migration? Understanding Needs and Challenges" />
+    <meta name="twitter:description" content="Adopting emerging technologies have helped businesses in leveraging their overall performance. Database Migration is one of those. If you are planning a migration, what are the challenges involved during database migration? What is the need to do it? Let me walk you through the essentialities before performing database migration." />
+    <meta name="twitter:url" content="http://localhost:4000/blog/database-migration" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/img/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/img/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    
+
+
+    <link rel="canonical" href="http://localhost:4000/blog/database-migration">
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
+    <!-- Bootstrap CSS-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Google fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+   
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
+    
+    <!-- animate.css-->
+    <link rel="stylesheet" href="http://localhost:4000/sitejs/animate.css/animate.css">
+    <!-- theme stylesheet-->
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="http://localhost:4000/css/custom.css" as="style">
+    <link rel="stylesheet" href="http://localhost:4000/css/comments.css" as="style">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="http://localhost:4000/img/logo-big.png">
+    <!-- Fab Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
+    
+    
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    
+    <script type="text/javascript">
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+       ga('create', 'UA-130164763-2', 'auto');
+       ga('send', 'pageview');
+    </script>
+    
+    <!-- Typed.js DONT TOUCHHHHHHHHHHHHH!-->
+    <!--<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.9/typed.min.js"></script>
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+      </script>
+      
+      <!-- START OF RELEVANT PART -->
+    <script async src="https://just-comments.com/w2.js"></script>
+    <!-- END OF RELEVANT PART -->
+
+
+</head>
+
+<body>
+    
+<!-- navbar-->
+<header class="header">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container"><a class="navbar-brand" href="http://localhost:4000"><img
+          src="http://localhost:4000/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
+          alt="logo"> <img src="http://localhost:4000/img/girish_logo.png" height="30" alt="girilogo"></a>
+      <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span
+          class="fa fa-bars" style="color: white"></span></button>
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="http://localhost:4000#home" class="nav-link  link-scroll">Home</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#about" class="nav-link link-scroll">About</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#skills" class="nav-link link-scroll">Skills</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#services" class="nav-link link-scroll">Services</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#references" class="nav-link link-scroll">My
+              work</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#contact" class="nav-link link-scroll">Contact</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000/blog" class="nav-link link-scroll">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    
+    
+    
+    <div style="background-color:Gray;">
+        <div style="padding:0;min-height:95.05vh;display:flex;font-family: Poppins, sans-serif;margin-top: 5rem;"
+            class="container">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <p class="post-title">
+                    <h1><a href="/blog/database-migration">What is Database Migration? Understanding Needs and Challenges</a></h1>
+                </p>
+                
+                <span class="post-meta">
+              <span style="font-weight:600">January 07, 2020 Tuesday</span>
+                    
+                       ( 13 minute read ) 
+                    
+                     
+                    <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">   by Girish Godage</a>
+                </span>
+                
+                <div class="site-category"> 
+                        <h5>Database</h5>
+                </div>
+                
+                <hr>
+                <div><img class="post-image" src="/img/sw_design.png" alt="What is Database Migration? Understanding Needs and Challenges" height="250" /></div>
+                <div class="post-content">
+                    <br>                     
+                    <h3 id="what-is-database-migration-understanding-needs-and-challenges">What is Database Migration? Understanding Needs and Challenges</h3>
+
+<p>Adopting emerging technologies have helped businesses in leveraging their overall performance. Database Migration is one of those. If you are planning a migration, what are the challenges involved during database migration? What is the need to do it? Let me walk you through the essentialities before performing database migration.</p>
+
+<p><img src="/img/database/1/DBM-Feature.png" alt="image info" /></p>
+
+<p>Applications using database would require updates over time to support new features or fix the scaling problem with the queries. If you are also planning for database migration, let me tell you one thing. Database migration can be one of the easiest tasks if the application size is small. But, for bigger applications, you need to write migrations, which seems a bit tedious.</p>
+
+<p>For instance, Coursera with a then user base of about 1.6 million users migrated the database, from MongoDB to MySQL servers running on Amazon RDS, without any downtime – scheduled or unscheduled. As said by <strong>Frank Chen</strong>, who was involved in the migration process, <strong><em>“We did parallel writes into both MongoDB and MySQL for a time, running a migration script to migrate the old data into MySQL servers. Once this was done, we flipped the switch to read data from both MySQL and MongoDB in order to ensure consistency. We then finally made a switch to read from MySQL as our primary database.”</em></strong></p>
+
+<p>Well, the time to migrate a database depends on the complexity of the database.  Database migration can be considered as part of application modernization. It can be a challenging task to modernize the application as there are many moving parts and you need to understand all of them. Even if you are thorough with your source database engine, if you switch engines you need to know the nitty-gritty of the target database engine. Or rather, need to be an expert in the target database engine.</p>
+
+<p>Some popular database migration service providers allow you to migrate data from the source database to the target database. During the migration process, the service tracks changes that are being made on the source database. This is done so that the two databases remain synced – changes done in the source can be applied to the target database. There is no need for the source and the target database to be of the same engine type.”</p>
+
+<ul>
+  <li><strong>What is Database Migration?</strong></li>
+  <li><strong>Challenges in Database Migration</strong></li>
+  <li><strong>What is the need for Database Migration?</strong></li>
+  <li><strong>How does data migration work?</strong></li>
+  <li><strong>How can We help?</strong></li>
+</ul>
+
+<h2 id="what-is-database-migration">What is database migration?</h2>
+<p>Database migration, in simple words, means moving data from one platform to another. Otherwise, it is a complex, multiphase process, which usually includes assessment, database schema conversion (if you are changing engines), script conversion, data migration, functional testing, performance tuning, and many other steps.</p>
+
+<p>With the rise in popularity of Git, the trend of writing web-based applications using object-relational mapping (ORM) libraries also became well-known. The main objective was: if developers can make changes in code that are easy to roll back using Git, they could also be able to do the same things when it comes to schema changes. Well, any new feature involves code and schema changes. Therefore, many popular frameworks added ORM and database migration (also known as schema migration) as part of their offerings.</p>
+
+<p>But, database migration is a concept that is not restricted to popular web frameworks. There are many other standalone libraries that ease the database migration process.</p>
+
+<p>Migrating databases involves a lot of effort. But, what exactly happens during the database migration? What are the challenges faced while migrating the database? Let’s explore.</p>
+
+<h3 id="challenges-in-database-migration">Challenges in database migration</h3>
+<p>As said, database migration can be a very complex task. The common challenges that are being faced during the migration process are known to many but they often don’t know how to overcome these. Some of the common challenges are as follows:</p>
+
+<h3 id="1-identification-of-various-databases">1. Identification of Various Databases</h3>
+<p>With the passage of time, every company gathers some amount of data. If your company has been operational for a while, there is a possibility that the data is housed in various databases across different levels within the organization. The biggest challenge in migrating the databases is identifying the location of the databases in your environment. Also, after identification, it is a tough task to decide how to normalize and convert the schemas.</p>
+
+<h3 id="2-data-analysis-at-the-earliest">2. Data Analysis at the earliest</h3>
+<p>Sometimes, information can be hidden in obscure places, due to constraints in computer systems. This happens because there aren’t specific fields to hold all elements of the data or users may not be aware of the purpose of the available fields. Consequently, the information transferred during the migration will be incomplete, inaccurate and outdated, often discovered very late in the day, even after the project has been completed. The outcome might not have enough time or the right resources to be able to identify and correct this data. It is better to perform thorough data analysis at the earliest possible occasion, usually when planning and designing the data migration. It can help you in unveiling these hidden errors.</p>
+
+<h3 id="3-devising-a-migration-strategy">3. Devising a migration strategy</h3>
+<p>Database Migration is a strategic process. It is fraught with a lot of risks. Devising a plan for safe, secure and efficient migration of databases is really important for the migration to be successful. Well, for many teams deciding whether to pursue a “big bang” migration – a single step process or to leverage a more methodical, incremental approach called a <strong>“trickle” or “parallel run”</strong> migration.</p>
+
+<p>There are various factors that can influence the migration strategy such as allocated budget, timeline or time constraints, and available human resources to execute the migration.</p>
+
+<p>“According to research, enterprise database migration projects can cost up to $875K and experience more than $250K in cost overruns.”</p>
+
+<p>Financial and time implications can add another layer of complexity to the planning and strategy process.</p>
+
+<h3 id="4-lack-of-integrated-process">4. Lack of Integrated Process</h3>
+<p>A typical process of data migration involves different people using myriad technologies. For instance, the use of spreadsheets to document data, which are usually prone to human errors and are difficult to be translated doing data analysis or performing data transformations. The use of various technologies can sometimes lead to failure in the transfer of data and its design between the analysis, development, testing and implementation phases. Sometimes things get lost in translation which eventually increases the cost and wastes a lot of time. For this, organizations should look to utilize the platform at its full potential. It should be able to successfully link the critical inputs and outputs from each of the stages to help in reducing the error and save time and money.</p>
+
+<h3 id="5-data-cleaning-and-coding">5. Data cleaning and coding</h3>
+<p>Data stored in databases might be in different formats that would have come from varied sources. The data coming from various places needs to be cleansed, normalized or transformed. This should be done in such a manner that allows you to analyze it together with data from other sources. In such cases, you might need to adapt to your data model to account for a mix of structured or unstructured data, or for any discrepancies that might occur while moving from one database to another.</p>
+
+<h3 id="6-not-evaluating-final-results-in-a-timely-manner">6. Not evaluating final results in a timely manner</h3>
+<p>This can only happen in the testing stage. The users can see the actual data that will be loaded into the new system at the end of design and development. At this point, the incompatibility of the data in the new system is one of the worst outcomes that can arise. An organization can work without finding a solution to the problem, but speaking frankly this is not the best practice. Early and agile testing phases can be introduced to avoid delays in the project. Further, getting your users involved in evolving the test cases as they see the actual prototypes of the data output.</p>
+
+<h3 id="7-lack-of-collaboration">7. Lack of collaboration</h3>
+<p>As mentioned, data migration involves different people who use different technologies. In some cases, a mix of your employees and some external engineers would work on database migration. It might happen that some of these people may not be in the same location. Working at different locations in silos might impact the overall efficiency, create more data silos and can lead to misinterpretations. While working together, it can be difficult to deal with situations when things go wrong. Most people try to blame rather than resolving issues. Making use of collaborative tools helps the parties involved in the migration in observing the same picture of data as it moves through various project stages, leaving little or no room for assumptions and misunderstandings.</p>
+
+<h3 id="8-emphasize-on-data-analytics">8. Emphasize on data analytics</h3>
+<p>A data migration project is a challenging and high-risk task. It would be better to introduce data experts in your migration projects right from the start. This will ensure they make sense of disparate data sources and guiding the data transformation that would be appropriate for the audience who will be using it in the target system.</p>
+
+<p>It makes sense to seek experts but it is usually applied to the management and technical aspects of data migration. However, these experts, who are usually hidden in business don’t appear until late in the day. Also, those with access to data are unable to decode it, while those that are unable to obtain access to it, sometimes because the system is not ready.</p>
+
+<p>Well, if these hurdles are dealt with during the planning stage and are overcome early before the data is transformed or transferred, you can be sure of success.</p>
+
+<h3 id="9-securing-data-and-systems">9. Securing data and systems</h3>
+<p>Data migration isn’t just time-consuming and costly but also has the potential for increased risk without the right protocols and plans in place. In any migration, there is a treasure trove of high-value intellectual property that has the risk of being leaked, lost or otherwise accessed by unauthorized users (either inadvertently or with malicious intent). Any of the instances could mean significant damage to the company reputation, customer churn or even potential lawsuits or punitive fines.</p>
+
+<p>For instance, Twitter migrated from MySQL to its custom database Manhattan. The lesson that they learned,</p>
+
+<p>“Over the years, as we’ve migrated data from MySQL to Manhattan to take advantage of better availability, lower latency, and easier development, we’ve also adopted additional storage engines (LSM, b+tree…) to better serve our traffic patterns. Additionally, we’ve learned from incidents and have started protecting our storage layers from abuse by sending a backpressure signal and enabling query filtering.”</p>
+
+<h2 id="what-is-the-need-for-database-migration">What is the need for Database Migration?</h2>
+<p>A company has a lot of reasons to decide on migrating the database. Let us explore a few:</p>
+
+<h3 id="1-save-costs">1. Save Costs:</h3>
+<p>Companies migrate databases in order to save money. They will move an on-premise database to a cloud database. This helps in saving on infrastructure as well as the manpower and expertise needed to support it.</p>
+
+<h3 id="2-adopting-new-technology">2. Adopting new technology</h3>
+<p>This is the common reason for migration, where the company would shift from an outdated system or a legacy one to a system that is designed for the current day data needs. In this era of big data, adopting new storage techniques is a necessity. For instance, a company might choose to move from a legacy SQL database to a data lake or another flexible system.</p>
+
+<h3 id="3-reduce-redundancy">3. Reduce Redundancy</h3>
+
+<p>Data migration is required in order to move all the data in the company to a single place. This will help in minimizing redundant data. Also, the data stored in one place can be easily accessible by all the divisions of the company. Sometimes, this happens after acquisition when the systems need to be combined. It can also happen when different systems are siloed throughout a company. For instance, different departments in your organization have different databases and there is no sync between them. It becomes really difficult to gain insights from your data when you have different databases that are incompatible.</p>
+
+<h3 id="4-security-fixes">4. Security Fixes</h3>
+<p>As per the research, it is found that the databases are one of the most vulnerable entities to cyberattacks. This is because they are the easiest to get into through networks. Most of the organizations fail to upgrade their databases regularly as they do other systems. This eventually leaves a wide gap for the hackers to enter and reveal or steal information.</p>
+
+<p>Mike Dietrich of Oracle states, “The news is full of reports [about] hacked and cracked systems. It is essential to have the most current security fixes”.</p>
+
+<p>Most of the database upgrades come with security options, which implies that the only way to protect your database is to get it updated on a regular basis. For instance, when Oracle upgraded to 12g version, many users were happy with improved productivity that the features provided. A Senior Oracle Instructor at New Horizon University pointed out that the new version allowed pluggable databases. The organizing categories and individual entries are much easier and quicker. Organizing databases readily implies that the information is fetched easily, thereby, enhancing productivity.</p>
+
+<h2 id="how-does-database-migration-work">How does database migration work?</h2>
+<p>If you are planning to migrate your database, then you should gather all the information required to successfully complete the project. I have segmented the information into three,</p>
+
+<ul>
+  <li>
+    <h4 id="pre-migration-steps">Pre-migration steps</h4>
+    <p>These steps should be taken before actually migrating the database, which will include the basic planning, structuring, understanding the requirements and finalizing the move.</p>
+  </li>
+  <li>
+    <h4 id="migration-steps">Migration Steps</h4>
+    <p>These are the steps that are to be taken while implementing database migration. These steps should be accomplished with proper accountability taking utmost care about data governance roles, risks related to migration, etc.</p>
+  </li>
+  <li>
+    <h4 id="post-migration-steps">Post-migration steps</h4>
+    <p>Once database migration is complete, there might be some issues that would have gone unnoticed during the process. These steps would be necessarily taken to ensure that the migration process gets over in an error-free manner.</p>
+  </li>
+</ul>
+
+<h2 id="how-can-we-help">How can We help?</h2>
+<p>We are a leading tech company, helping businesses leverage their performance by developing custom software solutions for them. We have a team of skilled professionals who can help you in successfully migrating database – starting from the assessment of an existing database to making a roadmap for the database migration. We ensure that the necessary precautionary steps are taken in order to avoid any data loss during the migration of the database. Our team can consult you in the technologies that are best suited for the type of database that your company owns or will require. After successfully migrating the database, we validate the data stored in the database and repair if any discrepancies have been encountered while performing the migration.</p>
+
+                </div>
+
+                
+
+                <div id="disqus_thread"></div>
+                <script>
+                
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://girishgodage-github-io.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
+</button>
+<!-- Footer-->
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 text-center text-lg-left">
+                <p class="social">
+                    <a href="https://www.facebook.com/girish.godage.5" class="external facebook wow fadeInUp">
+                        <i class="fa fa-facebook"></i></a>
+                    <a href="https://instagram.com/girishgodage_007" data-wow-delay="0.2s" class="external instagram wow fadeInUp">
+                        <i class="fa fa-instagram"></i></a>
+                    <a href="https://youtube.com/girishgodage" data-wow-delay="0.4s" class="external youtube wow fadeInUp">
+                        <i class="fa fa-youtube-play"></i></a>
+                    <a href="https://twitter.com/GGodage" data-wow-delay="0.4s" class="external twitter wow fadeInUp">
+                            <i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/girishgodage" data-wow-delay="0.4s" class="external github wow fadeInUp">
+                                <i class="fa fa-github"></i></a>    
+                    <a href="mailto:girishgodage@gmail.com?subject=Hello%20Girish" data-wow-delay="0.6s" class="email wow fadeInUp">
+                        <i class="fa fa-envelope"></i></a></p>
+            </div>
+            <div class="col-12 col-md-2">
+            <h5>Quick Links</h5>
+            <ul>
+               <li><a href="http://localhost:4000#about">About</a></li>
+               <li><a href="http://localhost:4000#contact">Contact</a></li>
+               <li><a href="/sitemap.xml">Sitemap</a></li>               
+            </ul>
+         </div>
+            <div class="col-12 col-md-4 text-center text-lg-right mt-4 mt-lg-0">
+                <p> <b>©</b>2019 Girish Godage </p>
+                <p class="text-center, text-shadow"> Hosted On <a href="https://pages.github.com/">GitHub Pages</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Typed.js DONT TOUCH THIS! -->
+    <div id="typed-strings">
+    </div>
+
+        <!-- JavaScript files-->
+    <script src="http://localhost:4000/sitejs/jquery/jquery.min.js"></script>
+    <script src="http://localhost:4000/sitejs/popper.js/umd/popper.min.js"> </script>
+    <script src="http://localhost:4000/sitejs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="http://localhost:4000/sitejs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="http://localhost:4000/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.counterup/jquery.counterup.js"></script>
+    <script src="http://localhost:4000/js/front.js"></script>
+    <script src="http://localhost:4000/js/comment.js"></script>
+       <!-- Script pointing to search-script.js -->
+    <script src="http://localhost:4000/js/search-script.js" type="text/javascript"></script>
+   
+    <!-- Configuration -->
+    <script>
+         SimpleJekyllSearch({
+         searchInput: document.getElementById('search-input'),
+         resultsContainer: document.getElementById('results-container'),
+         json: 'http://localhost:4000/search.json'
+         })
+         </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC36FUDDdOTidZJ8nzS5vfE7KVyayenKPE",
+    authDomain: "githubcontactlist.firebaseapp.com",
+    databaseURL: "https://githubcontactlist.firebaseio.com",
+    projectId: "githubcontactlist",
+    storageBucket: "githubcontactlist.appspot.com",
+    messagingSenderId: "899685398702",
+    appId: "1:899685398702:web:0c23c56d2d6d40df37553f",
+    measurementId: "G-YWBRCYJYFW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script>
+   $(function() {
+      
+    //make a variable to keep track of data coming from firebase
+    var data = [];
+
+    // Reference messages collection
+      var messagesRef = firebase.database().ref('contactformmessages');  
+
+
+    //listen to data updates from firebase
+    messagesRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+        //when the data updates at firebase, put it in the data variable
+        data = snapshot.val();
+    })
+    //Entire Contact Form (handler)
+    $('#contactForm').submit(function(e) {
+      e.preventDefault();
+
+        var $form = $(this);
+        console.log("Submit to Firebase");
+
+        //disable submit button
+        $form.find("#sendForm").prop('disabled', true);
+
+        //get values to send to Firebase
+        var name = $('#name').val();
+        console.log(name);
+		
+		var surname = $('#surname').val();
+        console.log(surname);
+		
+		var email = $('#email').val();
+        console.log(email);	
+		
+		var phone = $('#phone').val();
+        console.log(phone);
+
+        var message = $('#message').val();
+        console.log(message);
+
+       
+        //take the values from the form, and put them in an object
+        var newContact = {
+         "name": name,
+			"surname": surname,
+			"email": email,
+			"phone": phone,
+         "message": message
+        }
+        //put new object in data array
+        data.push(newContact);
+        console.log(data);
+
+        //send the new data to Firebase
+        messagesRef.set(data, function(err) {
+            if (err) {
+                alert("Data no go");
+            }else{
+            $("#form-wrapper").slideToggle();
+            $('#form-success-message').slideToggle();
+			}
+        });
+
+        return false;
+    })
+   
+    
+})
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";           
+        }else
+        {
+           myBtton.style.display="none";     
+          
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+      //  document.body.scrollTop =0;
+      //  document.documentElement.scrollTop=0;
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    }
+
+</script>
+
+    
+    
+
+
+</body>
+
+</html>
