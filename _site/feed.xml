@@ -1,4 +1,169 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-17T07:41:01+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">Cloud Cost Optimization Strategies (Even AWS won’t Tell you!)</title><link href="http://localhost:4000/blog/cloud-cost-optimization-strategies" rel="alternate" type="text/html" title="Cloud Cost Optimization Strategies (Even AWS won't Tell you!)" /><published>2020-01-25T11:41:00+00:00</published><updated>2020-01-25T11:41:00+00:00</updated><id>http://localhost:4000/blog/cloud-cost-optimization-strategies</id><content type="html" xml:base="http://localhost:4000/blog/cloud-cost-optimization-strategies">&lt;h2 id=&quot;cloud-cost-optimization-strategies-even-aws-wont-tell-you&quot;&gt;Cloud Cost Optimization Strategies (Even AWS won’t Tell you!)&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-18T14:01:50+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">Amazon Connect – Customer Contact Center in the Cloud</title><link href="http://localhost:4000/blog/create-call-center-using-AWSConnect" rel="alternate" type="text/html" title="Amazon Connect – Customer Contact Center in the Cloud" /><published>2020-02-01T11:41:00+00:00</published><updated>2020-02-01T11:41:00+00:00</updated><id>http://localhost:4000/blog/create-call-center-using-AWSConnect</id><content type="html" xml:base="http://localhost:4000/blog/create-call-center-using-AWSConnect">&lt;h2 id=&quot;amazon-connect--customer-contact-center-in-the-cloud&quot;&gt;Amazon Connect – Customer Contact Center in the Cloud&lt;/h2&gt;
+
+&lt;p&gt;Customer service is essential to the success of any business. In order to provide voice-based customer service at scale, many organizations operate call centers. At the low end, call centers simply route incoming calls to any available agent. More sophisticated systems support more sophisticated routing and interaction, including the ability to create customized call trees and other Integrated Voice Response (IVR) systems. Traditionally, IVR systems have been difficult to install and expensive to license, with capacity-based pricing the norm.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/call_center_4.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The Amazon customer service organization aims to deliver an exceptional level of services to our customers. In order to do this at scale, the organization employs tens of thousands of agents working at more than 50 groups and subsidiaries centers scattered around the world, supporting customers that speak a wide variety of languages.&lt;/p&gt;
+
+&lt;h2 id=&quot;welcome-to-amazon-connect&quot;&gt;Welcome to Amazon Connect&lt;/h2&gt;
+
+&lt;p&gt;Today I would like to introduce you to Amazon Connect. Building on the same technology used by many of our own customer service teams, Amazon Connect lets you set up a cloud-based contact center in minutes. You create your contact center, design your contact flows (similar to IVRs), and on-board your agents using a modern interface that is entirely web-based.&lt;/p&gt;
+
+&lt;p&gt;Instead of requiring help from IT teams and specialized consultants, Amazon Connect is simple enough to be configured and run directly by business decision makers. There’s no hardware to deploy and no per-agent licenses. Instead, you pay based on the number of customer-minutes and the amount of phone time that you consume. This scalable, pay-as-you-go model means that you can use Amazon Connect in situations where your call volume is unpredictable, spiky, or both.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_switchboard_2.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Amazon Connect works with many different AWS services including:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Amazon S3&lt;/strong&gt; – Amazon Connect uses S3 to provide unlimited, encrypted storage of calls (audio) and reports.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;AWS Lambda&lt;/strong&gt; – This give you the ability to run code in serverless fashion as part of a customer contact. The code can pull data from your CRM or your database and use the data to provide a personalized customer experience.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Amazon Lex&lt;/strong&gt; – Customers can build natural language contact flows using Amazon Lex to get the same automatic speech recognition (ASR) technology and natural language understanding (NLU) that powers Amazon Alexa. This lets callers simply say what they want instead of having to listen to long lists of menu options and guess which one is most closely related to what they want to do. This feature of Amazon Connect is being released in preview form, and you can request access to the preview if you are interested.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;AWS Directory Service&lt;/strong&gt; – Amazon Connect can reference an existing Active Directory or it can create a new one. The directory is used to store user (administrator, manager, or agent) identities and permissions.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Amazon Kinesis&lt;/strong&gt; – Amazon Connect can stream contact trace records (CTRs) to Amazon Kinesis. From there they can be pushed to Amazon S3 or Amazon Redshift and analyzed using Amazon QuickSight or other business analytics tools.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Amazon CloudWatch&lt;/strong&gt; – Amazon Connect publishes real-time operational metrics to CloudWatch. These metrics will tell you how many calls are arriving per second, how many are being held in queues, and so forth. You can use these metrics to observe the performance of your contact center and to make sure that you have the right number of agents on hand.&lt;/p&gt;
+
+&lt;h2 id=&quot;amazon-connect-benefits--features&quot;&gt;Amazon Connect Benefits &amp;amp; Features&lt;/h2&gt;
+&lt;p&gt;Let’s take a look at the major benefits and features of Amazon Connect.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Cloud-Powered&lt;/strong&gt; – Amazon Connect is an integral part of AWS, and is designed to be robust, scalable, and highly available. Each contact center instance runs in multiple AWS Availability Zones.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Simple&lt;/strong&gt; – As I already noted, Amazon Connect was designed to be set up and run by business decision makers. The graphical console makes the setup process (including the design of graphical call flows) easy and efficient.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Flexible&lt;/strong&gt; – The Contact Flow Editor (CFE) that powers Amazon Connect includes blocks for interaction, integration, control flow, branching, and more. Call flows can include a mixture of prerecorded audio prompts, generated audio, Lex-powered interaction, integration with existing systems and databases, conversations with agents, call transfers, and more.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Economical&lt;/strong&gt; – Amazon Connect’s pay-as-you-go model keeps operating costs in line with actual usage. On the agent side, Amazon Connect includes a softphone that supports high quality audio.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;amazon-connect-tour&quot;&gt;Amazon Connect Tour&lt;/h2&gt;
+&lt;p&gt;Let’s set up a customer contact center, starting at the Amazon Connect console. I click on Get started:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_console_splash_1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I can choose to use an existing directory or I can create a new one, which I’ll do. I’ll set up the URL for my contact center to proceed. This URL will allow my contact center’s users to sign in:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_step1_choose_dir_2.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Next, I set myself up as the administrator:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_step2_create_admin_2.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;My contact center can accept incoming calls, make outgoing calls, or both. Outgoing calls can be made as part of a contact flow or by an agent. I simply specify what I need (I’ll choose my direct dial and/or toll-free numbers later):&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_step3_telephony_1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Next, I specify the S3 locations (buckets and prefixes) for call recording and reports. I can use separate buckets and prefixes for each, along with distinct AWS Key Management Service (KMS) encryption keys:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_step4_storage_2.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Then I confirm my choices and click on Create instance:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_review_create_2.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A few seconds later my Amazon Connect instance is ready to go, and I can click on Get started:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_success_1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Amazon Connect logs me in using the administrator credentials that I entered earlier, and then I click on Let’s go to proceed:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_hello_2.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now I can get set up to accept my first call, by choosing a toll free or direct dial phone number:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_claim_num_2.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I am ready to accept my first call:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_softphone_3.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I call the number on my cell and walk through the options. I press “1” to speak to an agent, and the softphone offers to let me (playing the role of the agent) take the call:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_softphone_pickup_1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now that the Amazon Connect is set up and accepting calls, I can explore the Dashboard and configure my contact center:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_dash_1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I can see the phone numbers that are associated with the call center:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_my_phones_1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And I can claim additional numbers (up to 10 direct inward dialing and 10 toll free), choosing from numbers in a wide list of countries:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_claim_num_1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;At the bottom of the screen I can choose the contact flow that is activated when the number is called:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_pick_flow_1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Returning to the dashboard, the next step is to set the hours of operation. I can see the list of existing hours of operation, and I can create a new one:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_pick_hours_1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I can have multiple hours of operation, each of which can be attached to a queue or referenced from a contact flow.&lt;/p&gt;
+
+&lt;p&gt;Now I can create queues to model the routing of contacts (incoming calls) to agents. Queues can represent priorities (different levels of regular and premium support), or agents with different business or language skills.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_make_queue_1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I also have the ability to create prompts. These are audio snippets that can be referenced from a contact flow. I can upload an existing WAV file or I can record one from within the browser:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_record_prompt_1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Next, I can create a new contact flow or edit an existing one. A contact flow defines the customer experience after they make contact. Here is the sample flow that is set up by default:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_sample_flow_2.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I can find the desired block in the menu, drag it on to the canvas, and connect it in to the flow:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_create_flow_start_1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Then I click on the header of the block to set it up. I can use a prompt, or I can choose between static or dynamic text to speech (dynamic speech would reference a value attached to the call flow, perhaps resulting from a database lookup):&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_setup_prompt_1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;One of the most powerful and general blocks allows me to call a Lambda function during the contact flow. The function can pull data from a database, connect to a CRM, or implement any desired type of business logic. The function is provided with key-value pairs as input, and returns the same as output. The returned values are associated with the execution of the flow.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_run_lambda_1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The next step is to create a routing profile, consisting of one or more queues, with associated priorities. The priorities allow agents to service multiple queues in the proper order (lower numbers are higher priority); you can combine priorities and delays to set up routing rules that are in accord with the needs of your users and your contact center:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_add_routing_pro_1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The final step is to add and empower the users (administrators, managers, agents, and so forth). This can be done on a user-by-user basis or by importing a CSV file that contains definitions for multiple users. Here’s how I add a user named Hello World:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_add_user_1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I can also create a hierarchy of agents (great for regional and/or divisional reporting).&lt;/p&gt;
+
+&lt;p&gt;Amazon Connect lets me use security profiles to control the permissions assigned to each type of user:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_manage_profiles_1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I also have access to operational metrics, both real-time and historical. Here are some of the real-time metrics (the time frame and displayed fields can be customized as needed):&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_rt_metrics_1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The metrics are published to CloudWatch, where they can be used to drive alarms.&lt;/p&gt;
+
+&lt;p&gt;I hope that this brief tour has given you a reasonably thorough introduction to Amazon Connect, and would love to hear how you have used it to modernize your contact center and to improve the level of service that you can provide to your customers:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/awscloud/18/co_new_call_center_1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As you can see, it is a rich and powerful service, with plenty of room for customization and extension. There are plenty of advanced features and configuration options that you can explore on your own.&lt;/p&gt;
+
+&lt;p&gt;Pricing, as I noted, is on a pay-as-you-go basis. You pay for each contact center and each active phone call (inbound or outbound) on a per-minute basis. As part of the AWS Free Tier, you get 90 minutes of contact center usage, two phone numbers (DID and toll-free), 30 minutes of inbound DID calls, 30 minutes of inbound toll-free calls, and 30 minutes of outbound calls, all per month, for an entire year.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Amazon Connect – Customer Contact Center in the Cloud</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/sw_design.png" /></entry><entry><title type="html">Cloud Cost Optimization Strategies (Even AWS won’t Tell you!)</title><link href="http://localhost:4000/blog/cloud-cost-optimization-strategies" rel="alternate" type="text/html" title="Cloud Cost Optimization Strategies (Even AWS won't Tell you!)" /><published>2020-01-25T11:41:00+00:00</published><updated>2020-01-25T11:41:00+00:00</updated><id>http://localhost:4000/blog/cloud-cost-optimization-strategies</id><content type="html" xml:base="http://localhost:4000/blog/cloud-cost-optimization-strategies">&lt;h2 id=&quot;cloud-cost-optimization-strategies-even-aws-wont-tell-you&quot;&gt;Cloud Cost Optimization Strategies (Even AWS won’t Tell you!)&lt;/h2&gt;
 
 &lt;p&gt;Fine-tuning your cloud infrastructure is critical to make sure that your overall bill keeps up to its limit. Read this blog to find out proven cloud cost optimization strategies to help you cut down on the bill and save money by eliminating unused resources.&lt;/p&gt;
 
@@ -1739,144 +1904,7 @@ $gunzip amazon_reviews_us_Beauty_v1_00.tsv.gz
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
-&lt;p&gt;You can now use these recommendations to power display experiences, such as personalize the homepage of your beauty website based on what you know about the user or send a promotional email with recommendations. Performing real-time recommendations with Amazon Personalize requires you to also send user events as they occur. For more information, see Amazon Personalize is Now Generally Available. Get started with Amazon Personalize today!&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Amazon Personalize - can now use 10X more item attributes to improve relevance of recommendations</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/sw_design.png" /></entry><entry><title type="html">Creating a recommendation engine using Amazon Personalize</title><link href="http://localhost:4000/blog/creating-a-recommendation-engine-using-amazon-personalize" rel="alternate" type="text/html" title="Creating a recommendation engine using Amazon Personalize" /><published>2020-01-20T10:41:00+00:00</published><updated>2020-01-20T10:41:00+00:00</updated><id>http://localhost:4000/blog/creating-a-recommendation-engine-using-amazon-personalize</id><content type="html" xml:base="http://localhost:4000/blog/creating-a-recommendation-engine-using-amazon-personalize">&lt;h2 id=&quot;amazon-personalize---creating-a-recommendation-engine&quot;&gt;Amazon Personalize - Creating a recommendation engine&lt;/h2&gt;
-
-&lt;p&gt;AWS announced &lt;strong&gt;Amazon Personalize&lt;/strong&gt;, which allows you to get your first recommendation engine running quickly, to deliver immediate value to your end user or business. As your understanding increases (or if you are already familiar with data science), you can take advantage of the deep capabilities of Amazon Personalize to improve your recommendations.&lt;/p&gt;
-
-&lt;p&gt;While at working , I’ve noticed increasing diversity in the application of machine learning (ML) and deep learning. It seems that nearly every day I work on a new exciting use case, which is great!&lt;/p&gt;
-
-&lt;p&gt;The most well-known and successful ML use cases have been &lt;strong&gt;retail websites, music streaming apps, and social media platforms&lt;/strong&gt;. For years, they’ve been embedding ML technologies into the heart of their user experience. They commonly provide each user with an individual personalized recommendation, based on both historic data points and real-time activity (such as click data).&lt;/p&gt;
-
-&lt;p&gt;I was lucky enough to be given early access to try out Amazon Personalize while it was in preview release. Instead of giving it to data scientists or data engineers, the company gave it to me, an AWS solutions architect. With no prior knowledge, I was able to get a recommendation from Amazon Personalize in just a few hours. This post describes how I did so.&lt;/p&gt;
-
-&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-&lt;p&gt;The most daunting aspect of building a recommendation engine is knowing where to start. This is even more difficult when you have limited or little experience with ML. However, you may be lucky enough to know what you don’t know (and what you should figure out), such as:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;What data to use.&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;How to structure it.&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;What framework/recipe is needed.&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;How to train it with data.&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;How to know if it’s accurate.&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;How to use it within a real-time application.&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Basically, Amazon Personalize provides a structure and supports you as it guides you through these topics. Or, if you’re a data scientist, it can act as an accelerator for your own implementation.&lt;/p&gt;
-
-&lt;h3 id=&quot;creating-an-amazon-personalize-recommendation-solution&quot;&gt;Creating an Amazon Personalize recommendation solution&lt;/h3&gt;
-
-&lt;p&gt;You can create your own custom Amazon Personalize recommendation solution in a few hours. Work through the process in the following diagram.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/9/arch-1.gif&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;creating-dataset-groups-and-datasets&quot;&gt;Creating dataset groups and datasets&lt;/h3&gt;
-&lt;p&gt;When you open &lt;strong&gt;Amazon Personalize&lt;/strong&gt;, the first step is to create a dataset group, which can be created from loading historic data or from data gathered from real-time events. In my evaluation of Amazon Personalize , I used only historic data.&lt;/p&gt;
-
-&lt;p&gt;When using historic data, each dataset is imported data from a .csv file located on Amazon S3, and each dataset group can contain three datasets:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Users&lt;/li&gt;
-  &lt;li&gt;Item&lt;/li&gt;
-  &lt;li&gt;Interactions&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;For the purpose of this quick example, I only prepared the Interactions data file, because it’s required and the most important.&lt;/p&gt;
-
-&lt;p&gt;The &lt;strong&gt;Interactions dataset contains a many-to-many relationship (in old relational database terms) that maps USER_ID to ITEM_ID&lt;/strong&gt;. Interactions can be enriched with optional User and Item datasets that contain additional data linked by their IDs. For example, &lt;strong&gt;&lt;em&gt;for a film-streaming website, it can be valuable to know the age classification of a film and the age of the viewer and understand which films they watch.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;When you have all your data files ready on S3, import them into your data group as datasets. To do this, define a schema for the data in the Apache Avro format for each dataset, which allows Amazon Personalize to understand the format of your data. Here is an example of a schema for Interactions:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
-    &quot;type&quot;: &quot;record&quot;,
-    &quot;name&quot;: &quot;Interactions&quot;,
-    &quot;namespace&quot;: &quot;com.amazonaws.personalize.schema&quot;,
-    &quot;fields&quot;: [
-        {
-            &quot;name&quot;: &quot;USER_ID&quot;,
-            &quot;type&quot;: &quot;string&quot;
-        },
-        {
-            &quot;name&quot;: &quot;ITEM_ID&quot;,
-            &quot;type&quot;: &quot;string&quot;
-        },
-        {
-            &quot;name&quot;: &quot;TIMESTAMP&quot;,
-            &quot;type&quot;: &quot;long&quot;
-        }
-    ],
-    &quot;version&quot;: &quot;1.0&quot;
-}
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;In evaluating Amazon Personalize, you may find that you spend more time at this stage than the other stages. This is important and reflects that the quality of your data is the biggest factor in producing a usable and accurate model. This is where Amazon Personalize has an immediate effect—it’s both helping you and accelerating your progress.&lt;/p&gt;
-
-&lt;p&gt;Don’t worry about the format of the data, just the key fields being identified.  Don’t get caught up in worrying about what model to use or the data it needs. Your focus is just on making your data accessible. If you’re just starting out in ML, you can get a basic dataset group working quickly with minimal data. If you’re a data scientist, you probably come back to this stage again to improve and add more data points (data features).&lt;/p&gt;
-
-&lt;h3 id=&quot;creating-a-solution&quot;&gt;Creating a solution&lt;/h3&gt;
-
-&lt;p&gt;When you have your dataset group with data in it, the next step is to create a solution. A solution covers two areas—selecting the model (recipe) and then using your data to train it. You have recipes and a popularity baseline from which to choose. Some of the recipes on offer include the following:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Personalized reranking (search)&lt;/li&gt;
-  &lt;li&gt;SIMS—related items&lt;/li&gt;
-  &lt;li&gt;HRNN (Coldstart, Popularity-Baseline, and Metadata)—user personalization&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;If you’re not a data scientist, don’t worry. You can use &lt;strong&gt;AutoML&lt;/strong&gt;, which runs your data against each of the available recipes.  &lt;strong&gt;Amazon Personalize&lt;/strong&gt; then judges the best recipe based on the accuracy results produced. This also covers changing some of the settings to get better results (hyperparameters).  The following image shows a solution with the metric section at the bottom showing accuracy:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/9/arch-2.gif&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Amazon Personalize allows you to get something up and running quickly, even if you’re not a data scientist. This includes not just model selection and training, but restructuring the data into what each recipe requires and hiding the hassle of spinning up servers to run training jobs. If you are a data scientist, this is also good news, because you can take full control of the process.&lt;/p&gt;
-
-&lt;h3 id=&quot;creating-a-campaign&quot;&gt;Creating a campaign&lt;/h3&gt;
-
-&lt;p&gt;After you have a solution version (a confirmed recipe and trained artifacts), it’s time to put it into action. This isn’t easy, and there is a lot to consider in running ML at scale.&lt;/p&gt;
-
-&lt;p&gt;To get you started, &lt;strong&gt;Amazon Personalize&lt;/strong&gt; allows you to deploy a campaign (an inference engine for your recipe and the trained artifacts) as a PaaS. The campaign returns a REST API that you can use to produce recommendations. Here is an example of calling your API from Python:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;get_recommendations_response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;personalize_runtime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_recommendations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;campaignArn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;campaign_arn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;userId&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;itemId&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;item_list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_recommendations_response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'itemList'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;The results:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Recommendations: [
-  &quot;Full Monty, The (1997)&quot;,
-  &quot;Chasing Amy (1997)&quot;,
-  &quot;Fifth Element, The (1997)&quot;,
-  &quot;Apt Pupil (1998)&quot;,
-  &quot;Grosse Pointe Blank (1997)&quot;,
-  &quot;My Best Friend's Wedding (1997)&quot;,
-  &quot;Leaving Las Vegas (1995)&quot;,
-  &quot;Contact (1997)&quot;,
-  &quot;Waiting for Guffman (1996)&quot;,
-  &quot;Donnie Brasco (1997)&quot;,
-  &quot;Fargo (1996)&quot;,
-  &quot;Liar (1997)&quot;,
-  &quot;Titanic (1997)&quot;,
-  &quot;English Patient, The (1996)&quot;,
-  &quot;Willy Wonka and the Chocolate Factory (1971)&quot;,
-  &quot;Chasing Amy (1997)&quot;,
-  &quot;Star Trek: First Contact (1996)&quot;,
-  &quot;Jerry Maguire (1996)&quot;,
-  &quot;Last Supper, The (1995)&quot;,
-  &quot;Hercules (1997)&quot;,
-  &quot;Kolya (1996)&quot;,
-  &quot;Toy Story (1995)&quot;,
-  &quot;Private Parts (1997)&quot;,
-  &quot;Citizen Ruth (1996)&quot;,
-  &quot;Boogie Nights (1997)&quot;
-]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;Amazon Personalize is a great addition to the &lt;strong&gt;AWS set of machine learning services&lt;/strong&gt;. Its two-track approach allows you to quickly and efficiently get your first recommendation engine running and deliver immediate value to your end user or business. Then you can harness the depth and raw power of Amazon Personalize, which will keep you coming back to improve your recommendations.&lt;/p&gt;
-
-&lt;p&gt;Amazon Personalize puts a recommendation engine in the hands of every company and is now available in US East (Ohio), US East (N. Virginia), US West (Oregon), Asia Pacific (Tokyo), Asia Pacific (Singapore) and EU (Ireland). &lt;strong&gt;Well done, AWS!​&lt;/strong&gt;&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Amazon Personalize - Creating a recommendation engine</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/sw_design.png" /></entry><entry><title type="html">Automatically extract text and structured data from documents with Amazon Textract</title><link href="http://localhost:4000/blog/automatically-extract-text-and-structured-data-from-documents-with-amazon-textract" rel="alternate" type="text/html" title="Automatically extract text and structured data from documents with Amazon Textract" /><published>2020-01-20T10:41:00+00:00</published><updated>2020-01-20T10:41:00+00:00</updated><id>http://localhost:4000/blog/automatically-extract-text-and-structured-data-from-documents-with-amazon-textract</id><content type="html" xml:base="http://localhost:4000/blog/automatically-extract-text-and-structured-data-from-documents-with-amazon-textract">&lt;h2 id=&quot;amazon-textract---automatically-extract-text-and-structured-data-from-documents&quot;&gt;Amazon Textract - Automatically extract text and structured data from documents&lt;/h2&gt;
+&lt;p&gt;You can now use these recommendations to power display experiences, such as personalize the homepage of your beauty website based on what you know about the user or send a promotional email with recommendations. Performing real-time recommendations with Amazon Personalize requires you to also send user events as they occur. For more information, see Amazon Personalize is Now Generally Available. Get started with Amazon Personalize today!&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Amazon Personalize - can now use 10X more item attributes to improve relevance of recommendations</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/sw_design.png" /></entry><entry><title type="html">Automatically extract text and structured data from documents with Amazon Textract</title><link href="http://localhost:4000/blog/automatically-extract-text-and-structured-data-from-documents-with-amazon-textract" rel="alternate" type="text/html" title="Automatically extract text and structured data from documents with Amazon Textract" /><published>2020-01-20T10:41:00+00:00</published><updated>2020-01-20T10:41:00+00:00</updated><id>http://localhost:4000/blog/automatically-extract-text-and-structured-data-from-documents-with-amazon-textract</id><content type="html" xml:base="http://localhost:4000/blog/automatically-extract-text-and-structured-data-from-documents-with-amazon-textract">&lt;h2 id=&quot;amazon-textract---automatically-extract-text-and-structured-data-from-documents&quot;&gt;Amazon Textract - Automatically extract text and structured data from documents&lt;/h2&gt;
 
 &lt;p&gt;Documents are a primary tool for record keeping, communication, collaboration, and transactions across many industries, including financial, medical, legal, and real estate. The millions of mortgage applications and hundreds of millions of W2 tax forms processed each year are just a few examples of such documents. A lot of information is locked in unstructured documents. It usually requires time-consuming and complex processes to enable search and discovery, business process automation, and compliance control for these documents.&lt;/p&gt;
 
