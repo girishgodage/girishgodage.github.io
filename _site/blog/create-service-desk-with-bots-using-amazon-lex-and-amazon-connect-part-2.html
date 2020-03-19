@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#2A80EE">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#2A80EE">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
+<title>The service desk with bots using Amazon Lex and Amazon Connect (Part 2) &#8211; Girish Godage</title>
+<meta name="description" content="What! Is this guy for real? Does he really think he can replace the front line of IT with pre-canned conversations?&quot; I must admit, it's a bold statement. The IT Service Desk has been around for years and has been the foot in the door for most of us in the IT industry. It's the face of IT operations and plays an important role in ensuring an organisation's staff can perform to the best of their abilities. But what if we could take some of the repetitive tasks the service desk performs and automate them? Not only would we be saving on head count costs, we would be able to ensure correct policies and procedures are followed to uphold security and compliance. The aim of this blog is to provide a working example of the automation of one service desk scenario to show how easy and accessible the technology is, and how it can be applied to various use cases.">
+<meta name="keywords" content="AWSCloud">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all">
+
+<!-- Verifications -->
+    
+    
+        
+<!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The service desk with bots using Amazon Lex and Amazon Connect (Part 2)">
+    <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
+    <meta property="og:url" content="http://localhost:4000/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-2">
+    <meta property="og:site_name" content="Girish Godage">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@GGodage" />
+    
+    <meta name="twitter:title" content="The service desk with bots using Amazon Lex and Amazon Connect (Part 2)" />
+    <meta name="twitter:description" content="What! Is this guy for real? Does he really think he can replace the front line of IT with pre-canned conversations?" I must admit, it's a bold statement. The IT Service Desk has been around for years and has been the foot in the door for most of us in the IT industry. It's the face of IT operations and plays an important role in ensuring an organisation's staff can perform to the best of their abilities. But what if we could take some of the repetitive tasks the service desk performs and automate them? Not only would we be saving on head count costs, we would be able to ensure correct policies and procedures are followed to uphold security and compliance. The aim of this blog is to provide a working example of the automation of one service desk scenario to show how easy and accessible the technology is, and how it can be applied to various use cases." />
+    <meta name="twitter:url" content="http://localhost:4000/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-2" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/img/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/img/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    
+
+
+    <link rel="canonical" href="http://localhost:4000/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-2">
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
+    <!-- Bootstrap CSS-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Google fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+   
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
+    
+    <!-- animate.css-->
+    <link rel="stylesheet" href="http://localhost:4000/sitejs/animate.css/animate.css">
+    <!-- theme stylesheet-->
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="http://localhost:4000/css/custom.css" as="style">
+    <link rel="stylesheet" href="http://localhost:4000/css/comments.css" as="style">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="http://localhost:4000/img/logo-big.png">
+    <!-- Fab Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
+    
+    
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    
+    <script type="text/javascript">
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+       ga('create', 'UA-130164763-2', 'auto');
+       ga('send', 'pageview');
+    </script>
+    
+    <!-- Typed.js DONT TOUCHHHHHHHHHHHHH!-->
+    <!--<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.9/typed.min.js"></script>
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+      </script>
+      
+      <!-- START OF RELEVANT PART -->
+    <script async src="https://just-comments.com/w2.js"></script>
+    <!-- END OF RELEVANT PART -->
+
+
+</head>
+
+<body>
+    
+<!-- navbar-->
+<header class="header">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container"><a class="navbar-brand" href="http://localhost:4000"><img
+          src="http://localhost:4000/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
+          alt="logo"> <img src="http://localhost:4000/img/girish_logo.png" height="30" alt="girilogo"></a>
+      <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span
+          class="fa fa-bars" style="color: white"></span></button>
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="http://localhost:4000#home" class="nav-link  link-scroll">Home</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#about" class="nav-link link-scroll">About</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#skills" class="nav-link link-scroll">Skills</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#services" class="nav-link link-scroll">Services</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#references" class="nav-link link-scroll">My
+              work</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#contact" class="nav-link link-scroll">Contact</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000/blog" class="nav-link link-scroll">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    
+    
+    
+    <div style="background-color:Gray;">
+        <div style="padding:0;min-height:95.05vh;display:flex;font-family: Poppins, sans-serif;margin-top: 5rem;"
+            class="container">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <p class="post-title">
+                    <h1><a href="/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-2">The service desk with bots using Amazon Lex and Amazon Connect (Part 2)</a></h1>
+                </p>
+                
+                <span class="post-meta">
+              <span style="font-weight:600">February 02, 2020 Sunday</span>
+                    
+                       ( 14 minute read ) 
+                    
+                     
+                    <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">   by Girish Godage</a>
+                </span>
+                
+                <div class="site-category"> 
+                        <h5>AWSCloud</h5>
+                </div>
+                
+                <hr>
+                <div><img class="post-image" src="/img/sw_design.png" alt="The service desk with bots using Amazon Lex and Amazon Connect (Part 2)" height="250" /></div>
+                <div class="post-content">
+                    <br>                     
+                    <h2 id="the-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-2">The service desk with bots using Amazon Lex and Amazon Connect (Part 2)</h2>
+
+<p>Hopefully you’ve had the chance to follow along in parts 1  where we set up our Lex chatbot to take and validate input.</p>
+
+<p>In this blog, we’ll interface with our Active Directory environment to perform the password reset function. To do this, we need to create a Lambda function that will be used as the logic to fulfil the user’s intent. The Lambda function will be packaged with the python LDAP library to modify the AD password attribute for the user. Below are the components that need to be configured.</p>
+
+<h2 id="active-directory-service-account">Active Directory Service Account</h2>
+
+<p>To begin, we need to start by creating a service account in Active Directory that has permissions to modify the password attribute for all users. Our Lambda function will then use this service account to perform password resets. To do this, create a service account in your Active Directory domain and perform the following to delegate the required permissions:</p>
+
+<ol>
+  <li>Open Active Directory Users and Computers.</li>
+  <li>Right click the OU or container that contains organisational users and click <strong>Delegate Control</strong></li>
+  <li>Click <strong>Next</strong> on the Welcome Wizard.</li>
+  <li>Click <strong>Add</strong> and enter the service account that will be granted the reset password permission.</li>
+  <li>Click <strong>OK</strong> once you’ve made your selection, followed by <strong>Next</strong>.</li>
+  <li>Ensure that <strong>Delegate the following common tasks</strong> is enabled, and select <strong>Reset user passwords and force password change at next logon</strong>.</li>
+  <li>Click <strong>Next</strong>, and <strong>Finish</strong></li>
+</ol>
+
+<p><img src="/img/awscloud/19/delegatecontrol.png" alt="image info" /></p>
+
+<h2 id="kms-key-for-the-ad-service-account">KMS Key for the AD Service Account</h2>
+
+<p>Our Lambda function will need to use the credentials for the service account to perform password resets. We want to avoid storing credentials within our Lambda function, so we’ll store the password as an encrypted Lambda variable and allow our Lambda function to decrypt it using Amazon’s Key Management Service (KMS). To create the KMS encryption key, perform the following steps:</p>
+
+<ol>
+  <li>In the Amazon Console, navigate to <strong>IAM</strong></li>
+  <li>Select <strong>Encryption Keys</strong>, then Create key</li>
+  <li>Provide an Alias (e.g. resetpw) then select <strong>Next</strong></li>
+  <li>Select <strong>Next Step</strong> for all subsequent steps then <strong>Finish</strong> on step 5 to create the key.</li>
+</ol>
+
+<h2 id="iam-role-for-the-lambda-function">IAM Role for the Lambda Function</h2>
+
+<p>Because our Lambda function will need access to several AWS services such as SNS to notify the user of their new password and KMS to decrypt the service account password, we need to provide our function with an IAM role that has the relevant permissions. To do this, perform the following steps:</p>
+
+<ol>
+  <li>In the Amazon Console, navigate to <strong>IAM</strong></li>
+  <li>Select <strong>Policies</strong> then <strong>Create policy</strong></li>
+  <li>Switch to the <strong>JSON</strong> editor, then copy and paste the following policy, replacing the KMS resource with the KMS ARN created above
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> {
+ "Version": "2012-10-17",
+ "Statement": [
+     {
+     "Effect": "Allow",
+     "Action": "sns:Publish",
+     "Resource": "*"
+     },
+     {
+     "Effect": "Allow",
+     "Action": "kms:Decrypt",
+     "Resource": "&lt;KMS ARN&gt;"
+     }
+ ]
+ }
+</code></pre></div>    </div>
+  </li>
+  <li>Provide a name for the policy (e.g. resetpw), then select <strong>Create policy</strong></li>
+  <li>After the policy has been created, select <strong>Roles</strong>, then <strong>Create Role</strong></li>
+  <li>For the AWS Service, select <strong>Lambda</strong>, then click <strong>Next:Permissions</strong></li>
+  <li>Search for and select the policy you created in step 5, as well as the <strong>AWSLambdaVPCAccessExecutionRole</strong> and <strong>AWSLambdaBasicExecutionRole</strong> policies then click <strong>Next: Review</strong></li>
+  <li>Provide a name for the role (e.g. resetpw) then click <strong>Create role</strong></li>
+</ol>
+
+<h2 id="network-configuration-for-the-lambda-function">Network Configuration for the Lambda Function</h2>
+
+<p>To access our Active Directory environment, the Lambda function will need to run within a VPC or a peered VPC that hosts an Active Directory domain controller. Additionally, we need the function to access the internet to be able to access the KMS and SNS services. Lambda functions provisioned in a VPC are assigned an Elastic network Interface with a private IP address from the subnet it’s deployed in. Because the ENI doesn’t have a public IP address, it cannot simply leverage an internet gateway attached to the VPC for internet connectivity and as a result, must have traffic routed through a NAT Gateway similar to the diagram below.</p>
+
+<p><img src="/img/awscloud/19/natgw.png" alt="image info" /></p>
+
+<h2 id="password-reset-lambda-function">Password Reset Lambda Function</h2>
+
+<p>Now that we’ve performed all the preliminary steps, we can start building the Lambda function. Because the Lambda execution environment uses Amazon Linux, I prefer to build my Lambda deployment package on a local Amazon Linux docker container to ensure library compatibility. Alternatively, you could deploy a small Amazon Linux EC2 instance for this purpose, which can assist with troubleshooting if it’s deployed in the same VPC as your AD environment.
+Okay, so let’s get started on building the lambda function. Log in to your Amazon Linux instance/container, and perform the following:</p>
+
+<ul>
+  <li>
+    <p>Create a project directory and install python-ldap dependencies, gcc, python-devel and openldap-devel</p>
+
+    <p><em>Mkdir ~/resetpw</em></p>
+
+    <p><em>sudo yum install python-devel openldap-devel gcc</em></p>
+  </li>
+  <li>
+    <p>Next, we’re going to download the python-ldap library to the directory we created</p>
+
+    <p><em>Pip install python-ldap -t ~/resetpw</em></p>
+  </li>
+  <li>
+    <p>In the resetpw directory, create a file called reset_function.py and copy and paste the following script</p>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+import ldap
+import os
+import boto3
+import random
+import string
+
+from base64 import b64decode
+
+#Variables
+url=os.environ['url']
+domain_base_dn=os.environ['domain_base_dn']
+user=os.environ['user']
+ENCRYPTED=os.environ['pw']
+pw=boto3.client('kms').decrypt(CiphertextBlob=b64decode(ENCRYPTED))['Plaintext']
+
+def lambda_handler(event, context):
+    #Set up LDAP connection
+    ldap.set_option(ldap.OPT_X_TLS_REQUIRE_CERT, ldap.OPT_X_TLS_NEVER)
+    con = ldap.initialize(url)
+    con.set_option(ldap.OPT_REFERRALS, 0)
+    con.bind_s(user,pw)
+    slotUserID = event["currentIntent"]["slots"]["UserID"]
+    results = con.search_ext_s(domain_base_dn,ldap.SCOPE_SUBTREE,"sAMAccountName=" + slotUserID,attrlist=['monthStarted', 'birthDate', 'distinguishedName','telephoneNumber'])
+    birthdate = results[0][1]["birthDate"][0]
+    monthStarted = results[0][1]["monthStarted"][0]
+    phoneNumber = results[0][1]["telephoneNumber"][0]
+    slotBirthDate = event["currentIntent"]["slots"]["DOB"]
+    slotMonth = event["currentIntent"]["slots"]["MonthStarted"]
+
+    # Reset Password
+    if((birthdate == slotBirthDate) and (monthStarted == slotMonth)):
+        new_password = ''.join(random.choice(string.letters + string.digits + string.punctuation) for _ in range(10))
+        unicode_pass = unicode('\"' + new_password + '\"', 'iso-8859-1')
+        password_value = unicode_pass.encode('utf-16-le')
+        add_pass = [(ldap.MOD_REPLACE, 'unicodePwd', [password_value])]
+        con.modify_s(results[0][1]["distinguishedName"][0],add_pass)        
+        sns = boto3.client('sns')
+        sns.publish(PhoneNumber=phoneNumber, Message='Your new password is ' + new_password )
+        endData = {
+            "dialogAction": {
+                "type": "Close",
+                "fulfillmentState": "Fulfilled",
+                "message": {
+                    "contentType": "PlainText",
+                    "content": "Your password has been reset and sent to your mobile."
+                }
+            }
+        }
+    else:
+        endData = {
+            "dialogAction": {
+                "type": "Close",
+                "fulfillmentState": "Failed",
+                "message": {
+                    "contentType": "PlainText",
+                    "content": "The details you provided are incorrect. Goodbye"
+                }
+            }
+        }
+    con.unbind()
+    return endData
+</code></pre></div></div>
+
+<ul>
+  <li>Now, we need to create the Lambda deployment package. As the package size is correlated with the speed of Lambda function cold starts, we need to filter out anything that’s not necessary to reduce the package size. The following zip’s the script and LDAP library:</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    Cd ~/resetpw
+zip -r ~/resetpw.zip . -x "setuptools*/*" "pkg_resources/*" "easy_install*"*
+
+</code></pre></div></div>
+
+<ul>
+  <li>We need to deploy this package as a Lambda function. I’ve got AWSCLI installed in my Amazon Linux container, so I’m using the following CLI to create the Lambda function. Alternatively, you can download the zip file and manually create the Lambda function in the AWS console using the same parameters specified in the CLI below.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+aws lambda create-function --function-name reset_function --region us-east-1 --zip-file fileb://root/resetpw.zip --role resetpw --handler reset_function.lambda_handler --runtime python2.7 --timeout 30 --vpc-config SubnetIds=subnet-a12b3cde,SecurityGroupIds=sg-0ab12c30 --memory-size 128*
+
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>For the script to run in your environment, a number of Lambda variables need to be set which will be used at runtime. In the AWS Console, navigate to Lambda then click on your newly created Lambda function. In the environment variables section, create the following variables:</p>
+
+    <ul>
+      <li><strong>Url</strong> – This is the LDAPS URL for your domain controller. Note that it must be LDAP over SSL.</li>
+      <li><strong>Domain_base_dn</strong> – The base distinguished name used to search for the user</li>
+      <li><strong>User</strong> – The service account that has permissions to change the user password</li>
+      <li><strong>Pw</strong> – The password of the service account</li>
+    </ul>
+  </li>
+  <li>
+    <p>Finally, we need to encrypt the Pw variable in the Lambda console. Navigate to the Encryption configuration and select Enable helpers for encryption in transit. Select your KMS key for both encryption in transit and at reset, then select the Encrypt button next to the pw variable. This will encrypt and mask the value.</p>
+  </li>
+</ul>
+
+<p><img src="/img/awscloud/19/envvar.png" alt="image info" /></p>
+
+<ul>
+  <li>Hit Save in the top right-hand corner to save the environment variables</li>
+</ul>
+
+<p>That’s it! The Lambda function is now configured. A summary of the Lambda function’s logic is as follows:</p>
+
+<ol>
+  <li>Collect the Lambda environment variables and decrypt the service account password</li>
+  <li>Perform a secure AD bind but don’t verify the certificate (I’m using a Self-Signed Cert in my lab)</li>
+  <li>Collect the user’s birthday, start month, telephone number, and DN from AD</li>
+  <li>Check the user’s verification input</li>
+  <li>If the input is correct, reset the password and send it to the user’s telephone number, otherwise exit the function.</li>
+</ol>
+
+<h2 id="update-and-test-lex-bot-fulfillment">Update and test Lex bot fulfillment</h2>
+
+<p>The final step is to add the newly created Lambda function to the Lex bot so it’s invoked after input is validated. To do this, perform the following</p>
+
+<ol>
+  <li>In the Amazon Console, navigate to Amazon Lex and select your bot</li>
+  <li>Select Fulfillment for your password reset intent, then select AWS Lambda function</li>
+  <li>Choose the recently created Lambda function from the drop down box, then select Save Intent</li>
+</ol>
+
+<p>That should be it! You’ll need to build your bot again before testing…</p>
+
+<p><img src="/img/awscloud/19/fulfilled.png" alt="image info" /></p>
+
+<p>My phone buzzes with a new SMS…</p>
+
+<p><img src="/img/awscloud/19/passmsg.png" alt="image info" /></p>
+
+<p>Success! A few final things worth noting:</p>
+
+<p>All Lambda execution logs will be written to CloudWatch logs, so this is the best place to begin troubleshooting if required
+Modification to the AD password attribute is not possible without a secure bind and will result in an error.
+The interrogated fields (month started and date of birth) are custom AD attributes in my lab.
+Password complexity in my lab is relaxed. If you’re using the default password complexity in AD, the randomly generated password in the lambda function may not meet complexity requirements every time.</p>
+
+<p>While we’ve successfully tested this functionality in the AWS console, we want to provide our users with the ability to call and talk with the bot over the phone. Here, we’ll wire up Amazon Connect with our bot to provide this capability.</p>
+
+<h2 id="what-is-amazon-connect">What is Amazon Connect</h2>
+<p>Amazon Connect is a Cloud based contact service center that can be set up in minutes to take phone calls and route them to the correct service center agents. Additionally, Connect is able to integrate with Amazon Lex to create a self-service experience, providing a cost effective method for resolving customer queries without having to wait in queue for a human agent. In our case, Lex will be integrated with Amazon Connect to field password reset requests.</p>
+
+<h3 id="provisioning-amazon-connect">Provisioning Amazon Connect</h3>
+
+<p>The following steps provision the base Amazon Connect tenant:</p>
+
+<ol>
+  <li>Begin by heading to the AWS Console, then navigate to <strong>Amazon Connect</strong> and select <strong>Add an instance</strong>.</li>
+  <li>Specify a sub-domain for the access URL which will be used to log into Amazon Connect. Select <strong>Next step</strong>.</li>
+  <li>For now, skip creating an administrator by selecting <strong>Skip this</strong>, then select Next step.</li>
+  <li>For Telephony Options ensure <strong>Incoming Calls</strong> is selected and <strong>Outbound Calls</strong> is unselected, then click <strong>Next step</strong>.</li>
+  <li>Accept the default data storage configuration and select <strong>Next step</strong>.</li>
+  <li>Finally, review the information provided and select <strong>Create instance.</strong></li>
+</ol>
+
+<p>That’s all that’s required to provision the Amazon Connect service. Pretty simple stuff. It takes a few minutes to provision, then you’ll be ready to begin configuring your Amazon Connect tenant.</p>
+
+<h3 id="configuring-amazon-connect">Configuring Amazon Connect</h3>
+
+<p>Next, we need to claim a phone number to be used with our service:</p>
+
+<ol>
+  <li>Once Amazon Connect has been provisioned, click <strong>Get started</strong> to log into your Amazon Connect instance.</li>
+  <li>On the Welcome to Amazon Connect page, select <strong>Let’s Go.</strong></li>
+  <li>
+    <p>To claim a phone number, select your preferred country code and type then select <strong>Next</strong>. You may find that there are no available numbers for your country of choice (like the screenshot below). If that’s the case and it’s necessary that you have a local number, you can raise a support case with Amazon. For testing purposes, I’m happy to provision a US number and use Google Hangouts to dial the number for free.</p>
+
+    <p><img src="/img/awscloud/19/claimphonenumber.png" alt="image info" /></p>
+  </li>
+  <li>When prompted to make a call, choose Skip for now.</li>
+</ol>
+
+<p>You should now be at the Amazon Connect dashboard where there are several options, but before we can continue, we first need to add the Lex bot to Amazon Connect to allow it to be used within a contact flow.</p>
+
+<h3 id="adding-lex-to-amazon-connect">Adding Lex to Amazon Connect</h3>
+<ol>
+  <li>Switch back to the AWS Console and navigate to <strong>Amazon Connect</strong>.</li>
+  <li>Select the Amazon Connect instance alias created in the previous step.</li>
+  <li>On the left-hand side, select <strong>Contact Flows</strong>.</li>
+  <li>Under the Amazon Lex section, click <strong>Add Lex Bot</strong>, and select the user administration bot we created.</li>
+  <li>Select Save Lex Bots.</li>
+</ol>
+
+<p>Now that our bot has been added to Amazon Connect, we should be able to create an appropriate Contact Flow that leverages our bot.</p>
+
+<h3 id="creating-the-contact-flow">Creating the Contact Flow</h3>
+
+<ol>
+  <li>Switch back to the Amazon Connect dashboard then navigate to <strong>Contact Flows</strong> under routing on the left sidebar.</li>
+  <li>Select <strong>Create contact flow</strong> and enter a name (e.g. User administration) for the contact flow.</li>
+  <li>Expand the <strong>Interact</strong> menu item then click and drag <strong>Get customer input</strong> to the grid.</li>
+  <li>Click the <strong>Get customer input</strong> item, and set the following properties:
+    <ul>
+      <li>Enable <strong>Text to speech</strong> then add a greeting text (e.g. Welcome to the cloud call center. What would you like assistance with?).</li>
+      <li>Ensure that <strong>Interpret</strong> as is set to <strong>Text</strong></li>
+      <li>Choose the <strong>Amazon Lex</strong> option, then add the Lex Bot name (e.g. UserAdministration) and set the alias to <strong>$LATEST</strong> to ensure it uses the latest build of the bot.</li>
+    </ul>
+  </li>
+  <li>Under Intents, select <strong>Add a parameter</strong> then enter the password reset intent for the Lex Bot (e.g. ResetPW)</li>
+  <li>
+    <p>Select <strong>Save</strong> to save the configuration.</p>
+
+    <p><img src="/img/awscloud/19/customerinput.png" alt="image info" /></p>
+
+    <p>It’s worth noting that if you wanted to send the user’s mobile number through to your Lex bot for verification purposes, this can be done by sending a session attribute as shown below. The phone number will be passed to the Lambda function in the sessionAttributes object.</p>
+
+    <p><img src="/img/awscloud/19/sessionattribute.png" alt="image info" /></p>
+  </li>
+  <li>
+    <p>On the left sidebar, expand Terminate/Transfer then drag and drop Disconnect/Hang up onto the grid.</p>
+  </li>
+  <li>
+    <p>Connect the Start entry point to the Get Customer Input box and connect all the branches of the Get Customer Input Box to the Disconnect/Hang up box as shown below.</p>
+
+    <p><img src="/img/awscloud/19/contactflow.png" alt="image info" /></p>
+
+    <p>We could have added more complex flows to deal with unrecognised intents or handle additional requests that our Lex bot isn’t configured for (both of which would be forwarded to a human agent), however this is outside the scope of this blog post.</p>
+  </li>
+  <li>In the top right-hand corner above the grid, select the down arrow, then <strong>Save &amp; Publish</strong>.</li>
+</ol>
+
+<h2 id="setting-the-contact-flow">Setting the Contact Flow</h2>
+<p>Now that we have a contact flow created, we need to attach it to the phone number we provisioned earlier.</p>
+
+<ol>
+  <li>On the left sidebar in the Amazon Connect console, select <strong>Phone Numbers</strong> under the <strong>Routing</strong> menu then select the phone number listed.</li>
+  <li>Under the <strong>Contact Flow/IVR</strong> dropdown menu, select the Contact flow you created, then select <strong>Save</strong>.</li>
+</ol>
+
+<h2 id="testing-the-contact-flow">Testing the Contact Flow</h2>
+
+<p>Now that we’ve associated the contact flow with the phone number, you’re ready for testing! Remember, if you’ve provisioned a number in the US (and you’re overseas), you can dial for free using Google hangouts.</p>
+
+<p>That’s it! You now have a fully functioning chatbot that can be called and spoken to. From here, you can add more intents to build a bot that can handle several simple user administration tasks.</p>
+
+<p>A few things worth noting:</p>
+
+<ul>
+  <li>You may notice that Lex repeats the user ID as a number, rather than individual digits. Unfortunately, Amazon Connect doesn’t support SSML content from Lex at this time however it’s in the product roadmap.</li>
+  <li>You can view missed utterances on the <strong>Monitoring tab</strong> on your Lex bot and potentially add them to existing intents. This is a great way to monitor and expand on the capability of your bot.</li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-1" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-2" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+
+                </div>
+
+                
+
+                <div id="disqus_thread"></div>
+                <script>
+                
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://girishgodage-github-io.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
+</button>
+<!-- Footer-->
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 text-center text-lg-left">
+                <p class="social">
+                    <a href="https://www.facebook.com/girish.godage.5" class="external facebook wow fadeInUp">
+                        <i class="fa fa-facebook"></i></a>
+                    <a href="https://instagram.com/girishgodage_007" data-wow-delay="0.2s" class="external instagram wow fadeInUp">
+                        <i class="fa fa-instagram"></i></a>
+                    <a href="https://youtube.com/girishgodage" data-wow-delay="0.4s" class="external youtube wow fadeInUp">
+                        <i class="fa fa-youtube-play"></i></a>
+                    <a href="https://twitter.com/GGodage" data-wow-delay="0.4s" class="external twitter wow fadeInUp">
+                            <i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/girishgodage" data-wow-delay="0.4s" class="external github wow fadeInUp">
+                                <i class="fa fa-github"></i></a>    
+                    <a href="mailto:girishgodage@gmail.com?subject=Hello%20Girish" data-wow-delay="0.6s" class="email wow fadeInUp">
+                        <i class="fa fa-envelope"></i></a></p>
+            </div>
+            <div class="col-12 col-md-2">
+            <h5>Quick Links</h5>
+            <ul>
+               <li><a href="http://localhost:4000#about">About</a></li>
+               <li><a href="http://localhost:4000#contact">Contact</a></li>
+               <li><a href="/sitemap.xml">Sitemap</a></li>               
+            </ul>
+         </div>
+            <div class="col-12 col-md-4 text-center text-lg-right mt-4 mt-lg-0">
+                <p> <b>©</b>2019 Girish Godage </p>
+                <p class="text-center, text-shadow"> Hosted On <a href="https://pages.github.com/">GitHub Pages</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Typed.js DONT TOUCH THIS! -->
+    <div id="typed-strings">
+    </div>
+
+        <!-- JavaScript files-->
+    <script src="http://localhost:4000/sitejs/jquery/jquery.min.js"></script>
+    <script src="http://localhost:4000/sitejs/popper.js/umd/popper.min.js"> </script>
+    <script src="http://localhost:4000/sitejs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="http://localhost:4000/sitejs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="http://localhost:4000/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.counterup/jquery.counterup.js"></script>
+    <script src="http://localhost:4000/js/front.js"></script>
+    <script src="http://localhost:4000/js/comment.js"></script>
+       <!-- Script pointing to search-script.js -->
+    <script src="http://localhost:4000/js/search-script.js" type="text/javascript"></script>
+   
+    <!-- Configuration -->
+    <script>
+         SimpleJekyllSearch({
+         searchInput: document.getElementById('search-input'),
+         resultsContainer: document.getElementById('results-container'),
+         json: 'http://localhost:4000/search.json'
+         })
+         </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC36FUDDdOTidZJ8nzS5vfE7KVyayenKPE",
+    authDomain: "githubcontactlist.firebaseapp.com",
+    databaseURL: "https://githubcontactlist.firebaseio.com",
+    projectId: "githubcontactlist",
+    storageBucket: "githubcontactlist.appspot.com",
+    messagingSenderId: "899685398702",
+    appId: "1:899685398702:web:0c23c56d2d6d40df37553f",
+    measurementId: "G-YWBRCYJYFW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script>
+   $(function() {
+      
+    //make a variable to keep track of data coming from firebase
+    var data = [];
+
+    // Reference messages collection
+      var messagesRef = firebase.database().ref('contactformmessages');  
+
+
+    //listen to data updates from firebase
+    messagesRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+        //when the data updates at firebase, put it in the data variable
+        data = snapshot.val();
+    })
+    //Entire Contact Form (handler)
+    $('#contactForm').submit(function(e) {
+      e.preventDefault();
+
+        var $form = $(this);
+        console.log("Submit to Firebase");
+
+        //disable submit button
+        $form.find("#sendForm").prop('disabled', true);
+
+        //get values to send to Firebase
+        var name = $('#name').val();
+        console.log(name);
+		
+		var surname = $('#surname').val();
+        console.log(surname);
+		
+		var email = $('#email').val();
+        console.log(email);	
+		
+		var phone = $('#phone').val();
+        console.log(phone);
+
+        var message = $('#message').val();
+        console.log(message);
+
+       
+        //take the values from the form, and put them in an object
+        var newContact = {
+         "name": name,
+			"surname": surname,
+			"email": email,
+			"phone": phone,
+         "message": message
+        }
+        //put new object in data array
+        data.push(newContact);
+        console.log(data);
+
+        //send the new data to Firebase
+        messagesRef.set(data, function(err) {
+            if (err) {
+                alert("Data no go");
+            }else{
+            $("#form-wrapper").slideToggle();
+            $('#form-success-message').slideToggle();
+			}
+        });
+
+        return false;
+    })
+   
+    
+})
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";           
+        }else
+        {
+           myBtton.style.display="none";     
+          
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+      //  document.body.scrollTop =0;
+      //  document.documentElement.scrollTop=0;
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    }
+
+</script>
+
+    
+    
+
+
+</body>
+
+</html>
