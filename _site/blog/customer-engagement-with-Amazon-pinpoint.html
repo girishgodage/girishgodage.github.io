@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#2A80EE">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#2A80EE">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
+<title>Amazon pinpoint - Customer Engagement &#8211; Girish Godage</title>
+<meta name="description" content="Amazon Pinpoint is an AWS service that you can use to engage with your customers across multiple messaging channels. You can use Amazon Pinpoint to send push notifications, emails, SMS text messages, and voice messages.">
+<meta name="keywords" content="AWSCloud">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all">
+
+<!-- Verifications -->
+    
+    
+        
+<!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Amazon pinpoint - Customer Engagement">
+    <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
+    <meta property="og:url" content="http://localhost:4000/blog/customer-engagement-with-Amazon-pinpoint">
+    <meta property="og:site_name" content="Girish Godage">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@GGodage" />
+    
+    <meta name="twitter:title" content="Amazon pinpoint - Customer Engagement" />
+    <meta name="twitter:description" content="Amazon Pinpoint is an AWS service that you can use to engage with your customers across multiple messaging channels. You can use Amazon Pinpoint to send push notifications, emails, SMS text messages, and voice messages." />
+    <meta name="twitter:url" content="http://localhost:4000/blog/customer-engagement-with-Amazon-pinpoint" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/img/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/img/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    
+
+
+    <link rel="canonical" href="http://localhost:4000/blog/customer-engagement-with-Amazon-pinpoint">
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
+    <!-- Bootstrap CSS-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Google fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+   
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
+    
+    <!-- animate.css-->
+    <link rel="stylesheet" href="http://localhost:4000/sitejs/animate.css/animate.css">
+    <!-- theme stylesheet-->
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="http://localhost:4000/css/custom.css" as="style">
+    <link rel="stylesheet" href="http://localhost:4000/css/comments.css" as="style">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="http://localhost:4000/img/logo-big.png">
+    <!-- Fab Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
+    
+    
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    
+    <script type="text/javascript">
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+       ga('create', 'UA-130164763-2', 'auto');
+       ga('send', 'pageview');
+    </script>
+    
+    <!-- Typed.js DONT TOUCHHHHHHHHHHHHH!-->
+    <!--<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.9/typed.min.js"></script>
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+      </script>
+      
+      <!-- START OF RELEVANT PART -->
+    <script async src="https://just-comments.com/w2.js"></script>
+    <!-- END OF RELEVANT PART -->
+
+
+</head>
+
+<body>
+    
+<!-- navbar-->
+<header class="header">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container"><a class="navbar-brand" href="http://localhost:4000"><img
+          src="http://localhost:4000/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
+          alt="logo"> <img src="http://localhost:4000/img/girish_logo.png" height="30" alt="girilogo"></a>
+      <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span
+          class="fa fa-bars" style="color: white"></span></button>
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="http://localhost:4000#home" class="nav-link  link-scroll">Home</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#about" class="nav-link link-scroll">About</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#skills" class="nav-link link-scroll">Skills</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#services" class="nav-link link-scroll">Services</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#references" class="nav-link link-scroll">My
+              work</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#contact" class="nav-link link-scroll">Contact</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000/blog" class="nav-link link-scroll">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    
+    
+    
+    <div style="background-color:Gray;">
+        <div style="padding:0;min-height:95.05vh;display:flex;font-family: Poppins, sans-serif;margin-top: 5rem;"
+            class="container">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <p class="post-title">
+                    <h1><a href="/blog/customer-engagement-with-Amazon-pinpoint">Amazon pinpoint - Customer Engagement</a></h1>
+                </p>
+                
+                <span class="post-meta">
+              <span style="font-weight:600">February 02, 2020 Sunday</span>
+                    
+                       ( 23 minute read ) 
+                    
+                     
+                    <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">   by Girish Godage</a>
+                </span>
+                
+                <div class="site-category"> 
+                        <h5>AWSCloud</h5>
+                </div>
+                
+                <hr>
+                <div><img class="post-image" src="/img/sw_design.png" alt="Amazon pinpoint - Customer Engagement" height="250" /></div>
+                <div class="post-content">
+                    <br>                     
+                    <h2 id="what-is-customer-engagement">What is Customer Engagement?</h2>
+
+<p><em>Customer engagement</em> refers to the practices that organizations employ to keep users coming back to their applications. Maximizing customer engagement is vital in today’s digital marketplace, where an ever-increasing number of brands are competing for a finite amount of customer attention. In this article, we discuss the factors that impact customer engagement, and provide information about specific steps you can take to improve customer engagement.</p>
+
+<h3 id="why-customer-engagement-matters">Why customer engagement matters</h3>
+
+<p>In 2012, the average adult in the United States spent one hour per day using his or her mobile device; by 2017, that figure had increased to 5.6 hours per day. Over half of that time is spent using third-party apps, but the majority of app users access 20 or fewer apps each month. Of those 20 apps, most users spent the vast majority of their time in their top 10 applications.</p>
+
+<p>At the same time, first impressions are everything in today’s digital marketplace. Almost a quarter of users have downloaded an app, ran it once, and never opened it again. Additional research suggests that as many as 80% of all app users stop using a given app within 90 days.</p>
+
+<p>These statistics paint a very clear picture: in order to succeed in this highly competitive environment, organizations must deliver digital content that delights and engages their customers.</p>
+
+<h3 id="customer-engagement-in-action">Customer engagement in action</h3>
+<p>Let’s assume your organization produces a mobile app for sports fans called All Things Sports. In your app, users can get the latest sports news, purchase memorabilia and event tickets, and play exciting mini-games. Your organization has devoted a large amount of time, effort, and money into creating a best-in-class app and acquiring new users. For this reason, it’s essential that your users keep coming back to your application so that your business can grow.</p>
+
+<p>For all applications, user interactions fall into three categories: activation, retention, and conversion. All Things Sports requires users to confirm their email address and select their favorite sports teams; the percentage of users who complete this process is the activation rate. Next, you need to offer content that is compelling enough to keep your users coming back. All Things Sports offers fun mini-games and special offers that encourage users to return to the app often. The likelihood that your customers will return to your application repeatedly is referred to as your retention rate. Finally, your organization needs to make money in order to grow. The main revenue generating activity in All Things Sports is the sale of event tickets and merchandise. The percentage of users who purchase these products through your app is your conversion rate. As the application developer, you have to continuously improve all three of these metrics in order to grow your business.</p>
+
+<p>The first step toward improving these metrics is to gather customer analytics data. Customer analytics data is the data you collect and analyze to better understand the ways in which customers use your application. A thorough analysis of this data can help you better serve your users, thereby increasing their engagement with your application. Making optimizations to your application based on this data can lead to positive reviews, better app store rankings, and increased word of mouth. These factors can increase your activation rate, which can in turn increase your retention and conversion rates. You can start gathering this information by integrating the AWS Mobile SDK into your application. For more information about customer analytics, see our companion article, What are Customer Analytics?</p>
+
+<p>The next step toward improving customer engagement is to create targeted segments of customers based on their characteristics. By targeting specific customers based on their demographics, preferences, behaviors, and interests, you can ensure that you’re using the right channels to send the right messages to the right customers. <strong>Amazon Pinpoint</strong> can import app usage data obtained from the AWS Mobile SDK and use it to create customer segments. To learn more about the ways in which you can create customer segments, see our companion article, What is Customer Segmentation?</p>
+
+<p>The final step toward improving customer engagement is to deploy personalized, multi-channel messaging to your customers. You can use these messages to proactively update engaged customers on exciting new features and improvements in your application, or to incentivize less-engaged customers to sign back in to your application. You can also use this messaging to convey vital transactional content—such as password reset emails or purchase confirmations—to all customers. You can also use <strong>Amazon Pinpoint</strong> to meet this need. For more information about multi-channel messaging, see the companion article titled What is Multi-Channel Messaging?</p>
+
+<h2 id="what-is-amazon-pinpoint">What Is Amazon Pinpoint?</h2>
+
+<p>Amazon Pinpoint is an AWS service that you can use to engage with your customers across multiple messaging channels. You can use <strong>Amazon Pinpoint to send push notifications, emails, SMS text messages, and voice messages</strong>.</p>
+
+<h2 id="amazon-pinpoint-features">Amazon Pinpoint Features</h2>
+<p>This section describes the major features of Amazon Pinpoint and the tasks that you can perform by using them.</p>
+
+<h3 id="define-audience-segments">Define Audience Segments</h3>
+<p>Reach the right audience for your messages by defining audience segments. A segment designates which users receive the messages that are sent from a campaign or journey. You can define dynamic segments based on data that’s reported by your application, such as operating system or mobile device type. You can also import static segments that you define outside of Amazon Pinpoint.</p>
+
+<h3 id="engage-your-audience-with-messaging-campaigns">Engage Your Audience with Messaging Campaigns</h3>
+<p>Engage your audience by creating a messaging campaign. A campaign sends tailored messages on a schedule that you define. You can create campaigns that send push notifications, email, SMS text messages, and voice messages.</p>
+
+<p>To experiment with alternative campaign strategies, set up your campaign as an A/B test, and analyze the results with Amazon Pinpoint analytics.</p>
+
+<h3 id="create-user-journeys">Create User Journeys</h3>
+<p>Create custom, multi-step experiences for your customers by designing and building journeys. With journeys, you can send messages to your customers based on their attributes, behaviors, and activities. When you build a journey, you design an automated workflow of activities that perform a variety of different actions—for example, sending an email message to participants, waiting for a certain period of time, or splitting participants based on actions that they take, such as clicking a link in a message.</p>
+
+<h3 id="provide-consistent-messaging-with-templates">Provide Consistent Messaging with Templates</h3>
+<p>Design consistent messages and reuse content more effectively by creating and using message templates. A message template contains content and settings that you want to reuse in messages that you send for any of your Amazon Pinpoint projects. You can use message templates in email messages, push notifications, SMS messages, and voice messages.</p>
+
+<h3 id="deliver-personalized-content">Deliver Personalized Content</h3>
+<p>Send content that’s customized for each recipient of a message. Using message variables and attributes, you can deliver dynamic, personalized content in messages that you send from campaigns and journeys.</p>
+
+<p>To streamline development, you can also use message variables and attributes to add personalized content to message templates. With message templates, this content can come from attributes that you create directly in Amazon Pinpoint or a machine learning model that you create in Amazon Personalize. By connecting message templates to models in Amazon Personalize, you can use machine learning to send relevant promotions or recommendations to each recipient of a message.</p>
+
+<h3 id="analyze-user-behavior">Analyze User Behavior</h3>
+<p>Gain insight into your audience and the effectiveness of your campaigns and messaging activities by using the analytics that Amazon Pinpoint provides. You can view trends in your users’ level of engagement, purchase activity, demographics, and more. You can also monitor your message traffic by viewing metrics such as the total number of messages that you sent for a campaign or project. Through the Amazon Pinpoint API, your application can also report custom data, which Amazon Pinpoint makes available for analysis.</p>
+
+<p>To analyze or store analytics data outside Amazon Pinpoint, configure Amazon Pinpoint to stream the data to Amazon Kinesis.</p>
+
+<h3 id="send-test-messages">Send Test Messages</h3>
+<p>Test the design and deliverability of your messages by sending test messages before you send messages to your customers.</p>
+
+<h2 id="get-started">Get Started</h2>
+<p>Get started with Amazon Pinpoint by <strong>creating a new project</strong> or <strong>completing a tutorial</strong>.</p>
+
+<h2 id="getting-started-with-amazon-pinpoint">Getting Started with Amazon Pinpoint</h2>
+
+<p>To start sending targeted messages in Amazon Pinpoint, you have to complete a few steps. <em>For example, you have to add customer contact information into Amazon Pinpoint, and then create segments that target certain customers. Next, you have to create your messages and schedule your campaigns. Finally, after you send your campaigns, you can use the analytics dashboards that are built into Amazon Pinpoint to see how well the campaigns performed.</em></p>
+
+<h3 id="intended-audience">Intended Audience</h3>
+
+<p>This tutorial is designed for <strong>marketing and business users</strong>.</p>
+
+<h3 id="features-used">Features Used</h3>
+
+<p>This tutorial shows you how to complete all of the following steps by using the Amazon Pinpoint console:</p>
+
+<ul>
+  <li>
+    <p>Importing customer data from a file.</p>
+  </li>
+  <li>
+    <p>Creating a segment that targets specific users based on their attributes.</p>
+  </li>
+  <li>
+    <p>Creating an email campaign and scheduling it to be sent at a specific time.</p>
+  </li>
+  <li>
+    <p>Viewing email delivery and response data by using the analytics dashboards that are built into Amazon Pinpoint.</p>
+  </li>
+</ul>
+
+<h3 id="step-1-create-and-configure-a-project">Step 1: Create and Configure a Project</h3>
+
+<p>To create a project and verify an email address</p>
+
+<ol>
+  <li>
+    <p>Open the Amazon Pinpoint console at https://console.aws.amazon.com/pinpoint/.</p>
+  </li>
+  <li>
+    <p>On the <strong>All projects page</strong>, choose <strong>Create a project</strong>.</p>
+  </li>
+  <li>
+    <p>On the <strong>Create a project</strong> window, for <strong>Project name</strong>, enter a name for your project, and then <strong>choose Create</strong>.</p>
+  </li>
+</ol>
+
+<p><strong>Note</strong>
+<em>The project name can contain up to 64 characters.</em></p>
+
+<ol>
+  <li>
+    <p>On the <strong>Configure features</strong> page, next to <strong>Email</strong>, choose <strong>Configure</strong>.</p>
+  </li>
+  <li>
+    <p>For Email address, type an email address that you want to use to send email. For example, you can use your personal email address, or your work email address. Choose <strong>Verify</strong>.</p>
+  </li>
+  <li>
+    <p>Wait for 1–2 minutes, and then check the inbox for the email address that you specified in step 4. You should see an email from Amazon Web Services (no-reply-aws@amazon.com) with the subject line “Amazon Web Services – Email Address Verification Request in region <strong>RegionName</strong>”, where <strong>RegionName</strong> is the name of the AWS Region that you’re configuring Amazon Pinpoint in.</p>
+  </li>
+  <li>
+    <p>Open the email, and then click the link in the body of the email.</p>
+  </li>
+  <li>
+    <p>Return to the Amazon Pinpoint console in your browser. On the Set up email page, choose Save.</p>
+  </li>
+</ol>
+
+<p>Your account is now ready to send email from the email address that you verified. You can add additional email addresses later.</p>
+
+<p>You can also verify entire domains. When you verify a domain, you can send email from any address on that domain. For more information, see Verifying a Domain.</p>
+
+<h3 id="step-2-import-customer-data-and-create-a-segment">Step 2: Import Customer Data and Create a Segment</h3>
+
+<p>A segment is a group of your customers that share certain attributes. <em>For example, a segment might contain all of your customers who use version 2.0 of your app on an Android device, or all customers who live in the city of Los Angeles.</em></p>
+
+<p>When you create a campaign, you have to choose a segment to send the campaign to. You can send multiple campaigns to a single segment, and you can send a single campaign to multiple segments.</p>
+
+<p>There are two types of segments that you can create in Amazon Pinpoint:</p>
+
+<ul>
+  <li>
+    <p><strong>Dynamic segments</strong> – Segments that are based on attributes that you define. Dynamic segments can change over time. For example, if you add new endpoints to Amazon Pinpoint, or if you modify or delete existing endpoints, the number of endpoints in that segment may increase or decrease.</p>
+  </li>
+  <li>
+    <p><strong>Imported segments</strong> – Segments that are created outside of Amazon Pinpoint and saved in CSV or JSON format. Imported segments are static—that is, they never change. When you create a new segment, you can use an imported segment as a base segment, and then refine it by adding filters.</p>
+  </li>
+</ul>
+
+<p>In this tutorial, you create an imported segment by uploading a file from your computer. Next, you create a dynamic segment that is based upon the imported segment.</p>
+
+<h4 id="step-21-download-and-modify-the-sample-file">Step 2.1: Download and Modify the Sample File</h4>
+
+<p>In this section, you download a file that contains fictitious customer data. You also modify the data to include your own contact information. Later in this tutorial, you use this data to create a segment.</p>
+
+<ol>
+  <li>In a web browser, download the sample file from https://raw.githubusercontent.com/awsdocs/amazon-pinpoint-user-guide/master/examples/Pinpoint_Sample_Import.csv. Save the file to your computer.</li>
+</ol>
+
+<p><em><strong>Tip</strong>
+    You can quickly save this file to your computer by right-clicking the link, and then choosing Save Link As.</em></p>
+
+<ol>
+  <li>
+    <p>Open the file in a text editor or spreadsheet application. On the last row of the file, replace the items in angle brackets (&lt;…&gt;) with your own contact information.</p>
+
+    <p>In the Address column, provide the same email address that you verified in Step 1.</p>
+
+    <p>In the User.UserAttributes.Company column, specify a company name that’s different from the fictitious company names in the file. You’ll use this unique company name when you define the criteria for your targeted segment in the next section.</p>
+
+    <p><strong>Note</strong>
+ <em>You don’t have to provide your information for each column in the file. However, at a minimum, you have to provide information for the ChannelType, Address, and User.UserAttributes.Company columns.</em></p>
+
+    <p>The email that you create later in this tutorial uses several of these fields to create a personalized message.</p>
+  </li>
+  <li>
+    <p>When you finish, save the file.</p>
+
+    <p><strong>Note</strong>
+ <em>If you used a spreadsheet application to modify the file, make sure that you save the modified file in Comma-Separated Values (.csv) format. Amazon Pinpoint can only import .csv and .json files.</em></p>
+  </li>
+</ol>
+
+<h4 id="step-22-import-a-file-that-contains-customer-data">Step 2.2: Import a File that Contains Customer Data</h4>
+
+<p>Now that you have a file that contains customer data, you can import it into Amazon Pinpoint. To import customer data, you have to create a new segment.</p>
+
+<p><strong>To create an imported segment</strong></p>
+
+<ol>
+  <li>
+    <p>In the Amazon Pinpoint console, in the navigation pane, choose <strong>Segments</strong>.</p>
+  </li>
+  <li>
+    <p>Choose <strong>Create a segment</strong>.</p>
+  </li>
+  <li>
+    <p>On the <strong>Create a segment</strong> page, choose <strong>Import a segment</strong>.</p>
+  </li>
+  <li>
+    <p>In the <strong>Specifications</strong> section, under <strong>Import method</strong>, choose <strong>Upload files from your computer</strong>.</p>
+  </li>
+  <li>
+    <p>Select <strong>Choose files</strong>. Navigate to the Pinpoint_Sample_Import.csv file that you downloaded and modified in the previous section.</p>
+  </li>
+  <li>
+    <p>Choose <strong>Create segment</strong>. Amazon Pinpoint copies the file from your computer and creates a segment. Wait for about 1 minute while the import completes.</p>
+  </li>
+</ol>
+
+<h4 id="step-23-create-a-targeted-segment">Step 2.3: Create a Targeted Segment</h4>
+<p>Your Amazon Pinpoint project now contains some customer data, as well as a segment that contains your entire customer list. It also contains your contact information.</p>
+
+<p>In this section, you create a targeted segment. You add segment criteria that filter the segment so that you’re the only member of the segment.</p>
+
+<p><strong>To create the segment</strong></p>
+
+<ol>
+  <li>
+    <p>On the <strong>Segments</strong> page, choose <strong>Create a segment</strong>.</p>
+  </li>
+  <li>
+    <p>On the <strong>Create a segment</strong> page, choose <strong>Build a segment</strong>.</p>
+  </li>
+  <li>
+    <p>For <strong>Name</strong>, enter a name for the segment.</p>
+  </li>
+</ol>
+
+<p>4.Under <strong>Segment group 1</strong>, do the following:</p>
+
+<ul>
+  <li>Next to <strong>Include endpoints</strong> that are in any of the following segments, choose the <strong>Pinpoint_Sample_Import</strong> segment that you created in the previous step.</li>
+  <li>
+    <p>Under <strong>Add filters to refine your segment</strong>, from the menu, choose <strong>Filter by channel</strong>.</p>
+  </li>
+  <li>
+    <p>Next to <strong>Endpoints that match</strong>, choose <strong>all</strong>.</p>
+  </li>
+  <li>
+    <p>For <strong>Channel</strong>, choose <strong>EMAIL</strong>.</p>
+  </li>
+  <li>
+    <p>Under <strong>Add filters to refine your segment</strong>, from the menu, choose <strong>Filter by user</strong>.</p>
+  </li>
+  <li>
+    <p>In the <strong>User</strong> filter, use the menu to choose <strong>Company</strong>. Next, use the <strong>Choose values</strong> menu to choose the unique company name that you specified for your own contact record in step 2.1.</p>
+  </li>
+  <li>
+    <p>Choose <strong>Add an attribute or metric</strong>.</p>
+  </li>
+  <li>
+    <p>In the new filter, use the menu to choose <strong>First Name</strong>. Next, use the <strong>Choose values</strong> menu to choose your <strong>first name</strong>.</p>
+  </li>
+  <li>Choose <strong>Create segment</strong>.</li>
+</ul>
+
+<h3 id="step-3-create-and-schedule-a-campaign">Step 3: Create and Schedule a Campaign</h3>
+
+<p>A campaign is a messaging initiative that engages a specific audience segment. A campaign sends tailored messages on the days and times that you specify. You can use the console to create a campaign that sends messages through the email, push notification, or SMS channels.</p>
+
+<p>In this section, you create an email campaign. You create a new campaign, choose your target segment, and create a responsive email message for the campaign. When you finish setting up the message, you choose the day and time when you want the message to be sent.</p>
+
+<h4 id="step-31-create-the-campaign-and-choose-a-segment">Step 3.1: Create the Campaign and Choose a Segment</h4>
+<p>When you create a segment, you first give the segment a name. Next, you choose the segment that the campaign applies to. In this tutorial, you choose the segment that you created in Step 2.3.</p>
+
+<p>To create the campaign and choose segment</p>
+
+<ol>
+  <li>
+    <p>In a web browser, download the sample file from https://raw.githubusercontent.com/awsdocs/amazon-pinpoint-user-guide/master/examples/Pinpoint_Sample_Email.html. Save the file to your computer.</p>
+
+    <p>Tip
+ You can quickly save this file to your computer by right-clicking the link, and then choosing Save Link As.</p>
+  </li>
+  <li>
+    <p>Open the file that you just downloaded in a text editor, such as Notepad (Windows) or TextEdit (macOS). Press Ctrl+A (Windows) or Cmd+A (macOS) to select all of the text. Then, press Ctrl+C (Windows) or Cmd+C (macOS) to copy it.</p>
+  </li>
+  <li>
+    <p>In the Amazon Pinpoint console, in the navigation pane, choose Campaigns.</p>
+  </li>
+  <li>
+    <p>Choose Create a campaign.</p>
+  </li>
+  <li>
+    <p>Under Campaign details, for Campaign name, enter a name for the campaign.</p>
+  </li>
+  <li>
+    <p>For Campaign type, choose Standard campaign.</p>
+  </li>
+  <li>
+    <p>For Choose a channel for this campaign, choose Email.</p>
+  </li>
+  <li>
+    <p>Choose Next.</p>
+  </li>
+  <li>
+    <p>On the Choose a segment page, choose Use an existing segment. Then, for Segment, choose the targeted segment that you created in Step 2.3. Choose Next.</p>
+  </li>
+</ol>
+
+<h4 id="step-32-create-the-campaign-message">Step 3.2: Create the Campaign Message</h4>
+<p>After you specify a campaign name and choose a segment, you can create your message. This tutorial includes a link to an HTML file that you can use to create your message.</p>
+
+<p>This sample file uses responsive HTML to create a message that renders properly on both computers and mobile devices. It uses inline CSS to provide compatibility with a wide variety of email clients. It also includes tags that are used to personalize the message with the recipient’s name and other personal information.</p>
+
+<p>To create the message</p>
+
+<ol>
+  <li>
+    <p>On the Create your message page, under Message content, choose Create a new message.</p>
+  </li>
+  <li>
+    <p>For Subject, enter a subject line for the email.</p>
+  </li>
+  <li>
+    <p>Under Message, erase the sample HTML code that’s shown in the editor. Paste the HTML code that you copied in the first step in this section.</p>
+  </li>
+  <li>
+    <p>(Optional) Modify the content of the message to include a message that you want to send.</p>
+  </li>
+</ol>
+
+<p>You can personalize the message for each recipient by including the name of an attribute inside two sets of curly braces. For example, the sample message includes the following text: . This code represents the User.UserAttributes.FirstName attribute, which contains the recipient’s first name. When you send the campaign, Amazon Pinpoint removes this attribute name and replaces it with the appropriate value for each recipient.</p>
+
+<p>You can experiment with other attribute names. Refer to the column headers in the spreadsheet that you imported in Step 2.2 for complete list of attribute names that you can specify in your message.</p>
+
+<p>Tip
+You can use Design view to edit the content of the message without having to edit the HTML code. To use this view, choose Design from the view selector above the message editor, as shown in the following image.</p>
+
+<p>5.Choose Next.</p>
+
+<h5 id="step-33-schedule-the-campaign">Step 3.3: Schedule the Campaign</h5>
+<p>The last step in creating the campaign is to choose when to send it. In Amazon Pinpoint, you can set up your campaigns so that they’re sent immediately after you launch them. You can also schedule them to be sent in the future—anywhere from 15 minutes from the current time, to six months into the future. Finally, you can schedule your messages to be sent on a recurring basis (that is, hourly, daily, weekly, or monthly). Recurring campaigns are a great way to send account or status updates where the appearance of the campaign message stays the same over time, but is populated with information that changes dynamically.</p>
+
+<p>In this section, you schedule your campaign to be sent immediately after you launch it.</p>
+
+<p>To schedule the campaign</p>
+
+<ol>
+  <li>
+    <p>On the Choose when to send the campaign page, choose At a specific time. Then, under Choose when the campaign should be sent, choose Immediately. Finally, choose Next.</p>
+  </li>
+  <li>
+    <p>On the Review and launch page, review all of the details of the campaign. When you’re ready to send it, choose Launch campaign.</p>
+  </li>
+</ol>
+
+<p><strong>Congratulations</strong>—you’ve created your first campaign with Amazon Pinpoint! Because you’re the only member of the segment that you created in Step 2.3, you should receive the message in your inbox within a few seconds.</p>
+
+<h3 id="step-4-view-campaign-analytics">Step 4: View Campaign Analytics</h3>
+
+<p>At this point, you’ve created a segment that you’re a member of. You’ve also created an email campaign and sent it to yourself. In this section, you look at the delivery and response metrics for the campaign.</p>
+
+<h4 id="step-41-interact-with-your-campaign">Step 4.1: Interact with Your Campaign</h4>
+<p>Before you can view the delivery and response metrics for your campaign, you have to interact with the message that you sent yourself in Step 3.</p>
+
+<p><strong>To interact with the email</strong></p>
+
+<ol>
+  <li>
+    <p>In your email client, open the message that you sent yourself in Step 3.</p>
+  </li>
+  <li>
+    <p>If your email client automatically hides images by default, choose the Download pictures (or equivalent) button to load the images in the message.</p>
+  </li>
+  <li>
+    <p>Choose one or more of the links that are contained in the message.</p>
+  </li>
+  <li>
+    <p>Wait for a few minutes, and then proceed to the next section.</p>
+  </li>
+</ol>
+
+<h4 id="step-42-view-metrics-for-the-campaign">Step 4.2: View Metrics for the Campaign</h4>
+<p>After you interact with the email that you sent from the campaign, you can view the metrics for the campaign.</p>
+
+<p><strong>To view the campaign metrics</strong></p>
+
+<ol>
+  <li>
+    <p>Open the Amazon Pinpoint console at https://console.aws.amazon.com/pinpoint/.</p>
+  </li>
+  <li>
+    <p>On the All projects page, choose the project that you used to send the campaign.</p>
+  </li>
+  <li>
+    <p>In the navigation pane, under Analytics, choose Campaigns.</p>
+  </li>
+  <li>
+    <p>In the Campaigns section, choose the campaign that you created in Step 3.</p>
+  </li>
+  <li>
+    <p>(Optional) Use the date control to choose a date range for the reports on this page.</p>
+
+    <p>On the metrics page for your campaign, you see the following information:</p>
+
+    <ul>
+      <li>
+        <p>Delivery count metrics – This section provides information about the delivery of the messages that were sent from your campaign. It includes the following information:</p>
+
+        <ul>
+          <li>
+            <p>Messages sent – The number of messages that were sent.</p>
+          </li>
+          <li>
+            <p>Messages delivered – The number of messages that were delivered to their recipients.</p>
+          </li>
+          <li>
+            <p>Links clicked – The number of times that links in the messages were clicked by recipients. If a single recipient clicks a link more than once, each click is represented in this section.</p>
+          </li>
+          <li>
+            <p>Endpoint deliveries – The average number of endpoints that the campaign was sent to, for each day in the chosen date range. The chart shows the number of endpoints that the campaign was delivered to, for each day in the chosen date range.</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>Delivery rate metrics – This section shows the overall delivery and response rates for the messages that were sent from your campaign. It includes the following information:</p>
+
+        <ul>
+          <li>
+            <p>Delivery rate – The percentage of messages that were delivered to recipients, of the total number of endpoints that you targeted in the segment that you sent this campaign to.</p>
+          </li>
+          <li>
+            <p>Email open rate – The percentage of messages that were opened by recipients, of the total number of messages that were delivered.</p>
+          </li>
+          <li>
+            <p>Bounce rate – The percentage of messages that weren’t delivered to recipients because they bounced. This value includes only hard bounces—that is, messages that bounced because of a permanent issue. For example, hard bounces could occur when the recipient’s email address doesn’t exist, or when the recipient permanently rejects email from your domain.</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>Campaign runs – This section shows information that’s specific to each time the campaign ran. Because you can use Amazon Pinpoint to create recurring campaigns, this section can show information for several campaign runs. However, if you completed the procedures in this tutorial, this section contains information for only one campaign run because you ran the campaign only once. This section contains the following metrics, in addition to the metrics that are defined in the preceding sections:</p>
+
+        <ul>
+          <li>
+            <p>Endpoints targeted – The number of endpoints that were targeted by the segment that was associated with the campaign run. This number includes endpoints that were part of the segment, but didn’t receive the message.</p>
+          </li>
+          <li>
+            <p>Total email opened – The total number of times that messages sent from the campaign run were opened. For example, if a message was opened two times by one recipient, both of those opens are counted.</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="next-step">Next Step</h2>
+
+<p>We hope that you use this tutorial as a starting point as you discover the additional capabilities of Amazon Pinpoint. For example:</p>
+
+<ul>
+  <li>
+    <p>You can improve the delivery of your email campaigns by making sure that your campaigns align with industry best practices. For more information, see Tips and Best Practices.</p>
+  </li>
+  <li>
+    <p>You can verify an entire domain, which allows you to send email from any address on that domain. For more information about verifying domains, see Verifying a Domain.</p>
+  </li>
+  <li>
+    <p>You can obtain dedicated IP addresses for sending your email. Dedicated IP addresses are a great option for sending email in certain use cases. For more information, see Using Dedicated IP Addresses with Amazon Pinpoint.</p>
+  </li>
+  <li>
+    <p>You can enable the Amazon Pinpoint Deliverability dashboard. The Deliverability dashboard helps you identify issues that could impact the delivery of your emails. For more information, see The Amazon Pinpoint Deliverability Dashboard.</p>
+  </li>
+  <li>
+    <p>You can send messages through other channels, such as SMS or push. Before you can use these channels, you have to enable and configure them on the Settings page. For more information about using the Settings page to enable and configure channels, see Amazon Pinpoint Settings.</p>
+  </li>
+  <li>
+    <p>You can send data about your campaigns outside of Amazon Pinpoint. For example, you can send delivery and response data for your campaigns to Amazon S3 for long-term storage. You can also send data to Amazon Redshift to perform custom analyses. For more information about sending your data outside of Amazon Pinpoint, see Event Stream Settings.</p>
+  </li>
+  <li>
+    <p>You can integrate Amazon Pinpoint with your apps, or interact with Amazon Pinpoint programmatically, by using an AWS SDK. For more information, see the Amazon Pinpoint Developer Guide.</p>
+  </li>
+</ul>
+
+                </div>
+
+                
+
+                <div id="disqus_thread"></div>
+                <script>
+                
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://girishgodage-github-io.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
+</button>
+<!-- Footer-->
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 text-center text-lg-left">
+                <p class="social">
+                    <a href="https://www.facebook.com/girish.godage.5" class="external facebook wow fadeInUp">
+                        <i class="fa fa-facebook"></i></a>
+                    <a href="https://instagram.com/girishgodage_007" data-wow-delay="0.2s" class="external instagram wow fadeInUp">
+                        <i class="fa fa-instagram"></i></a>
+                    <a href="https://youtube.com/girishgodage" data-wow-delay="0.4s" class="external youtube wow fadeInUp">
+                        <i class="fa fa-youtube-play"></i></a>
+                    <a href="https://twitter.com/GGodage" data-wow-delay="0.4s" class="external twitter wow fadeInUp">
+                            <i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/girishgodage" data-wow-delay="0.4s" class="external github wow fadeInUp">
+                                <i class="fa fa-github"></i></a>    
+                    <a href="mailto:girishgodage@gmail.com?subject=Hello%20Girish" data-wow-delay="0.6s" class="email wow fadeInUp">
+                        <i class="fa fa-envelope"></i></a></p>
+            </div>
+            <div class="col-12 col-md-2">
+            <h5>Quick Links</h5>
+            <ul>
+               <li><a href="http://localhost:4000#about">About</a></li>
+               <li><a href="http://localhost:4000#contact">Contact</a></li>
+               <li><a href="/sitemap.xml">Sitemap</a></li>               
+            </ul>
+         </div>
+            <div class="col-12 col-md-4 text-center text-lg-right mt-4 mt-lg-0">
+                <p> <b>©</b>2019 Girish Godage </p>
+                <p class="text-center, text-shadow"> Hosted On <a href="https://pages.github.com/">GitHub Pages</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Typed.js DONT TOUCH THIS! -->
+    <div id="typed-strings">
+    </div>
+
+        <!-- JavaScript files-->
+    <script src="http://localhost:4000/sitejs/jquery/jquery.min.js"></script>
+    <script src="http://localhost:4000/sitejs/popper.js/umd/popper.min.js"> </script>
+    <script src="http://localhost:4000/sitejs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="http://localhost:4000/sitejs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="http://localhost:4000/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.counterup/jquery.counterup.js"></script>
+    <script src="http://localhost:4000/js/front.js"></script>
+    <script src="http://localhost:4000/js/comment.js"></script>
+       <!-- Script pointing to search-script.js -->
+    <script src="http://localhost:4000/js/search-script.js" type="text/javascript"></script>
+   
+    <!-- Configuration -->
+    <script>
+         SimpleJekyllSearch({
+         searchInput: document.getElementById('search-input'),
+         resultsContainer: document.getElementById('results-container'),
+         json: 'http://localhost:4000/search.json'
+         })
+         </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC36FUDDdOTidZJ8nzS5vfE7KVyayenKPE",
+    authDomain: "githubcontactlist.firebaseapp.com",
+    databaseURL: "https://githubcontactlist.firebaseio.com",
+    projectId: "githubcontactlist",
+    storageBucket: "githubcontactlist.appspot.com",
+    messagingSenderId: "899685398702",
+    appId: "1:899685398702:web:0c23c56d2d6d40df37553f",
+    measurementId: "G-YWBRCYJYFW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script>
+   $(function() {
+      
+    //make a variable to keep track of data coming from firebase
+    var data = [];
+
+    // Reference messages collection
+      var messagesRef = firebase.database().ref('contactformmessages');  
+
+
+    //listen to data updates from firebase
+    messagesRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+        //when the data updates at firebase, put it in the data variable
+        data = snapshot.val();
+    })
+    //Entire Contact Form (handler)
+    $('#contactForm').submit(function(e) {
+      e.preventDefault();
+
+        var $form = $(this);
+        console.log("Submit to Firebase");
+
+        //disable submit button
+        $form.find("#sendForm").prop('disabled', true);
+
+        //get values to send to Firebase
+        var name = $('#name').val();
+        console.log(name);
+		
+		var surname = $('#surname').val();
+        console.log(surname);
+		
+		var email = $('#email').val();
+        console.log(email);	
+		
+		var phone = $('#phone').val();
+        console.log(phone);
+
+        var message = $('#message').val();
+        console.log(message);
+
+       
+        //take the values from the form, and put them in an object
+        var newContact = {
+         "name": name,
+			"surname": surname,
+			"email": email,
+			"phone": phone,
+         "message": message
+        }
+        //put new object in data array
+        data.push(newContact);
+        console.log(data);
+
+        //send the new data to Firebase
+        messagesRef.set(data, function(err) {
+            if (err) {
+                alert("Data no go");
+            }else{
+            $("#form-wrapper").slideToggle();
+            $('#form-success-message').slideToggle();
+			}
+        });
+
+        return false;
+    })
+   
+    
+})
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";           
+        }else
+        {
+           myBtton.style.display="none";     
+          
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+      //  document.body.scrollTop =0;
+      //  document.documentElement.scrollTop=0;
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    }
+
+</script>
+
+    
+    
+
+
+</body>
+
+</html>
