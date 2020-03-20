@@ -295,7 +295,7 @@ Before you can view the delivery and response metrics for your campaign, you hav
 
 **To interact with the email**
 
-1. In your **email client**, open the message that you sent yourself in Step 3.
+1. In your email client, open the message that you sent yourself in Step 3.
 
 2. If your email client automatically hides images by default, choose the Download pictures (or equivalent) button to load the images in the message.
 
@@ -310,11 +310,11 @@ After you interact with the email that you sent from the campaign, you can view 
 
 1. Open the Amazon Pinpoint console at https://console.aws.amazon.com/pinpoint/.
 
-2. On the All **projects page**, choose the **project that you used to send the campaign**.
+2. On the All projects page, choose the project that you used to send the campaign.
 
-3. In the **navigation pane**, under Analytics, choose **Campaigns**.
+3. In the navigation pane, under Analytics, choose Campaigns.
 
-4. In the **Campaigns section**, choose the campaign that you created in Step 3.
+4. In the Campaigns section, choose the campaign that you created in Step 3.
 
 5. (Optional) Use the date control to choose a date range for the reports on this page.
 

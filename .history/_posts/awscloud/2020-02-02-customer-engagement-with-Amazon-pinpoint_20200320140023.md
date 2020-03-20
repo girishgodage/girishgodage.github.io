@@ -124,8 +124,6 @@ Your account is now ready to send email from the email address that you verified
 
 You can also verify entire domains. When you verify a domain, you can send email from any address on that domain. For more information, see Verifying a Domain.
 
-
-
 ### Step 2: Import Customer Data and Create a Segment
 
 A segment is a group of your customers that share certain attributes. *For example, a segment might contain all of your customers who use version 2.0 of your app on an Android device, or all customers who live in the city of Los Angeles.*
@@ -227,26 +225,26 @@ When you create a segment, you first give the segment a name. Next, you choose t
 
 To create the campaign and choose segment
 
-1. In a web browser, **download the sample file** from https://raw.githubusercontent.com/awsdocs/amazon-pinpoint-user-guide/master/examples/Pinpoint_Sample_Email.html. Save the file to your computer.
+1. In a web browser, download the sample file from https://raw.githubusercontent.com/awsdocs/amazon-pinpoint-user-guide/master/examples/Pinpoint_Sample_Email.html. Save the file to your computer.
 
-    ***Tip**
-    You can quickly save this file to your computer by right-clicking the link, and then choosing Save Link As.*
+    Tip
+    You can quickly save this file to your computer by right-clicking the link, and then choosing Save Link As.
 
-2. **Open the file** that you just downloaded in a text editor, such as Notepad (Windows) or TextEdit (macOS). Press Ctrl+A (Windows) or Cmd+A (macOS) to select all of the text. Then, press Ctrl+C (Windows) or Cmd+C (macOS) to copy it.
+2. Open the file that you just downloaded in a text editor, such as Notepad (Windows) or TextEdit (macOS). Press Ctrl+A (Windows) or Cmd+A (macOS) to select all of the text. Then, press Ctrl+C (Windows) or Cmd+C (macOS) to copy it.
 
-3. In the **Amazon Pinpoint console**, in the navigation pane, choose **Campaigns**.
+3. In the Amazon Pinpoint console, in the navigation pane, choose Campaigns.
 
-4. Choose **Create a campaign**.
+4. Choose Create a campaign.
 
-5. Under **Campaign details**, for Campaign name, enter a **name** for the campaign.
+5. Under Campaign details, for Campaign name, enter a name for the campaign.
 
-6. For **Campaign type**, choose **Standard campaign**.
+6. For Campaign type, choose Standard campaign.
 
-7. For Choose a **channel for this campaign**, choose **Email**.
+7. For Choose a channel for this campaign, choose Email.
 
-8. Choose **Next**.
+8. Choose Next.
 
-9. On the Choose a **segment page**, choose Use an existing segment. Then, for **Segment**, choose the **targeted segment that you created** in Step 2.3. Choose **Next**.
+9. On the Choose a segment page, choose Use an existing segment. Then, for Segment, choose the targeted segment that you created in Step 2.3. Choose Next.
 
 #### Step 3.2: Create the Campaign Message
 After you specify a campaign name and choose a segment, you can create your message. This tutorial includes a link to an HTML file that you can use to create your message.
@@ -255,11 +253,11 @@ This sample file uses responsive HTML to create a message that renders properly 
 
 To create the message
 
-1. On the Create your message page, under **Message content**, choose **Create a new message**.
+1. On the Create your message page, under Message content, choose Create a new message.
 
-2. For **Subject**, enter a **subject line for the email**.
+2. For Subject, enter a subject line for the email.
 
-3. Under **Message**, erase the sample HTML code that's shown in the editor. Paste the HTML code that you copied in the first step in this section.
+3. Under Message, erase the sample HTML code that's shown in the editor. Paste the HTML code that you copied in the first step in this section.
 
 4. (Optional) Modify the content of the message to include a message that you want to send.
 
@@ -267,11 +265,11 @@ You can personalize the message for each recipient by including the name of an a
 
 You can experiment with other attribute names. Refer to the column headers in the spreadsheet that you imported in Step 2.2 for complete list of attribute names that you can specify in your message.
 
-***Tip**
-You can use Design view to edit the content of the message without having to edit the HTML code. To use this view, choose Design from the view selector above the message editor, as shown in the following image.*
+Tip
+You can use Design view to edit the content of the message without having to edit the HTML code. To use this view, choose Design from the view selector above the message editor, as shown in the following image.
 
 
-5.Choose **Next**.
+5.Choose Next.
 
 ##### Step 3.3: Schedule the Campaign
 The last step in creating the campaign is to choose when to send it. In Amazon Pinpoint, you can set up your campaigns so that they're sent immediately after you launch them. You can also schedule them to be sent in the future—anywhere from 15 minutes from the current time, to six months into the future. Finally, you can schedule your messages to be sent on a recurring basis (that is, hourly, daily, weekly, or monthly). Recurring campaigns are a great way to send account or status updates where the appearance of the campaign message stays the same over time, but is populated with information that changes dynamically.
@@ -280,9 +278,9 @@ In this section, you schedule your campaign to be sent immediately after you lau
 
 To schedule the campaign
 
-1. On the **Choose when to send the campaign page**, choose At a **specific time**. Then, under **Choose** when the campaign should be sent, choose **Immediately**. Finally, choose **Next**.
+1. On the Choose when to send the campaign page, choose At a specific time. Then, under Choose when the campaign should be sent, choose Immediately. Finally, choose Next.
 
-2. On the **Review and launch page**, review all of the details of the **campaign**. When you're ready to send it, choose **Launch campaign**.
+2. On the Review and launch page, review all of the details of the campaign. When you're ready to send it, choose Launch campaign.
 
 **Congratulations**—you've created your first campaign with Amazon Pinpoint! Because you're the only member of the segment that you created in Step 2.3, you should receive the message in your inbox within a few seconds.
 
@@ -295,7 +293,7 @@ Before you can view the delivery and response metrics for your campaign, you hav
 
 **To interact with the email**
 
-1. In your **email client**, open the message that you sent yourself in Step 3.
+1. In your email client, open the message that you sent yourself in Step 3.
 
 2. If your email client automatically hides images by default, choose the Download pictures (or equivalent) button to load the images in the message.
 
@@ -310,39 +308,39 @@ After you interact with the email that you sent from the campaign, you can view 
 
 1. Open the Amazon Pinpoint console at https://console.aws.amazon.com/pinpoint/.
 
-2. On the All **projects page**, choose the **project that you used to send the campaign**.
+2. On the All projects page, choose the project that you used to send the campaign.
 
-3. In the **navigation pane**, under Analytics, choose **Campaigns**.
+3. In the navigation pane, under Analytics, choose Campaigns.
 
-4. In the **Campaigns section**, choose the campaign that you created in Step 3.
+4. In the Campaigns section, choose the campaign that you created in Step 3.
 
 5. (Optional) Use the date control to choose a date range for the reports on this page.
 
     On the metrics page for your campaign, you see the following information:
 
-    * **Delivery count metrics** – This section provides information about the delivery of the messages that were sent from your campaign. It includes the following information:
+    * Delivery count metrics – This section provides information about the delivery of the messages that were sent from your campaign. It includes the following information:
 
-      * **Messages sent** – The number of messages that were sent.
+      * Messages sent – The number of messages that were sent.
 
-      * **Messages delivered** – The number of messages that were delivered to their recipients.
+      * Messages delivered – The number of messages that were delivered to their recipients.
 
-      * **Links clicked** – The number of times that links in the messages were clicked by recipients. If a single recipient clicks a link more than once, each click is represented in this section.
+      * Links clicked – The number of times that links in the messages were clicked by recipients. If a single recipient clicks a link more than once, each click is represented in this section.
 
-      * **Endpoint deliveries** – The average number of endpoints that the campaign was sent to, for each day in the chosen date range. The chart shows the number of endpoints that the campaign was delivered to, for each day in the chosen date range.
+      * Endpoint deliveries – The average number of endpoints that the campaign was sent to, for each day in the chosen date range. The chart shows the number of endpoints that the campaign was delivered to, for each day in the chosen date range.
 
-   * **Delivery rate metrics** – This section shows the overall delivery and response rates for the messages that were sent from your campaign. It includes the following information:
+   * Delivery rate metrics – This section shows the overall delivery and response rates for the messages that were sent from your campaign. It includes the following information:
 
-        * **Delivery rate** – The percentage of messages that were delivered to recipients, of the total number of endpoints that you targeted in the segment that you sent this campaign to.
+        * Delivery rate – The percentage of messages that were delivered to recipients, of the total number of endpoints that you targeted in the segment that you sent this campaign to.
 
-       * **Email open rate** – The percentage of messages that were opened by recipients, of the total number of messages that were delivered.
+       * Email open rate – The percentage of messages that were opened by recipients, of the total number of messages that were delivered.
 
-       * **Bounce rate** – The percentage of messages that weren't delivered to recipients because they bounced. This value includes only hard bounces—that is, messages that bounced because of a permanent issue. For example, hard bounces could occur when the recipient's email address doesn't exist, or when the recipient permanently rejects email from your domain.
+       * Bounce rate – The percentage of messages that weren't delivered to recipients because they bounced. This value includes only hard bounces—that is, messages that bounced because of a permanent issue. For example, hard bounces could occur when the recipient's email address doesn't exist, or when the recipient permanently rejects email from your domain.
 
-   * **Campaign runs** – This section shows information that's specific to each time the campaign ran. Because you can use Amazon Pinpoint to create recurring campaigns, this section can show information for several campaign runs. However, if you completed the procedures in this tutorial, this section contains information for only one campaign run because you ran the campaign only once. This section contains the following metrics, in addition to the metrics that are defined in the preceding sections:
+   * Campaign runs – This section shows information that's specific to each time the campaign ran. Because you can use Amazon Pinpoint to create recurring campaigns, this section can show information for several campaign runs. However, if you completed the procedures in this tutorial, this section contains information for only one campaign run because you ran the campaign only once. This section contains the following metrics, in addition to the metrics that are defined in the preceding sections:
 
-     * **Endpoints targeted** – The number of endpoints that were targeted by the segment that was associated with the campaign run. This number includes endpoints that were part of the segment, but didn't receive the message.
+     -[x] Endpoints targeted – The number of endpoints that were targeted by the segment that was associated with the campaign run. This number includes endpoints that were part of the segment, but didn't receive the message.
 
-     * **Total email opened** – The total number of times that messages sent from the campaign run were opened. For example, if a message was opened two times by one recipient, both of those opens are counted.
+     * Total email opened – The total number of times that messages sent from the campaign run were opened. For example, if a message was opened two times by one recipient, both of those opens are counted.
 
 ## Next Step
 
