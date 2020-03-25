@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#2A80EE">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#2A80EE">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
+<title>RDS AWS - Getting Started With Relational Database Service &#8211; Girish Godage</title>
+<meta name="description" content="Today in this RDS AWS Tutorial we shall be discussing in detail about Amazon's Relational Database Management service RDS AWS and shall also do a hands-on, but first  let us understand why it came into existence.">
+<meta name="keywords" content="Database">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all">
+
+<!-- Verifications -->
+    
+    
+        
+<!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="RDS AWS - Getting Started With Relational Database Service">
+    <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
+    <meta property="og:url" content="http://localhost:4000/blog/rds-aws-tutorial">
+    <meta property="og:site_name" content="Girish Godage">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@GGodage" />
+    
+    <meta name="twitter:title" content="RDS AWS - Getting Started With Relational Database Service" />
+    <meta name="twitter:description" content="Today in this RDS AWS Tutorial we shall be discussing in detail about Amazon's Relational Database Management service RDS AWS and shall also do a hands-on, but first  let us understand why it came into existence." />
+    <meta name="twitter:url" content="http://localhost:4000/blog/rds-aws-tutorial" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/img/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/img/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    
+
+
+    <link rel="canonical" href="http://localhost:4000/blog/rds-aws-tutorial">
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
+    <!-- Bootstrap CSS-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Google fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+   
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
+    
+    <!-- animate.css-->
+    <link rel="stylesheet" href="http://localhost:4000/sitejs/animate.css/animate.css">
+    <!-- theme stylesheet-->
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="http://localhost:4000/css/custom.css" as="style">
+    <link rel="stylesheet" href="http://localhost:4000/css/comments.css" as="style">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="http://localhost:4000/img/logo-big.png">
+    <!-- Fab Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
+    
+    
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    
+    <script type="text/javascript">
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+       ga('create', 'UA-130164763-2', 'auto');
+       ga('send', 'pageview');
+    </script>
+    
+    <!-- Typed.js DONT TOUCHHHHHHHHHHHHH!-->
+    <!--<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.9/typed.min.js"></script>
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+      </script>
+      
+      <!-- START OF RELEVANT PART -->
+    <script async src="https://just-comments.com/w2.js"></script>
+    <!-- END OF RELEVANT PART -->
+
+
+</head>
+
+<body>
+    
+<!-- navbar-->
+<header class="header">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container"><a class="navbar-brand" href="http://localhost:4000"><img
+          src="http://localhost:4000/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
+          alt="logo"> <img src="http://localhost:4000/img/girish_logo.png" height="30" alt="girilogo"></a>
+      <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span
+          class="fa fa-bars" style="color: white"></span></button>
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="http://localhost:4000#home" class="nav-link  link-scroll">Home</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#about" class="nav-link link-scroll">About</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#skills" class="nav-link link-scroll">Skills</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#services" class="nav-link link-scroll">Services</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#references" class="nav-link link-scroll">My
+              work</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#contact" class="nav-link link-scroll">Contact</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000/blog" class="nav-link link-scroll">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    
+    
+    
+    <div style="background-color:Gray;">
+        <div style="padding:0;min-height:95.05vh;display:flex;font-family: Poppins, sans-serif;margin-top: 5rem;"
+            class="container">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <p class="post-title">
+                    <h1><a href="/blog/rds-aws-tutorial">RDS AWS - Getting Started With Relational Database Service</a></h1>
+                </p>
+                
+                <span class="post-meta">
+              <span style="font-weight:600">January 10, 2020 Friday</span>
+                    
+                       ( 11 minute read ) 
+                    
+                     
+                    <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">   by Girish Godage</a>
+                </span>
+                
+                <div class="site-category"> 
+                        <h5>Database</h5>
+                </div>
+                
+                <hr>
+                <div><img class="post-image" src="/img/database.png" alt="RDS AWS - Getting Started With Relational Database Service" height="250" /></div>
+                <div class="post-content">
+                    <br>                     
+                    <h3 id="rds-aws---getting-started-with-relational-database-service">RDS AWS - Getting Started With Relational Database Service</h3>
+
+<p>Today in this RDS AWS Tutorial we shall be discussing in detail about Amazon’s Relational Database Management service RDS AWS and shall also do a hands-on, but first  let us understand why it came into existence.</p>
+
+<p>The world is changing, with every idea being converted into an application, millions of new applications go online every day. Now for any application or project to be successful, it should have a unique idea behind it.</p>
+
+<p>Let’s talk about you, you just had the world’s most amazing idea, and you want to create an application around it.</p>
+
+<p>Now imagine yourself 10 years back, when to have the application up and ready, you’d have to setup a back end server, research and install various softwares to support your application, after all of these tiring tasks you would have started developing your application.</p>
+
+<p>Hey, wait! What about its maintenance? You would have to install all the latest security patches and updates for your backend server and also make sure that it stays in a healthy state.</p>
+
+<p>Now, while you were taking care of all that, your app becomes famous overnight, with tons of traffic directed at your application, the need to scale becomes your top most priority, now let’s not even think about the investment you will be making on this task, how will you accomplish this task of scaling up and configuring all these extra servers quickly?</p>
+
+<p>Scary, right? What if i told you, someone will do all these tasks for you, and you just have to focus on your application. Also, at a fraction of the cost that you were investing earlier.</p>
+
+<p>Wouldn’t it be amazing?</p>
+
+<p>Well amazing is, sorry amazon is here, Amazon Web Services (AWS) offers a service called RDS AWS (Relational Database Service), which does all these tasks (i.e. setup, operate, update) for you automatically.</p>
+
+<p>You just have to select the database that you want to launch, and with just one click you have a back end server at your service which will be managed automatically!</p>
+
+<p>Let’s take an example here, suppose you start a small company.</p>
+
+<p>You want to launch an application which will be backed by a MySQL database and since there is a lot of Database work, there are chances that the development work will fall behind.</p>
+
+<p>Imagine this scene again, with Amazon RDS, the image is self explanatory!</p>
+
+<p>Now this was just an example. For bigger companies where you have a bigger team, which manages your database servers; using RDS, that team can be reduced to a significant number and perhaps be optimally deployed!</p>
+
+<p>Let’s move further in this RDS AWS Tutorial and see how amazon defines their service:</p>
+
+<p><strong>The Amazon Relational Database Service (RDS AWS)</strong> is a web service that makes it easier to set up, operate, and scale a relational database in the cloud. It provides cost-efficient, re-sizable capacity in an industry-standard relational database and manages common database administration tasks.</p>
+
+<p>So people often develop a misconception, when they confuse RDS with a database.</p>
+
+<p>RDS is not a <strong>database</strong>, it’s a <strong>service</strong> that manages databases, having said that, let’s discuss the databases that RDS can manage as of now:</p>
+
+<p><img src="http://localhost:4000/img/database/3/amazon_aurora-300x210.png" align="left" style="height: 64px;width:200px" />  It is a relational database engine made by amazon which combines the speed and reliability of high-end commercial databases with the simplicity and cost-effectiveness of open source databases. Amazon claims that Aurora is 5x faster than RDS MySQL.</p>
+
+<p><img src="http://localhost:4000/img/database/3/mysql-logo-300x125.jpg" align="left" style="height: 64px;width:200px" /> It is an open source database management system which uses SQL (Structured Query Language) to access the data stored in its system.</p>
+
+<p><img src="http://localhost:4000/img/database/3/postgresql-logo-300x138.png" align="left" style="height: 64px;width:200px" /> PostgreSQL is yet another open source database management system which uses SQL to access the data.</p>
+
+<p><img src="http://localhost:4000/img/database/3/MicrosoftSQLServer-300x76.png" align="left" style="height: 64px;width:200px" />SQL Server is a Relational Database Management System, which was developed by Microsoft in 2005 for the enterprise environment.</p>
+
+<p><img src="http://localhost:4000/img/database/3/oracle-300x99.png" align="left" style="height: 64px;width:200px" />It is object-relational database management system which was developed by Oracle Inc.</p>
+
+<p><img src="http://localhost:4000/img/database/3/mariadb-300x154.png" align="left" style="height: 64px;width:200px" />MariaDB is a community developed fork of MySQL DBMS. The reason for its fork, was the concern over the acquisition of Oracle over MySQL.</p>
+
+<p><strong>Fork</strong> means copying the source code of the original application, and starting development over the new application.</p>
+
+<p>The interesting part is, DB engines that RDS support are existing Relational Databases therefore, you don’t have to change the code of your application or learn a new querying language for using RDS in your already existing application.</p>
+
+<p>Now you may be wondering what is the difference between, say a normal MySQL and a MySQL which is managed by RDS.</p>
+
+<p>Therefore, in terms of usage you will be using it as if, you were using your own database,  but now, you as a developer will not be worried about the underlying infrastructure or the administration of the database. The updation, the health monitoring of the system on which your SQL is installed, taking regular backups, etc., all these tasks will be managed by RDS AWS.</p>
+
+<p>AWS also offers EC2 relational database AMIs, now you may ask why one more relational database service when we already have AWS RDS?</p>
+
+<p>So, EC2 relational database AMIs allow you to fully manage your own relational databases on AWS Infrastructure, where as RDS manages them for you. So, depending on your use case you can choose an AWS service. Hope, it is clear to you now!</p>
+
+<p>Moving along in this RDS AWS Tutorial, let’s discuss the components of RDS.</p>
+
+<h2 id="rds-aws-components">RDS AWS Components:</h2>
+<ul>
+  <li><strong>DB Instances</strong></li>
+  <li><strong>Regions and Availability Zones</strong></li>
+  <li><strong>Security Groups</strong></li>
+  <li><strong>DB Parameter Groups</strong></li>
+  <li><strong>DB Option Groups</strong></li>
+</ul>
+
+<p>Let’s discuss each one of them in detail:</p>
+
+<h3 id="db-instances">DB Instances</h3>
+
+<ul>
+  <li>They are the building blocks of RDS. It is an isolated database environment in the cloud, which can contain multiple user-created databases, and can be accessed using the same tools and applications that one uses with a stand-alone database instance.</li>
+  <li>A DB Instance can be created using the AWS Management Console , the Amazon RDS API, or the AWS Command line Interface .</li>
+  <li>The computation and memory capacity of a DB Instance depends on the DB Instance class. For each DB Instance you can select from 5GB to 6TB of associated storage capacity.
+The DB Instances are of the following types:
+    <ul>
+      <li>Standard Instances (m4,m3)</li>
+      <li>Memory Optimised (r3)</li>
+      <li>Micro Instances (t2)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="regions-and-availability-zones">Regions and Availability Zones</h3>
+
+<ul>
+  <li>The AWS resources are housed in highly available data centers, which are located in different areas of the world. This “area” is called a region.</li>
+  <li>Each region has multiple Availability Zones (AZ), they are distinct locations which are engineered to be isolated from the failure of other AZs.</li>
+  <li>You can deploy your DB Instance in multiple AZ, this ensures a failover i.e. in case one AZ goes down, there is a second to switch over to. The failover instance is called a standby, and the original instance is called the primary instance.</li>
+</ul>
+
+<h3 id="security-groups">Security Groups</h3>
+
+<ul>
+  <li>A security group controls the access to a DB Instance. It does so by specifying a range of IP addresses or the EC2 instances that you want to give access.</li>
+  <li>Amazon RDS uses 3 types of Security Groups:
+    <ul>
+      <li>VPC Security Group
+        <ul>
+          <li>It controls the DB Instance that is inside a VPC.</li>
+        </ul>
+      </li>
+      <li>EC2 Security Group
+        <ul>
+          <li>It controls access to an EC2 Instance and can be used with a DB Instance.</li>
+        </ul>
+      </li>
+      <li>DB Security Group
+        <ul>
+          <li>It controls the DB Instance that is not in a VPC.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="db-parameter-groups">DB Parameter groups</h3>
+<ul>
+  <li>It contains the engine configuration values that can be applied to one or more DB Instances of the same instance type.</li>
+  <li>If you don’t apply a DB Parameter group to your instance, you are assigned a default Parameter group which has the default values.</li>
+</ul>
+
+<h3 id="db-option-groups">DB Option groups</h3>
+
+<ul>
+  <li>Some DB engines offer tools that simplify managing your databases.</li>
+  <li>RDS makes these tools available with the use of Option groups.</li>
+</ul>
+
+<h3 id="rds-aws-advantages">RDS AWS Advantages</h3>
+
+<p>Let’s talk about some interesting advantages that you get when you are using RDS AWS,</p>
+
+<ul>
+  <li>So usually when you talk about database services, the CPU, memory, storage, IOs is bundled together, i.e. you cannot control them individually, but with AWS RDS, each of these parameters can be tweaked individually.</li>
+  <li>Like we discussed earlier, it manages your servers, updates them to the latest software configuration, takes backup, everything automatically.</li>
+  <li>The backups can be taken in two ways
+    <ul>
+      <li>The automated backups where in you set a time for your backup to be done.</li>
+      <li>DB Snapshots, where in you manually take a backup of your DB, you can take snapshots as frequently as you want.</li>
+    </ul>
+  </li>
+  <li>It automatically creates a secondary instance for a failover, therefore provides high availability.</li>
+  <li>RDS AWS supports read replicas i.e. snapshots are created from a source DB and all the read traffic to the source database is distributed among the read replicas, this reduces the overall overhead on the source DB.</li>
+  <li>RDS AWS can be integrated with IAM, for giving customized access to your users who will be working on that database.</li>
+</ul>
+
+<p>The updates to your database in RDS AWS are applied in a maintenance window. This maintenance window is defined during the creation of your DB Instance, the way it functions is like this:</p>
+
+<ul>
+  <li>When an update is available for your DB you get a notification in your RDS Console you can take one of the following actions
+    <ul>
+      <li>Defer the maintenance items.</li>
+      <li>Apply maintenance items immediately.</li>
+      <li>Schedule a time for those maintenance items.</li>
+    </ul>
+  </li>
+  <li>Once maintenance starts, your instance has to be taken offline for updating it, if your instance is running in Multi-AZ, in that case the standby instance is updated first, it is then promoted to be a primary instance, and the primary instance is then taken offline for updating, this way your application does not experience a downtime.</li>
+  <li>If you want to scale your DB instance, the changes that make to your DB instance also happen during the maintenance window, you can also apply them immediately, but then your application will experience a downtime if its in a Single-AZ.</li>
+</ul>
+
+<p><img src="/img/database/3/AWS-RDS-03-03.png" alt="image info" /></p>
+
+<h3 id="pricing">Pricing</h3>
+<p>RDS AWS is billed based on the following parameters:</p>
+
+<ul>
+  <li><strong>Instance Class</strong> i.e. the type of instance that you are choosing.</li>
+  <li><strong>Running Time</strong> i.e. the amount of time an instance is running, partial hours are billed as full hours.</li>
+  <li><strong>Storage</strong> i.e. the amount of storage that you have provisioned to your DB Instance</li>
+  <li><strong>I/O Requests per Month</strong> i.e. the I/O requests that are made to your DB Instance per month</li>
+  <li><strong>Data Transfer</strong>: Data transfer in and out of your DB Instance.
+Another way of getting billed for AWS RDS is by reserving some instances.</li>
+</ul>
+
+<p><strong>Reserved Instance</strong> is also a way of using AWS RDS, in this you reserve an RDS Instance for a term, which can be for one or three years by making a one time payment, it is a less expensive way compared to the monthly bill that one pays.</p>
+
+<p><strong>Free Tier</strong>
+AWS has an amazing free tier usage for most of its services, so that the customer can first use the service and then do the needful.</p>
+
+<p>Similarly it offers free tier usage for RDS AWS, which includes the following benefits:</p>
+
+<ul>
+  <li>750 hours of Amazon RDS usage in single-AZ for db.t2.micro instance, every month for one year from signup.</li>
+  <li>20 GB of DataBase Storage: any combination of General Purpose (SSD) or Magnetic storage.</li>
+  <li>10 million IOs</li>
+  <li>20GB of backup storage</li>
+</ul>
+
+<p>Enough of  theory, lets make this RDS AWS Tutorial more interesting, let’s now launch a MySQL DB in RDS.</p>
+
+<h3 id="hands-on">Hands-On</h3>
+<p><strong>Step1</strong>: First select the RDS service from the AWS Management Console.</p>
+
+<p><img src="/img/database/3/select-service-1.png" alt="image info" /></p>
+
+<p><strong>Step 2</strong>: Since we will be launching a MySQL instance, select the MySQL instance from the list of Dbs. Moving forward in this RDS AWS Tutorial, let’s go to Step 3.</p>
+
+<p><img src="/img/database/3/select-db-3.png" alt="image info" /></p>
+
+<p><strong>Step 3</strong>: Since we are creating this instance for demo purposes, we will be selecting Dev/Test option and click on Next Step.</p>
+
+<p><img src="/img/database/3/select-dev.png" alt="image info" /></p>
+
+<p><strong>Step 4</strong>: On the next page you will be filling the following details:</p>
+
+<ul>
+  <li>You can select your desired Db instance here</li>
+  <li>You can select whether you want Multi-AZ enabled in your MySQL Db.</li>
+  <li>You can select how much space you want to allocate to your Db instance, it can vary from 5GB to 6TB.</li>
+  <li>In the end you will be setting your username and password for your Db Instance</li>
+</ul>
+
+<p><img src="/img/database/3/detail-fill-1.png" alt="image info" /></p>
+
+<p>Step 5: In the next step, you will be configuring Advanced Settings for your DB</p>
+
+<ul>
+  <li>You will be selecting the VPC here, if you do not wish to launch your instance in a VPC you can leave the default settings and move ahead.</li>
+  <li>In the next section you can select which version of the Db you want to use, for our example we are using MySQL 5.6</li>
+  <li>In the next section you can set your backup preferences, like the retention period etc.</li>
+  <li>After that we will be setting the maintenance window, this is the time frame during which your Db instances will be updated.</li>
+  <li>Once you fill all the details, you will be launching the Db instance!</li>
+</ul>
+
+<p><img src="/img/database/3/yo1-1.png" alt="image info" />
+**
+Congratulations!** You have successfully launched your first RDS Db Instance!</p>
+
+                </div>
+
+                
+
+                <div id="disqus_thread"></div>
+                <script>
+                
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://girishgodage-github-io.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
+</button>
+<!-- Footer-->
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 text-center text-lg-left">
+                <p class="social">
+                    <a href="https://www.facebook.com/girish.godage.5" class="external facebook wow fadeInUp">
+                        <i class="fa fa-facebook"></i></a>
+                    <a href="https://instagram.com/girishgodage_007" data-wow-delay="0.2s" class="external instagram wow fadeInUp">
+                        <i class="fa fa-instagram"></i></a>
+                    <a href="https://youtube.com/girishgodage" data-wow-delay="0.4s" class="external youtube wow fadeInUp">
+                        <i class="fa fa-youtube-play"></i></a>
+                    <a href="https://twitter.com/GGodage" data-wow-delay="0.4s" class="external twitter wow fadeInUp">
+                            <i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/girishgodage" data-wow-delay="0.4s" class="external github wow fadeInUp">
+                                <i class="fa fa-github"></i></a>    
+                    <a href="mailto:girishgodage@gmail.com?subject=Hello%20Girish" data-wow-delay="0.6s" class="email wow fadeInUp">
+                        <i class="fa fa-envelope"></i></a></p>
+            </div>
+            <div class="col-12 col-md-2">
+            <h5>Quick Links</h5>
+            <ul>
+               <li><a href="http://localhost:4000#about">About</a></li>
+               <li><a href="http://localhost:4000#contact">Contact</a></li>
+               <li><a href="http://localhost:4000/sitemap.xml">Sitemap</a></li>               
+            </ul>
+         </div>
+            <div class="col-12 col-md-4 text-center text-lg-right mt-4 mt-lg-0">
+                <p> <b>©</b>2019 Girish Godage </p>
+                <p class="text-center, text-shadow"> Hosted On <a href="https://pages.github.com/">GitHub Pages</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Typed.js DONT TOUCH THIS! -->
+    <div id="typed-strings">
+    </div>
+
+        <!-- JavaScript files-->
+    <script src="http://localhost:4000/sitejs/jquery/jquery.min.js"></script>
+    <script src="http://localhost:4000/sitejs/popper.js/umd/popper.min.js"> </script>
+    <script src="http://localhost:4000/sitejs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="http://localhost:4000/sitejs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="http://localhost:4000/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.counterup/jquery.counterup.js"></script>
+    <script src="http://localhost:4000/js/front.js"></script>
+    <script src="http://localhost:4000/js/comment.js"></script>
+       <!-- Script pointing to search-script.js -->
+    <script src="http://localhost:4000/js/search-script.js" type="text/javascript"></script>
+   
+    <!-- Configuration -->
+    <script>
+         SimpleJekyllSearch({
+         searchInput: document.getElementById('search-input'),
+         resultsContainer: document.getElementById('results-container'),
+         json: 'http://localhost:4000/search.json'
+         })
+         </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC36FUDDdOTidZJ8nzS5vfE7KVyayenKPE",
+    authDomain: "githubcontactlist.firebaseapp.com",
+    databaseURL: "https://githubcontactlist.firebaseio.com",
+    projectId: "githubcontactlist",
+    storageBucket: "githubcontactlist.appspot.com",
+    messagingSenderId: "899685398702",
+    appId: "1:899685398702:web:0c23c56d2d6d40df37553f",
+    measurementId: "G-YWBRCYJYFW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script>
+   $(function() {
+      
+    //make a variable to keep track of data coming from firebase
+    var data = [];
+
+    // Reference messages collection
+      var messagesRef = firebase.database().ref('contactformmessages');  
+
+
+    //listen to data updates from firebase
+    messagesRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+        //when the data updates at firebase, put it in the data variable
+        data = snapshot.val();
+    })
+    //Entire Contact Form (handler)
+    $('#contactForm').submit(function(e) {
+      e.preventDefault();
+
+        var $form = $(this);
+        console.log("Submit to Firebase");
+
+        //disable submit button
+        $form.find("#sendForm").prop('disabled', true);
+
+        //get values to send to Firebase
+        var name = $('#name').val();
+        console.log(name);
+		
+		var surname = $('#surname').val();
+        console.log(surname);
+		
+		var email = $('#email').val();
+        console.log(email);	
+		
+		var phone = $('#phone').val();
+        console.log(phone);
+
+        var message = $('#message').val();
+        console.log(message);
+
+       
+        //take the values from the form, and put them in an object
+        var newContact = {
+         "name": name,
+			"surname": surname,
+			"email": email,
+			"phone": phone,
+         "message": message
+        }
+        //put new object in data array
+        data.push(newContact);
+        console.log(data);
+
+        //send the new data to Firebase
+        messagesRef.set(data, function(err) {
+            if (err) {
+                alert("Data no go");
+            }else{
+            $("#form-wrapper").slideToggle();
+            $('#form-success-message').slideToggle();
+			}
+        });
+
+        return false;
+    })
+   
+    
+})
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";           
+        }else
+        {
+           myBtton.style.display="none";     
+          
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+      //  document.body.scrollTop =0;
+      //  document.documentElement.scrollTop=0;
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    }
+
+</script>
+
+    
+    
+
+
+</body>
+
+</html>
