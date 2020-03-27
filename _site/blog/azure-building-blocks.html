@@ -11,9 +11,9 @@
 <meta name="msapplication-navbutton-color" content="#2A80EE">
 <!-- iOS Safari -->
 <meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
-<title>RDS AWS - Getting Started With Relational Database Service &#8211; Girish Godage</title>
-<meta name="description" content="Today in this RDS AWS Tutorial we shall be discussing in detail about Amazon's Relational Database Management service RDS AWS and shall also do a hands-on, but first  let us understand why it came into existence.">
-<meta name="keywords" content="Database">
+<title>Azure Building Blocks – IaC Tool &#8211; Girish Godage</title>
+<meta name="description" content="Whilst researching Infrastructure as Code alternatives to Azure Resource Manager templates I stumbled across the Azure Building Blocks (AZBB) tool. It's not widely adopted and you'll see why later on this in blog.">
+<meta name="keywords" content="AzureCloud">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all">
@@ -26,9 +26,9 @@
     <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="RDS AWS - Getting Started With Relational Database Service">
+    <meta property="og:title" content="Azure Building Blocks – IaC Tool">
     <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
-    <meta property="og:url" content="http://localhost:4000/blog/rds-aws-tutorial">
+    <meta property="og:url" content="http://localhost:4000/blog/azure-building-blocks">
     <meta property="og:site_name" content="Girish Godage">
 
     <!-- Twitter Card -->
@@ -36,9 +36,9 @@
     
         <meta name="twitter:site" content="@GGodage" />
     
-    <meta name="twitter:title" content="RDS AWS - Getting Started With Relational Database Service" />
-    <meta name="twitter:description" content="Today in this RDS AWS Tutorial we shall be discussing in detail about Amazon's Relational Database Management service RDS AWS and shall also do a hands-on, but first  let us understand why it came into existence." />
-    <meta name="twitter:url" content="http://localhost:4000/blog/rds-aws-tutorial" />
+    <meta name="twitter:title" content="Azure Building Blocks – IaC Tool" />
+    <meta name="twitter:description" content="Whilst researching Infrastructure as Code alternatives to Azure Resource Manager templates I stumbled across the Azure Building Blocks (AZBB) tool. It's not widely adopted and you'll see why later on this in blog." />
+    <meta name="twitter:url" content="http://localhost:4000/blog/azure-building-blocks" />
 
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
@@ -58,7 +58,7 @@
     
 
 
-    <link rel="canonical" href="http://localhost:4000/blog/rds-aws-tutorial">
+    <link rel="canonical" href="http://localhost:4000/blog/azure-building-blocks">
 <link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
     <!-- Bootstrap CSS-->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -157,261 +157,275 @@
             class="container">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <p class="post-title">
-                    <h1><a href="/blog/rds-aws-tutorial">RDS AWS - Getting Started With Relational Database Service</a></h1>
+                    <h1><a href="/blog/azure-building-blocks">Azure Building Blocks – IaC Tool</a></h1>
                 </p>
                 
                 <span class="post-meta">
-              <span style="font-weight:600">January 10, 2020 Friday</span>
+              <span style="font-weight:600">January 07, 2020 Tuesday</span>
                     
-                       ( 11 minute read ) 
+                       ( 6 minute read ) 
                     
                      
                     <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">   by Girish Godage</a>
                 </span>
                 
                 <div class="site-category"> 
-                        <h5>Database</h5>
+                        <h5>AzureCloud</h5>
                 </div>
                 
                 <hr>
-                <div><img class="post-image" src="/img/database.png" alt="RDS AWS - Getting Started With Relational Database Service" height="250" /></div>
+                <div><img class="post-image" src="/img/aws_cloud.png" alt="Azure Building Blocks – IaC Tool" height="250" /></div>
                 <div class="post-content">
                     <br>                     
-                    <h3 id="rds-aws---getting-started-with-relational-database-service">RDS AWS - Getting Started With Relational Database Service</h3>
+                    <h3 id="azure-building-blocks--iac-tool">Azure Building Blocks – IaC Tool</h3>
 
-<p>Today in this RDS AWS Tutorial we shall be discussing in detail about Amazon’s Relational Database Management service RDS AWS and shall also do a hands-on, but first  let us understand why it came into existence.</p>
+<p>Whilst researching Infrastructure as Code alternatives to Azure Resource Manager templates I stumbled across the Azure Building Blocks (AZBB) tool. It’s not widely adopted and you’ll see why later on this in blog.</p>
 
-<p>The world is changing, with every idea being converted into an application, millions of new applications go online every day. Now for any application or project to be successful, it should have a unique idea behind it.</p>
+<p><img src="/img/azure/1/azbb-overview.png" alt="image info" /></p>
 
-<p>Let’s talk about you, you just had the world’s most amazing idea, and you want to create an application around it.</p>
+<p>Because I’m not keen on authoring large JSON files (aka ARM templates) for IaC I’m going to put Azure Building Blocks to the test with a simple Hub &amp; Spoke VNET deployment. Later on I’ll also demonstrate the same deployment using an AzureCLI script – my current preferred alternative to ARM Templates – so you’ll see the differences.</p>
 
-<p>Now imagine yourself 10 years back, when to have the application up and ready, you’d have to setup a back end server, research and install various softwares to support your application, after all of these tiring tasks you would have started developing your application.</p>
-
-<p>Hey, wait! What about its maintenance? You would have to install all the latest security patches and updates for your backend server and also make sure that it stays in a healthy state.</p>
-
-<p>Now, while you were taking care of all that, your app becomes famous overnight, with tons of traffic directed at your application, the need to scale becomes your top most priority, now let’s not even think about the investment you will be making on this task, how will you accomplish this task of scaling up and configuring all these extra servers quickly?</p>
-
-<p>Scary, right? What if i told you, someone will do all these tasks for you, and you just have to focus on your application. Also, at a fraction of the cost that you were investing earlier.</p>
-
-<p>Wouldn’t it be amazing?</p>
-
-<p>Well amazing is, sorry amazon is here, Amazon Web Services (AWS) offers a service called RDS AWS (Relational Database Service), which does all these tasks (i.e. setup, operate, update) for you automatically.</p>
-
-<p>You just have to select the database that you want to launch, and with just one click you have a back end server at your service which will be managed automatically!</p>
-
-<p>Let’s take an example here, suppose you start a small company.</p>
-
-<p>You want to launch an application which will be backed by a MySQL database and since there is a lot of Database work, there are chances that the development work will fall behind.</p>
-
-<p>Imagine this scene again, with Amazon RDS, the image is self explanatory!</p>
-
-<p>Now this was just an example. For bigger companies where you have a bigger team, which manages your database servers; using RDS, that team can be reduced to a significant number and perhaps be optimally deployed!</p>
-
-<p>Let’s move further in this RDS AWS Tutorial and see how amazon defines their service:</p>
-
-<p><strong>The Amazon Relational Database Service (RDS AWS)</strong> is a web service that makes it easier to set up, operate, and scale a relational database in the cloud. It provides cost-efficient, re-sizable capacity in an industry-standard relational database and manages common database administration tasks.</p>
-
-<p>So people often develop a misconception, when they confuse RDS with a database.</p>
-
-<p>RDS is not a <strong>database</strong>, it’s a <strong>service</strong> that manages databases, having said that, let’s discuss the databases that RDS can manage as of now:</p>
-
-<p><img src="http://localhost:4000/img/database/3/amazon_aurora-300x210.png" align="left" style="height: 64px;width:200px" />  It is a relational database engine made by amazon which combines the speed and reliability of high-end commercial databases with the simplicity and cost-effectiveness of open source databases. Amazon claims that Aurora is 5x faster than RDS MySQL.</p>
-
-<p><img src="http://localhost:4000/img/database/3/mysql-logo-300x125.jpg" align="left" style="height: 64px;width:200px" /> It is an open source database management system which uses SQL (Structured Query Language) to access the data stored in its system.</p>
-
-<p><img src="http://localhost:4000/img/database/3/postgresql-logo-300x138.png" align="left" style="height: 64px;width:200px" /> PostgreSQL is yet another open source database management system which uses SQL to access the data.</p>
-
-<p><img src="http://localhost:4000/img/database/3/MicrosoftSQLServer-300x76.png" align="left" style="height: 64px;width:200px" />SQL Server is a Relational Database Management System, which was developed by Microsoft in 2005 for the enterprise environment.</p>
-
-<p><img src="http://localhost:4000/img/database/3/oracle-300x99.png" align="left" style="height: 64px;width:200px" />It is object-relational database management system which was developed by Oracle Inc.</p>
-
-<p><img src="http://localhost:4000/img/database/3/mariadb-300x154.png" align="left" style="height: 64px;width:200px" />MariaDB is a community developed fork of MySQL DBMS. The reason for its fork, was the concern over the acquisition of Oracle over MySQL.</p>
-
-<p><strong>Fork</strong> means copying the source code of the original application, and starting development over the new application.</p>
-
-<p>The interesting part is, DB engines that RDS support are existing Relational Databases therefore, you don’t have to change the code of your application or learn a new querying language for using RDS in your already existing application.</p>
-
-<p>Now you may be wondering what is the difference between, say a normal MySQL and a MySQL which is managed by RDS.</p>
-
-<p>Therefore, in terms of usage you will be using it as if, you were using your own database,  but now, you as a developer will not be worried about the underlying infrastructure or the administration of the database. The updation, the health monitoring of the system on which your SQL is installed, taking regular backups, etc., all these tasks will be managed by RDS AWS.</p>
-
-<p>AWS also offers EC2 relational database AMIs, now you may ask why one more relational database service when we already have AWS RDS?</p>
-
-<p>So, EC2 relational database AMIs allow you to fully manage your own relational databases on AWS Infrastructure, where as RDS manages them for you. So, depending on your use case you can choose an AWS service. Hope, it is clear to you now!</p>
-
-<p>Moving along in this RDS AWS Tutorial, let’s discuss the components of RDS.</p>
-
-<h2 id="rds-aws-components">RDS AWS Components:</h2>
-<ul>
-  <li><strong>DB Instances</strong></li>
-  <li><strong>Regions and Availability Zones</strong></li>
-  <li><strong>Security Groups</strong></li>
-  <li><strong>DB Parameter Groups</strong></li>
-  <li><strong>DB Option Groups</strong></li>
-</ul>
-
-<p>Let’s discuss each one of them in detail:</p>
-
-<h3 id="db-instances">DB Instances</h3>
+<p>FYI – AZBB currently supports the following resource types:</p>
 
 <ul>
-  <li>They are the building blocks of RDS. It is an isolated database environment in the cloud, which can contain multiple user-created databases, and can be accessed using the same tools and applications that one uses with a stand-alone database instance.</li>
-  <li>A DB Instance can be created using the AWS Management Console , the Amazon RDS API, or the AWS Command line Interface .</li>
-  <li>The computation and memory capacity of a DB Instance depends on the DB Instance class. For each DB Instance you can select from 5GB to 6TB of associated storage capacity.
-The DB Instances are of the following types:
-    <ul>
-      <li>Standard Instances (m4,m3)</li>
-      <li>Memory Optimised (r3)</li>
-      <li>Micro Instances (t2)</li>
-    </ul>
-  </li>
+  <li><strong>Virtual Networks</strong></li>
+  <li><strong>Virtual Machines (including load balancers)</strong></li>
+  <li><strong>Virtual Machine Extensions</strong></li>
+  <li><strong>Route Tables</strong></li>
+  <li><strong>Network Security Groups</strong></li>
+  <li><strong>Virtual Network Gateways</strong></li>
+  <li><strong>Virtual Network Connection</strong></li>
 </ul>
 
-<h3 id="regions-and-availability-zones">Regions and Availability Zones</h3>
+<p><em><strong>Note</strong>: Before writing this blog I also tested deploying VMs to Azure using the AZBB tool and ran into an issue which turned out to be a blocker for further tests. You can view open/closed AZBB project issues here.</em></p>
+
+<h2 id="what-is-azbb">What is AZBB?</h2>
+
+<p><img src="/img/azure/1/AZBBlogo.png" alt="image info" /></p>
+
+<p>The Azure Building Blocks project is a command line tool and set of Azure Resource Manager templates designed to simplify deployment of Azure resources. Users author a set of simplified parameters to specify settings for Azure resources, and the command line tool merges these parameters with best practice defaults to produce a set of final parameter files that can be deployed with the Azure Resource Manager templates – source: Microsoft</p>
+
+<p><img src="/img/azure/1/azbb-overview-1-1024x744.png" alt="image info" /></p>
+
+<p>Based on the above description – a key advantage behind using Azure Building Blocks is to save you time by merging your JSON parameter files with it’s pre-defined ARM templates as part of it’s deployment flow to Azure.</p>
+
+<p>These pre-defined ARM templates also apply some best-practice defaults such as:</p>
 
 <ul>
-  <li>The AWS resources are housed in highly available data centers, which are located in different areas of the world. This “area” is called a region.</li>
-  <li>Each region has multiple Availability Zones (AZ), they are distinct locations which are engineered to be isolated from the failure of other AZs.</li>
-  <li>You can deploy your DB Instance in multiple AZ, this ensures a failover i.e. in case one AZ goes down, there is a second to switch over to. The failover instance is called a standby, and the original instance is called the primary instance.</li>
+  <li><strong>Enables diagnostics on all VMs</strong></li>
+  <li><strong>Deploys the VMs in an availability set</strong></li>
+  <li><strong>All VM disks are managed</strong></li>
+  <li><strong>OS is latest Windows Server 2016 image</strong></li>
+  <li><strong>Public IP created for each VM</strong></li>
 </ul>
 
-<h3 id="security-groups">Security Groups</h3>
+<p>Unfortunately these best-practice defaults are not easily found – so to discover what defaults are applied (and to override them when needed) have a look at the reference wiki for each supported resource e.g. https://github.com/mspnp/template-building-blocks/wiki/Virtual-Machines</p>
+
+<h2 id="demo-deployment">Demo Deployment</h2>
+<p>For this demo I’m deploying a basic HUB/SPOKE Virtual Network architecture common with production Azure environments where the Hub VNET may contain shared services such as a Firewall, Domain Controllers, JumpBoxes, and an ExpressRoute Gateway.</p>
+
+<p><img src="/img/azure/1/azbb-demodeployment-1024x279.png" alt="image info" /></p>
+
+<p>This deployment is sourced from premade AZBB parameter files publicly available here: https://github.com/mspnp/template-building-blocks/tree/master/scenarios</p>
+
+<h2 id="step-1--install-npmnodejs">Step 1 – Install NPM/Node.js</h2>
+<p>To run the AZBB tool locally we first need to install NPM/Nodejs so on my local machine I downloaded/ran the Windows x64 client installer from https://www.npmjs.com/get-npm.</p>
+
+<p>Then I ran npm install from a VSCode terminal to setup Azure Building Blocks and then azbb to test the tool was installed correctly.</p>
+
+<pre><code class="language-nodejs">
+npm install -g @mspnp/azure-building-blocks 
+
+azbb
+
+</code></pre>
+
+<p>Seeing this screen is a good sign 🙂</p>
+
+<p><img src="/img/azure/1/azbb-shell-1024x549.png" alt="image info" /></p>
+
+<h2 id="step-2--generatecopy-a-json-parameter-file">Step 2 – Generate/Copy a .JSON parameter file</h2>
+
+<p>Before we can deploy into Azure we either need to create a new parameter file or use a premade one. To save time I cloned the AZBB repo from GitHub and referenced a premade parameter file matching the demo deployment details e.g. VNETs, TAGS, PEERINGS, DNS SERVERS.</p>
+
+<pre><code class="language-dotnetcli">
+cd c:\temp
+git clone https://github.com/mspnp/template-building-blocks
+
+</code></pre>
+<p>The parameter file we are using (below) is at \template-building-blocks\scenarios\multi-tier\vnet-complete.json. If you are already familiar with using ARM templates you’ll quickly pickup on using AZBB parameter files.</p>
+
+<pre><code class="language-dotnetcli">
+{
+    "$schema": "https://raw.githubusercontent.com/mspnp/template-building-blocks/master/schemas/buildingBlocks.json",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "buildingBlocks": {
+            "value": [
+                {
+                    "type": "VirtualNetwork",
+                    "settings": [
+                        {
+                            "name": "msft-hub-vnet",
+                            "addressPrefixes": [
+                                "10.0.0.0/16"
+                            ],
+                            "subnets": [
+                                {
+                                    "name": "firewall",
+                                    "addressPrefix": "10.0.1.0/24"
+                                },
+                                {
+                                    "name": "ad",
+                                    "addressPrefix": "10.0.2.0/24"
+                                },
+                                {
+                                    "name": "mgmt",
+                                    "addressPrefix": "10.0.3.0/24"
+                                },                                
+                                {
+                                    "name": "GatewaySubnet",
+                                    "addressPrefix": "10.0.0.0/27"
+                                }
+                            ],
+                            "dnsServers": [
+                                "10.0.2.4",
+                                "10.0.2.5",
+                                "168.63.129.16"
+                            ],
+                            "virtualNetworkPeerings": [
+                                {
+                                    "remoteVirtualNetwork": {
+                                        "name": "msft-spoke1-vnet"
+                                    },
+                                    "allowForwardedTraffic": true,
+                                    "allowGatewayTransit": true,
+                                    "useRemoteGateways": false
+                                }
+                            ],
+                            "tags": {
+                                "department": "Central IT",
+                                "managedBy": "Admins"
+                            }
+                        },
+                        {
+                            "name": "msft-spoke1-vnet",
+                            "addressPrefixes": [
+                                "10.1.0.0/16"
+                            ],
+                            "subnets": [
+                                {
+                                    "name": "web",
+                                    "addressPrefix": "10.1.1.0/24"
+                                },
+                                {
+                                    "name": "biz",
+                                    "addressPrefix": "10.1.2.0/24"
+                                },
+                                {
+                                    "name": "data",
+                                    "addressPrefix": "10.1.3.0/24"
+                                }                                
+                            ],
+                            "dnsServers": [
+                                "10.0.2.4",
+                                "10.0.2.5",
+                                "168.63.129.16"
+                            ],
+                            "virtualNetworkPeerings": [
+                                {
+                                    "remoteVirtualNetwork": {
+                                        "name": "msft-hub-vnet"
+                                    },
+                                    "allowForwardedTraffic": true,
+                                    "allowGatewayTransit": false,
+                                    "useRemoteGateways": false
+                                }
+                            ],
+                            "tags": {
+                                "department": "HR",
+                                "managedBy": "DevOps"
+                            }                            
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
+</code></pre>
+
+<h2 id="step-3--deploy-with-azure-building-blocks">Step 3 – Deploy with Azure Building Blocks</h2>
+<p>From my VSCode terminal I authenticated into Azure then noted my Subscription ID which I’ll need soon.</p>
+
+<pre><code class="language-dotnetcli">
+# AuthN to Azure
+az login
+
+# Note Subscription ID
+az account show
+</code></pre>
+
+<p>Next I ran azbb to kickoff the deployment of the demo deployment referencing the existing .JSON parameter file which we cloned earlier.</p>
+
+<pre><code class="language-dotnetcli">
+azbb -g "VNET-AZBB-RG" -s "your-subscription-id" -l "your-azure-region" -p "C:\Temp\template-building-blocks\scenarios\multi-tier\vnet-complete.json" --deploy
+
+</code></pre>
+
+<p>After azbb completed running I could see the deployment tasks had succeeded from the Azure Portal &gt; Resource Group &gt; Deployments tab.</p>
+
+<p><img src="/img/azure/1/AZBB-portaldeployments-1024x331.png" alt="image info" /></p>
+
+<p>azbb switches you should be aware of:</p>
 
 <ul>
-  <li>A security group controls the access to a DB Instance. It does so by specifying a range of IP addresses or the EC2 instances that you want to give access.</li>
-  <li>Amazon RDS uses 3 types of Security Groups:
-    <ul>
-      <li>VPC Security Group
-        <ul>
-          <li>It controls the DB Instance that is inside a VPC.</li>
-        </ul>
-      </li>
-      <li>EC2 Security Group
-        <ul>
-          <li>It controls access to an EC2 Instance and can be used with a DB Instance.</li>
-        </ul>
-      </li>
-      <li>DB Security Group
-        <ul>
-          <li>It controls the DB Instance that is not in a VPC.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
+  <li><strong>-g</strong> is the resource group you are deploying to</li>
+  <li><strong>-s</strong> is your subscription id</li>
+  <li><strong>-l</strong> is the Azure region your are deploying to</li>
+  <li><strong>-p</strong> is the parameter file (.JSON) which contains deployment *details</li>
+  <li><strong>–deploy</strong> is required to initiate the deployment to Azure</li>
 </ul>
 
-<h3 id="db-parameter-groups">DB Parameter groups</h3>
-<ul>
-  <li>It contains the engine configuration values that can be applied to one or more DB Instances of the same instance type.</li>
-  <li>If you don’t apply a DB Parameter group to your instance, you are assigned a default Parameter group which has the default values.</li>
-</ul>
+<p>3x deployment artefacts are also generated which you can use for redeployment/troubleshooting/documentation:</p>
 
-<h3 id="db-option-groups">DB Option groups</h3>
+<p><img src="/img/azure/1/azbb-output-1024x115.png" alt="image info" /></p>
 
-<ul>
-  <li>Some DB engines offer tools that simplify managing your databases.</li>
-  <li>RDS makes these tools available with the use of Option groups.</li>
-</ul>
+<h2 id="deploy-with-azcli">Deploy with AzCLI</h2>
+<p>To demonstrate the difference with JSON vs azcli I’ve included the exact same VNET architecture deployed above and transferred it to .azcli format so you can see the differences in structure. I can deploy this script directly from a VSCode terminal using the AzureCLI extension for VSCode https://github.com/microsoft/vscode-azurecli.</p>
 
-<h3 id="rds-aws-advantages">RDS AWS Advantages</h3>
+<p>I find azcli scripting very compact in terms of structure/layout on your screen, making to simplier to deploy multiple Azure resources from the same script. Azcli has also been easier for me to learn/adopt because of the built-in help snippets provided and Microsoft’s wiki.</p>
 
-<p>Let’s talk about some interesting advantages that you get when you are using RDS AWS,</p>
+<pre><code class="language-dotnetcli">
+#AuthN
+az login
 
-<ul>
-  <li>So usually when you talk about database services, the CPU, memory, storage, IOs is bundled together, i.e. you cannot control them individually, but with AWS RDS, each of these parameters can be tweaked individually.</li>
-  <li>Like we discussed earlier, it manages your servers, updates them to the latest software configuration, takes backup, everything automatically.</li>
-  <li>The backups can be taken in two ways
-    <ul>
-      <li>The automated backups where in you set a time for your backup to be done.</li>
-      <li>DB Snapshots, where in you manually take a backup of your DB, you can take snapshots as frequently as you want.</li>
-    </ul>
-  </li>
-  <li>It automatically creates a secondary instance for a failover, therefore provides high availability.</li>
-  <li>RDS AWS supports read replicas i.e. snapshots are created from a source DB and all the read traffic to the source database is distributed among the read replicas, this reduces the overall overhead on the source DB.</li>
-  <li>RDS AWS can be integrated with IAM, for giving customized access to your users who will be working on that database.</li>
-</ul>
+#Create RG
+az group create -n "VNET-AZCLI-RG" -l "Australia East"
 
-<p>The updates to your database in RDS AWS are applied in a maintenance window. This maintenance window is defined during the creation of your DB Instance, the way it functions is like this:</p>
+#Create Hub VNET
+az network vnet create -n "msft-hub-vnet" --address-prefix "10.0.0.0/16" --subnet-name "firewall" --subnet-prefix "10.0.1.0/24" --dns-servers "10.0.2.4" "10.0.2.5" "168.63.129.16" --tags department="Central IT" managedBy="Admins" -g "VNET-AZCLI-RG"
+az network vnet subnet create -n "ad" --address-prefix "10.0.2.0/24" --vnet-name "msft-hub-vnet" -g "VNET-AZCLI-RG" 
+az network vnet subnet create -n "mgmt" --address-prefix "10.0.3.0/24" --vnet-name "msft-hub-vnet" -g "VNET-AZCLI-RG" 
+az network vnet subnet create -n "GatewaySubnet" --address-prefix "10.0.0.0/27" --vnet-name "msft-hub-vnet" -g "VNET-AZCLI-RG" 
 
-<ul>
-  <li>When an update is available for your DB you get a notification in your RDS Console you can take one of the following actions
-    <ul>
-      <li>Defer the maintenance items.</li>
-      <li>Apply maintenance items immediately.</li>
-      <li>Schedule a time for those maintenance items.</li>
-    </ul>
-  </li>
-  <li>Once maintenance starts, your instance has to be taken offline for updating it, if your instance is running in Multi-AZ, in that case the standby instance is updated first, it is then promoted to be a primary instance, and the primary instance is then taken offline for updating, this way your application does not experience a downtime.</li>
-  <li>If you want to scale your DB instance, the changes that make to your DB instance also happen during the maintenance window, you can also apply them immediately, but then your application will experience a downtime if its in a Single-AZ.</li>
-</ul>
+#Create Spoke VNET
+az network vnet create -n "msft-spoke1-vnet" --address-prefix "10.1.0.0/16" --subnet-name "web" --subnet-prefix "10.1.1.0/24" --dns-servers "10.0.2.4" "10.0.2.5" "168.63.129.16" --tags department="HR" managedBy="DevOps" -g "VNET-AZCLI-RG"
+az network vnet subnet create -n "biz" --address-prefix "10.1.2.0/24" --vnet-name "msft-spoke1-vnet" -g "VNET-AZCLI-RG" 
+az network vnet subnet create -n "data" --address-prefix "10.1.3.0/24" --vnet-name "msft-spoke1-vnet" -g "VNET-AZCLI-RG" 
 
-<!-- ![image info](/img/database/3/AWS-RDS-03-03.png)-->
+#Create VNET Peerings
+az network vnet peering create -g VNET-AZCLI-RG -n msft-hub-vnet-to-msft-spoke1-vnet --vnet-name msft-hub-vnet --remote-vnet msft-spoke1-vnet --allow-vnet-access --allow-forwarded-traffic --allow-gateway-transit
+az network vnet peering create -g VNET-AZCLI-RG -n msft-spoke1-vnet-to-msft-hub-vnet --vnet-name msft-spoke1-vnet --remote-vnet msft-hub-vnet --allow-vnet-access --allow-forwarded-traffic
 
-<h3 id="pricing">Pricing</h3>
-<p>RDS AWS is billed based on the following parameters:</p>
+</code></pre>
+<h2 id="conclusion">Conclusion</h2>
 
-<ul>
-  <li><strong>Instance Class</strong> i.e. the type of instance that you are choosing.</li>
-  <li><strong>Running Time</strong> i.e. the amount of time an instance is running, partial hours are billed as full hours.</li>
-  <li><strong>Storage</strong> i.e. the amount of storage that you have provisioned to your DB Instance</li>
-  <li><strong>I/O Requests per Month</strong> i.e. the I/O requests that are made to your DB Instance per month</li>
-  <li><strong>Data Transfer</strong>: Data transfer in and out of your DB Instance.
-Another way of getting billed for AWS RDS is by reserving some instances.</li>
-</ul>
+<p>Azure Building Blocks showed potential as an alternative to ARM templates but I’ve been disappointed by a lack of further development and some ongoing issues with deploying VMs using the tool. The best-practice defaults that are applied as part of the pre-defined ARM templates are a necessary inclusion but we all know Azure is moving faster than the speed at which these best-practice defaults are updated in the templates – which leads you to situations where you’ll need to override these defaults and that’s where things can get painful.</p>
 
-<p><strong>Reserved Instance</strong> is also a way of using AWS RDS, in this you reserve an RDS Instance for a term, which can be for one or three years by making a one time payment, it is a less expensive way compared to the monthly bill that one pays.</p>
+<p>For now I’m sticking with AzureCLI as my IaC tool for deployments.</p>
 
-<p><strong>Free Tier</strong>
-AWS has an amazing free tier usage for most of its services, so that the customer can first use the service and then do the needful.</p>
-
-<p>Similarly it offers free tier usage for RDS AWS, which includes the following benefits:</p>
-
-<ul>
-  <li>750 hours of Amazon RDS usage in single-AZ for db.t2.micro instance, every month for one year from signup.</li>
-  <li>20 GB of DataBase Storage: any combination of General Purpose (SSD) or Magnetic storage.</li>
-  <li>10 million IOs</li>
-  <li>20GB of backup storage</li>
-</ul>
-
-<p>Enough of  theory, lets make this RDS AWS Tutorial more interesting, let’s now launch a MySQL DB in RDS.</p>
-
-<h3 id="hands-on">Hands-On</h3>
-<p><strong>Step1</strong>: First select the RDS service from the AWS Management Console.</p>
-
-<p><img src="/img/database/3/select-service-1.png" alt="image info" /></p>
-
-<p><strong>Step 2</strong>: Since we will be launching a MySQL instance, select the MySQL instance from the list of Dbs. Moving forward in this RDS AWS Tutorial, let’s go to Step 3.</p>
-
-<p><img src="/img/database/3/select-db-3.png" alt="image info" /></p>
-
-<p><strong>Step 3</strong>: Since we are creating this instance for demo purposes, we will be selecting Dev/Test option and click on Next Step.</p>
-
-<p><img src="/img/database/3/select-dev.png" alt="image info" /></p>
-
-<p><strong>Step 4</strong>: On the next page you will be filling the following details:</p>
-
-<ul>
-  <li>You can select your desired Db instance here</li>
-  <li>You can select whether you want Multi-AZ enabled in your MySQL Db.</li>
-  <li>You can select how much space you want to allocate to your Db instance, it can vary from 5GB to 6TB.</li>
-  <li>In the end you will be setting your username and password for your Db Instance</li>
-</ul>
-
-<p><img src="/img/database/3/detail-fill-1.png" alt="image info" /></p>
-
-<p>Step 5: In the next step, you will be configuring Advanced Settings for your DB</p>
-
-<ul>
-  <li>You will be selecting the VPC here, if you do not wish to launch your instance in a VPC you can leave the default settings and move ahead.</li>
-  <li>In the next section you can select which version of the Db you want to use, for our example we are using MySQL 5.6</li>
-  <li>In the next section you can set your backup preferences, like the retention period etc.</li>
-  <li>After that we will be setting the maintenance window, this is the time frame during which your Db instances will be updated.</li>
-  <li>Once you fill all the details, you will be launching the Db instance!</li>
-</ul>
-
-<p><img src="/img/database/3/yo1-1.png" alt="image info" /></p>
-
-<p><strong>Congratulations!</strong> You have successfully launched your first RDS Db Instance!</p>
+<p>Would be interesting to hear your thoughts on this.</p>
 
                 </div>
 
