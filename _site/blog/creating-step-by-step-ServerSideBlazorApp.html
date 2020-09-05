@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#2A80EE">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#2A80EE">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
+<title>Creating A Step-By-Step End-To-End Database Server-Side Blazor Application &#8211; Girish Godage</title>
+<meta name="description" content="In this article, we will demonstrate how a list of Weather forecasts can be added to the database by each user. A user will only have the ability to see their own forecasts.">
+<meta name="keywords" content="Blazor">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all">
+
+<!-- Verifications -->
+    
+    
+        
+<!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Creating A Step-By-Step End-To-End Database Server-Side Blazor Application">
+    <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
+    <meta property="og:url" content="http://localhost:4000/blog/creating-step-by-step-ServerSideBlazorApp">
+    <meta property="og:site_name" content="Girish Godage">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@GGodage" />
+    
+    <meta name="twitter:title" content="Creating A Step-By-Step End-To-End Database Server-Side Blazor Application" />
+    <meta name="twitter:description" content="In this article, we will demonstrate how a list of Weather forecasts can be added to the database by each user. A user will only have the ability to see their own forecasts." />
+    <meta name="twitter:url" content="http://localhost:4000/blog/creating-step-by-step-ServerSideBlazorApp" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/img/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/img/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    
+
+
+    <link rel="canonical" href="http://localhost:4000/blog/creating-step-by-step-ServerSideBlazorApp">
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
+    <!-- Bootstrap CSS-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Google fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+   
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
+    
+    <!-- animate.css-->
+    <link rel="stylesheet" href="http://localhost:4000/sitejs/animate.css/animate.css">
+    <!-- theme stylesheet-->
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="http://localhost:4000/css/custom.css" as="style">
+    <link rel="stylesheet" href="http://localhost:4000/css/comments.css" as="style">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="http://localhost:4000/img/logo-big.png">
+    <!-- Fab Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
+    
+    
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    
+    <script type="text/javascript">
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+       ga('create', 'UA-130164763-2', 'auto');
+       ga('send', 'pageview');
+    </script>
+    
+    <!-- Typed.js DONT TOUCHHHHHHHHHHHHH!-->
+    <!--<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.9/typed.min.js"></script>
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+      </script>
+      
+      <!-- START OF RELEVANT PART -->
+    <script async src="https://just-comments.com/w2.js"></script>
+    <!-- END OF RELEVANT PART -->
+
+
+</head>
+
+<body>
+    
+<!-- navbar-->
+<header class="header">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container"><a class="navbar-brand" href="http://localhost:4000"><img
+          src="http://localhost:4000/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
+          alt="logo"> <img src="http://localhost:4000/img/girish_logo.png" height="30" alt="girilogo"></a>
+      <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span
+          class="fa fa-bars" style="color: white"></span></button>
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="http://localhost:4000#home" class="nav-link  link-scroll">Home</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#about" class="nav-link link-scroll">About</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#skills" class="nav-link link-scroll">Skills</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#services" class="nav-link link-scroll">Services</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#references" class="nav-link link-scroll">My
+              work</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#contact" class="nav-link link-scroll">Contact</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000/blog" class="nav-link link-scroll">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    
+    
+    
+    <div style="background-color:Gray;">
+        <div style="padding:0;min-height:95.05vh;display:flex;font-family: Poppins, sans-serif;margin-top: 5rem;"
+            class="container">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <p class="post-title">
+                    <h1><a href="/blog/creating-step-by-step-ServerSideBlazorApp">Creating A Step-By-Step End-To-End Database Server-Side Blazor Application</a></h1>
+                </p>
+                
+                <span class="post-meta">
+              <span style="font-weight:600">March 10, 2020 Tuesday</span>
+                    
+                       ( 15 minute read ) 
+                    
+                     
+                    <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">   by Girish Godage</a>
+                </span>
+                
+                <div class="site-category"> 
+                        <h5>Blazor</h5>
+                </div>
+                
+                <hr>
+                <div><img class="post-image" src="/img/aws_cloud.png" alt="Creating A Step-By-Step End-To-End Database Server-Side Blazor Application" height="250" /></div>
+                <div class="post-content">
+                    <br>                     
+                    <h2 id="creating-a-step-by-step-end-to-end-database-server-side-blazor-application">Creating A Step-By-Step End-To-End Database Server-Side Blazor Application</h2>
+
+<p>The primary benefit we have when using <strong>server-side Blazor</strong> is that we do not have to make web http calls from the client code to the server code. This reduces the code we need to write and eliminates many security concerns.</p>
+
+<p>In this article, we will demonstrate how a list of <strong>Weather forecasts</strong> can be added to the database by each user. A user will only have the ability to see their own forecasts.</p>
+
+<p><img src="/img/blazor/3/1.png" alt="image info" /></p>
+
+<h2 id="use-sql-server">Use SQL Server</h2>
+
+<p><img src="/img/blazor/3/2.png" alt="image info" /></p>
+
+<p>The new project template in <strong>Visual Studio</strong> will allow you to create a database using <a href="https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/working-with-sql?view=aspnetcore-2.2&amp;tabs=visual-studio#sql-server-express-localdb">SQL Server Express LocalDB</a>. However, it can be problematic to install and configure. Using the free <strong>SQL Server 2019 Developer server</strong> (or the full <strong>SQL Server</strong>) is recommended.</p>
+
+<p>Download and install <strong>SQL Server 2019 Developer Edition</strong> from the following link:</p>
+
+<p>https://www.microsoft.com/en-us/sql-server/sql-server-downloads</p>
+
+<h2 id="create-the-blazor-application">Create The Blazor Application</h2>
+
+<p><img src="/img/blazor/3/3.png" alt="image info" /></p>
+
+<p>Open <a href="https://visualstudio.microsoft.com/">Visual Studio</a>.</p>
+
+<p><img src="/img/blazor/3/4.png" alt="image info" /></p>
+
+<p>Select <strong>Create a new Project</strong>.</p>
+
+<p><img src="/img/blazor/3/5.png" alt="image info" /></p>
+
+<p>Select <strong>Blazor App</strong> and click <strong>Next</strong>.</p>
+
+<p><img src="/img/blazor/3/6.png" alt="image info" /></p>
+
+<p>Name it <strong>EndToEnd</strong> and click <strong>Create</strong>.</p>
+
+<p><img src="/img/blazor/3/7.png" alt="image info" /></p>
+
+<p>Select <strong>Blazor Server App</strong>.</p>
+
+<p><img src="/img/blazor/3/8.png" alt="image info" /></p>
+
+<p>Click the Change link under Authentication.</p>
+
+<p><img src="/img/blazor/3/9.png" alt="image info" /></p>
+
+<p>Select <strong>Individual User Accounts</strong> and <strong>Store user accounts in-app.</strong></p>
+
+<p><img src="/img/blazor/3/10.png" alt="image info" /></p>
+
+<p>Click <strong>Create</strong>.</p>
+
+<p><img src="/img/blazor/3/11.png" alt="image info" /></p>
+
+<p>The <strong>project</strong> will be created.</p>
+
+<h2 id="create-the-database">Create The Database</h2>
+
+<p><img src="/img/blazor/3/12.png" alt="image info" /></p>
+
+<p>Open the <strong>SQL Server Object Explorer</strong>.</p>
+
+<p><img src="/img/blazor/3/13.png" alt="image info" /></p>
+
+<p>Add a connection to your local database server if you don’t already have it in the SQL Server list.</p>
+
+<p>For this tutorial, we do not want to use the SQL Express server on (localdb) that you may already see in the list.</p>
+
+<p><img src="/img/blazor/3/14.png" alt="image info" /></p>
+
+<p>You will specify just the server and <strong>Connect</strong>.</p>
+
+<p><img src="/img/blazor/3/15.png" alt="image info" /></p>
+
+<p>Expand the tree under the local <strong>SQL server</strong>, right-click on the <strong>Databases</strong> folder and select <strong>Add New Database</strong>.</p>
+
+<p><img src="/img/blazor/3/16.png" alt="image info" /></p>
+
+<p>Give the <strong>database</strong> a name and press <strong>Enter</strong>.</p>
+
+<p>The <strong>database</strong> will be created.</p>
+
+<p><img src="/img/blazor/3/17.png" alt="image info" /></p>
+
+<p><strong>Right-Click</strong> on the <strong>Database</strong> node and select <strong>Properties</strong>.</p>
+
+<p><img src="/img/blazor/3/18.png" alt="image info" /></p>
+
+<p>Open the <strong>Properties</strong> window if it is not already opened.</p>
+
+<p>The <strong>Properties</strong> window for the <strong>database</strong> will display.</p>
+
+<p><strong>Copy</strong> the <strong>Connection string</strong> for the <strong>database</strong>.</p>
+
+<p><img src="/img/blazor/3/19.png" alt="image info" /></p>
+
+<p>Open the <strong>appsettings.json</strong> file.</p>
+
+<p><img src="/img/blazor/3/20.png" alt="image info" /></p>
+
+<p><strong>Paste</strong> in the <strong>connection string</strong> for the <strong>DefaultConnection</strong> and <strong>save</strong> the file.</p>
+
+<h2 id="run-the-application">Run the Application</h2>
+
+<p><img src="/img/blazor/3/21.png" alt="image info" /></p>
+
+<p>Hit <strong>F5</strong> to run the application.</p>
+
+<p><img src="/img/blazor/3/22.png" alt="image info" /></p>
+
+<p>The application will open in your <strong>web browser</strong>.</p>
+
+<p><strong>Click</strong> the <strong>Register</strong> link.</p>
+
+<p><img src="/img/blazor/3/23.png" alt="image info" /></p>
+
+<p>Enter the information to create a <strong>new account</strong>.</p>
+
+<p>Click the <strong>Register</strong> button.</p>
+
+<p><img src="/img/blazor/3/24.png" alt="image info" /></p>
+
+<p>Because this is the first time the database is being used, you will see a message asking you to run the <strong>migration scripts</strong> that will create the database objects needed to support the user membership code.</p>
+
+<p>Click the <strong>Apply Migrations</strong> button.</p>
+
+<p><img src="/img/blazor/3/25.png" alt="image info" /></p>
+
+<p>After the message changes to Migrations Applied, refresh the page in the web browser.</p>
+
+<p><img src="/img/blazor/3/26.png" alt="image info" /></p>
+
+<p>After clicking refresh in your web browser, a popup will require you to click <strong>Continue</strong>.</p>
+
+<p><img src="/img/blazor/3/27.png" alt="image info" /></p>
+
+<p>Click the <strong>Click here to confirm your account link</strong>.</p>
+
+<p><img src="/img/blazor/3/28.png" alt="image info" /></p>
+
+<p>On the <strong>Confirm email</strong> page, click the name of the application to navigate to the home page.</p>
+
+<p><img src="/img/blazor/3/29.png" alt="image info" /></p>
+
+<p>Now you can click the <strong>Log in</strong> link to log in using the account you just created.</p>
+
+<p><img src="/img/blazor/3/30.png" alt="image info" /></p>
+
+<p>You will now be <strong>logged into the application</strong>.</p>
+
+<p>You can click around the application and see that it works.</p>
+
+<p><img src="/img/blazor/3/31.png" alt="image info" /></p>
+
+<p>The <strong>Fetch data</strong> page currently shows random data. We will alter the application to allow us to <strong>add, update, and delete</strong> this data in the database.</p>
+
+<p><strong>Close</strong> the <strong><em>web browser</em></strong> to <strong>stop</strong> the application.</p>
+
+<h2 id="do-not-require-account-confirmation">Do Not Require Account Confirmation</h2>
+
+<p><img src="/img/blazor/3/32.png" alt="image info" /></p>
+
+<p>If we do not intend to configure <strong>email account verification</strong> (using the directions at this link: https://bit.ly/2tf2ym4), we can open the <strong>Startup.cs</strong> file and change the following line:</p>
+
+<pre><code class="language-dotnetcli">services.AddDefaultIdentity&lt;IdentityUser&gt;(
+                options =&gt; options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores&lt;ApplicationDbContext&gt;();
+</code></pre>
+
+<p>To</p>
+
+<pre><code class="language-dotnetcli">
+services.AddDefaultIdentity&lt;IdentityUser&gt;(
+                options =&gt; options.SignIn.RequireConfirmedAccount = false)
+                .AddEntityFrameworkStores&lt;ApplicationDbContext&gt;();
+</code></pre>
+
+<h2 id="create-the-database-1">Create The Database</h2>
+
+<p>Create a new <strong>Server Side Blazor</strong> project and <em>right-click</em> on the <strong>wwwroot</strong> folder and select <strong>Add</strong> then <strong>New Item…</strong></p>
+
+<p><img src="/img/blazor/3/33.png" alt="image info" /></p>
+
+<p>In the <strong>SQL Server Object Explorer window</strong>, in <strong>Visual Studio</strong>, we see the <strong>tables</strong> that the <strong><em>migration scripts added</em></strong>.</p>
+
+<p><img src="/img/blazor/3/34.png" alt="image info" /></p>
+
+<p><em>Right-click</em> on the <strong>Tables</strong> node and select <strong>Add New Table</strong>.</p>
+
+<p><img src="/img/blazor/3/35.png" alt="image info" /></p>
+
+<p>Paste the following script in the <strong>T-SQL</strong> window and then click the <strong>Update</strong> button:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE TABLE [dbo].[WeatherForecast] (
+    [Id]           INT           IDENTITY (1, 1) NOT NULL,
+    [Date]         DATETIME      NULL,
+    [TemperatureC] INT           NULL,
+    [TemperatureF] INT           NULL,
+    [Summary]      NVARCHAR (50) NULL,
+    [UserName]     NVARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+</code></pre></div></div>
+<p><img src="/img/blazor/3/36.png" alt="image info" /></p>
+
+<p>The script will prepare.</p>
+
+<p>Click the <strong>Update Database</strong> button.</p>
+
+<p><img src="/img/blazor/3/37.png" alt="image info" /></p>
+
+<p>Back in the <strong>Server Explorer</strong> window, <em>right-click</em> on Tables and select <strong>Refresh</strong>.</p>
+
+<p><img src="/img/blazor/3/38.png" alt="image info" /></p>
+
+<p>The <strong>WeatherForecast</strong> table will display.</p>
+
+<p><em>Right-click</em> on the table and select <strong>Show Table Data</strong>.</p>
+
+<p><img src="/img/blazor/3/39.png" alt="image info" /></p>
+
+<p>We will enter some <strong>sample data</strong> so that we will be able to <strong>test</strong> the data connection in the next steps.</p>
+
+<p>Set the <strong>UserName</strong> field to the <strong>username</strong> of the <strong>user</strong> that we <strong>registered</strong> an account for earlier.</p>
+
+<h2 id="create-the-data-context">Create The Data Context</h2>
+
+<p><img src="/img/blazor/3/40.png" alt="image info" /></p>
+
+<p>If you do not already have it installed, install EF Core Power Tools from:</p>
+
+<p>https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools</p>
+
+<p><img src="/img/blazor/3/41.png" alt="image info" /></p>
+
+<p>(Note: Before installing, close <strong>Visual Studio</strong>)</p>
+
+<p>(Note: Please give this project a <strong>5</strong> star review on <strong>marketplace.visualstudio.com</strong>!)</p>
+
+<p><img src="/img/blazor/3/42.png" alt="image info" /></p>
+
+<p><em>Right-click</em> on the <strong>project</strong> node in the <strong>Solution Explorer</strong> and select <strong>EF Core Power</strong> Tools then <strong>Reverse Engineer</strong>.</p>
+
+<p><img src="/img/blazor/3/43.png" alt="image info" /></p>
+
+<p>Click the <strong>Add</strong> button.</p>
+
+<p><img src="/img/blazor/3/44.png" alt="image info" /></p>
+
+<p><em>Connect</em> to the <strong>database</strong>.</p>
+
+<p>Select the <strong>database connection</strong> in the dropdown and click <strong>OK</strong>.</p>
+
+<p><img src="/img/blazor/3/45.png" alt="image info" /></p>
+
+<p>Select the <strong>WeatherForecast</strong> table and click <strong>OK</strong>.</p>
+
+<p><img src="/img/blazor/3/46.png" alt="image info" /></p>
+
+<p>Set the values and click <strong>OK</strong>.</p>
+
+<p><img src="/img/blazor/3/47.png" alt="image info" /></p>
+
+<p>In the <strong>Solution Explorer</strong>, you will see the <strong>Data Context</strong> has been created.</p>
+
+<p>Click the <strong>OK</strong> button to close the popup.</p>
+
+<p><img src="/img/blazor/3/48.png" alt="image info" /></p>
+
+<p>Open the <strong>Startup.cs</strong> file.</p>
+
+<p>Add the following code to the <strong>ConfigureServices</strong> section:</p>
+
+<pre><code class="language-dotnetcli">
+// Read the connection string from the appsettings.json file
+    // Set the database connection for the EndtoEndContext
+    services.AddDbContext&lt;EndToEndDB.Data.EndToEnd.EndtoEndContext&gt;(options =&gt;
+    options.UseSqlServer(
+        Configuration.GetConnectionString("DefaultConnection")));
+
+</code></pre>
+
+<p>Also, change this line:</p>
+
+<pre><code class="language-dotnetcli">    
+    services.AddSingleton&lt;WeatherForecastService&gt;();
+</code></pre>
+
+<p>to this:</p>
+
+<pre><code class="language-dotnetcli">    
+    // Scoped creates an instance for each user
+    services.AddScoped&lt;WeatherForecastService&gt;();
+</code></pre>
+
+<p><img src="/img/blazor/3/49.png" alt="image info" /></p>
+
+<p><strong>Save</strong> the file.</p>
+
+<p>Select <strong>Build</strong>, then <strong>Rebuild Solution</strong>.</p>
+
+<h2 id="read-from-the-database">Read From The Database</h2>
+
+<p><img src="/img/blazor/3/50.png" alt="image info" /></p>
+
+<p><strong>Delete</strong> the <strong>Data/WeatherForecast.cs</strong> file in the project.</p>
+
+<p>We will use the <strong>Data/EndToEnd/WeatherForcast.cs</strong> class file created by the <strong>EF Core Tools instead</strong>.</p>
+
+<p><img src="/img/blazor/3/51.png" alt="image info" /></p>
+
+<p>Open the <strong>WeatherForecastService.cs</strong> file.</p>
+
+<p><strong>Replace all the code</strong> with the following code:</p>
+
+<pre><code class="language-dotnetcli">
+using EndToEndDB.Data.EndToEnd;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+namespace EndToEnd.Data
+{
+    public class WeatherForecastService
+    {
+        private readonly EndtoEndContext _context;
+        public WeatherForecastService(EndtoEndContext context)
+        {
+            _context = context;
+        }
+        public async Task&lt;List&lt;WeatherForecast&gt;&gt;
+            GetForecastAsync(string strCurrentUser)
+        {
+            // Get Weather Forecasts  
+            return await _context.WeatherForecast
+                 // Only get entries for the current logged in user
+                 .Where(x =&gt; x.UserName == strCurrentUser)
+                 // Use AsNoTracking to disable EF change tracking
+                 // Use ToListAsync to avoid blocking a thread
+                 .AsNoTracking().ToListAsync();
+        }
+    }
+}
+
+</code></pre>
+
+<p>to this</p>
+
+<pre><code class="language-dotnetcli">
+    private readonly EndtoEndContext _context;
+    
+    public WeatherForecastService(EndtoEndContext context)
+        {
+            _context = context;
+        }
+
+</code></pre>
+
+<p>Connects to the <strong>database</strong> using the <em>datacontext</em> we created with the <strong>EF Core tools</strong>.</p>
+
+<p><img src="/img/blazor/3/52.png" alt="image info" /></p>
+
+<p>Finally, open the <strong>FetchData.razor</strong> file.</p>
+
+<p><em>Replace all the code</em> with the following code:</p>
+
+<pre><code class="language-dotnetcli">
+@page "/fetchdata"
+@using EndToEnd.Data
+@using EndToEndDB.Data.EndToEnd
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@*
+    Using OwningComponentBase ensures that the service and related services
+    that share its scope are disposed with the component.
+    Otherwise DbContext in ForecastService will live for the life of the
+    connection, which may be problematic if clients stay
+    connected for a long time.
+    We access WeatherForecastService using @Service
+*@
+@inherits OwningComponentBase&lt;WeatherForecastService&gt;
+&lt;h1&gt;Weather forecast&lt;/h1&gt;
+&lt;!-- AuthorizeView allows us to only show sections of the page --&gt;
+&lt;!-- based on the security on the current user --&gt;
+&lt;AuthorizeView&gt;
+    &lt;!-- Show this section if the user is logged in --&gt;
+    &lt;Authorized&gt;
+        &lt;h4&gt;Hello, @context.User.Identity.Name!&lt;/h4&gt;
+        @if (forecasts == null)
+        {
+            &lt;!-- Show this if the current user has no data... yet... --&gt;
+            &lt;p&gt;&lt;em&gt;Loading...&lt;/em&gt;&lt;/p&gt;
+        }
+        else
+        {
+            &lt;!-- Show the forecasts for the current user --&gt;
+            &lt;table class="table"&gt;
+                &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;Date&lt;/th&gt;
+                        &lt;th&gt;Temp. (C)&lt;/th&gt;
+                        &lt;th&gt;Temp. (F)&lt;/th&gt;
+                        &lt;th&gt;Summary&lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                    @foreach (var forecast in forecasts)
+                    {
+                        &lt;tr&gt;
+                            &lt;td&gt;@forecast.Date.Value.ToShortDateString()&lt;/td&gt;
+                            &lt;td&gt;@forecast.TemperatureC&lt;/td&gt;
+                            &lt;td&gt;@forecast.TemperatureF&lt;/td&gt;
+                            &lt;td&gt;@forecast.Summary&lt;/td&gt;
+                        &lt;/tr&gt;
+                    }
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+        }
+    &lt;/Authorized&gt;
+    &lt;!-- Show this section if the user is not logged in --&gt;
+    &lt;NotAuthorized&gt;
+        &lt;p&gt;You're not signed in.&lt;/p&gt;
+    &lt;/NotAuthorized&gt;
+&lt;/AuthorizeView&gt;
+</code></pre>
+
+<pre><code class="language-dotnetcli">
+
+@code {
+    // AuthenticationState is available as a CascadingParameter
+    [CascadingParameter]
+    private Task&lt;AuthenticationState&gt; authenticationStateTask { get; set; }
+    List&lt;WeatherForecast&gt; forecasts;
+    protected override async Task OnInitializedAsync()
+    {
+        // Get the current user
+        var user = (await authenticationStateTask).User;
+        // Get the forecasts for the current user
+        // We access WeatherForecastService using @Service
+        forecasts = await @Service.GetForecastAsync(user.Identity.Name);
+    }
+}
+
+</code></pre>
+
+<p>This code simply calls the <strong>GetForecastAsync</strong> method we created in the previous step, passing the <strong>username</strong> of the currently logged in user.</p>
+
+<p>In a normal web application we would have to make a <em>http web call from this client code to the code that connects to the database</em>.</p>
+
+<p>With server-side <strong>Blazor</strong> we don’t have to do that, yet the call is still secure because the pages are rendered on the server.</p>
+
+<p><img src="/img/blazor/3/53.png" alt="image info" /></p>
+
+<p><strong>Build</strong> and run the project.</p>
+
+<p>If we are not logged in, and we go to the <strong>Fetch data</strong> page, we will see a message indicating we are not signed in.</p>
+
+<p><img src="/img/blazor/3/54.png" alt="image info" /></p>
+
+<p>Click the <strong>Login</strong> button.</p>
+
+<p><img src="/img/blazor/3/55.png" alt="image info" /></p>
+
+<p><em>Log in as the user we created data</em> for earlier.</p>
+
+<p><img src="/img/blazor/3/56.png" alt="image info" /></p>
+
+<p>After you are logged in, switch to the <strong>Fetch data</strong> page and you will see the data for the user we entered earlier.</p>
+
+<h2 id="inserting-data-into-the-database">Inserting Data Into The Database</h2>
+
+<p><img src="/img/blazor/3/57.png" alt="image info" /></p>
+
+<p>Open the <strong>WeatherForecastService.cs</strong> file and add the following method:</p>
+
+<pre><code class="language-dotnetcli">public Task&lt;WeatherForecast&gt;
+            CreateForecastAsync(WeatherForecast objWeatherForecast)
+        {
+            _context.WeatherForecast.Add(objWeatherForecast);
+            _context.SaveChanges();
+            return Task.FromResult(objWeatherForecast);
+        }
+
+</code></pre>
+
+<p><img src="/img/blazor/3/58.png" alt="image info" /></p>
+
+<p>Open the <strong>FetchData.razor</strong> file.</p>
+
+<p>Add the following HTML markup directly under the existing table element:</p>
+
+<pre><code class="language-dotnetcli">    &lt;p&gt;
+        &lt;!-- Add a new forecast --&gt;
+        &lt;button class="btn btn-primary"
+                @onclick="AddNewForecast"&gt;
+            Add New Forecast
+        &lt;/button&gt;
+    &lt;/p&gt;
+</code></pre>
+
+<p>This adds a button to allow a new forecast to be added.</p>
+
+<p>Add the following code below the previous code:</p>
+
+<pre><code class="language-dotnetcli">    @if (ShowPopup)
+        {
+            &lt;!-- This is the popup to create or edit a forecast --&gt;
+            &lt;div class="modal" tabindex="-1" style="display:block" role="dialog"&gt;
+                &lt;div class="modal-dialog"&gt;
+                    &lt;div class="modal-content"&gt;
+                        &lt;div class="modal-header"&gt;
+                            &lt;h3 class="modal-title"&gt;Edit Forecast&lt;/h3&gt;
+                            &lt;!-- Button to close the popup --&gt;
+                            &lt;button type="button" class="close"
+                                    @onclick="ClosePopup"&gt;
+                                &lt;span aria-hidden="true"&gt;X&lt;/span&gt;
+                            &lt;/button&gt;
+                        &lt;/div&gt;
+                        &lt;!-- Edit form for the current forecast --&gt;
+                        &lt;div class="modal-body"&gt;
+                            &lt;input class="form-control" type="text"
+                                    placeholder="Celsius forecast"
+                                    @bind="objWeatherForecast.TemperatureC" /&gt;
+                            &lt;input class="form-control" type="text"
+                                    placeholder="Fahrenheit forecast"
+                                    @bind="objWeatherForecast.TemperatureF" /&gt;
+                            &lt;input class="form-control" type="text"
+                                    placeholder="Summary"
+                                    @bind="objWeatherForecast.Summary" /&gt;
+                            &lt;br /&gt;
+                            &lt;!-- Button to save the forecast --&gt;
+                            &lt;button class="btn btn-primary"
+                                    @onclick="SaveForecast"&gt;
+                                Save
+                            &lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        }
+</code></pre>
+
+<p>This adds a form (that will be displayed a popup because the class for the DIV is modal), that allows the user to enter (and later edit) data for a forecast.</p>
+
+<p>We do not need JavaScript to make this <strong>popup</strong> show. We only need to wrap this code with:</p>
+
+<pre><code class="language-dotnetcli">     @if (ShowPopup)
+        {
+            ...
+        }
+</code></pre>
+
+<p>When the <strong>ShowPopup</strong> value is true the <strong>popup</strong> will show. When the value is false, the <strong>popup</strong> will disappear.</p>
+
+<p>Add the following code to the <em>@code</em> section:</p>
+
+<pre><code class="language-dotnetcli">
+
+    WeatherForecast objWeatherForecast = new WeatherForecast();
+    bool ShowPopup = false;
+    void ClosePopup()
+    {
+        // Close the Popup
+        ShowPopup = false;
+    }
+    void AddNewForecast()
+    {
+        // Make new forecast
+        objWeatherForecast = new WeatherForecast();
+        // Set Id to 0 so we know it is a new record
+        objWeatherForecast.Id = 0;
+        // Open the Popup
+        ShowPopup = true;
+    }
+    async Task SaveForecast()
+    {
+        // Close the Popup
+        ShowPopup = false;
+        // Get the current user
+        var user = (await authenticationStateTask).User;
+        // A new forecast will have the Id set to 0
+        if (objWeatherForecast.Id == 0)
+        {
+            // Create new forecast
+            WeatherForecast objNewWeatherForecast = new WeatherForecast();
+            objNewWeatherForecast.Date = System.DateTime.Now;
+            objNewWeatherForecast.Summary = objWeatherForecast.Summary;
+            objNewWeatherForecast.TemperatureC =
+            Convert.ToInt32(objWeatherForecast.TemperatureC);
+            objNewWeatherForecast.TemperatureF =
+            Convert.ToInt32(objWeatherForecast.TemperatureF);
+            objNewWeatherForecast.UserName = user.Identity.Name;
+            // Save the result
+            var result =
+            @Service.CreateForecastAsync(objNewWeatherForecast);
+        }
+        else
+        {
+            // This is an update
+        }
+        // Get the forecasts for the current user
+        forecasts =
+        await @Service.GetForecastAsync(user.Identity.Name);
+    }
+</code></pre>
+
+<p><img src="/img/blazor/3/59.png" alt="image info" /></p>
+
+<p>When you run the project, you can click the <strong>Add New Forecast</strong> button to add an entry.</p>
+
+<p><img src="/img/blazor/3/60.png" alt="image info" /></p>
+
+<p>The form only requires a <strong>Fahrenheit, Celsius, and a summary</strong>, because the other values (<em>date and username</em>), will be set by the code.</p>
+
+<p><img src="/img/blazor/3/61.png" alt="image info" /></p>
+
+<p>After clicking the <strong>Save</strong> button, the entry is saved to the database and displayed.</p>
+
+<h2 id="updating-the-data">Updating The Data</h2>
+
+<p><img src="/img/blazor/3/62.png" alt="image info" /></p>
+
+<p>Open the <strong>WeatherForecastService.cs</strong> file and <strong>add</strong> the following method:</p>
+
+<pre><code class="language-dotnetcli">     public Task&lt;bool&gt;
+            UpdateForecastAsync(WeatherForecast objWeatherForecast)
+        {
+            var ExistingWeatherForecast =
+                _context.WeatherForecast
+                .Where(x =&gt; x.Id == objWeatherForecast.Id)
+                .FirstOrDefault();
+            if (ExistingWeatherForecast != null)
+            {
+                ExistingWeatherForecast.Date =
+                    objWeatherForecast.Date;
+                ExistingWeatherForecast.Summary =
+                    objWeatherForecast.Summary;
+                ExistingWeatherForecast.TemperatureC =
+                    objWeatherForecast.TemperatureC;
+                ExistingWeatherForecast.TemperatureF =
+                    objWeatherForecast.TemperatureF;
+                _context.SaveChanges();
+            }
+            else
+            {
+                return Task.FromResult(false);
+            }
+            return Task.FromResult(true);
+        }
+</code></pre>
+
+<p><img src="/img/blazor/3/63.png" alt="image info" /></p>
+
+<p>Open the <strong>FetchData.razor</strong> file.</p>
+
+<p><strong>Replace</strong> the existing <strong>table</strong> element with the following markup that adds an edit button in the last column (that calls the <strong>EditForecast</strong> method we will add in the next step):</p>
+
+<pre><code class="language-dotnetcli">
+    &lt;table class="table"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Date&lt;/th&gt;
+                &lt;th&gt;Temp. (C)&lt;/th&gt;
+                &lt;th&gt;Temp. (F)&lt;/th&gt;
+                &lt;th&gt;Summary&lt;/th&gt;
+                &lt;th&gt;&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            @foreach (var forecast in forecasts)
+            {
+                &lt;tr&gt;
+                    &lt;td&gt;@forecast.Date.Value.ToShortDateString()&lt;/td&gt;
+                    &lt;td&gt;@forecast.TemperatureC&lt;/td&gt;
+                    &lt;td&gt;@forecast.TemperatureF&lt;/td&gt;
+                    &lt;td&gt;@forecast.Summary&lt;/td&gt;
+                    &lt;td&gt;
+                        &lt;!-- Edit the current forecast --&gt;
+                        &lt;button class="btn btn-primary"
+                                @onclick="(() =&gt; EditForecast(forecast))"&gt;
+                            Edit
+                        &lt;/button&gt;
+                    &lt;/td&gt;
+                &lt;/tr&gt;
+            }
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+
+
+
+</code></pre>
+
+<p>Add the following code to the <em>@code</em> section:</p>
+
+<pre><code class="language-dotnetcli">    void EditForecast(WeatherForecast weatherForecast)
+    {
+        // Set the selected forecast
+        // as the current forecast
+        objWeatherForecast = weatherForecast;
+        // Open the Popup
+        ShowPopup = true;
+    }
+</code></pre>
+
+<p>This sets the current record to the <strong>objWeatherForecast</strong> object that the <strong>popup</strong> is bound to, and opens the <strong>popup</strong>.</p>
+
+<p>Finally, change the existing <strong>SaveForecast</strong> method to the following:</p>
+
+<pre><code class="language-dotnetcli">    
+    async Task SaveForecast()
+    {
+        // Close the Popup
+        ShowPopup = false;
+        // Get the current user
+        var user = (await authenticationStateTask).User;
+        // A new forecast will have the Id set to 0
+        if (objWeatherForecast.Id == 0)
+        {
+            // Create new forecast
+            WeatherForecast objNewWeatherForecast = new WeatherForecast();
+            objNewWeatherForecast.Date = System.DateTime.Now;
+            objNewWeatherForecast.Summary = objWeatherForecast.Summary;
+            objNewWeatherForecast.TemperatureC =
+            Convert.ToInt32(objWeatherForecast.TemperatureC);
+            objNewWeatherForecast.TemperatureF =
+            Convert.ToInt32(objWeatherForecast.TemperatureF);
+            objNewWeatherForecast.UserName = user.Identity.Name;
+            // Save the result
+            var result =
+            @Service.CreateForecastAsync(objNewWeatherForecast);
+        }
+        else
+        {
+            // This is an update
+            var result =
+            @Service.UpdateForecastAsync(objWeatherForecast);
+        }
+        // Get the forecasts for the current user
+        forecasts =
+        await @Service.GetForecastAsync(user.Identity.Name);
+    }
+
+
+
+</code></pre>
+
+<p>This simply adds one line:</p>
+
+<pre><code class="language-dotnetcli">    // This is an update
+    var result =  @Service.UpdateForecastAsync(objWeatherForecast);
+</code></pre>
+
+<p>To the existing method to handle an update rather than an insert.</p>
+
+<p><img src="/img/blazor/3/64.png" alt="image info" /></p>
+
+<p>When we run the application, we now have an <strong>Edit button</strong> to edit the existing record.</p>
+
+<p><img src="/img/blazor/3/65.png" alt="image info" /></p>
+
+<p>The existing record will display in the <strong>popup</strong>, allowing us to <em>edit the data and save it</em>.</p>
+
+<p><img src="/img/blazor/3/66.png" alt="image info" /></p>
+
+<p>The updated record is then displayed in the table.</p>
+
+<h2 id="deleting-the-data">Deleting The Data</h2>
+
+<p><img src="/img/blazor/3/67c.png" alt="image info" /></p>
+
+<p>Open the <strong>WeatherForecastService.cs</strong> file and <strong>add</strong> the following method:</p>
+
+<pre><code class="language-dotnetcli">
+    public Task&lt;bool&gt;
+            DeleteForecastAsync(WeatherForecast objWeatherForecast)
+    {
+        var ExistingWeatherForecast =
+            _context.WeatherForecast
+            .Where(x =&gt; x.Id == objWeatherForecast.Id)
+            .FirstOrDefault();
+        if (ExistingWeatherForecast != null)
+        {
+            _context.WeatherForecast.Remove(ExistingWeatherForecast);
+            _context.SaveChanges();
+        }
+        else
+        {
+            return Task.FromResult(false);
+        }
+        return Task.FromResult(true);
+    }
+
+</code></pre>
+
+<p><img src="/img/blazor/3/68.png" alt="image info" /></p>
+
+<p>Open the <strong>FetchData.razor</strong> file.</p>
+
+<p>Add code markup for a <strong>Delete</strong> button under the code markup for the current <strong>Save</strong> button in the <strong>popup</strong>:</p>
+
+<pre><code class="language-dotnetcli">
+    &lt;!-- Only show delete button if not a new record --&gt;
+        @if (objWeatherForecast.Id &gt; 0)
+        {
+            &lt;!-- Button to delete the forecast --&gt;
+            &lt;button class="btn btn-primary"
+                    @onclick="DeleteForecast"&gt;
+                Delete
+            &lt;/button&gt;
+        }
+</code></pre>
+<p>Add the following code to the <em>@code</em> section:</p>
+
+<pre><code class="language-dotnetcli">
+    async Task DeleteForecast()
+    {
+        // Close the Popup
+        ShowPopup = false;
+        // Get the current user
+        var user = (await authenticationStateTask).User;
+        // Delete the forecast
+        var result = @Service.DeleteForecastAsync(objWeatherForecast);
+        // Get the forecasts for the current user
+        forecasts =
+        await @Service.GetForecastAsync(user.Identity.Name);
+    }
+
+</code></pre>
+
+<p><img src="/img/blazor/3/69.png" alt="image info" /></p>
+
+<p>When we run the code and click the <strong>Edit</strong> button…</p>
+
+<p><img src="/img/blazor/3/70.png" alt="image info" /></p>
+
+<p>… we now see a <strong>Delete</strong> button that will <em>delete</em> the record.</p>
+
+<p><img src="/img/blazor/3/71.png" alt="image info" /></p>
+
+<p>However, when we click the <strong>Add New Forecast</strong> button that opens the same <strong>popup</strong>…</p>
+
+<p><img src="/img/blazor/3/72.png" alt="image info" /></p>
+
+<p>The delete button does not display (because there is no record to delete at this point).</p>
+
+<h2 id="use-code-behind-method-using-partial-class-support">Use Code Behind Method Using Partial Class Support</h2>
+
+<p><img src="/img/blazor/3/73.png" alt="image info" /></p>
+
+<p>We can code our <strong>.razor</strong> pages using an <em>@code</em> block with <strong>HTML markup</strong> in a single file, or with the <strong>C#</strong> code placed in a <em>code-behind</em> file defined as a <strong>partial class</strong>.</p>
+
+<p>Create a new class called <strong>FetchData.razor.cs</strong> using the following code:</p>
+
+<pre><code class="language-dotnetcli">
+using EndToEndDB.Data.EndToEnd;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+namespace EndToEnd.Pages
+{
+    public partial class FetchData
+    {
+        // AuthenticationState is available as a CascadingParameter
+        [CascadingParameter]
+        private Task&lt;AuthenticationState&gt; authenticationStateTask { get; set; }
+        List&lt;WeatherForecast&gt; forecasts;
+        protected override async Task OnInitializedAsync()
+        {
+            // Get the current user
+            var user = (await authenticationStateTask).User;
+            // Get the forecasts for the current user
+            // We access WeatherForecastService using @Service
+            forecasts = await @Service.GetForecastAsync(user.Identity.Name);
+        }
+        WeatherForecast objWeatherForecast = new WeatherForecast();
+        bool ShowPopup = false;
+        void ClosePopup()
+        {
+            // Close the Popup
+            ShowPopup = false;
+        }
+        void AddNewForecast()
+        {
+            // Make new forecast
+            objWeatherForecast = new WeatherForecast();
+            // Set Id to 0 so we know it is a new record
+            objWeatherForecast.Id = 0;
+            // Open the Popup
+            ShowPopup = true;
+        }
+        async Task SaveForecast()
+        {
+            // Close the Popup
+            ShowPopup = false;
+            // Get the current user
+            var user = (await authenticationStateTask).User;
+            // A new forecast will have the Id set to 0
+            if (objWeatherForecast.Id == 0)
+            {
+                // Create new forecast
+                WeatherForecast objNewWeatherForecast = new WeatherForecast();
+                objNewWeatherForecast.Date = System.DateTime.Now;
+                objNewWeatherForecast.Summary = objWeatherForecast.Summary;
+                objNewWeatherForecast.TemperatureC =
+                Convert.ToInt32(objWeatherForecast.TemperatureC);
+                objNewWeatherForecast.TemperatureF =
+                Convert.ToInt32(objWeatherForecast.TemperatureF);
+                objNewWeatherForecast.UserName = user.Identity.Name;
+                // Save the result
+                var result =
+                @Service.CreateForecastAsync(objNewWeatherForecast);
+            }
+            else
+            {
+                // This is an update
+                var result =
+                @Service.UpdateForecastAsync(objWeatherForecast);
+            }
+            // Get the forecasts for the current user
+            forecasts =
+            await @Service.GetForecastAsync(user.Identity.Name);
+        }
+        void EditForecast(WeatherForecast weatherForecast)
+        {
+            // Set the selected forecast
+            // as the current forecast
+            objWeatherForecast = weatherForecast;
+            // Open the Popup
+            ShowPopup = true;
+        }
+        async Task DeleteForecast()
+        {
+            // Close the Popup
+            ShowPopup = false;
+            // Get the current user
+            var user = (await authenticationStateTask).User;
+            // Delete the forecast
+            var result = @Service.DeleteForecastAsync(objWeatherForecast);
+            // Get the forecasts for the current user
+            forecasts =
+            await @Service.GetForecastAsync(user.Identity.Name);
+        }
+    }
+}
+</code></pre>
+<p>Remove the entire <em>@code</em> bock from the <strong>FetchData.razor</strong> page.</p>
+
+<p>The application will still behave the same.</p>
+
+<h2 id="links">Links</h2>
+
+<p><a href="https://blazor.net/">Blazor.net</a></p>
+
+<p><a href="https://docs.microsoft.com/en-us/aspnet/core/security/blazor/?view=aspnetcore-3.0&amp;tabs=visual-studio">ASP.NET Core Blazor authentication and authorization</a></p>
+
+<p><a href="https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools">EF Core Power Tools</a></p>
+
+<p><a href="https://github.com/aspnet/AspNetCore/issues/5496">OwningComponentBase (background)</a></p>
+
+                </div>
+
+                
+
+                <div id="disqus_thread"></div>
+                <script>
+                
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://girishgodage-github-io.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
+</button>
+<!-- Footer-->
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 text-center text-lg-left">
+                <p class="social">
+                    <a href="https://www.facebook.com/girish.godage.5" class="external facebook wow fadeInUp">
+                        <i class="fa fa-facebook"></i></a>
+                    <a href="https://instagram.com/girishgodage_007" data-wow-delay="0.2s" class="external instagram wow fadeInUp">
+                        <i class="fa fa-instagram"></i></a>
+                    <a href="https://youtube.com/girishgodage" data-wow-delay="0.4s" class="external youtube wow fadeInUp">
+                        <i class="fa fa-youtube-play"></i></a>
+                    <a href="https://twitter.com/GGodage" data-wow-delay="0.4s" class="external twitter wow fadeInUp">
+                            <i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/girishgodage" data-wow-delay="0.4s" class="external github wow fadeInUp">
+                                <i class="fa fa-github"></i></a>    
+                    <a href="mailto:girishgodage@gmail.com?subject=Hello%20Girish" data-wow-delay="0.6s" class="email wow fadeInUp">
+                        <i class="fa fa-envelope"></i></a></p>
+            </div>
+            <div class="col-12 col-md-2">
+            <h5>Quick Links</h5>
+            <ul>
+               <li><a href="http://localhost:4000#about">About</a></li>
+               <li><a href="http://localhost:4000#contact">Contact</a></li>
+               <li><a href="http://localhost:4000/sitemap.xml">Sitemap</a></li>               
+            </ul>
+         </div>
+            <div class="col-12 col-md-4 text-center text-lg-right mt-4 mt-lg-0">
+                <p> <b>©</b><script>document.write(new Date().getFullYear())</script> Girish Godage </p>
+                <p class="text-center, text-shadow"> Hosted On <a href="https://pages.github.com/">GitHub Pages</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Typed.js DONT TOUCH THIS! -->
+    <div id="typed-strings">
+    </div>
+
+        <!-- JavaScript files-->
+    <script src="http://localhost:4000/sitejs/jquery/jquery.min.js"></script>
+    <script src="http://localhost:4000/sitejs/popper.js/umd/popper.min.js"> </script>
+    <script src="http://localhost:4000/sitejs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="http://localhost:4000/sitejs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="http://localhost:4000/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.counterup/jquery.counterup.js"></script>
+    <script src="http://localhost:4000/js/front.js"></script>
+    <script src="http://localhost:4000/js/comment.js"></script>
+       <!-- Script pointing to search-script.js -->
+    <script src="http://localhost:4000/js/search-script.js" type="text/javascript"></script>
+   
+    <!-- Configuration -->
+    <script>
+         SimpleJekyllSearch({
+         searchInput: document.getElementById('search-input'),
+         resultsContainer: document.getElementById('results-container'),
+         json: 'http://localhost:4000/search.json'
+         })
+         </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC36FUDDdOTidZJ8nzS5vfE7KVyayenKPE",
+    authDomain: "githubcontactlist.firebaseapp.com",
+    databaseURL: "https://githubcontactlist.firebaseio.com",
+    projectId: "githubcontactlist",
+    storageBucket: "githubcontactlist.appspot.com",
+    messagingSenderId: "899685398702",
+    appId: "1:899685398702:web:0c23c56d2d6d40df37553f",
+    measurementId: "G-YWBRCYJYFW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script>
+   $(function() {
+      
+    //make a variable to keep track of data coming from firebase
+    var data = [];
+
+    // Reference messages collection
+      var messagesRef = firebase.database().ref('contactformmessages');  
+
+
+    //listen to data updates from firebase
+    messagesRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+        //when the data updates at firebase, put it in the data variable
+        data = snapshot.val();
+    })
+    //Entire Contact Form (handler)
+    $('#contactForm').submit(function(e) {
+      e.preventDefault();
+
+        var $form = $(this);
+        console.log("Submit to Firebase");
+
+        //disable submit button
+        $form.find("#sendForm").prop('disabled', true);
+
+        //get values to send to Firebase
+        var name = $('#name').val();
+        console.log(name);
+		
+		var surname = $('#surname').val();
+        console.log(surname);
+		
+		var email = $('#email').val();
+        console.log(email);	
+		
+		var phone = $('#phone').val();
+        console.log(phone);
+
+        var message = $('#message').val();
+        console.log(message);
+
+       
+        //take the values from the form, and put them in an object
+        var newContact = {
+         "name": name,
+			"surname": surname,
+			"email": email,
+			"phone": phone,
+         "message": message
+        }
+        //put new object in data array
+        data.push(newContact);
+        console.log(data);
+
+        //send the new data to Firebase
+        messagesRef.set(data, function(err) {
+            if (err) {
+                alert("Data no go");
+            }else{
+            $("#form-wrapper").slideToggle();
+            $('#form-success-message').slideToggle();
+			}
+        });
+
+        return false;
+    })
+   
+    
+})
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";           
+        }else
+        {
+           myBtton.style.display="none";     
+          
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+      //  document.body.scrollTop =0;
+      //  document.documentElement.scrollTop=0;
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    }
+
+</script>
+
+    
+    
+
+
+</body>
+
+</html>

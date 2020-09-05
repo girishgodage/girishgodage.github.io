@@ -1,4 +1,962 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-09-04T17:38:50+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">The service desk with bots using Amazon Lex and Amazon Connect (Part 1)</title><link href="http://localhost:4000/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-1" rel="alternate" type="text/html" title="The service desk with bots using Amazon Lex and Amazon Connect (Part 1)" /><published>2020-02-02T11:41:00+00:00</published><updated>2020-02-02T11:41:00+00:00</updated><id>http://localhost:4000/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-1</id><content type="html" xml:base="http://localhost:4000/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-1">&lt;h2 id=&quot;the-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-1&quot;&gt;The service desk with bots using Amazon Lex and Amazon Connect (Part 1)&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-09-05T09:24:45+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">Creating A Step-By-Step End-To-End Database Server-Side Blazor Application</title><link href="http://localhost:4000/blog/creating-step-by-step-ServerSideBlazorApp" rel="alternate" type="text/html" title="Creating A Step-By-Step End-To-End Database Server-Side Blazor Application" /><published>2020-03-10T10:26:00+00:00</published><updated>2020-03-10T10:26:00+00:00</updated><id>http://localhost:4000/blog/creating-Step-by-Step-ServerSideBlazorApp</id><content type="html" xml:base="http://localhost:4000/blog/creating-step-by-step-ServerSideBlazorApp">&lt;h2 id=&quot;creating-a-step-by-step-end-to-end-database-server-side-blazor-application&quot;&gt;Creating A Step-By-Step End-To-End Database Server-Side Blazor Application&lt;/h2&gt;
+
+&lt;p&gt;The primary benefit we have when using &lt;strong&gt;server-side Blazor&lt;/strong&gt; is that we do not have to make web http calls from the client code to the server code. This reduces the code we need to write and eliminates many security concerns.&lt;/p&gt;
+
+&lt;p&gt;In this article, we will demonstrate how a list of &lt;strong&gt;Weather forecasts&lt;/strong&gt; can be added to the database by each user. A user will only have the ability to see their own forecasts.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;use-sql-server&quot;&gt;Use SQL Server&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/2.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The new project template in &lt;strong&gt;Visual Studio&lt;/strong&gt; will allow you to create a database using &lt;a href=&quot;https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/working-with-sql?view=aspnetcore-2.2&amp;amp;tabs=visual-studio#sql-server-express-localdb&quot;&gt;SQL Server Express LocalDB&lt;/a&gt;. However, it can be problematic to install and configure. Using the free &lt;strong&gt;SQL Server 2019 Developer server&lt;/strong&gt; (or the full &lt;strong&gt;SQL Server&lt;/strong&gt;) is recommended.&lt;/p&gt;
+
+&lt;p&gt;Download and install &lt;strong&gt;SQL Server 2019 Developer Edition&lt;/strong&gt; from the following link:&lt;/p&gt;
+
+&lt;p&gt;https://www.microsoft.com/en-us/sql-server/sql-server-downloads&lt;/p&gt;
+
+&lt;h2 id=&quot;create-the-blazor-application&quot;&gt;Create The Blazor Application&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/3.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Open &lt;a href=&quot;https://visualstudio.microsoft.com/&quot;&gt;Visual Studio&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/4.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Select &lt;strong&gt;Create a new Project&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/5.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Select &lt;strong&gt;Blazor App&lt;/strong&gt; and click &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/6.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Name it &lt;strong&gt;EndToEnd&lt;/strong&gt; and click &lt;strong&gt;Create&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/7.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Select &lt;strong&gt;Blazor Server App&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/8.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Click the Change link under Authentication.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/9.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Select &lt;strong&gt;Individual User Accounts&lt;/strong&gt; and &lt;strong&gt;Store user accounts in-app.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/10.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Click &lt;strong&gt;Create&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/11.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;project&lt;/strong&gt; will be created.&lt;/p&gt;
+
+&lt;h2 id=&quot;create-the-database&quot;&gt;Create The Database&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/12.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Open the &lt;strong&gt;SQL Server Object Explorer&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/13.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Add a connection to your local database server if you don’t already have it in the SQL Server list.&lt;/p&gt;
+
+&lt;p&gt;For this tutorial, we do not want to use the SQL Express server on (localdb) that you may already see in the list.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/14.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You will specify just the server and &lt;strong&gt;Connect&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/15.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Expand the tree under the local &lt;strong&gt;SQL server&lt;/strong&gt;, right-click on the &lt;strong&gt;Databases&lt;/strong&gt; folder and select &lt;strong&gt;Add New Database&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/16.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Give the &lt;strong&gt;database&lt;/strong&gt; a name and press &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;database&lt;/strong&gt; will be created.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/17.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Right-Click&lt;/strong&gt; on the &lt;strong&gt;Database&lt;/strong&gt; node and select &lt;strong&gt;Properties&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/18.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Open the &lt;strong&gt;Properties&lt;/strong&gt; window if it is not already opened.&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;Properties&lt;/strong&gt; window for the &lt;strong&gt;database&lt;/strong&gt; will display.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Copy&lt;/strong&gt; the &lt;strong&gt;Connection string&lt;/strong&gt; for the &lt;strong&gt;database&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/19.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Open the &lt;strong&gt;appsettings.json&lt;/strong&gt; file.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/20.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Paste&lt;/strong&gt; in the &lt;strong&gt;connection string&lt;/strong&gt; for the &lt;strong&gt;DefaultConnection&lt;/strong&gt; and &lt;strong&gt;save&lt;/strong&gt; the file.&lt;/p&gt;
+
+&lt;h2 id=&quot;run-the-application&quot;&gt;Run the Application&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/21.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Hit &lt;strong&gt;F5&lt;/strong&gt; to run the application.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/22.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The application will open in your &lt;strong&gt;web browser&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Click&lt;/strong&gt; the &lt;strong&gt;Register&lt;/strong&gt; link.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/23.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Enter the information to create a &lt;strong&gt;new account&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Click the &lt;strong&gt;Register&lt;/strong&gt; button.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/24.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Because this is the first time the database is being used, you will see a message asking you to run the &lt;strong&gt;migration scripts&lt;/strong&gt; that will create the database objects needed to support the user membership code.&lt;/p&gt;
+
+&lt;p&gt;Click the &lt;strong&gt;Apply Migrations&lt;/strong&gt; button.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/25.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After the message changes to Migrations Applied, refresh the page in the web browser.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/26.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After clicking refresh in your web browser, a popup will require you to click &lt;strong&gt;Continue&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/27.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Click the &lt;strong&gt;Click here to confirm your account link&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/28.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On the &lt;strong&gt;Confirm email&lt;/strong&gt; page, click the name of the application to navigate to the home page.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/29.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now you can click the &lt;strong&gt;Log in&lt;/strong&gt; link to log in using the account you just created.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/30.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You will now be &lt;strong&gt;logged into the application&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;You can click around the application and see that it works.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/31.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;Fetch data&lt;/strong&gt; page currently shows random data. We will alter the application to allow us to &lt;strong&gt;add, update, and delete&lt;/strong&gt; this data in the database.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Close&lt;/strong&gt; the &lt;strong&gt;&lt;em&gt;web browser&lt;/em&gt;&lt;/strong&gt; to &lt;strong&gt;stop&lt;/strong&gt; the application.&lt;/p&gt;
+
+&lt;h2 id=&quot;do-not-require-account-confirmation&quot;&gt;Do Not Require Account Confirmation&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/32.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If we do not intend to configure &lt;strong&gt;email account verification&lt;/strong&gt; (using the directions at this link: https://bit.ly/2tf2ym4), we can open the &lt;strong&gt;Startup.cs&lt;/strong&gt; file and change the following line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dotnetcli&quot;&gt;services.AddDefaultIdentity&amp;lt;IdentityUser&amp;gt;(
+                options =&amp;gt; options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores&amp;lt;ApplicationDbContext&amp;gt;();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dotnetcli&quot;&gt;
+services.AddDefaultIdentity&amp;lt;IdentityUser&amp;gt;(
+                options =&amp;gt; options.SignIn.RequireConfirmedAccount = false)
+                .AddEntityFrameworkStores&amp;lt;ApplicationDbContext&amp;gt;();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;create-the-database-1&quot;&gt;Create The Database&lt;/h2&gt;
+
+&lt;p&gt;Create a new &lt;strong&gt;Server Side Blazor&lt;/strong&gt; project and &lt;em&gt;right-click&lt;/em&gt; on the &lt;strong&gt;wwwroot&lt;/strong&gt; folder and select &lt;strong&gt;Add&lt;/strong&gt; then &lt;strong&gt;New Item…&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/33.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the &lt;strong&gt;SQL Server Object Explorer window&lt;/strong&gt;, in &lt;strong&gt;Visual Studio&lt;/strong&gt;, we see the &lt;strong&gt;tables&lt;/strong&gt; that the &lt;strong&gt;&lt;em&gt;migration scripts added&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/34.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Right-click&lt;/em&gt; on the &lt;strong&gt;Tables&lt;/strong&gt; node and select &lt;strong&gt;Add New Table&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/35.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Paste the following script in the &lt;strong&gt;T-SQL&lt;/strong&gt; window and then click the &lt;strong&gt;Update&lt;/strong&gt; button:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CREATE TABLE [dbo].[WeatherForecast] (
+    [Id]           INT           IDENTITY (1, 1) NOT NULL,
+    [Date]         DATETIME      NULL,
+    [TemperatureC] INT           NULL,
+    [TemperatureF] INT           NULL,
+    [Summary]      NVARCHAR (50) NULL,
+    [UserName]     NVARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/36.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The script will prepare.&lt;/p&gt;
+
+&lt;p&gt;Click the &lt;strong&gt;Update Database&lt;/strong&gt; button.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/37.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Back in the &lt;strong&gt;Server Explorer&lt;/strong&gt; window, &lt;em&gt;right-click&lt;/em&gt; on Tables and select &lt;strong&gt;Refresh&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/38.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;WeatherForecast&lt;/strong&gt; table will display.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Right-click&lt;/em&gt; on the table and select &lt;strong&gt;Show Table Data&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/39.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We will enter some &lt;strong&gt;sample data&lt;/strong&gt; so that we will be able to &lt;strong&gt;test&lt;/strong&gt; the data connection in the next steps.&lt;/p&gt;
+
+&lt;p&gt;Set the &lt;strong&gt;UserName&lt;/strong&gt; field to the &lt;strong&gt;username&lt;/strong&gt; of the &lt;strong&gt;user&lt;/strong&gt; that we &lt;strong&gt;registered&lt;/strong&gt; an account for earlier.&lt;/p&gt;
+
+&lt;h2 id=&quot;create-the-data-context&quot;&gt;Create The Data Context&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/40.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If you do not already have it installed, install EF Core Power Tools from:&lt;/p&gt;
+
+&lt;p&gt;https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/41.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;(Note: Before installing, close &lt;strong&gt;Visual Studio&lt;/strong&gt;)&lt;/p&gt;
+
+&lt;p&gt;(Note: Please give this project a &lt;strong&gt;5&lt;/strong&gt; star review on &lt;strong&gt;marketplace.visualstudio.com&lt;/strong&gt;!)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/42.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Right-click&lt;/em&gt; on the &lt;strong&gt;project&lt;/strong&gt; node in the &lt;strong&gt;Solution Explorer&lt;/strong&gt; and select &lt;strong&gt;EF Core Power&lt;/strong&gt; Tools then &lt;strong&gt;Reverse Engineer&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/43.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Click the &lt;strong&gt;Add&lt;/strong&gt; button.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/44.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Connect&lt;/em&gt; to the &lt;strong&gt;database&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Select the &lt;strong&gt;database connection&lt;/strong&gt; in the dropdown and click &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/45.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Select the &lt;strong&gt;WeatherForecast&lt;/strong&gt; table and click &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/46.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Set the values and click &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/47.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the &lt;strong&gt;Solution Explorer&lt;/strong&gt;, you will see the &lt;strong&gt;Data Context&lt;/strong&gt; has been created.&lt;/p&gt;
+
+&lt;p&gt;Click the &lt;strong&gt;OK&lt;/strong&gt; button to close the popup.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/48.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Open the &lt;strong&gt;Startup.cs&lt;/strong&gt; file.&lt;/p&gt;
+
+&lt;p&gt;Add the following code to the &lt;strong&gt;ConfigureServices&lt;/strong&gt; section:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dotnetcli&quot;&gt;
+// Read the connection string from the appsettings.json file
+    // Set the database connection for the EndtoEndContext
+    services.AddDbContext&amp;lt;EndToEndDB.Data.EndToEnd.EndtoEndContext&amp;gt;(options =&amp;gt;
+    options.UseSqlServer(
+        Configuration.GetConnectionString(&quot;DefaultConnection&quot;)));
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Also, change this line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dotnetcli&quot;&gt;    
+    services.AddSingleton&amp;lt;WeatherForecastService&amp;gt;();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;to this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dotnetcli&quot;&gt;    
+    // Scoped creates an instance for each user
+    services.AddScoped&amp;lt;WeatherForecastService&amp;gt;();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/49.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Save&lt;/strong&gt; the file.&lt;/p&gt;
+
+&lt;p&gt;Select &lt;strong&gt;Build&lt;/strong&gt;, then &lt;strong&gt;Rebuild Solution&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;read-from-the-database&quot;&gt;Read From The Database&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/50.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Delete&lt;/strong&gt; the &lt;strong&gt;Data/WeatherForecast.cs&lt;/strong&gt; file in the project.&lt;/p&gt;
+
+&lt;p&gt;We will use the &lt;strong&gt;Data/EndToEnd/WeatherForcast.cs&lt;/strong&gt; class file created by the &lt;strong&gt;EF Core Tools instead&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/51.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Open the &lt;strong&gt;WeatherForecastService.cs&lt;/strong&gt; file.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Replace all the code&lt;/strong&gt; with the following code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dotnetcli&quot;&gt;
+using EndToEndDB.Data.EndToEnd;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+namespace EndToEnd.Data
+{
+    public class WeatherForecastService
+    {
+        private readonly EndtoEndContext _context;
+        public WeatherForecastService(EndtoEndContext context)
+        {
+            _context = context;
+        }
+        public async Task&amp;lt;List&amp;lt;WeatherForecast&amp;gt;&amp;gt;
+            GetForecastAsync(string strCurrentUser)
+        {
+            // Get Weather Forecasts  
+            return await _context.WeatherForecast
+                 // Only get entries for the current logged in user
+                 .Where(x =&amp;gt; x.UserName == strCurrentUser)
+                 // Use AsNoTracking to disable EF change tracking
+                 // Use ToListAsync to avoid blocking a thread
+                 .AsNoTracking().ToListAsync();
+        }
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;to this&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dotnetcli&quot;&gt;
+    private readonly EndtoEndContext _context;
+    
+    public WeatherForecastService(EndtoEndContext context)
+        {
+            _context = context;
+        }
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Connects to the &lt;strong&gt;database&lt;/strong&gt; using the &lt;em&gt;datacontext&lt;/em&gt; we created with the &lt;strong&gt;EF Core tools&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/52.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Finally, open the &lt;strong&gt;FetchData.razor&lt;/strong&gt; file.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Replace all the code&lt;/em&gt; with the following code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dotnetcli&quot;&gt;
+@page &quot;/fetchdata&quot;
+@using EndToEnd.Data
+@using EndToEndDB.Data.EndToEnd
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@*
+    Using OwningComponentBase ensures that the service and related services
+    that share its scope are disposed with the component.
+    Otherwise DbContext in ForecastService will live for the life of the
+    connection, which may be problematic if clients stay
+    connected for a long time.
+    We access WeatherForecastService using @Service
+*@
+@inherits OwningComponentBase&amp;lt;WeatherForecastService&amp;gt;
+&amp;lt;h1&amp;gt;Weather forecast&amp;lt;/h1&amp;gt;
+&amp;lt;!-- AuthorizeView allows us to only show sections of the page --&amp;gt;
+&amp;lt;!-- based on the security on the current user --&amp;gt;
+&amp;lt;AuthorizeView&amp;gt;
+    &amp;lt;!-- Show this section if the user is logged in --&amp;gt;
+    &amp;lt;Authorized&amp;gt;
+        &amp;lt;h4&amp;gt;Hello, @context.User.Identity.Name!&amp;lt;/h4&amp;gt;
+        @if (forecasts == null)
+        {
+            &amp;lt;!-- Show this if the current user has no data... yet... --&amp;gt;
+            &amp;lt;p&amp;gt;&amp;lt;em&amp;gt;Loading...&amp;lt;/em&amp;gt;&amp;lt;/p&amp;gt;
+        }
+        else
+        {
+            &amp;lt;!-- Show the forecasts for the current user --&amp;gt;
+            &amp;lt;table class=&quot;table&quot;&amp;gt;
+                &amp;lt;thead&amp;gt;
+                    &amp;lt;tr&amp;gt;
+                        &amp;lt;th&amp;gt;Date&amp;lt;/th&amp;gt;
+                        &amp;lt;th&amp;gt;Temp. (C)&amp;lt;/th&amp;gt;
+                        &amp;lt;th&amp;gt;Temp. (F)&amp;lt;/th&amp;gt;
+                        &amp;lt;th&amp;gt;Summary&amp;lt;/th&amp;gt;
+                    &amp;lt;/tr&amp;gt;
+                &amp;lt;/thead&amp;gt;
+                &amp;lt;tbody&amp;gt;
+                    @foreach (var forecast in forecasts)
+                    {
+                        &amp;lt;tr&amp;gt;
+                            &amp;lt;td&amp;gt;@forecast.Date.Value.ToShortDateString()&amp;lt;/td&amp;gt;
+                            &amp;lt;td&amp;gt;@forecast.TemperatureC&amp;lt;/td&amp;gt;
+                            &amp;lt;td&amp;gt;@forecast.TemperatureF&amp;lt;/td&amp;gt;
+                            &amp;lt;td&amp;gt;@forecast.Summary&amp;lt;/td&amp;gt;
+                        &amp;lt;/tr&amp;gt;
+                    }
+                &amp;lt;/tbody&amp;gt;
+            &amp;lt;/table&amp;gt;
+        }
+    &amp;lt;/Authorized&amp;gt;
+    &amp;lt;!-- Show this section if the user is not logged in --&amp;gt;
+    &amp;lt;NotAuthorized&amp;gt;
+        &amp;lt;p&amp;gt;You're not signed in.&amp;lt;/p&amp;gt;
+    &amp;lt;/NotAuthorized&amp;gt;
+&amp;lt;/AuthorizeView&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dotnetcli&quot;&gt;
+
+@code {
+    // AuthenticationState is available as a CascadingParameter
+    [CascadingParameter]
+    private Task&amp;lt;AuthenticationState&amp;gt; authenticationStateTask { get; set; }
+    List&amp;lt;WeatherForecast&amp;gt; forecasts;
+    protected override async Task OnInitializedAsync()
+    {
+        // Get the current user
+        var user = (await authenticationStateTask).User;
+        // Get the forecasts for the current user
+        // We access WeatherForecastService using @Service
+        forecasts = await @Service.GetForecastAsync(user.Identity.Name);
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This code simply calls the &lt;strong&gt;GetForecastAsync&lt;/strong&gt; method we created in the previous step, passing the &lt;strong&gt;username&lt;/strong&gt; of the currently logged in user.&lt;/p&gt;
+
+&lt;p&gt;In a normal web application we would have to make a &lt;em&gt;http web call from this client code to the code that connects to the database&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;With server-side &lt;strong&gt;Blazor&lt;/strong&gt; we don’t have to do that, yet the call is still secure because the pages are rendered on the server.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/53.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Build&lt;/strong&gt; and run the project.&lt;/p&gt;
+
+&lt;p&gt;If we are not logged in, and we go to the &lt;strong&gt;Fetch data&lt;/strong&gt; page, we will see a message indicating we are not signed in.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/54.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Click the &lt;strong&gt;Login&lt;/strong&gt; button.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/55.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Log in as the user we created data&lt;/em&gt; for earlier.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/56.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After you are logged in, switch to the &lt;strong&gt;Fetch data&lt;/strong&gt; page and you will see the data for the user we entered earlier.&lt;/p&gt;
+
+&lt;h2 id=&quot;inserting-data-into-the-database&quot;&gt;Inserting Data Into The Database&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/57.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Open the &lt;strong&gt;WeatherForecastService.cs&lt;/strong&gt; file and add the following method:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dotnetcli&quot;&gt;public Task&amp;lt;WeatherForecast&amp;gt;
+            CreateForecastAsync(WeatherForecast objWeatherForecast)
+        {
+            _context.WeatherForecast.Add(objWeatherForecast);
+            _context.SaveChanges();
+            return Task.FromResult(objWeatherForecast);
+        }
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/58.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Open the &lt;strong&gt;FetchData.razor&lt;/strong&gt; file.&lt;/p&gt;
+
+&lt;p&gt;Add the following HTML markup directly under the existing table element:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dotnetcli&quot;&gt;    &amp;lt;p&amp;gt;
+        &amp;lt;!-- Add a new forecast --&amp;gt;
+        &amp;lt;button class=&quot;btn btn-primary&quot;
+                @onclick=&quot;AddNewForecast&quot;&amp;gt;
+            Add New Forecast
+        &amp;lt;/button&amp;gt;
+    &amp;lt;/p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This adds a button to allow a new forecast to be added.&lt;/p&gt;
+
+&lt;p&gt;Add the following code below the previous code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dotnetcli&quot;&gt;    @if (ShowPopup)
+        {
+            &amp;lt;!-- This is the popup to create or edit a forecast --&amp;gt;
+            &amp;lt;div class=&quot;modal&quot; tabindex=&quot;-1&quot; style=&quot;display:block&quot; role=&quot;dialog&quot;&amp;gt;
+                &amp;lt;div class=&quot;modal-dialog&quot;&amp;gt;
+                    &amp;lt;div class=&quot;modal-content&quot;&amp;gt;
+                        &amp;lt;div class=&quot;modal-header&quot;&amp;gt;
+                            &amp;lt;h3 class=&quot;modal-title&quot;&amp;gt;Edit Forecast&amp;lt;/h3&amp;gt;
+                            &amp;lt;!-- Button to close the popup --&amp;gt;
+                            &amp;lt;button type=&quot;button&quot; class=&quot;close&quot;
+                                    @onclick=&quot;ClosePopup&quot;&amp;gt;
+                                &amp;lt;span aria-hidden=&quot;true&quot;&amp;gt;X&amp;lt;/span&amp;gt;
+                            &amp;lt;/button&amp;gt;
+                        &amp;lt;/div&amp;gt;
+                        &amp;lt;!-- Edit form for the current forecast --&amp;gt;
+                        &amp;lt;div class=&quot;modal-body&quot;&amp;gt;
+                            &amp;lt;input class=&quot;form-control&quot; type=&quot;text&quot;
+                                    placeholder=&quot;Celsius forecast&quot;
+                                    @bind=&quot;objWeatherForecast.TemperatureC&quot; /&amp;gt;
+                            &amp;lt;input class=&quot;form-control&quot; type=&quot;text&quot;
+                                    placeholder=&quot;Fahrenheit forecast&quot;
+                                    @bind=&quot;objWeatherForecast.TemperatureF&quot; /&amp;gt;
+                            &amp;lt;input class=&quot;form-control&quot; type=&quot;text&quot;
+                                    placeholder=&quot;Summary&quot;
+                                    @bind=&quot;objWeatherForecast.Summary&quot; /&amp;gt;
+                            &amp;lt;br /&amp;gt;
+                            &amp;lt;!-- Button to save the forecast --&amp;gt;
+                            &amp;lt;button class=&quot;btn btn-primary&quot;
+                                    @onclick=&quot;SaveForecast&quot;&amp;gt;
+                                Save
+                            &amp;lt;/button&amp;gt;
+                        &amp;lt;/div&amp;gt;
+                    &amp;lt;/div&amp;gt;
+                &amp;lt;/div&amp;gt;
+            &amp;lt;/div&amp;gt;
+        }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This adds a form (that will be displayed a popup because the class for the DIV is modal), that allows the user to enter (and later edit) data for a forecast.&lt;/p&gt;
+
+&lt;p&gt;We do not need JavaScript to make this &lt;strong&gt;popup&lt;/strong&gt; show. We only need to wrap this code with:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dotnetcli&quot;&gt;     @if (ShowPopup)
+        {
+            ...
+        }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;When the &lt;strong&gt;ShowPopup&lt;/strong&gt; value is true the &lt;strong&gt;popup&lt;/strong&gt; will show. When the value is false, the &lt;strong&gt;popup&lt;/strong&gt; will disappear.&lt;/p&gt;
+
+&lt;p&gt;Add the following code to the &lt;em&gt;@code&lt;/em&gt; section:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dotnetcli&quot;&gt;
+
+    WeatherForecast objWeatherForecast = new WeatherForecast();
+    bool ShowPopup = false;
+    void ClosePopup()
+    {
+        // Close the Popup
+        ShowPopup = false;
+    }
+    void AddNewForecast()
+    {
+        // Make new forecast
+        objWeatherForecast = new WeatherForecast();
+        // Set Id to 0 so we know it is a new record
+        objWeatherForecast.Id = 0;
+        // Open the Popup
+        ShowPopup = true;
+    }
+    async Task SaveForecast()
+    {
+        // Close the Popup
+        ShowPopup = false;
+        // Get the current user
+        var user = (await authenticationStateTask).User;
+        // A new forecast will have the Id set to 0
+        if (objWeatherForecast.Id == 0)
+        {
+            // Create new forecast
+            WeatherForecast objNewWeatherForecast = new WeatherForecast();
+            objNewWeatherForecast.Date = System.DateTime.Now;
+            objNewWeatherForecast.Summary = objWeatherForecast.Summary;
+            objNewWeatherForecast.TemperatureC =
+            Convert.ToInt32(objWeatherForecast.TemperatureC);
+            objNewWeatherForecast.TemperatureF =
+            Convert.ToInt32(objWeatherForecast.TemperatureF);
+            objNewWeatherForecast.UserName = user.Identity.Name;
+            // Save the result
+            var result =
+            @Service.CreateForecastAsync(objNewWeatherForecast);
+        }
+        else
+        {
+            // This is an update
+        }
+        // Get the forecasts for the current user
+        forecasts =
+        await @Service.GetForecastAsync(user.Identity.Name);
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/59.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When you run the project, you can click the &lt;strong&gt;Add New Forecast&lt;/strong&gt; button to add an entry.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/60.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The form only requires a &lt;strong&gt;Fahrenheit, Celsius, and a summary&lt;/strong&gt;, because the other values (&lt;em&gt;date and username&lt;/em&gt;), will be set by the code.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/61.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After clicking the &lt;strong&gt;Save&lt;/strong&gt; button, the entry is saved to the database and displayed.&lt;/p&gt;
+
+&lt;h2 id=&quot;updating-the-data&quot;&gt;Updating The Data&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/62.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Open the &lt;strong&gt;WeatherForecastService.cs&lt;/strong&gt; file and &lt;strong&gt;add&lt;/strong&gt; the following method:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dotnetcli&quot;&gt;     public Task&amp;lt;bool&amp;gt;
+            UpdateForecastAsync(WeatherForecast objWeatherForecast)
+        {
+            var ExistingWeatherForecast =
+                _context.WeatherForecast
+                .Where(x =&amp;gt; x.Id == objWeatherForecast.Id)
+                .FirstOrDefault();
+            if (ExistingWeatherForecast != null)
+            {
+                ExistingWeatherForecast.Date =
+                    objWeatherForecast.Date;
+                ExistingWeatherForecast.Summary =
+                    objWeatherForecast.Summary;
+                ExistingWeatherForecast.TemperatureC =
+                    objWeatherForecast.TemperatureC;
+                ExistingWeatherForecast.TemperatureF =
+                    objWeatherForecast.TemperatureF;
+                _context.SaveChanges();
+            }
+            else
+            {
+                return Task.FromResult(false);
+            }
+            return Task.FromResult(true);
+        }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/63.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Open the &lt;strong&gt;FetchData.razor&lt;/strong&gt; file.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Replace&lt;/strong&gt; the existing &lt;strong&gt;table&lt;/strong&gt; element with the following markup that adds an edit button in the last column (that calls the &lt;strong&gt;EditForecast&lt;/strong&gt; method we will add in the next step):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dotnetcli&quot;&gt;
+    &amp;lt;table class=&quot;table&quot;&amp;gt;
+        &amp;lt;thead&amp;gt;
+            &amp;lt;tr&amp;gt;
+                &amp;lt;th&amp;gt;Date&amp;lt;/th&amp;gt;
+                &amp;lt;th&amp;gt;Temp. (C)&amp;lt;/th&amp;gt;
+                &amp;lt;th&amp;gt;Temp. (F)&amp;lt;/th&amp;gt;
+                &amp;lt;th&amp;gt;Summary&amp;lt;/th&amp;gt;
+                &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;
+            &amp;lt;/tr&amp;gt;
+        &amp;lt;/thead&amp;gt;
+        &amp;lt;tbody&amp;gt;
+            @foreach (var forecast in forecasts)
+            {
+                &amp;lt;tr&amp;gt;
+                    &amp;lt;td&amp;gt;@forecast.Date.Value.ToShortDateString()&amp;lt;/td&amp;gt;
+                    &amp;lt;td&amp;gt;@forecast.TemperatureC&amp;lt;/td&amp;gt;
+                    &amp;lt;td&amp;gt;@forecast.TemperatureF&amp;lt;/td&amp;gt;
+                    &amp;lt;td&amp;gt;@forecast.Summary&amp;lt;/td&amp;gt;
+                    &amp;lt;td&amp;gt;
+                        &amp;lt;!-- Edit the current forecast --&amp;gt;
+                        &amp;lt;button class=&quot;btn btn-primary&quot;
+                                @onclick=&quot;(() =&amp;gt; EditForecast(forecast))&quot;&amp;gt;
+                            Edit
+                        &amp;lt;/button&amp;gt;
+                    &amp;lt;/td&amp;gt;
+                &amp;lt;/tr&amp;gt;
+            }
+        &amp;lt;/tbody&amp;gt;
+    &amp;lt;/table&amp;gt;
+
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Add the following code to the &lt;em&gt;@code&lt;/em&gt; section:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dotnetcli&quot;&gt;    void EditForecast(WeatherForecast weatherForecast)
+    {
+        // Set the selected forecast
+        // as the current forecast
+        objWeatherForecast = weatherForecast;
+        // Open the Popup
+        ShowPopup = true;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This sets the current record to the &lt;strong&gt;objWeatherForecast&lt;/strong&gt; object that the &lt;strong&gt;popup&lt;/strong&gt; is bound to, and opens the &lt;strong&gt;popup&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Finally, change the existing &lt;strong&gt;SaveForecast&lt;/strong&gt; method to the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dotnetcli&quot;&gt;    
+    async Task SaveForecast()
+    {
+        // Close the Popup
+        ShowPopup = false;
+        // Get the current user
+        var user = (await authenticationStateTask).User;
+        // A new forecast will have the Id set to 0
+        if (objWeatherForecast.Id == 0)
+        {
+            // Create new forecast
+            WeatherForecast objNewWeatherForecast = new WeatherForecast();
+            objNewWeatherForecast.Date = System.DateTime.Now;
+            objNewWeatherForecast.Summary = objWeatherForecast.Summary;
+            objNewWeatherForecast.TemperatureC =
+            Convert.ToInt32(objWeatherForecast.TemperatureC);
+            objNewWeatherForecast.TemperatureF =
+            Convert.ToInt32(objWeatherForecast.TemperatureF);
+            objNewWeatherForecast.UserName = user.Identity.Name;
+            // Save the result
+            var result =
+            @Service.CreateForecastAsync(objNewWeatherForecast);
+        }
+        else
+        {
+            // This is an update
+            var result =
+            @Service.UpdateForecastAsync(objWeatherForecast);
+        }
+        // Get the forecasts for the current user
+        forecasts =
+        await @Service.GetForecastAsync(user.Identity.Name);
+    }
+
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This simply adds one line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dotnetcli&quot;&gt;    // This is an update
+    var result =  @Service.UpdateForecastAsync(objWeatherForecast);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To the existing method to handle an update rather than an insert.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/64.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When we run the application, we now have an &lt;strong&gt;Edit button&lt;/strong&gt; to edit the existing record.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/65.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The existing record will display in the &lt;strong&gt;popup&lt;/strong&gt;, allowing us to &lt;em&gt;edit the data and save it&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/66.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The updated record is then displayed in the table.&lt;/p&gt;
+
+&lt;h2 id=&quot;deleting-the-data&quot;&gt;Deleting The Data&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/67c.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Open the &lt;strong&gt;WeatherForecastService.cs&lt;/strong&gt; file and &lt;strong&gt;add&lt;/strong&gt; the following method:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dotnetcli&quot;&gt;
+    public Task&amp;lt;bool&amp;gt;
+            DeleteForecastAsync(WeatherForecast objWeatherForecast)
+    {
+        var ExistingWeatherForecast =
+            _context.WeatherForecast
+            .Where(x =&amp;gt; x.Id == objWeatherForecast.Id)
+            .FirstOrDefault();
+        if (ExistingWeatherForecast != null)
+        {
+            _context.WeatherForecast.Remove(ExistingWeatherForecast);
+            _context.SaveChanges();
+        }
+        else
+        {
+            return Task.FromResult(false);
+        }
+        return Task.FromResult(true);
+    }
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/68.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Open the &lt;strong&gt;FetchData.razor&lt;/strong&gt; file.&lt;/p&gt;
+
+&lt;p&gt;Add code markup for a &lt;strong&gt;Delete&lt;/strong&gt; button under the code markup for the current &lt;strong&gt;Save&lt;/strong&gt; button in the &lt;strong&gt;popup&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dotnetcli&quot;&gt;
+    &amp;lt;!-- Only show delete button if not a new record --&amp;gt;
+        @if (objWeatherForecast.Id &amp;gt; 0)
+        {
+            &amp;lt;!-- Button to delete the forecast --&amp;gt;
+            &amp;lt;button class=&quot;btn btn-primary&quot;
+                    @onclick=&quot;DeleteForecast&quot;&amp;gt;
+                Delete
+            &amp;lt;/button&amp;gt;
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Add the following code to the &lt;em&gt;@code&lt;/em&gt; section:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dotnetcli&quot;&gt;
+    async Task DeleteForecast()
+    {
+        // Close the Popup
+        ShowPopup = false;
+        // Get the current user
+        var user = (await authenticationStateTask).User;
+        // Delete the forecast
+        var result = @Service.DeleteForecastAsync(objWeatherForecast);
+        // Get the forecasts for the current user
+        forecasts =
+        await @Service.GetForecastAsync(user.Identity.Name);
+    }
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/69.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When we run the code and click the &lt;strong&gt;Edit&lt;/strong&gt; button…&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/70.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;… we now see a &lt;strong&gt;Delete&lt;/strong&gt; button that will &lt;em&gt;delete&lt;/em&gt; the record.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/71.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;However, when we click the &lt;strong&gt;Add New Forecast&lt;/strong&gt; button that opens the same &lt;strong&gt;popup&lt;/strong&gt;…&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/72.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The delete button does not display (because there is no record to delete at this point).&lt;/p&gt;
+
+&lt;h2 id=&quot;use-code-behind-method-using-partial-class-support&quot;&gt;Use Code Behind Method Using Partial Class Support&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/3/73.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We can code our &lt;strong&gt;.razor&lt;/strong&gt; pages using an &lt;em&gt;@code&lt;/em&gt; block with &lt;strong&gt;HTML markup&lt;/strong&gt; in a single file, or with the &lt;strong&gt;C#&lt;/strong&gt; code placed in a &lt;em&gt;code-behind&lt;/em&gt; file defined as a &lt;strong&gt;partial class&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Create a new class called &lt;strong&gt;FetchData.razor.cs&lt;/strong&gt; using the following code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-dotnetcli&quot;&gt;
+using EndToEndDB.Data.EndToEnd;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+namespace EndToEnd.Pages
+{
+    public partial class FetchData
+    {
+        // AuthenticationState is available as a CascadingParameter
+        [CascadingParameter]
+        private Task&amp;lt;AuthenticationState&amp;gt; authenticationStateTask { get; set; }
+        List&amp;lt;WeatherForecast&amp;gt; forecasts;
+        protected override async Task OnInitializedAsync()
+        {
+            // Get the current user
+            var user = (await authenticationStateTask).User;
+            // Get the forecasts for the current user
+            // We access WeatherForecastService using @Service
+            forecasts = await @Service.GetForecastAsync(user.Identity.Name);
+        }
+        WeatherForecast objWeatherForecast = new WeatherForecast();
+        bool ShowPopup = false;
+        void ClosePopup()
+        {
+            // Close the Popup
+            ShowPopup = false;
+        }
+        void AddNewForecast()
+        {
+            // Make new forecast
+            objWeatherForecast = new WeatherForecast();
+            // Set Id to 0 so we know it is a new record
+            objWeatherForecast.Id = 0;
+            // Open the Popup
+            ShowPopup = true;
+        }
+        async Task SaveForecast()
+        {
+            // Close the Popup
+            ShowPopup = false;
+            // Get the current user
+            var user = (await authenticationStateTask).User;
+            // A new forecast will have the Id set to 0
+            if (objWeatherForecast.Id == 0)
+            {
+                // Create new forecast
+                WeatherForecast objNewWeatherForecast = new WeatherForecast();
+                objNewWeatherForecast.Date = System.DateTime.Now;
+                objNewWeatherForecast.Summary = objWeatherForecast.Summary;
+                objNewWeatherForecast.TemperatureC =
+                Convert.ToInt32(objWeatherForecast.TemperatureC);
+                objNewWeatherForecast.TemperatureF =
+                Convert.ToInt32(objWeatherForecast.TemperatureF);
+                objNewWeatherForecast.UserName = user.Identity.Name;
+                // Save the result
+                var result =
+                @Service.CreateForecastAsync(objNewWeatherForecast);
+            }
+            else
+            {
+                // This is an update
+                var result =
+                @Service.UpdateForecastAsync(objWeatherForecast);
+            }
+            // Get the forecasts for the current user
+            forecasts =
+            await @Service.GetForecastAsync(user.Identity.Name);
+        }
+        void EditForecast(WeatherForecast weatherForecast)
+        {
+            // Set the selected forecast
+            // as the current forecast
+            objWeatherForecast = weatherForecast;
+            // Open the Popup
+            ShowPopup = true;
+        }
+        async Task DeleteForecast()
+        {
+            // Close the Popup
+            ShowPopup = false;
+            // Get the current user
+            var user = (await authenticationStateTask).User;
+            // Delete the forecast
+            var result = @Service.DeleteForecastAsync(objWeatherForecast);
+            // Get the forecasts for the current user
+            forecasts =
+            await @Service.GetForecastAsync(user.Identity.Name);
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Remove the entire &lt;em&gt;@code&lt;/em&gt; bock from the &lt;strong&gt;FetchData.razor&lt;/strong&gt; page.&lt;/p&gt;
+
+&lt;p&gt;The application will still behave the same.&lt;/p&gt;
+
+&lt;h2 id=&quot;links&quot;&gt;Links&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://blazor.net/&quot;&gt;Blazor.net&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/aspnet/core/security/blazor/?view=aspnetcore-3.0&amp;amp;tabs=visual-studio&quot;&gt;ASP.NET Core Blazor authentication and authorization&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools&quot;&gt;EF Core Power Tools&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/aspnet/AspNetCore/issues/5496&quot;&gt;OwningComponentBase (background)&lt;/a&gt;&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Creating A Step-By-Step End-To-End Database Server-Side Blazor Application</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aws_cloud.png" /></entry><entry><title type="html">The service desk with bots using Amazon Lex and Amazon Connect (Part 1)</title><link href="http://localhost:4000/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-1" rel="alternate" type="text/html" title="The service desk with bots using Amazon Lex and Amazon Connect (Part 1)" /><published>2020-02-02T11:41:00+00:00</published><updated>2020-02-02T11:41:00+00:00</updated><id>http://localhost:4000/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-1</id><content type="html" xml:base="http://localhost:4000/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-1">&lt;h2 id=&quot;the-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-1&quot;&gt;The service desk with bots using Amazon Lex and Amazon Connect (Part 1)&lt;/h2&gt;
 
 &lt;p&gt;What! Is this guy for real? Does he really think he can replace the front line of IT with pre-canned conversations?” I must admit, it’s a bold statement. The IT Service Desk has been around for years and has been the foot in the door for most of us in the IT industry. It’s the face of IT operations and plays an important role in ensuring an organisation’s staff can perform to the best of their abilities. But what if we could take some of the repetitive tasks the service desk performs and automate them? Not only would we be saving on head count costs, we would be able to ensure correct policies and procedures are followed to uphold security and compliance. The aim of this blog is to provide a working example of the automation of one service desk scenario to show how easy and accessible the technology is, and how it can be applied to various use cases.&lt;/p&gt;
 
@@ -2274,396 +3232,4 @@ You may also like: &lt;strong&gt;How to Choose the Right Cloud Deployment Model 
 
 &lt;p&gt;The key to using the above methods and any other cost optimization ideas is to have a proactive approach for your custom software development practices. These methods are some of the quintessential Cloud cost optimization techniques you can inculcate in your regular tasks.&lt;/p&gt;
 
-&lt;p&gt;We’ve developed this AWS cloud cost optimization guide by closely understanding the existing cost and what changes are critical in both estimating and delivering real cost savings. We hope these will prove useful to you as well.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Cloud Cost Optimization Strategies (Even AWS won’t Tell you!)</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aws_cloud.png" /></entry><entry><title type="html">Authenticate applications through facial recognition with Amazon Cognito and Amazon Rekognition</title><link href="http://localhost:4000/blog/authenticate-applications-through-facial-recognition-with-amazon-cognito-and-amazon-rekognition" rel="alternate" type="text/html" title="Authenticate applications through facial recognition with Amazon Cognito and Amazon Rekognition" /><published>2020-01-25T10:41:00+00:00</published><updated>2020-01-25T10:41:00+00:00</updated><id>http://localhost:4000/blog/amzon-cognito-Rekognition-auth</id><content type="html" xml:base="http://localhost:4000/blog/authenticate-applications-through-facial-recognition-with-amazon-cognito-and-amazon-rekognition">&lt;h2 id=&quot;authenticate-applications-through-facial-recognition-with-amazon-cognito-and-amazon-rekognition&quot;&gt;Authenticate applications through facial recognition with Amazon Cognito and Amazon Rekognition&lt;/h2&gt;
-
-&lt;p&gt;With increased use of different applications, social networks, financial platforms, emails and cloud storage solutions, managing different passwords and credentials can become a burden. In many cases, sharing one password across all these applications and platforms is just not possible. Different security standards may be required, such as passwords composed by only numeric characters, password renewal policies, and providing security questions.&lt;/p&gt;
-
-&lt;p&gt;But what if you could enhance the ways users authenticate themselves in their application in a more convenient, simpler and above everything, more secure way? In this post, I will show how to leverage Amazon Cognito user pools to customize your authentication flows and allow logging into your applications using Amazon Rekognition for facial recognition using a sample application.&lt;/p&gt;
-
-&lt;h2 id=&quot;solution-overview&quot;&gt;Solution Overview&lt;/h2&gt;
-
-&lt;p&gt;We will build a Mobile or Web application that allows users to sign in using an email and require the user to upload a document containing his or her photo. We will use the &lt;strong&gt;AWS Amplify Framework&lt;/strong&gt; to integrate our Front-End application with &lt;strong&gt;Amazon S3&lt;/strong&gt; and store this image in a secure and encrypted bucket.  Our solution will trigger a Lambda function for each new image uploaded to this bucket so that we can index the images inside Amazon Rekognition and save the metadata in a &lt;strong&gt;DynamoDB&lt;/strong&gt; table for later queries.&lt;/p&gt;
-
-&lt;p&gt;For authentication, this solution uses Amazon Cognito User Pools combined with Lambda functions to customize the authentication flows together with the &lt;strong&gt;Amazon Rekognition CompareFaces&lt;/strong&gt; API to identify the confidence level between user photos provided during Sign Up and Sign In. Here is the architecture of the solution:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/12/cognito-rekognition-architecure.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Here’s a step-wise description of the above data-flow architecture diagram:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; User signs up into the Cognito User Pool.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;2.&lt;/strong&gt; User uploads – during Sign Up – a document image containing his/her photo and name, to an S3 Bucket (e.g. Passport).&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3.&lt;/strong&gt; A Lambda function is triggered containing the uploaded image as payload.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;4.&lt;/strong&gt; The function first indexes the image in a specific Amazon Rekognition Collection to store these user documents.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;5.&lt;/strong&gt; The same function then persists in a DynamoDB table as the indexed image metadata, together with the email registered in Amazon Cognito User Pool for later queries.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;6.&lt;/strong&gt; User enters an email in the custom Sign In page, which makes a request to Cognito User Pool.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;7.&lt;/strong&gt; Amazon Cognito User Pool triggers the “Define Auth Challenge” trigger that determines which custom challenges are to be created at this moment.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;8.&lt;/strong&gt; The User Pool then invokes the “Create Auth Challenge” trigger. This trigger queries the DynamoDB table for the user containing the given email id to retrieve its indexed photo from the Amazon Rekognition Collection.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;9.&lt;/strong&gt; The User Pool invokes the “Verify Auth Challenge” trigger. This verifies if the challenge was indeed successfully completed; if it finds an image, it will compare it with the photo taken during Sign In to measure its confidence between both the images.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;10.&lt;/strong&gt; The User Pool, once again, invokes the “Define Auth Challenge” trigger that verifies if the challenge was answered. No no further challenges are created, if the ‘Define Auth challenge’ is able to verify the user-supplied answer. The trigger response, back to the User Poll will include an “issueTokens:true” attribute to authenticate itself and finally issue the user a JSON Web Token (JWT) (see step 6).&lt;/p&gt;
-
-&lt;h3 id=&quot;serverless-application-and-the-different-lambdas-invoked&quot;&gt;Serverless Application and the different Lambdas invoked&lt;/h3&gt;
-
-&lt;p&gt;The following solution is available as a Serverless application. You can deploy it directly from AWS Serverless Application Repository. Core parts of this implementation are:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Users are required to use a valid email as user name.&lt;/li&gt;
-  &lt;li&gt;The solution includes a Cognito App Client configured to “Only allow custom authentication” as Amazon Cognito requires a password for user sign up. We are creating a random password to these users, since we don’t want them to Sign In using these passwords later.&lt;/li&gt;
-  &lt;li&gt;We use two Amazon S3 Buckets: one to store document images uploaded during Sign Up and one to store user photos taken when Signing In for face comparisons.&lt;/li&gt;
-  &lt;li&gt;We use two different Lambda runtimes (Python and Node.js) to demonstrate how AWS Serverless Application Model (SAM) handles multiple runtimes in the same project and development environment for the developer’s perspective.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The following Lambda functions are triggered to implement the images indexing in Amazon Rekognition and customize Amazon Cognito User Pools custom authentication challenges:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;1. Create Rekognition Collection&lt;/strong&gt; (Python 3.6)– This Lambda function gets triggered only once, at the beginning of deployment, to create a Custom Collection in Amazon Rekognition to index documents for user Sign Ups.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;2. Index Images&lt;/strong&gt; (Python 3.6) – This Lambda function gets triggered for each new document upload to Amazon S3 during Sign Up and indexes the uploaded document in the Amazon Rekognition Collection (mentioned in the previous step) and then persists its metadata into DynamoDB.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3.Define Auth Challenge&lt;/strong&gt; (Node.js 8.10) – This Lambda function tracks the custom authentication flow, which is comparable to a decider function in a state machine. It determines which challenges are presented, in what order, to the user. At the end, it reports back to the user pool if the user succeeded or failed authentication. The Lambda function is invoked at the start of the custom authentication flow and also after each completion of the “Verify Auth Challenge Response” trigger.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;4. Create Auth Challenge&lt;/strong&gt; (Node.js 8.10) – This Lambda function gets invoked, based on the instruction of the “Define Auth Challenge” trigger, to create a unique challenge for the user. We will use this function to query DynamoDB for existing user records and if their given metadata are valid.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;5. Verify Auth Challenge Response&lt;/strong&gt; (Node.js 8.10) – This Lambda function gets invoked by the user pool when the user provides the answer to the challenge. Its only job is to determine if that answer is correct. In this case, it compares both images provided during Sign Up and Sign In, using the Amazon Rekognition CompareFaces API and considers a API responses containing a confidence level equals or greater than 90% as a valid challenge response&lt;/p&gt;
-
-&lt;p&gt;In the sections below, let’s step through the code for the different Lambda functions we described above.&lt;/p&gt;
-
-&lt;h3 id=&quot;1-create-an-amazon-rekognition-collection&quot;&gt;1. Create an Amazon Rekognition Collection&lt;/h3&gt;
-
-&lt;p&gt;As described above, this function creates a Collection in Amazon Rekognition that will later receive user photos uploaded during Sign Up.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;boto3&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;handler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;maxResults&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;collectionId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'COLLECTION_NAME'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    
-    &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;boto3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'rekognition'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;#Create a collection
-&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Creating collection:'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;collectionId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create_collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CollectionId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;collectionId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Collection ARN: '&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'CollectionArn'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Status code: '&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'StatusCode'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Done...'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;2-index-images-into-amazon-rekognition&quot;&gt;2. Index Images into Amazon Rekognition&lt;/h3&gt;
-
-&lt;p&gt;This function is responsible for receiving uploaded images during the sign up from users and index the images in the Amazon Rekognition Collection created by the Lambda described above to persist its metadata in an Amazon Dynamodb table.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;__future__&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;print_function&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;boto3&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;decimal&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Decimal&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;json&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;urllib&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;dynamodb&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;boto3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'dynamodb'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;s3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;boto3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'s3'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;rekognition&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;boto3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'rekognition'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# --------------- Helper Functions ------------------
-&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;index_faces&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bucket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rekognition&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index_faces&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;S3Object&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Bucket&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bucket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;Name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}},&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;CollectionId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'COLLECTION_NAME'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;
-    
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update_index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;faceId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fullName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dynamodb&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;put_item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;TableName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tableName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;Item&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;'RekognitionId'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'S'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;faceId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;'FullName'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'S'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fullName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
-    
-&lt;span class=&quot;c1&quot;&gt;# --------------- Main handler ------------------
-&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;handler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;# Get the object from the event
-&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;bucket&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Records'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'s3'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'bucket'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;urllib&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unquote_plus&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Records'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'s3'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'object'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'key'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;encode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'utf8'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-
-        &lt;span class=&quot;c1&quot;&gt;# Calls Amazon Rekognition IndexFaces API to detect faces in S3 object 
-&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;# to index faces into specified collection
-&lt;/span&gt;        
-        &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index_faces&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bucket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        
-        &lt;span class=&quot;c1&quot;&gt;# Commit faceId and full name object metadata to DynamoDB
-&lt;/span&gt;        
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'ResponseMetadata'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'HTTPStatusCode'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;faceId&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'FaceRecords'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Face'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'FaceId'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head_object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Bucket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bucket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Metadata'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'email'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;update_index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'COLLECTION_NAME'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;faceId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Error processing object {} from bucket {}. &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bucket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;3-define-auth-challenge-function&quot;&gt;3. Define Auth Challenge Function&lt;/h2&gt;
-
-&lt;p&gt;This is the decider function that manages the authentication flow. In the session array that’s provided to this Lambda function (event.request.session), the entire state of the authentication flow is present. If it’s empty, it means the custom authentication flow just started. If it has items, the custom authentication flow is underway, i.e. a challenge was presented to the user, the user provided an answer, and it was verified to be right or wrong. In either case, the decider function has to decide what to do next:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-node.js&quot;&gt;exports.handler = async (event, context) =&amp;gt; {
-
-    console.log(&quot;Define Auth Challenge: &quot; + JSON.stringify(event));
-
-    if (event.request.session &amp;amp;&amp;amp;
-        event.request.session.length &amp;gt;= 3 &amp;amp;&amp;amp;
-        event.request.session.slice(-1)[0].challengeResult === false) {
-        // The user provided a wrong answer 3 times; fail auth
-        event.response.issueTokens = false;
-        event.response.failAuthentication = true;
-    } else if (event.request.session &amp;amp;&amp;amp;
-        event.request.session.length &amp;amp;&amp;amp;
-        event.request.session.slice(-1)[0].challengeResult === true) {
-        // The user provided the right answer; succeed auth
-        event.response.issueTokens = true;
-        event.response.failAuthentication = false;
-    } else {
-        // The user did not provide a correct answer yet; present challenge
-        event.response.issueTokens = false;
-        event.response.failAuthentication = false;
-        event.response.challengeName = 'CUSTOM_CHALLENGE';
-    }
-
-    return event;
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;4-create-auth-challenge-function&quot;&gt;4. Create Auth Challenge Function&lt;/h3&gt;
-
-&lt;p&gt;This function queries DynamoDB for a record containing the given e-mail to retrieve its image ID inside Amazon Rekognition Collection and define as a challenge that the user must provide a photo that relates to the same person.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-node.js&quot;&gt;const aws = require('aws-sdk');
-const dynamodb = new aws.DynamoDB.DocumentClient();
-
-exports.handler = async (event, context) =&amp;gt; {
-
-    console.log(&quot;Create auth challenge: &quot; + JSON.stringify(event));
-
-    if (event.request.challengeName == 'CUSTOM_CHALLENGE') {
-        event.response.publicChallengeParameters = {};
-
-        let answer = '';
-        // Querying for Rekognition ids for the e-mail provided
-        const params = {
-            TableName: process.env.COLLECTION_NAME,
-            IndexName: &quot;FullName-index&quot;,
-            ProjectionExpression: &quot;RekognitionId&quot;,
-            KeyConditionExpression: &quot;FullName = :userId&quot;,
-            ExpressionAttributeValues: {
-                &quot;:userId&quot;: event.request.userAttributes.email
-            }
-        }
-        
-        try {
-            const data = await dynamodb.query(params).promise();
-            data.Items.forEach(function (item) {
-                
-                answer = item.RekognitionId;
-
-                event.response.publicChallengeParameters.captchaUrl = answer;
-                event.response.privateChallengeParameters = {};
-                event.response.privateChallengeParameters.answer = answer;
-                event.response.challengeMetadata = 'REKOGNITION_CHALLENGE';
-                
-                console.log(&quot;Create Challenge Output: &quot; + JSON.stringify(event));
-                return event;
-            });
-        } catch (err) {
-            console.error(&quot;Unable to query. Error:&quot;, JSON.stringify(err, null, 2));
-            throw err;
-        }
-    }
-    return event;
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&quot;5-verify-auth-challenge-response-function&quot;&gt;5. Verify Auth Challenge Response Function&lt;/h3&gt;
-
-&lt;p&gt;This function verifies within Amazon Rekognition if it can find an image with the confidence level equals or over 90% compared to the image uploaded during Sign In, and if this image refers to the user claims to be through the given e-mail address.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-Node.js&quot;&gt;var aws = require('aws-sdk');
-var rekognition = new aws.Rekognition();
-
-exports.handler = async (event, context) =&amp;gt; {
-
-    console.log(&quot;Verify Auth Challenge: &quot; + JSON.stringify(event));
-    let userPhoto = '';
-    event.response.answerCorrect = false;
-
-    // Searching existing faces indexed on Rekognition using the provided photo on s3
-
-    const objectName = event.request.challengeAnswer;
-    const params = {
-        &quot;CollectionId&quot;: process.env.COLLECTION_NAME,
-        &quot;Image&quot;: {
-            &quot;S3Object&quot;: {
-                &quot;Bucket&quot;: process.env.BUCKET_SIGN_UP,
-                &quot;Name&quot;: objectName
-            }
-        },
-        &quot;MaxFaces&quot;: 1,
-        &quot;FaceMatchThreshold&quot;: 90
-    };
-    try {
-        const data = await rekognition.searchFacesByImage(params).promise();
-
-        // Evaluates if Rekognition was able to find a match with the required 
-        // confidence threshold
-
-        if (data.FaceMatches[0]) {
-            console.log('Face Id: ' + data.FaceMatches[0].Face.FaceId);
-            console.log('Similarity: ' + data.FaceMatches[0].Similarity);
-            userPhoto = data.FaceMatches[0].Face.FaceId;
-            if (userPhoto) {
-                if (event.request.privateChallengeParameters.answer == userPhoto) {
-                    event.response.answerCorrect = true;
-                }
-            }
-        }
-    } catch (err) {
-        console.error(&quot;Unable to query. Error:&quot;, JSON.stringify(err, null, 2));
-        throw err;
-    }
-    return event;
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;the-front-end-application&quot;&gt;The Front End Application&lt;/h3&gt;
-&lt;p&gt;Now that we’ve stepped through all the Lambdas, let’s create a custom Sign In page, in order to orchestrate and test our scenario. You can use AWS Amplify Framework to integrate your Sign In page to Amazon Cognito and the photo uploads to Amazon S3.&lt;/p&gt;
-
-&lt;p&gt;The AWS Amplify Framework allows you to implement your application using your favourite framework (React, Angular, Vue, HTML/JavaScript, etc). You can customize the snippets below as per your requirements. The snippets below demonstrate how to import and initialize AWS Amplify Framework on React:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import Amplify from 'aws-amplify';
-
-Amplify.configure({
-  Auth: {
-    region: 'your region',
-    userPoolId: 'your userPoolId',
-    userPoolWebClientId: 'your clientId',
-  },
-  Storage: { 
-    region: 'your region', 
-    bucket: 'your sign up bucket'
-  }
-});
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;signing-up&quot;&gt;Signing Up&lt;/h3&gt;
-
-&lt;p&gt;For users to be able to sign themselves up, as mentioned above, we will “generate” a random password on their behalf since it is required by Amazon Cognito for user sign up. However, once we create our Cognito User Pool Client, we ensure that authentication only happens following the custom authentication flow – never using user and password.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import { Auth } from 'aws-amplify';
-
-signUp = async event =&amp;gt; {
-  const params = {
-    username: this.state.email,
-    password: getRandomString(30),
-    attributes: {
-      name: this.state.fullName
-    }
-  };
-  await Auth.signUp(params);
-};
-
-function getRandomString(bytes) {
-  const randomValues = new Uint8Array(bytes);
-  window.crypto.getRandomValues(randomValues);
-  return Array.from(randomValues).map(intToHex).join('');
-}
-
-function intToHex(nr) {
-  return nr.toString(16).padStart(2, '0');
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h3 id=&quot;signing-in&quot;&gt;Signing in&lt;/h3&gt;
-&lt;p&gt;Starts the custom authentication flow to the user.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import { Auth } from &quot;aws-amplify&quot;;
-
-signIn = () =&amp;gt; { 
-    try { 
-        user = await Auth.signIn(this.state.email);
-        this.setState({ user });
-    } catch (e) { 
-        console.log('Oops...');
-    } 
-};
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;answering-the-custom-challenge&quot;&gt;Answering the Custom Challenge&lt;/h3&gt;
-
-&lt;p&gt;In this step, we open the camera through Browser to take a user photo and then upload it to Amazon S3, so we can start the face comparison.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import Webcam from &quot;react-webcam&quot;;
-
-// Instantiate and set webcam to open and take a screenshot
-// when user is presented with a custom challenge
-
-/* Webcam implementation goes here */
-
-
-// Retrieves file uploaded to S3 and sends as a File to Rekognition 
-// as answer for the custom challenge
-dataURLtoFile = (dataurl, filename) =&amp;gt; {
-  var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
-      bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
-  while(n--){
-      u8arr[n] = bstr.charCodeAt(n);
-  }
-  return new File([u8arr], filename, {type:mime});
-};
-
-sendChallengeAnswer = () =&amp;gt; {
-
-    // Capture image from user camera and send it to S3
-    const imageSrc = this.webcam.getScreenshot();
-    const attachment = await s3UploadPub(dataURLtoFile(imageSrc, &quot;id.png&quot;));
-    
-    // Send the answer to the User Pool
-    const answer = `public/${attachment}`;
-    user = await Auth.sendCustomChallengeAnswer(cognitoUser, answer);
-    this.setState({ user });
-    
-    try {
-        // This will throw an error if the user is not yet authenticated:
-        await Auth.currentSession();
-    } catch {
-        console.log('Apparently the user did not enter the right code');
-    }
-    
-};
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;In this blog post, we implemented an authentication mechanism using facial recognition using the custom authentication flows provided by Amazon Cognito combined with Amazon Rekognition. Depending on your organization and workload security criteria and requirements, this scenario might work from both security and user experience point of views. Additionally, we can enhance the security factor by chaining multiple Auth Challenges not only based on the user photo, but also a combination of Liveness Detection, a combination of their document numbers used for signing up and other additional MFA’s.&lt;/p&gt;
-
-&lt;p&gt;Since this is an entirely Serverless-based solution, you can customize it as your requirements arise using AWS Lambda functions. You can read more on custom authentication in our developer guide.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Authenticate applications through facial recognition with Amazon Cognito and Amazon Rekognition</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aws_cloud.png" /></entry></feed>
+&lt;p&gt;We’ve developed this AWS cloud cost optimization guide by closely understanding the existing cost and what changes are critical in both estimating and delivering real cost savings. We hope these will prove useful to you as well.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Cloud Cost Optimization Strategies (Even AWS won’t Tell you!)</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aws_cloud.png" /></entry></feed>
