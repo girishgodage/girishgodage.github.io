@@ -12,7 +12,7 @@ author: Girish Godage
 layout: posts
 prevurl: ''
 nexturl: ''
-discussion_id: 2020-03-10-azure-acticedirectoryB2C
+discussion_id: 2020-01-07-azure-acticedirectoryB2C
 ---
 
 >## What is Azure Active Directory B2C?
@@ -87,7 +87,7 @@ The primary resources you work with in an Azure AD B2C tenant are:
     * **Local accounts** that enable users to sign up and sign in with a username (or email address or other ID) and password.
 * **Keys** - Add and manage encryption keys for signing and validating tokens, client secrets, certificates, and passwords.
   
-An **Azure AD B2C tenant** is the **first resource** you need to create to get started with Azure AD B2C. Learn how in Tutorial: [**Create an Azure Active Directory B2C tenant**](azure-acticedirectoryB2C_CreateTenant).
+An **Azure AD B2C tenant** is the **first resource** you need to create to get started with Azure AD B2C. Learn how in Tutorial: [**Create an Azure Active Directory B2C tenant**]().
 
 ## Accounts in Azure AD B2C
 Azure AD B2C defines **several types of user accounts**. Azure Active Directory, Azure Active Directory **B2B**, and Azure Active Directory **B2C** share these account types.

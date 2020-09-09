@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#2A80EE">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#2A80EE">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
+<title>Register a web application in Azure Active Directory B2C &#8211; Girish Godage</title>
+<meta name="description" content="In this article, you learn how to Register a web application,Create a client secret">
+<meta name="keywords" content="AzureCloud">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all">
+
+<!-- Verifications -->
+    
+    
+        
+<!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Register a web application in Azure Active Directory B2C">
+    <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
+    <meta property="og:url" content="http://localhost:4000/blog/azure-acticedirectoryB2C_RegisterApp">
+    <meta property="og:site_name" content="Girish Godage">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@GGodage" />
+    
+    <meta name="twitter:title" content="Register a web application in Azure Active Directory B2C" />
+    <meta name="twitter:description" content="In this article, you learn how to Register a web application,Create a client secret" />
+    <meta name="twitter:url" content="http://localhost:4000/blog/azure-acticedirectoryB2C_RegisterApp" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/img/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/img/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    
+
+
+    <link rel="canonical" href="http://localhost:4000/blog/azure-acticedirectoryB2C_RegisterApp">
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
+    <!-- Bootstrap CSS-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Google fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+   
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
+    
+    <!-- animate.css-->
+    <link rel="stylesheet" href="http://localhost:4000/sitejs/animate.css/animate.css">
+    <!-- theme stylesheet-->
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="http://localhost:4000/css/custom.css" as="style">
+    <link rel="stylesheet" href="http://localhost:4000/css/comments.css" as="style">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="http://localhost:4000/img/logo-big.png">
+    <!-- Fab Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
+    
+    
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    
+    <script type="text/javascript">
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+       ga('create', 'UA-130164763-2', 'auto');
+       ga('send', 'pageview');
+    </script>
+    
+    <!-- Typed.js DONT TOUCHHHHHHHHHHHHH!-->
+    <!--<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.9/typed.min.js"></script>
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+      </script>
+      
+      <!-- START OF RELEVANT PART -->
+    <script async src="https://just-comments.com/w2.js"></script>
+    <!-- END OF RELEVANT PART -->
+
+
+</head>
+
+<body>
+    
+<!-- navbar-->
+<header class="header">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container"><a class="navbar-brand" href="http://localhost:4000"><img
+          src="http://localhost:4000/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
+          alt="logo"> <img src="http://localhost:4000/img/girish_logo.png" height="30" alt="girilogo"></a>
+      <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span
+          class="fa fa-bars" style="color: white"></span></button>
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="http://localhost:4000#home" class="nav-link  link-scroll">Home</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#about" class="nav-link link-scroll">About</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#skills" class="nav-link link-scroll">Skills</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#services" class="nav-link link-scroll">Services</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#references" class="nav-link link-scroll">My
+              work</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#contact" class="nav-link link-scroll">Contact</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000/blog" class="nav-link link-scroll">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    
+    
+    
+    <div style="background-color:Gray;">
+        <div style="padding:0;min-height:95.05vh;display:flex;font-family: Poppins, sans-serif;margin-top: 5rem;"
+            class="container">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <p class="post-title">
+                    <h1><a href="/blog/azure-acticedirectoryB2C_RegisterApp">Register a web application in Azure Active Directory B2C</a></h1>
+                </p>
+                
+                <span class="post-meta">
+              <span style="font-weight:600">March 12, 2020 Thursday</span>
+                    
+                       ( 3 minute read ) 
+                    
+                     
+                    <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">   by Girish Godage</a>
+                </span>
+                
+                <div class="site-category"> 
+                        <h5>AzureCloud</h5>
+                </div>
+                
+                <hr>
+                <div><img class="post-image" src="/img/azureAD.png" alt="Register a web application in Azure Active Directory B2C" height="250" /></div>
+                <div class="post-content">
+                    <br>                     
+                    <blockquote>
+  <h2 id="register-a-web-application-in-azure-active-directory-b2c">Register a web application in Azure Active Directory B2C</h2>
+</blockquote>
+
+<p>Before your applications can interact with Azure Active Directory B2C (Azure AD B2C), they must be registered in a tenant that you manage. This tutorial shows you how to register a web application using the Azure portal.</p>
+
+<p>In this article, you learn how to:</p>
+
+<ul>
+  <li>Register a web application</li>
+  <li>Create a client secret</li>
+</ul>
+
+<p>If you’re using a native app instead (e.g. iOS, Android, mobile &amp; desktop), learn how to register a native client application.</p>
+
+<p>If you don’t have an Azure subscription, create a <a href="https://azure.microsoft.com/free/?WT.mc_id=A261C142F">free account</a> before you begin.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>If you haven’t already created your own <a href="azure-activedirectoryB2C_CreateTenant">Azure AD B2C Tenant</a>, create one now. You can use an existing Azure AD B2C tenant.</p>
+
+<h2 id="register-a-web-application">Register a web application</h2>
+
+<p>To register an application in your Azure AD B2C tenant, you can use new unified App registrations experience</p>
+
+<ol>
+  <li>
+    <p>Sign in to the <a href="https://portal.azure.com/">Azure portal</a>.</p>
+  </li>
+  <li>
+    <p>Select the <strong>Directory + Subscription</strong> icon in the portal toolbar, and then select the directory that contains your Azure AD B2C tenant.</p>
+  </li>
+  <li>
+    <p>In the Azure portal, search for and select <strong>Azure AD B2C</strong>.</p>
+  </li>
+  <li>
+    <p>Select <strong>App registrations</strong>, and then select <strong>New registration</strong>.</p>
+  </li>
+  <li>
+    <p>Enter a <strong>Name</strong> for the application. For example, webapp1.</p>
+  </li>
+  <li>
+    <p>Under <strong>Supported account types</strong>, select <strong>Accounts in any organizational directory or any identity provider. For authenticating users with Azure AD B2C.</strong></p>
+  </li>
+  <li>
+    <p>Under <strong>Redirect URI</strong>, select <strong>Web</strong>, and then enter https://jwt.ms in the URL text box.</p>
+  </li>
+</ol>
+
+<p>The redirect URI is the endpoint to which the user is sent by the authorization server (Azure AD B2C, in this case) after completing its interaction with the user, and to which an access token or authorization code is sent upon successful authorization. In a production application, it’s typically a publicly accessible endpoint where your app is running, like https://contoso.com/auth-response. For testing purposes like this tutorial, you can set it to https://jwt.ms, a Microsoft-owned web application that displays the decoded contents of a token (the contents of the token never leave your browser). During app development, <strong>you might add the endpoint where your application listens locally, like https://localhost:5000</strong>. You can add and modify redirect URIs in your registered applications at any time.</p>
+
+<p>The following restrictions apply to redirect URIs:</p>
+
+<ul>
+  <li>The reply URL must begin with the scheme https.</li>
+  <li>The reply URL is case-sensitive. Its case must match the case of the URL path of your running application. For example, if your application includes as part of its path …/abc/response-oidc, do not specify …/ABC/response-oidc in the reply URL. Because the web browser treats paths as case-sensitive, cookies associated with …/abc/response-oidc may be excluded if redirected to the case-mismatched …/ABC/response-oidc URL.</li>
+</ul>
+
+<ol>
+  <li>
+    <p>Under Permissions, select the Grant admin consent to openid and offline_access permissions check box.</p>
+  </li>
+  <li>
+    <p>Select Register.</p>
+  </li>
+</ol>
+
+<p>Once the application registration is complete, enable the implicit grant flow:</p>
+
+<h2 id="create-a-client-secret">Create a client secret</h2>
+
+<p>If your application exchanges an authorization code for an access token, you need to create an application secret.</p>
+
+<ol>
+  <li>In the <strong>Azure AD B2C - App registrations</strong> page, select the application you created, for example webapp1.</li>
+  <li>In the left menu, under <strong>Manage</strong>, select <strong>Certificates &amp; secrets</strong>.</li>
+  <li>Select <strong>New client secret</strong>.</li>
+  <li>Enter a description for the client secret in the <strong>Description</strong> box. For example, clientsecret1.</li>
+  <li>Under <strong>Expires</strong>, select a duration for which the secret is valid, and then select <strong>Add</strong>.</li>
+  <li>Record the secret’s <strong>Value</strong>. You use this value as the application secret in your application’s code.</li>
+</ol>
+
+<h2 id="next-steps">Next steps</h2>
+<p>In this article, you learned how to:</p>
+
+<ul>
+  <li>Register a web application</li>
+  <li>Create a client secret</li>
+</ul>
+
+<p>Next, learn how to <a href="azure-acticedirectoryB2C_CreateUserFlow">create user flows</a> to enable your users to sign up, sign in, and manage their profiles.</p>
+
+
+                </div>
+
+                
+
+                <div id="disqus_thread"></div>
+                <script>
+                
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://girishgodage-github-io.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
+</button>
+<!-- Footer-->
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 text-center text-lg-left">
+                <p class="social">
+                    <a href="https://www.facebook.com/girish.godage.5" class="external facebook wow fadeInUp">
+                        <i class="fa fa-facebook"></i></a>
+                    <a href="https://instagram.com/girishgodage_007" data-wow-delay="0.2s" class="external instagram wow fadeInUp">
+                        <i class="fa fa-instagram"></i></a>
+                    <a href="https://youtube.com/girishgodage" data-wow-delay="0.4s" class="external youtube wow fadeInUp">
+                        <i class="fa fa-youtube-play"></i></a>
+                    <a href="https://twitter.com/GGodage" data-wow-delay="0.4s" class="external twitter wow fadeInUp">
+                            <i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/girishgodage" data-wow-delay="0.4s" class="external github wow fadeInUp">
+                                <i class="fa fa-github"></i></a>    
+                    <a href="mailto:girishgodage@gmail.com?subject=Hello%20Girish" data-wow-delay="0.6s" class="email wow fadeInUp">
+                        <i class="fa fa-envelope"></i></a></p>
+            </div>
+            <div class="col-12 col-md-2">
+            <h5>Quick Links</h5>
+            <ul>
+               <li><a href="http://localhost:4000#about">About</a></li>
+               <li><a href="http://localhost:4000#contact">Contact</a></li>
+               <li><a href="http://localhost:4000/sitemap.xml">Sitemap</a></li>               
+            </ul>
+         </div>
+            <div class="col-12 col-md-4 text-center text-lg-right mt-4 mt-lg-0">
+                <p> <b>©</b><script>document.write(new Date().getFullYear())</script> Girish Godage </p>
+                <p class="text-center, text-shadow"> Hosted On <a href="https://pages.github.com/">GitHub Pages</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Typed.js DONT TOUCH THIS! -->
+    <div id="typed-strings">
+    </div>
+
+        <!-- JavaScript files-->
+    <script src="http://localhost:4000/sitejs/jquery/jquery.min.js"></script>
+    <script src="http://localhost:4000/sitejs/popper.js/umd/popper.min.js"> </script>
+    <script src="http://localhost:4000/sitejs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="http://localhost:4000/sitejs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="http://localhost:4000/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.counterup/jquery.counterup.js"></script>
+    <script src="http://localhost:4000/js/front.js"></script>
+    <script src="http://localhost:4000/js/comment.js"></script>
+       <!-- Script pointing to search-script.js -->
+    <script src="http://localhost:4000/js/search-script.js" type="text/javascript"></script>
+   
+    <!-- Configuration -->
+    <script>
+         SimpleJekyllSearch({
+         searchInput: document.getElementById('search-input'),
+         resultsContainer: document.getElementById('results-container'),
+         json: 'http://localhost:4000/search.json'
+         })
+         </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC36FUDDdOTidZJ8nzS5vfE7KVyayenKPE",
+    authDomain: "githubcontactlist.firebaseapp.com",
+    databaseURL: "https://githubcontactlist.firebaseio.com",
+    projectId: "githubcontactlist",
+    storageBucket: "githubcontactlist.appspot.com",
+    messagingSenderId: "899685398702",
+    appId: "1:899685398702:web:0c23c56d2d6d40df37553f",
+    measurementId: "G-YWBRCYJYFW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script>
+   $(function() {
+      
+    //make a variable to keep track of data coming from firebase
+    var data = [];
+
+    // Reference messages collection
+      var messagesRef = firebase.database().ref('contactformmessages');  
+
+
+    //listen to data updates from firebase
+    messagesRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+        //when the data updates at firebase, put it in the data variable
+        data = snapshot.val();
+    })
+    //Entire Contact Form (handler)
+    $('#contactForm').submit(function(e) {
+      e.preventDefault();
+
+        var $form = $(this);
+        console.log("Submit to Firebase");
+
+        //disable submit button
+        $form.find("#sendForm").prop('disabled', true);
+
+        //get values to send to Firebase
+        var name = $('#name').val();
+        console.log(name);
+		
+		var surname = $('#surname').val();
+        console.log(surname);
+		
+		var email = $('#email').val();
+        console.log(email);	
+		
+		var phone = $('#phone').val();
+        console.log(phone);
+
+        var message = $('#message').val();
+        console.log(message);
+
+       
+        //take the values from the form, and put them in an object
+        var newContact = {
+         "name": name,
+			"surname": surname,
+			"email": email,
+			"phone": phone,
+         "message": message
+        }
+        //put new object in data array
+        data.push(newContact);
+        console.log(data);
+
+        //send the new data to Firebase
+        messagesRef.set(data, function(err) {
+            if (err) {
+                alert("Data no go");
+            }else{
+            $("#form-wrapper").slideToggle();
+            $('#form-success-message').slideToggle();
+			}
+        });
+
+        return false;
+    })
+   
+    
+})
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";           
+        }else
+        {
+           myBtton.style.display="none";     
+          
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+      //  document.body.scrollTop =0;
+      //  document.documentElement.scrollTop=0;
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    }
+
+</script>
+
+    
+    
+
+
+</body>
+
+</html>
