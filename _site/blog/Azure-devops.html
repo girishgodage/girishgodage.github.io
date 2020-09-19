@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#2A80EE">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#2A80EE">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
+<title>AZURE DEVOPS – MANAGE YOUR APPLICATION LIFECYCLE IN CLOUD &#8211; Girish Godage</title>
+<meta name="description" content="In this Article, we will take a look at Microsoft’s Azure DevOps offering, it’s capability as an ALM solution and will see how you can use it for your ALM journey. using Azure DevOps">
+<meta name="keywords" content="Dev-Ops">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all">
+
+<!-- Verifications -->
+    
+    
+        
+<!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="AZURE DEVOPS – MANAGE YOUR APPLICATION LIFECYCLE IN CLOUD">
+    <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
+    <meta property="og:url" content="http://localhost:4000/blog/Azure-devops">
+    <meta property="og:site_name" content="Girish Godage">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@GGodage" />
+    
+    <meta name="twitter:title" content="AZURE DEVOPS – MANAGE YOUR APPLICATION LIFECYCLE IN CLOUD" />
+    <meta name="twitter:description" content="In this Article, we will take a look at Microsoft’s Azure DevOps offering, it’s capability as an ALM solution and will see how you can use it for your ALM journey. using Azure DevOps" />
+    <meta name="twitter:url" content="http://localhost:4000/blog/Azure-devops" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/img/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/img/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    
+
+
+    <link rel="canonical" href="http://localhost:4000/blog/Azure-devops">
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
+    <!-- Bootstrap CSS-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Google fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+   
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
+    
+    <!-- animate.css-->
+    <link rel="stylesheet" href="http://localhost:4000/sitejs/animate.css/animate.css">
+    <!-- theme stylesheet-->
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="http://localhost:4000/css/custom.css" as="style">
+    <link rel="stylesheet" href="http://localhost:4000/css/comments.css" as="style">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="http://localhost:4000/img/logo-big.png">
+    <!-- Fab Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
+    
+    
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    
+    <script type="text/javascript">
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+       ga('create', 'UA-130164763-2', 'auto');
+       ga('send', 'pageview');
+    </script>
+    
+    <!-- Typed.js DONT TOUCHHHHHHHHHHHHH!-->
+    <!--<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.9/typed.min.js"></script>
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+      </script>
+      
+      <!-- START OF RELEVANT PART -->
+    <script async src="https://just-comments.com/w2.js"></script>
+    <!-- END OF RELEVANT PART -->
+
+
+</head>
+
+<body>
+    
+<!-- navbar-->
+<header class="header">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container"><a class="navbar-brand" href="http://localhost:4000"><img
+          src="http://localhost:4000/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
+          alt="logo"> <img src="http://localhost:4000/img/girish_logo.png" height="30" alt="girilogo"></a>
+      <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span
+          class="fa fa-bars" style="color: white"></span></button>
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="http://localhost:4000#home" class="nav-link  link-scroll">Home</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#about" class="nav-link link-scroll">About</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#skills" class="nav-link link-scroll">Skills</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#services" class="nav-link link-scroll">Services</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#references" class="nav-link link-scroll">My
+              work</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#contact" class="nav-link link-scroll">Contact</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000/blog" class="nav-link link-scroll">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    
+    
+    
+    <div style="background-color:Gray;">
+        <div style="padding:0;min-height:95.05vh;display:flex;font-family: Poppins, sans-serif;margin-top: 5rem;"
+            class="container">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <p class="post-title">
+                    <h1><a href="/blog/Azure-devops">AZURE DEVOPS – MANAGE YOUR APPLICATION LIFECYCLE IN CLOUD</a></h1>
+                </p>
+                
+                <span class="post-meta">
+              <span style="font-weight:600">March 10, 2020 Tuesday</span>
+                    
+                       ( 8 minute read ) 
+                    
+                     
+                    <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">   by Girish Godage</a>
+                </span>
+                
+                <div class="site-category"> 
+                        <h5>Dev-Ops</h5>
+                </div>
+                
+                <hr>
+                <div><img class="post-image" src="/img/dev-ops.png" alt="AZURE DEVOPS – MANAGE YOUR APPLICATION LIFECYCLE IN CLOUD" height="250" /></div>
+                <div class="post-content">
+                    <br>                     
+                    <h2 id="azure-devops--manage-your-application-lifecycle-in-cloud">AZURE DEVOPS – MANAGE YOUR APPLICATION LIFECYCLE IN CLOUD</h2>
+
+<p><strong>Application lifecycle management (ALM)</strong> is the product lifecycle management of computer programs.</p>
+
+<p>It encompasses <strong>requirements management</strong>, <strong>software architecture</strong>, <strong>computer programming</strong>, <strong>software testing</strong>, <strong>software maintenance</strong>, <strong>change management</strong>, <strong>continuous integration</strong>, <strong>project management</strong>, and <strong>release management</strong>.</p>
+
+<p>An <strong>ALM tool</strong> should have the capability to maintain all the aspects of a software lifecycle, such as <span style="background-color: #2197CB"><strong>capturing the ideas, users requirement, planning of work, maintaining source code, deploying code using continuous integration and continuous delivery (CI/CD)</strong></span>. It should also provide real time project insights to the key stake holders of a project. We can think of an ALM software as one stop shop for a software project/product management as a whole.</p>
+
+<p>In this post we will take a look at <strong>Microsoft’s Azure DevOps offering</strong>, it’s capability as an ALM solution and will see how you can use it for your ALM journey.</p>
+
+<h2 id="what-is-azure-devops">What is Azure DevOps?</h2>
+
+<p>In a single sentence, Azure DevOps is a suite of offering in the cloud that you need to <strong>build your software product/project from beginning to end</strong>.</p>
+
+<p><strong>Azure DevOps</strong>, formerly known as Visual Studio Team System (VSTS). It helps you to plan your project, manage source code in repositories like <em>Git, TFVC, Subversion, GitHub and deploys the code through the CI/CD pipeline system to cloud or in on-premise resources</em>.</p>
+
+<p>Additionally it gives a <strong>collaborative platform</strong> for <strong>developers, business users and test engineers, project managers</strong> under one umbrella to <strong>real time tracking of work</strong> and <strong>quick shipment</strong> of the product.</p>
+
+<h2 id="six-pillars-of-azure-devops">Six pillars of Azure DevOps</h2>
+
+<p>Azure DevOps has six major pillars which helped it to shape as complete ALM offering in the the cloud. Let’s briefly look into the the major pillars of Azure DevOps</p>
+
+<p><img src="/img/devops/2/AzureBoard.png" alt="Image" title="Azure Boards" /><strong>Azure Boards</strong> is a place to <strong>manage and plan</strong> all of your work.** All ideas** and <strong>business requirements</strong> for your software can be <strong>captured here</strong>. You can create <strong>epics</strong>, <strong>features</strong>, <strong>user stories</strong> and then <strong>estimate them</strong> and <strong>plan capacity</strong> of your <em>team members</em> and start the <strong>sprint</strong>.</p>
+
+<p>Additionally you can have a real time view of the work item progression in <strong>Kanban boards</strong>, <strong>sprint burn down charts</strong>.</p>
+
+<p><img src="/img/devops/2/AzureRepos.png" alt="Image" title="Azure Repos" /><strong>Azure Repos</strong>  supports various source control system like <em>Azure Git, Public GitHub, GitHub Enterprise,  Microsoft’s own Team foundation version control (TFVC), External Git</em>.</p>
+
+<p>You can choose any one of the repositories for your choice for software development and source code. Once development is done developers can create a pull request with their changes, send it for code review and take part of a collaborative development environment.</p>
+
+<p><img src="/img/devops/2/AzurePipeline.png" alt="Image" title="Azure Pipeline" /><strong>Azure Pipelines</strong>  are used for <strong>continuous integration</strong> and <strong>continuous delivery  (CI/CD)</strong> of your code. It allows you to <strong>ship your code faster</strong>.</p>
+
+<p>Once your code is <strong>developed and committed</strong> to the repos, a <strong>build</strong> gets triggered in the <strong>build pipeline</strong>.<span style="background-color: #2197CB"> This build pipeline gets the <strong>latest code from the repos</strong>, builds them in the build agent. On a successful build, the <em>build artifacts gets published using Release pipeline in your targeted deployment environment</em>.</span></p>
+
+<p><img src="/img/devops/2/AzureTestPlans.png" alt="Image" title="Azure Test Plans" /><strong>Azure Test Plans</strong>  is for <strong>planning</strong> and <strong>executing</strong> your <strong>manual</strong>, <strong>automated</strong>  and l<strong>oad test cases</strong>. Once the <em>build is succeeded test engineers can run a set of tests on the build for verification and validation of the desired functionality</em>. And they can raise and log any defects or observation on failure  of any of the planned test scenarios in the Azure Boards.</p>
+
+<p><img src="/img/devops/2/AzureArtifacts.png" alt="Image" title="Azure Artifacts" /><strong>Azure Artifacts</strong>  manages your private NuGet, npm, Maven packages in a private feed. You can integrate this feed in your favourite IDE such as Visual Studio or Visual Studio Code and restore the packages from this feed while development. Additionally you can integrate this feed in the build pipeline and restore packages from this private repository. <strong>Azure Artifacts</strong> helps a lot where there are a lot of shared common packages in use in the application and you want to control standards, version of those cross cutting atrifacts.</p>
+
+<p><img src="/img/devops/2/AzureOverview.png" alt="Image" title="Azure Overview" /><strong>Azure Overview</strong>  gives real time insights of the project  <strong>such as teams velocity</strong>, <strong>CI/CD</strong> results, <strong>number of defects raised vs solved</strong> at any point of time to name a few. <strong>Executive dashboards</strong> can be created with inbuilt capability of it. These dashboard helps greatly for <strong>executive status reporting with risk and quality matrices</strong>.</p>
+
+<p><strong>Additionally</strong> it supports creating <strong>Wiki pages for the project</strong>. Wiki pages can be used to <strong>create</strong> any <strong>documents/ manual</strong> which are <strong>relevant</strong> for the <strong>ongoing or a completed project</strong>.</p>
+
+<h2 id="alm-with-azure-devops-in-action">ALM with Azure DevOps in action</h2>
+
+<p>Now that we have fair <strong>understanding of six pillars</strong> of Azure DevOps, now lets see how all of these helps in ALM with an example. refer to the Infographic of  this post. This describes ALM in action with Azure DevOps very briefly.</p>
+
+<p><img src="/img/devops/2/Azure-DevOps-ALM.png" alt="Image" title="Azure DevOps ALM" /></p>
+
+<p>In the beginning of the project or product it starts with an idea or some business requirement and after going through  multiple steps it takes shape of a usable product. In this example infographic</p>
+
+<ul>
+  <li><strong>1.</strong> Customer comes with requirement.</li>
+  <li><strong>2.</strong> Business analysts/ Product owner analyses the requirement and starts documenting them in the Azure Boards. They starts <strong>creating Epic, Feature and user stories</strong>.</li>
+  <li><strong>3.</strong> Engineering team then starts <strong>estimating</strong> the work and <strong>plan</strong> those user stories for sprint.
+    <ul>
+      <li><strong>3.1.</strong> In <strong>parallel</strong> test engineers starts for <strong>Test planning</strong> in Test Plans based on the acceptance criteria of the <strong>user stories</strong>.</li>
+    </ul>
+  </li>
+  <li><strong>4.</strong> Once sprint kicked in – developers starts picking user stories from the <strong>backlogs</strong> created at step 2 and <strong>starts implementing them</strong>.</li>
+  <li><strong>5.</strong> Once developers are done with the development they creates a <strong>pull request</strong> and sends for <strong>code review</strong>. Upon satisfaction of the code reviewer, developer commits the code in the Azure Repos.</li>
+  <li><strong>6.</strong> A build gets triggered in the <strong>Build Pipeline</strong> as soon as the <strong>code gets committed</strong> in the Azure Repos using continuous integration (CI).<span style="background-color: #2197CB"> A CI build gets the latest code form the repos, builds them in the build agents, restores any private packages from the feed setup in the Azure Artifacts. It runs unit tests, generates code coverage result and finally generates the build output for deployment.</span> If any one of the steps configured in the build pipeline fails then whole commit gets rejected and developers gets a build failure notification. Developer fixes the build and commits one more time and CI build triggers automatically.</li>
+  <li><strong>7.</strong> Build output needs to be moved to the deployment environment. In a <strong>Release Pipeline</strong> source of the build artifacts is the output of the CI build of previous step 6, destination will be the servers where these artifacts needs to be deployed. In this example it is deploying the artifacts to the Azure Cloud App Services and Azure SQL databases for a TESTING environment (step 7.1). A gate or approval mechanism can be set before the deployment happens, this gives control to the approvers to pick and choose which build to be deploy.</li>
+  <li><strong>8.</strong> Now that build is deployed in TESTING environment, test engineers starts testing and verifying the build quality. They run a set of manual, automated and load tests as planned during the planning phase (step 3.1) in Azure Test Plans. If they observe any defects then they log then in Azure Boards backlog and creates a new bug/issue/observation. Developer picks these defects once these are planned and fed back to the sprint, fixes the defects and commits to the Azure Repos which eventually triggers CI/CD in Azure Pipelines.</li>
+  <li><strong>9.</strong> If test engineers are satisfied with the build quality and functionality delivered, then this build gets promoted to the upper environment (step 9.1). In this example it is UAT environment for business users to test.</li>
+  <li><strong>10.</strong> Business users now gets a new build in UAT environment with all the features planned for the current sprint. Business user starts verifying the build and functionality in UAT environment.</li>
+  <li><strong>11.</strong> If business users finds any defects then they log them into the Azure Boards backlogs as <strong>bug/observation</strong>. Development and build cycle continues once these defects are planned and fed back to the sprint.</li>
+  <li><strong>12.</strong> If business users are satisfied with the functionality and the build quality then the build gets promoted to the <strong>PRODUCTION</strong> environment (<strong>step 12.1</strong>)</li>
+</ul>
+
+<p>Once this is released to <strong>production</strong>, end users starts using the system. If any issue occurs in the production then it again gets logged in the Azure Boards backlog as an <strong>Incident/ Bug/ Issue</strong>.</p>
+
+<p>Like this <strong>planning</strong>, <strong>development</strong> and <strong>build cycle</strong> continues towards shipment of the product.  In the whole process key <strong>stakeholders</strong> of the project keeps an eye on <strong>Azure Overview dashboards</strong> to identify and mitigate any risks.</p>
+
+<h2 id="wrap-up">Wrap up</h2>
+
+<p>Okay, so we are at the end of this post. In this post we have covered six pillars of the Azure Dev Ops and how this can be leveraged to manage your applications life cycle. Azure DevOps is a browser based application in public cloud with first class support and integration with numerous opensource languages and platforms. You can manage your ALM in peace of mind end to end in Azure DevOps.</p>
+
+<ul>
+  <li>If you want to know more about the pricing check <a href="https://azure.microsoft.com/en-gb/pricing/details/devops/azure-devops-services/">this</a> out.</li>
+  <li>To learn more about Azure DevOps check <a href="https://www.youtube.com/watch?v=kn2f5a2Z_n4">this</a> video.</li>
+</ul>
+
+<p>Oh.. wait, In the meanwhile, you can get started with your free account in Azure DevOps and start exploring. Just log in to https://dev.azure.com with your Microsoft account and start your ALM journey in cloud with Azure DevOps.</p>
+
+
+                </div>
+
+                
+
+                <div id="disqus_thread"></div>
+                <script>
+                
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://girishgodage-github-io.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
+</button>
+<!-- Footer-->
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 text-center text-lg-left">
+                <p class="social">
+                    <a href="https://www.facebook.com/girish.godage.5" class="external facebook wow fadeInUp">
+                        <i class="fa fa-facebook"></i></a>
+                    <a href="https://instagram.com/girishgodage_007" data-wow-delay="0.2s" class="external instagram wow fadeInUp">
+                        <i class="fa fa-instagram"></i></a>
+                    <a href="https://youtube.com/girishgodage" data-wow-delay="0.4s" class="external youtube wow fadeInUp">
+                        <i class="fa fa-youtube-play"></i></a>
+                    <a href="https://twitter.com/GGodage" data-wow-delay="0.4s" class="external twitter wow fadeInUp">
+                            <i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/girishgodage" data-wow-delay="0.4s" class="external github wow fadeInUp">
+                                <i class="fa fa-github"></i></a>    
+                    <a href="mailto:girishgodage@gmail.com?subject=Hello%20Girish" data-wow-delay="0.6s" class="email wow fadeInUp">
+                        <i class="fa fa-envelope"></i></a></p>
+            </div>
+            <div class="col-12 col-md-2">
+            <h5>Quick Links</h5>
+            <ul>
+               <li><a href="http://localhost:4000#about">About</a></li>
+               <li><a href="http://localhost:4000#contact">Contact</a></li>
+               <li><a href="http://localhost:4000/sitemap.xml">Sitemap</a></li>               
+            </ul>
+         </div>
+            <div class="col-12 col-md-4 text-center text-lg-right mt-4 mt-lg-0">
+                <p> <b>©</b><script>document.write(new Date().getFullYear())</script> Girish Godage </p>
+                <p class="text-center, text-shadow"> Hosted On <a href="https://pages.github.com/">GitHub Pages</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Typed.js DONT TOUCH THIS! -->
+    <div id="typed-strings">
+    </div>
+
+        <!-- JavaScript files-->
+    <script src="http://localhost:4000/sitejs/jquery/jquery.min.js"></script>
+    <script src="http://localhost:4000/sitejs/popper.js/umd/popper.min.js"> </script>
+    <script src="http://localhost:4000/sitejs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="http://localhost:4000/sitejs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="http://localhost:4000/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.counterup/jquery.counterup.js"></script>
+    <script src="http://localhost:4000/js/front.js"></script>
+    <script src="http://localhost:4000/js/comment.js"></script>
+       <!-- Script pointing to search-script.js -->
+    <script src="http://localhost:4000/js/search-script.js" type="text/javascript"></script>
+   
+    <!-- Configuration -->
+    <script>
+         SimpleJekyllSearch({
+         searchInput: document.getElementById('search-input'),
+         resultsContainer: document.getElementById('results-container'),
+         json: 'http://localhost:4000/search.json'
+         })
+         </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC36FUDDdOTidZJ8nzS5vfE7KVyayenKPE",
+    authDomain: "githubcontactlist.firebaseapp.com",
+    databaseURL: "https://githubcontactlist.firebaseio.com",
+    projectId: "githubcontactlist",
+    storageBucket: "githubcontactlist.appspot.com",
+    messagingSenderId: "899685398702",
+    appId: "1:899685398702:web:0c23c56d2d6d40df37553f",
+    measurementId: "G-YWBRCYJYFW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script>
+   $(function() {
+      
+    //make a variable to keep track of data coming from firebase
+    var data = [];
+
+    // Reference messages collection
+      var messagesRef = firebase.database().ref('contactformmessages');  
+
+
+    //listen to data updates from firebase
+    messagesRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+        //when the data updates at firebase, put it in the data variable
+        data = snapshot.val();
+    })
+    //Entire Contact Form (handler)
+    $('#contactForm').submit(function(e) {
+      e.preventDefault();
+
+        var $form = $(this);
+        console.log("Submit to Firebase");
+
+        //disable submit button
+        $form.find("#sendForm").prop('disabled', true);
+
+        //get values to send to Firebase
+        var name = $('#name').val();
+        console.log(name);
+		
+		var surname = $('#surname').val();
+        console.log(surname);
+		
+		var email = $('#email').val();
+        console.log(email);	
+		
+		var phone = $('#phone').val();
+        console.log(phone);
+
+        var message = $('#message').val();
+        console.log(message);
+
+       
+        //take the values from the form, and put them in an object
+        var newContact = {
+         "name": name,
+			"surname": surname,
+			"email": email,
+			"phone": phone,
+         "message": message
+        }
+        //put new object in data array
+        data.push(newContact);
+        console.log(data);
+
+        //send the new data to Firebase
+        messagesRef.set(data, function(err) {
+            if (err) {
+                alert("Data no go");
+            }else{
+            $("#form-wrapper").slideToggle();
+            $('#form-success-message').slideToggle();
+			}
+        });
+
+        return false;
+    })
+   
+    
+})
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";           
+        }else
+        {
+           myBtton.style.display="none";     
+          
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+      //  document.body.scrollTop =0;
+      //  document.documentElement.scrollTop=0;
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    }
+
+</script>
+
+    
+    
+
+
+</body>
+
+</html>
