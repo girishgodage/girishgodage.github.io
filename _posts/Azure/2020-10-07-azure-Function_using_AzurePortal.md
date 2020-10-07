@@ -7,7 +7,7 @@ categories:
 tags:
 - learning
 summary: In this article, we are going to discuss Azure Functions and how you can easily create your first Azure function app using Azure Portal. This is the first article of my new series called Azure functions for beginners.
-image: "/img/azureAD.png"
+image: "/img/azureFunctionApp.png"
 author: Girish Godage
 layout: posts
 prevurl: ''
