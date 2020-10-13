@@ -1,4 +1,383 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-10-07T12:27:41+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">How To Easily Create Azure Functions Using Azure Portal</title><link href="http://localhost:4000/blog/how-to-easily-create-azure-functions-using-azure-portal" rel="alternate" type="text/html" title="How To Easily Create Azure Functions Using Azure Portal" /><published>2020-10-07T11:41:00+00:00</published><updated>2020-10-07T11:41:00+00:00</updated><id>http://localhost:4000/blog/azure-Function_using_AzurePortal</id><content type="html" xml:base="http://localhost:4000/blog/how-to-easily-create-azure-functions-using-azure-portal">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-10-13T12:37:06+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">How to build your own AI personal assistant using Python</title><link href="http://localhost:4000/blog/pythonPA" rel="alternate" type="text/html" title="How to build your own AI personal assistant using Python" /><published>2020-10-10T10:10:10+00:00</published><updated>2020-10-10T10:10:10+00:00</updated><id>http://localhost:4000/blog/PythonPersonalAssistant</id><content type="html" xml:base="http://localhost:4000/blog/pythonPA">&lt;h2 id=&quot;how-to-build-your-own-ai-personal-assistant-using-python&quot;&gt;How to build your own AI personal assistant using Python&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;An AI personal assistant is a piece of software that understands verbal or written commands and completes task assigned by the client. It is an example of weak AI that is it can only execute and perform quest designed by the user.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/G1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Want to build your own personal AI assistant like Apple Siri, Microsoft Cortana and Google assistant?&lt;/p&gt;
+
+&lt;p&gt;You can check out this Article to build one in a few simple steps!&lt;/p&gt;
+
+&lt;p&gt;With the python programming language, a script most commonly used by the developers can be used to build your personal AI assistant to perform task designed by the users.&lt;/p&gt;
+
+&lt;p&gt;Now, let’s write a script for our personal voice assistant using python.&lt;/p&gt;
+
+&lt;h2 id=&quot;skills&quot;&gt;Skills:&lt;/h2&gt;
+
+&lt;p&gt;The implemented voice assistant can perform the following task it can &lt;strong&gt;open YouTube, Gmail, Google chrome and stack overflow. Predict current time, take a photo, search Wikipedia to abstract required data, predict weather in different cities, get top headline news from Times of India and can answer computational and geographical questions too&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;The following queries of the voice assistant can be manipulated as per the users need.&lt;/p&gt;
+
+&lt;h2 id=&quot;packages-required&quot;&gt;Packages required:&lt;/h2&gt;
+
+&lt;p&gt;To build a personal voice assistant it’s necessary to install the following packages in your system using the pip command.&lt;/p&gt;
+
+&lt;p&gt;1) &lt;strong&gt;Speech recognition&lt;/strong&gt; — Speech recognition is an important feature used in house automation and in artificial intelligence devices. The main function of this library is it tries to understand whatever the humans speak and converts the speech to text.&lt;/p&gt;
+
+&lt;p&gt;2) &lt;strong&gt;pyttsx3&lt;/strong&gt; — pyttxs3 is a text to speech conversion library in python. This package supports text to speech engines on Mac os x, Windows and on Linux.&lt;/p&gt;
+
+&lt;p&gt;3) &lt;strong&gt;wikipedia&lt;/strong&gt; — Wikipedia is a multilingual online encyclopedia used by many people from academic community ranging from freshmen to students to professors who wants to gain information over a particular topic. This package in python extracts data’s required from Wikipedia.&lt;/p&gt;
+
+&lt;p&gt;4) &lt;strong&gt;ecapture&lt;/strong&gt; — This module is used to capture images from your camera&lt;/p&gt;
+
+&lt;p&gt;5) &lt;strong&gt;datetime&lt;/strong&gt; — This is an inbuilt module in python and it works on date and time&lt;/p&gt;
+
+&lt;p&gt;6) &lt;strong&gt;os&lt;/strong&gt; — This module is a standard library in python and it provides the function to interact with operating system&lt;/p&gt;
+
+&lt;p&gt;7) &lt;strong&gt;time&lt;/strong&gt; — The time module helps us to display time&lt;/p&gt;
+
+&lt;p&gt;8) &lt;strong&gt;Web browser&lt;/strong&gt; — This is an in-built package in python. It extracts data from the web&lt;/p&gt;
+
+&lt;p&gt;9)  &lt;strong&gt;Subprocess&lt;/strong&gt; — This is a standard library use to process various system commands like to log off or to restart your PC.&lt;/p&gt;
+
+&lt;p&gt;10) &lt;strong&gt;Json&lt;/strong&gt;- The json module is used for storing and exchanging data.&lt;/p&gt;
+
+&lt;p&gt;11) &lt;strong&gt;requests&lt;/strong&gt;- The request module is used to send all types of HTTP request. Its accepts URL as parameters and gives access to the given URL’S.&lt;/p&gt;
+
+&lt;p&gt;12) &lt;strong&gt;wolfram alpha&lt;/strong&gt; — Wolfram Alpha is an API which can compute expert-level answers using Wolfram’s algorithms, knowledge base and AI technology. It is made possible by the Wolfram Language&lt;/p&gt;
+
+&lt;h2 id=&quot;implementation&quot;&gt;Implementation:&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Import the following libraries&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+import speech_recognition as sr
+import pyttsx3
+import datetime
+import wikipedia
+import webbrowser
+import os
+import time
+import subprocess
+from ecapture import ecapture as ec
+import wolframalpha
+import json
+import requests
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;setting-up-the-speech-engine&quot;&gt;Setting up the speech engine:&lt;/h2&gt;
+
+&lt;p&gt;The pyttsx3 module is stored in a variable name engine.
+&lt;strong&gt;Sapi5&lt;/strong&gt; is a &lt;strong&gt;Microsoft Text to speech engine used for voice recognition&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;The voice Id can be set as either 0 or 1,&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;0 indicates Male voice&lt;/li&gt;
+  &lt;li&gt;1 indicates Female voice&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;engine=pyttsx3.init('sapi5')
+voices=engine.getProperty('voices')
+engine.setProperty('voice','voices[0].id')
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now define a function &lt;strong&gt;speak&lt;/strong&gt; which converts text to speech. The speak function takes the text as its argument,further initialize the engine.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;runAndWait&lt;/strong&gt;: This function Blocks while processing all currently queued commands. It Invokes callbacks for engine notifications appropriately and returns back when all commands queued before this call are emptied from the queue.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def speak(text):
+    engine.say(text)
+    engine.runAndWait()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;initiate-a-function-to-greet-the-user&quot;&gt;Initiate a function to greet the user:&lt;/h2&gt;
+
+&lt;p&gt;Define a function wishMe for the AI assistant to greet the user.&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;now().hour&lt;/strong&gt; function abstract’s the hour from the current time.&lt;/p&gt;
+
+&lt;p&gt;If the hour is greater than zero and less than 12, the voice assistant wishes you with the message “Good Morning”.&lt;/p&gt;
+
+&lt;p&gt;If the hour is greater than 12 and less than 18, the voice assistant wishes you with the following message “Good Afternoon”.&lt;/p&gt;
+
+&lt;p&gt;Else it voices out the message “Good evening”&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def wishMe():
+    hour=datetime.datetime.now().hour
+    if hour&amp;gt;=0 and hour&amp;lt;12:
+        speak(&quot;Hello,Good Morning&quot;)
+        print(&quot;Hello,Good Morning&quot;)
+    elif hour&amp;gt;=12 and hour&amp;lt;18:
+        speak(&quot;Hello,Good Afternoon&quot;)
+        print(&quot;Hello,Good Afternoon&quot;)
+    else:
+        speak(&quot;Hello,Good Evening&quot;)
+        print(&quot;Hello,Good Evening&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;setting-up-the-command-function-for-your-ai-assistant-&quot;&gt;Setting up the command function for your AI assistant :&lt;/h2&gt;
+
+&lt;p&gt;Define a function takecommand for the AI assistant to understand and to accept human language. The microphone captures the human speech and the recognizer recognizes the speech to give a response.&lt;/p&gt;
+
+&lt;p&gt;The exception handling is used to handle the exception during the run time error and,the recognize_google function uses google audio to recognize speech.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def takeCommand():
+    r=sr.Recognizer()
+    with sr.Microphone() as source:
+        print(&quot;Listening...&quot;)
+        audio=r.listen(source)
+
+        try:
+            statement=r.recognize_google(audio,language='en-in')
+            print(f&quot;user said:{statement}\n&quot;)
+
+        except Exception as e:
+            speak(&quot;Pardon me, please say that again&quot;)
+            return &quot;None&quot;
+        return statement
+
+print(&quot;Loading your AI personal assistant G-One&quot;)
+speak(&quot;Loading your AI personal assistant G-One&quot;)
+wishMe()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;the-main-function&quot;&gt;The Main function:&lt;/h2&gt;
+&lt;p&gt;The main function starts from here,the commands given by the humans is stored in the variable &lt;strong&gt;statement&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if __name__=='__main__':
+
+
+    while True:
+        speak(&quot;Tell me how can I help you now?&quot;)
+        statement = takeCommand().lower()
+        if statement==0:
+            continue
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If the following trigger words are there in the statement given by the users it invokes the virtual assistant to speak the below following commands.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if &quot;good bye&quot; in statement or &quot;ok bye&quot; in statement or &quot;stop&quot; in statement:
+            speak('your personal assistant G-one is shutting down,Good bye')
+            print('your personal assistant G-one is shutting down,Good bye')
+            break
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;skill-1--fetching-data-from-wikipedia&quot;&gt;Skill 1 -Fetching data from Wikipedia:&lt;/h2&gt;
+
+&lt;p&gt;The following commands helps to extract information from wikipedia. The &lt;strong&gt;wikipedia.summary()&lt;/strong&gt; function takes two arguments, the statement given by the user and how many sentences from wikipedia is needed to be extracted is stored in a variable &lt;strong&gt;result&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if 'wikipedia' in statement:
+            speak('Searching Wikipedia...')
+            statement =statement.replace(&quot;wikipedia&quot;, &quot;&quot;)
+            results = wikipedia.summary(statement, sentences=3)
+            speak(&quot;According to Wikipedia&quot;)
+            print(results)
+            speak(results)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;skill-2--accessing-the-web-browsers--google-chrome--g-mail-and-youtube&quot;&gt;Skill 2 -Accessing the Web Browsers — Google chrome , G-Mail and YouTube:&lt;/h2&gt;
+
+&lt;p&gt;The web browser extracts data from web. The &lt;strong&gt;open_new_tab&lt;/strong&gt; function accepts &lt;strong&gt;URL&lt;/strong&gt; as a parameter that needs to be accessed.&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;Python time sleep function&lt;/strong&gt; is used to add delay in the execution of a program. We can use this function to halt the execution of the program for given &lt;strong&gt;time&lt;/strong&gt; in seconds.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;elif 'open youtube' in statement:
+            webbrowser.open_new_tab(&quot;https://www.youtube.com&quot;)
+            speak(&quot;youtube is open now&quot;)
+            time.sleep(5)
+
+        elif 'open google' in statement:
+            webbrowser.open_new_tab(&quot;https://www.google.com&quot;)
+            speak(&quot;Google chrome is open now&quot;)
+            time.sleep(5)
+
+        elif 'open gmail' in statement:
+            webbrowser.open_new_tab(&quot;gmail.com&quot;)
+            speak(&quot;Google Mail open now&quot;)
+            time.sleep(5)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;skill-3--predicting-time&quot;&gt;Skill 3 -Predicting time:&lt;/h2&gt;
+
+&lt;p&gt;The current time is abstracted from &lt;strong&gt;datetime.now()&lt;/strong&gt; function which displays the hour, minute and second and is stored in a variable name &lt;strong&gt;strTime&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;elif 'time' in statement:
+            strTime=datetime.datetime.now().strftime(&quot;%H:%M:%S&quot;)
+            speak(f&quot;the time is {strTime}&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;skill-4--to-fetch-latest-news&quot;&gt;Skill 4 -To fetch latest news:&lt;/h2&gt;
+&lt;p&gt;If the user wants to know the latest news , The voice assistant is programmed to fetch top headline news from Time of India by using the web browser function.&lt;/p&gt;
+
+&lt;h2 id=&quot;skill-5--capturing-photo&quot;&gt;Skill 5 -Capturing photo:&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;The ec.capture()&lt;/strong&gt; function is used to capture images from your camera. It accepts 3 parameter.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Camera index&lt;/strong&gt; — The first connected webcam will be indicated as index 0 and the next webcam will be indicated as index 1.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Window name&lt;/strong&gt; — It can be a variable or a string. If you don’t wish to see the window, type as False.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Save name&lt;/strong&gt; — A name can be given to the image and if you don’t want to save the image, type as false.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;elif 'news' in statement:
+            news = webbrowser.open_new_tab(&quot;https://timesofindia.indiatimes.com/home/headlines”)
+            speak('Here are some headlines from the Times of India,Happy reading')
+            time.sleep(6)
+
+        elif &quot;camera&quot; in statement or &quot;take a photo&quot; in statement:
+            ec.capture(0,&quot;robo camera&quot;,&quot;img.jpg&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;skill-6-searching-data-from-web&quot;&gt;Skill 6-Searching data from web:&lt;/h2&gt;
+
+&lt;p&gt;From the &lt;strong&gt;web browser&lt;/strong&gt; you can search required data by passing the user statement (command) to the &lt;strong&gt;open_new_tab()&lt;/strong&gt; function.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;User&lt;/strong&gt;: Hey G-One, please search images of butterfly&lt;/p&gt;
+
+&lt;p&gt;The Voice assistant opens the google window &amp;amp; fetches butterfly images from web.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;elif 'search'  in statement:
+            statement = statement.replace(&quot;search&quot;, &quot;&quot;)
+            webbrowser.open_new_tab(statement)
+            time.sleep(5)	
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;skill-7--setting-your-ai-assistant-to-answer-geographical-and-computational-questions&quot;&gt;Skill 7- Setting your AI assistant to answer geographical and computational questions:&lt;/h2&gt;
+
+&lt;p&gt;Here we can use a third party API called &lt;strong&gt;Wolfram alpha API&lt;/strong&gt; to answer computational and geographical questions.It is made possible by the Wolfram Language. The &lt;strong&gt;client&lt;/strong&gt; is an instance (class) created for wolfram alpha. The &lt;strong&gt;res&lt;/strong&gt; variable stores the response given by the wolfram alpha.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;elif 'ask' in statement:
+            speak('I can answer to computational and geographical questions  and what question do you want to ask now')
+            question=takeCommand()
+            app_id=&quot;Paste your unique ID here &quot;
+            client = wolframalpha.Client('R2K75H-7ELALHR35X')
+            res = client.query(question)
+            answer = next(res.results).text
+            speak(answer)
+            print(answer)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To access the wolfram alpha API an unique App ID is required which can be generated by the following ways:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Login to the official page of wolfram alpha and create an account if you do not possess one.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/python/datascience/img/6/1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Sign in using your wolfram ID&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/python/datascience/img/6/2.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Now you will view the homepage of the website. Head to the account section in the top right corner where you see your email. In the drop down menu, select the My Apps (API) option.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/python/datascience/img/6/3.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;You will see this following window, now click Get APP_ID button&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/python/datascience/img/6/4.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Now you will get the following dialog box, give a suitable name and description and click the App ID button, an App ID will be generated and this is an unique ID. Using the App Id use can access the Wolfram alpha API.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/python/datascience/img/6/5.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Human:&lt;/strong&gt; Hey G-One ,what is the capital of California?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;G-One Voice assistant:&lt;/strong&gt; Sacramento, United States of America&lt;/p&gt;
+
+&lt;h2 id=&quot;skill-8--extra-features&quot;&gt;Skill 8- Extra features:&lt;/h2&gt;
+
+&lt;p&gt;It would be interesting to program your AI assistant to answer the following questions like what it can and who created it,isn’t it?&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;elif 'who are you' in statement or 'what can you do' in statement:
+            speak('I am G-one version 1 point O your personal assistant. I am programmed to minor tasks like'
+                  'opening youtube,google chrome, gmail and stackoverflow ,predict time,take a photo,search wikipedia,predict weather' 
+                  'In different cities, get top headline news from times of india and you can ask me computational or geographical questions too!')
+
+
+        elif &quot;who made you&quot; in statement or &quot;who created you&quot; in statement or &quot;who discovered you&quot; in statement:
+            speak(&quot;I was built by Girish&quot;)
+            print(&quot;I was built by Girish&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;skill-9--to-forecast-weather&quot;&gt;Skill 9- To forecast weather:&lt;/h2&gt;
+
+&lt;p&gt;Now to program your AI assistant to detect weather we need to generate an API key from Open Weather map.&lt;/p&gt;
+
+&lt;p&gt;Open weather map is an online service which provides weather data. By generating an API ID in the official website you can use the APP_ID to make your voice assistant detect weather of all places whenever required. The necessary modules needed to be imported for this weather detection is json and request module.&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;city_name variabl&lt;/strong&gt;e takes the command given by the human using the &lt;strong&gt;takeCommand()&lt;/strong&gt; function.&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;get&lt;/strong&gt; method of &lt;strong&gt;request&lt;/strong&gt; module returns a &lt;strong&gt;response&lt;/strong&gt; object. And the &lt;strong&gt;json&lt;/strong&gt; methods of response object converts json format data into python format.&lt;/p&gt;
+
+&lt;p&gt;The variable &lt;strong&gt;X&lt;/strong&gt; contains list of nested dictionaries which checks whether the value of ‘COD’ is 404 or not that is if the city is found or not.&lt;/p&gt;
+
+&lt;p&gt;The values such as temperature and humidity is stored in the main key of variable &lt;strong&gt;Y&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;elif &quot;weather&quot; in statement:
+            api_key=&quot;Apply your unique ID&quot;
+            base_url=&quot;https://api.openweathermap.org/data/2.5/weather?&quot;
+            speak(&quot;what is the city name&quot;)
+            city_name=takeCommand()
+            complete_url=base_url+&quot;appid=&quot;+api_key+&quot;&amp;amp;q=&quot;+city_name
+            response = requests.get(complete_url)
+            x=response.json()
+            if x[&quot;cod&quot;]!=&quot;404&quot;:
+                y=x[&quot;main&quot;]
+                current_temperature = y[&quot;temp&quot;]
+                current_humidiy = y[&quot;humidity&quot;]
+                z = x[&quot;weather&quot;]
+                weather_description = z[0][&quot;description&quot;]
+                speak(&quot; Temperature in kelvin unit is &quot; +
+                      str(current_temperature) +
+                      &quot;\n humidity in percentage is &quot; +
+                      str(current_humidiy) +
+                      &quot;\n description  &quot; +
+                      str(weather_description))
+                print(&quot; Temperature in kelvin unit = &quot; +
+                      str(current_temperature) +
+                      &quot;\n humidity (in percentage) = &quot; +
+                      str(current_humidiy) +
+                      &quot;\n description = &quot; +
+                      str(weather_description))
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Human:&lt;/strong&gt; Hey G-One ,I want to get the weather data&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;G-One:&lt;/strong&gt; What is the city name?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Human:&lt;/strong&gt; Himachal Pradesh&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;G-One:&lt;/strong&gt; Temperature in kelvin unit is 301.09 , Humidity in percentage is 52 and Description is light rain.&lt;/p&gt;
+
+&lt;h2 id=&quot;skill-10--to-log-off-your-pc&quot;&gt;Skill 10- To log off your PC:&lt;/h2&gt;
+
+&lt;p&gt;The subprocess.call() function here is used to process the system function to log off or to turn off your PC. This invokes your AI assistant to automatically turn off your PC.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    elif &quot;log off&quot; in statement or &quot;sign out&quot; in statement:
+            speak(&quot;Ok , your pc will log off in 10 sec make sure you exit from all applications&quot;)
+            subprocess.call([&quot;shutdown&quot;, &quot;/l&quot;])
+			
+    time.sleep(3)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Hurray , We have finally built our own AI voice assistant . Further you can still add more functionalities to your AI voice assistant to perform more task.&lt;/p&gt;
+
+&lt;p&gt;Check out my GitHub profile for code:&lt;/p&gt;
+
+&lt;p&gt;https://github.com/girishgodage/ai-personal-assistant&lt;/p&gt;
+
+&lt;p&gt;Happy Coding !!&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">How to build your own AI personal assistant using Python</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/G1.png" /></entry><entry><title type="html">How To Easily Create Azure Functions Using Azure Portal</title><link href="http://localhost:4000/blog/how-to-easily-create-azure-functions-using-azure-portal" rel="alternate" type="text/html" title="How To Easily Create Azure Functions Using Azure Portal" /><published>2020-10-07T11:41:00+00:00</published><updated>2020-10-07T11:41:00+00:00</updated><id>http://localhost:4000/blog/azure-Function_using_AzurePortal</id><content type="html" xml:base="http://localhost:4000/blog/how-to-easily-create-azure-functions-using-azure-portal">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;In this article, we are going to discuss Azure Functions and how you can easily create your first Azure function app using Azure Portal. This is the first article of my new series called Azure functions for beginners. So let’s grab a cup of coffee and start learning.&lt;/p&gt;
 
@@ -2706,375 +3085,4 @@ Password complexity in my lab is relaxed. If you’re using the default password
         &lt;/div&gt;       
     &lt;/div&gt;
 
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">The service desk with bots using Amazon Lex and Amazon Connect (Part 2)</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aws_cloud.png" /></entry><entry><title type="html">The service desk with bots using Amazon Lex and Amazon Connect (Part 1)</title><link href="http://localhost:4000/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-1" rel="alternate" type="text/html" title="The service desk with bots using Amazon Lex and Amazon Connect (Part 1)" /><published>2020-02-02T11:41:00+00:00</published><updated>2020-02-02T11:41:00+00:00</updated><id>http://localhost:4000/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-1</id><content type="html" xml:base="http://localhost:4000/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-1">&lt;h2 id=&quot;the-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-1&quot;&gt;The service desk with bots using Amazon Lex and Amazon Connect (Part 1)&lt;/h2&gt;
-
-&lt;p&gt;What! Is this guy for real? Does he really think he can replace the front line of IT with pre-canned conversations?” I must admit, it’s a bold statement. The IT Service Desk has been around for years and has been the foot in the door for most of us in the IT industry. It’s the face of IT operations and plays an important role in ensuring an organisation’s staff can perform to the best of their abilities. But what if we could take some of the repetitive tasks the service desk performs and automate them? Not only would we be saving on head count costs, we would be able to ensure correct policies and procedures are followed to uphold security and compliance. The aim of this blog is to provide a working example of the automation of one service desk scenario to show how easy and accessible the technology is, and how it can be applied to various use cases.&lt;/p&gt;
-
-&lt;p&gt;To make it easier to follow along, I’ve broken this blog up into a number of parts. Part 1 will focus on the high-level architecture for the scenario and begin creating the Lex chatbot.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/19/selfservicedora.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;scenario&quot;&gt;Scenario&lt;/h2&gt;
-&lt;p&gt;Arguably, the most common service desk request is the password reset. While this is a pretty simple issue for the service desk to resolve, many service desk staff seem to skip over, or not realise the importance of user verification. Both the simple resolution and the strict verification requirement make this a prime scenario to automate.&lt;/p&gt;
-
-&lt;h2 id=&quot;architecture&quot;&gt;Architecture&lt;/h2&gt;
-&lt;p&gt;So what does the architecture look like? The diagram below dictates the expected process flow. Let’s step through each item in the diagram.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/19/amazon-connect-page-1-1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;amazon-connect&quot;&gt;Amazon Connect&lt;/h3&gt;
-&lt;p&gt;The process begins when the user calls the service desk and requests to have their password reset. In our architecture, the service desk uses Amazon Connect which is a cloud based customer contact centre service, allowing you to create contact flows, manage agents, and track performance metrics. We’re also able to plug in an Amazon Lex chatbot to handle user requests and offload the call to a human if the chatbot is unable to understand the user’s intent.&lt;/p&gt;
-
-&lt;h3 id=&quot;amazon-lex&quot;&gt;Amazon Lex&lt;/h3&gt;
-&lt;p&gt;After the user has stated their request to change their password, we need to begin the user verification process. Their intent is recognised by our Amazon Lex chatbot, which initiates the dialog for the user verification process to ensure they are who they really say they are.&lt;/p&gt;
-
-&lt;h3 id=&quot;aws-lambda&quot;&gt;AWS Lambda&lt;/h3&gt;
-&lt;p&gt;After the user has provided verification information, AWS Lambda, which is a compute on demand service, is used to validate the user’s input and verify it against internal records. To do this, Lambda interrogates Active Directory to validate the user.&lt;/p&gt;
-
-&lt;h3 id=&quot;amazon-sns&quot;&gt;Amazon SNS&lt;/h3&gt;
-&lt;p&gt;Once the user has been validated, their password is reset to a random string in Active Directory and the password is messaged to the user’s phone using Amazon’s Simple Notification Service. This completes the interaction.&lt;/p&gt;
-
-&lt;h2 id=&quot;building-our-chatbot&quot;&gt;Building our Chatbot&lt;/h2&gt;
-&lt;p&gt;Before we get into the details, it’s worth mentioning that the aim of this blog is to convey the technology capability. There’s many ways of enhancing the solution or improving validation of user input that I’ve skipped over, so while this isn’t a finished production ready product, it’s certainly a good foundation to begin building an automated call centre.&lt;/p&gt;
-
-&lt;p&gt;To begin, let’s start with building our Chatbot in &lt;strong&gt;Amazon Lex&lt;/strong&gt;. In the Amazon Console, navigate to Amazon Lex. You’ll notice it’s only available in Ireland and US East. As Amazon Connect and my Active Directory environment is also in US East, that’s the region I’ve chosen.&lt;/p&gt;
-
-&lt;p&gt;Go ahead and select &lt;strong&gt;Create Bot&lt;/strong&gt;, then choose to create your own &lt;strong&gt;Custom Bot&lt;/strong&gt;. I’ve named mine “&lt;strong&gt;UserAdministration&lt;/strong&gt;”. Choose an Output voice and set the session timeout to 5 minutes. An IAM Role will automatically be created on your behalf to allow your bot to use Amazon Polly for speech. For COPPA, select &lt;strong&gt;No&lt;/strong&gt;, then select &lt;strong&gt;Create&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/19/custombot.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Once the bot has been created, we need to identify the user action expected to be performed, which is known as an intent. A bot can have multiple intents, but for our scenario, we’re only creating one, which is the password reset intent. Go ahead and select &lt;strong&gt;Create Intent&lt;/strong&gt;, then in the Add Intent window, select &lt;strong&gt;Create new intent&lt;/strong&gt;. My intent name is &lt;strong&gt;“ResetPW”&lt;/strong&gt;. Select &lt;strong&gt;Add&lt;/strong&gt;, which should add the intent to your bot. We now need to specify some expected sample utterances, which are phrases the user can use to trigger the Reset Password intent. There’s quite a few that could be listed here, but I’m going to limit mine to the following:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;I forgot my password&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;I need to reset my password&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Can you please reset my password&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/19/utterances.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The next section is the configuration for the Lambda validation function. Let’s skip past this for the time being and move onto the slots. Slots are used to collect information from the user. In our case, we need to collect verification information to ensure the user is who they say they are. The verification information collected is going to vary between environments. I’m looking to collect the following to verify against Active Directory:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;User ID&lt;/strong&gt; – In my case, this is a 6-digit employee number that is also the sAMAccountName in Active Directory&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;User’s birthday&lt;/strong&gt; – This is a custom attribute in my Active Directory&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Month started&lt;/strong&gt; – This is a custom attribute in my Active Directory&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;In addition to this, it’s also worth collecting and verifying the user’s mobile number. This can be done by passing the caller ID information from Amazon Connect, however we’ll skip this, as the bulk of our testing will be text chat and we need to ensure we have a consistent experience.&lt;/p&gt;
-
-&lt;p&gt;To define a slot, we need to specify three items:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Name of the slot&lt;/strong&gt; – Think of this as the variable name.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Slot type&lt;/strong&gt; – The data type expected. This is used to train the machine learning model to recognise the value for the slot.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Prompt&lt;/strong&gt; – How the user is prompted to provide the value sought.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Many slot types are provided by Amazon, two of which has been used in this scenario. For “MonthStarted”, I’ve decided to create my own custom slot type, as the in-built “AMAZON.Month” slot type wasn’t strictly enforcing recognisable months. To create your own slot type, press the &lt;strong&gt;plus&lt;/strong&gt; symbol on the left-hand side of the page next to &lt;strong&gt;Slot Types&lt;/strong&gt;, then provide a name and description for your slot type. Select to &lt;strong&gt;Restrict to Slot values and Synonyms&lt;/strong&gt;, then enter each month and its abbreviation. Once completed, click Add slot to intent.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/19/monthsofyear.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Once the custom slot type has been configured, it’s time to set up the slots for the intent. The screenshot below shows the slots that have been configured and the expected order to prompt the user.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/19/slots.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Last step (for this blog post), is to have the bot verify the information collected is correct. Tick the Confirmation Prompt box and in the Confirm text box provided, enter the following:&lt;/p&gt;
-
-&lt;p&gt;Just to confirm, your user ID is {UserID}, your Date of Birth is {DOB} and the month you started is {MonthStarted}. Is this correct?&lt;/p&gt;
-
-&lt;p&gt;For the Cancel text box, enter the following:
-Sorry about that. Please call back and try again.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/19/confirmation.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Be sure to leave the &lt;strong&gt;fulfillment&lt;/strong&gt; to &lt;strong&gt;Return parameters to client&lt;/strong&gt; and hit &lt;strong&gt;Save Intent&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Great! We’ve built the bare basics of our bot. It doesn’t really do much yet, but let’s take it for a spin anyway and get a feel for what to expect. In the top right-hand corner, there’s a &lt;strong&gt;build&lt;/strong&gt; button. Go ahead and click the button.&lt;/p&gt;
-
-&lt;p&gt;This takes some time, as building a bot triggers machine learning and creates the models for your bot. Once completed, the bot should be available to text or voice chat on the right side of the page. As you move through the prompts, you can see at the bottom the slots getting populated with the expected format. i.e. 14th April 1983 is converted to 1983-04-14.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/19/chatlog.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;So at the moment, our bot doesn’t do much but collect the information we need. Admittedly, the conversation is a bit robotic as well. In the next few blogs, we’ll give the bot a bit more of a personality, we’ll do some input validation, and we’ll begin to integrate with Active Directory. Once we’ve got our bot working as expected, we’ll bolt on Amazon Connect to allow users to dial in and converse with our new bot.&lt;/p&gt;
-
-&lt;h2 id=&quot;creating-the-lambda-initialisation-and-validation-function&quot;&gt;Creating the Lambda initialisation and validation function&lt;/h2&gt;
-
-&lt;p&gt;As data validation requires compute, we’ll need to start by creating an AWS Lambda function. Head over to the AWS console, then navigate to the AWS Lambda page. Once you’re there, select Create Function and choose to Author from Scratch then specify the following:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Name&lt;/strong&gt;: ResetPWCheck&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Runtime&lt;/strong&gt;: Python 2.7 (it’s really a matter of preference)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Role&lt;/strong&gt;: I use an existing Out of the Box role, “Lambda_basic_execution”, as I only need access to CloudWatch logs for debugging.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/19/createfunction.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Once you’ve populated all the fields, go ahead and select Create Function. The script we’ll be using is provided (further down) in this blog, however before we go through the script in detail, there are two items worth mentioning.&lt;/p&gt;
-
-&lt;h3 id=&quot;input-events-and-response-formats&quot;&gt;Input Events and Response Formats&lt;/h3&gt;
-&lt;p&gt;It’s well worth familiarising yourself with the page on Lambda Function Input Event and Response Formats in the Lex Developer guide. Every time input is provided to Lex, it invokes the Lambda initalisation and validation function.
-&lt;em&gt;&lt;strong&gt;For example&lt;/strong&gt;, when I tell my chatbot “I need to reset my password”, the lambda function is invoked and the following event is passed:&lt;/em&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;currentIntent&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;slots&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;DOB&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;MonthStarted&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;UserID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;confirmationStatus&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;None&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ResetPW&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;slotDetails&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;DOB&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&quot;originalValue&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&quot;resolutions&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;MonthStarted&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&quot;originalValue&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&quot;resolutions&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;UserID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&quot;originalValue&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&quot;resolutions&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;userId&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;sd0xe8xzbgf1kyvtbnzsuymxky2a5bnq&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;bot&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;alias&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;$LATEST&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;$LATEST&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;UserAdministration&quot;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;inputTranscript&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;I need to reset my password&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;requestAttributes&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;invocationSource&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;DialogCodeHook&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;outputDialogMode&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;messageVersion&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;1.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;sessionAttributes&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Amazon Lex expects a response from the Lambda function in JSON format that provides it with the next dialog action.&lt;/p&gt;
-
-&lt;h3 id=&quot;persisting-variables-with-session-attributes&quot;&gt;Persisting Variables with Session Attributes&lt;/h3&gt;
-
-&lt;p&gt;There are many ways to determine within your Lambda function where you’re up to in your chat dialog, however my preferred method is to pass state information within the SessionAttributes object of the input event and response as a key/value pair. The SessionAttributes can persist between invocations of the Lambda function (every time input is provided to the chatbot), however you must remember to collect and pass the attributes between input and responses to ensure it persists.&lt;/p&gt;
-
-&lt;h3 id=&quot;input-validation-code&quot;&gt;Input Validation Code&lt;/h3&gt;
-&lt;p&gt;With that out of the way, let’s begin looking at the code. The below script is what I’ve used which you can simply copy and paste, assuming you’re using the same slot and intent names in your Lex bot that were used.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;elicit_slot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;messageType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;messageContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;slotToElicit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;completed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;sessionAttributes&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;Completed&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;completed&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;dialogAction&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ElicitSlot&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&quot;contentType&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;messageType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&quot;content&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;messageContent&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;intentName&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ResetPW&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;slots&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;slotToElicit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;slotToElicit&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;
-
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;delegate_slot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;completed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;sessionAttributes&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;Completed&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;completed&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;dialogAction&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Delegate&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;slots&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;
-
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;chkUserId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sessionAttributes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'UserID'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UserID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UserID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;messageContent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;That format seems incorrect. Let's try again. What is your user id?&quot;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;elicit_slot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;PlainText&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;messageContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;UserID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;None&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delegate_slot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;userid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;chkDob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sessionAttributes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;DOB&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;messageContent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;That format seems incorrect. Let's try again. What is your Date of Birth?&quot;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;elicit_slot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;PlainText&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;messageContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;DOB&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;userid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delegate_slot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;dob&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;chkMonth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sessionAttributes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;confirmation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outputDialogMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MonthStarted&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;messageContent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;That month seems incorrect. Let's try again. What month did you start?&quot;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;elicit_slot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;PlainText&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;messageContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;MonthStarted&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;dob&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;confirmIntent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sessionAttributes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;confirmation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outputDialogMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;confirmIntent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sessionAttributes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;confirmation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outputDialogMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;confirmation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;None&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;endData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;dialogAction&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ConfirmIntent&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&quot;intentName&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ResetPW&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&quot;slots&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;outputDialogMode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Voice&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;endData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dialogAction&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;contentType&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;SSML&quot;&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;endData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dialogAction&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;content&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;speak&amp;gt;Just to confirm, your user id is &amp;lt;say-as interpret-as=&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;digits&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UserID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; \
-                &lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;/say-as&amp;gt;, your date of birth is &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; \
-                &lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;DOB&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; and the month of your start date is &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; \
-                &lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MonthStarted&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;. Is that correct?&amp;lt;/speak&amp;gt;&quot;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;endData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dialogAction&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;contentType&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;PlainText&quot;&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;endData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dialogAction&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;content&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Just to confirm, your user id is &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UserID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; \
-                &lt;span class=&quot;s&quot;&gt;&quot;, your date of birth is &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; \
-                &lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;DOB&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; and the month of your start date is &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; \
-                &lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MonthStarted&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;. Is that correct?&quot;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;confirmation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Denied&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;endData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;dialogAction&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Close&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&quot;fulfillmentState&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Failed&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                    &lt;span class=&quot;s&quot;&gt;&quot;contentType&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;PlainText&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                    &lt;span class=&quot;s&quot;&gt;&quot;content&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Please call back and try again.&quot;&lt;/span&gt;
-                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;endData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delegate_slot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;confirmed&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;endData&lt;/span&gt;
-
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;lambda_handler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'currentIntent'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'slots'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;sessionAttributes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'sessionAttributes'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;confirmation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'currentIntent'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;confirmationStatus&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;outputDialogMode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;outputDialogMode&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sessionAttributes&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Completed&quot;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sessionAttributes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;messageContent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Sure, i can help with that! But first, i need to verify your identity. What is your user id?&quot;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;elicit_slot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;PlainText&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;messageContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;UserID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;None&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sessionAttributes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Completed&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;None&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;chkUserId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sessionAttributes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sessionAttributes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Completed&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;userid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;chkDob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sessionAttributes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sessionAttributes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Completed&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;dob&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;chkMonth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sessionAttributes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;confirmation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outputDialogMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Let’s break it down.&lt;/p&gt;
-
-&lt;p&gt;When the lambda function is first invoked, we check to see if any state is set in the sessionAttributes. If not, we can assume this is the first time the lambda function is invoked and as a result, provide a welcoming response while requesting the User’s ID. To ensure the user isn’t welcomed again, we set a session state so the Lambda function knows to move to User ID validation when next invoked. This is done by setting the “Completed” : “None” key/value pair in the response SessionAttributes.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sessionAttributes&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Completed&quot;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sessionAttributes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;messageContent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Sure, i can help with that! But first, i need to verify your identity. What is your user id?&quot;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;elicit_slot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;PlainText&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;messageContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;UserID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;None&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Next, we check the User ID. You’ll notice the chkUserId function checks for two things; That the slot is populated, and if it is, the length of the field. Because the slot type is AMAZON.Number, any non-numeric characters that are entered will be rejected by the slot. If this occurs, the slot will be left empty, hence this is something we’re looking out for. We also want to ensure the User ID is 6 digits, otherwise it is considered invalid. If the input is correct, we set the session state key/value pair to indicate User ID validation is complete then allow the dialog to continue, otherwise we request the user to re-enter their User ID.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;chkUserId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sessionAttributes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'UserID'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UserID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UserID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;messageContent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;That format seems incorrect. Let's try again. What is your user id?&quot;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;elicit_slot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;PlainText&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;messageContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;UserID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;None&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delegate_slot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;userid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Next, we check the Date of Birth. Because the slot type is strict regarding input, we don’t do much validation here. An utterance for this slot type generally maps to a complete date: YYYY-MM-DD. For validation purpose, we’re just looking for an empty slot. Like the User ID check, we set the session state and allow the dialog to continue if all looks good.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;chkDob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sessionAttributes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;DOB&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;messageContent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;That format seems incorrect. Let's try again. What is your Date of Birth?&quot;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;elicit_slot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;PlainText&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;messageContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;DOB&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;userid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delegate_slot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;dob&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Finally, we check the last slot which is the Month Started. Assuming the input for the month started is correct, we then confirm the intent by reading all the slot values back to the user and asking if it’s correct. You’ll notice here that there’s a bit of logic to determine if the user is using voice or text to interact with Lex. If voice is used, we use Speech Synthesis Markup Language (SSML) to ensure the UserID value is read as digits, rather than as the full number.
-If the user is happy with the slot values, the validation completes and Lex then moves to the next Lambda function to fulfil the intent (next blog). If the user isn’t happy with the slot values, the lambda function exits telling the user to call back and try again.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;confirmIntent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sessionAttributes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;confirmation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outputDialogMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;confirmation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;None&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;endData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;dialogAction&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ConfirmIntent&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&quot;intentName&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ResetPW&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&quot;slots&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;outputDialogMode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Voice&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;endData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dialogAction&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;contentType&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;SSML&quot;&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;endData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dialogAction&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;content&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;speak&amp;gt;Just to confirm, your user id is &amp;lt;say-as interpret-as=&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;digits&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UserID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; \
-                &lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;/say-as&amp;gt;, your date of birth is &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; \
-                &lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;DOB&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; and the month of your start date is &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; \
-                &lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MonthStarted&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;. Is that correct?&amp;lt;/speak&amp;gt;&quot;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;endData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dialogAction&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;contentType&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;PlainText&quot;&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;endData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dialogAction&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;content&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Just to confirm, your user id is &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UserID&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; \
-                &lt;span class=&quot;s&quot;&gt;&quot;, your date of birth is &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; \
-                &lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;DOB&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; and the month of your start date is &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; \
-                &lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MonthStarted&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;. Is that correct?&quot;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;confirmation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Denied&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;endData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;dialogAction&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Close&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&quot;fulfillmentState&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Failed&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;s&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                    &lt;span class=&quot;s&quot;&gt;&quot;contentType&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;PlainText&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                    &lt;span class=&quot;s&quot;&gt;&quot;content&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Please call back and try again.&quot;&lt;/span&gt;
-                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;endData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delegate_slot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;confirmed&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;endData&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Okay, now that our Lambda function is finished, we need to enable it as a code hook for initialisation and validation. Head over to your Lex bot, select the “ResetPW” intent, then tick the box under &lt;strong&gt;Lambda initialisation and validation&lt;/strong&gt; and select your Lambda function. A prompt will be given to provide permissions to allow your Lex bot to invoke the lambda function. Select &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/19/lambdaval.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Let’s hit Build on the chatbot, and test it out.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/19/chatlog2.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;So, we’ve managed to make the conversation a bit more human like and we can now detect invalid input. If you use the microphone to chat with your bot, you’ll notice the User ID value is read as digits. That’s it for this blog. Next blog, we’ll integrate Active Directory and actually get a password reset and sent via SNS to a mobile phone.&lt;/p&gt;
-
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr /&gt;
-   
-    &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-1&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-2&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">The service desk with bots using Amazon Lex and Amazon Connect (Part 1)</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aws_cloud.png" /></entry></feed>
+&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">The service desk with bots using Amazon Lex and Amazon Connect (Part 2)</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aws_cloud.png" /></entry></feed>
