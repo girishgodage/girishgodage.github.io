@@ -130,7 +130,7 @@ Following are the API URLs available on our server:
 
 As we are ready with our server, next we will import HttpClientModule in Angular project to use HTTP services.
 
-># Configure HttpClient in Angular 9 project
+># Configure HttpClient in Angular 10 project
 
 Before using HTTP services, we need to import <code>**HttpClientModule**</code> from <code>**@angular/common/http**</code> class.
 
