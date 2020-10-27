@@ -1,4 +1,1400 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-10-19T12:05:54+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">How to build your own AI personal assistant using Python</title><link href="http://localhost:4000/blog/pythonPA" rel="alternate" type="text/html" title="How to build your own AI personal assistant using Python" /><published>2020-10-10T10:10:10+00:00</published><updated>2020-10-10T10:10:10+00:00</updated><id>http://localhost:4000/blog/PythonPersonalAssistant</id><content type="html" xml:base="http://localhost:4000/blog/pythonPA">&lt;h2 id=&quot;how-to-build-your-own-ai-personal-assistant-using-python&quot;&gt;How to build your own AI personal assistant using Python&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-10-27T11:56:19+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">Angular 10 Material Datatable Inline HttpClient CRUD Operations using RestFull APIs</title><link href="http://localhost:4000/blog/angular-httpclient-crud-operations-using-restfull-api" rel="alternate" type="text/html" title="Angular 10 Material Datatable Inline HttpClient CRUD Operations using RestFull APIs" /><published>2020-10-27T02:24:00+00:00</published><updated>2020-10-27T02:24:00+00:00</updated><id>http://localhost:4000/blog/Ang10MatDatatableCRUD</id><content type="html" xml:base="http://localhost:4000/blog/angular-httpclient-crud-operations-using-restfull-api">&lt;h2 id=&quot;angular-10-material-datatable-inline-httpclient-crud-operations-using-restfull-apis&quot;&gt;Angular 10 Material Datatable Inline HttpClient CRUD Operations using RestFull APIs&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;In this Angular tutorial, we’ll learn how to use HttpClient module in Angular application to make RESTFull API Ajax calls.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;We’ll set up a &lt;strong&gt;new Angular 10 project&lt;/strong&gt; and &lt;strong&gt;create API endpoints&lt;/strong&gt; to perform &lt;strong&gt;Create, Read, Update and Delete operations using HTTP&lt;/strong&gt; methods using a mock server using the &lt;code&gt;**json-server**&lt;/code&gt; package. Using &lt;code&gt;**json-server**&lt;/code&gt; we can create a local JSON file which can act as a database for our application. There is no difference between a local mock server and a real database.&lt;/p&gt;
+
+&lt;p&gt;We’ll perform &lt;strong&gt;HTTP operation using API endpoints&lt;/strong&gt; to &lt;strong&gt;add, edit, delete and get list of items listed in an Angular Material Datatable&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;This Material Datatable will have action column using which user an &lt;strong&gt;Edit or Delete a row&lt;/strong&gt;. There will be a form over the table to &lt;strong&gt;Add or Update existing rows&lt;/strong&gt; in&lt;/p&gt;
+
+&lt;p&gt;After implementation, our application will look like this&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/angular/12/1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;First, let’s have a look at Angular HttpClient and its features.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-angular-httpclient&quot;&gt;What is Angular HttpClient?&lt;/h2&gt;
+
+&lt;p&gt;A reactive application like Angular, communicate with server databases to fetch data in form of JSON object using Ajax API calls.&lt;/p&gt;
+
+&lt;p&gt;These API Ajex calls use XMLHttpRequest service for old browsers or fetch() methods under the hood.&lt;/p&gt;
+
+&lt;p&gt;The HttpClient service provided by Angular’s &lt;code&gt;**@angular/common/http**&lt;/code&gt; package provides a simple interface to make HTTP calls with many optimized and efficient browser support features.&lt;/p&gt;
+
+&lt;p&gt;Moreover, we can also use RxJS based Observables and operators to handle client-side or server-side errors.&lt;/p&gt;
+
+&lt;p&gt;Using Interceptors service we can modify requests and responses of API calls and even cancels them.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Let’s get started!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;setup-angular-cli&quot;&gt;#Setup Angular CLI&lt;/h2&gt;
+
+&lt;p&gt;Angular CLI is the most prefered and official way for creating a new Angular project.&lt;/p&gt;
+
+&lt;p&gt;Make sure you have installed the latest version on Angular CLI tool on your system.&lt;/p&gt;
+
+&lt;p&gt;Run following npm command to install&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+$ npm install -g @angular/cli
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For this tutorial, we have installed &lt;strong&gt;v10.1.6&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;create-a-new-angular-10-project&quot;&gt;#Create a new Angular 10 project&lt;/h2&gt;
+
+&lt;p&gt;Next, create a new Angular project by running following ng command in the terminal&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ng new ang-datatable-app
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;On hitting above command, ng CLI will ask few configurational questions&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+? Would you like to add Angular routing? Yes
+? Which stylesheet format would you like to use? CSS
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now move to the project folder&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+$ cd ang-datatable-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Run the project by executing below command&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+$ ng serve --open
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;As we have created the Angular project successfully, lets mover further to create a dummy mock JSON server.&lt;/p&gt;
+
+&lt;h2 id=&quot;setup-a-mock-json-server&quot;&gt;#Setup a Mock JSON Server&lt;/h2&gt;
+
+&lt;p&gt;For testing and learning HttpClient module, we need to test Http methods, which will communicate to the server by calling Rest APIs.&lt;/p&gt;
+
+&lt;p&gt;These RESTFull APIs return JSON data which is then consumed by Angular application. This API JSON data may come from any third-party API, Server Database or any local server database.&lt;/p&gt;
+
+&lt;p&gt;Here we will create a dummy mock JSON API server using the &lt;code&gt;**json-server**&lt;/code&gt; package. using this package we can create a mock server using which we can perform all HTTP methods like &lt;code&gt;**GET**&lt;/code&gt;, &lt;code&gt;**POST**&lt;/code&gt;, &lt;code&gt;**PUT**&lt;/code&gt;, &lt;code&gt;**PATCH**&lt;/code&gt; and &lt;code&gt;**DELETE**&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;First, install the&lt;code&gt; **json-server**&lt;/code&gt; package by running bellow npm command in the terminal window:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ npm install -g json-server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After that create a new folder API in the project root and place JSON file data.json at 
+&lt;strong&gt;~ang-datatable-app/API/data.json&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;data.json&lt;/strong&gt; file will work as RESTfull server. We will add some dummy employeess data. So that will act like a database on which we will perform CRUD operations.&lt;/p&gt;
+
+&lt;h2 id=&quot;start-json-server&quot;&gt;#Start JSON Server&lt;/h2&gt;
+
+&lt;p&gt;To start the JSON server using json-server, run following command in a new terminal:&amp;lt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+$ json-server --watch ./API/data.json
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Now you can access our mock server at &lt;strong&gt;http://localhost:3000/employees&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Following are the API URLs available on our server:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;GET /employees - fetch all employees&lt;/li&gt;
+  &lt;li&gt;GET /employees/: id - fetch a single employee detail by id&lt;/li&gt;
+  &lt;li&gt;POST /employees - create a new employee&lt;/li&gt;
+  &lt;li&gt;PUT /employees/: id - update a employee by id&lt;/li&gt;
+  &lt;li&gt;PATCH /employees/: id - partially update a employee by  id&lt;/li&gt;
+  &lt;li&gt;DELETE /employees/:id - delete a employee by id&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As we are ready with our server, next we will import HttpClientModule in Angular project to use HTTP services.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;h1 id=&quot;configure-httpclient-in-angular-9-project&quot;&gt;Configure HttpClient in Angular 9 project&lt;/h1&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Before using HTTP services, we need to import &lt;code&gt;**HttpClientModule**&lt;/code&gt; from &lt;code&gt;**@angular/common/http**&lt;/code&gt; class.&lt;/p&gt;
+
+&lt;p&gt;Now open the app.module.ts file, then make the following changes:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// app.module.ts
+
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
+import { HttpClientModule } from '@angular/common/http';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We will add &lt;strong&gt;Angular Material Datatable&lt;/strong&gt; to perform CRUD operations on Employees data. So let us install and configure Material UI library in our project.&lt;/p&gt;
+
+&lt;h2 id=&quot;install-and-setup-angular-material&quot;&gt;#Install and Setup Angular Material&lt;/h2&gt;
+
+&lt;p&gt;Angular Material is a UI library which provides several easy to use feature components. In this tutorial, we will use Material Datatables to show employees records and perform the various inline operation on employees records.&lt;/p&gt;
+
+&lt;p&gt;Run following npm command in terminal to install Material library and answer some configuration answers.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ng add @angular/material
+
+
+? Choose a prebuilt theme name, or &quot;custom&quot; for a custom theme: Indigo/Pink        [ Preview: https://material.angular.io?theme=indigo-pink ]
+? Set up global Angular Material typography styles? Yes 
+? Set up browser animations for Angular Material? Yes
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To use Material UI components, we need to import modules of components which we are going to use in the application’s module so that these will be available in our class components to use.&lt;/p&gt;
+
+&lt;p&gt;As we will be using Material Datatables with pagination, so we need to import &lt;code&gt;**MatTableModule**&lt;/code&gt; and &lt;code&gt;**MatPaginatorModule**&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;To update and add employees rows we will add Material Form as well, for that we will also import &lt;code&gt;**FormsModule**&lt;/code&gt;,&lt;code&gt;**ReactiveFormsModule**&lt;/code&gt;, &lt;code&gt;**MatInputModule**&lt;/code&gt;, and &lt;code&gt;**MatButtonModule**&lt;/code&gt; as well
+in the &lt;strong&gt;app.module.ts&lt;/strong&gt; file as shown below:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+// app.module.ts
+
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+
+
+@NgModule({
+  declarations: [
+    AppComponent    
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+
+    // Material Modules 
+    MatTableModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatButtonModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;creating-a-service-to-communicate-server-through-http-methods&quot;&gt;#Creating a Service to Communicate Server through HTTP methods&lt;/h2&gt;
+
+&lt;p&gt;Now we’ll create a new service to separate all HTTP methods which will communicate to server and do CRUD operations.&lt;/p&gt;
+
+&lt;p&gt;Let’s create a new serve HttpDataService under services folder by running following ng command in the terminal window:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ng generate service services/http-data
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Above &lt;code&gt;**generate**&lt;/code&gt; command will create the &lt;code&gt;**HttpDataService**&lt;/code&gt; for us at this location &lt;strong&gt;~src/app/services/http-data.service.ts&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Also, create an &lt;strong&gt;Interface class&lt;/strong&gt; for &lt;em&gt;Employees&lt;/em&gt; data by running following command defining the type of values for employee item.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ng generate class models/Employee
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;then replace the following content in the newly created file “~/models/&lt;strong&gt;employee.ts&lt;/strong&gt;”&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;export class Employee {
+    id: number;
+    userId: string;
+    jobTitleName: string;
+    firstName: string;
+    lastName: string;
+    preferredFullName: string;
+    employeeCode: string;
+    region: string
+    phoneNumber: string;
+    emailAddress: string;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Our service will be going to play an important role in maintaining a connection with the server. Let us dive deep into this file and check what it will have?&lt;/p&gt;
+
+&lt;p&gt;Add the server API URL for end-points and define in the &lt;code&gt;**base_path**&lt;/code&gt; variable. This is the path which opens up on running our &lt;code&gt;**json-server**&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+  // API path
+  base_path = 'http://localhost:3000/employees';
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; Make sure your server is still running.&lt;/p&gt;
+
+&lt;p&gt;We’ll import these three classes&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;**HttpClient**&lt;/code&gt; : This class provides HTTP methods like &lt;code&gt;**get()**&lt;/code&gt;, &lt;code&gt;**post()**&lt;/code&gt;, &lt;code&gt;**put()**&lt;/code&gt; and &lt;code&gt;**delete()**&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;**HttpHeaders**&lt;/code&gt;: For setting request headers in HTTP calls we use this class.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+  // Http Options
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;**HttpErrorResponse**&lt;/code&gt;: Used to efficiently handle errors from client-side or server-side.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  // Handle API errors
+  handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error.message);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    // return an observable with a user-facing error message
+    return throwError(
+      'Something bad happened; please try again later.');
+  };
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;rxjs-functions-and-operators-to-the-rescuespan&quot;&gt;#RxJs functions and operators to the rescue&amp;lt;/span&amp;gt;&lt;/h2&gt;
+&lt;p&gt;&amp;lt;/h4&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;The RxJs library provides many useful function and operator which we will use in our service:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;**Observables**&lt;/code&gt;: Observables are used to perform asynchronous tasks like HTTP calls. We can subscribe them to get success or error response. They provide several other features file cancellations and continuous event retrieval, unlike promises.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;**throwError**&lt;/code&gt;: This method is used to intentionally throw an error with a message when an HTTP request fails.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;**retry()**&lt;/code&gt;: The retry operator is used to make HTTP call again for the number of times specified when a call fails due to network server issues.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;**catchError()**&lt;/code&gt;: This method catches the error and throws to errorHandler&lt;/p&gt;
+
+&lt;h2 id=&quot;defining-crud-methods&quot;&gt;#Defining CRUD Methods&lt;/h2&gt;
+
+&lt;p&gt;Now we will add the methods to do CRUD operation on emloyees data in our mock server which we created using &lt;code&gt;**json-server**&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;create-an-employee&quot;&gt;Create an Employee&lt;/h3&gt;
+
+&lt;p&gt;The new employee will be created using the &lt;code&gt;**post()**&lt;/code&gt; method&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  // Create a new item
+  createItem(item): Observable&amp;lt;Employee&amp;gt; {
+    return this.http
+      .post&amp;lt;Employee&amp;gt;(this.base_path, JSON.stringify(item), this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;**createItem()**&lt;/code&gt; method is accepting &lt;code&gt;**item**&lt;/code&gt; attribute with employee details to add.&lt;/p&gt;
+
+&lt;h3 id=&quot;retrieve-employee-details&quot;&gt;Retrieve Employee Details&lt;/h3&gt;
+
+&lt;p&gt;To fetch single employee details we use &lt;code&gt;**get()**&lt;/code&gt; method with employee &lt;code&gt;**id**&lt;/code&gt; whose detail needs to be checked.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; // Get single employee data by ID
+  getItem(id): Observable&amp;lt;Employee&amp;gt; {
+    return this.http
+      .get&amp;lt;Employee&amp;gt;(this.base_path + '/' + id)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;retrieve-all-employees&quot;&gt;Retrieve All Employees&lt;/h3&gt;
+
+&lt;p&gt;Similarly, we will make &lt;code&gt;**get**&lt;/code&gt; call to fetch all employees list&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  // Get employees data
+  getList(): Observable&amp;lt;Employee&amp;gt; {
+    return this.http
+      .get&amp;lt;Employee&amp;gt;(this.base_path)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;update-single-employee&quot;&gt;Update single employee&lt;/h3&gt;
+
+&lt;p&gt;The &lt;code&gt;**put()**&lt;/code&gt; method will update single employee with id passed&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  // Update item by id
+  updateItem(id, item): Observable&amp;lt;Employee&amp;gt; {
+    return this.http
+      .put&amp;lt;Employee&amp;gt;(this.base_path + '/' + id, JSON.stringify(item), this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;delete-a-single-employee&quot;&gt;Delete a single employee&lt;/h3&gt;
+
+&lt;p&gt;The &lt;code&gt;**delete()**&lt;/code&gt; HTTP method will delete a single record whose id is passed&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+  // Delete item by id
+  deleteItem(id) {
+    return this.http
+      .delete&amp;lt;Employee&amp;gt;(this.base_path + '/' + id, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After combining all explained code the final &lt;strong&gt;http-data.service.ts&lt;/strong&gt; file will look like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+// http-data.servie.ts
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Employee } from '../models/employee';
+import { Observable, throwError } from 'rxjs';
+import { retry, catchError } from 'rxjs/operators';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class HttpDataService {
+
+
+  // API path
+  base_path = 'http://localhost:3000/employees';
+
+  constructor(private http: HttpClient) { }
+
+  // Http Options
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  }
+
+  // Handle API errors
+  handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error.message);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    // return an observable with a user-facing error message
+    return throwError(
+      'Something bad happened; please try again later.');
+  };
+
+
+  // Create a new item
+  createItem(item): Observable&amp;lt;Employee&amp;gt; {
+    return this.http
+      .post&amp;lt;Employee&amp;gt;(this.base_path, JSON.stringify(item), this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+  // Get single employee data by ID
+  getItem(id): Observable&amp;lt;Employee&amp;gt; {
+    return this.http
+      .get&amp;lt;Employee&amp;gt;(this.base_path + '/' + id)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+  // Get employees data
+  getList(): Observable&amp;lt;Employee&amp;gt; {
+    return this.http
+      .get&amp;lt;Employee&amp;gt;(this.base_path)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+  // Update item by id
+  updateItem(id, item): Observable&amp;lt;Employee&amp;gt; {
+    return this.http
+      .put&amp;lt;Employee&amp;gt;(this.base_path + '/' + id, JSON.stringify(item), this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+  // Delete item by id
+  deleteItem(id) {
+    return this.http
+      .delete&amp;lt;Employee&amp;gt;(this.base_path + '/' + id, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;create-new-pages&quot;&gt;#Create new pages&lt;/h2&gt;
+
+&lt;p&gt;To show employees data in a table,  we will create a new employees component and update the&lt;strong&gt; app-routing.module.ts&lt;/strong&gt; file to open &lt;code&gt;/employees&lt;/code&gt; page on application load.&lt;/p&gt;
+
+&lt;p&gt;Create the &lt;code&gt;**EmployeesComponent**&lt;/code&gt;
+by running below generate command:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+$ ng generate component pages/employees
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Setup the App Routing Module
+Now update the &lt;strong&gt;app-routing.module.ts&lt;/strong&gt;file with below code.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+// app-routing.module.ts
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { EmployeesComponent } from './pages/employees/employees.component';
+
+
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: '/employees',
+    pathMatch: 'full'
+  },
+  {
+    path: 'employees',
+    component: EmployeesComponent
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;using-httpdataservice-in-employees-page&quot;&gt;#Using HttpDataService in Employees Page&lt;/h2&gt;
+
+&lt;p&gt;As we defined our HttpDataService as &lt;code&gt;**providedIn: 'root'**&lt;/code&gt;so we can directly use it in our Angular application. This will share a single instance across the application.&lt;/p&gt;
+
+&lt;p&gt;To use service methods in our employee’s page at &lt;strong&gt;~src/app/pages/employees/employees.component.ts&lt;/strong&gt;, we need to &lt;code&gt;**impor**t&lt;/code&gt; it and then add in component the contractor() method as shown below:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;...
+import { HttpDataService } from 'src/app/services/http-data.service';
+
+@Component({
+  selector: 'app-employees',
+  templateUrl: './employees.component.html',
+  styleUrls: ['./employees.component.css']
+})
+export class EmployeesComponent implements OnInit {
+
+  constructor(private httpDataService: HttpDataService) { }
+
+  ...
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;adding-angular-material-datatable&quot;&gt;#Adding Angular Material Datatable&lt;/h2&gt;
+
+&lt;p&gt;Next, we will add a Datatable with Employees columns and an extra Actions column where we will do inline Edit, Delete and Update operations.&lt;/p&gt;
+
+&lt;p&gt;For creating the Material datatable, the &lt;code&gt;**mat-table**&lt;/code&gt; directive is used. We are also adding pagination by appending the &lt;code&gt;**mat-paginator**&lt;/code&gt; directive just after ending &lt;code&gt;**&amp;lt;/table&amp;gt;**&lt;/code&gt; tag.&lt;/p&gt;
+
+&lt;p&gt;Update the &lt;strong&gt;employees.component.html&lt;/strong&gt; file with below code to build a Material datatable:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+        &amp;lt;!-- Form to edit/add row --&amp;gt;
+
+        &amp;lt;table mat-table [dataSource]=&quot;dataSource&quot; class=&quot;mat-elevation-z8&quot;&amp;gt;
+
+    &amp;lt;ng-container matColumnDef=&quot;id&quot;&amp;gt;
+        &amp;lt;th mat-header-cell *matHeaderCellDef&amp;gt; #Id &amp;lt;/th&amp;gt;
+        &amp;lt;td mat-cell *matCellDef=&quot;let element&quot;&amp;gt;  &amp;lt;/td&amp;gt;
+    &amp;lt;/ng-container&amp;gt;
+
+    &amp;lt;ng-container matColumnDef=&quot;userId&quot;&amp;gt;
+        &amp;lt;th mat-header-cell *matHeaderCellDef&amp;gt; User Id &amp;lt;/th&amp;gt;
+        &amp;lt;td mat-cell *matCellDef=&quot;let element&quot;&amp;gt;  &amp;lt;/td&amp;gt;
+    &amp;lt;/ng-container&amp;gt;
+
+    &amp;lt;ng-container matColumnDef=&quot;jobTitleName&quot;&amp;gt;
+        &amp;lt;th mat-header-cell *matHeaderCellDef&amp;gt; jobTitle Name &amp;lt;/th&amp;gt;
+        &amp;lt;td mat-cell *matCellDef=&quot;let element&quot;&amp;gt;  &amp;lt;/td&amp;gt;
+    &amp;lt;/ng-container&amp;gt;
+
+    &amp;lt;ng-container matColumnDef=&quot;firstName&quot;&amp;gt;
+        &amp;lt;th mat-header-cell *matHeaderCellDef&amp;gt; First Name &amp;lt;/th&amp;gt;
+        &amp;lt;td mat-cell *matCellDef=&quot;let element&quot;&amp;gt;  &amp;lt;/td&amp;gt;
+    &amp;lt;/ng-container&amp;gt;
+
+    &amp;lt;ng-container matColumnDef=&quot;lastName&quot;&amp;gt;
+        &amp;lt;th mat-header-cell *matHeaderCellDef&amp;gt; Last Name &amp;lt;/th&amp;gt;
+        &amp;lt;td mat-cell *matCellDef=&quot;let element&quot;&amp;gt;  &amp;lt;/td&amp;gt;
+    &amp;lt;/ng-container&amp;gt;
+
+    &amp;lt;ng-container matColumnDef=&quot;preferredFullName&quot;&amp;gt;
+        &amp;lt;th mat-header-cell *matHeaderCellDef&amp;gt; Preferred FullName &amp;lt;/th&amp;gt;
+        &amp;lt;td mat-cell *matCellDef=&quot;let element&quot;&amp;gt;  &amp;lt;/td&amp;gt;
+    &amp;lt;/ng-container&amp;gt;
+
+    &amp;lt;ng-container matColumnDef=&quot;employeeCode&quot;&amp;gt;
+        &amp;lt;th mat-header-cell *matHeaderCellDef&amp;gt; Employee Code &amp;lt;/th&amp;gt;
+        &amp;lt;td mat-cell *matCellDef=&quot;let element&quot;&amp;gt;  &amp;lt;/td&amp;gt;
+    &amp;lt;/ng-container&amp;gt;
+
+    &amp;lt;ng-container matColumnDef=&quot;region&quot;&amp;gt;
+        &amp;lt;th mat-header-cell *matHeaderCellDef&amp;gt; Region &amp;lt;/th&amp;gt;
+        &amp;lt;td mat-cell *matCellDef=&quot;let element&quot;&amp;gt;  &amp;lt;/td&amp;gt;
+    &amp;lt;/ng-container&amp;gt;
+
+    &amp;lt;ng-container matColumnDef=&quot;phoneNumber&quot;&amp;gt;
+        &amp;lt;th mat-header-cell *matHeaderCellDef&amp;gt; Phone Number &amp;lt;/th&amp;gt;
+        &amp;lt;td mat-cell *matCellDef=&quot;let element&quot;&amp;gt;  &amp;lt;/td&amp;gt;
+    &amp;lt;/ng-container&amp;gt;
+
+    &amp;lt;ng-container matColumnDef=&quot;emailAddress&quot;&amp;gt;
+        &amp;lt;th mat-header-cell *matHeaderCellDef&amp;gt; Email Address &amp;lt;/th&amp;gt;
+        &amp;lt;td mat-cell *matCellDef=&quot;let element&quot;&amp;gt;  &amp;lt;/td&amp;gt;
+    &amp;lt;/ng-container&amp;gt;
+
+    &amp;lt;ng-container matColumnDef=&quot;actions&quot;&amp;gt;
+        &amp;lt;th mat-header-cell *matHeaderCellDef&amp;gt; Actions &amp;lt;/th&amp;gt;
+        &amp;lt;td mat-cell *matCellDef=&quot;let element&quot;&amp;gt;
+            &amp;lt;a href=&quot;javascript:void(0)&quot; (click)=&quot;editItem(element)&quot;&amp;gt;Edit&amp;lt;/a&amp;gt; |
+            &amp;lt;a href=&quot;javascript:void(0)&quot; (click)=&quot;deleteItem(element.id)&quot;&amp;gt;Delete&amp;lt;/a&amp;gt;
+        &amp;lt;/td&amp;gt;
+    &amp;lt;/ng-container&amp;gt;
+
+    &amp;lt;tr mat-header-row *matHeaderRowDef=&quot;displayedColumns&quot;&amp;gt;&amp;lt;/tr&amp;gt;
+    &amp;lt;tr mat-row *matRowDef=&quot;let row; columns: displayedColumns;&quot;
+        [ngClass]=&quot;{'editable-row': employeeData.id === row.id}&quot;&amp;gt;&amp;lt;/tr&amp;gt;
+&amp;lt;/table&amp;gt;
+&amp;lt;mat-paginator [pageSize]=&quot;5&quot; [pageSizeOptions]=&quot;[5, 10, 15]&quot; showFirstLastButtons&amp;gt;&amp;lt;/mat-paginator&amp;gt;
+&amp;lt;/div&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In the last &lt;code&gt;**actions**&lt;/code&gt; column there are two actions to &lt;strong&gt;Edit&lt;/strong&gt; with &lt;code&gt;**editEmployee()**&lt;/code&gt; method and &lt;strong&gt;Delete&lt;/strong&gt; with&lt;code&gt; **deleteEmployee()**&lt;/code&gt; method for the row.&lt;/p&gt;
+
+&lt;p&gt;To add a new row or update the data in the existing row we will add a form above table.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &amp;lt;form (submit)=&quot;onSubmit()&quot; #employeeForm=&quot;ngForm&quot;&amp;gt;
+        
+        &amp;lt;mat-form-field&amp;gt;
+            &amp;lt;input matInput placeholder=&quot;User Id&quot; name=&quot;userId&quot; required [(ngModel)]=&quot;employeeData.userId&quot;&amp;gt;
+        &amp;lt;/mat-form-field&amp;gt;
+        &amp;lt;mat-form-field&amp;gt;
+            &amp;lt;input matInput placeholder=&quot;Job TitleName&quot; name=&quot;jobTitleName&quot; required [(ngModel)]=&quot;employeeData.jobTitleName&quot;&amp;gt;
+        &amp;lt;/mat-form-field&amp;gt;
+        &amp;lt;mat-form-field&amp;gt;
+            &amp;lt;input matInput placeholder=&quot;first Name&quot; name=&quot;firstName&quot; required [(ngModel)]=&quot;employeeData.firstName&quot;&amp;gt;
+        &amp;lt;/mat-form-field&amp;gt;
+        &amp;lt;mat-form-field&amp;gt;
+            &amp;lt;input matInput placeholder=&quot;Last Name&quot; name=&quot;lastName&quot; required [(ngModel)]=&quot;employeeData.lastName&quot;&amp;gt;
+        &amp;lt;/mat-form-field&amp;gt;
+        &amp;lt;mat-form-field&amp;gt;
+            &amp;lt;input matInput placeholder=&quot;Preferred FullName&quot; name=&quot;preferredFullName&quot; required [(ngModel)]=&quot;employeeData.preferredFullName&quot;&amp;gt;
+        &amp;lt;/mat-form-field&amp;gt;        
+        &amp;lt;mat-form-field&amp;gt;
+            &amp;lt;input matInput placeholder=&quot;Employee Code&quot; name=&quot;employeeCode&quot; required [(ngModel)]=&quot;employeeData.employeeCode&quot;&amp;gt;
+        &amp;lt;/mat-form-field&amp;gt;
+        &amp;lt;mat-form-field&amp;gt;
+            &amp;lt;input matInput placeholder=&quot;Region&quot; name=&quot;region&quot; required [(ngModel)]=&quot;employeeData.region&quot;&amp;gt;
+        &amp;lt;/mat-form-field&amp;gt;
+        &amp;lt;mat-form-field&amp;gt;
+            &amp;lt;input matInput placeholder=&quot;Phone Number&quot; name=&quot;phoneNumber&quot; required [(ngModel)]=&quot;employeeData.phoneNumber&quot;&amp;gt;
+        &amp;lt;/mat-form-field&amp;gt;
+        &amp;lt;mat-form-field&amp;gt;
+            &amp;lt;input matInput placeholder=&quot;Email Address&quot; name=&quot;emailAddress&quot; required [(ngModel)]=&quot;employeeData.emailAddress&quot;&amp;gt;
+        &amp;lt;/mat-form-field&amp;gt;
+
+        &amp;lt;ng-container *ngIf=&quot;isEditMode; else elseTemplate&quot;&amp;gt;
+            &amp;lt;button mat-button color=&quot;primary&quot;&amp;gt;Update&amp;lt;/button&amp;gt;
+            &amp;lt;a mat-button color=&quot;warn&quot; (click)=&quot;cancelEdit()&quot;&amp;gt;Cancel&amp;lt;/a&amp;gt;
+        &amp;lt;/ng-container&amp;gt;
+        &amp;lt;ng-template #elseTemplate&amp;gt;
+            &amp;lt;button mat-button color=&quot;primary&quot;&amp;gt;Add&amp;lt;/button&amp;gt;
+        &amp;lt;/ng-template&amp;gt;
+
+    &amp;lt;/form&amp;gt;
+    
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The text in form submit button will change based on the boolean value in the &lt;code&gt;**isEditMode**&lt;/code&gt; variable.&lt;/p&gt;
+
+&lt;h2 id=&quot;update-component-class&quot;&gt;#Update Component Class&lt;/h2&gt;
+
+&lt;p&gt;After adding Material datatable and Form, let us update &lt;strong&gt;employees.component.ts&lt;/strong&gt; file with required methods.&lt;/p&gt;
+
+&lt;p&gt;First, initialize the Template driven form with the &lt;code&gt;**NgForm**&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  @ViewChild('employeeForm', { static: false })
+  employeeForm: NgForm;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Import the &lt;code&gt;Employee&lt;/code&gt; class which we created and define a new variable &lt;code&gt;employeeData&lt;/code&gt; of type &lt;code&gt;Employee&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+employeeData: Employee;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Then define the &lt;code&gt;**dataSource**&lt;/code&gt; and &lt;code&gt;**displayedColumns**&lt;/code&gt; with &lt;code&gt;**MatPaginator**&lt;/code&gt; class to build our Datatable&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  dataSource = new MatTableDataSource();
+  displayedColumns: string[] = ['id', 'userId', 'jobTitleName', 'firstName','lastName','preferredFullName','employeeCode','region', 'phoneNumber','emailAddress','actions'];
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Then we will add methods to Add, Delete, Edit, Update and Get Employees list in the class file as shown below:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;...
+  getAllEmployees() {
+    this.httpDataService.getList().subscribe((response: any) =&amp;gt; {
+      this.dataSource.data = response;
+    });
+  }
+
+  editItem(element) {
+    this.employeeData = _.cloneDeep(element);
+    this.isEditMode = true;
+  }
+
+  cancelEdit() {
+    this.isEditMode = false;
+    this.employeeForm.resetForm();
+  }
+
+  deleteItem(id) {
+    this.httpDataService.deleteItem(id).subscribe((response: any) =&amp;gt; {
+
+      // Approach #1 to update datatable data on local itself without fetching new data from server
+      this.dataSource.data = this.dataSource.data.filter((o: Employee) =&amp;gt; {
+        return o.id !== id ? o : false;
+      })
+
+      console.log(this.dataSource.data);
+
+      // Approach #2 to re-call getAllEmployees() to fetch updated data
+      // this.getAllEmployees()
+    });
+  }
+
+  addEmployee() {
+    this.httpDataService.createItem(this.employeeData).subscribe((response: any) =&amp;gt; {
+      this.dataSource.data.push({ ...response })
+      this.dataSource.data = this.dataSource.data.map(o =&amp;gt; {
+        return o;
+      })
+    });
+  }
+
+  updateEmployee() {
+    this.httpDataService.updateItem(this.employeeData.id, this.employeeData).subscribe((response: any) =&amp;gt; {
+
+      // Approach #1 to update datatable data on local itself without fetching new data from server
+      this.dataSource.data = this.dataSource.data.map((o: Employee) =&amp;gt; {
+        if (o.id === response.id) {
+          o = response;
+        }
+        return o;
+      })
+
+      // Approach #2 to re-call getAllEmployees() to fetch updated data
+      // this.getAllEmployees()
+
+      this.cancelEdit()
+
+    });
+  }
+...
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We are calling &lt;code&gt;HttpDataService&lt;/code&gt; methods to communicate with our &lt;code&gt;json-server&lt;/code&gt;
+After adding the above method the final &lt;strong&gt;employees.component.ts&lt;/strong&gt; file will look like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+// employees.component.ts
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { HttpDataService } from 'src/app/services/http-data.service';
+import * as _ from 'lodash';
+import { Employee } from 'src/app/models/employee';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+
+@Component({
+  selector: 'app-employees',
+  templateUrl: './employees.component.html',
+  styleUrls: ['./employees.component.css']
+})
+export class EmployeesComponent implements OnInit {
+
+  @ViewChild('employeeForm', { static: false })
+  employeeForm: NgForm;
+
+  employeeData: Employee;
+
+  dataSource = new MatTableDataSource();
+  displayedColumns: string[] = ['id', 'userId', 'jobTitleName', 'firstName','lastName','preferredFullName','employeeCode','region', 'phoneNumber','emailAddress','actions'];
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+
+  isEditMode = false;
+
+  constructor(private httpDataService: HttpDataService) {
+    this.employeeData = {} as Employee;
+   }
+
+  ngOnInit(): void {
+    // Initializing Datatable pagination
+    this.dataSource.paginator = this.paginator;
+
+    // Fetch All Employees on Page load
+    this.getAllEmployees();
+  }
+
+  getAllEmployees(){
+    this.httpDataService.getList().subscribe((response: any) =&amp;gt; {
+      this.dataSource.data = response;
+    });
+  }
+
+  editItem(element) {
+    this.employeeData = _.cloneDeep(element);
+    this.isEditMode = true;
+  }
+
+  cancelEdit() {
+    this.isEditMode = false;
+    this.employeeForm.resetForm();
+  }
+
+  deleteItem(id) {
+    this.httpDataService.deleteItem(id).subscribe((response: any) =&amp;gt; {
+
+      // Approach #1 to update datatable data on local itself without fetching new data from server
+      this.dataSource.data = this.dataSource.data.filter((o: Employee) =&amp;gt; {
+        return o.id !== id ? o : false;
+      })
+
+      console.log(this.dataSource.data);
+
+      // Approach #2 to re-call getAllEmployees() to fetch updated data
+      // this.getAllEmployees()
+    });
+  }
+
+  addEmployee() {
+    this.httpDataService.createItem(this.employeeData).subscribe((response: any) =&amp;gt; {
+      this.dataSource.data.push({ ...response })
+      this.dataSource.data = this.dataSource.data.map(o =&amp;gt; {
+        return o;
+      })
+    });
+  }
+
+  updateEmployee() {
+    this.httpDataService.updateItem(this.employeeData.id, this.employeeData).subscribe((response: any) =&amp;gt; {
+
+      // Approach #1 to update datatable data on local itself without fetching new data from server
+      this.dataSource.data = this.dataSource.data.map((o: Employee) =&amp;gt; {
+        if (o.id === response.id) {
+          o = response;
+        }
+        return o;
+      })
+
+      // Approach #2 to re-call getAllEmployees() to fetch updated data
+      // this.getAllEmployees()
+
+      this.cancelEdit()
+
+    });
+  }
+
+  onSubmit() {
+    if (this.employeeForm.form.valid) {
+      if (this.isEditMode)
+        this.updateEmployee()
+      else
+        this.addEmployee();
+    } else {
+      console.log('Enter valid data!');
+    }
+  }
+
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;That’s it now run you server by executing &lt;code&gt;**$ json-server --watch ./API/data.json**&lt;/code&gt; then run Angular application in another terminal by executing &lt;code&gt;**$ ng serve --open**&lt;/code&gt;
+You can get source code of this tutorial in my GitHub repo &lt;a href=&quot;https://github.com/girishgodage/ang10MatDatatabeCrud&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Conclusion&lt;/strong&gt;: In this tutorial, we get to know how to use Http services to make server communication, use get, post, put and delete methods on data server. We use RxJs methods and operators to handle errors and network issues using &lt;code&gt;retry()&lt;/code&gt; . Added Angular Material UI library to show data rows in a Datatable. In the Material Datatable, we performed CRUD operation using Inline approach&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><category term="programming" /><summary type="html">Angular 10 Material Datatable Inline HttpClient CRUD Operations using RestFull APIs</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/angular_logo.png" /></entry><entry><title type="html">Azure Static Web Apps</title><link href="http://localhost:4000/blog/azure-static-web-apps" rel="alternate" type="text/html" title="Azure Static Web Apps" /><published>2020-10-19T14:44:00+00:00</published><updated>2020-10-19T14:44:00+00:00</updated><id>http://localhost:4000/blog/azure-static-web-apps</id><content type="html" xml:base="http://localhost:4000/blog/azure-static-web-apps">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Azure Static Web Apps is a service that automatically builds and deploys full stack web apps to Azure from a GitHub repository.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/8/static-apps-overview.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The workflow of &lt;strong&gt;Azure Static Web Apps&lt;/strong&gt; is tailored to a developer’s daily workflow. Apps are built and deployed based off GitHub interactions.&lt;/p&gt;
+
+&lt;p&gt;When you create an Azure Static Web Apps resource, Azure sets up a &lt;strong&gt;GitHub Actions workflow&lt;/strong&gt; in the app’s source code repository that monitors a branch of your choice. Every time you &lt;strong&gt;push commits&lt;/strong&gt; or &lt;strong&gt;accept pull requests&lt;/strong&gt; into the watched branch, the &lt;em&gt;GitHub Action automatically builds and deploys your app and its API to Azure&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Static web apps&lt;/strong&gt; are commonly built using libraries and frameworks like &lt;strong&gt;Angular, React, Svelte, Vue, or Blazor&lt;/strong&gt;. These apps include &lt;strong&gt;HTML, CSS, JavaScript, and image assets&lt;/strong&gt; that make up the application. &lt;em&gt;With a traditional web server, these assets are served from a single server alongside any required API endpoints&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;With &lt;strong&gt;Static Web Apps&lt;/strong&gt;, s&lt;em&gt;tatic assets are separated from a traditional web server and are instead served from points geographically distributed around the world&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;This distribution makes serving files much faster as files are physically closer to end users. In addition, &lt;em&gt;API endpoints are hosted using a serverless architecture&lt;/em&gt;, which avoids the need for a full back-end server all together.&lt;/p&gt;
+
+&lt;h2 id=&quot;key-features&quot;&gt;Key features&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Web hosting&lt;/strong&gt; for static content like HTML, CSS, JavaScript, and images.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Integrated API&lt;/strong&gt; support provided by Azure Functions.
+First-class GitHub integration where repository changes trigger builds and deployments.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Globally distributed&lt;/strong&gt; static content, putting content closer to your users.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Free SSL certificates&lt;/strong&gt;, which are automatically renewed.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Custom domains&lt;/strong&gt; to provide branded customizations to your app.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Seamless security&lt;/strong&gt; model with a reverse-proxy when calling APIs, which requires no CORS configuration.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Authentication provider integrations&lt;/strong&gt; with Azure Active Directory, Facebook, Google, GitHub, and Twitter.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Customizable authorization&lt;/strong&gt; role definition and assignments.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Back-end routing rules&lt;/strong&gt; enabling full control over the content and routes you serve.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Generated staging versions&lt;/strong&gt; powered by pull requests enabling preview versions of your site before publishing.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;what-you-can-do-with-static-web-apps&quot;&gt;What you can do with Static Web Apps&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Build modern web applications&lt;/strong&gt; with &lt;em&gt;JavaScript frameworks and libraries like Angular, React, Svelte, Vue, or using Blazor to create WebAssembly applications, with an Azure Functions back-end&lt;/em&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Publish static sites&lt;/strong&gt; with frameworks like Gatsby, Hugo, VuePress.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Deploy web applications&lt;/strong&gt; with frameworks like Next.js and Nuxt.js.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;building-your-first-static-web-app&quot;&gt;Building your first static web app&lt;/h2&gt;
+
+&lt;p&gt;Azure Static Web Apps publishes a website to a production environment by building apps from a GitHub repository. In this quickstart, you deploy a web application to Azure Static Web apps using the Visual Studio Code extension.&lt;/p&gt;
+
+&lt;p&gt;If you don’t have an Azure subscription, &lt;a href=&quot;https://azure.microsoft.com/free&quot;&gt;create a free trial account&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt; account&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://portal.azure.com/&quot;&gt;Azure&lt;/a&gt; account&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestaticwebapps&quot;&gt;Azure Static Web Apps extension for Visual Studio Code&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;create-a-repository&quot;&gt;Create a repository&lt;/h2&gt;
+
+&lt;p&gt;This article uses a GitHub template repository to make it easy for you to get started. The template features a starter app used to deploy using Azure Static Web Apps.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Make sure you’re signed in to GitHub and navigate to the following location to create a new repository:
+    &lt;ul&gt;
+      &lt;li&gt;a. https://github.com/staticwebdev/vanilla-basic/generate&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Name your repository my-first-static-web-app&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note:Azure Static Web Apps requires at least one HTML file to create a web app. The repository you create in this step includes a single index.html file.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Select &lt;strong&gt;Create repository from template&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/8/create-template.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;clone-the-repository&quot;&gt;Clone the repository&lt;/h2&gt;
+
+&lt;p&gt;With the repository created in your GitHub account, clone the project to your local machine using the following command.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+git clone https://github.com/&amp;lt;YOUR_GITHUB_ACCOUNT_NAME&amp;gt;/my-first-static-web-app.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Make sure to replace &lt;YOUR_GITHUB_ACCOUNT_NAME&gt; with your GitHub username.&lt;/YOUR_GITHUB_ACCOUNT_NAME&gt;&lt;/p&gt;
+
+&lt;p&gt;Next, open Visual Studio Code and go to &lt;strong&gt;File &amp;gt; Open Folder&lt;/strong&gt; to open the repository you just cloned to your machine in the editor.&lt;/p&gt;
+
+&lt;h2 id=&quot;create-a-static-web-app&quot;&gt;Create a static web app&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Inside Visual Studio Code, select the Azure logo in the Activity Bar to open the Azure extensions window.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/img/azure/8/extension-azure-logo.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note:
+&lt;strong&gt;Azure and GitHub sign in are required&lt;/strong&gt;. If you are not already signed in to Azure and GitHub from Visual Studio Code, the extension will prompt you to sign in to both during the creation process.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Place your mouse over the Static Web Apps label and select the plus sign.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/8/extension-create-button.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The command palate opens at the top of the editor and prompts you to name your application.
+ Type &lt;strong&gt;my-first-static-web-app&lt;/strong&gt; and press &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/8/extension-create-app.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Select the master branch and press Enter.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/8/extension-branch.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Select / as the location for the application code and press Enter.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/8/extension-app-location.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The extension is looking for the location of the API in your application. This article doesn’t implement an API. Select &lt;strong&gt;Skip for now&lt;/strong&gt; and press &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/8/extension-api-location.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Select the location where files are built for production in your app&lt;/p&gt;
+
+    &lt;p&gt;Clear the box and press Enter.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/8/extension-artifact-no-framework.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Select a location nearest you and press Enter.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/8/extension-location.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;9.Once the app is created, a confirmation notification is shown in Visual Studio Code.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/8/extension-confirmation.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;In the Visual Studio Code Explorer window, return to the Static Web Apps section and right-click on Production and select Open in Portal to view app in the Azure portal.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/8/extension-open-in-portal.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;view-the-website&quot;&gt;View the website&lt;/h2&gt;
+
+&lt;p&gt;There are two aspects to deploying a static app. The first provisions the underlying Azure resources that make up your app. The second is a GitHub Actions workflow that builds and publishes your application.&lt;/p&gt;
+
+&lt;p&gt;Before you can navigate to your new static site, the deployment build must first finish running.&lt;/p&gt;
+
+&lt;p&gt;The Static Web Apps overview window displays a series of links that help you interact with your web app.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/8/overview-window.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;em&gt;Clicking on the banner that says, Click here to check the status of your GitHub Actions runs&lt;/em&gt; takes you to the GitHub Actions running against your repository. Once you verify the deployment job is complete, then you can navigate to your website via the generated URL.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Once GitHub Actions workflow is complete, you can click on the URL link to open the website in new tab.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;clean-up-resources&quot;&gt;Clean up resources&lt;/h2&gt;
+&lt;p&gt;If you’re not going to continue to use this application, you can delete the Azure Static Web Apps instance through the extension.&lt;/p&gt;
+
+&lt;p&gt;In the Visual Studio Code Explorer window, return to the Static Web Apps section and right-click on &lt;strong&gt;my-first-static-web-app&lt;/strong&gt; and select &lt;strong&gt;Delete&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/8/extension-delete.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;add-an-api-to-azure-static-web-apps-preview-with-azure-functions&quot;&gt;Add an API to Azure Static Web Apps Preview with Azure Functions&lt;/h2&gt;
+
+&lt;p&gt;You can add &lt;strong&gt;serverless APIs&lt;/strong&gt; to Azure Static Web Apps via integration with Azure Functions. This article demonstrates how to add and deploy an API to an Azure Static Web Apps site.&lt;/p&gt;
+
+&lt;p&gt;Prerequisites&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Azure account with an active subscription.
+If you don’t have an account, &lt;a href=&quot;https://azure.microsoft.com/free&quot;&gt;you can create one for free&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions&quot;&gt;Azure Functions extension&lt;/a&gt; for Visual Studio Code&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer&quot;&gt;Live Server Visual Studio Code extension&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://nodejs.org/download/&quot;&gt;Node.js&lt;/a&gt; to run the API app locally&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;create-a-git-repository&quot;&gt;Create a Git repository&lt;/h2&gt;
+
+&lt;p&gt;The following steps demonstrate how to create a new repository and clone the files to your computer.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Make sure you are logged in to GitHub and, navigate to https://github.com/staticwebdev/vanilla-basic/generate to create a new repository.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;In the Repository name box, enter my-vanilla-api.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Click Create repository from template.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/8/create-repository.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once your project is created, copy the URL in your browser for the new repository. You use this URL in Visual Studio Code to clone the Git repository.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Press &lt;strong&gt;F1&lt;/strong&gt; to open command in the Command Palette.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Paste the URL into the &lt;em&gt;Git: Clone&lt;/em&gt; prompt, and press &lt;strong&gt;Enter&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/8/vscode-git-0.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Follow the prompts to select a repository location to clone the project.&lt;/p&gt;
+
+&lt;h2 id=&quot;create-the-api&quot;&gt;Create the API&lt;/h2&gt;
+
+&lt;p&gt;Next, you create an Azure Functions project as the application’s API.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Inside the &lt;strong&gt;my-vanilla-api&lt;/strong&gt; project, create a sub-folder named &lt;strong&gt;api&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Press &lt;strong&gt;F1&lt;/strong&gt; to open the Command Palette&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Type &lt;strong&gt;Azure Functions: Create New Project&lt;/strong&gt;…&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Press &lt;strong&gt;Enter&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Choose &lt;strong&gt;Browse&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Select the &lt;strong&gt;api&lt;/strong&gt; folder as the directory for your  project workspace&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Choose &lt;strong&gt;Select&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/8/create-azure-functions-vscode-1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Provide the following information at the prompts:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Select a language: Choose JavaScript&lt;/li&gt;
+  &lt;li&gt;Select a template for your project’s first function: Choose HTTP trigger&lt;/li&gt;
+  &lt;li&gt;Provide a function name: Enter GetMessage&lt;/li&gt;
+  &lt;li&gt;Authorization level: Choose Anonymous, which enables anyone to call your function endpoint.
+    &lt;ul&gt;
+      &lt;li&gt;To learn about authorization levels, see Authorization keys.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Visual Studio Code generates an Azure Functions project with an HTTP triggered function.&lt;/p&gt;
+
+&lt;p&gt;Your app now has a project structure similar to the following example.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+├── api
+│   ├── GetMessage
+│   │   ├── function.json
+│   │   ├── index.js
+│   │   └── sample.dat
+│   ├── host.json
+│   ├── local.settings.json
+│   ├── package.json
+│   └── proxies.json
+├── index.html
+├── readme.md
+└── styles.css
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Next, you’ll change the &lt;strong&gt;GetMessage&lt;/strong&gt; function to return a message to the front-end.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Update the GetMessage function under api/GetMessage/index.js with the following code.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;``` java script&lt;/p&gt;
+
+&lt;p&gt;module.exports = async function (context, req) {
+  context.res = {
+    body: {
+      text: “Hello from the API”
+    }
+  };
+};&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+2. Update the GetMessage configuration under api/GetMessage/function.json with the following settings.
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;{
+  “bindings”: [
+    {
+      “authLevel”: “anonymous”,
+      “type”: “httpTrigger”,
+      “direction”: “in”,
+      “name”: “req”,
+      “methods”: [
+        “get”
+      ],
+      “route”: “message”
+    },
+    {
+      “type”: “http”,
+      “direction”: “out”,
+      “name”: “res”
+    }
+  ]
+}&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+With the above settings, the API endpoint is:
+
+* Triggered when an HTTP request is made to the function
+* Available to all requests regardless of authentication status
+* Exposed via the /api/message route
+
+## Run the API locally
+Visual Studio Code integrates with Azure Functions Core Tools to let you run this project on your local development computer before you publish to Azure.
+
+&amp;gt;Tip:
+Make sure you have all the resources listed in the prerequisites section installed before proceeding.
+
+1. Run the function by pressing F5 to start the Functions app.
+
+2. If Azure Functions Core Tools isn't already *installed*, select **Install** at the prompt.  The Core Tools shows output from the running application in the Terminal panel. As a part of the output, you can see the URL endpoint of your HTTP-triggered function running locally.
+
+![image info](/img/azure/8/create-azure-functions-vscode-2.png)
+
+3. With Core Tools running, navigate to the following URL to verify the API is running correctly: http://localhost:7071/api/message.
+
+The response in the browser should look similar to the following example:
+
+![image info](/img/azure/8/create-azure-functions-vscode-3.png)
+
+4. Press Shift + F5 to stop the debugging session.
+
+## Call the API from the application
+
+When deployed to Azure, requests to the API are automatically routed to the Functions app for requests sent to the api route. Working locally, you have to configure the application settings to proxy requests to the local API.
+
+## Local proxy
+You can configure a proxy for the Live Server Visual Studio Code extension that routes all requests to /api to the running API endpoint at http://127.0.0.1:7071/api.
+
+1. Open the .vscode/settings.json file.
+
+2. Add the following settings to specify a proxy for Live Server.
+   
+```json
+
+&quot;liveServer.settings.proxy&quot;: {
+   &quot;enable&quot;: true,
+   &quot;baseUri&quot;: &quot;/api&quot;,
+   &quot;proxyUri&quot;: &quot;http://127.0.0.1:7071/api&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This configuration is best saved in project settings file, as opposed to in the user settings file.&lt;/p&gt;
+
+&lt;p&gt;Using project settings assures the proxy isn’t applied to all other projects opened in Visual Studio Code.&lt;/p&gt;
+
+&lt;h2 id=&quot;update-html-files-to-access-the-api&quot;&gt;Update HTML files to access the API&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Next, update the content of the index.html file with the following code to fetch the text from the API function and display it on the screen:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;viewport&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;width=device-width, initial-scale=1.0&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;styles.css&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Vanilla JavaScript App&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;main&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Vanilla JavaScript App&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Loading content from the API: &lt;span class=&quot;nt&quot;&gt;&amp;lt;b&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;...&lt;span class=&quot;nt&quot;&gt;&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/main&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`/api/message`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#name&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;textContent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}())&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Press &lt;strong&gt;F5&lt;/strong&gt; to start the API project.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Press &lt;strong&gt;F1&lt;/strong&gt; and choose &lt;em&gt;Live Server: Open with Live Server&lt;/em&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;You should now see the API message in the web page.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/8/create-azure-functions-vscode-4.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note:You can use other HTTP servers or proxies to serve the index.html file. Accessing the index.html from file:/// will not work.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Press Shift + F5 to stop the API project.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;commit-and-push-your-changes-to-github&quot;&gt;Commit and push your changes to GitHub&lt;/h2&gt;
+&lt;p&gt;Using Visual Studio Code, commit and push your changes to the remote git repository.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Press &lt;strong&gt;F1&lt;/strong&gt; to open the Command Palette&lt;/li&gt;
+  &lt;li&gt;Type &lt;strong&gt;Git: Commit All&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Add a commit message and press &lt;strong&gt;Enter&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Press &lt;strong&gt;F1&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Type in &lt;strong&gt;Git: push&lt;/strong&gt; and press &lt;strong&gt;Enter&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;create-a-static-web-app-1&quot;&gt;Create a static web app&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Navigate to the &lt;a href=&quot;https://portal.azure.com/&quot;&gt;Azure portal&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Click &lt;strong&gt;Create a Resource&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Search for &lt;strong&gt;Static Web App&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Click &lt;strong&gt;Static Web App (Preview)&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Click &lt;strong&gt;Create&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Next, add the app-specific settings.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Select your &lt;em&gt;Azure subscription&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Select or &lt;em&gt;create a new Resource Group&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Name the app &lt;strong&gt;my-vanilla-api&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;Select &lt;em&gt;Region&lt;/em&gt; closest to you&lt;/li&gt;
+  &lt;li&gt;Select the &lt;strong&gt;Free&lt;/strong&gt; SKU&lt;/li&gt;
+  &lt;li&gt;Click the &lt;strong&gt;Sign-in with GitHub&lt;/strong&gt; button and authenticate with GitHub&lt;/li&gt;
+  &lt;li&gt;Select your preferred &lt;em&gt;Organization&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Select &lt;strong&gt;my-vanilla-api&lt;/strong&gt; from the Repository drop-down&lt;/li&gt;
+  &lt;li&gt;Select &lt;strong&gt;master&lt;/strong&gt; from the Branch drop-down&lt;/li&gt;
+  &lt;li&gt;Click the &lt;strong&gt;Next: Build &amp;gt;&lt;/strong&gt; button to edit the build configuration&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Next, add the following the build details.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Enter &lt;strong&gt;/&lt;/strong&gt; for the App location.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Enter &lt;strong&gt;api&lt;/strong&gt; in the Api location box.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Clear the default value out of the &lt;em&gt;App artifact location&lt;/em&gt;, leaving the box empty.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Click &lt;strong&gt;Review + create&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Click the &lt;strong&gt;Create&lt;/strong&gt; button&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Once you click the &lt;em&gt;Create&lt;/em&gt; button, Azure does two things. First, the underlying cloud services are created to support the app. Next, a background process begins to build and deploy the application.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Click the &lt;strong&gt;Go to Resource&lt;/strong&gt; button to take you to the web app’s &lt;em&gt;Overview&lt;/em&gt; page.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;As the app is being built in the background, you can click on the banner which contains a link to view the build status.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/8/static-app-url-from-portal.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;clean-up-resources-1&quot;&gt;Clean up resources&lt;/h2&gt;
+
+&lt;p&gt;If you don’t want to keep this application for further use, you can use the following steps to delete the Azure Static Web App and its related resources.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Navigate to the &lt;a href=&quot;https://portal.azure.com/&quot;&gt;Azure portal&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;In the top search bar, type &lt;strong&gt;Resource groups&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Click &lt;strong&gt;Resource groups&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Select &lt;strong&gt;myResourceGroup&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;On the &lt;em&gt;myResourceGroup&lt;/em&gt; page, make sure that the listed resources are the ones you want to delete.&lt;/li&gt;
+  &lt;li&gt;Select &lt;strong&gt;Delete&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Type &lt;strong&gt;myResourceGroup&lt;/strong&gt; in the text box&lt;/li&gt;
+  &lt;li&gt;Select &lt;strong&gt;Delete&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Introduction</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/AzureAppSerive.png" /></entry><entry><title type="html">How to build your own AI personal assistant using Python</title><link href="http://localhost:4000/blog/pythonPA" rel="alternate" type="text/html" title="How to build your own AI personal assistant using Python" /><published>2020-10-10T10:10:10+00:00</published><updated>2020-10-10T10:10:10+00:00</updated><id>http://localhost:4000/blog/PythonPersonalAssistant</id><content type="html" xml:base="http://localhost:4000/blog/pythonPA">&lt;h2 id=&quot;how-to-build-your-own-ai-personal-assistant-using-python&quot;&gt;How to build your own AI personal assistant using Python&lt;/h2&gt;
 
 &lt;p&gt;&lt;em&gt;An AI personal assistant is a piece of software that understands verbal or written commands and completes task assigned by the client. It is an example of weak AI that is it can only execute and perform quest designed by the user.&lt;/em&gt;&lt;/p&gt;
 
@@ -539,7 +1935,97 @@ wishMe()
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
-&lt;p&gt;In this article, I have explained Azure Functions and how to create a function using the Azure Portal. Also, I demonstrated how to test function from portal, browser, and postman. I really hope that you enjoyed this article, share it with friends, and please do not hesitate to send me your thoughts or comments. Stay tuned for more Azure Functions articles.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Introduction</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/azureFunctionApp.png" /></entry><entry><title type="html">Create user flows in Azure Active Directory B2C</title><link href="http://localhost:4000/blog/azure-acticedirectoryB2C_CreateUserFlow" rel="alternate" type="text/html" title="Create user flows in Azure Active Directory B2C" /><published>2020-03-12T12:41:00+00:00</published><updated>2020-03-12T12:41:00+00:00</updated><id>http://localhost:4000/blog/azure-activedirectoryB2C_CreateUserFlow</id><content type="html" xml:base="http://localhost:4000/blog/azure-acticedirectoryB2C_CreateUserFlow">&lt;blockquote&gt;
+&lt;p&gt;In this article, I have explained Azure Functions and how to create a function using the Azure Portal. Also, I demonstrated how to test function from portal, browser, and postman. I really hope that you enjoyed this article, share it with friends, and please do not hesitate to send me your thoughts or comments. Stay tuned for more Azure Functions articles.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Introduction</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/azureFunctionApp.png" /></entry><entry><title type="html">Register a web application in Azure Active Directory B2C</title><link href="http://localhost:4000/blog/azure-acticedirectoryB2C_RegisterApp" rel="alternate" type="text/html" title="Register a web application in Azure Active Directory B2C" /><published>2020-03-12T12:41:00+00:00</published><updated>2020-03-12T12:41:00+00:00</updated><id>http://localhost:4000/blog/azure-activedirectoryB2C_RegisterApp</id><content type="html" xml:base="http://localhost:4000/blog/azure-acticedirectoryB2C_RegisterApp">&lt;blockquote&gt;
+  &lt;h2 id=&quot;register-a-web-application-in-azure-active-directory-b2c&quot;&gt;Register a web application in Azure Active Directory B2C&lt;/h2&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Before your applications can interact with Azure Active Directory B2C (Azure AD B2C), they must be registered in a tenant that you manage. This tutorial shows you how to register a web application using the Azure portal.&lt;/p&gt;
+
+&lt;p&gt;In this article, you learn how to:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Register a web application&lt;/li&gt;
+  &lt;li&gt;Create a client secret&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you’re using a native app instead (e.g. iOS, Android, mobile &amp;amp; desktop), learn how to register a native client application.&lt;/p&gt;
+
+&lt;p&gt;If you don’t have an Azure subscription, create a &lt;a href=&quot;https://azure.microsoft.com/free/?WT.mc_id=A261C142F&quot;&gt;free account&lt;/a&gt; before you begin.&lt;/p&gt;
+
+&lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;
+
+&lt;p&gt;If you haven’t already created your own &lt;a href=&quot;azure-activedirectoryB2C_CreateTenant&quot;&gt;Azure AD B2C Tenant&lt;/a&gt;, create one now. You can use an existing Azure AD B2C tenant.&lt;/p&gt;
+
+&lt;h2 id=&quot;register-a-web-application&quot;&gt;Register a web application&lt;/h2&gt;
+
+&lt;p&gt;To register an application in your Azure AD B2C tenant, you can use new unified App registrations experience&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Sign in to the &lt;a href=&quot;https://portal.azure.com/&quot;&gt;Azure portal&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Select the &lt;strong&gt;Directory + Subscription&lt;/strong&gt; icon in the portal toolbar, and then select the directory that contains your Azure AD B2C tenant.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;In the Azure portal, search for and select &lt;strong&gt;Azure AD B2C&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Select &lt;strong&gt;App registrations&lt;/strong&gt;, and then select &lt;strong&gt;New registration&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Enter a &lt;strong&gt;Name&lt;/strong&gt; for the application. For example, webapp1.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Under &lt;strong&gt;Supported account types&lt;/strong&gt;, select &lt;strong&gt;Accounts in any organizational directory or any identity provider. For authenticating users with Azure AD B2C.&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Under &lt;strong&gt;Redirect URI&lt;/strong&gt;, select &lt;strong&gt;Web&lt;/strong&gt;, and then enter https://jwt.ms in the URL text box.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The redirect URI is the endpoint to which the user is sent by the authorization server (Azure AD B2C, in this case) after completing its interaction with the user, and to which an access token or authorization code is sent upon successful authorization. In a production application, it’s typically a publicly accessible endpoint where your app is running, like https://contoso.com/auth-response. For testing purposes like this tutorial, you can set it to https://jwt.ms, a Microsoft-owned web application that displays the decoded contents of a token (the contents of the token never leave your browser). During app development, &lt;strong&gt;you might add the endpoint where your application listens locally, like https://localhost:5000&lt;/strong&gt;. You can add and modify redirect URIs in your registered applications at any time.&lt;/p&gt;
+
+&lt;p&gt;The following restrictions apply to redirect URIs:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The reply URL must begin with the scheme https.&lt;/li&gt;
+  &lt;li&gt;The reply URL is case-sensitive. Its case must match the case of the URL path of your running application. For example, if your application includes as part of its path …/abc/response-oidc, do not specify …/ABC/response-oidc in the reply URL. Because the web browser treats paths as case-sensitive, cookies associated with …/abc/response-oidc may be excluded if redirected to the case-mismatched …/ABC/response-oidc URL.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Under Permissions, select the Grant admin consent to openid and offline_access permissions check box.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Select Register.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Once the application registration is complete, enable the implicit grant flow:&lt;/p&gt;
+
+&lt;h2 id=&quot;create-a-client-secret&quot;&gt;Create a client secret&lt;/h2&gt;
+
+&lt;p&gt;If your application exchanges an authorization code for an access token, you need to create an application secret.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;In the &lt;strong&gt;Azure AD B2C - App registrations&lt;/strong&gt; page, select the application you created, for example webapp1.&lt;/li&gt;
+  &lt;li&gt;In the left menu, under &lt;strong&gt;Manage&lt;/strong&gt;, select &lt;strong&gt;Certificates &amp;amp; secrets&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;Select &lt;strong&gt;New client secret&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;Enter a description for the client secret in the &lt;strong&gt;Description&lt;/strong&gt; box. For example, clientsecret1.&lt;/li&gt;
+  &lt;li&gt;Under &lt;strong&gt;Expires&lt;/strong&gt;, select a duration for which the secret is valid, and then select &lt;strong&gt;Add&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;Record the secret’s &lt;strong&gt;Value&lt;/strong&gt;. You use this value as the application secret in your application’s code.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;next-steps&quot;&gt;Next steps&lt;/h2&gt;
+&lt;p&gt;In this article, you learned how to:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Register a web application&lt;/li&gt;
+  &lt;li&gt;Create a client secret&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Next, learn how to &lt;a href=&quot;azure-acticedirectoryB2C_CreateUserFlow&quot;&gt;create user flows&lt;/a&gt; to enable your users to sign up, sign in, and manage their profiles.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Register a web application in Azure Active Directory B2C</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/azureAD.png" /></entry><entry><title type="html">Create user flows in Azure Active Directory B2C</title><link href="http://localhost:4000/blog/azure-acticedirectoryB2C_CreateUserFlow" rel="alternate" type="text/html" title="Create user flows in Azure Active Directory B2C" /><published>2020-03-12T12:41:00+00:00</published><updated>2020-03-12T12:41:00+00:00</updated><id>http://localhost:4000/blog/azure-activedirectoryB2C_CreateUserFlow</id><content type="html" xml:base="http://localhost:4000/blog/azure-acticedirectoryB2C_CreateUserFlow">&lt;blockquote&gt;
   &lt;h2 id=&quot;create-user-flows-in-azure-active-directory-b2c&quot;&gt;Create user flows in Azure Active Directory B2C&lt;/h2&gt;
 &lt;/blockquote&gt;
 
@@ -703,97 +2189,7 @@ wishMe()
   &lt;li&gt;Create a password reset user flow&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Next, learn about adding identity providers to your applications to enable user sign-in with providers like Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft, or Twitter.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Create user flows in Azure Active Directory B2C</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/azureAD.png" /></entry><entry><title type="html">Register a web application in Azure Active Directory B2C</title><link href="http://localhost:4000/blog/azure-acticedirectoryB2C_RegisterApp" rel="alternate" type="text/html" title="Register a web application in Azure Active Directory B2C" /><published>2020-03-12T12:41:00+00:00</published><updated>2020-03-12T12:41:00+00:00</updated><id>http://localhost:4000/blog/azure-activedirectoryB2C_RegisterApp</id><content type="html" xml:base="http://localhost:4000/blog/azure-acticedirectoryB2C_RegisterApp">&lt;blockquote&gt;
-  &lt;h2 id=&quot;register-a-web-application-in-azure-active-directory-b2c&quot;&gt;Register a web application in Azure Active Directory B2C&lt;/h2&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Before your applications can interact with Azure Active Directory B2C (Azure AD B2C), they must be registered in a tenant that you manage. This tutorial shows you how to register a web application using the Azure portal.&lt;/p&gt;
-
-&lt;p&gt;In this article, you learn how to:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Register a web application&lt;/li&gt;
-  &lt;li&gt;Create a client secret&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;If you’re using a native app instead (e.g. iOS, Android, mobile &amp;amp; desktop), learn how to register a native client application.&lt;/p&gt;
-
-&lt;p&gt;If you don’t have an Azure subscription, create a &lt;a href=&quot;https://azure.microsoft.com/free/?WT.mc_id=A261C142F&quot;&gt;free account&lt;/a&gt; before you begin.&lt;/p&gt;
-
-&lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;
-
-&lt;p&gt;If you haven’t already created your own &lt;a href=&quot;azure-activedirectoryB2C_CreateTenant&quot;&gt;Azure AD B2C Tenant&lt;/a&gt;, create one now. You can use an existing Azure AD B2C tenant.&lt;/p&gt;
-
-&lt;h2 id=&quot;register-a-web-application&quot;&gt;Register a web application&lt;/h2&gt;
-
-&lt;p&gt;To register an application in your Azure AD B2C tenant, you can use new unified App registrations experience&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Sign in to the &lt;a href=&quot;https://portal.azure.com/&quot;&gt;Azure portal&lt;/a&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Select the &lt;strong&gt;Directory + Subscription&lt;/strong&gt; icon in the portal toolbar, and then select the directory that contains your Azure AD B2C tenant.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;In the Azure portal, search for and select &lt;strong&gt;Azure AD B2C&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Select &lt;strong&gt;App registrations&lt;/strong&gt;, and then select &lt;strong&gt;New registration&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Enter a &lt;strong&gt;Name&lt;/strong&gt; for the application. For example, webapp1.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Under &lt;strong&gt;Supported account types&lt;/strong&gt;, select &lt;strong&gt;Accounts in any organizational directory or any identity provider. For authenticating users with Azure AD B2C.&lt;/strong&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Under &lt;strong&gt;Redirect URI&lt;/strong&gt;, select &lt;strong&gt;Web&lt;/strong&gt;, and then enter https://jwt.ms in the URL text box.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;The redirect URI is the endpoint to which the user is sent by the authorization server (Azure AD B2C, in this case) after completing its interaction with the user, and to which an access token or authorization code is sent upon successful authorization. In a production application, it’s typically a publicly accessible endpoint where your app is running, like https://contoso.com/auth-response. For testing purposes like this tutorial, you can set it to https://jwt.ms, a Microsoft-owned web application that displays the decoded contents of a token (the contents of the token never leave your browser). During app development, &lt;strong&gt;you might add the endpoint where your application listens locally, like https://localhost:5000&lt;/strong&gt;. You can add and modify redirect URIs in your registered applications at any time.&lt;/p&gt;
-
-&lt;p&gt;The following restrictions apply to redirect URIs:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;The reply URL must begin with the scheme https.&lt;/li&gt;
-  &lt;li&gt;The reply URL is case-sensitive. Its case must match the case of the URL path of your running application. For example, if your application includes as part of its path …/abc/response-oidc, do not specify …/ABC/response-oidc in the reply URL. Because the web browser treats paths as case-sensitive, cookies associated with …/abc/response-oidc may be excluded if redirected to the case-mismatched …/ABC/response-oidc URL.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Under Permissions, select the Grant admin consent to openid and offline_access permissions check box.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Select Register.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Once the application registration is complete, enable the implicit grant flow:&lt;/p&gt;
-
-&lt;h2 id=&quot;create-a-client-secret&quot;&gt;Create a client secret&lt;/h2&gt;
-
-&lt;p&gt;If your application exchanges an authorization code for an access token, you need to create an application secret.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;In the &lt;strong&gt;Azure AD B2C - App registrations&lt;/strong&gt; page, select the application you created, for example webapp1.&lt;/li&gt;
-  &lt;li&gt;In the left menu, under &lt;strong&gt;Manage&lt;/strong&gt;, select &lt;strong&gt;Certificates &amp;amp; secrets&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;Select &lt;strong&gt;New client secret&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;Enter a description for the client secret in the &lt;strong&gt;Description&lt;/strong&gt; box. For example, clientsecret1.&lt;/li&gt;
-  &lt;li&gt;Under &lt;strong&gt;Expires&lt;/strong&gt;, select a duration for which the secret is valid, and then select &lt;strong&gt;Add&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;Record the secret’s &lt;strong&gt;Value&lt;/strong&gt;. You use this value as the application secret in your application’s code.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;next-steps&quot;&gt;Next steps&lt;/h2&gt;
-&lt;p&gt;In this article, you learned how to:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Register a web application&lt;/li&gt;
-  &lt;li&gt;Create a client secret&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Next, learn how to &lt;a href=&quot;azure-acticedirectoryB2C_CreateUserFlow&quot;&gt;create user flows&lt;/a&gt; to enable your users to sign up, sign in, and manage their profiles.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Register a web application in Azure Active Directory B2C</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/azureAD.png" /></entry><entry><title type="html">Create an Azure AD B2C tenant</title><link href="http://localhost:4000/blog/azure-acticedirectoryB2C_CreateTenant" rel="alternate" type="text/html" title="Create an Azure AD B2C tenant" /><published>2020-03-12T10:41:00+00:00</published><updated>2020-03-12T10:41:00+00:00</updated><id>http://localhost:4000/blog/azure-activedirectoryB2C_CreateTenant</id><content type="html" xml:base="http://localhost:4000/blog/azure-acticedirectoryB2C_CreateTenant">&lt;blockquote&gt;
+&lt;p&gt;Next, learn about adding identity providers to your applications to enable user sign-in with providers like Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft, or Twitter.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Create user flows in Azure Active Directory B2C</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/azureAD.png" /></entry><entry><title type="html">Create an Azure AD B2C tenant</title><link href="http://localhost:4000/blog/azure-acticedirectoryB2C_CreateTenant" rel="alternate" type="text/html" title="Create an Azure AD B2C tenant" /><published>2020-03-12T10:41:00+00:00</published><updated>2020-03-12T10:41:00+00:00</updated><id>http://localhost:4000/blog/azure-activedirectoryB2C_CreateTenant</id><content type="html" xml:base="http://localhost:4000/blog/azure-acticedirectoryB2C_CreateTenant">&lt;blockquote&gt;
   &lt;h2 id=&quot;create-an-azure-ad-b2c-tenant&quot;&gt;Create an Azure AD B2C tenant&lt;/h2&gt;
 &lt;/blockquote&gt;
 
@@ -2258,831 +3654,4 @@ namespace EndToEnd.Pages
   &lt;li&gt;To learn more about Azure DevOps check &lt;a href=&quot;https://www.youtube.com/watch?v=kn2f5a2Z_n4&quot;&gt;this&lt;/a&gt; video.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Oh.. wait, In the meanwhile, you can get started with your free account in Azure DevOps and start exploring. Just log in to https://dev.azure.com with your Microsoft account and start your ALM journey in cloud with Azure DevOps.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">AZURE DEVOPS – MANAGE YOUR APPLICATION LIFECYCLE IN CLOUD</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/dev-ops.png" /></entry><entry><title type="html">Amazon pinpoint - Customer Engagement</title><link href="http://localhost:4000/blog/customer-engagement-with-Amazon-pinpoint" rel="alternate" type="text/html" title="Amazon pinpoint - Customer Engagement" /><published>2020-02-02T11:41:00+00:00</published><updated>2020-02-02T11:41:00+00:00</updated><id>http://localhost:4000/blog/customer-engagement-with-Amazon-pinpoint</id><content type="html" xml:base="http://localhost:4000/blog/customer-engagement-with-Amazon-pinpoint">&lt;h2 id=&quot;what-is-customer-engagement&quot;&gt;What is Customer Engagement?&lt;/h2&gt;
-
-&lt;p&gt;&lt;em&gt;Customer engagement&lt;/em&gt; refers to the practices that organizations employ to keep users coming back to their applications. Maximizing customer engagement is vital in today’s digital marketplace, where an ever-increasing number of brands are competing for a finite amount of customer attention. In this article, we discuss the factors that impact customer engagement, and provide information about specific steps you can take to improve customer engagement.&lt;/p&gt;
-
-&lt;h3 id=&quot;why-customer-engagement-matters&quot;&gt;Why customer engagement matters&lt;/h3&gt;
-
-&lt;p&gt;In 2012, the average adult in the United States spent one hour per day using his or her mobile device; by 2017, that figure had increased to 5.6 hours per day. Over half of that time is spent using third-party apps, but the majority of app users access 20 or fewer apps each month. Of those 20 apps, most users spent the vast majority of their time in their top 10 applications.&lt;/p&gt;
-
-&lt;p&gt;At the same time, first impressions are everything in today’s digital marketplace. Almost a quarter of users have downloaded an app, ran it once, and never opened it again. Additional research suggests that as many as 80% of all app users stop using a given app within 90 days.&lt;/p&gt;
-
-&lt;p&gt;These statistics paint a very clear picture: in order to succeed in this highly competitive environment, organizations must deliver digital content that delights and engages their customers.&lt;/p&gt;
-
-&lt;h3 id=&quot;customer-engagement-in-action&quot;&gt;Customer engagement in action&lt;/h3&gt;
-&lt;p&gt;Let’s assume your organization produces a mobile app for sports fans called All Things Sports. In your app, users can get the latest sports news, purchase memorabilia and event tickets, and play exciting mini-games. Your organization has devoted a large amount of time, effort, and money into creating a best-in-class app and acquiring new users. For this reason, it’s essential that your users keep coming back to your application so that your business can grow.&lt;/p&gt;
-
-&lt;p&gt;For all applications, user interactions fall into three categories: activation, retention, and conversion. All Things Sports requires users to confirm their email address and select their favorite sports teams; the percentage of users who complete this process is the activation rate. Next, you need to offer content that is compelling enough to keep your users coming back. All Things Sports offers fun mini-games and special offers that encourage users to return to the app often. The likelihood that your customers will return to your application repeatedly is referred to as your retention rate. Finally, your organization needs to make money in order to grow. The main revenue generating activity in All Things Sports is the sale of event tickets and merchandise. The percentage of users who purchase these products through your app is your conversion rate. As the application developer, you have to continuously improve all three of these metrics in order to grow your business.&lt;/p&gt;
-
-&lt;p&gt;The first step toward improving these metrics is to gather customer analytics data. Customer analytics data is the data you collect and analyze to better understand the ways in which customers use your application. A thorough analysis of this data can help you better serve your users, thereby increasing their engagement with your application. Making optimizations to your application based on this data can lead to positive reviews, better app store rankings, and increased word of mouth. These factors can increase your activation rate, which can in turn increase your retention and conversion rates. You can start gathering this information by integrating the AWS Mobile SDK into your application. For more information about customer analytics, see our companion article, What are Customer Analytics?&lt;/p&gt;
-
-&lt;p&gt;The next step toward improving customer engagement is to create targeted segments of customers based on their characteristics. By targeting specific customers based on their demographics, preferences, behaviors, and interests, you can ensure that you’re using the right channels to send the right messages to the right customers. &lt;strong&gt;Amazon Pinpoint&lt;/strong&gt; can import app usage data obtained from the AWS Mobile SDK and use it to create customer segments. To learn more about the ways in which you can create customer segments, see our companion article, What is Customer Segmentation?&lt;/p&gt;
-
-&lt;p&gt;The final step toward improving customer engagement is to deploy personalized, multi-channel messaging to your customers. You can use these messages to proactively update engaged customers on exciting new features and improvements in your application, or to incentivize less-engaged customers to sign back in to your application. You can also use this messaging to convey vital transactional content—such as password reset emails or purchase confirmations—to all customers. You can also use &lt;strong&gt;Amazon Pinpoint&lt;/strong&gt; to meet this need. For more information about multi-channel messaging, see the companion article titled What is Multi-Channel Messaging?&lt;/p&gt;
-
-&lt;h2 id=&quot;what-is-amazon-pinpoint&quot;&gt;What Is Amazon Pinpoint?&lt;/h2&gt;
-
-&lt;p&gt;Amazon Pinpoint is an AWS service that you can use to engage with your customers across multiple messaging channels. You can use &lt;strong&gt;Amazon Pinpoint to send push notifications, emails, SMS text messages, and voice messages&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;amazon-pinpoint-features&quot;&gt;Amazon Pinpoint Features&lt;/h2&gt;
-&lt;p&gt;This section describes the major features of Amazon Pinpoint and the tasks that you can perform by using them.&lt;/p&gt;
-
-&lt;h3 id=&quot;define-audience-segments&quot;&gt;Define Audience Segments&lt;/h3&gt;
-&lt;p&gt;Reach the right audience for your messages by defining audience segments. A segment designates which users receive the messages that are sent from a campaign or journey. You can define dynamic segments based on data that’s reported by your application, such as operating system or mobile device type. You can also import static segments that you define outside of Amazon Pinpoint.&lt;/p&gt;
-
-&lt;h3 id=&quot;engage-your-audience-with-messaging-campaigns&quot;&gt;Engage Your Audience with Messaging Campaigns&lt;/h3&gt;
-&lt;p&gt;Engage your audience by creating a messaging campaign. A campaign sends tailored messages on a schedule that you define. You can create campaigns that send push notifications, email, SMS text messages, and voice messages.&lt;/p&gt;
-
-&lt;p&gt;To experiment with alternative campaign strategies, set up your campaign as an A/B test, and analyze the results with Amazon Pinpoint analytics.&lt;/p&gt;
-
-&lt;h3 id=&quot;create-user-journeys&quot;&gt;Create User Journeys&lt;/h3&gt;
-&lt;p&gt;Create custom, multi-step experiences for your customers by designing and building journeys. With journeys, you can send messages to your customers based on their attributes, behaviors, and activities. When you build a journey, you design an automated workflow of activities that perform a variety of different actions—for example, sending an email message to participants, waiting for a certain period of time, or splitting participants based on actions that they take, such as clicking a link in a message.&lt;/p&gt;
-
-&lt;h3 id=&quot;provide-consistent-messaging-with-templates&quot;&gt;Provide Consistent Messaging with Templates&lt;/h3&gt;
-&lt;p&gt;Design consistent messages and reuse content more effectively by creating and using message templates. A message template contains content and settings that you want to reuse in messages that you send for any of your Amazon Pinpoint projects. You can use message templates in email messages, push notifications, SMS messages, and voice messages.&lt;/p&gt;
-
-&lt;h3 id=&quot;deliver-personalized-content&quot;&gt;Deliver Personalized Content&lt;/h3&gt;
-&lt;p&gt;Send content that’s customized for each recipient of a message. Using message variables and attributes, you can deliver dynamic, personalized content in messages that you send from campaigns and journeys.&lt;/p&gt;
-
-&lt;p&gt;To streamline development, you can also use message variables and attributes to add personalized content to message templates. With message templates, this content can come from attributes that you create directly in Amazon Pinpoint or a machine learning model that you create in Amazon Personalize. By connecting message templates to models in Amazon Personalize, you can use machine learning to send relevant promotions or recommendations to each recipient of a message.&lt;/p&gt;
-
-&lt;h3 id=&quot;analyze-user-behavior&quot;&gt;Analyze User Behavior&lt;/h3&gt;
-&lt;p&gt;Gain insight into your audience and the effectiveness of your campaigns and messaging activities by using the analytics that Amazon Pinpoint provides. You can view trends in your users’ level of engagement, purchase activity, demographics, and more. You can also monitor your message traffic by viewing metrics such as the total number of messages that you sent for a campaign or project. Through the Amazon Pinpoint API, your application can also report custom data, which Amazon Pinpoint makes available for analysis.&lt;/p&gt;
-
-&lt;p&gt;To analyze or store analytics data outside Amazon Pinpoint, configure Amazon Pinpoint to stream the data to Amazon Kinesis.&lt;/p&gt;
-
-&lt;h3 id=&quot;send-test-messages&quot;&gt;Send Test Messages&lt;/h3&gt;
-&lt;p&gt;Test the design and deliverability of your messages by sending test messages before you send messages to your customers.&lt;/p&gt;
-
-&lt;h2 id=&quot;get-started&quot;&gt;Get Started&lt;/h2&gt;
-&lt;p&gt;Get started with Amazon Pinpoint by &lt;strong&gt;creating a new project&lt;/strong&gt; or &lt;strong&gt;completing a tutorial&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;getting-started-with-amazon-pinpoint&quot;&gt;Getting Started with Amazon Pinpoint&lt;/h2&gt;
-
-&lt;p&gt;To start sending targeted messages in Amazon Pinpoint, you have to complete a few steps. &lt;em&gt;For example, you have to add customer contact information into Amazon Pinpoint, and then create segments that target certain customers. Next, you have to create your messages and schedule your campaigns. Finally, after you send your campaigns, you can use the analytics dashboards that are built into Amazon Pinpoint to see how well the campaigns performed.&lt;/em&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;intended-audience&quot;&gt;Intended Audience&lt;/h3&gt;
-
-&lt;p&gt;This tutorial is designed for &lt;strong&gt;marketing and business users&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;features-used&quot;&gt;Features Used&lt;/h3&gt;
-
-&lt;p&gt;This tutorial shows you how to complete all of the following steps by using the Amazon Pinpoint console:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Importing customer data from a file.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Creating a segment that targets specific users based on their attributes.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Creating an email campaign and scheduling it to be sent at a specific time.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Viewing email delivery and response data by using the analytics dashboards that are built into Amazon Pinpoint.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;step-1-create-and-configure-a-project&quot;&gt;Step 1: Create and Configure a Project&lt;/h3&gt;
-
-&lt;p&gt;To create a project and verify an email address&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Open the Amazon Pinpoint console at https://console.aws.amazon.com/pinpoint/.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;On the &lt;strong&gt;All projects page&lt;/strong&gt;, choose &lt;strong&gt;Create a project&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;On the &lt;strong&gt;Create a project&lt;/strong&gt; window, for &lt;strong&gt;Project name&lt;/strong&gt;, enter a name for your project, and then &lt;strong&gt;choose Create&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;
-&lt;em&gt;The project name can contain up to 64 characters.&lt;/em&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;On the &lt;strong&gt;Configure features&lt;/strong&gt; page, next to &lt;strong&gt;Email&lt;/strong&gt;, choose &lt;strong&gt;Configure&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;For Email address, type an email address that you want to use to send email. For example, you can use your personal email address, or your work email address. Choose &lt;strong&gt;Verify&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Wait for 1–2 minutes, and then check the inbox for the email address that you specified in step 4. You should see an email from Amazon Web Services (no-reply-aws@amazon.com) with the subject line “Amazon Web Services – Email Address Verification Request in region &lt;strong&gt;RegionName&lt;/strong&gt;”, where &lt;strong&gt;RegionName&lt;/strong&gt; is the name of the AWS Region that you’re configuring Amazon Pinpoint in.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Open the email, and then click the link in the body of the email.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Return to the Amazon Pinpoint console in your browser. On the Set up email page, choose Save.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Your account is now ready to send email from the email address that you verified. You can add additional email addresses later.&lt;/p&gt;
-
-&lt;p&gt;You can also verify entire domains. When you verify a domain, you can send email from any address on that domain. For more information, see Verifying a Domain.&lt;/p&gt;
-
-&lt;h3 id=&quot;step-2-import-customer-data-and-create-a-segment&quot;&gt;Step 2: Import Customer Data and Create a Segment&lt;/h3&gt;
-
-&lt;p&gt;A segment is a group of your customers that share certain attributes. &lt;em&gt;For example, a segment might contain all of your customers who use version 2.0 of your app on an Android device, or all customers who live in the city of Los Angeles.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;When you create a campaign, you have to choose a segment to send the campaign to. You can send multiple campaigns to a single segment, and you can send a single campaign to multiple segments.&lt;/p&gt;
-
-&lt;p&gt;There are two types of segments that you can create in Amazon Pinpoint:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Dynamic segments&lt;/strong&gt; – Segments that are based on attributes that you define. Dynamic segments can change over time. For example, if you add new endpoints to Amazon Pinpoint, or if you modify or delete existing endpoints, the number of endpoints in that segment may increase or decrease.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Imported segments&lt;/strong&gt; – Segments that are created outside of Amazon Pinpoint and saved in CSV or JSON format. Imported segments are static—that is, they never change. When you create a new segment, you can use an imported segment as a base segment, and then refine it by adding filters.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;In this tutorial, you create an imported segment by uploading a file from your computer. Next, you create a dynamic segment that is based upon the imported segment.&lt;/p&gt;
-
-&lt;h4 id=&quot;step-21-download-and-modify-the-sample-file&quot;&gt;Step 2.1: Download and Modify the Sample File&lt;/h4&gt;
-
-&lt;p&gt;In this section, you download a file that contains fictitious customer data. You also modify the data to include your own contact information. Later in this tutorial, you use this data to create a segment.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;In a web browser, download the sample file from https://raw.githubusercontent.com/awsdocs/amazon-pinpoint-user-guide/master/examples/Pinpoint_Sample_Import.csv. Save the file to your computer.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;em&gt;&lt;strong&gt;Tip&lt;/strong&gt;
-    You can quickly save this file to your computer by right-clicking the link, and then choosing Save Link As.&lt;/em&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Open the file in a text editor or spreadsheet application. On the last row of the file, replace the items in angle brackets (&amp;lt;…&amp;gt;) with your own contact information.&lt;/p&gt;
-
-    &lt;p&gt;In the Address column, provide the same email address that you verified in Step 1.&lt;/p&gt;
-
-    &lt;p&gt;In the User.UserAttributes.Company column, specify a company name that’s different from the fictitious company names in the file. You’ll use this unique company name when you define the criteria for your targeted segment in the next section.&lt;/p&gt;
-
-    &lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;
- &lt;em&gt;You don’t have to provide your information for each column in the file. However, at a minimum, you have to provide information for the ChannelType, Address, and User.UserAttributes.Company columns.&lt;/em&gt;&lt;/p&gt;
-
-    &lt;p&gt;The email that you create later in this tutorial uses several of these fields to create a personalized message.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;When you finish, save the file.&lt;/p&gt;
-
-    &lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;
- &lt;em&gt;If you used a spreadsheet application to modify the file, make sure that you save the modified file in Comma-Separated Values (.csv) format. Amazon Pinpoint can only import .csv and .json files.&lt;/em&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&quot;step-22-import-a-file-that-contains-customer-data&quot;&gt;Step 2.2: Import a File that Contains Customer Data&lt;/h4&gt;
-
-&lt;p&gt;Now that you have a file that contains customer data, you can import it into Amazon Pinpoint. To import customer data, you have to create a new segment.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;To create an imported segment&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;In the Amazon Pinpoint console, in the navigation pane, choose &lt;strong&gt;Segments&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Choose &lt;strong&gt;Create a segment&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;On the &lt;strong&gt;Create a segment&lt;/strong&gt; page, choose &lt;strong&gt;Import a segment&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;In the &lt;strong&gt;Specifications&lt;/strong&gt; section, under &lt;strong&gt;Import method&lt;/strong&gt;, choose &lt;strong&gt;Upload files from your computer&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Select &lt;strong&gt;Choose files&lt;/strong&gt;. Navigate to the Pinpoint_Sample_Import.csv file that you downloaded and modified in the previous section.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Choose &lt;strong&gt;Create segment&lt;/strong&gt;. Amazon Pinpoint copies the file from your computer and creates a segment. Wait for about 1 minute while the import completes.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&quot;step-23-create-a-targeted-segment&quot;&gt;Step 2.3: Create a Targeted Segment&lt;/h4&gt;
-&lt;p&gt;Your Amazon Pinpoint project now contains some customer data, as well as a segment that contains your entire customer list. It also contains your contact information.&lt;/p&gt;
-
-&lt;p&gt;In this section, you create a targeted segment. You add segment criteria that filter the segment so that you’re the only member of the segment.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;To create the segment&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;On the &lt;strong&gt;Segments&lt;/strong&gt; page, choose &lt;strong&gt;Create a segment&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;On the &lt;strong&gt;Create a segment&lt;/strong&gt; page, choose &lt;strong&gt;Build a segment&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;For &lt;strong&gt;Name&lt;/strong&gt;, enter a name for the segment.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;4.Under &lt;strong&gt;Segment group 1&lt;/strong&gt;, do the following:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Next to &lt;strong&gt;Include endpoints&lt;/strong&gt; that are in any of the following segments, choose the &lt;strong&gt;Pinpoint_Sample_Import&lt;/strong&gt; segment that you created in the previous step.&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Under &lt;strong&gt;Add filters to refine your segment&lt;/strong&gt;, from the menu, choose &lt;strong&gt;Filter by channel&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Next to &lt;strong&gt;Endpoints that match&lt;/strong&gt;, choose &lt;strong&gt;all&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;For &lt;strong&gt;Channel&lt;/strong&gt;, choose &lt;strong&gt;EMAIL&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Under &lt;strong&gt;Add filters to refine your segment&lt;/strong&gt;, from the menu, choose &lt;strong&gt;Filter by user&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;In the &lt;strong&gt;User&lt;/strong&gt; filter, use the menu to choose &lt;strong&gt;Company&lt;/strong&gt;. Next, use the &lt;strong&gt;Choose values&lt;/strong&gt; menu to choose the unique company name that you specified for your own contact record in step 2.1.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Choose &lt;strong&gt;Add an attribute or metric&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;In the new filter, use the menu to choose &lt;strong&gt;First Name&lt;/strong&gt;. Next, use the &lt;strong&gt;Choose values&lt;/strong&gt; menu to choose your &lt;strong&gt;first name&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Choose &lt;strong&gt;Create segment&lt;/strong&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;step-3-create-and-schedule-a-campaign&quot;&gt;Step 3: Create and Schedule a Campaign&lt;/h3&gt;
-
-&lt;p&gt;A campaign is a messaging initiative that engages a specific audience segment. A campaign sends tailored messages on the days and times that you specify. You can use the console to create a campaign that sends messages through the email, push notification, or SMS channels.&lt;/p&gt;
-
-&lt;p&gt;In this section, you create an email campaign. You create a new campaign, choose your target segment, and create a responsive email message for the campaign. When you finish setting up the message, you choose the day and time when you want the message to be sent.&lt;/p&gt;
-
-&lt;h4 id=&quot;step-31-create-the-campaign-and-choose-a-segment&quot;&gt;Step 3.1: Create the Campaign and Choose a Segment&lt;/h4&gt;
-&lt;p&gt;When you create a segment, you first give the segment a name. Next, you choose the segment that the campaign applies to. In this tutorial, you choose the segment that you created in Step 2.3.&lt;/p&gt;
-
-&lt;p&gt;To create the campaign and choose segment&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;In a web browser, &lt;strong&gt;download the sample file&lt;/strong&gt; from https://raw.githubusercontent.com/awsdocs/amazon-pinpoint-user-guide/master/examples/Pinpoint_Sample_Email.html. Save the file to your computer.&lt;/p&gt;
-
-    &lt;p&gt;&lt;em&gt;&lt;strong&gt;Tip&lt;/strong&gt;
- You can quickly save this file to your computer by right-clicking the link, and then choosing Save Link As.&lt;/em&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Open the file&lt;/strong&gt; that you just downloaded in a text editor, such as Notepad (Windows) or TextEdit (macOS). Press Ctrl+A (Windows) or Cmd+A (macOS) to select all of the text. Then, press Ctrl+C (Windows) or Cmd+C (macOS) to copy it.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;In the &lt;strong&gt;Amazon Pinpoint console&lt;/strong&gt;, in the navigation pane, choose &lt;strong&gt;Campaigns&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Choose &lt;strong&gt;Create a campaign&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Under &lt;strong&gt;Campaign details&lt;/strong&gt;, for Campaign name, enter a &lt;strong&gt;name&lt;/strong&gt; for the campaign.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;For &lt;strong&gt;Campaign type&lt;/strong&gt;, choose &lt;strong&gt;Standard campaign&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;For Choose a &lt;strong&gt;channel for this campaign&lt;/strong&gt;, choose &lt;strong&gt;Email&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Choose &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;On the Choose a &lt;strong&gt;segment page&lt;/strong&gt;, choose Use an existing segment. Then, for &lt;strong&gt;Segment&lt;/strong&gt;, choose the &lt;strong&gt;targeted segment that you created&lt;/strong&gt; in Step 2.3. Choose &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&quot;step-32-create-the-campaign-message&quot;&gt;Step 3.2: Create the Campaign Message&lt;/h4&gt;
-&lt;p&gt;After you specify a campaign name and choose a segment, you can create your message. This tutorial includes a link to an HTML file that you can use to create your message.&lt;/p&gt;
-
-&lt;p&gt;This sample file uses responsive HTML to create a message that renders properly on both computers and mobile devices. It uses inline CSS to provide compatibility with a wide variety of email clients. It also includes tags that are used to personalize the message with the recipient’s name and other personal information.&lt;/p&gt;
-
-&lt;p&gt;To create the message&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;On the Create your message page, under &lt;strong&gt;Message content&lt;/strong&gt;, choose &lt;strong&gt;Create a new message&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;For &lt;strong&gt;Subject&lt;/strong&gt;, enter a &lt;strong&gt;subject line for the email&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Under &lt;strong&gt;Message&lt;/strong&gt;, erase the sample HTML code that’s shown in the editor. Paste the HTML code that you copied in the first step in this section.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;(Optional) Modify the content of the message to include a message that you want to send.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;You can personalize the message for each recipient by including the name of an attribute inside two sets of curly braces. For example, the sample message includes the following text: . This code represents the User.UserAttributes.FirstName attribute, which contains the recipient’s first name. When you send the campaign, Amazon Pinpoint removes this attribute name and replaces it with the appropriate value for each recipient.&lt;/p&gt;
-
-&lt;p&gt;You can experiment with other attribute names. Refer to the column headers in the spreadsheet that you imported in Step 2.2 for complete list of attribute names that you can specify in your message.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;&lt;strong&gt;Tip&lt;/strong&gt;
-You can use Design view to edit the content of the message without having to edit the HTML code. To use this view, choose Design from the view selector above the message editor, as shown in the following image.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;5.Choose &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h5 id=&quot;step-33-schedule-the-campaign&quot;&gt;Step 3.3: Schedule the Campaign&lt;/h5&gt;
-&lt;p&gt;The last step in creating the campaign is to choose when to send it. In Amazon Pinpoint, you can set up your campaigns so that they’re sent immediately after you launch them. You can also schedule them to be sent in the future—anywhere from 15 minutes from the current time, to six months into the future. Finally, you can schedule your messages to be sent on a recurring basis (that is, hourly, daily, weekly, or monthly). Recurring campaigns are a great way to send account or status updates where the appearance of the campaign message stays the same over time, but is populated with information that changes dynamically.&lt;/p&gt;
-
-&lt;p&gt;In this section, you schedule your campaign to be sent immediately after you launch it.&lt;/p&gt;
-
-&lt;p&gt;To schedule the campaign&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;On the &lt;strong&gt;Choose when to send the campaign page&lt;/strong&gt;, choose At a &lt;strong&gt;specific time&lt;/strong&gt;. Then, under &lt;strong&gt;Choose&lt;/strong&gt; when the campaign should be sent, choose &lt;strong&gt;Immediately&lt;/strong&gt;. Finally, choose &lt;strong&gt;Next&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;On the &lt;strong&gt;Review and launch page&lt;/strong&gt;, review all of the details of the &lt;strong&gt;campaign&lt;/strong&gt;. When you’re ready to send it, choose &lt;strong&gt;Launch campaign&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;Congratulations&lt;/strong&gt;—you’ve created your first campaign with Amazon Pinpoint! Because you’re the only member of the segment that you created in Step 2.3, you should receive the message in your inbox within a few seconds.&lt;/p&gt;
-
-&lt;h3 id=&quot;step-4-view-campaign-analytics&quot;&gt;Step 4: View Campaign Analytics&lt;/h3&gt;
-
-&lt;p&gt;At this point, you’ve created a segment that you’re a member of. You’ve also created an email campaign and sent it to yourself. In this section, you look at the delivery and response metrics for the campaign.&lt;/p&gt;
-
-&lt;h4 id=&quot;step-41-interact-with-your-campaign&quot;&gt;Step 4.1: Interact with Your Campaign&lt;/h4&gt;
-&lt;p&gt;Before you can view the delivery and response metrics for your campaign, you have to interact with the message that you sent yourself in Step 3.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;To interact with the email&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;In your &lt;strong&gt;email client&lt;/strong&gt;, open the message that you sent yourself in Step 3.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;If your email client automatically hides images by default, choose the Download pictures (or equivalent) button to load the images in the message.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Choose one or more of the links that are contained in the message.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Wait for a few minutes, and then proceed to the next section.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&quot;step-42-view-metrics-for-the-campaign&quot;&gt;Step 4.2: View Metrics for the Campaign&lt;/h4&gt;
-&lt;p&gt;After you interact with the email that you sent from the campaign, you can view the metrics for the campaign.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;To view the campaign metrics&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Open the Amazon Pinpoint console at https://console.aws.amazon.com/pinpoint/.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;On the All &lt;strong&gt;projects page&lt;/strong&gt;, choose the &lt;strong&gt;project that you used to send the campaign&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;In the &lt;strong&gt;navigation pane&lt;/strong&gt;, under Analytics, choose &lt;strong&gt;Campaigns&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;In the &lt;strong&gt;Campaigns section&lt;/strong&gt;, choose the campaign that you created in Step 3.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;(Optional) Use the date control to choose a date range for the reports on this page.&lt;/p&gt;
-
-    &lt;p&gt;On the metrics page for your campaign, you see the following information:&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;
-        &lt;p&gt;&lt;strong&gt;Delivery count metrics&lt;/strong&gt; – This section provides information about the delivery of the messages that were sent from your campaign. It includes the following information:&lt;/p&gt;
-
-        &lt;ul&gt;
-          &lt;li&gt;
-            &lt;p&gt;&lt;strong&gt;Messages sent&lt;/strong&gt; – The number of messages that were sent.&lt;/p&gt;
-          &lt;/li&gt;
-          &lt;li&gt;
-            &lt;p&gt;&lt;strong&gt;Messages delivered&lt;/strong&gt; – The number of messages that were delivered to their recipients.&lt;/p&gt;
-          &lt;/li&gt;
-          &lt;li&gt;
-            &lt;p&gt;&lt;strong&gt;Links clicked&lt;/strong&gt; – The number of times that links in the messages were clicked by recipients. If a single recipient clicks a link more than once, each click is represented in this section.&lt;/p&gt;
-          &lt;/li&gt;
-          &lt;li&gt;
-            &lt;p&gt;&lt;strong&gt;Endpoint deliveries&lt;/strong&gt; – The average number of endpoints that the campaign was sent to, for each day in the chosen date range. The chart shows the number of endpoints that the campaign was delivered to, for each day in the chosen date range.&lt;/p&gt;
-          &lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;&lt;strong&gt;Delivery rate metrics&lt;/strong&gt; – This section shows the overall delivery and response rates for the messages that were sent from your campaign. It includes the following information:&lt;/p&gt;
-
-        &lt;ul&gt;
-          &lt;li&gt;
-            &lt;p&gt;&lt;strong&gt;Delivery rate&lt;/strong&gt; – The percentage of messages that were delivered to recipients, of the total number of endpoints that you targeted in the segment that you sent this campaign to.&lt;/p&gt;
-          &lt;/li&gt;
-          &lt;li&gt;
-            &lt;p&gt;&lt;strong&gt;Email open rate&lt;/strong&gt; – The percentage of messages that were opened by recipients, of the total number of messages that were delivered.&lt;/p&gt;
-          &lt;/li&gt;
-          &lt;li&gt;
-            &lt;p&gt;&lt;strong&gt;Bounce rate&lt;/strong&gt; – The percentage of messages that weren’t delivered to recipients because they bounced. This value includes only hard bounces—that is, messages that bounced because of a permanent issue. For example, hard bounces could occur when the recipient’s email address doesn’t exist, or when the recipient permanently rejects email from your domain.&lt;/p&gt;
-          &lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;&lt;strong&gt;Campaign runs&lt;/strong&gt; – This section shows information that’s specific to each time the campaign ran. Because you can use Amazon Pinpoint to create recurring campaigns, this section can show information for several campaign runs. However, if you completed the procedures in this tutorial, this section contains information for only one campaign run because you ran the campaign only once. This section contains the following metrics, in addition to the metrics that are defined in the preceding sections:&lt;/p&gt;
-
-        &lt;ul&gt;
-          &lt;li&gt;
-            &lt;p&gt;&lt;strong&gt;Endpoints targeted&lt;/strong&gt; – The number of endpoints that were targeted by the segment that was associated with the campaign run. This number includes endpoints that were part of the segment, but didn’t receive the message.&lt;/p&gt;
-          &lt;/li&gt;
-          &lt;li&gt;
-            &lt;p&gt;&lt;strong&gt;Total email opened&lt;/strong&gt; – The total number of times that messages sent from the campaign run were opened. For example, if a message was opened two times by one recipient, both of those opens are counted.&lt;/p&gt;
-          &lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;next-step&quot;&gt;Next Step&lt;/h2&gt;
-
-&lt;p&gt;We hope that you use this tutorial as a starting point as you discover the additional capabilities of Amazon Pinpoint. For example:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;You can improve the delivery of your email campaigns by making sure that your campaigns align with industry best practices. For more information, see Tips and Best Practices.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;You can verify an entire domain, which allows you to send email from any address on that domain. For more information about verifying domains, see Verifying a Domain.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;You can obtain dedicated IP addresses for sending your email. Dedicated IP addresses are a great option for sending email in certain use cases. For more information, see Using Dedicated IP Addresses with Amazon Pinpoint.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;You can enable the Amazon Pinpoint Deliverability dashboard. The Deliverability dashboard helps you identify issues that could impact the delivery of your emails. For more information, see The Amazon Pinpoint Deliverability Dashboard.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;You can send messages through other channels, such as SMS or push. Before you can use these channels, you have to enable and configure them on the Settings page. For more information about using the Settings page to enable and configure channels, see Amazon Pinpoint Settings.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;You can send data about your campaigns outside of Amazon Pinpoint. For example, you can send delivery and response data for your campaigns to Amazon S3 for long-term storage. You can also send data to Amazon Redshift to perform custom analyses. For more information about sending your data outside of Amazon Pinpoint, see Event Stream Settings.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;You can integrate Amazon Pinpoint with your apps, or interact with Amazon Pinpoint programmatically, by using an AWS SDK. For more information, see the Amazon Pinpoint Developer Guide.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">What is Customer Engagement?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aws_cloud.png" /></entry><entry><title type="html">The service desk with bots using Amazon Lex and Amazon Connect (Part 2)</title><link href="http://localhost:4000/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-2" rel="alternate" type="text/html" title="The service desk with bots using Amazon Lex and Amazon Connect (Part 2)" /><published>2020-02-02T11:41:00+00:00</published><updated>2020-02-02T11:41:00+00:00</updated><id>http://localhost:4000/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-2</id><content type="html" xml:base="http://localhost:4000/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-2">&lt;h2 id=&quot;the-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-2&quot;&gt;The service desk with bots using Amazon Lex and Amazon Connect (Part 2)&lt;/h2&gt;
-
-&lt;p&gt;Hopefully you’ve had the chance to follow along in parts 1  where we set up our Lex chatbot to take and validate input.&lt;/p&gt;
-
-&lt;p&gt;In this blog, we’ll interface with our Active Directory environment to perform the password reset function. To do this, we need to create a Lambda function that will be used as the logic to fulfil the user’s intent. The Lambda function will be packaged with the python LDAP library to modify the AD password attribute for the user. Below are the components that need to be configured.&lt;/p&gt;
-
-&lt;h2 id=&quot;active-directory-service-account&quot;&gt;Active Directory Service Account&lt;/h2&gt;
-
-&lt;p&gt;To begin, we need to start by creating a service account in Active Directory that has permissions to modify the password attribute for all users. Our Lambda function will then use this service account to perform password resets. To do this, create a service account in your Active Directory domain and perform the following to delegate the required permissions:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Open Active Directory Users and Computers.&lt;/li&gt;
-  &lt;li&gt;Right click the OU or container that contains organisational users and click &lt;strong&gt;Delegate Control&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;Click &lt;strong&gt;Next&lt;/strong&gt; on the Welcome Wizard.&lt;/li&gt;
-  &lt;li&gt;Click &lt;strong&gt;Add&lt;/strong&gt; and enter the service account that will be granted the reset password permission.&lt;/li&gt;
-  &lt;li&gt;Click &lt;strong&gt;OK&lt;/strong&gt; once you’ve made your selection, followed by &lt;strong&gt;Next&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;Ensure that &lt;strong&gt;Delegate the following common tasks&lt;/strong&gt; is enabled, and select &lt;strong&gt;Reset user passwords and force password change at next logon&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;Click &lt;strong&gt;Next&lt;/strong&gt;, and &lt;strong&gt;Finish&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/19/delegatecontrol.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;kms-key-for-the-ad-service-account&quot;&gt;KMS Key for the AD Service Account&lt;/h2&gt;
-
-&lt;p&gt;Our Lambda function will need to use the credentials for the service account to perform password resets. We want to avoid storing credentials within our Lambda function, so we’ll store the password as an encrypted Lambda variable and allow our Lambda function to decrypt it using Amazon’s Key Management Service (KMS). To create the KMS encryption key, perform the following steps:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;In the Amazon Console, navigate to &lt;strong&gt;IAM&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;Select &lt;strong&gt;Encryption Keys&lt;/strong&gt;, then Create key&lt;/li&gt;
-  &lt;li&gt;Provide an Alias (e.g. resetpw) then select &lt;strong&gt;Next&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;Select &lt;strong&gt;Next Step&lt;/strong&gt; for all subsequent steps then &lt;strong&gt;Finish&lt;/strong&gt; on step 5 to create the key.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;iam-role-for-the-lambda-function&quot;&gt;IAM Role for the Lambda Function&lt;/h2&gt;
-
-&lt;p&gt;Because our Lambda function will need access to several AWS services such as SNS to notify the user of their new password and KMS to decrypt the service account password, we need to provide our function with an IAM role that has the relevant permissions. To do this, perform the following steps:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;In the Amazon Console, navigate to &lt;strong&gt;IAM&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;Select &lt;strong&gt;Policies&lt;/strong&gt; then &lt;strong&gt;Create policy&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;Switch to the &lt;strong&gt;JSON&lt;/strong&gt; editor, then copy and paste the following policy, replacing the KMS resource with the KMS ARN created above
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; {
- &quot;Version&quot;: &quot;2012-10-17&quot;,
- &quot;Statement&quot;: [
-     {
-     &quot;Effect&quot;: &quot;Allow&quot;,
-     &quot;Action&quot;: &quot;sns:Publish&quot;,
-     &quot;Resource&quot;: &quot;*&quot;
-     },
-     {
-     &quot;Effect&quot;: &quot;Allow&quot;,
-     &quot;Action&quot;: &quot;kms:Decrypt&quot;,
-     &quot;Resource&quot;: &quot;&amp;lt;KMS ARN&amp;gt;&quot;
-     }
- ]
- }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Provide a name for the policy (e.g. resetpw), then select &lt;strong&gt;Create policy&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;After the policy has been created, select &lt;strong&gt;Roles&lt;/strong&gt;, then &lt;strong&gt;Create Role&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;For the AWS Service, select &lt;strong&gt;Lambda&lt;/strong&gt;, then click &lt;strong&gt;Next:Permissions&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;Search for and select the policy you created in step 5, as well as the &lt;strong&gt;AWSLambdaVPCAccessExecutionRole&lt;/strong&gt; and &lt;strong&gt;AWSLambdaBasicExecutionRole&lt;/strong&gt; policies then click &lt;strong&gt;Next: Review&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;Provide a name for the role (e.g. resetpw) then click &lt;strong&gt;Create role&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;network-configuration-for-the-lambda-function&quot;&gt;Network Configuration for the Lambda Function&lt;/h2&gt;
-
-&lt;p&gt;To access our Active Directory environment, the Lambda function will need to run within a VPC or a peered VPC that hosts an Active Directory domain controller. Additionally, we need the function to access the internet to be able to access the KMS and SNS services. Lambda functions provisioned in a VPC are assigned an Elastic network Interface with a private IP address from the subnet it’s deployed in. Because the ENI doesn’t have a public IP address, it cannot simply leverage an internet gateway attached to the VPC for internet connectivity and as a result, must have traffic routed through a NAT Gateway similar to the diagram below.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/19/natgw.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;password-reset-lambda-function&quot;&gt;Password Reset Lambda Function&lt;/h2&gt;
-
-&lt;p&gt;Now that we’ve performed all the preliminary steps, we can start building the Lambda function. Because the Lambda execution environment uses Amazon Linux, I prefer to build my Lambda deployment package on a local Amazon Linux docker container to ensure library compatibility. Alternatively, you could deploy a small Amazon Linux EC2 instance for this purpose, which can assist with troubleshooting if it’s deployed in the same VPC as your AD environment.
-Okay, so let’s get started on building the lambda function. Log in to your Amazon Linux instance/container, and perform the following:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Create a project directory and install python-ldap dependencies, gcc, python-devel and openldap-devel&lt;/p&gt;
-
-    &lt;p&gt;&lt;em&gt;Mkdir ~/resetpw&lt;/em&gt;&lt;/p&gt;
-
-    &lt;p&gt;&lt;em&gt;sudo yum install python-devel openldap-devel gcc&lt;/em&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Next, we’re going to download the python-ldap library to the directory we created&lt;/p&gt;
-
-    &lt;p&gt;&lt;em&gt;Pip install python-ldap -t ~/resetpw&lt;/em&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;In the resetpw directory, create a file called reset_function.py and copy and paste the following script&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-import ldap
-import os
-import boto3
-import random
-import string
-
-from base64 import b64decode
-
-#Variables
-url=os.environ['url']
-domain_base_dn=os.environ['domain_base_dn']
-user=os.environ['user']
-ENCRYPTED=os.environ['pw']
-pw=boto3.client('kms').decrypt(CiphertextBlob=b64decode(ENCRYPTED))['Plaintext']
-
-def lambda_handler(event, context):
-    #Set up LDAP connection
-    ldap.set_option(ldap.OPT_X_TLS_REQUIRE_CERT, ldap.OPT_X_TLS_NEVER)
-    con = ldap.initialize(url)
-    con.set_option(ldap.OPT_REFERRALS, 0)
-    con.bind_s(user,pw)
-    slotUserID = event[&quot;currentIntent&quot;][&quot;slots&quot;][&quot;UserID&quot;]
-    results = con.search_ext_s(domain_base_dn,ldap.SCOPE_SUBTREE,&quot;sAMAccountName=&quot; + slotUserID,attrlist=['monthStarted', 'birthDate', 'distinguishedName','telephoneNumber'])
-    birthdate = results[0][1][&quot;birthDate&quot;][0]
-    monthStarted = results[0][1][&quot;monthStarted&quot;][0]
-    phoneNumber = results[0][1][&quot;telephoneNumber&quot;][0]
-    slotBirthDate = event[&quot;currentIntent&quot;][&quot;slots&quot;][&quot;DOB&quot;]
-    slotMonth = event[&quot;currentIntent&quot;][&quot;slots&quot;][&quot;MonthStarted&quot;]
-
-    # Reset Password
-    if((birthdate == slotBirthDate) and (monthStarted == slotMonth)):
-        new_password = ''.join(random.choice(string.letters + string.digits + string.punctuation) for _ in range(10))
-        unicode_pass = unicode('\&quot;' + new_password + '\&quot;', 'iso-8859-1')
-        password_value = unicode_pass.encode('utf-16-le')
-        add_pass = [(ldap.MOD_REPLACE, 'unicodePwd', [password_value])]
-        con.modify_s(results[0][1][&quot;distinguishedName&quot;][0],add_pass)        
-        sns = boto3.client('sns')
-        sns.publish(PhoneNumber=phoneNumber, Message='Your new password is ' + new_password )
-        endData = {
-            &quot;dialogAction&quot;: {
-                &quot;type&quot;: &quot;Close&quot;,
-                &quot;fulfillmentState&quot;: &quot;Fulfilled&quot;,
-                &quot;message&quot;: {
-                    &quot;contentType&quot;: &quot;PlainText&quot;,
-                    &quot;content&quot;: &quot;Your password has been reset and sent to your mobile.&quot;
-                }
-            }
-        }
-    else:
-        endData = {
-            &quot;dialogAction&quot;: {
-                &quot;type&quot;: &quot;Close&quot;,
-                &quot;fulfillmentState&quot;: &quot;Failed&quot;,
-                &quot;message&quot;: {
-                    &quot;contentType&quot;: &quot;PlainText&quot;,
-                    &quot;content&quot;: &quot;The details you provided are incorrect. Goodbye&quot;
-                }
-            }
-        }
-    con.unbind()
-    return endData
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Now, we need to create the Lambda deployment package. As the package size is correlated with the speed of Lambda function cold starts, we need to filter out anything that’s not necessary to reduce the package size. The following zip’s the script and LDAP library:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-    Cd ~/resetpw
-zip -r ~/resetpw.zip . -x &quot;setuptools*/*&quot; &quot;pkg_resources/*&quot; &quot;easy_install*&quot;*
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;We need to deploy this package as a Lambda function. I’ve got AWSCLI installed in my Amazon Linux container, so I’m using the following CLI to create the Lambda function. Alternatively, you can download the zip file and manually create the Lambda function in the AWS console using the same parameters specified in the CLI below.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-
-aws lambda create-function --function-name reset_function --region us-east-1 --zip-file fileb://root/resetpw.zip --role resetpw --handler reset_function.lambda_handler --runtime python2.7 --timeout 30 --vpc-config SubnetIds=subnet-a12b3cde,SecurityGroupIds=sg-0ab12c30 --memory-size 128*
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;For the script to run in your environment, a number of Lambda variables need to be set which will be used at runtime. In the AWS Console, navigate to Lambda then click on your newly created Lambda function. In the environment variables section, create the following variables:&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;&lt;strong&gt;Url&lt;/strong&gt; – This is the LDAPS URL for your domain controller. Note that it must be LDAP over SSL.&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;Domain_base_dn&lt;/strong&gt; – The base distinguished name used to search for the user&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;User&lt;/strong&gt; – The service account that has permissions to change the user password&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;Pw&lt;/strong&gt; – The password of the service account&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Finally, we need to encrypt the Pw variable in the Lambda console. Navigate to the Encryption configuration and select Enable helpers for encryption in transit. Select your KMS key for both encryption in transit and at reset, then select the Encrypt button next to the pw variable. This will encrypt and mask the value.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/19/envvar.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Hit Save in the top right-hand corner to save the environment variables&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;That’s it! The Lambda function is now configured. A summary of the Lambda function’s logic is as follows:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Collect the Lambda environment variables and decrypt the service account password&lt;/li&gt;
-  &lt;li&gt;Perform a secure AD bind but don’t verify the certificate (I’m using a Self-Signed Cert in my lab)&lt;/li&gt;
-  &lt;li&gt;Collect the user’s birthday, start month, telephone number, and DN from AD&lt;/li&gt;
-  &lt;li&gt;Check the user’s verification input&lt;/li&gt;
-  &lt;li&gt;If the input is correct, reset the password and send it to the user’s telephone number, otherwise exit the function.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;update-and-test-lex-bot-fulfillment&quot;&gt;Update and test Lex bot fulfillment&lt;/h2&gt;
-
-&lt;p&gt;The final step is to add the newly created Lambda function to the Lex bot so it’s invoked after input is validated. To do this, perform the following&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;In the Amazon Console, navigate to Amazon Lex and select your bot&lt;/li&gt;
-  &lt;li&gt;Select Fulfillment for your password reset intent, then select AWS Lambda function&lt;/li&gt;
-  &lt;li&gt;Choose the recently created Lambda function from the drop down box, then select Save Intent&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;That should be it! You’ll need to build your bot again before testing…&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/19/fulfilled.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;My phone buzzes with a new SMS…&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/awscloud/19/passmsg.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Success! A few final things worth noting:&lt;/p&gt;
-
-&lt;p&gt;All Lambda execution logs will be written to CloudWatch logs, so this is the best place to begin troubleshooting if required
-Modification to the AD password attribute is not possible without a secure bind and will result in an error.
-The interrogated fields (month started and date of birth) are custom AD attributes in my lab.
-Password complexity in my lab is relaxed. If you’re using the default password complexity in AD, the randomly generated password in the lambda function may not meet complexity requirements every time.&lt;/p&gt;
-
-&lt;p&gt;While we’ve successfully tested this functionality in the AWS console, we want to provide our users with the ability to call and talk with the bot over the phone. Here, we’ll wire up Amazon Connect with our bot to provide this capability.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-is-amazon-connect&quot;&gt;What is Amazon Connect&lt;/h2&gt;
-&lt;p&gt;Amazon Connect is a Cloud based contact service center that can be set up in minutes to take phone calls and route them to the correct service center agents. Additionally, Connect is able to integrate with Amazon Lex to create a self-service experience, providing a cost effective method for resolving customer queries without having to wait in queue for a human agent. In our case, Lex will be integrated with Amazon Connect to field password reset requests.&lt;/p&gt;
-
-&lt;h3 id=&quot;provisioning-amazon-connect&quot;&gt;Provisioning Amazon Connect&lt;/h3&gt;
-
-&lt;p&gt;The following steps provision the base Amazon Connect tenant:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Begin by heading to the AWS Console, then navigate to &lt;strong&gt;Amazon Connect&lt;/strong&gt; and select &lt;strong&gt;Add an instance&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;Specify a sub-domain for the access URL which will be used to log into Amazon Connect. Select &lt;strong&gt;Next step&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;For now, skip creating an administrator by selecting &lt;strong&gt;Skip this&lt;/strong&gt;, then select Next step.&lt;/li&gt;
-  &lt;li&gt;For Telephony Options ensure &lt;strong&gt;Incoming Calls&lt;/strong&gt; is selected and &lt;strong&gt;Outbound Calls&lt;/strong&gt; is unselected, then click &lt;strong&gt;Next step&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;Accept the default data storage configuration and select &lt;strong&gt;Next step&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;Finally, review the information provided and select &lt;strong&gt;Create instance.&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;That’s all that’s required to provision the Amazon Connect service. Pretty simple stuff. It takes a few minutes to provision, then you’ll be ready to begin configuring your Amazon Connect tenant.&lt;/p&gt;
-
-&lt;h3 id=&quot;configuring-amazon-connect&quot;&gt;Configuring Amazon Connect&lt;/h3&gt;
-
-&lt;p&gt;Next, we need to claim a phone number to be used with our service:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Once Amazon Connect has been provisioned, click &lt;strong&gt;Get started&lt;/strong&gt; to log into your Amazon Connect instance.&lt;/li&gt;
-  &lt;li&gt;On the Welcome to Amazon Connect page, select &lt;strong&gt;Let’s Go.&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;To claim a phone number, select your preferred country code and type then select &lt;strong&gt;Next&lt;/strong&gt;. You may find that there are no available numbers for your country of choice (like the screenshot below). If that’s the case and it’s necessary that you have a local number, you can raise a support case with Amazon. For testing purposes, I’m happy to provision a US number and use Google Hangouts to dial the number for free.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/img/awscloud/19/claimphonenumber.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;When prompted to make a call, choose Skip for now.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;You should now be at the Amazon Connect dashboard where there are several options, but before we can continue, we first need to add the Lex bot to Amazon Connect to allow it to be used within a contact flow.&lt;/p&gt;
-
-&lt;h3 id=&quot;adding-lex-to-amazon-connect&quot;&gt;Adding Lex to Amazon Connect&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;Switch back to the AWS Console and navigate to &lt;strong&gt;Amazon Connect&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;Select the Amazon Connect instance alias created in the previous step.&lt;/li&gt;
-  &lt;li&gt;On the left-hand side, select &lt;strong&gt;Contact Flows&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;Under the Amazon Lex section, click &lt;strong&gt;Add Lex Bot&lt;/strong&gt;, and select the user administration bot we created.&lt;/li&gt;
-  &lt;li&gt;Select Save Lex Bots.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Now that our bot has been added to Amazon Connect, we should be able to create an appropriate Contact Flow that leverages our bot.&lt;/p&gt;
-
-&lt;h3 id=&quot;creating-the-contact-flow&quot;&gt;Creating the Contact Flow&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Switch back to the Amazon Connect dashboard then navigate to &lt;strong&gt;Contact Flows&lt;/strong&gt; under routing on the left sidebar.&lt;/li&gt;
-  &lt;li&gt;Select &lt;strong&gt;Create contact flow&lt;/strong&gt; and enter a name (e.g. User administration) for the contact flow.&lt;/li&gt;
-  &lt;li&gt;Expand the &lt;strong&gt;Interact&lt;/strong&gt; menu item then click and drag &lt;strong&gt;Get customer input&lt;/strong&gt; to the grid.&lt;/li&gt;
-  &lt;li&gt;Click the &lt;strong&gt;Get customer input&lt;/strong&gt; item, and set the following properties:
-    &lt;ul&gt;
-      &lt;li&gt;Enable &lt;strong&gt;Text to speech&lt;/strong&gt; then add a greeting text (e.g. Welcome to the cloud call center. What would you like assistance with?).&lt;/li&gt;
-      &lt;li&gt;Ensure that &lt;strong&gt;Interpret&lt;/strong&gt; as is set to &lt;strong&gt;Text&lt;/strong&gt;&lt;/li&gt;
-      &lt;li&gt;Choose the &lt;strong&gt;Amazon Lex&lt;/strong&gt; option, then add the Lex Bot name (e.g. UserAdministration) and set the alias to &lt;strong&gt;$LATEST&lt;/strong&gt; to ensure it uses the latest build of the bot.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Under Intents, select &lt;strong&gt;Add a parameter&lt;/strong&gt; then enter the password reset intent for the Lex Bot (e.g. ResetPW)&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Select &lt;strong&gt;Save&lt;/strong&gt; to save the configuration.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/img/awscloud/19/customerinput.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-    &lt;p&gt;It’s worth noting that if you wanted to send the user’s mobile number through to your Lex bot for verification purposes, this can be done by sending a session attribute as shown below. The phone number will be passed to the Lambda function in the sessionAttributes object.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/img/awscloud/19/sessionattribute.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;On the left sidebar, expand Terminate/Transfer then drag and drop Disconnect/Hang up onto the grid.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Connect the Start entry point to the Get Customer Input box and connect all the branches of the Get Customer Input Box to the Disconnect/Hang up box as shown below.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;/img/awscloud/19/contactflow.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-    &lt;p&gt;We could have added more complex flows to deal with unrecognised intents or handle additional requests that our Lex bot isn’t configured for (both of which would be forwarded to a human agent), however this is outside the scope of this blog post.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;In the top right-hand corner above the grid, select the down arrow, then &lt;strong&gt;Save &amp;amp; Publish&lt;/strong&gt;.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;setting-the-contact-flow&quot;&gt;Setting the Contact Flow&lt;/h2&gt;
-&lt;p&gt;Now that we have a contact flow created, we need to attach it to the phone number we provisioned earlier.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;On the left sidebar in the Amazon Connect console, select &lt;strong&gt;Phone Numbers&lt;/strong&gt; under the &lt;strong&gt;Routing&lt;/strong&gt; menu then select the phone number listed.&lt;/li&gt;
-  &lt;li&gt;Under the &lt;strong&gt;Contact Flow/IVR&lt;/strong&gt; dropdown menu, select the Contact flow you created, then select &lt;strong&gt;Save&lt;/strong&gt;.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;testing-the-contact-flow&quot;&gt;Testing the Contact Flow&lt;/h2&gt;
-
-&lt;p&gt;Now that we’ve associated the contact flow with the phone number, you’re ready for testing! Remember, if you’ve provisioned a number in the US (and you’re overseas), you can dial for free using Google hangouts.&lt;/p&gt;
-
-&lt;p&gt;That’s it! You now have a fully functioning chatbot that can be called and spoken to. From here, you can add more intents to build a bot that can handle several simple user administration tasks.&lt;/p&gt;
-
-&lt;p&gt;A few things worth noting:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;You may notice that Lex repeats the user ID as a number, rather than individual digits. Unfortunately, Amazon Connect doesn’t support SSML content from Lex at this time however it’s in the product roadmap.&lt;/li&gt;
-  &lt;li&gt;You can view missed utterances on the &lt;strong&gt;Monitoring tab&lt;/strong&gt; on your Lex bot and potentially add them to existing intents. This is a great way to monitor and expand on the capability of your bot.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--Section: Lesson UI--&gt;
-&lt;section class=&quot;text-center&quot;&gt;
-    &lt;hr /&gt;
-   
-    &lt;div class=&quot;row&quot;&gt;
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-1&quot; class=&quot;btn  btn-sm&quot; id=&quot;round-button&quot;&gt;
-                &lt;i class=&quot;fas fa-arrow-left mr-2&quot;&gt;&lt;/i&gt;Previous Lesson
-            &lt;/a&gt;
-        &lt;/div&gt;
-     
-        &lt;div class=&quot;col-lg-4 col-md-6 col-sm-6&quot;&gt;
-            &lt;a target=&quot;_blank&quot; href=&quot;/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-2&quot; class=&quot;btn btn-sm&quot; id=&quot;round-button&quot;&gt;Next Lesson
-                &lt;i class=&quot;fas fa-arrow-right ml-2&quot;&gt;&lt;/i&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;       
-    &lt;/div&gt;
-
-&lt;/section&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">The service desk with bots using Amazon Lex and Amazon Connect (Part 2)</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aws_cloud.png" /></entry></feed>
+&lt;p&gt;Oh.. wait, In the meanwhile, you can get started with your free account in Azure DevOps and start exploring. Just log in to https://dev.azure.com with your Microsoft account and start your ALM journey in cloud with Azure DevOps.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">AZURE DEVOPS – MANAGE YOUR APPLICATION LIFECYCLE IN CLOUD</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/dev-ops.png" /></entry></feed>
