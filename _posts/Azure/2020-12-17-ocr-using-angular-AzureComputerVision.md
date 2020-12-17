@@ -7,7 +7,7 @@ categories:
 tags:
 - learning
 summary: In this article, we will create an optical character recognition (OCR) application using Angular and the Azure Computer Vision Cognitive Service.
-image: "/img/AzureAppSerive.png"
+image: "/img/azure/9/output.gif"
 author: Girish Godage
 layout: posts
 prevurl: ''
@@ -544,4 +544,4 @@ Press F5 to launch the application. Click on the Computer Vision button on the n
 
 We have created an optical character recognition (OCR) application using Angular and the Computer Vision Azure Cognitive Service. The application is able to extract the printed text from the uploaded image and recognizes the language of the text. The OCR API of the Computer Vision is used which can recognize text in 25 languages.
 
-Get the Source code from GitHub and play around to get a better understanding.
+Get the Source code from [GitHub](https://github.com/girishgodage/AngularComputerVisionAzureCognitiveServices) and play around to get a better understanding.
