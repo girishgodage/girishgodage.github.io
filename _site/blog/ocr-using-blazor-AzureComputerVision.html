@@ -11,8 +11,8 @@
 <meta name="msapplication-navbutton-color" content="#2A80EE">
 <!-- iOS Safari -->
 <meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
-<title>Optical Character Reader Using Angular And Azure Computer Vision &#8211; Girish Godage</title>
-<meta name="description" content="In this article, we will create an optical character recognition (OCR) application using Angular and the Azure Computer Vision Cognitive Service.">
+<title>Optical Character Reader Using Blazor And Azure Computer Vision &#8211; Girish Godage</title>
+<meta name="description" content="In this article, we will create an optical character recognition (OCR) application using Blazor and the Azure Computer Vision Cognitive Service.">
 <meta name="keywords" content="AzureAI">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,9 +26,9 @@
     <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Optical Character Reader Using Angular And Azure Computer Vision">
+    <meta property="og:title" content="Optical Character Reader Using Blazor And Azure Computer Vision">
     <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
-    <meta property="og:url" content="http://localhost:4000/blog/ocr-using-angular-AzureComputerVision">
+    <meta property="og:url" content="http://localhost:4000/blog/ocr-using-blazor-AzureComputerVision">
     <meta property="og:site_name" content="Girish Godage">
 
     <!-- Twitter Card -->
@@ -36,9 +36,9 @@
     
         <meta name="twitter:site" content="@GGodage" />
     
-    <meta name="twitter:title" content="Optical Character Reader Using Angular And Azure Computer Vision" />
-    <meta name="twitter:description" content="In this article, we will create an optical character recognition (OCR) application using Angular and the Azure Computer Vision Cognitive Service." />
-    <meta name="twitter:url" content="http://localhost:4000/blog/ocr-using-angular-AzureComputerVision" />
+    <meta name="twitter:title" content="Optical Character Reader Using Blazor And Azure Computer Vision" />
+    <meta name="twitter:description" content="In this article, we will create an optical character recognition (OCR) application using Blazor and the Azure Computer Vision Cognitive Service." />
+    <meta name="twitter:url" content="http://localhost:4000/blog/ocr-using-blazor-AzureComputerVision" />
 
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
@@ -58,7 +58,7 @@
     
 
 
-    <link rel="canonical" href="http://localhost:4000/blog/ocr-using-angular-AzureComputerVision">
+    <link rel="canonical" href="http://localhost:4000/blog/ocr-using-blazor-AzureComputerVision">
 <link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
     <!-- Bootstrap CSS-->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -157,13 +157,13 @@
             class="container">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <p class="post-title">
-                    <h1><a href="/blog/ocr-using-angular-AzureComputerVision">Optical Character Reader Using Angular And Azure Computer Vision</a></h1>
+                    <h1><a href="/blog/ocr-using-blazor-AzureComputerVision">Optical Character Reader Using Blazor And Azure Computer Vision</a></h1>
                 </p>
                 
                 <span class="post-meta">
               <span style="font-weight:600">December 17, 2020 Thursday</span>
                     
-                       ( 15 minute read ) 
+                       ( 13 minute read ) 
                     
                      
                     <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">   by Girish Godage</a>
@@ -174,26 +174,32 @@
                 </div>
                 
                 <hr>
-                <div><img class="post-image" src="/img/azure/9/output.gif" alt="Optical Character Reader Using Angular And Azure Computer Vision" height="250" /></div>
+                <div><img class="post-image" src="/img/azure/10/output.gif" alt="Optical Character Reader Using Blazor And Azure Computer Vision" height="250" /></div>
                 <div class="post-content">
                     <br>                     
                     <h2 id="introduction">Introduction</h2>
 
-<p>In this article, we will create an optical character recognition (OCR) application using Angular and the Azure Computer Vision Cognitive Service. Computer Vision is an AI service that analyzes content in images. We will use the OCR feature of Computer Vision to detect the printed text in an image. The application will extract the text from the image and detects the language of the text. Currently, the OCR API supports 25 languages.</p>
+<p>In this article, we will create an optical character recognition (OCR) application using Blazor and the Azure Computer Vision Cognitive Service. Computer Vision is an AI service that analyzes content in images. We will use the OCR feature of Computer Vision to detect the printed text in an image. The application will extract the text from the image and detects the language of the text. Currently, the OCR API supports 25 languages.</p>
+
+<p><img src="/img/azure/10/output.gif" alt="image info" /></p>
 
 <h2 id="prerequisites">Prerequisites</h2>
-
 <ul>
-  <li>Install the latest LTS version of Node.JS from https://nodejs.org/en/download/</li>
-  <li>Install the Angular CLI from https://cli.angular.io/</li>
-  <li>An Azure subscription account. You can create a free  Azure account at https://azure.microsoft.com/en-in/free/</li>
-  <li>Install the .NET Core 3.1 SDK from https://dotnet.microsoft.com/download/dotnet-core/3.1</li>
+  <li>Install the latest .NET Core 3.1 SDK from https://dotnet.microsoft.com/download/dotnet-core/3.1</li>
   <li>Install the latest version of Visual Studio 2019 from https://visualstudio.microsoft.com/downloads/</li>
+  <li>An Azure subscription account. You can create a free Azure account  at https://azure.microsoft.com/en-in/free/</li>
 </ul>
 
-<blockquote>
-  <p>We will use an <span style="color:yellow;background-color:black;">ASP.NET Core backend </span> for this application. The <span style="color:yellow;background-color:black;"> ASP.NET Core backend </span> provides a straight forward authentication process to access Azure cognitive services. This will also ensure that the end-user won’t have direct access to cognitive services.</p>
-</blockquote>
+<h2 id="image-requirements">Image requirements</h2>
+
+<p>The OCR API will work on images that meet the requirements as mentioned below:</p>
+
+<ul>
+  <li>The format of the image must be JPEG, PNG, GIF, or BMP.</li>
+  <li>The size of the image must be between 50 x 50 and 4200 x 4200 pixels.</li>
+  <li>The image file size should be less than 4 MB.</li>
+  <li>The text in the image can be rotated by any multiple of 90 degrees plus a small angle of up to 40 degrees.</li>
+</ul>
 
 <h2 id="create-the-azure-computer-vision-cognitive-service-resource">Create the Azure Computer Vision Cognitive Service resource</h2>
 
@@ -216,31 +222,25 @@
 
 <p>Click on the Create button. Refer to the image shown below.</p>
 
-<p><img src="/img/azure/9/CreateComputerVision_1.png" alt="image info" /></p>
+<p><img src="/img/azure/10/CreateComputerVision.png" alt="image info" /></p>
 
-<p><img src="/img/azure/9/CreateComputerVision_2.png" alt="image info" /></p>
+<p><img src="/img/azure/10/CreateComputerVision_1.png" alt="image info" /></p>
 
 <p>After your resource is successfully deployed, click on the “Go to resource” button. You can see the Key and the endpoint for the newly created Computer Vision resource. Refer to the image shown below.</p>
 
-<p><img src="/img/azure/9/ComputerVisionKeyNEndPoint.png" alt="image info" /></p>
+<p><img src="/img/azure/10/ComputerVisionKeyNEndPoint.png" alt="image info" /></p>
 
 <p>Make a note of the <strong>key and the endpoint</strong>. We will be using these in the latter part of this article to invoke the Computer Vision OCR API from the .NET Code. The values are masked here for privacy.</p>
 
-<h2 id="creating-the-aspnet-core-application">Creating the ASP.NET Core application</h2>
+<h2 id="create-a-server-side-blazor-application">Create a Server-Side Blazor Application</h2>
 
-<p>Open Visual Studio 2019 and click on “Create a new Project”. A “Create a new Project” dialog will open. Select “ASP.NET Core Web Application” and click on Next. Now you will be at “Configure your new project” screen, provide the name for your application as ngComputerVision and click on create. Refer to the image shown below.</p>
+<p>Open Visual Studio 2019, click on “Create a new project”. Select “Blazor App” and click on the “Next” button. Refer to the image shown below.</p>
 
-<p><img src="/img/azure/9/Configure_CoreWebApp.png" alt="image info" /></p>
+<p><img src="/img/azure/10/Create_BlazorApp.png" alt="image info" /></p>
 
-<p>You will be navigated to “Create a new ASP.NET Core web application” screen. Select “.NET Core” and “ASP.NET Core 3.1” from the dropdowns on the top. Then, select the “Angular” project template and click on Create. Refer to the image shown below.</p>
+<p>On the next window, put the project name as <span style="color:yellow;background-color:black;">BlazorComputerVision</span> and click on the “Create” button. The next window will ask you to select the type of Blazor app. Select <span style="color:yellow;background-color:black;">Blazor Server App </span> and click on the Create button to create a new server-side Blazor application. Refer to the image shown below.</p>
 
-<p><img src="/img/azure/9/Create_CoreWebApp.png" alt="image info" /></p>
-
-<p>This will create our project. The folder structure of the application is shown below.</p>
-
-<p><img src="/img/azure/9/SolutionFolderStructure.png" alt="image info" /></p>
-
-<p>The <span style="color:yellow;background-color:black;">ClientApp </span> folder contains the Angular code for our application. The Controllers folders will contain our API controllers. The angular components are present inside the <span style="color:yellow;background-color:black;">ClientApp\src\app </span> folder. The default template contains few Angular components. These components won’t affect our application, but for the sake of simplicity, we will delete fetchdata and counter folders from <span style="color:yellow;background-color:black;">ClientApp/app/components</span> folder. Also, remove the reference for these two components from the <span style="color:yellow;background-color:black;">app.module.ts</span> file.</p>
+<p><img src="/img/azure/10/Create_BlazorApp_1.png" alt="image info" /></p>
 
 <h2 id="installing-computer-vision-api-library">Installing Computer Vision API library</h2>
 <p>We will install the Azure Computer Vision API library which will provide us with the models out of the box to handle the Computer Vision REST API response. To install the package, navigate to Tools » NuGet Package Manager » Package Manager Console. It will open the Package Manager Console. Run the command as shown below.</p>
@@ -252,26 +252,26 @@
 
 <h2 id="create-the-models">Create the Models</h2>
 
-<p>Right-click on the <span style="color:yellow;background-color:black;">ngComputerVision</span> project and select Add » New Folder. Name the folder as Models. Again, right-click on the Models folder and select Add » Class to add a new class file. Put the name of your class as <span style="color:yellow;background-color:black;">LanguageDetails.cs</span> and click Add.</p>
+<p>Right-click on the <span style="color:yellow;background-color:black;">BlazorComputerVision</span> project and select Add » New Folder. Name the folder as Models. Again, right-click on the Models folder and select Add » Class to add a new class file. Put the name of your class as <span style="color:yellow;background-color:black;">LanguageDetails.cs</span> and click Add.</p>
 
 <p>Open <span style="color:yellow;background-color:black;">LanguageDetails.cs</span> and put the following code inside it.</p>
 
-<pre><code class="language-code">  namespace ngComputerVision.Models
-{
-    public class LanguageDetails
-    {
-        public string Name { get; set; }
-        public string NativeName { get; set; }
-        public string Dir { get; set; }
-    }
-}
+<pre><code class="language-code">  namespace BlazorComputerVision.Models
+  {
+      public class LanguageDetails
+      {
+          public string Name { get; set; }
+          public string NativeName { get; set; }
+          public string Dir { get; set; }
+      }
+  }
 
 </code></pre>
 
 <p>Similarly, add a new class file <span style="color:yellow;background-color:black;">AvailableLanguage.cs </span> and put the following code inside it.</p>
 
-<pre><code class="language-code">  using System.Collections.Generic;
-  namespace ngComputerVision.Models
+<pre><code class="language-code"> using System.Collections.Generic;
+  namespace BlazorComputerVision.Models
   {
       public class AvailableLanguage
       {
@@ -280,25 +280,10 @@
   }
 
 </code></pre>
-<p>We will also add two classes as DTO (Data Transfer Object) for sending data back to the client.</p>
-
-<p>Create a new folder and name it <span style="color:yellow;background-color:black;">DTOModels</span>. Add the new class file <span style="color:yellow;background-color:black;">AvailableLanguageDTO.cs</span> in the <span style="color:yellow;background-color:black;">DTOModels</span> folder and put the following code inside it.</p>
+<p>Finally, we will add a class as DTO (Data Transfer Object) for sending data back to the client.Add the new class file <span style="color:yellow;background-color:black;">OcrResultDTO.cs</span> in the <span style="color:yellow;background-color:black;">Models</span> folder and put the following code inside it.</p>
 
 <pre><code class="language-code">
-  namespace ngComputerVision.DTOModels
-  {
-      public class AvailableLanguageDTO
-      {
-          public string LanguageID { get; set; }
-          public string LanguageName { get; set; }
-      }
-  }
-
-</code></pre>
-
-<p>Add the <span style="color:yellow;background-color:black;">OcrResultDTO.cs</span> file and put the following code inside it.</p>
-
-<pre><code class="language-code">  namespace ngComputerVision.DTOModels
+  namespace BlazorComputerVision.Models
   {
       public class OcrResultDTO
       {
@@ -308,82 +293,61 @@
   }
 
 </code></pre>
-<h2 id="adding-the-ocr-controller">Adding the OCR Controller</h2>
 
-<p>We will add a new controller to our application. Right-click on the Controllers folder and select Add » New Item. An “Add New Item” dialog box will open. Select “Visual C#” from the left panel, then select “API Controller Class” from templates panel and put the name as <span style="color:yellow;background-color:black;">OCRController.cs</span>. Click on Add. Refer to the image below.</p>
+<h2 id="create-the-computer-vision-service">Create the Computer Vision Service</h2>
 
-<p><img src="/img/azure/9/AddAPIController.png" alt="image info" /></p>
+<p>Right-click on the <span style="color:yellow;background-color:black;">BlazorComputerVision/Data</span> folder and select Add » Class to add a new class file. Put the name of the file as <span style="color:yellow;background-color:black;">ComputerVisionService.cs</span> and click on Add.</p>
 
-<p>The OCRController will handle the image recognition requests from the client app. This controller will also return the list of all the languages supported by OCR API.</p>
+<p>Open the <span style="color:yellow;background-color:black;">ComputerVisionService.cs</span> file and put the following code inside it.</p>
 
-<p>Open the <span style="color:yellow;background-color:black;">OCRController.cs</span> file and put the following code inside it.</p>
-
-<pre><code class="language-code">  using System;
-  using System.Threading.Tasks;
-  using Microsoft.AspNetCore.Mvc;
+<pre><code class="language-code">  using BlazorComputerVision.Models;
+  using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
+  using Newtonsoft.Json;
+  using Newtonsoft.Json.Linq;
+  using System;
   using System.Net.Http;
   using System.Net.Http.Headers;
-  using Newtonsoft.Json.Linq;
-  using System.IO;
-  using Newtonsoft.Json;
   using System.Text;
-  using ngComputerVision.Models;
-  using System.Collections.Generic;
-  using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
-  using ngComputerVision.DTOModels;
-  namespace ngComputerVision.Controllers
+  using System.Threading.Tasks;
+  namespace BlazorComputerVision.Data
   {
-      [Produces("application/json")]
-      [Route("api/[controller]")]
-      public class OCRController : Controller
+      public class ComputerVisionService
       {
           static string subscriptionKey;
           static string endpoint;
           static string uriBase;
-          public OCRController()
+          public ComputerVisionService()
           {
-              subscriptionKey = "fc791774e60e455da79546c50e1ca504";
-              endpoint = "https://ngocrdemo.cognitiveservices.azure.com/";
+              subscriptionKey = "88b4cb369bcc4fc7bae5595f45400d45";
+              endpoint = "https://girishblazorocrdemo.cognitiveservices.azure.com/";
               uriBase = endpoint + "vision/v2.1/ocr";
           }
-          [HttpPost, DisableRequestSizeLimit]
-          public async Task&lt;OcrResultDTO&gt; Post()
+          public async Task&lt;OcrResultDTO&gt; GetTextFromImage(byte[] imageFileBytes)
           {
               StringBuilder sb = new StringBuilder();
               OcrResultDTO ocrResultDTO = new OcrResultDTO();
               try
               {
-                  if (Request.Form.Files.Count &gt; 0)
+                  string JSONResult = await ReadTextFromStream(imageFileBytes);
+                  OcrResult ocrResult = JsonConvert.DeserializeObject&lt;OcrResult&gt;(JSONResult);
+                  if (!ocrResult.Language.Equals("unk"))
                   {
-                      var file = Request.Form.Files[Request.Form.Files.Count - 1];
-                      if (file.Length &gt; 0)
+                      foreach (OcrLine ocrLine in ocrResult.Regions[0].Lines)
                       {
-                          var memoryStream = new MemoryStream();
-                          file.CopyTo(memoryStream);
-                          byte[] imageFileBytes = memoryStream.ToArray();
-                          memoryStream.Flush();
-                          string JSONResult = await ReadTextFromStream(imageFileBytes);
-                          OcrResult ocrResult = JsonConvert.DeserializeObject&lt;OcrResult&gt;(JSONResult);
-                          if (!ocrResult.Language.Equals("unk"))
+                          foreach (OcrWord ocrWord in ocrLine.Words)
                           {
-                              foreach (OcrLine ocrLine in ocrResult.Regions[0].Lines)
-                              {
-                                  foreach (OcrWord ocrWord in ocrLine.Words)
-                                  {
-                                      sb.Append(ocrWord.Text);
-                                      sb.Append(' ');
-                                  }
-                                  sb.AppendLine();
-                              }
+                              sb.Append(ocrWord.Text);
+                              sb.Append(' ');
                           }
-                          else
-                          {
-                              sb.Append("This language is not supported.");
-                          }
-                          ocrResultDTO.DetectedText = sb.ToString();
-                          ocrResultDTO.Language = ocrResult.Language;
+                          sb.AppendLine();
                       }
                   }
+                  else
+                  {
+                      sb.Append("This language is not supported.");
+                  }
+                  ocrResultDTO.DetectedText = sb.ToString();
+                  ocrResultDTO.Language = ocrResult.Language;
                   return ocrResultDTO;
               }
               catch
@@ -416,8 +380,7 @@
                   return e.Message;
               }
           }
-          [HttpGet]
-          public async Task&lt;List&lt;AvailableLanguageDTO&gt;&gt; GetAvailableLanguages()
+          public async Task&lt;AvailableLanguage&gt; GetAvailableLanguages()
           {
               string endpoint = "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&amp;scope=translation";
               var client = new HttpClient();
@@ -428,15 +391,7 @@
                   var response = await client.SendAsync(request).ConfigureAwait(false);
                   string result = await response.Content.ReadAsStringAsync();
                   AvailableLanguage deserializedOutput = JsonConvert.DeserializeObject&lt;AvailableLanguage&gt;(result);
-                  List&lt;AvailableLanguageDTO&gt; availableLanguage = new List&lt;AvailableLanguageDTO&gt;();
-                  foreach (KeyValuePair&lt;string, LanguageDetails&gt; translation in deserializedOutput.Translation)
-                  {
-                      AvailableLanguageDTO language = new AvailableLanguageDTO();
-                      language.LanguageID = translation.Key;
-                      language.LanguageName = translation.Value.Name;
-                      availableLanguage.Add(language);
-                  }
-                  return availableLanguage;
+                  return deserializedOutput;
               }
           }
       }
@@ -446,9 +401,9 @@
 
 <p>In the constructor of the class, we have initialized the key and the endpoint URL for the OCR API.</p>
 
-<p>The Post method will receive the image data as a file collection in the request body and return an object of type <span style="color:yellow;background-color:black;">OcrResultDTO</span>. We will convert the image data to a byte array and invoke the <span style="color:yellow;background-color:black;">ReadTextFromStream</span> method. We will deserialize the response into an object of type <span style="color:yellow;background-color:black;">OcrResult</span>. We will then form the sentence by iterating over the <span style="color:yellow;background-color:black;">OcrWord</span> object.</p>
-
 <p>Inside the <span style="color:yellow;background-color:black;">ReadTextFromStream</span> method, we will create a new <span style="color:yellow;background-color:black;">HttpRequestMessage</span>. This HTTP request is a Post request. We will pass the subscription key in the header of the request. The OCR API will return a JSON object having each word from the image as well as the detected language of the text.</p>
+
+<p>The <span style="color:yellow;background-color:black;">GetTextFromImage</span> method will accept the image data as a byte array and returns an object of type <span style="color:yellow;background-color:black;">OcrResultDTO</span>. We will invoke the <span style="color:yellow;background-color:black;">ReadTextFromStream</span> method and deserialize the response into an object of type <span style="color:yellow;background-color:black;">OcrResult</span>. We will then form the sentence by iterating over the <span style="color:yellow;background-color:black;">OcrWord</span> object.</p>
 
 <p>The <span style="color:yellow;background-color:black;">GetAvailableLanguages</span> method will return the list of all the language supported by the Translate Text API. We will set the request URI and create a <span style="color:yellow;background-color:black;">HttpRequestMessage</span> which will be a Get request. This request URI will return a JSON object which will be deserialized to an object of type <span style="color:yellow;background-color:black;">AvailableLanguage</span>.</p>
 
@@ -458,209 +413,180 @@
 
 <p>The Azure Computer Vision OCR API supports 25 languages. To know all the languages supported by OCR API see the list of <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/language-support">supported languages</a>. These languages are a subset of the languages supported by the Azure Translate Text API. Since there is no dedicated API endpoint to fetch the list of languages supported by OCR API, therefore, we are using the Translate Text API endpoint to fetch the list of languages. We will create the language lookup dictionary using the JSON response from this API call and filter the result based on the language code returned by the OCR API.</p>
 
-<h2 id="working-on-the-client-side-of-the-application">Working on the Client side of the application</h2>
+<h2 id="install-blazorinputfile-nuget-package">Install BlazorInputFile NuGet package</h2>
+<p><span style="color:yellow;background-color:black;">BlazorInputFile</span> is a file input component for Blazor applications. It provides the ability to upload single or multiple files to a Blazor app.</p>
 
-<p>The code for the client-side is available in the <span style="color:yellow;background-color:black;">ClientApp</span> folder. We will use Angular CLI to work with the client code.</p>
+<p>Open <span style="color:yellow;background-color:black;">BlazorComputerVision.csproj</span> file and add a dependency for the BlazorInputFile package as shown below:</p>
 
-<blockquote>
-  <p>Using Angular CLI is not mandatory. I am using Angular CLI here as it is user-friendly and easy to use. If you don’t want to use CLI then you can create the files for components and services manually.</p>
-</blockquote>
-
-<p>Navigate to the <span style="color:yellow;background-color:black;">ngComputerVision\ClientApp </span> folder in your machine and open a command window. We will execute all our Angular CLI commands in this window.</p>
-
-<h2 id="create-the-models-1">Create the models</h2>
-
-<p>Create a folder called <span style="color:yellow;background-color:black;">models</span> inside the <span style="color:yellow;background-color:black;">ClientApp\src\app</span> folder. Now we will create a file <span style="color:yellow;background-color:black;">availablelanguage.ts</span> in the models folder. Put the following code in it.</p>
-
-<pre><code class="language-code">  export class AvailableLanguage {
-    languageID: string;
-    languageName: string;
-  }
+<pre><code class="language-code">  &lt;ItemGroup&gt;
+    &lt;PackageReference Include="BlazorInputFile" Version="0.2.0" /&gt;
+&lt;/ItemGroup&gt;
 
 </code></pre>
 
-<p>Similarly, create another file inside the models folder called <span style="color:yellow;background-color:black;">ocrresult.ts</span>. Put the following code in it.</p>
-
-<pre><code class="language-code">  export class OcrResult {
-    language: string;
-    detectedText: string
-  }
-
-</code></pre>
-
-<p>You can observe that both these classes have the same definition as the DTO classes we created on the server-side. This will allow us to bind the data returned from the server directly to our models.</p>
-
-<h2 id="create-the-computer-vision-service">Create the Computer Vision Service</h2>
-
-<p>We will create an Angular service which will invoke the Web API endpoints, convert the Web API response to JSON and pass it to our component. Run the following command.</p>
+<p>Open <span style="color:yellow;background-color:black;">BlazorComputerVision\Pages_Host.cshtml</span> file and add the reference for the package’s JavaScript file by adding the following line in the <span style="color:yellow;background-color:black;">head</span> section.</p>
 
 <pre><code class="language-code">
-  ng g s services\Computervision
+&lt;script src="_content/BlazorInputFile/inputfile.js"&gt;&lt;/script&gt;
+
+</code></pre>
+<p>Add the following line in the _Imports.razor file.</p>
+
+<pre><code class="language-code">  @using BlazorInputFile
+</code></pre>
+
+<h2 id="configuring-the-service">Configuring the Service</h2>
+
+<p>To make the service available to the components we need to configure it on the server-side app. Open the <span style="color:yellow;background-color:black;">Startup.cs</span> file. Add the following line inside the <span style="color:yellow;background-color:black;">ConfigureServices</span> method of Startup class.</p>
+
+<pre><code class="language-code"> services.AddSingleton&lt;ComputerVisionService&gt;();
 
 </code></pre>
 
-<p>This command will create a folder name as services and then create the following two files inside it.</p>
+<h2 id="creating-the-blazor-ui-component">Creating the Blazor UI Component</h2>
 
-<ul>
-  <li><strong>computervision.service.ts</strong> — the service class file.</li>
-  <li><strong>computervision.service.spec.ts</strong> — the unit test file for service.</li>
-</ul>
+<p>We will add the Razor page in the <span style="color:yellow;background-color:black;">BlazorComputerVision/Pages</span> folder. By default, we have “Counter” and “Fetch Data” pages provided in our application. These default pages will not affect our application but for the sake of this tutorial, we will delete fetchdata and counter pages from <span style="color:yellow;background-color:black;">BlazorComputerVision/Pages</span> folder.</p>
 
-<p>Open <span style="color:yellow;background-color:black;">computervision.service.ts</span> file and put the following code inside it.</p>
+<p>Right-click on the <span style="color:yellow;background-color:black;">BlazorComputerVision/Pages folder</span> and then select Add » New Item. An “Add New Item” dialog box will open, select “Visual C#” from the left panel, then select “Razor Component” from the templates panel, put the name as <span style="color:yellow;background-color:black;">OCR.razor</span>. Click Add. Refer to the image shown below.</p>
 
-<pre><code class="language-code">  import { Injectable } from '@angular/core';
-  import { HttpClient } from '@angular/common/http';
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class ComputervisionService {
-    baseURL: string;
-    constructor(private http: HttpClient) {
-      this.baseURL = '/api/OCR';
-    }
-    getAvailableLanguage() {
-      return this.http.get(this.baseURL)
-        .pipe(response =&gt; {
-          return response;
-        });
-    }
-    getTextFromImage(image: FormData) {
-      return this.http.post(this.baseURL, image)
-        .pipe(response =&gt; {
-          return response;
-        });
-    }
-  }
+<p><img src="/img/azure/10/CreateRazorComponent.png" alt="image info" /></p>
 
-</code></pre>
-<p>We have defined a variable baseURL which will hold the endpoint URL of our API. We will initialize the baseURL in the constructor and set it to the endpoint of the <span style="color:yellow;background-color:black;">OCRController</span>.</p>
+<p>We will add a code-behind file for this razor page to keep the code and presentation separate. This will allow easy maintenance for the application.  Right-click on the <span style="color:yellow;background-color:black;">BlazorComputerVision/Pages</span> folder and then select Add » Class. Name the class as <span style="color:yellow;background-color:black;">OCR.razor.cs</span>. The Blazor framework is smart enough to tag this class file to the razor file. Refer to the image shown below.</p>
 
-<p>The <span style="color:yellow;background-color:black;">getAvailableLanguage</span> method will send a Get request to the <span style="color:yellow;background-color:black;">GetAvailableLanguages</span> method of the <span style="color:yellow;background-color:black;">OCRController</span> to fetch the list of supported languages for OCR.</p>
+<p><img src="/img/azure/10/OCRStuct.png" alt="image info" /></p>
 
-<p>The <span style="color:yellow;background-color:black;">getTextFromImage</span> method will send a Post request to the <span style="color:yellow;background-color:black;">OCRController</span> and supply the parameter of type <span style="color:yellow;background-color:black;">FormData</span>. It will fetch the detected text from the image and language code of the text.</p>
+<h2 id="blazor-ui-component-code-behind">Blazor UI component code behind</h2>
+<p>Open the  <span style="color:yellow;background-color:black;">OCR.razor.cs</span> file and put the following code inside it.</p>
 
-<h2 id="create-the-ocr-component">Create the Ocr component</h2>
-
-<p>Run the following command in the command prompt to create the <span style="color:yellow;background-color:black;">OcrComponent</span>.</p>
-
-<pre><code class="language-code">  
-  ng g c ocr --module app
-
-</code></pre>
-
-<p>The –module flag will ensure that this component will get registered at <span style="color:yellow;background-color:black;">app.module.ts</span>.</p>
-
-<p>Open <span style="color:yellow;background-color:black;">ocr.component.html</span> and put the following code in it.</p>
-
-<pre><code class="language-code">    &lt;h2&gt;Optical Character Recognition (OCR) using Angular and Azure Computer Vision Cognitive Services&lt;/h2&gt;
-  &lt;div class="row"&gt;
-    &lt;div class="col-md-5"&gt;
-      &lt;textarea disabled class="form-control" rows="10" cols="15"&gt;&lt;/textarea&gt;
-      &lt;hr /&gt;
-      &lt;div class="row"&gt;
-        &lt;div class="col-sm-5"&gt;
-          &lt;label&gt;&lt;strong&gt; Detected Language :&lt;/strong&gt;&lt;/label&gt;
-        &lt;/div&gt;
-        &lt;div class="col-sm-6"&gt;
-          &lt;input disabled type="text" class="form-control" value= /&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="col-md-5"&gt;
-      &lt;div class="image-container"&gt;
-        &lt;img class="preview-image" src=&gt;
-      &lt;/div&gt;
-      &lt;input type="file" (change)="uploadImage($event)" /&gt;
-      &lt;p&gt;&lt;/p&gt;
-      &lt;hr /&gt;
-      &lt;button [disabled]="loading" class="btn btn-primary btn-lg" (click)="GetText()"&gt;
-        &lt;span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"&gt;&lt;/span&gt;Extract Text
-      &lt;/button&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</code></pre>
-
-<p>We have defined a text area to display the detected text and a text box for displaying the detected language. We have defined a file upload control which will allow us to upload an image. After uploading the image, the preview of the image will be displayed using an <span style="color:yellow;background-color:black;">img</span> element.</p>
-
-<p>Open <span style="color:yellow;background-color:black;">ocr.component.ts</span> and put the following code in it.</p>
-
-<pre><code class="language-code">  import { Component, OnInit } from '@angular/core';
-import { ComputervisionService } from '../services/computervision.service';
-import { AvailableLanguage } from '../models/availablelanguage';
-import { OcrResult } from '../models/ocrresult';
-@Component({
-  selector: 'app-ocr',
-  templateUrl: './ocr.component.html',
-  styleUrls: ['./ocr.component.css']
-})
-export class OcrComponent implements OnInit {
-  loading = false;
-  imageFile;
-  imagePreview;
-  imageData = new FormData();
-  availableLanguage: AvailableLanguage[];
-  DetectedTextLanguage: string;
-  ocrResult: OcrResult;
-  DefaultStatus: string;
-  status: string;
-  maxFileSize: number;
-  isValidFile = true;
-  constructor(private computervisionService: ComputervisionService) {
-    this.DefaultStatus = "Maximum size allowed for the image is 4 MB";
-    this.status = this.DefaultStatus;
-    this.maxFileSize = 4 * 1024 * 1024; // 4MB
-  }
-  ngOnInit() {
-    this.computervisionService.getAvailableLanguage().subscribe(
-      (result: AvailableLanguage[]) =&gt; this.availableLanguage = result
-    );
-  }
-  uploadImage(event) {
-    this.imageFile = event.target.files[0];
-    if (this.imageFile.size &gt; this.maxFileSize) {
-      this.status = `The file size is ${this.imageFile.size} bytes, this is more than the allowed limit of ${this.maxFileSize} bytes.`;
-      this.isValidFile = false;
-    } else if (this.imageFile.type.indexOf('image') == -1) {
-      this.status = "Please upload a valid image file";
-      this.isValidFile = false;
-    } else {
-      const reader = new FileReader();
-      reader.readAsDataURL(event.target.files[0]);
-      reader.onload = () =&gt; {
-        this.imagePreview = reader.result;
-      };
-      this.status = this.DefaultStatus;
-      this.isValidFile = true;
-    }
-  }
-  GetText() {
-    if (this.isValidFile) {
-      this.loading = true;
-      this.imageData.append('imageFile', this.imageFile);
-      this.computervisionService.getTextFromImage(this.imageData).subscribe(
-        (result: OcrResult) =&gt; {
-          this.ocrResult = result;
-          if (this.availableLanguage.find(x =&gt; x.languageID === this.ocrResult.language)) {
-            this.DetectedTextLanguage = this.availableLanguage.find(x =&gt; x.languageID === this.ocrResult.language).languageName;
-          } else {
-            this.DetectedTextLanguage = "unknown";
+<pre><code class="language-code">  using Microsoft.AspNetCore.Components;
+  using System;
+  using System.Collections.Generic;
+  using System.Linq;
+  using System.Threading.Tasks;
+  using System.IO;
+  using BlazorComputerVision.Models;
+  using BlazorInputFile;
+  using BlazorComputerVision.Data;
+  namespace BlazorComputerVision.Pages
+  {
+      public class OCRModel : ComponentBase
+      {
+          [Inject]
+          protected ComputerVisionService computerVisionService { get; set; }
+          protected string DetectedTextLanguage;
+          protected string imagePreview;
+          protected bool loading = false;
+          byte[] imageFileBytes;
+          const string DefaultStatus = "Maximum size allowed for the image is 4 MB";
+          protected string status = DefaultStatus;
+          protected OcrResultDTO Result = new OcrResultDTO();
+          private AvailableLanguage availableLanguages;
+          private Dictionary&lt;string, LanguageDetails&gt; LanguageList = new Dictionary&lt;string, LanguageDetails&gt;();
+          const int MaxFileSize = 4 * 1024 * 1024; // 4MB
+          protected override async Task OnInitializedAsync()
+          {
+              availableLanguages = await computerVisionService.GetAvailableLanguages();
+              LanguageList = availableLanguages.Translation;
           }
-          this.loading = false;
-        });
-    }
+          protected async Task ViewImage(IFileListEntry[] files)
+          {
+              var file = files.FirstOrDefault();
+              if (file == null)
+              {
+                  return;
+              }
+              else if (file.Size &gt; MaxFileSize)
+              {
+                  status = $"The file size is {file.Size} bytes, this is more than the allowed limit of {MaxFileSize} bytes.";
+                  return;
+              }
+              else if (!file.Type.Contains("image"))
+              {
+                  status = "Please uplaod a valid image file";
+                  return;
+              }
+              else
+              {
+                  var memoryStream = new MemoryStream();
+                  await file.Data.CopyToAsync(memoryStream);
+                  imageFileBytes = memoryStream.ToArray();
+                  string base64String = Convert.ToBase64String(imageFileBytes, 0, imageFileBytes.Length);
+                  imagePreview = string.Concat("data:image/png;base64,", base64String);
+                  memoryStream.Flush();
+                  status = DefaultStatus;
+              }
+          }
+          protected private async Task GetText()
+          {
+              if (imageFileBytes != null)
+              {
+                  loading = true;
+                  Result = await computerVisionService.GetTextFromImage(imageFileBytes);
+                  if (LanguageList.ContainsKey(Result.Language))
+                  {
+                      DetectedTextLanguage = LanguageList[Result.Language].Name;
+                  }
+                  else
+                  {
+                      DetectedTextLanguage = "Unknown";
+                  }
+                  loading = false;
+              }
+          }
+      }
   }
-}
+
 </code></pre>
 
-<p>We will inject the <span style="color:yellow;background-color:black;">ComputervisionService</span> in the constructor of the <span style="color:yellow;background-color:black;">OcrComponent</span> and set a message and the value for the max image size allowed inside the constructor.</p>
+<p>We are injecting the <span style="color:yellow;background-color:black;">ComputerVisionService</span> in this class.</p>
 
-<p>We will invoke the <span style="color:yellow;background-color:black;">getAvailableLanguage</span> method of our service in the <span style="color:yellow;background-color:black;">ngOnInit</span> and store the result in an array of type <span style="color:yellow;background-color:black;">AvailableLanguage<span>.</span></span></p>
+<p>The <span style="color:yellow;background-color:black;">OnInitializedAsync</span> is a Blazor lifecycle method which is invoked when the component is initialized. We are invoking the <span style="color:yellow;background-color:black;">GetAvailableLanguages</span> method from our service inside the <span style="color:yellow;background-color:black;">OnInitializedAsync</span> method. We will then initialize the variable <span style="color:yellow;background-color:black;">LanguageList</span> which is a dictionary to hold the details of available languages.</p>
 
-<p>The <span style="color:yellow;background-color:black;">uploadImage</span> method will be invoked upon uploading an image. We will check if the uploaded file is a valid image and within the allowed size limit. We will process the image data using a <span style="color:yellow;background-color:black;">FileReader</span> object. The <span style="color:yellow;background-color:black;">readAsDataURL</span> method will read the contents of the uploaded file. Upon successful completion of the read operation, the <span style="color:yellow;background-color:black;">reader.onload</span> event will be triggered. The value of <span style="color:yellow;background-color:black;">imagePreview</span> will be set to the result returned by the fileReader object, which is of type <span style="color:yellow;background-color:black;">ArrayBuffer</span>.</p>
+<p>Inside the <span style="color:yellow;background-color:black;">ViewImage</span> method, we will check if the uploaded file is an image only and the size is less than 4 MB. We will transfer the uploaded image to the memory stream. We will then convert that memory stream to a byte array. To set the image preview, we will convert the image from byte array to a base64 encoded string. The <span style="color:yellow;background-color:black;">GetText</span> method will invoke the <span style="color:yellow;background-color:black;">GetTextFromImage</span> method from the service and pass the image byte array as an argument. We will search for the language name from the dictionary based on the language code returned from the service. If no language code is available, we will set the language as unknown.</p>
 
-<p>Inside the <span style="color:yellow;background-color:black;">GetText</span> method, we will append the image file to a variable for type <span style="color:yellow;background-color:black;">FormData</span>. We will invoke the <span style="color:yellow;background-color:black;">getTextFromImage</span> of the service and bind the result to an object of type <span style="color:yellow;background-color:black;">OcrResult</span>. We will search for the language name from the array <span style="color:yellow;background-color:black;">availableLanguage</span>, based on the language code returned from the service. If the language code is not found, we will set the language as unknown.</p>
+<h2 id="blazor-ui-component-template">Blazor UI component template</h2>
 
-<p>We will add the styling for the text area in <span style="color:yellow;background-color:black;">ocr.component.css</span> as shown below.</p>
+<p>Open the <span style="color:yellow;background-color:black;">OCR.razor</span> file and put the following code inside it.</p>
+
+<pre><code class="language-code">  @page "/computer-vision-ocr"
+@inherits OCRModel
+&lt;h2&gt;Optical Character Recognition (OCR) Using Blazor and Azure Computer Vision Cognitive Service&lt;/h2&gt;
+&lt;div class="row"&gt;
+    &lt;div class="col-md-5"&gt;
+        &lt;textarea disabled class="form-control" rows="10" cols="15"&gt;@Result.DetectedText&lt;/textarea&gt;
+        &lt;hr /&gt;
+        &lt;div class="row"&gt;
+            &lt;div class="col-sm-5"&gt;
+                &lt;label&gt;&lt;strong&gt; Detected Language :&lt;/strong&gt;&lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div class="col-sm-6"&gt;
+                &lt;input disabled type="text" class="form-control" value="@DetectedTextLanguage" /&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-md-5"&gt;
+        &lt;div class="image-container"&gt;
+            &lt;img class="preview-image" src=@imagePreview&gt;
+        &lt;/div&gt;
+        &lt;InputFile OnChange="ViewImage" /&gt;
+        &lt;p&gt;@status&lt;/p&gt;
+        &lt;hr /&gt;
+        &lt;button disabled="@loading" class="btn btn-primary btn-lg" @onclick="GetText"&gt;
+            @if (loading)
+            {
+                &lt;span class="spinner-border spinner-border-sm mr-1"&gt;&lt;/span&gt;
+            }
+            Extract Text
+        &lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>We have defined the route for this component. We have inherited the <span style="color:yellow;background-color:black;">OCRModel</span> class which allows us to access the properties and method of this class from the template. Bootstrap is used for designing the UI. We have a text area to display the detected text and a text box to display the detected language. The image tag is used to show the image preview after uploading the image. The <span style="color:yellow;background-color:black;">InputFile</span> component will allow us to upload an image file and invoke the <span style="color:yellow;background-color:black;">ViewImage</span> method as we upload the image.</p>
+
+<h2 id="add-styling-for-the-component">Add styling for the component</h2>
+
+<p>Navigate to <span style="color:yellow;background-color:black;">BlazorComputerVision\wwwroot\css\site.css</span> file and add the following style definition inside it.</p>
 
 <pre><code class="language-code">
   .preview-image {
@@ -680,24 +606,31 @@ export class OcrComponent implements OnInit {
 
 <h2 id="adding-the-links-in-nav-menu">Adding the links in Nav Menu</h2>
 
-<p>We will add the navigation links for our components in the nav menu. Open <span style="color:yellow;background-color:black;">nav-menu.component.html</span> and remove the links for Counter and Fetch data components. Add the following lines in the list of navigation links.</p>
+<p>The last step is to add the link of our OCR component in the navigation menu. Open <span style="color:yellow;background-color:black;">BlazorComputerVision/Shared/NavMenu.razor</span> file and add the following code into it.</p>
 
-<pre><code class="language-code">  &lt;li class="nav-item" [routerLinkActive]="['link-active']"&gt;
-    &lt;a class="nav-link text-dark" routerLink='/computer-vision-ocr'&gt;Computer Vision&lt;/a&gt;
+<pre><code class="language-code">  &lt;li class="nav-item px-3"&gt;
+    &lt;NavLink class="nav-link" href="computer-vision-ocr"&gt;
+      &lt;span class="oi oi-list-rich" aria-hidden="true"&gt;&lt;/span&gt; Computer Vision
+    &lt;/NavLink&gt;
   &lt;/li&gt;
 </code></pre>
+<p>Remove the navigation links for Counter and Fetch-data components as they are not required for this application.</p>
 
 <h2 id="execution-demo">Execution Demo</h2>
 
-<p>Press F5 to launch the application. Click on the Computer Vision button on the nav menu at the top. You can upload an image and extract the text from the image as shown in the image below.</p>
+<p>Press F5 to launch the application. Click on the Computer Vision button on the nav menu on the left. On the next page, upload an image with some text in it and click on the “Extract Text” button. You will see the extracted text in the text area on the left along with the detected language for the text. Refer to the image shown below.</p>
 
-<p><img src="/img/azure/9/output.gif" alt="image info" /></p>
+<p><img src="/img/azure/10/output3.png" alt="image info" /></p>
+
+<p>Now we will try to upload an image with some French text on it, you can see the extracted text and the detected language as French. Refer to the image shown below.</p>
+
+<p><img src="/img/azure/10/output6.png" alt="image info" /></p>
 
 <h2 id="summary">Summary</h2>
 
-<p>We have created an optical character recognition (OCR) application using Angular and the Computer Vision Azure Cognitive Service. The application is able to extract the printed text from the uploaded image and recognizes the language of the text. The OCR API of the Computer Vision is used which can recognize text in 25 languages.</p>
+<p>We have created an optical character recognition (OCR) application using Blazor and the Computer Vision Azure Cognitive Service. We have added the feature of uploading an image file using the BlazorInputFile component. The application is able to extract the printed text from the uploaded image and recognizes the language of the text. The OCR API of the Computer Vision is used which can recognize text in 25 languages.</p>
 
-<p>Get the Source code from <a href="https://github.com/girishgodage/AngularComputerVisionAzureCognitiveServices">GitHub</a> and play around to get a better understanding.</p>
+<p>Get the Source code from <a href="https://github.com/girishgodage/BlazorComputerVisionAzureCognitiveServices">GitHub</a> and play around to get a better understanding.</p>
 
                 </div>
 
