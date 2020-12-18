@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#2A80EE">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#2A80EE">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
+<title>Multi-Language Translator Using Blazor And Azure Cognitive Services &#8211; Girish Godage</title>
+<meta name="description" content="In this article, we will create a multilanguage translator using Blazor and the Translate Text Azure Cognitive Service.">
+<meta name="keywords" content="AzureAI">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all">
+
+<!-- Verifications -->
+    
+    
+        
+<!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Multi-Language Translator Using Blazor And Azure Cognitive Services">
+    <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
+    <meta property="og:url" content="http://localhost:4000/blog/multi-Language-Translator-using-blazor-AzureCognitiveServices">
+    <meta property="og:site_name" content="Girish Godage">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@GGodage" />
+    
+    <meta name="twitter:title" content="Multi-Language Translator Using Blazor And Azure Cognitive Services" />
+    <meta name="twitter:description" content="In this article, we will create a multilanguage translator using Blazor and the Translate Text Azure Cognitive Service." />
+    <meta name="twitter:url" content="http://localhost:4000/blog/multi-Language-Translator-using-blazor-AzureCognitiveServices" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/img/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/img/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    
+
+
+    <link rel="canonical" href="http://localhost:4000/blog/multi-Language-Translator-using-blazor-AzureCognitiveServices">
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
+    <!-- Bootstrap CSS-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Google fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+   
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
+    
+    <!-- animate.css-->
+    <link rel="stylesheet" href="http://localhost:4000/sitejs/animate.css/animate.css">
+    <!-- theme stylesheet-->
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="http://localhost:4000/css/custom.css" as="style">
+    <link rel="stylesheet" href="http://localhost:4000/css/comments.css" as="style">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="http://localhost:4000/img/logo-big.png">
+    <!-- Fab Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
+    
+    
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    
+    <script type="text/javascript">
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+       ga('create', 'UA-130164763-2', 'auto');
+       ga('send', 'pageview');
+    </script>
+    
+    <!-- Typed.js DONT TOUCHHHHHHHHHHHHH!-->
+    <!--<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.9/typed.min.js"></script>
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+      </script>
+      
+      <!-- START OF RELEVANT PART -->
+    <script async src="https://just-comments.com/w2.js"></script>
+    <!-- END OF RELEVANT PART -->
+
+
+</head>
+
+<body>
+    
+<!-- navbar-->
+<header class="header">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container"><a class="navbar-brand" href="http://localhost:4000"><img
+          src="http://localhost:4000/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
+          alt="logo"> <img src="http://localhost:4000/img/girish_logo.png" height="30" alt="girilogo"></a>
+      <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span
+          class="fa fa-bars" style="color: white"></span></button>
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="http://localhost:4000#home" class="nav-link  link-scroll">Home</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#about" class="nav-link link-scroll">About</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#skills" class="nav-link link-scroll">Skills</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#services" class="nav-link link-scroll">Services</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#references" class="nav-link link-scroll">My
+              work</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#contact" class="nav-link link-scroll">Contact</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000/blog" class="nav-link link-scroll">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    
+    
+    
+    <div style="background-color:Gray;">
+        <div style="padding:0;min-height:95.05vh;display:flex;font-family: Poppins, sans-serif;margin-top: 5rem;"
+            class="container">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <p class="post-title">
+                    <h1><a href="/blog/multi-Language-Translator-using-blazor-AzureCognitiveServices">Multi-Language Translator Using Blazor And Azure Cognitive Services</a></h1>
+                </p>
+                
+                <span class="post-meta">
+              <span style="font-weight:600">December 17, 2020 Thursday</span>
+                    
+                       ( 10 minute read ) 
+                    
+                     
+                    <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">   by Girish Godage</a>
+                </span>
+                
+                <div class="site-category"> 
+                        <h5>AzureAI</h5>
+                </div>
+                
+                <hr>
+                <div><img class="post-image" src="/img/azure/11/output.gif" alt="Multi-Language Translator Using Blazor And Azure Cognitive Services" height="250" /></div>
+                <div class="post-content">
+                    <br>                     
+                    <h2 id="introduction">Introduction</h2>
+
+<p>In this article, we will create a multilanguage translator using Blazor and the Translate Text Azure Cognitive Service. This translator will be able to translate between all the languages supported by the Translate Text API. Currently, the Translate Text API supports more than 60 languages for translation. The application will accept the text to translate and the target language as the input and returns the translated text and the detected language for the input text as the output.</p>
+
+<p>Take a look at the output shown below.</p>
+
+<p><img src="/img/azure/11/output.gif" alt="image info" /></p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+  <li>Install the latest .NET Core 3.1 SDK from https://dotnet.microsoft.com/download/dotnet-core/3.1</li>
+  <li>Install the latest version of Visual Studio 2019 from https://visualstudio.microsoft.com/downloads/</li>
+  <li>An Azure subscription account. You can create a free Azure account  at https://azure.microsoft.com/en-in/free/</li>
+</ul>
+
+<h2 id="source-code">Source Code</h2>
+<p>You can get the source code from <a href="https://github.com/girishgodage/Blazor-Translator-Azure-Cognitive-Services">GitHub</a>.</p>
+
+<h2 id="create-the-azure-translator-text-cognitive-services-resource">Create the Azure Translator Text Cognitive Services resource</h2>
+
+<p>Log in to the Azure portal and search for the cognitive services in the search bar and click on the result. Refer to the image shown below.</p>
+
+<p><img src="/img/azure/9/SearchCognitive.png" alt="image info" /></p>
+
+<p>On the next screen, click on the Add button. It will open the cognitive services marketplace page. Search for the Translator Text in the search bar and click on the search result. It will open the Translator Text API page. Click on the Create button to create a new Translator Text resource. Refer to the image shown below.</p>
+
+<p><img src="/img/azure/11/CreateTranslatorService.png" alt="image info" /></p>
+
+<p>On the Create page, fill in the details as indicated below.</p>
+
+<ul>
+  <li><strong>Name</strong>: Give a unique name for your resource.</li>
+  <li><strong>Subscription</strong>: Select the subscription type from the dropdown.</li>
+  <li><strong>Pricing tier</strong>: Select the pricing tier as per your choice.</li>
+  <li><strong>Resource group</strong>: Select an existing resource group or create a new one.</li>
+</ul>
+
+<p>Click on the Create button. Refer to the image shown below.</p>
+
+<p><img src="/img/azure/11/CreateTranslatorService_1.png" alt="image info" /></p>
+
+<p><img src="/img/azure/11/CreateTranslatorService_2.png" alt="image info" /></p>
+
+<p>After your resource is successfully deployed, click on the “Go to resource” button. You can see the Key and the endpoint for the newly created Computer Vision resource. Refer to the image shown below.</p>
+
+<p><img src="/img/azure/11/TranslatorKeyNEndPoint.png" alt="image info" /></p>
+
+<p>Make a note of the <strong>key</strong>, we will be using this in the latter part of this article to request the translations from the Translator Text API. The values are masked here for privacy.</p>
+
+<h2 id="create-a-server-side-blazor-application">Create a Server-Side Blazor Application</h2>
+
+<p>Open Visual Studio 2019, click on “Create a new project”. Select “Blazor App” and click on the “Next” button. Refer to the image shown below.</p>
+
+<p><img src="/img/azure/10/Create_BlazorApp.png" alt="image info" /></p>
+
+<p>On the next window, put the project name as <span style="color:yellow;background-color:black;">BlazorTranslator</span> and click on the “Create” button. The next window will ask you to select the type of Blazor app. Select <span style="color:yellow;background-color:black;">Blazor Server App </span> and click on the Create button to create a new server-side Blazor application. Refer to the image shown below.</p>
+
+<p><img src="/img/azure/10/Create_BlazorApp_1.png" alt="image info" /></p>
+
+<h2 id="create-the-models">Create the Models</h2>
+
+<p>Right-click on the <span style="color:yellow;background-color:black;">BlazorTranslator</span> project and select Add » New Folder. Name the folder as Models. Again, right-click on the Models folder and select Add » Class to add a new class file. Put the name of your class as <span style="color:yellow;background-color:black;">LanguageDetails.cs</span> and click Add.</p>
+
+<p>Open <span style="color:yellow;background-color:black;">LanguageDetails.cs</span> and put the following code inside it.</p>
+
+<pre><code class="language-code"> namespace BlazorTranslator.Models
+{
+    public class LanguageDetails
+    {
+        public string Name { get; set; }
+        public string NativeName { get; set; }
+        public string Dir { get; set; }
+    }
+}
+
+</code></pre>
+
+<p>Similarly, add a new class file <span style="color:yellow;background-color:black;">TestResult.cs </span> and put the following code inside it.</p>
+
+<pre><code class="language-code"> using System;
+namespace BlazorTranslator.Models
+{
+    public class TextResult
+    {
+        public string Text { get; set; }
+        public string Script { get; set; }
+    }
+}
+
+</code></pre>
+
+<p>Add a new class file Translation.cs and put the following code inside it.</p>
+
+<pre><code class="language-code">
+    namespace BlazorTranslator.Models
+    {
+        public class Translation
+        {
+            public string Text { get; set; }
+            public TextResult Transliteration { get; set; }
+            public string To { get; set; }
+        }
+    }
+
+</code></pre>
+
+<p>Create a class file <span style="color:yellow;background-color:black;">DetectedLanguage.cs</span> and put the following code inside it.</p>
+
+<pre><code class="language-code">    namespace BlazorTranslator.Models
+    {
+        public class DetectedLanguage
+        {
+            public string Language { get; set; }
+            public float Score { get; set; }
+        }
+    }
+
+</code></pre>
+
+<p>Create a class file <span style="color:yellow;background-color:black;">TranslationResult.cs</span> and put the following code inside it.</p>
+
+<pre><code class="language-code">
+    namespace BlazorTranslator.Models
+    {
+        public class TranslationResult
+        {
+            public DetectedLanguage DetectedLanguage { get; set; }
+            public TextResult SourceText { get; set; }
+            public Translation[] Translations { get; set; }
+        }
+    }
+
+</code></pre>
+
+<p>Finally, create the class file <span style="color:yellow;background-color:black;">AvailableLanguage.cs</span> and put the following code inside it.</p>
+
+<pre><code class="language-code">    using System.Collections.Generic;
+    namespace BlazorTranslator.Models
+    {
+        public class AvailableLanguage
+        {
+        public Dictionary&lt;string, LanguageDetails&gt; Translation { get; set; }
+        }
+    }
+
+</code></pre>
+
+<h2 id="create-the-translation-service">Create the Translation service</h2>
+
+<p>Right-click on the <span style="color:yellow;background-color:black;">BlazorTranslator/Data</span> folder and select Add » Class to add a new class file. Put the name of the file as <span style="color:yellow;background-color:black;">TranslationService.cs</span> and click on Add. Open <span style="color:yellow;background-color:black;">TranslationService.cs</span> file and put the following code inside it.</p>
+
+<pre><code class="language-code">
+    using BlazorTranslator.Models;
+    using Newtonsoft.Json;
+    using System;
+    using System.Net.Http;
+    using System.Text;
+    using System.Threading.Tasks;
+    namespace BlazorTranslator.Data
+    {
+        
+        public class TranslationService
+        {
+            private static readonly string location = "eastus";
+            
+            public async Task&lt;TranslationResult[]&gt; GetTranslatation(string textToTranslate, string targetLanguage)
+            {
+                string subscriptionKey = "52937b775b454b65830ac59e5dc22d9d";
+                string apiEndpoint = "https://api.cognitive.microsofttranslator.com/";
+                string route = $"/translate?api-version=3.0&amp;to={targetLanguage}";
+                string requestUri = apiEndpoint + route;
+                TranslationResult[] translationResult = await TranslateText(subscriptionKey, requestUri, textToTranslate);
+                return translationResult;
+            }
+            async Task&lt;TranslationResult[]&gt; TranslateText(string subscriptionKey, string requestUri, string inputText)
+            {
+                object[] body = new object[] { new { Text = inputText } };
+                var requestBody = JsonConvert.SerializeObject(body);
+                using (var client = new HttpClient())
+                using (var request = new HttpRequestMessage())
+                {
+                    request.Method = HttpMethod.Post;
+                    request.RequestUri = new Uri(requestUri);
+                    request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+                    request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
+                    request.Headers.Add("Ocp-Apim-Subscription-Region", location);
+                    HttpResponseMessage response = await client.SendAsync(request).ConfigureAwait(false);
+                    string result = await response.Content.ReadAsStringAsync();
+                    TranslationResult[] deserializedOutput = JsonConvert.DeserializeObject&lt;TranslationResult[]&gt;(result);
+                    return deserializedOutput;
+                }
+            }
+            public async Task&lt;AvailableLanguage&gt; GetAvailableLanguages()
+            {
+                string endpoint = "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&amp;scope=translation";
+                var client = new HttpClient();
+                using (var request = new HttpRequestMessage())
+                {
+                    request.Method = HttpMethod.Get;
+                    request.RequestUri = new Uri(endpoint);
+                    var response = await client.SendAsync(request).ConfigureAwait(false);
+                    string result = await response.Content.ReadAsStringAsync();
+                    AvailableLanguage deserializedOutput = JsonConvert.DeserializeObject&lt;AvailableLanguage&gt;(result);
+                    return deserializedOutput;
+                }
+            }
+        }
+    }
+
+</code></pre>
+
+<p>We have defined a <span style="color:yellow;background-color:black;">GetTranslatation</span> method which will accept two parameters – the text to translate and the target language. We will set the subscription key for the Azure Translator Text cognitive service and define a variable for the global endpoint for Translator Text. The request URL contains the API endpoint along with the target language.</p>
+
+<p>Inside the <span style="color:yellow;background-color:black;">TranslateText</span> method, we will create a new <span style="color:yellow;background-color:black;">HttpRequestMessage</span>. This HTTP request is a Post request. We will pass the subscription key in the header of the request. The Translator Text API returns a JSON object, which will be deserialized to an array of type <span style="color:yellow;background-color:black;">TranslationResult</span>. The output contains the translated text as well as the language detected for the input text.</p>
+
+<p>The <span style="color:yellow;background-color:black;">GetAvailableLanguages</span> method will return the list of all the language supported by the Translate Text API. We will set the request URI and create a <span style="color:yellow;background-color:black;">HttpRequestMessage</span> which will be a Get request. This request URL will return a JSON object which will be deserialized to an object of type <span style="color:yellow;background-color:black;">AvailableLanguage</span>.</p>
+
+<h2 id="configuring-the-service">Configuring the Service</h2>
+
+<p>To make the service available to the components we need to configure it on the server-side app. Open the <span style="color:yellow;background-color:black;">Startup.cs file</span>. Add the following line inside the <span style="color:yellow;background-color:black;">ConfigureServices</span> method of Startup class.</p>
+
+<pre><code class="language-code">
+    services.AddSingleton&lt;TranslationService&gt;();
+
+</code></pre>
+
+<h2 id="creating-the-blazor-ui-component">Creating the Blazor UI Component</h2>
+
+<p>We will add the Razor page in the <span style="color:yellow;background-color:black;">BlazorTranslator/Pages</span> folder. By default, we have “Counter” and “Fetch Data” pages provided in our application. These default pages will not affect our application but for the sake of this tutorial, we will delete fetchdata and counter pages from <span style="color:yellow;background-color:black;">BlazorTranslator/Pages</span> folder.</p>
+
+<p>Right-click on the <span style="color:yellow;background-color:black;">BlazorTranslator/Pages folder</span> and then select Add » New Item. An “Add New Item” dialog box will open, select “Visual C#” from the left panel, then select “Razor Component” from the templates panel, put the name as <span style="color:yellow;background-color:black;">Translator.razor</span>. Click Add. Refer to the image shown below.</p>
+
+<p><img src="/img/azure/11/AddBlazorComponet.png" alt="image info" /></p>
+
+<p>We will add a code-behind file for this razor page to keep the code and presentation separate. This will allow easy maintenance for the application.  Right-click on the <span style="color:yellow;background-color:black;">BlazorComputerVision/Pages</span> folder and then select Add » Class. Name the class as <span style="color:yellow;background-color:black;">OCR.razor.cs</span>. The Blazor framework is smart enough to tag this class file to the razor file. Refer to the image shown below.</p>
+
+<p><img src="/img/azure/10/OCRStuct.png" alt="image info" /></p>
+
+<p>Open the Translator.razor file and add the following code at the top.</p>
+
+<pre><code class="language-code">
+    @page "/translator"
+    @using BlazorTranslator.Models
+    @using BlazorTranslator.Data
+    @inject TranslationService translationService
+
+</code></pre>
+
+<p>We have defined the route for this component. We are also injecting the <span style="color:yellow;background-color:black;">TranslationService</span> in this component.</p>
+
+<p>Now we will add the following HTML code in this file.</p>
+
+<pre><code class="language-code">
+    &lt;h3&gt;Multilanguage translator using Microsoft Translator API Cognitive Service&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="col-md-6"&gt;
+            &lt;select class="form-control" @bind="inputLanguage"&gt;
+                &lt;option value=""&gt;-- Select input language --&lt;/option&gt;
+                @foreach (KeyValuePair&lt;string, LanguageDetails&gt; lang in LanguageList)
+                {
+                    &lt;option value="@lang.Key"&gt;@lang.Value.Name&lt;/option&gt;
+                }
+            &lt;/select&gt;
+            &lt;textarea placeholder="Enter text to translate" class="form-control translation-box" rows="5" @bind="@inputText"&gt;&lt;/textarea&gt;
+        &lt;/div&gt;
+        &lt;div class="col-md-6"&gt;
+            &lt;select class="form-control" @onchange="SelectLanguage"&gt;
+                &lt;option value=""&gt;-- Select target language --&lt;/option&gt;
+                @foreach (KeyValuePair&lt;string, LanguageDetails&gt; lang in LanguageList)
+                {
+                    &lt;option value="@lang.Key"&gt;@lang.Value.Name&lt;/option&gt;
+                }
+            &lt;/select&gt;
+            &lt;textarea disabled class="form-control translation-box" rows="5"&gt;@outputText&lt;/textarea&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="text-center"&gt;
+        &lt;button class="btn btn-primary btn-lg" @onclick="Translate"&gt;Translate&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>We have defined two dropdown lists one each for input language and the target language. The Azure Translate Text API will detect the input language and we will use that value to populate the dropdown for input language. We have also defined two text areas for the input and the translated text.</p>
+
+<p>Finally, add the following code in the <span style="color:yellow;background-color:black;">@code </span> section of the page.</p>
+
+<pre><code class="language-code">    @code {
+        private TranslationResult[] translations;
+        private AvailableLanguage availableLanguages;
+        private string outputLanguage { get; set; }
+        private string inputLanguage { get; set; }
+        string inputText { get; set; }
+        string outputText { get; set; }
+        private Dictionary&lt;string, LanguageDetails&gt;
+        LanguageList = new Dictionary&lt;string, LanguageDetails&gt;();
+
+        protected override async Task OnInitializedAsync()
+        {
+            availableLanguages = await translationService.GetAvailableLanguages();
+            LanguageList = availableLanguages.Translation;
+        }
+        private void SelectLanguage(ChangeEventArgs langEvent)
+        {
+            this.outputLanguage = langEvent.Value.ToString();
+        }
+        private async Task Translate()
+        {
+            if (!string.IsNullOrEmpty(outputLanguage))
+            {
+                translations = await translationService.GetTranslatation(this.inputText, this.outputLanguage);
+                outputText = translations[0].Translations[0].Text;
+                inputLanguage = translations[0].DetectedLanguage.Language;
+            }
+        }
+    }
+</code></pre>
+
+<p>We are invoking the <span style="color:yellow;background-color:black;">GetAvailableLanguages</span> method from our service inside the <span style="color:yellow;background-color:black;">OnInitializedAsync</span>. This <span style="color:yellow;background-color:black;">OnInitializedAsync</span> is a lifecycle method that will be invoked upon component initialization. This will make sure that the language dropdown will be populated as the page loads.</p>
+
+<p>The <span style="color:yellow;background-color:black;">SelectLanguage</span> method will be set the <span style="color:yellow;background-color:black;">outputLanguage</span> for the translation. The Translate method will invoke the <span style="color:yellow;background-color:black;">GetTranslatation</span> method from the service. We will set the <span style="color:yellow;background-color:black;">outputText</span> and the language detected for the <span style="color:yellow;background-color:black;">inputLanguage</span> as returned from the service.</p>
+
+<h2 id="add-styling-for-the-translator-component">Add styling for the Translator component</h2>
+<p>Navigate to BlazorTranslator\wwwroot\css\site.css file and put the following style definition inside it.</p>
+
+<pre><code class="language-code">
+    .translation-box {
+        margin: 15px 0px;
+    }
+</code></pre>
+
+<h2 id="adding-link-to-navigation-menu">Adding Link to Navigation menu</h2>
+<p>The last step is to add the link of our Translator component in the navigation menu. Open BlazorTranslator/Shared/NavMenu.razor file and add the following code into it.</p>
+
+<pre><code class="language-code">
+    &lt;li class="nav-item px-3"&gt;
+    &lt;NavLink class="nav-link" href="translator"&gt;
+        &lt;span class="oi oi-list-rich" aria-hidden="true"&gt;&lt;/span&gt; Translator
+    &lt;/NavLink&gt;
+    &lt;/li&gt;
+</code></pre>
+<p>Remove the navigation links for Counter and Fetch-data components as they are not required for this application.</p>
+
+<h2 id="execution-demo">Execution Demo</h2>
+
+<p>Press F5 to launch the application. Click on the Translator button on the nav menu in the left. You can perform the multilanguage translation as shown in the image below.</p>
+
+<p><img src="/img/azure/11/output.gif" alt="image info" /></p>
+
+<h2 id="summary">Summary</h2>
+
+<p>We have created a Translator Text Cognitive Services resource on Azure. We have used the Translator Text API to create a multilanguage translator using Blazor. This translator supports more than 60 languages for translation. We fetched the list of supported languages for translation from the global API endpoint for Translator Text.</p>
+
+<p>Get the Source code from <a href="https://github.com/girishgodage/Blazor-Translator-Azure-Cognitive-Services">GitHub</a> and play around to get a better understanding.</p>
+
+                </div>
+
+                
+
+                <div id="disqus_thread"></div>
+                <script>
+                
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://girishgodage-github-io.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
+</button>
+<!-- Footer-->
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 text-center text-lg-left">
+                <p class="social">
+                    <a href="https://www.facebook.com/girish.godage.5" class="external facebook wow fadeInUp">
+                        <i class="fa fa-facebook"></i></a>
+                    <a href="https://instagram.com/girishgodage_007" data-wow-delay="0.2s" class="external instagram wow fadeInUp">
+                        <i class="fa fa-instagram"></i></a>
+                    <a href="https://youtube.com/girishgodage" data-wow-delay="0.4s" class="external youtube wow fadeInUp">
+                        <i class="fa fa-youtube-play"></i></a>
+                    <a href="https://twitter.com/GGodage" data-wow-delay="0.4s" class="external twitter wow fadeInUp">
+                            <i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/girishgodage" data-wow-delay="0.4s" class="external github wow fadeInUp">
+                                <i class="fa fa-github"></i></a>    
+                    <a href="mailto:girishgodage@gmail.com?subject=Hello%20Girish" data-wow-delay="0.6s" class="email wow fadeInUp">
+                        <i class="fa fa-envelope"></i></a></p>
+            </div>
+            <div class="col-12 col-md-2">
+            <h5>Quick Links</h5>
+            <ul>
+               <li><a href="http://localhost:4000#about">About</a></li>
+               <li><a href="http://localhost:4000#contact">Contact</a></li>
+               <li><a href="http://localhost:4000/sitemap.xml">Sitemap</a></li>               
+            </ul>
+         </div>
+            <div class="col-12 col-md-4 text-center text-lg-right mt-4 mt-lg-0">
+                <p> <b>©</b><script>document.write(new Date().getFullYear())</script> Girish Godage </p>
+                <p class="text-center, text-shadow"> Hosted On <a href="https://pages.github.com/">GitHub Pages</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Typed.js DONT TOUCH THIS! -->
+    <div id="typed-strings">
+    </div>
+
+        <!-- JavaScript files-->
+    <script src="http://localhost:4000/sitejs/jquery/jquery.min.js"></script>
+    <script src="http://localhost:4000/sitejs/popper.js/umd/popper.min.js"> </script>
+    <script src="http://localhost:4000/sitejs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="http://localhost:4000/sitejs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="http://localhost:4000/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.counterup/jquery.counterup.js"></script>
+    <script src="http://localhost:4000/js/front.js"></script>
+    <script src="http://localhost:4000/js/comment.js"></script>
+       <!-- Script pointing to search-script.js -->
+    <script src="http://localhost:4000/js/search-script.js" type="text/javascript"></script>
+   
+    <!-- Configuration -->
+    <script>
+         SimpleJekyllSearch({
+         searchInput: document.getElementById('search-input'),
+         resultsContainer: document.getElementById('results-container'),
+         json: 'http://localhost:4000/search.json'
+         })
+         </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC36FUDDdOTidZJ8nzS5vfE7KVyayenKPE",
+    authDomain: "githubcontactlist.firebaseapp.com",
+    databaseURL: "https://githubcontactlist.firebaseio.com",
+    projectId: "githubcontactlist",
+    storageBucket: "githubcontactlist.appspot.com",
+    messagingSenderId: "899685398702",
+    appId: "1:899685398702:web:0c23c56d2d6d40df37553f",
+    measurementId: "G-YWBRCYJYFW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script>
+   $(function() {
+      
+    //make a variable to keep track of data coming from firebase
+    var data = [];
+
+    // Reference messages collection
+      var messagesRef = firebase.database().ref('contactformmessages');  
+
+
+    //listen to data updates from firebase
+    messagesRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+        //when the data updates at firebase, put it in the data variable
+        data = snapshot.val();
+    })
+    //Entire Contact Form (handler)
+    $('#contactForm').submit(function(e) {
+      e.preventDefault();
+
+        var $form = $(this);
+        console.log("Submit to Firebase");
+
+        //disable submit button
+        $form.find("#sendForm").prop('disabled', true);
+
+        //get values to send to Firebase
+        var name = $('#name').val();
+        console.log(name);
+		
+		var surname = $('#surname').val();
+        console.log(surname);
+		
+		var email = $('#email').val();
+        console.log(email);	
+		
+		var phone = $('#phone').val();
+        console.log(phone);
+
+        var message = $('#message').val();
+        console.log(message);
+
+       
+        //take the values from the form, and put them in an object
+        var newContact = {
+         "name": name,
+			"surname": surname,
+			"email": email,
+			"phone": phone,
+         "message": message
+        }
+        //put new object in data array
+        data.push(newContact);
+        console.log(data);
+
+        //send the new data to Firebase
+        messagesRef.set(data, function(err) {
+            if (err) {
+                alert("Data no go");
+            }else{
+            $("#form-wrapper").slideToggle();
+            $('#form-success-message').slideToggle();
+			}
+        });
+
+        return false;
+    })
+   
+    
+})
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";           
+        }else
+        {
+           myBtton.style.display="none";     
+          
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+      //  document.body.scrollTop =0;
+      //  document.documentElement.scrollTop=0;
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    }
+
+</script>
+
+    
+    
+
+
+</body>
+
+</html>

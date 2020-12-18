@@ -1,4 +1,357 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-12-18T09:52:05+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">Optical Character Reader Using Angular And Azure Computer Vision</title><link href="http://localhost:4000/blog/ocr-using-angular-AzureComputerVision" rel="alternate" type="text/html" title="Optical Character Reader Using Angular And Azure Computer Vision" /><published>2020-12-17T09:55:00+00:00</published><updated>2020-12-17T09:55:00+00:00</updated><id>http://localhost:4000/blog/ocr-using-angular-AzureComputerVision</id><content type="html" xml:base="http://localhost:4000/blog/ocr-using-angular-AzureComputerVision">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-12-18T17:24:23+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">Multi-Language Translator Using Blazor And Azure Cognitive Services</title><link href="http://localhost:4000/blog/multi-Language-Translator-using-blazor-AzureCognitiveServices" rel="alternate" type="text/html" title="Multi-Language Translator Using Blazor And Azure Cognitive Services" /><published>2020-12-17T16:55:00+00:00</published><updated>2020-12-17T16:55:00+00:00</updated><id>http://localhost:4000/blog/multi-language-translator-using-blazor-and-azure-cognitive-service</id><content type="html" xml:base="http://localhost:4000/blog/multi-Language-Translator-using-blazor-AzureCognitiveServices">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;In this article, we will create a multilanguage translator using Blazor and the Translate Text Azure Cognitive Service. This translator will be able to translate between all the languages supported by the Translate Text API. Currently, the Translate Text API supports more than 60 languages for translation. The application will accept the text to translate and the target language as the input and returns the translated text and the detected language for the input text as the output.&lt;/p&gt;
+
+&lt;p&gt;Take a look at the output shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/11/output.gif&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Install the latest .NET Core 3.1 SDK from https://dotnet.microsoft.com/download/dotnet-core/3.1&lt;/li&gt;
+  &lt;li&gt;Install the latest version of Visual Studio 2019 from https://visualstudio.microsoft.com/downloads/&lt;/li&gt;
+  &lt;li&gt;An Azure subscription account. You can create a free Azure account  at https://azure.microsoft.com/en-in/free/&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;source-code&quot;&gt;Source Code&lt;/h2&gt;
+&lt;p&gt;You can get the source code from &lt;a href=&quot;https://github.com/girishgodage/Blazor-Translator-Azure-Cognitive-Services&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;create-the-azure-translator-text-cognitive-services-resource&quot;&gt;Create the Azure Translator Text Cognitive Services resource&lt;/h2&gt;
+
+&lt;p&gt;Log in to the Azure portal and search for the cognitive services in the search bar and click on the result. Refer to the image shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/9/SearchCognitive.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On the next screen, click on the Add button. It will open the cognitive services marketplace page. Search for the Translator Text in the search bar and click on the search result. It will open the Translator Text API page. Click on the Create button to create a new Translator Text resource. Refer to the image shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/11/CreateTranslatorService.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On the Create page, fill in the details as indicated below.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Name&lt;/strong&gt;: Give a unique name for your resource.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Subscription&lt;/strong&gt;: Select the subscription type from the dropdown.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Pricing tier&lt;/strong&gt;: Select the pricing tier as per your choice.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Resource group&lt;/strong&gt;: Select an existing resource group or create a new one.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Click on the Create button. Refer to the image shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/11/CreateTranslatorService_1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/11/CreateTranslatorService_2.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After your resource is successfully deployed, click on the “Go to resource” button. You can see the Key and the endpoint for the newly created Computer Vision resource. Refer to the image shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/11/TranslatorKeyNEndPoint.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Make a note of the &lt;strong&gt;key&lt;/strong&gt;, we will be using this in the latter part of this article to request the translations from the Translator Text API. The values are masked here for privacy.&lt;/p&gt;
+
+&lt;h2 id=&quot;create-a-server-side-blazor-application&quot;&gt;Create a Server-Side Blazor Application&lt;/h2&gt;
+
+&lt;p&gt;Open Visual Studio 2019, click on “Create a new project”. Select “Blazor App” and click on the “Next” button. Refer to the image shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/10/Create_BlazorApp.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;On the next window, put the project name as &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;BlazorTranslator&lt;/span&gt; and click on the “Create” button. The next window will ask you to select the type of Blazor app. Select &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;Blazor Server App &lt;/span&gt; and click on the Create button to create a new server-side Blazor application. Refer to the image shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/10/Create_BlazorApp_1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;create-the-models&quot;&gt;Create the Models&lt;/h2&gt;
+
+&lt;p&gt;Right-click on the &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;BlazorTranslator&lt;/span&gt; project and select Add » New Folder. Name the folder as Models. Again, right-click on the Models folder and select Add » Class to add a new class file. Put the name of your class as &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;LanguageDetails.cs&lt;/span&gt; and click Add.&lt;/p&gt;
+
+&lt;p&gt;Open &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;LanguageDetails.cs&lt;/span&gt; and put the following code inside it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt; namespace BlazorTranslator.Models
+{
+    public class LanguageDetails
+    {
+        public string Name { get; set; }
+        public string NativeName { get; set; }
+        public string Dir { get; set; }
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Similarly, add a new class file &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;TestResult.cs &lt;/span&gt; and put the following code inside it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt; using System;
+namespace BlazorTranslator.Models
+{
+    public class TextResult
+    {
+        public string Text { get; set; }
+        public string Script { get; set; }
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Add a new class file Translation.cs and put the following code inside it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+    namespace BlazorTranslator.Models
+    {
+        public class Translation
+        {
+            public string Text { get; set; }
+            public TextResult Transliteration { get; set; }
+            public string To { get; set; }
+        }
+    }
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Create a class file &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;DetectedLanguage.cs&lt;/span&gt; and put the following code inside it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;    namespace BlazorTranslator.Models
+    {
+        public class DetectedLanguage
+        {
+            public string Language { get; set; }
+            public float Score { get; set; }
+        }
+    }
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Create a class file &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;TranslationResult.cs&lt;/span&gt; and put the following code inside it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+    namespace BlazorTranslator.Models
+    {
+        public class TranslationResult
+        {
+            public DetectedLanguage DetectedLanguage { get; set; }
+            public TextResult SourceText { get; set; }
+            public Translation[] Translations { get; set; }
+        }
+    }
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Finally, create the class file &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;AvailableLanguage.cs&lt;/span&gt; and put the following code inside it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;    using System.Collections.Generic;
+    namespace BlazorTranslator.Models
+    {
+        public class AvailableLanguage
+        {
+        public Dictionary&amp;lt;string, LanguageDetails&amp;gt; Translation { get; set; }
+        }
+    }
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;create-the-translation-service&quot;&gt;Create the Translation service&lt;/h2&gt;
+
+&lt;p&gt;Right-click on the &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;BlazorTranslator/Data&lt;/span&gt; folder and select Add » Class to add a new class file. Put the name of the file as &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;TranslationService.cs&lt;/span&gt; and click on Add. Open &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;TranslationService.cs&lt;/span&gt; file and put the following code inside it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+    using BlazorTranslator.Models;
+    using Newtonsoft.Json;
+    using System;
+    using System.Net.Http;
+    using System.Text;
+    using System.Threading.Tasks;
+    namespace BlazorTranslator.Data
+    {
+        
+        public class TranslationService
+        {
+            private static readonly string location = &quot;eastus&quot;;
+            
+            public async Task&amp;lt;TranslationResult[]&amp;gt; GetTranslatation(string textToTranslate, string targetLanguage)
+            {
+                string subscriptionKey = &quot;52937b775b454b65830ac59e5dc22d9d&quot;;
+                string apiEndpoint = &quot;https://api.cognitive.microsofttranslator.com/&quot;;
+                string route = $&quot;/translate?api-version=3.0&amp;amp;to={targetLanguage}&quot;;
+                string requestUri = apiEndpoint + route;
+                TranslationResult[] translationResult = await TranslateText(subscriptionKey, requestUri, textToTranslate);
+                return translationResult;
+            }
+            async Task&amp;lt;TranslationResult[]&amp;gt; TranslateText(string subscriptionKey, string requestUri, string inputText)
+            {
+                object[] body = new object[] { new { Text = inputText } };
+                var requestBody = JsonConvert.SerializeObject(body);
+                using (var client = new HttpClient())
+                using (var request = new HttpRequestMessage())
+                {
+                    request.Method = HttpMethod.Post;
+                    request.RequestUri = new Uri(requestUri);
+                    request.Content = new StringContent(requestBody, Encoding.UTF8, &quot;application/json&quot;);
+                    request.Headers.Add(&quot;Ocp-Apim-Subscription-Key&quot;, subscriptionKey);
+                    request.Headers.Add(&quot;Ocp-Apim-Subscription-Region&quot;, location);
+                    HttpResponseMessage response = await client.SendAsync(request).ConfigureAwait(false);
+                    string result = await response.Content.ReadAsStringAsync();
+                    TranslationResult[] deserializedOutput = JsonConvert.DeserializeObject&amp;lt;TranslationResult[]&amp;gt;(result);
+                    return deserializedOutput;
+                }
+            }
+            public async Task&amp;lt;AvailableLanguage&amp;gt; GetAvailableLanguages()
+            {
+                string endpoint = &quot;https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&amp;amp;scope=translation&quot;;
+                var client = new HttpClient();
+                using (var request = new HttpRequestMessage())
+                {
+                    request.Method = HttpMethod.Get;
+                    request.RequestUri = new Uri(endpoint);
+                    var response = await client.SendAsync(request).ConfigureAwait(false);
+                    string result = await response.Content.ReadAsStringAsync();
+                    AvailableLanguage deserializedOutput = JsonConvert.DeserializeObject&amp;lt;AvailableLanguage&amp;gt;(result);
+                    return deserializedOutput;
+                }
+            }
+        }
+    }
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We have defined a &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;GetTranslatation&lt;/span&gt; method which will accept two parameters – the text to translate and the target language. We will set the subscription key for the Azure Translator Text cognitive service and define a variable for the global endpoint for Translator Text. The request URL contains the API endpoint along with the target language.&lt;/p&gt;
+
+&lt;p&gt;Inside the &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;TranslateText&lt;/span&gt; method, we will create a new &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;HttpRequestMessage&lt;/span&gt;. This HTTP request is a Post request. We will pass the subscription key in the header of the request. The Translator Text API returns a JSON object, which will be deserialized to an array of type &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;TranslationResult&lt;/span&gt;. The output contains the translated text as well as the language detected for the input text.&lt;/p&gt;
+
+&lt;p&gt;The &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;GetAvailableLanguages&lt;/span&gt; method will return the list of all the language supported by the Translate Text API. We will set the request URI and create a &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;HttpRequestMessage&lt;/span&gt; which will be a Get request. This request URL will return a JSON object which will be deserialized to an object of type &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;AvailableLanguage&lt;/span&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;configuring-the-service&quot;&gt;Configuring the Service&lt;/h2&gt;
+
+&lt;p&gt;To make the service available to the components we need to configure it on the server-side app. Open the &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;Startup.cs file&lt;/span&gt;. Add the following line inside the &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;ConfigureServices&lt;/span&gt; method of Startup class.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+    services.AddSingleton&amp;lt;TranslationService&amp;gt;();
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;creating-the-blazor-ui-component&quot;&gt;Creating the Blazor UI Component&lt;/h2&gt;
+
+&lt;p&gt;We will add the Razor page in the &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;BlazorTranslator/Pages&lt;/span&gt; folder. By default, we have “Counter” and “Fetch Data” pages provided in our application. These default pages will not affect our application but for the sake of this tutorial, we will delete fetchdata and counter pages from &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;BlazorTranslator/Pages&lt;/span&gt; folder.&lt;/p&gt;
+
+&lt;p&gt;Right-click on the &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;BlazorTranslator/Pages folder&lt;/span&gt; and then select Add » New Item. An “Add New Item” dialog box will open, select “Visual C#” from the left panel, then select “Razor Component” from the templates panel, put the name as &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;Translator.razor&lt;/span&gt;. Click Add. Refer to the image shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/11/AddBlazorComponet.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We will add a code-behind file for this razor page to keep the code and presentation separate. This will allow easy maintenance for the application.  Right-click on the &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;BlazorComputerVision/Pages&lt;/span&gt; folder and then select Add » Class. Name the class as &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;OCR.razor.cs&lt;/span&gt;. The Blazor framework is smart enough to tag this class file to the razor file. Refer to the image shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/10/OCRStuct.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Open the Translator.razor file and add the following code at the top.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+    @page &quot;/translator&quot;
+    @using BlazorTranslator.Models
+    @using BlazorTranslator.Data
+    @inject TranslationService translationService
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We have defined the route for this component. We are also injecting the &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;TranslationService&lt;/span&gt; in this component.&lt;/p&gt;
+
+&lt;p&gt;Now we will add the following HTML code in this file.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+    &amp;lt;h3&amp;gt;Multilanguage translator using Microsoft Translator API Cognitive Service&amp;lt;/h3&amp;gt;
+&amp;lt;hr /&amp;gt;
+&amp;lt;div class=&quot;container&quot;&amp;gt;
+    &amp;lt;div class=&quot;row&quot;&amp;gt;
+        &amp;lt;div class=&quot;col-md-6&quot;&amp;gt;
+            &amp;lt;select class=&quot;form-control&quot; @bind=&quot;inputLanguage&quot;&amp;gt;
+                &amp;lt;option value=&quot;&quot;&amp;gt;-- Select input language --&amp;lt;/option&amp;gt;
+                @foreach (KeyValuePair&amp;lt;string, LanguageDetails&amp;gt; lang in LanguageList)
+                {
+                    &amp;lt;option value=&quot;@lang.Key&quot;&amp;gt;@lang.Value.Name&amp;lt;/option&amp;gt;
+                }
+            &amp;lt;/select&amp;gt;
+            &amp;lt;textarea placeholder=&quot;Enter text to translate&quot; class=&quot;form-control translation-box&quot; rows=&quot;5&quot; @bind=&quot;@inputText&quot;&amp;gt;&amp;lt;/textarea&amp;gt;
+        &amp;lt;/div&amp;gt;
+        &amp;lt;div class=&quot;col-md-6&quot;&amp;gt;
+            &amp;lt;select class=&quot;form-control&quot; @onchange=&quot;SelectLanguage&quot;&amp;gt;
+                &amp;lt;option value=&quot;&quot;&amp;gt;-- Select target language --&amp;lt;/option&amp;gt;
+                @foreach (KeyValuePair&amp;lt;string, LanguageDetails&amp;gt; lang in LanguageList)
+                {
+                    &amp;lt;option value=&quot;@lang.Key&quot;&amp;gt;@lang.Value.Name&amp;lt;/option&amp;gt;
+                }
+            &amp;lt;/select&amp;gt;
+            &amp;lt;textarea disabled class=&quot;form-control translation-box&quot; rows=&quot;5&quot;&amp;gt;@outputText&amp;lt;/textarea&amp;gt;
+        &amp;lt;/div&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;div class=&quot;text-center&quot;&amp;gt;
+        &amp;lt;button class=&quot;btn btn-primary btn-lg&quot; @onclick=&quot;Translate&quot;&amp;gt;Translate&amp;lt;/button&amp;gt;
+    &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We have defined two dropdown lists one each for input language and the target language. The Azure Translate Text API will detect the input language and we will use that value to populate the dropdown for input language. We have also defined two text areas for the input and the translated text.&lt;/p&gt;
+
+&lt;p&gt;Finally, add the following code in the &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;@code &lt;/span&gt; section of the page.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;    @code {
+        private TranslationResult[] translations;
+        private AvailableLanguage availableLanguages;
+        private string outputLanguage { get; set; }
+        private string inputLanguage { get; set; }
+        string inputText { get; set; }
+        string outputText { get; set; }
+        private Dictionary&amp;lt;string, LanguageDetails&amp;gt;
+        LanguageList = new Dictionary&amp;lt;string, LanguageDetails&amp;gt;();
+
+        protected override async Task OnInitializedAsync()
+        {
+            availableLanguages = await translationService.GetAvailableLanguages();
+            LanguageList = availableLanguages.Translation;
+        }
+        private void SelectLanguage(ChangeEventArgs langEvent)
+        {
+            this.outputLanguage = langEvent.Value.ToString();
+        }
+        private async Task Translate()
+        {
+            if (!string.IsNullOrEmpty(outputLanguage))
+            {
+                translations = await translationService.GetTranslatation(this.inputText, this.outputLanguage);
+                outputText = translations[0].Translations[0].Text;
+                inputLanguage = translations[0].DetectedLanguage.Language;
+            }
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We are invoking the &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;GetAvailableLanguages&lt;/span&gt; method from our service inside the &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;OnInitializedAsync&lt;/span&gt;. This &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;OnInitializedAsync&lt;/span&gt; is a lifecycle method that will be invoked upon component initialization. This will make sure that the language dropdown will be populated as the page loads.&lt;/p&gt;
+
+&lt;p&gt;The &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;SelectLanguage&lt;/span&gt; method will be set the &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;outputLanguage&lt;/span&gt; for the translation. The Translate method will invoke the &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;GetTranslatation&lt;/span&gt; method from the service. We will set the &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;outputText&lt;/span&gt; and the language detected for the &lt;span style=&quot;color:yellow;background-color:black;&quot;&gt;inputLanguage&lt;/span&gt; as returned from the service.&lt;/p&gt;
+
+&lt;h2 id=&quot;add-styling-for-the-translator-component&quot;&gt;Add styling for the Translator component&lt;/h2&gt;
+&lt;p&gt;Navigate to BlazorTranslator\wwwroot\css\site.css file and put the following style definition inside it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+    .translation-box {
+        margin: 15px 0px;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;adding-link-to-navigation-menu&quot;&gt;Adding Link to Navigation menu&lt;/h2&gt;
+&lt;p&gt;The last step is to add the link of our Translator component in the navigation menu. Open BlazorTranslator/Shared/NavMenu.razor file and add the following code into it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+    &amp;lt;li class=&quot;nav-item px-3&quot;&amp;gt;
+    &amp;lt;NavLink class=&quot;nav-link&quot; href=&quot;translator&quot;&amp;gt;
+        &amp;lt;span class=&quot;oi oi-list-rich&quot; aria-hidden=&quot;true&quot;&amp;gt;&amp;lt;/span&amp;gt; Translator
+    &amp;lt;/NavLink&amp;gt;
+    &amp;lt;/li&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Remove the navigation links for Counter and Fetch-data components as they are not required for this application.&lt;/p&gt;
+
+&lt;h2 id=&quot;execution-demo&quot;&gt;Execution Demo&lt;/h2&gt;
+
+&lt;p&gt;Press F5 to launch the application. Click on the Translator button on the nav menu in the left. You can perform the multilanguage translation as shown in the image below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/azure/11/output.gif&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;We have created a Translator Text Cognitive Services resource on Azure. We have used the Translator Text API to create a multilanguage translator using Blazor. This translator supports more than 60 languages for translation. We fetched the list of supported languages for translation from the global API endpoint for Translator Text.&lt;/p&gt;
+
+&lt;p&gt;Get the Source code from &lt;a href=&quot;https://github.com/girishgodage/Blazor-Translator-Azure-Cognitive-Services&quot;&gt;GitHub&lt;/a&gt; and play around to get a better understanding.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Introduction</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/azure/11/output.gif" /></entry><entry><title type="html">Optical Character Reader Using Angular And Azure Computer Vision</title><link href="http://localhost:4000/blog/ocr-using-angular-AzureComputerVision" rel="alternate" type="text/html" title="Optical Character Reader Using Angular And Azure Computer Vision" /><published>2020-12-17T09:55:00+00:00</published><updated>2020-12-17T09:55:00+00:00</updated><id>http://localhost:4000/blog/ocr-using-angular-AzureComputerVision</id><content type="html" xml:base="http://localhost:4000/blog/ocr-using-angular-AzureComputerVision">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;In this article, we will create an optical character recognition (OCR) application using Angular and the Azure Computer Vision Cognitive Service. Computer Vision is an AI service that analyzes content in images. We will use the OCR feature of Computer Vision to detect the printed text in an image. The application will extract the text from the image and detects the language of the text. Currently, the OCR API supports 25 languages.&lt;/p&gt;
 
@@ -3612,125 +3965,4 @@ Remove all origin URL from the list, and use “*” wildcard to allow all the U
   &lt;li&gt;Create a password reset user flow&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Next, learn about adding identity providers to your applications to enable user sign-in with providers like Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft, or Twitter.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Create user flows in Azure Active Directory B2C</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/azureAD.png" /></entry><entry><title type="html">Create an Azure AD B2C tenant</title><link href="http://localhost:4000/blog/azure-acticedirectoryB2C_CreateTenant" rel="alternate" type="text/html" title="Create an Azure AD B2C tenant" /><published>2020-03-12T10:41:00+00:00</published><updated>2020-03-12T10:41:00+00:00</updated><id>http://localhost:4000/blog/azure-activedirectoryB2C_CreateTenant</id><content type="html" xml:base="http://localhost:4000/blog/azure-acticedirectoryB2C_CreateTenant">&lt;blockquote&gt;
-  &lt;h2 id=&quot;create-an-azure-ad-b2c-tenant&quot;&gt;Create an Azure AD B2C tenant&lt;/h2&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Before your applications can interact with Azure Active Directory B2C (Azure AD B2C), &lt;strong&gt;they must be registered in a tenant that you manage&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;In this article, you learn how to:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Create an Azure AD B2C tenant&lt;/li&gt;
-  &lt;li&gt;Link your tenant to your subscription&lt;/li&gt;
-  &lt;li&gt;Switch to the directory containing your Azure AD B2C tenant&lt;/li&gt;
-  &lt;li&gt;Add the Azure AD B2C resource as a Favorite in the Azure portal&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;
-
-&lt;p&gt;If you don’t have an Azure subscription, create a &lt;a href=&quot;https://azure.microsoft.com/free/?WT.mc_id=A261C142F&quot;&gt;free account&lt;/a&gt; before you begin.&lt;/p&gt;
-
-&lt;h2 id=&quot;create-an-azure-ad-b2c-tenant-1&quot;&gt;Create an Azure AD B2C tenant&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Sign in to the &lt;a href=&quot;https://portal.azure.com/&quot;&gt;Azure portal&lt;/a&gt;. Sign in with an Azure account that’s been assigned at least the &lt;a href=&quot;https://docs.microsoft.com/en-in/azure/role-based-access-control/built-in-roles&quot;&gt;Contributor&lt;/a&gt; role within the subscription or a resource group within the subscription.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Select the directory that contains your subscription.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;In the Azure portal toolbar, select the Directory + Subscription icon, and then select the directory that contains your subscription. This directory is different from the one that will contain your Azure AD B2C tenant.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/4/portal-01-pick-directory.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;On the Azure portal menu or from the &lt;strong&gt;Home&lt;/strong&gt; page, select &lt;strong&gt;Create a resource&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Search for &lt;strong&gt;Azure Active Directory B2C&lt;/strong&gt;, and then select &lt;strong&gt;Create&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Select &lt;strong&gt;Create a new Azure AD B2C Tenant&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/4/portal-02-create-tenant.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;On the &lt;strong&gt;Create a directory&lt;/strong&gt; page, enter the following:&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Organization name&lt;/strong&gt; - Enter a name for your Azure AD B2C tenant.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Initial domain name&lt;/strong&gt; - Enter a domain name for your Azure AD B2C tenant.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Country or region&lt;/strong&gt; - Select your country or region from the list. This selection can’t be changed later.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Subscription&lt;/strong&gt; - Select your subscription from the list.
-    &lt;ul&gt;
-      &lt;li&gt;&lt;strong&gt;Resource group&lt;/strong&gt; - Select a resource group that will contain the tenant. Or select &lt;strong&gt;Create new&lt;/strong&gt;, enter a &lt;strong&gt;Name&lt;/strong&gt; for the resource group, select the &lt;strong&gt;Resource group location&lt;/strong&gt;, and then select &lt;strong&gt;OK&lt;/strong&gt;.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/4/review-and-create-tenant.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Select &lt;strong&gt;Review + create&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Review your directory settings. Then select &lt;strong&gt;Create&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;You can link multiple Azure AD B2C tenants to a single Azure subscription for billing purposes. To link a tenant, you must be an admin in the Azure AD B2C tenant and be assigned at least a Contributor role within the Azure subscription.&lt;/p&gt;
-
-&lt;h2 id=&quot;select-your-b2c-tenant-directory&quot;&gt;Select your B2C tenant directory&lt;/h2&gt;
-
-&lt;p&gt;To start using your new Azure AD B2C tenant, you need to switch to the directory that contains the tenant.&lt;/p&gt;
-
-&lt;p&gt;Select the &lt;strong&gt;Directory + subscription&lt;/strong&gt; filter in the top menu of the Azure portal, then select the directory that contains your Azure AD B2C tenant.&lt;/p&gt;
-
-&lt;p&gt;If at first you don’t see your new Azure B2C tenant in the list, refresh your browser window, then select the &lt;strong&gt;Directory + subscription&lt;/strong&gt; filter again in the top menu.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/4/portal-07-select-tenant-directory.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;add-azure-ad-b2c-as-a-favorite-optional&quot;&gt;Add Azure AD B2C as a favorite (optional)&lt;/h2&gt;
-
-&lt;p&gt;This optional step makes it easier to select your Azure AD B2C tenant in the following and all subsequent tutorials.&lt;/p&gt;
-
-&lt;p&gt;Instead of searching for Azure AD B2C in &lt;strong&gt;All services&lt;/strong&gt; every time you want to work with your tenant, you can instead favorite the resource. Then, you can select it from the portal menu’s &lt;strong&gt;Favorites&lt;/strong&gt; section to quickly browse to your Azure AD B2C tenant.&lt;/p&gt;
-
-&lt;p&gt;You only need to perform this operation once. Before performing these steps, make sure you’ve switched to the directory containing your Azure AD B2C tenant as described in the previous section, &lt;a href=&quot;azure-acticedirectoryB2C_CreateTenant#select-your-b2c-tenant-directory&quot;&gt;Select your B2C tenant directory&lt;/a&gt;.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Sign in to the &lt;a href=&quot;https://portal.azure.com/&quot;&gt;Azure portal&lt;/a&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;In the Azure portal menu, select &lt;strong&gt;All services&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;In the &lt;strong&gt;All services&lt;/strong&gt; search box, search for Azure AD B2C, hover over the search result, and then select the star icon in the tooltip. Azure AD B2C now appears in the Azure portal under Favorites.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;If you want to change the position of your new favorite, go to the Azure portal menu, select Azure AD B2C, and then drag it up or down to the desired position.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/4/portal-08-b2c-favorite.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;next-steps&quot;&gt;Next steps&lt;/h2&gt;
-
-&lt;p&gt;In this article, you learned how to:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Create an Azure AD B2C tenant&lt;/li&gt;
-  &lt;li&gt;Link your tenant to your subscription&lt;/li&gt;
-  &lt;li&gt;Switch to the directory containing your Azure AD B2C tenant&lt;/li&gt;
-  &lt;li&gt;Add the Azure AD B2C resource as a Favorite in the Azure portal&lt;/li&gt;
-  &lt;li&gt;Next, learn &lt;a href=&quot;azure-acticedirectoryB2C_RegisterApp&quot;&gt;how to register a web application&lt;/a&gt; in your new tenant.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Create an Azure AD B2C tenant</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/azureAD.png" /></entry></feed>
+&lt;p&gt;Next, learn about adding identity providers to your applications to enable user sign-in with providers like Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft, or Twitter.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Create user flows in Azure Active Directory B2C</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/azureAD.png" /></entry></feed>
