@@ -1,4 +1,149 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-12-18T17:24:23+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">Multi-Language Translator Using Blazor And Azure Cognitive Services</title><link href="http://localhost:4000/blog/multi-Language-Translator-using-blazor-AzureCognitiveServices" rel="alternate" type="text/html" title="Multi-Language Translator Using Blazor And Azure Cognitive Services" /><published>2020-12-17T16:55:00+00:00</published><updated>2020-12-17T16:55:00+00:00</updated><id>http://localhost:4000/blog/multi-language-translator-using-blazor-and-azure-cognitive-service</id><content type="html" xml:base="http://localhost:4000/blog/multi-Language-Translator-using-blazor-AzureCognitiveServices">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-12-24T07:55:41+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">Facebook Authentication And Authorization In Server-Side Blazor App</title><link href="http://localhost:4000/blog/facebook-authentication-and-authorization-in-server-side-blazor-app" rel="alternate" type="text/html" title="Facebook Authentication And Authorization In Server-Side Blazor App" /><published>2020-12-20T09:46:00+00:00</published><updated>2020-12-20T09:46:00+00:00</updated><id>http://localhost:4000/blog/facebook-authentication-and-authorization-in-server-side-blazor-app</id><content type="html" xml:base="http://localhost:4000/blog/facebook-authentication-and-authorization-in-server-side-blazor-app">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;In this article, we will learn how to implement authentication and authorization using Facebook in a server-side Blazor application.&lt;/p&gt;
+
+&lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Install the latest .NET Core 5.0 Current  SDK from &lt;a href=&quot;https://dotnet.microsoft.com/download/dotnet-core/&quot;&gt;here&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Install the latest Visual Studio 2019 from &lt;a href=&quot;https://visualstudio.com/&quot;&gt;here&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;source-code&quot;&gt;Source Code&lt;/h2&gt;
+
+&lt;p&gt;Get the source code from &lt;a href=&quot;https://github.com/girishgodage/Facebook-Authentication-with-server-side-Blazor&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;create-server-side-blazor-application&quot;&gt;Create Server Side Blazor Application&lt;/h2&gt;
+
+&lt;p&gt;To create a server-side Blazor app, open Visual Studio 2019 and follow the steps mentioned below:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. Click on “Create a new project”.
+2. Select “Blazor App” from available project types. Click on Next.
+3. A new “Configure your new project” screen will open. Put the name of the project as BlazorFbAuth and click Create.
+4. In the next screen, select “.NET.5.0 ” from dropdowns on the top left.
+5. Select “Blazor Server App” from the list of available templates.
+6. Click on Change Authentication button, a “Change Authentication” dialog box will open.
+7.Select “Individual User Account” and click OK. Click on Create button to create the application.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;These steps are shown in the GIF image below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/5/CreateProject.gif&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Before running the application, we need to apply migrations to our app. Navigate to Tools » NuGet Package Manager » Package Manager Console.&lt;/p&gt;
+
+&lt;p&gt;It will open the Package Manager Console. Put in &lt;strong&gt;Update-Database&lt;/strong&gt; command and hit enter. This will update the database using Entity Framework Code First Migrations.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/5/UpdateDatabase.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Right-click on the project in solution explorer and select properties. Select Debug from left side menu then scroll to the bottom of the page. Note the SSL enabled URL. In this case, the URL is https://localhost:44345/. We need this URL to configure the Facebook app which we will be doing in our next section. Refer to the image below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/5/AppURL.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;creating-a-facebook-app&quot;&gt;Creating a Facebook App&lt;/h2&gt;
+
+&lt;p&gt;We need to create a Facebook app and configure Facebook Login for it. We will then use the App ID and App Secret of this Facebook app to implement Facebook authentication in our Blazor app. Navigate to https://developers.facebook.com/apps/ and sign in using your Facebook account. Follow the steps mentioned below.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Click on the “Create App” button under the “My Apps” menu on the top.&lt;/li&gt;
+  &lt;li&gt;It will open a “Create a New App ID” dialog box. Put in the “Display Name” and “Contact Email”.&lt;/li&gt;
+  &lt;li&gt;The default email will be your Facebook email id. However, you can change it and put any email of your choice. Click on “Create App ID” to create the app. Refer to the image below.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/5/BlazorFBAuthAppInfo.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Navigate to the app dashboard by clicking on the “Dashboard” link on the navigation menu on the left.&lt;/li&gt;
+  &lt;li&gt;Under the “Add a Product” section, select the “Facebook Login” product and click on “Set Up” button.&lt;/li&gt;
+  &lt;li&gt;A QuickStart wizard will be launched asking you to select a platform for the app. Skip this wizard and click on Facebook Login &amp;gt; Settings from the navigation menu on the left.&lt;/li&gt;
+  &lt;li&gt;You will be navigated to the Client OAuth Settings page. In the Valid OAuth redirect URIs field enter the base URL of your application with /signin-facebook appended to it. For this tutorial, the URL will be https://localhost:44345/signin-facebook. Click on “Save Changes” button.&lt;/li&gt;
+  &lt;li&gt;Now click on Settings &amp;gt; Basic on the navigation menu. You will see the App ID and App Secret values. Make a note of these values as we need them to configure Facebook authentication in our Blazor app.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Refer to the GIF below for a better understanding.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/5/FBSettings.gif&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;important-note&quot;&gt;Important Note&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The trademark or brand element of Facebook is not allowed to be used as the Display Name of your Facebook App. Therefore, words such as FB, Face, Book, Insta, etc. cannot be used as Display Name.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;installing-facebook-authentication-middleware-nuget-package&quot;&gt;Installing Facebook authentication middleware NuGet package&lt;/h2&gt;
+
+&lt;p&gt;To configure the ASP.NET Core middleware for Facebook authentication we need to install the nuget package in our application. The version of this nuget package must match the version of .NET Core 3 which we are using in our project.&lt;/p&gt;
+
+&lt;p&gt;Open https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Facebook/. Select the version of .NET 5.0.1 from the “Version History”. Copy the command from the “package manager” tab. Run this command in the NuGet package manager console of our application.&lt;/p&gt;
+
+&lt;p&gt;For this application, we are using .NET 5.0.1. Therefore, we will run the following command in the package manager console of our application.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;    Install-Package Microsoft.AspNetCore.Authentication.Facebook -Version 5.0.1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Refer to the image below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/5/InstallFBAuthentication.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;configure-the-server-side-blazor-app-to-use-facebook-authentication&quot;&gt;Configure the server-side Blazor app to use Facebook authentication&lt;/h2&gt;
+
+&lt;p&gt;We need to store the App ID and App Secret field values in our application. We will use Secret Manager tool for this purpose. The Secret Manager tool is a project tool that is used to store secrets such as password, API Key, etc. for a .NET Core project during the development process. Secret Manager tool allows us to associate app secrets with a specific project. It also allow us to share them across multiple projects.&lt;/p&gt;
+
+&lt;p&gt;Open our web application once again and Right-click the project in Solution Explorer. Select Manage User Secrets from the context menu. A secrets.json file will open. Put the following code in it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;    {
+        &quot;Authentication:Facebook:AppId&quot;: &quot;Your Facebook AppId&quot;,
+        &quot;Authentication:Facebook:AppSecret&quot;: &quot;Your Facebook AppSecret&quot;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now open Startup.cs file and put the following code into ConfigureServices method.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+    services.AddAuthentication().AddFacebook(facebookOptions =&amp;gt;
+    {
+        facebookOptions.AppId = Configuration[&quot;Authentication:Facebook:AppId&quot;];
+        facebookOptions.AppSecret = Configuration[&quot;Authentication:Facebook:AppSecret&quot;];
+        facebookOptions.Events = new OAuthEvents()
+        {
+            OnRemoteFailure = loginFailureHandler =&amp;gt;
+            {
+            var authProperties = facebookOptions.StateDataFormat.Unprotect(loginFailureHandler.Request.Query[&quot;state&quot;]);
+            loginFailureHandler.Response.Redirect(&quot;/Identity/Account/Login&quot;);
+            loginFailureHandler.HandleResponse();
+            return Task.FromResult(0);
+            }
+        };
+    });
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This code will read the AppId and AppSecret from the secrets.json file. The AddFacebook() method is an extension method and it is used to configure the Facebook Authentication options for our application. We are also handling the event of OnRemoteFailure in this code section. Hence, if the user denies access to his Facebook account, then he will be redirected back to the Login page of our Blazor application.&lt;/p&gt;
+
+&lt;h2 id=&quot;adding-authorization-to-blazor-pages&quot;&gt;Adding authorization to Blazor pages&lt;/h2&gt;
+
+&lt;p&gt;Blazor has added a new built-in component called AuthorizeView. This component is used to display different content based on the authentication state of the application. This component will display the child component only when the user is authorized.  The AuthorizeView component is configured in \Shared\LoginDisplay.razor file.&lt;/p&gt;
+
+&lt;p&gt;To implement authorization to a specific page, we need to use the [Authorize] attribute. Blazor has introduced a new directive @attribute, which is used to include the [Authorize] attribute for a page. In this application, we will apply [Authorize] to the FetchData component. This will prohibit unauthorized access to this component. Open FetchData.razor page and add the following lines at the top of the page.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+@attribute [Authorize]
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;execution-demo&quot;&gt;Execution Demo&lt;/h2&gt;
+
+&lt;p&gt;Launch the application. Navigate to Fetch Data component by clicking on the “Fetch data” link on the menu on the left. You will see a “Not authorized” message displayed on the screen. Click “Log In” on the menu at the top. In the next page click on the “Facebook” button to login with Facebook. On the next page, you will be asked to provide the login credentials of your Facebook account. Fill the details and click Log In. Upon successful login, you will be able to access the Fetch Data component. If you do not want to login then click on “Not now”. It will redirect you back to the Login page of Blazor app.&lt;/p&gt;
+
+&lt;p&gt;Refer to the GIF below for a better understanding.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/blazor/5/output.gif&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once you are logged in successfully into our Blazor app using Facebook, you will be also logged in to https://www.facebook.com/. This will create a set of browser cookie for https://www.facebook.com/. Therefore, the Blazor app will not ask the Facebook credentials when you try to login again. If you log out from Facebook then you have to enter credentials while logging into Blazor app.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;We learned how to implement Facebook authentication and authorization in a server-side Blazor application. We have created and configured a Facebook app to implement Facebook authentication. To implement authorization for a specific component in Blazor, we have used the [Authorize] attribute. We have used Microsoft.AspNetCore.Authentication.Facebook nuget package to configure the middleware for Facebook authentication.&lt;/p&gt;
+
+&lt;p&gt;Please get the source code from &lt;a href=&quot;https://github.com/girishgodage/Facebook-Authentication-with-server-side-Blazor&quot;&gt;GitHub&lt;/a&gt; and play around to get a better understanding.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Introduction</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/blazor/5/output.gif" /></entry><entry><title type="html">Multi-Language Translator Using Blazor And Azure Cognitive Services</title><link href="http://localhost:4000/blog/multi-Language-Translator-using-blazor-AzureCognitiveServices" rel="alternate" type="text/html" title="Multi-Language Translator Using Blazor And Azure Cognitive Services" /><published>2020-12-17T16:55:00+00:00</published><updated>2020-12-17T16:55:00+00:00</updated><id>http://localhost:4000/blog/multi-language-translator-using-blazor-and-azure-cognitive-service</id><content type="html" xml:base="http://localhost:4000/blog/multi-Language-Translator-using-blazor-AzureCognitiveServices">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;In this article, we will create a multilanguage translator using Blazor and the Translate Text Azure Cognitive Service. This translator will be able to translate between all the languages supported by the Translate Text API. Currently, the Translate Text API supports more than 60 languages for translation. The application will accept the text to translate and the target language as the input and returns the translated text and the detected language for the input text as the output.&lt;/p&gt;
 
@@ -3801,168 +3946,4 @@ Remove all origin URL from the list, and use “*” wildcard to allow all the U
   &lt;li&gt;Create a client secret&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Next, learn how to &lt;a href=&quot;azure-acticedirectoryB2C_CreateUserFlow&quot;&gt;create user flows&lt;/a&gt; to enable your users to sign up, sign in, and manage their profiles.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Register a web application in Azure Active Directory B2C</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/azureAD.png" /></entry><entry><title type="html">Create user flows in Azure Active Directory B2C</title><link href="http://localhost:4000/blog/azure-acticedirectoryB2C_CreateUserFlow" rel="alternate" type="text/html" title="Create user flows in Azure Active Directory B2C" /><published>2020-03-12T12:41:00+00:00</published><updated>2020-03-12T12:41:00+00:00</updated><id>http://localhost:4000/blog/azure-activedirectoryB2C_CreateUserFlow</id><content type="html" xml:base="http://localhost:4000/blog/azure-acticedirectoryB2C_CreateUserFlow">&lt;blockquote&gt;
-  &lt;h2 id=&quot;create-user-flows-in-azure-active-directory-b2c&quot;&gt;Create user flows in Azure Active Directory B2C&lt;/h2&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;In your applications you may have user flows that enable users to sign up, sign in, or manage their profile. You can create multiple user flows of different types in your Azure Active Directory B2C (Azure AD B2C) tenant and use them in your applications as needed. User flows can be reused across applications.&lt;/p&gt;
-
-&lt;p&gt;In this article, you learn how to:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Create a sign-up and sign-in user flow&lt;/li&gt;
-  &lt;li&gt;Create a profile editing user flow&lt;/li&gt;
-  &lt;li&gt;Create a password reset user flow&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;This tutorial shows you how to create some recommended user flows by using the Azure portal.&lt;/p&gt;
-
-&lt;p&gt;If you don’t have an Azure subscription, create a &lt;a href=&quot;https://azure.microsoft.com/free/?WT.mc_id=A261C142F&quot;&gt;free account&lt;/a&gt; before you begin.&lt;/p&gt;
-
-&lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;
-
-&lt;p&gt;If you haven’t already created your own &lt;a href=&quot;azure-activedirectoryB2C_CreateTenant&quot;&gt;Azure AD B2C Tenant&lt;/a&gt;, create one now. You can use an existing Azure AD B2C tenant.&lt;/p&gt;
-
-&lt;h2 id=&quot;create-a-sign-up-and-sign-in-user-flow&quot;&gt;Create a sign-up and sign-in user flow&lt;/h2&gt;
-
-&lt;p&gt;The sign-up and sign-in user flow handles both sign-up and sign-in experiences with a single configuration. Users of your application are led down the right path depending on the context.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Sign in to the &lt;a href=&quot;https://portal.azure.com/&quot;&gt;Azure portal&lt;/a&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Select the &lt;strong&gt;Directory + Subscription&lt;/strong&gt; icon in the portal toolbar, and then select the directory that contains your Azure AD B2C tenant.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/6/directory-subscription-pane.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;In the Azure portal, search for and select &lt;strong&gt;Azure AD B2C&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Under &lt;strong&gt;Policies&lt;/strong&gt;, select &lt;strong&gt;User flows&lt;/strong&gt;, and then select &lt;strong&gt;New user flow&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/6/signup-signin-user-flow.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;On the Create a user flow page, select the Sign up and sign in user flow.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/6/select-user-flow-type.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;6.Under Select a version, select Recommended, and then select Create.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/6/select-version.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Enter a &lt;strong&gt;Name&lt;/strong&gt; for the user flow. For example, signupsignin1.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;For &lt;strong&gt;Identity providers&lt;/strong&gt;, select &lt;strong&gt;Email signup&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;For User &lt;strong&gt;attributes and claims&lt;/strong&gt;, choose the claims and attributes that you want to collect and send from the user during sign-up. For example, select &lt;strong&gt;Show more&lt;/strong&gt;, and then choose attributes and claims for &lt;strong&gt;Country/Region, Display Name, and Postal Code&lt;/strong&gt;. Click &lt;strong&gt;OK&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/6/signup-signin-attributes.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Click &lt;strong&gt;Create&lt;/strong&gt; to add the user flow. A prefix of B2C_1 is automatically prepended to the name.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;test-the-user-flow&quot;&gt;Test the user flow&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Select the user flow you created to open its overview page, then select &lt;strong&gt;Run user flow&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;For &lt;strong&gt;Application&lt;/strong&gt;, select the web application named webapp1 that you previously registered. The &lt;strong&gt;Reply URL&lt;/strong&gt; should show https://jwt.ms.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Click &lt;strong&gt;Run user flow&lt;/strong&gt;, and then &lt;strong&gt;select Sign up now&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/6/signup-signin-run-now.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Enter a valid email address, click Send &lt;strong&gt;verification code&lt;/strong&gt;, enter the verification code that you receive, then select &lt;strong&gt;Verify code&lt;/strong&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Enter a new password and confirm the password.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Select your country and region, enter the name that you want displayed, enter a postal code, and then click &lt;strong&gt;Create&lt;/strong&gt;. The token is returned to https://jwt.ms and should be displayed to you.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;You can now run the user flow again and you should be able to sign in with the account that you created. The returned token includes the claims that you selected of country/region, name, and postal code&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;create-a-profile-editing-user-flow&quot;&gt;Create a profile editing user flow&lt;/h2&gt;
-
-&lt;p&gt;If you want to enable users to edit their profile in your application, you use a profile editing user flow.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;In the menu of the Azure AD B2C tenant overview page, select &lt;strong&gt;User flows&lt;/strong&gt;, and then select &lt;strong&gt;New user flow&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;On the &lt;strong&gt;Create a user flow&lt;/strong&gt; page, select the &lt;strong&gt;Profile editing&lt;/strong&gt; user flow.&lt;/li&gt;
-  &lt;li&gt;Under &lt;strong&gt;Select a version&lt;/strong&gt;, select &lt;strong&gt;Recommended&lt;/strong&gt;, and then select &lt;strong&gt;Create&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;Enter a &lt;strong&gt;Name&lt;/strong&gt; for the user flow. For example, profileediting1.&lt;/li&gt;
-  &lt;li&gt;For &lt;strong&gt;Identity providers&lt;/strong&gt;, select &lt;strong&gt;Local Account SignIn&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;For &lt;strong&gt;User attributes&lt;/strong&gt;, choose the attributes that you want the customer to be able to edit in their profile. For example, select &lt;strong&gt;Show more&lt;/strong&gt;, and then choose both &lt;strong&gt;attributes and claims for Display name and Job title&lt;/strong&gt;. Click &lt;strong&gt;OK&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;Click &lt;strong&gt;Create&lt;/strong&gt; to add the user flow. A prefix of B2C_1 is automatically appended to the name.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;test-the-user-flow-1&quot;&gt;Test the user flow&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Select the user flow you created to open its overview page, then select &lt;strong&gt;Run user flow&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;For &lt;strong&gt;Application&lt;/strong&gt;, select the web application named webapp1 that you previously registered. The &lt;strong&gt;Reply URL&lt;/strong&gt; should show https://jwt.ms.&lt;/li&gt;
-  &lt;li&gt;Click &lt;strong&gt;Run user flow&lt;/strong&gt;, and then sign in with the account that you previously created.&lt;/li&gt;
-  &lt;li&gt;You now have the opportunity to change the display name and job title for the user. Click &lt;strong&gt;Continue&lt;/strong&gt;. The token is returned to https://jwt.ms and should be displayed to you.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;create-a-password-reset-user-flow&quot;&gt;Create a password reset user flow&lt;/h2&gt;
-
-&lt;p&gt;To enable users of your application to reset their password, you use a password reset user flow.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;In the Azure AD B2C tenant overview menu, select &lt;strong&gt;User flows&lt;/strong&gt;, and then select &lt;strong&gt;New user flow&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;On the &lt;strong&gt;Create a user flow&lt;/strong&gt; page, select the &lt;strong&gt;Password reset&lt;/strong&gt; user flow.&lt;/li&gt;
-  &lt;li&gt;Under &lt;strong&gt;Select&lt;/strong&gt; a version, select &lt;strong&gt;Recommended&lt;/strong&gt;, and then select &lt;strong&gt;Create&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;Enter a &lt;strong&gt;Name&lt;/strong&gt; for the user flow. For example, passwordreset1.&lt;/li&gt;
-  &lt;li&gt;For &lt;strong&gt;Identity providers&lt;/strong&gt;, enable &lt;strong&gt;Reset password using email address&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;Under &lt;strong&gt;Application claims&lt;/strong&gt;, click &lt;strong&gt;Show more&lt;/strong&gt; and choose the claims that you want returned in the authorization tokens sent back to your application. For example, select User’s Object ID.&lt;/li&gt;
-  &lt;li&gt;Click &lt;strong&gt;OK&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;Click &lt;strong&gt;Create&lt;/strong&gt; to add the user flow. A prefix of B2C_1 is automatically appended to the name.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;test-the-user-flow-2&quot;&gt;Test the user flow&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Select the user flow you created to open its overview page, then select &lt;strong&gt;Run user flow&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;For &lt;strong&gt;Application&lt;/strong&gt;, select the web application named webapp1 that you previously registered. The &lt;strong&gt;Reply URL&lt;/strong&gt; should show https://jwt.ms.&lt;/li&gt;
-  &lt;li&gt;Click &lt;strong&gt;Run user flow&lt;/strong&gt;, verify the email address of the account that you previously created, and select &lt;strong&gt;Continue&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;You now have the opportunity to change the password for the user. Change the password and select &lt;strong&gt;Continue&lt;/strong&gt;. The token is returned to https://jwt.ms and should be displayed to you.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;next-steps&quot;&gt;Next steps&lt;/h2&gt;
-
-&lt;p&gt;In this article, you learned how to:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Create a sign-up and sign-in user flow&lt;/li&gt;
-  &lt;li&gt;Create a profile editing user flow&lt;/li&gt;
-  &lt;li&gt;Create a password reset user flow&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Next, learn about adding identity providers to your applications to enable user sign-in with providers like Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft, or Twitter.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Create user flows in Azure Active Directory B2C</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/azureAD.png" /></entry></feed>
+&lt;p&gt;Next, learn how to &lt;a href=&quot;azure-acticedirectoryB2C_CreateUserFlow&quot;&gt;create user flows&lt;/a&gt; to enable your users to sign up, sign in, and manage their profiles.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Register a web application in Azure Active Directory B2C</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/azureAD.png" /></entry></feed>
