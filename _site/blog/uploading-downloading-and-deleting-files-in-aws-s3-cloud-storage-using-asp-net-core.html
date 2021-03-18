@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#2A80EE">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#2A80EE">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
+<title>UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE &#8211; Girish Godage</title>
+<meta name="description" content="This article will learn how to upload , download and delete files from amazon AWS S3 Cloud Storage using ASP.NET CORE.">
+<meta name="keywords" content="DotnetCore">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all">
+
+<!-- Verifications -->
+    
+    
+        
+<!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE">
+    <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
+    <meta property="og:url" content="http://localhost:4000/blog/uploading-downloading-and-deleting-files-in-aws-s3-cloud-storage-using-asp-net-core">
+    <meta property="og:site_name" content="Girish Godage">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@GGodage" />
+    
+    <meta name="twitter:title" content="UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE" />
+    <meta name="twitter:description" content="This article will learn how to upload , download and delete files from amazon AWS S3 Cloud Storage using ASP.NET CORE." />
+    <meta name="twitter:url" content="http://localhost:4000/blog/uploading-downloading-and-deleting-files-in-aws-s3-cloud-storage-using-asp-net-core" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/img/favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/img/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/img/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+    
+
+
+    <link rel="canonical" href="http://localhost:4000/blog/uploading-downloading-and-deleting-files-in-aws-s3-cloud-storage-using-asp-net-core">
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
+    <!-- Bootstrap CSS-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Google fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Advent+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+   
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
+    
+    <!-- animate.css-->
+    <link rel="stylesheet" href="http://localhost:4000/sitejs/animate.css/animate.css">
+    <!-- theme stylesheet-->
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="http://localhost:4000/css/custom.css" as="style">
+    <link rel="stylesheet" href="http://localhost:4000/css/comments.css" as="style">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="http://localhost:4000/img/logo-big.png">
+    <!-- Fab Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
+    
+    
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    
+    <script type="text/javascript">
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+       ga('create', 'UA-130164763-2', 'auto');
+       ga('send', 'pageview');
+    </script>
+    
+    <!-- Typed.js DONT TOUCHHHHHHHHHHHHH!-->
+    <!--<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.9/typed.min.js"></script>
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+      </script>
+      
+      <!-- START OF RELEVANT PART -->
+    <script async src="https://just-comments.com/w2.js"></script>
+    <!-- END OF RELEVANT PART -->
+
+
+</head>
+
+<body>
+    
+<!-- navbar-->
+<header class="header">
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container"><a class="navbar-brand" href="http://localhost:4000"><img
+          src="http://localhost:4000/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
+          alt="logo"> <img src="http://localhost:4000/img/girish_logo.png" height="30" alt="girilogo"></a>
+      <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span
+          class="fa fa-bars" style="color: white"></span></button>
+      <div id="navbarcollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="http://localhost:4000#home" class="nav-link  link-scroll">Home</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#about" class="nav-link link-scroll">About</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#skills" class="nav-link link-scroll">Skills</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#services" class="nav-link link-scroll">Services</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000#references" class="nav-link link-scroll">My
+              work</a></li>
+          <li class="nav-item"><a href="http://localhost:4000#contact" class="nav-link link-scroll">Contact</a>
+          </li>
+          <li class="nav-item"><a href="http://localhost:4000/project" class="nav-link link-scroll">My
+              Projects</a></li>
+          <li class="nav-item"><a href="http://localhost:4000/blog" class="nav-link link-scroll">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    
+    
+    
+    <div style="background-color:Gray;">
+        <div style="padding:0;min-height:95.05vh;display:flex;font-family: Poppins, sans-serif;margin-top: 5rem;"
+            class="container">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <p class="post-title">
+                    <h1><a href="/blog/uploading-downloading-and-deleting-files-in-aws-s3-cloud-storage-using-asp-net-core">UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE</a></h1>
+                </p>
+                
+                <span class="post-meta">
+              <span style="font-weight:600">March 10, 2021 Wednesday</span>
+                    
+                       ( 8 minute read ) 
+                    
+                     
+                    <a style="font-weight:600" href="https://twitter.com/girishgodage_007" target="_blank">   by Girish Godage</a>
+                </span>
+                
+                <div class="site-category"> 
+                        <h5>DotnetCore</h5>
+                </div>
+                
+                <hr>
+                <div><img class="post-image" src="/img/aspnetcore.png" alt="UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE" height="250" /></div>
+                <div class="post-content">
+                    <br>                     
+                    <h2 id="uploading-downloading-and-deleting-files-in-aws-s3-cloud-storage-using-aspnet-core">UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE</h2>
+
+<p>This article will learn how to upload , download and delete files from amazon AWS S3 Cloud Storage using ASP.NET CORE.</p>
+
+<h2 id="what-is-amazon-s3">What is Amazon S3?</h2>
+
+<p>Amazon S3 has a simple web services interface that you can use to store and retrieve any amount of data, at any time, from anywhere on the web.</p>
+
+<p>https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html</p>
+
+<h2 id="what-youll-be-building">What you’ll be building</h2>
+
+<p>In this article, you’ll learn the following</p>
+
+<ul>
+  <li>Creating application ASP.NET Core Application</li>
+  <li>Installing packages from NuGet</li>
+  <li>Creating a Bucket</li>
+  <li>View after creating a bucket.</li>
+  <li>Creating a User</li>
+  <li>Adding a User to Group and assigning policy</li>
+  <li>Created Table for Storing Documents</li>
+  <li>Added Entity and DbContext class along with interface and Concrete for Storing and Reading the documents</li>
+  <li>AppSettings for Storing AccessKey and SecretKey  configuring database connection string</li>
+  <li>Creating Controller</li>
+  <li>Upload File</li>
+  <li>AllFiles</li>
+  <li>Download file</li>
+  <li>Delete file</li>
+</ul>
+
+<h3 id="creating-application-aspnet-core-application">Creating application ASP.NET Core Application</h3>
+
+<p><img src="/img/aspdotnetcore/1/01.png" alt="image" /></p>
+
+<p>Next, we are going to set Project Name <strong>“WebStorageDemo”</strong> and location.</p>
+
+<p>We will choose .Net Core framework and ASP.NET Core Version 5.0 as the framework for application and we are not going to enable docker settings for this project.</p>
+
+<p><img src="/img/aspdotnetcore/1/02.png" alt="image" /></p>
+
+<p>Now finally click on create button to create a project.</p>
+
+<p><strong>Project structure</strong></p>
+
+<p>The project structure generated according to the configuration.</p>
+
+<p><img src="/img/aspdotnetcore/1/03.png" alt="image" /></p>
+
+<p>After creating project next, we are going to install below package from NuGet Packages.</p>
+
+<h3 id="installing-a-package-from-nuget">Installing a package from NuGet</h3>
+
+<ol>
+  <li>
+    <p>WindowsAzure.Storage</p>
+
+    <p><img src="/img/aspdotnetcore/1/04.png" alt="image" /></p>
+  </li>
+  <li>
+    <p>Microsoft.EntityFrameworkCore</p>
+
+    <p><img src="/img/aspdotnetcore/1/05.png" alt="image" /></p>
+  </li>
+  <li>
+    <p>Microsoft.EntityFrameworkCore.SqlServer</p>
+
+    <p><img src="/img/aspdotnetcore/1/06.png" alt="image" /></p>
+  </li>
+</ol>
+
+<p>After installing packages next, we will create a bucket for that we must have an AWS account.</p>
+
+<p>If you do not have an account, then create one account for free. https://aws.amazon.com/</p>
+
+<p>I have already created an AWS account and logged in to the portal, for creating a bucket.</p>
+
+<h3 id="creating-a-bucket">Creating a Bucket</h3>
+
+<p>The bucket is a virtual container where we are going to store all objects.</p>
+
+<p>For using Amazon S3 service, we must search S3 service in search.</p>
+
+<p><img src="/img/aspdotnetcore/1/07.png" alt="image" /></p>
+
+<p>After selecting S3 service, it redirects to buckets page.</p>
+
+<p><img src="/img/aspdotnetcore/1/08.png" alt="image" /></p>
+
+<p>Here for creating a bucket, we need to click on Create bucket button.</p>
+
+<p>For creating a bucket, we need to enter a unique bucket name and select region where you want this bucket to be made.</p>
+
+<p><img src="/img/aspdotnetcore/1/09.png" alt="image" /></p>
+
+<p>Here we are going to enter the name of bucket <strong>(myawscorebucket)</strong> and then select region as “Asia Pacific (Mumbai)” after selecting just scroll your page then you will find <strong>“Block Public Access settings for bucket”</strong> here for the demo I am going to uncheck all checkboxes you must uncheck it according to your need.</p>
+
+<p><img src="/img/aspdotnetcore/1/10.png" alt="image" /></p>
+
+<p>Just scroll your page below you will find create bucket button just click on it to create a bucket.</p>
+
+<p><img src="/img/aspdotnetcore/1/11.png" alt="image" /></p>
+
+<h3 id="view-after-creating-a-bucket">View after creating a bucket</h3>
+
+<p><img src="/img/aspdotnetcore/1/12.png" alt="image" /></p>
+
+<p>After creating a bucket next, we are going to create a user for we need to search IAM <strong>(Identity and Access Management).</strong></p>
+
+<p><strong>Adding a User</strong></p>
+
+<p><img src="/img/aspdotnetcore/1/13.png" alt="image" /></p>
+
+<p>After selecting IAM, you will see below screen.</p>
+
+<p><img src="/img/aspdotnetcore/1/14.png" alt="image" /></p>
+
+<p>After clicking on Add user, we will add a user name and select Access type as shown below.</p>
+
+<p><img src="/img/aspdotnetcore/1/15.png" alt="image" /></p>
+
+<p>After filling in all details, click on the next permission button.</p>
+
+<h3 id="adding-a-user-to-group-and-assigning-policy">Adding a User to Group and assigning policy</h3>
+
+<p><img src="/img/aspdotnetcore/1/16.png" alt="image" /></p>
+
+<p>We will create a group with the name “AWSS3FullAccess” and assign policy (AmazonS3FullAccess) to access Amazon S3.</p>
+
+<p><img src="/img/aspdotnetcore/1/17.png" alt="image" /></p>
+
+<p>Just click on Create group button for creating a group. Next step will be making tags I will skip it, and the final screen will be Review as shown below.</p>
+
+<p><img src="/img/aspdotnetcore/1/18.png" alt="image" /></p>
+
+<p>The review page will show all details that you have configured just click on create a user it will create user successfully as shown below.</p>
+
+<p><img src="/img/aspdotnetcore/1/19.png" alt="image" /></p>
+
+<p>Now you have <strong>Access key ID</strong> and <strong>Secret access key</strong> for accessing S3 Services. Next, we have created a table in the database to store document details.</p>
+
+<h3 id="created-table-for-storing-documents">Created Table for Storing Documents</h3>
+
+<p>Creating a table with name <strong>DocumentStore</strong> for storing document details.</p>
+
+<p><img src="/img/aspdotnetcore/1/20.png" alt="image" /></p>
+
+<p>Added Entity and DbContext class along with interface and Concrete for Storing and Reading the document.</p>
+
+<p><img src="/img/aspdotnetcore/1/21.png" alt="image" /></p>
+
+<p>In this part first, we have added the DocumentStore Entity.</p>
+
+<pre><code class="language-code">
+  using System;
+  using System.ComponentModel.DataAnnotations;
+  using System.ComponentModel.DataAnnotations.Schema;
+
+  namespace WebStorageDemo.Models
+  {
+      [Table("DocumentStore")]
+      public class DocumentStore
+      {
+          [Key]
+          public int DocumentId { get; set; }
+          public string DocumentName { get; set; }
+          public string DocumentType { get; set; }
+          public DateTime CreatedOn { get; set; }
+      }
+  }
+
+</code></pre>
+
+<p>Next, we have added DbContext with name BlobDbContext.</p>
+
+<pre><code class="language-code">  using Microsoft.EntityFrameworkCore;
+  using WebStorageDemo.Models;
+
+  namespace WebStorageDemo.Repository
+  {
+      public class BlobDbContext : DbContext
+      {
+          public BlobDbContext(DbContextOptions&lt;BlobDbContext&gt; options) : base(options)
+          {
+          }
+          public DbSet&lt;DocumentStore&gt; DocumentStore { get; set; }
+      }
+  }
+</code></pre>
+
+<p>After adding BlobDbContext next, we are going to add Interface and Concrete in the Repository folder.</p>
+
+<pre><code class="language-code">
+  using System.Collections.Generic;
+  using WebStorageDemo.Models;
+
+  namespace WebStorageDemo.Repository
+  {
+      public interface IDocumentData
+      {
+          void Add(DocumentStore documentStore);
+          List&lt;DocumentStore&gt; GetDocumentStoresList();
+          void Delete(DocumentStore documentStore);
+          DocumentStore GetDocumentbyDocumentId(int documentId);
+      }
+  }
+</code></pre>
+
+<p>AppSettings for Storing AccessKey and SecretKey and configuring database connection string</p>
+
+<blockquote>
+  <p>It is not recommended to store the keys in the appsettings.json file you can use the best methods available for the demo I am storing keys in the appsettings.json file.</p>
+</blockquote>
+
+<p><img src="/img/aspdotnetcore/1/22.png" alt="image" /></p>
+
+<p>After setting keys in the appsettings.json file next, we will configure entity framework core, appsettings and registering IDocumentData interface.</p>
+
+<pre><code class="language-code">
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddScoped&lt;IDocumentData, DocumentData&gt;();
+    var connection = Configuration.GetConnectionString("DatabaseConnection");
+    services.AddDbContext&lt;BlobDbContext&gt;(options =&gt; options.UseSqlServer(connection));
+    services.Configure&lt;AppSettings&gt;(Configuration.GetSection("AwsSettings"));
+    services.AddControllersWithViews();
+}
+
+</code></pre>
+
+<p>Everything is configured now let’s Create Controller for Uploading, Downloading and Deleting files.</p>
+
+<h3 id="creating-controller">Creating Controller</h3>
+
+<p>We will create Controller With name <strong>DemoController</strong> with different action methods such as <strong>UploadFile, DeleteFile, DownloadFile and AllFiles</strong>.</p>
+
+<p><strong>Upload File</strong></p>
+
+<p>We will access 2 things in Controller AppSettings, IDocumentData from appsettings we will get bucket name, Access key and Secret key, we will pass Access key and Secret key to BasicAWSCredentials method and then set RegionEndpoint.</p>
+
+<p>After that, we will get uploaded files details from <strong>IFromFile</strong> interface that we will assign to <strong>TransferUtilityUploadRequest</strong> class of AWS and then finally call <strong>TransferUtility</strong> class and access UploadAsync method to upload file meanwhile we are going to store all document details to the database.</p>
+
+<pre><code class="language-code">        [HttpGet]
+        public IActionResult UploadFile()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task&lt;IActionResult&gt; UploadFile(IFormFile file)
+        {
+            try
+            {
+
+                var bucketName = !string.IsNullOrWhiteSpace(_appSettings.FolderName)
+                    ? _appSettings.BucketName + @"/" + _appSettings.FolderName
+                    : _appSettings.BucketName;
+
+                var credentials = new BasicAWSCredentials(_appSettings.AccessKey, _appSettings.SecretKey);
+                var config = new AmazonS3Config
+                {
+                    RegionEndpoint = Amazon.RegionEndpoint.APSouth1
+                };
+
+
+                using var client = new AmazonS3Client(credentials, config);
+                await using var newMemoryStream = new MemoryStream();
+                await file.CopyToAsync(newMemoryStream);
+
+                var fileExtension = Path.GetExtension(file.FileName);
+                var documentName = $"{GenerateId()}{fileExtension}";
+
+                // URL for Accessing Document for Demo
+                var result = $"https://{bucketName}.s3.amazonaws.com/{documentName}";
+
+                var uploadRequest = new TransferUtilityUploadRequest
+                {
+                    InputStream = newMemoryStream,
+                    Key = documentName,
+                    BucketName = bucketName,
+                    CannedACL = S3CannedACL.PublicRead
+                };
+
+                var fileTransferUtility = new TransferUtility(client);
+                await fileTransferUtility.UploadAsync(uploadRequest);
+
+                DocumentStore documentStore = new DocumentStore()
+                {
+                    CreatedOn = DateTime.Now,
+                    DocumentId = 0,
+                    DocumentName = documentName,
+                    DocumentType = file.ContentType
+                };
+
+                _documentdata.Add(documentStore);
+
+            }
+            catch (AmazonS3Exception amazonS3Exception)
+            {
+                if (amazonS3Exception.ErrorCode != null
+                    &amp;&amp; (amazonS3Exception.ErrorCode.Equals("InvalidAccessKeyId") || amazonS3Exception.ErrorCode.Equals("InvalidSecurity")))
+                {
+                    throw new Exception("Check the provided AWS Credentials.");
+                }
+                else
+                {
+                    throw new Exception("Error occurred: " + amazonS3Exception.Message);
+                }
+            }
+            return RedirectToAction("AllFiles");
+        }
+
+</code></pre>
+
+<h3 id="output">Output</h3>
+
+<p>We are going to access the Demo/UploadFile path for uploading the file.</p>
+
+<p><img src="/img/aspdotnetcore/1/23.png" alt="image" /></p>
+
+<p>After uploading the file, we can see in AWS S3 objects section as shown below.</p>
+
+<p><img src="/img/aspdotnetcore/1/24.png" alt="image" /></p>
+
+<p>While uploading data, we are storing file details in the database.</p>
+
+<p><img src="/img/aspdotnetcore/1/25.png" alt="image" /></p>
+
+<h3 id="all-files">All Files</h3>
+
+<p>In this part, we are going to show all files which are stored in the database along with download and delete feature.</p>
+
+<pre><code class="language-code">
+  public IActionResult AllFiles()
+    {
+      return View(_documentdata.GetDocumentStoresList());
+    }
+</code></pre>
+
+<p><img src="/img/aspdotnetcore/1/26.png" alt="image" /></p>
+
+<h3 id="all-files-view">All Files View</h3>
+
+<pre><code class="language-code">
+@model List&lt;DocumentStore&gt;
+
+&lt;table class="table table-striped"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;DocumentId&lt;/th&gt;
+            &lt;th&gt;DocumentName&lt;/th&gt;
+            &lt;th&gt;CreatedOn&lt;/th&gt;
+            &lt;th&gt;Download&lt;/th&gt;
+            &lt;th&gt;Delete&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+
+        @foreach (var data in Model)
+        {
+        &lt;tr&gt;
+            &lt;td&gt;@data.DocumentId&lt;/td&gt;
+            &lt;td&gt;@data.DocumentName&lt;/td&gt;
+            &lt;td&gt;@data.CreatedOn&lt;/td&gt;
+            &lt;td&gt;
+                &lt;a class="btn btn-success" href="/Demo/DownloadFile/@data.DocumentId"&gt;Download&lt;/a&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                &lt;a class="btn btn-danger" href="/Demo/DeleteFile/@data.DocumentId"&gt;Delete&lt;/a&gt;
+            &lt;/td&gt;
+           
+        &lt;/tr&gt;
+        }
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+</code></pre>
+
+<h3 id="download-file">Download file</h3>
+
+<p>We have created the DownloadFile action method for downloading, which takes document id as an input parameter and then gets document details. From this document details, we will take document name and pass it to GetObjectAsync method, which will get an object from S3 Bucket which contains ResponseStream and objectResponse.Headers.ContentType.</p>
+
+<pre><code class="language-code">public async Task&lt;IActionResult&gt; DownloadFile(int id)
+        {
+            try
+            {
+                var getdocument = _documentdata.GetDocumentbyDocumentId(id);
+                var credentials = new BasicAWSCredentials(_appSettings.AccessKey, _appSettings.SecretKey);
+                var config = new AmazonS3Config
+                {
+                    RegionEndpoint = Amazon.RegionEndpoint.APSouth1
+                };
+                using var client = new AmazonS3Client(credentials, config);
+                var fileTransferUtility = new TransferUtility(client);
+
+                var objectResponse = await fileTransferUtility.S3Client.GetObjectAsync(new GetObjectRequest()
+                {
+                    BucketName = _appSettings.BucketName,
+                    Key = getdocument.DocumentName
+                });
+
+                if (objectResponse.ResponseStream == null)
+                {
+                    return NotFound();
+                }
+                return File(objectResponse.ResponseStream, objectResponse.Headers.ContentType, getdocument.DocumentName);
+            }
+            catch (AmazonS3Exception amazonS3Exception)
+            {
+                if (amazonS3Exception.ErrorCode != null
+                    &amp;&amp; (amazonS3Exception.ErrorCode.Equals("InvalidAccessKeyId") || amazonS3Exception.ErrorCode.Equals("InvalidSecurity")))
+                {
+                    throw new Exception("Check the provided AWS Credentials.");
+                }
+                else
+                {
+                    throw new Exception("Error occurred: " + amazonS3Exception.Message);
+                }
+            }
+
+        }
+</code></pre>
+
+<p><strong>Output</strong></p>
+
+<p><img src="/img/aspdotnetcore/1/27.png" alt="image" /></p>
+
+<h3 id="delete-file">Delete file</h3>
+
+<p>For Deleting file, we have created a DeleteFile action method that takes document id as an input parameter and then documents details. From this document details, we will take document name and pass it to DeleteObjectAsync method which will delete an object from S3 Bucket while we are going call delete method from DocumentData class delete the file from the database.</p>
+
+<pre><code class="language-code">public async Task&lt;IActionResult&gt; DeleteFile(int id)
+        {
+            try
+            {
+                var getdocument = _documentdata.GetDocumentbyDocumentId(id);
+                _documentdata.Delete(getdocument);
+
+                var credentials = new BasicAWSCredentials(_appSettings.AccessKey, _appSettings.SecretKey);
+                var config = new AmazonS3Config
+                {
+                    RegionEndpoint = Amazon.RegionEndpoint.APSouth1
+                };
+                using var client = new AmazonS3Client(credentials, config);
+                var fileTransferUtility = new TransferUtility(client);
+                await fileTransferUtility.S3Client.DeleteObjectAsync(new DeleteObjectRequest()
+                {
+                    BucketName = _appSettings.BucketName,
+                    Key = getdocument.DocumentName
+                });
+
+            }
+            catch (AmazonS3Exception amazonS3Exception)
+            {
+                if (amazonS3Exception.ErrorCode != null
+                    &amp;&amp; (amazonS3Exception.ErrorCode.Equals("InvalidAccessKeyId") || amazonS3Exception.ErrorCode.Equals("InvalidSecurity")))
+                {
+                    throw new Exception("Check the provided AWS Credentials.");
+                }
+                else
+                {
+                    throw new Exception("Error occurred: " + amazonS3Exception.Message);
+                }
+            }
+            return RedirectToAction("AllFiles");
+        }
+
+</code></pre>
+
+<p><strong>Before delete</strong></p>
+
+<p><img src="/img/aspdotnetcore/1/28.png" alt="image" /></p>
+
+<p><strong>After delete</strong></p>
+
+<p><img src="/img/aspdotnetcore/1/29.png" alt="image" /></p>
+
+<p><strong>Output</strong></p>
+
+<p><img src="/img/aspdotnetcore/1/30.png" alt="image" /></p>
+
+<h2 id="summary">Summary</h2>
+
+<p>In this article, we have learned how to upload , download and delete files from amazon AWS S3 Cloud Storage using ASP.NET CORE in simple steps hope you have like it please share it let others learn from it.</p>
+
+                </div>
+
+                
+
+                <div id="disqus_thread"></div>
+                <script>
+                
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://girishgodage-github-io.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Go To Top-->
+<button onclick="topFunction()"
+id="myBtn"
+title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
+</button>
+<!-- Footer-->
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 text-center text-lg-left">
+                <p class="social">
+                    <a href="https://www.facebook.com/girish.godage.5" class="external facebook wow fadeInUp">
+                        <i class="fa fa-facebook"></i></a>
+                    <a href="https://instagram.com/girishgodage_007" data-wow-delay="0.2s" class="external instagram wow fadeInUp">
+                        <i class="fa fa-instagram"></i></a>
+                    <a href="https://youtube.com/girishgodage" data-wow-delay="0.4s" class="external youtube wow fadeInUp">
+                        <i class="fa fa-youtube-play"></i></a>
+                    <a href="https://twitter.com/GGodage" data-wow-delay="0.4s" class="external twitter wow fadeInUp">
+                            <i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/girishgodage" data-wow-delay="0.4s" class="external github wow fadeInUp">
+                                <i class="fa fa-github"></i></a>    
+                    <a href="mailto:girishgodage@gmail.com?subject=Hello%20Girish" data-wow-delay="0.6s" class="email wow fadeInUp">
+                        <i class="fa fa-envelope"></i></a></p>
+            </div>
+            <div class="col-12 col-md-2">
+            <h5>Quick Links</h5>
+            <ul>
+               <li><a href="http://localhost:4000#about">About</a></li>
+               <li><a href="http://localhost:4000#contact">Contact</a></li>
+               <li><a href="http://localhost:4000/sitemap.xml">Sitemap</a></li>               
+            </ul>
+         </div>
+            <div class="col-12 col-md-4 text-center text-lg-right mt-4 mt-lg-0">
+                <p> <b>©</b><script>document.write(new Date().getFullYear())</script> Girish Godage </p>
+                <p class="text-center, text-shadow"> Hosted On <a href="https://pages.github.com/">GitHub Pages</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- Typed.js DONT TOUCH THIS! -->
+    <div id="typed-strings">
+    </div>
+
+        <!-- JavaScript files-->
+    <script src="http://localhost:4000/sitejs/jquery/jquery.min.js"></script>
+    <script src="http://localhost:4000/sitejs/popper.js/umd/popper.min.js"> </script>
+    <script src="http://localhost:4000/sitejs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="http://localhost:4000/sitejs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="http://localhost:4000/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="http://localhost:4000/sitejs/jquery.counterup/jquery.counterup.js"></script>
+    <script src="http://localhost:4000/js/front.js"></script>
+    <script src="http://localhost:4000/js/comment.js"></script>
+       <!-- Script pointing to search-script.js -->
+    <script src="http://localhost:4000/js/search-script.js" type="text/javascript"></script>
+   
+    <!-- Configuration -->
+    <script>
+         SimpleJekyllSearch({
+         searchInput: document.getElementById('search-input'),
+         resultsContainer: document.getElementById('results-container'),
+         json: 'http://localhost:4000/search.json'
+         })
+         </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC36FUDDdOTidZJ8nzS5vfE7KVyayenKPE",
+    authDomain: "githubcontactlist.firebaseapp.com",
+    databaseURL: "https://githubcontactlist.firebaseio.com",
+    projectId: "githubcontactlist",
+    storageBucket: "githubcontactlist.appspot.com",
+    messagingSenderId: "899685398702",
+    appId: "1:899685398702:web:0c23c56d2d6d40df37553f",
+    measurementId: "G-YWBRCYJYFW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script>
+   $(function() {
+      
+    //make a variable to keep track of data coming from firebase
+    var data = [];
+
+    // Reference messages collection
+      var messagesRef = firebase.database().ref('contactformmessages');  
+
+
+    //listen to data updates from firebase
+    messagesRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+        //when the data updates at firebase, put it in the data variable
+        data = snapshot.val();
+    })
+    //Entire Contact Form (handler)
+    $('#contactForm').submit(function(e) {
+      e.preventDefault();
+
+        var $form = $(this);
+        console.log("Submit to Firebase");
+
+        //disable submit button
+        $form.find("#sendForm").prop('disabled', true);
+
+        //get values to send to Firebase
+        var name = $('#name').val();
+        console.log(name);
+		
+		var surname = $('#surname').val();
+        console.log(surname);
+		
+		var email = $('#email').val();
+        console.log(email);	
+		
+		var phone = $('#phone').val();
+        console.log(phone);
+
+        var message = $('#message').val();
+        console.log(message);
+
+       
+        //take the values from the form, and put them in an object
+        var newContact = {
+         "name": name,
+			"surname": surname,
+			"email": email,
+			"phone": phone,
+         "message": message
+        }
+        //put new object in data array
+        data.push(newContact);
+        console.log(data);
+
+        //send the new data to Firebase
+        messagesRef.set(data, function(err) {
+            if (err) {
+                alert("Data no go");
+            }else{
+            $("#form-wrapper").slideToggle();
+            $('#form-success-message').slideToggle();
+			}
+        });
+
+        return false;
+    })
+   
+    
+})
+</script>
+
+<script>
+
+    function disableScrolling() {
+        let x = window.scrollX;
+        let y = window.scrollY;
+        window.onscroll = function () { window.scrollTo(x, y); };
+    }
+
+    function enableScrolling() {
+        window.onscroll = function () { };
+    }
+
+    // Add copy button
+    let pres = document.getElementsByTagName('pre');
+    Array.from(pres).forEach((element2) => {
+        let element = document.createElement('button');
+        element.setAttribute('class', 'btn btn-primary');
+        element.innerHTML = 'Copy';
+        element.style.float = 'right';
+
+        element.addEventListener('click', (e) => {
+            disableScrolling();
+            console.log(e)
+            let x = window.screenX;
+            let y = window.screenY;
+
+            element.innerHTML = 'copied';
+            let tarea = document.createElement('textarea');
+            tarea.innerHTML = element.parentElement.children[1].innerText;
+            document.body.append(tarea);
+            tarea.focus();
+            tarea.select();
+            document.execCommand('copy');
+            tarea.style.display = 'none';
+            setTimeout(() => {
+                element.innerHTML = 'Copy';
+            }, 2000);
+            setTimeout(() => {
+                enableScrolling();
+            }, 0);
+        })
+        element2.insertBefore(element, element2.children[0]);
+    })
+
+    //Get the button
+    myBtton = document.getElementById("myBtn");
+    window.onscroll=function()
+    {
+        scrollFunction();
+    }
+    function scrollFunction(){
+        if (document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop >20)
+        {
+            myBtton.style.display="block";           
+        }else
+        {
+           myBtton.style.display="none";     
+          
+        }
+    }
+    //When user click on the top button
+    function topFunction(){
+      //  document.body.scrollTop =0;
+      //  document.documentElement.scrollTop=0;
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    }
+
+</script>
+
+    
+    
+
+
+</body>
+
+</html>

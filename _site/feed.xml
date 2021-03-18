@@ -1,4 +1,487 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-02-02T05:26:26+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">How I choose which services to use in Azure</title><link href="http://localhost:4000/blog/how-i-choose-AzureService" rel="alternate" type="text/html" title="How I choose which services to use in Azure" /><published>2021-01-07T09:55:00+00:00</published><updated>2021-01-07T09:55:00+00:00</updated><id>http://localhost:4000/blog/how-i-choose-AzureService</id><content type="html" xml:base="http://localhost:4000/blog/how-i-choose-AzureService">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-03-18T12:16:13+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE</title><link href="http://localhost:4000/blog/uploading-downloading-and-deleting-files-in-aws-s3-cloud-storage-using-asp-net-core" rel="alternate" type="text/html" title="UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE" /><published>2021-03-10T05:54:00+00:00</published><updated>2021-03-10T05:54:00+00:00</updated><id>http://localhost:4000/blog/documentupload-in-S3-using-aspnetcore</id><content type="html" xml:base="http://localhost:4000/blog/uploading-downloading-and-deleting-files-in-aws-s3-cloud-storage-using-asp-net-core">&lt;h2 id=&quot;uploading-downloading-and-deleting-files-in-aws-s3-cloud-storage-using-aspnet-core&quot;&gt;UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE&lt;/h2&gt;
+
+&lt;p&gt;This article will learn how to upload , download and delete files from amazon AWS S3 Cloud Storage using ASP.NET CORE.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-amazon-s3&quot;&gt;What is Amazon S3?&lt;/h2&gt;
+
+&lt;p&gt;Amazon S3 has a simple web services interface that you can use to store and retrieve any amount of data, at any time, from anywhere on the web.&lt;/p&gt;
+
+&lt;p&gt;https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html&lt;/p&gt;
+
+&lt;h2 id=&quot;what-youll-be-building&quot;&gt;What you’ll be building&lt;/h2&gt;
+
+&lt;p&gt;In this article, you’ll learn the following&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Creating application ASP.NET Core Application&lt;/li&gt;
+  &lt;li&gt;Installing packages from NuGet&lt;/li&gt;
+  &lt;li&gt;Creating a Bucket&lt;/li&gt;
+  &lt;li&gt;View after creating a bucket.&lt;/li&gt;
+  &lt;li&gt;Creating a User&lt;/li&gt;
+  &lt;li&gt;Adding a User to Group and assigning policy&lt;/li&gt;
+  &lt;li&gt;Created Table for Storing Documents&lt;/li&gt;
+  &lt;li&gt;Added Entity and DbContext class along with interface and Concrete for Storing and Reading the documents&lt;/li&gt;
+  &lt;li&gt;AppSettings for Storing AccessKey and SecretKey  configuring database connection string&lt;/li&gt;
+  &lt;li&gt;Creating Controller&lt;/li&gt;
+  &lt;li&gt;Upload File&lt;/li&gt;
+  &lt;li&gt;AllFiles&lt;/li&gt;
+  &lt;li&gt;Download file&lt;/li&gt;
+  &lt;li&gt;Delete file&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;creating-application-aspnet-core-application&quot;&gt;Creating application ASP.NET Core Application&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/01.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Next, we are going to set Project Name &lt;strong&gt;“WebStorageDemo”&lt;/strong&gt; and location.&lt;/p&gt;
+
+&lt;p&gt;We will choose .Net Core framework and ASP.NET Core Version 5.0 as the framework for application and we are not going to enable docker settings for this project.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/02.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now finally click on create button to create a project.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Project structure&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The project structure generated according to the configuration.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/03.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After creating project next, we are going to install below package from NuGet Packages.&lt;/p&gt;
+
+&lt;h3 id=&quot;installing-a-package-from-nuget&quot;&gt;Installing a package from NuGet&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;WindowsAzure.Storage&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/04.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Microsoft.EntityFrameworkCore&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/05.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Microsoft.EntityFrameworkCore.SqlServer&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/06.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;After installing packages next, we will create a bucket for that we must have an AWS account.&lt;/p&gt;
+
+&lt;p&gt;If you do not have an account, then create one account for free. https://aws.amazon.com/&lt;/p&gt;
+
+&lt;p&gt;I have already created an AWS account and logged in to the portal, for creating a bucket.&lt;/p&gt;
+
+&lt;h3 id=&quot;creating-a-bucket&quot;&gt;Creating a Bucket&lt;/h3&gt;
+
+&lt;p&gt;The bucket is a virtual container where we are going to store all objects.&lt;/p&gt;
+
+&lt;p&gt;For using Amazon S3 service, we must search S3 service in search.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/07.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After selecting S3 service, it redirects to buckets page.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/08.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here for creating a bucket, we need to click on Create bucket button.&lt;/p&gt;
+
+&lt;p&gt;For creating a bucket, we need to enter a unique bucket name and select region where you want this bucket to be made.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/09.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here we are going to enter the name of bucket &lt;strong&gt;(myawscorebucket)&lt;/strong&gt; and then select region as “Asia Pacific (Mumbai)” after selecting just scroll your page then you will find &lt;strong&gt;“Block Public Access settings for bucket”&lt;/strong&gt; here for the demo I am going to uncheck all checkboxes you must uncheck it according to your need.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/10.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Just scroll your page below you will find create bucket button just click on it to create a bucket.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/11.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;view-after-creating-a-bucket&quot;&gt;View after creating a bucket&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/12.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After creating a bucket next, we are going to create a user for we need to search IAM &lt;strong&gt;(Identity and Access Management).&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Adding a User&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/13.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After selecting IAM, you will see below screen.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/14.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After clicking on Add user, we will add a user name and select Access type as shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/15.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After filling in all details, click on the next permission button.&lt;/p&gt;
+
+&lt;h3 id=&quot;adding-a-user-to-group-and-assigning-policy&quot;&gt;Adding a User to Group and assigning policy&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/16.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We will create a group with the name “AWSS3FullAccess” and assign policy (AmazonS3FullAccess) to access Amazon S3.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/17.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Just click on Create group button for creating a group. Next step will be making tags I will skip it, and the final screen will be Review as shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/18.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The review page will show all details that you have configured just click on create a user it will create user successfully as shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/19.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now you have &lt;strong&gt;Access key ID&lt;/strong&gt; and &lt;strong&gt;Secret access key&lt;/strong&gt; for accessing S3 Services. Next, we have created a table in the database to store document details.&lt;/p&gt;
+
+&lt;h3 id=&quot;created-table-for-storing-documents&quot;&gt;Created Table for Storing Documents&lt;/h3&gt;
+
+&lt;p&gt;Creating a table with name &lt;strong&gt;DocumentStore&lt;/strong&gt; for storing document details.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/20.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Added Entity and DbContext class along with interface and Concrete for Storing and Reading the document.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/21.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In this part first, we have added the DocumentStore Entity.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+  using System;
+  using System.ComponentModel.DataAnnotations;
+  using System.ComponentModel.DataAnnotations.Schema;
+
+  namespace WebStorageDemo.Models
+  {
+      [Table(&quot;DocumentStore&quot;)]
+      public class DocumentStore
+      {
+          [Key]
+          public int DocumentId { get; set; }
+          public string DocumentName { get; set; }
+          public string DocumentType { get; set; }
+          public DateTime CreatedOn { get; set; }
+      }
+  }
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next, we have added DbContext with name BlobDbContext.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;  using Microsoft.EntityFrameworkCore;
+  using WebStorageDemo.Models;
+
+  namespace WebStorageDemo.Repository
+  {
+      public class BlobDbContext : DbContext
+      {
+          public BlobDbContext(DbContextOptions&amp;lt;BlobDbContext&amp;gt; options) : base(options)
+          {
+          }
+          public DbSet&amp;lt;DocumentStore&amp;gt; DocumentStore { get; set; }
+      }
+  }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After adding BlobDbContext next, we are going to add Interface and Concrete in the Repository folder.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+  using System.Collections.Generic;
+  using WebStorageDemo.Models;
+
+  namespace WebStorageDemo.Repository
+  {
+      public interface IDocumentData
+      {
+          void Add(DocumentStore documentStore);
+          List&amp;lt;DocumentStore&amp;gt; GetDocumentStoresList();
+          void Delete(DocumentStore documentStore);
+          DocumentStore GetDocumentbyDocumentId(int documentId);
+      }
+  }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;AppSettings for Storing AccessKey and SecretKey and configuring database connection string&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;It is not recommended to store the keys in the appsettings.json file you can use the best methods available for the demo I am storing keys in the appsettings.json file.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/22.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After setting keys in the appsettings.json file next, we will configure entity framework core, appsettings and registering IDocumentData interface.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddScoped&amp;lt;IDocumentData, DocumentData&amp;gt;();
+    var connection = Configuration.GetConnectionString(&quot;DatabaseConnection&quot;);
+    services.AddDbContext&amp;lt;BlobDbContext&amp;gt;(options =&amp;gt; options.UseSqlServer(connection));
+    services.Configure&amp;lt;AppSettings&amp;gt;(Configuration.GetSection(&quot;AwsSettings&quot;));
+    services.AddControllersWithViews();
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Everything is configured now let’s Create Controller for Uploading, Downloading and Deleting files.&lt;/p&gt;
+
+&lt;h3 id=&quot;creating-controller&quot;&gt;Creating Controller&lt;/h3&gt;
+
+&lt;p&gt;We will create Controller With name &lt;strong&gt;DemoController&lt;/strong&gt; with different action methods such as &lt;strong&gt;UploadFile, DeleteFile, DownloadFile and AllFiles&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Upload File&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We will access 2 things in Controller AppSettings, IDocumentData from appsettings we will get bucket name, Access key and Secret key, we will pass Access key and Secret key to BasicAWSCredentials method and then set RegionEndpoint.&lt;/p&gt;
+
+&lt;p&gt;After that, we will get uploaded files details from &lt;strong&gt;IFromFile&lt;/strong&gt; interface that we will assign to &lt;strong&gt;TransferUtilityUploadRequest&lt;/strong&gt; class of AWS and then finally call &lt;strong&gt;TransferUtility&lt;/strong&gt; class and access UploadAsync method to upload file meanwhile we are going to store all document details to the database.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;        [HttpGet]
+        public IActionResult UploadFile()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task&amp;lt;IActionResult&amp;gt; UploadFile(IFormFile file)
+        {
+            try
+            {
+
+                var bucketName = !string.IsNullOrWhiteSpace(_appSettings.FolderName)
+                    ? _appSettings.BucketName + @&quot;/&quot; + _appSettings.FolderName
+                    : _appSettings.BucketName;
+
+                var credentials = new BasicAWSCredentials(_appSettings.AccessKey, _appSettings.SecretKey);
+                var config = new AmazonS3Config
+                {
+                    RegionEndpoint = Amazon.RegionEndpoint.APSouth1
+                };
+
+
+                using var client = new AmazonS3Client(credentials, config);
+                await using var newMemoryStream = new MemoryStream();
+                await file.CopyToAsync(newMemoryStream);
+
+                var fileExtension = Path.GetExtension(file.FileName);
+                var documentName = $&quot;{GenerateId()}{fileExtension}&quot;;
+
+                // URL for Accessing Document for Demo
+                var result = $&quot;https://{bucketName}.s3.amazonaws.com/{documentName}&quot;;
+
+                var uploadRequest = new TransferUtilityUploadRequest
+                {
+                    InputStream = newMemoryStream,
+                    Key = documentName,
+                    BucketName = bucketName,
+                    CannedACL = S3CannedACL.PublicRead
+                };
+
+                var fileTransferUtility = new TransferUtility(client);
+                await fileTransferUtility.UploadAsync(uploadRequest);
+
+                DocumentStore documentStore = new DocumentStore()
+                {
+                    CreatedOn = DateTime.Now,
+                    DocumentId = 0,
+                    DocumentName = documentName,
+                    DocumentType = file.ContentType
+                };
+
+                _documentdata.Add(documentStore);
+
+            }
+            catch (AmazonS3Exception amazonS3Exception)
+            {
+                if (amazonS3Exception.ErrorCode != null
+                    &amp;amp;&amp;amp; (amazonS3Exception.ErrorCode.Equals(&quot;InvalidAccessKeyId&quot;) || amazonS3Exception.ErrorCode.Equals(&quot;InvalidSecurity&quot;)))
+                {
+                    throw new Exception(&quot;Check the provided AWS Credentials.&quot;);
+                }
+                else
+                {
+                    throw new Exception(&quot;Error occurred: &quot; + amazonS3Exception.Message);
+                }
+            }
+            return RedirectToAction(&quot;AllFiles&quot;);
+        }
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;output&quot;&gt;Output&lt;/h3&gt;
+
+&lt;p&gt;We are going to access the Demo/UploadFile path for uploading the file.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/23.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After uploading the file, we can see in AWS S3 objects section as shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/24.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;While uploading data, we are storing file details in the database.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/25.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;all-files&quot;&gt;All Files&lt;/h3&gt;
+
+&lt;p&gt;In this part, we are going to show all files which are stored in the database along with download and delete feature.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+  public IActionResult AllFiles()
+    {
+      return View(_documentdata.GetDocumentStoresList());
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/26.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;all-files-view&quot;&gt;All Files View&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+@model List&amp;lt;DocumentStore&amp;gt;
+
+&amp;lt;table class=&quot;table table-striped&quot;&amp;gt;
+    &amp;lt;thead&amp;gt;
+        &amp;lt;tr&amp;gt;
+            &amp;lt;th&amp;gt;DocumentId&amp;lt;/th&amp;gt;
+            &amp;lt;th&amp;gt;DocumentName&amp;lt;/th&amp;gt;
+            &amp;lt;th&amp;gt;CreatedOn&amp;lt;/th&amp;gt;
+            &amp;lt;th&amp;gt;Download&amp;lt;/th&amp;gt;
+            &amp;lt;th&amp;gt;Delete&amp;lt;/th&amp;gt;
+        &amp;lt;/tr&amp;gt;
+    &amp;lt;/thead&amp;gt;
+    &amp;lt;tbody&amp;gt;
+
+        @foreach (var data in Model)
+        {
+        &amp;lt;tr&amp;gt;
+            &amp;lt;td&amp;gt;@data.DocumentId&amp;lt;/td&amp;gt;
+            &amp;lt;td&amp;gt;@data.DocumentName&amp;lt;/td&amp;gt;
+            &amp;lt;td&amp;gt;@data.CreatedOn&amp;lt;/td&amp;gt;
+            &amp;lt;td&amp;gt;
+                &amp;lt;a class=&quot;btn btn-success&quot; href=&quot;/Demo/DownloadFile/@data.DocumentId&quot;&amp;gt;Download&amp;lt;/a&amp;gt;
+            &amp;lt;/td&amp;gt;
+            &amp;lt;td&amp;gt;
+                &amp;lt;a class=&quot;btn btn-danger&quot; href=&quot;/Demo/DeleteFile/@data.DocumentId&quot;&amp;gt;Delete&amp;lt;/a&amp;gt;
+            &amp;lt;/td&amp;gt;
+           
+        &amp;lt;/tr&amp;gt;
+        }
+    &amp;lt;/tbody&amp;gt;
+&amp;lt;/table&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;download-file&quot;&gt;Download file&lt;/h3&gt;
+
+&lt;p&gt;We have created the DownloadFile action method for downloading, which takes document id as an input parameter and then gets document details. From this document details, we will take document name and pass it to GetObjectAsync method, which will get an object from S3 Bucket which contains ResponseStream and objectResponse.Headers.ContentType.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;public async Task&amp;lt;IActionResult&amp;gt; DownloadFile(int id)
+        {
+            try
+            {
+                var getdocument = _documentdata.GetDocumentbyDocumentId(id);
+                var credentials = new BasicAWSCredentials(_appSettings.AccessKey, _appSettings.SecretKey);
+                var config = new AmazonS3Config
+                {
+                    RegionEndpoint = Amazon.RegionEndpoint.APSouth1
+                };
+                using var client = new AmazonS3Client(credentials, config);
+                var fileTransferUtility = new TransferUtility(client);
+
+                var objectResponse = await fileTransferUtility.S3Client.GetObjectAsync(new GetObjectRequest()
+                {
+                    BucketName = _appSettings.BucketName,
+                    Key = getdocument.DocumentName
+                });
+
+                if (objectResponse.ResponseStream == null)
+                {
+                    return NotFound();
+                }
+                return File(objectResponse.ResponseStream, objectResponse.Headers.ContentType, getdocument.DocumentName);
+            }
+            catch (AmazonS3Exception amazonS3Exception)
+            {
+                if (amazonS3Exception.ErrorCode != null
+                    &amp;amp;&amp;amp; (amazonS3Exception.ErrorCode.Equals(&quot;InvalidAccessKeyId&quot;) || amazonS3Exception.ErrorCode.Equals(&quot;InvalidSecurity&quot;)))
+                {
+                    throw new Exception(&quot;Check the provided AWS Credentials.&quot;);
+                }
+                else
+                {
+                    throw new Exception(&quot;Error occurred: &quot; + amazonS3Exception.Message);
+                }
+            }
+
+        }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Output&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/27.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;delete-file&quot;&gt;Delete file&lt;/h3&gt;
+
+&lt;p&gt;For Deleting file, we have created a DeleteFile action method that takes document id as an input parameter and then documents details. From this document details, we will take document name and pass it to DeleteObjectAsync method which will delete an object from S3 Bucket while we are going call delete method from DocumentData class delete the file from the database.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;public async Task&amp;lt;IActionResult&amp;gt; DeleteFile(int id)
+        {
+            try
+            {
+                var getdocument = _documentdata.GetDocumentbyDocumentId(id);
+                _documentdata.Delete(getdocument);
+
+                var credentials = new BasicAWSCredentials(_appSettings.AccessKey, _appSettings.SecretKey);
+                var config = new AmazonS3Config
+                {
+                    RegionEndpoint = Amazon.RegionEndpoint.APSouth1
+                };
+                using var client = new AmazonS3Client(credentials, config);
+                var fileTransferUtility = new TransferUtility(client);
+                await fileTransferUtility.S3Client.DeleteObjectAsync(new DeleteObjectRequest()
+                {
+                    BucketName = _appSettings.BucketName,
+                    Key = getdocument.DocumentName
+                });
+
+            }
+            catch (AmazonS3Exception amazonS3Exception)
+            {
+                if (amazonS3Exception.ErrorCode != null
+                    &amp;amp;&amp;amp; (amazonS3Exception.ErrorCode.Equals(&quot;InvalidAccessKeyId&quot;) || amazonS3Exception.ErrorCode.Equals(&quot;InvalidSecurity&quot;)))
+                {
+                    throw new Exception(&quot;Check the provided AWS Credentials.&quot;);
+                }
+                else
+                {
+                    throw new Exception(&quot;Error occurred: &quot; + amazonS3Exception.Message);
+                }
+            }
+            return RedirectToAction(&quot;AllFiles&quot;);
+        }
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Before delete&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/28.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;After delete&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/29.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Output&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/30.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;In this article, we have learned how to upload , download and delete files from amazon AWS S3 Cloud Storage using ASP.NET CORE in simple steps hope you have like it please share it let others learn from it.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aspnetcore.png" /></entry><entry><title type="html">How I choose which services to use in Azure</title><link href="http://localhost:4000/blog/how-i-choose-AzureService" rel="alternate" type="text/html" title="How I choose which services to use in Azure" /><published>2021-01-07T09:55:00+00:00</published><updated>2021-01-07T09:55:00+00:00</updated><id>http://localhost:4000/blog/how-i-choose-AzureService</id><content type="html" xml:base="http://localhost:4000/blog/how-i-choose-AzureService">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;Microsoft Azure is huge and changes fast! I’m impressed by the services and capabilities offered in Azure and by how quickly Microsoft releases new services and features. It can be overwhelming. There is so much out there — and the list continues to grow — it is sometimes hard to know which services to use for a given scenario.&lt;/p&gt;
 
@@ -3793,166 +4276,4 @@ wishMe()
 
 &lt;p&gt;https://github.com/girishgodage/ai-personal-assistant&lt;/p&gt;
 
-&lt;p&gt;Happy Coding !!&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">How to build your own AI personal assistant using Python</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/G1.png" /></entry><entry><title type="html">How To Easily Create Azure Functions Using Azure Portal</title><link href="http://localhost:4000/blog/how-to-easily-create-azure-functions-using-azure-portal" rel="alternate" type="text/html" title="How To Easily Create Azure Functions Using Azure Portal" /><published>2020-10-07T11:41:00+00:00</published><updated>2020-10-07T11:41:00+00:00</updated><id>http://localhost:4000/blog/azure-Function_using_AzurePortal</id><content type="html" xml:base="http://localhost:4000/blog/how-to-easily-create-azure-functions-using-azure-portal">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;In this article, we are going to discuss Azure Functions and how you can easily create your first Azure function app using Azure Portal. This is the first article of my new series called Azure functions for beginners. So let’s grab a cup of coffee and start learning.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-are-azure-functions&quot;&gt;What are Azure Functions?&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;Function As A Service (FaaS)&lt;/strong&gt; is a category of &lt;em&gt;cloud computing services&lt;/em&gt; that provides a platform in which you just need to think about writing business logic without thinking about the infrastructure required for its execution.&lt;/p&gt;
-
-&lt;p&gt;Microsoft Azure provides two types of FaaS i.e &lt;strong&gt;Azure Logic Apps&lt;/strong&gt; and &lt;strong&gt;Azure Functions&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;So in this article, we are going to discuss &lt;strong&gt;Azure functions only.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;according-to-microsoft-docs&quot;&gt;According to &lt;strong&gt;Microsoft docs&lt;/strong&gt;:&lt;/h3&gt;
-
-&lt;p&gt;&lt;em&gt;Azure Functions allows you to run small pieces of code (called “functions”) without worrying about application infrastructure. With Azure Functions, the cloud infrastructure provides all the up-to-date servers you need to keep your application running at scale.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Azure functions are &lt;strong&gt;event-driven&lt;/strong&gt; which means that you can run your function code when some event is triggered from either existing on-premise service or any other Azure service or third party service. The azure function can be scaled and you need to pay only for the resources as you consume. &lt;em&gt;Azure functions support lots of trigger points such as Http trigger, queue trigger, etc.&lt;/em&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;some-of-the-features-of-azure-functions-are&quot;&gt;Some of the features of Azure functions are:&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Azure Functions has great language support such as C#, Java, JavaScript, Python, and PowerShell.&lt;/li&gt;
-  &lt;li&gt;Supports lots of triggers such as Service bus trigger, Http triggers, Queue trigger, etc.&lt;/li&gt;
-  &lt;li&gt;We need to pay only for the resources as you consume i.e. Pay-per-use pricing model&lt;/li&gt;
-  &lt;li&gt;We can install any of the libraries of your choice using NuGet or NPM&lt;/li&gt;
-  &lt;li&gt;We can easily implement CI/CD using Github, Azure DevOps Service&lt;/li&gt;
-  &lt;li&gt;We can also add integrated security on Http triggered based Azure functions using OAuth providers such as Azure Active Directory, Facebook, Google, Twitter, and Microsoft Account.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;below-are-several-templates-available-for-creating-azure-function-for-performing-different-operations&quot;&gt;Below are several templates available for creating Azure function for performing different operations:&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;HTTP trigger&lt;/li&gt;
-  &lt;li&gt;Blob storage trigger&lt;/li&gt;
-  &lt;li&gt;Queue storage trigger&lt;/li&gt;
-  &lt;li&gt;Service Bus Queue trigger&lt;/li&gt;
-  &lt;li&gt;Service Bus Topic trigger&lt;/li&gt;
-  &lt;li&gt;Timer trigger&lt;/li&gt;
-  &lt;li&gt;Event Grid trigger&lt;/li&gt;
-  &lt;li&gt;Event Hub trigger&lt;/li&gt;
-  &lt;li&gt;Azure Cosmos DB trigger&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;You can get more information about Azure Functions &lt;a href=&quot;https://docs.microsoft.com/en-us/azure/azure-functions/&quot;&gt;here&lt;/a&gt;. So in this article, we are going to create an HTTP trigger-based Azure function using C# from Azure Portal. I will cover all other types of templates in my next article.&lt;/p&gt;
-
-&lt;h2 id=&quot;create-azure-function-using-azure-portal&quot;&gt;Create Azure Function using Azure Portal&lt;/h2&gt;
-
-&lt;h3 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://portal.azure.com/&quot;&gt;Azure&lt;/a&gt; account (If you don’t have an Azure subscription, &lt;a href=&quot;https://azure.microsoft.com/free&quot;&gt;create a free trial account&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;step-1---creating-a-function-app&quot;&gt;Step 1 - Creating a Function App&lt;/h3&gt;
-
-&lt;p&gt;While creating a function you must have a function app to host the execution of your functions. You can group multiple functions into one function app which helps for deployment, scaling, easy for development &amp;amp; sharing of resources One function app can have multiple functions.&lt;/p&gt;
-
-&lt;p&gt;Log in to the &lt;a href=&quot;https://portal.azure.com/&quot;&gt;Azure portal&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;In the Search bar, search as “function app” and then select the Function app.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/7/1.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/7/2.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;After that click on the &lt;strong&gt;“Add”&lt;/strong&gt; button to add a new function app. Fill out the basic details:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/7/3.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Azure has Resource Groups(RG) which acts as a container for your resources. So now we are going to create a function app resource then first we need to create a Resource Group. If you have already created RG then you can use the same here. Under the Resource group click on the Create New button and give a unique RG name. I have Created a new resource group.&lt;/li&gt;
-  &lt;li&gt;You need to provide a unique name for your function app.&lt;/li&gt;
-  &lt;li&gt;Select an appropriate run time for your app. Since we are going to create a function using C# so I have used .net core as runtime.&lt;/li&gt;
-  &lt;li&gt;Select a version and region.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Once we filled out basic details, then click on the &lt;strong&gt;Next: Hosting button&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/7/4.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;You need to provide a storage account while creating a function app. If you have already created a Storage account then you can use the same here. Or you can create new as well.&lt;/li&gt;
-  &lt;li&gt;You have to select an operating system on which your app needs to be run.&lt;/li&gt;
-  &lt;li&gt;Finally, you have to select a pricing plan for your app. You can see more details about Pricing &lt;a href=&quot;https://azure.microsoft.com/pricing/details/functions/&quot;&gt;here&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Once we filled out hosting details then click on the &lt;strong&gt;Next: Monitoring button&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/7/5.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Application Insights&lt;/strong&gt;, a feature of Azure Monitor, which is an extensible &lt;em&gt;Application Performance Management (APM) service&lt;/em&gt; for developers and DevOps professionals. It is used to monitor your live applications. So if you want to integrate it in your function app the select Enable Application Insights flag to Yes.&lt;/p&gt;
-
-&lt;p&gt;Now click on &lt;strong&gt;Review:Create button&lt;/strong&gt; and review all the details and click on the &lt;strong&gt;Create button&lt;/strong&gt;. Wait for a few minutes to create the resources.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/7/6.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Once deployment complete click on &lt;strong&gt;Go to resource button&lt;/strong&gt; to see out new function app.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/7/7.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/7/8.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;step-2---creating-an-http-triggered-based-azure-function&quot;&gt;Step 2 - Creating an HTTP triggered based Azure Function&lt;/h2&gt;
-
-&lt;p&gt;Once you navigate to the Function app then click on Functions in the left panel and then click on the Add button.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/7/9.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Now select the &lt;strong&gt;HTTP trigger&lt;/strong&gt; from the right panel. Now set &lt;strong&gt;Name and Authorization&lt;/strong&gt; level for your new function.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/7/10.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Provide a name for your new function.&lt;/li&gt;
-  &lt;li&gt;To restrict the use of your function we can set the Authorization level. There are three types of levels available:
-    &lt;ul&gt;
-      &lt;li&gt;1] When we set levels as Function, then we have to provide a function key to call our function.&lt;/li&gt;
-      &lt;li&gt;2] When we set as &lt;strong&gt;Admin&lt;/strong&gt;, then you need to provide the master key. Both the function key and admin keys are found in the ‘keys’ management panel on the portal when your function is selected.&lt;/li&gt;
-      &lt;li&gt;3] When we don’t want any authorization then we can simply set level as &lt;strong&gt;Anonymous&lt;/strong&gt;.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Now click on the Create Function button. You then automatically redirect to function once the function is successfully created.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/7/11.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Click on the &lt;strong&gt;“Code + Test” button&lt;/strong&gt; under the Developer section from the left sidebar panel.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/7/12.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;So you can see the basic function code written which accepts name from the query string or from the request body and append to name to the Hello string and return the output.&lt;/p&gt;
-
-&lt;h2 id=&quot;step-3---testing-of-http-triggered-based-azure-function&quot;&gt;Step 3 - Testing of Http triggered based Azure Function&lt;/h2&gt;
-
-&lt;p&gt;Now click on the “Test/Run” button. For this default function, you can provide the input property name from either body or either from the query string.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/7/13.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Click on the &lt;strong&gt;Run button&lt;/strong&gt; from the right panel. So you can see the output in the &lt;strong&gt;“Output”&lt;/strong&gt; tab in the right panel.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/7/14.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;This is all about running it from Portal. You can run this function from the browser or from the postman as well. To get the function URL click on the &lt;strong&gt;“Get Function URL”&lt;/strong&gt; button.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/7/15.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Copy the URL.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/7/16.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Since our function accepts input property name from the query string then paste the URL into the browser and append &lt;code class=&quot;highlighter-rouge&quot;&gt;?name=AzFunction&lt;/code&gt; and hit the URL. You will see the output in the browser.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/7/17.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Since this is the HTTP Trigger function we can run it from postman as well. So paste the URL in postman and pass input and see the output.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/azure/7/18.png&quot; alt=&quot;image info&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;That’s it. You have created your Azure function using Azure Portal.&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;In this article, I have explained Azure Functions and how to create a function using the Azure Portal. Also, I demonstrated how to test function from portal, browser, and postman. I really hope that you enjoyed this article, share it with friends, and please do not hesitate to send me your thoughts or comments. Stay tuned for more Azure Functions articles.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Introduction</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/azureFunctionApp.png" /></entry></feed>
+&lt;p&gt;Happy Coding !!&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">How to build your own AI personal assistant using Python</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/G1.png" /></entry></feed>
