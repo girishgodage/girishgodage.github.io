@@ -1,153 +1,157 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-03-19T10:29:41+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE</title><link href="http://localhost:4000/blog/uploading-downloading-and-deleting-files-in-aws-s3-cloud-storage-using-asp-net-core" rel="alternate" type="text/html" title="UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE" /><published>2021-03-10T05:54:00+00:00</published><updated>2021-03-10T05:54:00+00:00</updated><id>http://localhost:4000/blog/documentupload-in-S3-using-aspnetcore</id><content type="html" xml:base="http://localhost:4000/blog/uploading-downloading-and-deleting-files-in-aws-s3-cloud-storage-using-asp-net-core">## UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-03-20T07:09:49+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE</title><link href="http://localhost:4000/blog/uploading-downloading-and-deleting-files-in-aws-s3-cloud-storage-using-asp-net-core" rel="alternate" type="text/html" title="UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE" /><published>2021-03-10T05:54:00+00:00</published><updated>2021-03-10T05:54:00+00:00</updated><id>http://localhost:4000/blog/documentupload-in-S3-using-aspnetcore</id><content type="html" xml:base="http://localhost:4000/blog/uploading-downloading-and-deleting-files-in-aws-s3-cloud-storage-using-asp-net-core">&lt;h2 id=&quot;uploading-downloading-and-deleting-files-in-aws-s3-cloud-storage-using-aspnet-core&quot;&gt;UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE&lt;/h2&gt;
 
-This article will learn how to upload , download and delete files from amazon AWS S3 Cloud Storage using ASP.NET CORE.
+&lt;p&gt;This article will learn how to upload , download and delete files from amazon AWS S3 Cloud Storage using ASP.NET CORE.&lt;/p&gt;
 
-## What is Amazon S3?
+&lt;h2 id=&quot;what-is-amazon-s3&quot;&gt;What is Amazon S3?&lt;/h2&gt;
 
-Amazon S3 has a simple web services interface that you can use to store and retrieve any amount of data, at any time, from anywhere on the web.
+&lt;p&gt;Amazon S3 has a simple web services interface that you can use to store and retrieve any amount of data, at any time, from anywhere on the web.&lt;/p&gt;
 
-https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html
+&lt;p&gt;https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html&lt;/p&gt;
 
-## What you'll be building
+&lt;h2 id=&quot;what-youll-be-building&quot;&gt;What you’ll be building&lt;/h2&gt;
 
-In this article, you'll learn the following
+&lt;p&gt;In this article, you’ll learn the following&lt;/p&gt;
 
-* Creating application ASP.NET Core Application
-* Installing packages from NuGet
-* Creating a Bucket
-* View after creating a bucket.
-* Creating a User
-* Adding a User to Group and assigning policy
-* Created Table for Storing Documents
-* Added Entity and DbContext class along with interface and Concrete for Storing and Reading the documents
-* AppSettings for Storing AccessKey and SecretKey  configuring database connection string
-* Creating Controller
-* Upload File
-* AllFiles
-* Download file
-* Delete file
+&lt;ul&gt;
+  &lt;li&gt;Creating application ASP.NET Core Application&lt;/li&gt;
+  &lt;li&gt;Installing packages from NuGet&lt;/li&gt;
+  &lt;li&gt;Creating a Bucket&lt;/li&gt;
+  &lt;li&gt;View after creating a bucket.&lt;/li&gt;
+  &lt;li&gt;Creating a User&lt;/li&gt;
+  &lt;li&gt;Adding a User to Group and assigning policy&lt;/li&gt;
+  &lt;li&gt;Created Table for Storing Documents&lt;/li&gt;
+  &lt;li&gt;Added Entity and DbContext class along with interface and Concrete for Storing and Reading the documents&lt;/li&gt;
+  &lt;li&gt;AppSettings for Storing AccessKey and SecretKey  configuring database connection string&lt;/li&gt;
+  &lt;li&gt;Creating Controller&lt;/li&gt;
+  &lt;li&gt;Upload File&lt;/li&gt;
+  &lt;li&gt;AllFiles&lt;/li&gt;
+  &lt;li&gt;Download file&lt;/li&gt;
+  &lt;li&gt;Delete file&lt;/li&gt;
+&lt;/ul&gt;
 
-### Creating application ASP.NET Core Application
+&lt;h3 id=&quot;creating-application-aspnet-core-application&quot;&gt;Creating application ASP.NET Core Application&lt;/h3&gt;
 
-![image](/img/aspdotnetcore/1/01.png)
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/01.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-Next, we are going to set Project Name **“WebStorageDemo”** and location.
+&lt;p&gt;Next, we are going to set Project Name &lt;strong&gt;“WebStorageDemo”&lt;/strong&gt; and location.&lt;/p&gt;
 
-We will choose .Net Core framework and ASP.NET Core Version 5.0 as the framework for application and we are not going to enable docker settings for this project.
+&lt;p&gt;We will choose .Net Core framework and ASP.NET Core Version 5.0 as the framework for application and we are not going to enable docker settings for this project.&lt;/p&gt;
 
-![image](/img/aspdotnetcore/1/02.png)
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/02.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-Now finally click on create button to create a project.
+&lt;p&gt;Now finally click on create button to create a project.&lt;/p&gt;
 
-**Project structure**
+&lt;p&gt;&lt;strong&gt;Project structure&lt;/strong&gt;&lt;/p&gt;
 
-The project structure generated according to the configuration.
+&lt;p&gt;The project structure generated according to the configuration.&lt;/p&gt;
 
-![image](/img/aspdotnetcore/1/03.png)
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/03.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-After creating project next, we are going to install below package from NuGet Packages.
+&lt;p&gt;After creating project next, we are going to install below package from NuGet Packages.&lt;/p&gt;
 
-### Installing a package from NuGet
+&lt;h3 id=&quot;installing-a-package-from-nuget&quot;&gt;Installing a package from NuGet&lt;/h3&gt;
 
-1. WindowsAzure.Storage
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;WindowsAzure.Storage&lt;/p&gt;
 
-      ![image](/img/aspdotnetcore/1/04.png)
+    &lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/04.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Microsoft.EntityFrameworkCore&lt;/p&gt;
 
-2. Microsoft.EntityFrameworkCore
+    &lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/05.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Microsoft.EntityFrameworkCore.SqlServer&lt;/p&gt;
 
-      ![image](/img/aspdotnetcore/1/05.png)
+    &lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/06.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
 
-3. Microsoft.EntityFrameworkCore.SqlServer
+&lt;p&gt;After installing packages next, we will create a bucket for that we must have an AWS account.&lt;/p&gt;
 
-      ![image](/img/aspdotnetcore/1/06.png)
+&lt;p&gt;If you do not have an account, then create one account for free. https://aws.amazon.com/&lt;/p&gt;
 
-After installing packages next, we will create a bucket for that we must have an AWS account.
+&lt;p&gt;I have already created an AWS account and logged in to the portal, for creating a bucket.&lt;/p&gt;
 
+&lt;h3 id=&quot;creating-a-bucket&quot;&gt;Creating a Bucket&lt;/h3&gt;
 
-If you do not have an account, then create one account for free. https://aws.amazon.com/
+&lt;p&gt;The bucket is a virtual container where we are going to store all objects.&lt;/p&gt;
 
+&lt;p&gt;For using Amazon S3 service, we must search S3 service in search.&lt;/p&gt;
 
-I have already created an AWS account and logged in to the portal, for creating a bucket.
-   
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/07.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-### Creating a Bucket
+&lt;p&gt;After selecting S3 service, it redirects to buckets page.&lt;/p&gt;
 
-The bucket is a virtual container where we are going to store all objects.
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/08.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-For using Amazon S3 service, we must search S3 service in search.
+&lt;p&gt;Here for creating a bucket, we need to click on Create bucket button.&lt;/p&gt;
 
-![image](/img/aspdotnetcore/1/07.png)
+&lt;p&gt;For creating a bucket, we need to enter a unique bucket name and select region where you want this bucket to be made.&lt;/p&gt;
 
-After selecting S3 service, it redirects to buckets page.
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/09.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-![image](/img/aspdotnetcore/1/08.png)
+&lt;p&gt;Here we are going to enter the name of bucket &lt;strong&gt;(myawscorebucket)&lt;/strong&gt; and then select region as “Asia Pacific (Mumbai)” after selecting just scroll your page then you will find &lt;strong&gt;“Block Public Access settings for bucket”&lt;/strong&gt; here for the demo I am going to uncheck all checkboxes you must uncheck it according to your need.&lt;/p&gt;
 
-Here for creating a bucket, we need to click on Create bucket button.
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/10.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-For creating a bucket, we need to enter a unique bucket name and select region where you want this bucket to be made.
+&lt;p&gt;Just scroll your page below you will find create bucket button just click on it to create a bucket.&lt;/p&gt;
 
-![image](/img/aspdotnetcore/1/09.png)
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/11.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-Here we are going to enter the name of bucket **(myawscorebucket)** and then select region as “Asia Pacific (Mumbai)” after selecting just scroll your page then you will find **“Block Public Access settings for bucket”** here for the demo I am going to uncheck all checkboxes you must uncheck it according to your need.
+&lt;h3 id=&quot;view-after-creating-a-bucket&quot;&gt;View after creating a bucket&lt;/h3&gt;
 
-![image](/img/aspdotnetcore/1/10.png)
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/12.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-Just scroll your page below you will find create bucket button just click on it to create a bucket.
+&lt;p&gt;After creating a bucket next, we are going to create a user for we need to search IAM &lt;strong&gt;(Identity and Access Management).&lt;/strong&gt;&lt;/p&gt;
 
-![image](/img/aspdotnetcore/1/11.png)
+&lt;p&gt;&lt;strong&gt;Adding a User&lt;/strong&gt;&lt;/p&gt;
 
-### View after creating a bucket
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/13.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-![image](/img/aspdotnetcore/1/12.png)
+&lt;p&gt;After selecting IAM, you will see below screen.&lt;/p&gt;
 
-After creating a bucket next, we are going to create a user for we need to search IAM **(Identity and Access Management).**
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/14.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-**Adding a User**
+&lt;p&gt;After clicking on Add user, we will add a user name and select Access type as shown below.&lt;/p&gt;
 
-![image](/img/aspdotnetcore/1/13.png)
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/15.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-After selecting IAM, you will see below screen.
+&lt;p&gt;After filling in all details, click on the next permission button.&lt;/p&gt;
 
-![image](/img/aspdotnetcore/1/14.png)
+&lt;h3 id=&quot;adding-a-user-to-group-and-assigning-policy&quot;&gt;Adding a User to Group and assigning policy&lt;/h3&gt;
 
-After clicking on Add user, we will add a user name and select Access type as shown below.
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/16.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-![image](/img/aspdotnetcore/1/15.png)
+&lt;p&gt;We will create a group with the name “AWSS3FullAccess” and assign policy (AmazonS3FullAccess) to access Amazon S3.&lt;/p&gt;
 
-After filling in all details, click on the next permission button.
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/17.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-### Adding a User to Group and assigning policy
+&lt;p&gt;Just click on Create group button for creating a group. Next step will be making tags I will skip it, and the final screen will be Review as shown below.&lt;/p&gt;
 
-![image](/img/aspdotnetcore/1/16.png)
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/18.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-We will create a group with the name “AWSS3FullAccess” and assign policy (AmazonS3FullAccess) to access Amazon S3.
+&lt;p&gt;The review page will show all details that you have configured just click on create a user it will create user successfully as shown below.&lt;/p&gt;
 
-![image](/img/aspdotnetcore/1/17.png)
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/19.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-Just click on Create group button for creating a group. Next step will be making tags I will skip it, and the final screen will be Review as shown below.
+&lt;p&gt;Now you have &lt;strong&gt;Access key ID&lt;/strong&gt; and &lt;strong&gt;Secret access key&lt;/strong&gt; for accessing S3 Services. Next, we have created a table in the database to store document details.&lt;/p&gt;
 
-![image](/img/aspdotnetcore/1/18.png)
+&lt;h3 id=&quot;created-table-for-storing-documents&quot;&gt;Created Table for Storing Documents&lt;/h3&gt;
 
-The review page will show all details that you have configured just click on create a user it will create user successfully as shown below.
+&lt;p&gt;Creating a table with name &lt;strong&gt;DocumentStore&lt;/strong&gt; for storing document details.&lt;/p&gt;
 
-![image](/img/aspdotnetcore/1/19.png)
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/20.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-Now you have **Access key ID** and **Secret access key** for accessing S3 Services. Next, we have created a table in the database to store document details.
+&lt;p&gt;Added Entity and DbContext class along with interface and Concrete for Storing and Reading the document.&lt;/p&gt;
 
-### Created Table for Storing Documents
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/21.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-Creating a table with name **DocumentStore** for storing document details.
+&lt;p&gt;In this part first, we have added the DocumentStore Entity.&lt;/p&gt;
 
-![image](/img/aspdotnetcore/1/20.png)
-
-Added Entity and DbContext class along with interface and Concrete for Storing and Reading the document.
-
-![image](/img/aspdotnetcore/1/21.png)
-
-In this part first, we have added the DocumentStore Entity.
-
-```code
-
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
   using System;
   using System.ComponentModel.DataAnnotations;
   using System.ComponentModel.DataAnnotations.Schema;
@@ -165,30 +169,28 @@ In this part first, we have added the DocumentStore Entity.
       }
   }
 
-```
+&lt;/code&gt;&lt;/pre&gt;
 
-Next, we have added DbContext with name BlobDbContext.
+&lt;p&gt;Next, we have added DbContext with name BlobDbContext.&lt;/p&gt;
 
-```code
-  using Microsoft.EntityFrameworkCore;
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;  using Microsoft.EntityFrameworkCore;
   using WebStorageDemo.Models;
 
   namespace WebStorageDemo.Repository
   {
       public class BlobDbContext : DbContext
       {
-          public BlobDbContext(DbContextOptions&lt;BlobDbContext&gt; options) : base(options)
+          public BlobDbContext(DbContextOptions&amp;lt;BlobDbContext&amp;gt; options) : base(options)
           {
           }
-          public DbSet&lt;DocumentStore&gt; DocumentStore { get; set; }
+          public DbSet&amp;lt;DocumentStore&amp;gt; DocumentStore { get; set; }
       }
   }
-```
+&lt;/code&gt;&lt;/pre&gt;
 
-After adding BlobDbContext next, we are going to add Interface and Concrete in the Repository folder.
+&lt;p&gt;After adding BlobDbContext next, we are going to add Interface and Concrete in the Repository folder.&lt;/p&gt;
 
-```code
-
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
   using System.Collections.Generic;
   using WebStorageDemo.Models;
 
@@ -197,55 +199,55 @@ After adding BlobDbContext next, we are going to add Interface and Concrete in t
       public interface IDocumentData
       {
           void Add(DocumentStore documentStore);
-          List&lt;DocumentStore&gt; GetDocumentStoresList();
+          List&amp;lt;DocumentStore&amp;gt; GetDocumentStoresList();
           void Delete(DocumentStore documentStore);
           DocumentStore GetDocumentbyDocumentId(int documentId);
       }
   }
-```
+&lt;/code&gt;&lt;/pre&gt;
 
-AppSettings for Storing AccessKey and SecretKey and configuring database connection string
+&lt;p&gt;AppSettings for Storing AccessKey and SecretKey and configuring database connection string&lt;/p&gt;
 
-&gt; It is not recommended to store the keys in the appsettings.json file you can use the best methods available for the demo I am storing keys in the appsettings.json file.
+&lt;blockquote&gt;
+  &lt;p&gt;It is not recommended to store the keys in the appsettings.json file you can use the best methods available for the demo I am storing keys in the appsettings.json file.&lt;/p&gt;
+&lt;/blockquote&gt;
 
-![image](/img/aspdotnetcore/1/22.png)
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/22.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-After setting keys in the appsettings.json file next, we will configure entity framework core, appsettings and registering IDocumentData interface.
+&lt;p&gt;After setting keys in the appsettings.json file next, we will configure entity framework core, appsettings and registering IDocumentData interface.&lt;/p&gt;
 
-```code
-
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
 public void ConfigureServices(IServiceCollection services)
 {
-    services.AddScoped&lt;IDocumentData, DocumentData&gt;();
+    services.AddScoped&amp;lt;IDocumentData, DocumentData&amp;gt;();
     var connection = Configuration.GetConnectionString(&quot;DatabaseConnection&quot;);
-    services.AddDbContext&lt;BlobDbContext&gt;(options =&gt; options.UseSqlServer(connection));
-    services.Configure&lt;AppSettings&gt;(Configuration.GetSection(&quot;AwsSettings&quot;));
+    services.AddDbContext&amp;lt;BlobDbContext&amp;gt;(options =&amp;gt; options.UseSqlServer(connection));
+    services.Configure&amp;lt;AppSettings&amp;gt;(Configuration.GetSection(&quot;AwsSettings&quot;));
     services.AddControllersWithViews();
 }
 
-```
+&lt;/code&gt;&lt;/pre&gt;
 
-Everything is configured now let’s Create Controller for Uploading, Downloading and Deleting files.
+&lt;p&gt;Everything is configured now let’s Create Controller for Uploading, Downloading and Deleting files.&lt;/p&gt;
 
-### Creating Controller
+&lt;h3 id=&quot;creating-controller&quot;&gt;Creating Controller&lt;/h3&gt;
 
-We will create Controller With name **DemoController** with different action methods such as **UploadFile, DeleteFile, DownloadFile and AllFiles**.
+&lt;p&gt;We will create Controller With name &lt;strong&gt;DemoController&lt;/strong&gt; with different action methods such as &lt;strong&gt;UploadFile, DeleteFile, DownloadFile and AllFiles&lt;/strong&gt;.&lt;/p&gt;
 
-**Upload File**
+&lt;p&gt;&lt;strong&gt;Upload File&lt;/strong&gt;&lt;/p&gt;
 
-We will access 2 things in Controller AppSettings, IDocumentData from appsettings we will get bucket name, Access key and Secret key, we will pass Access key and Secret key to BasicAWSCredentials method and then set RegionEndpoint.
+&lt;p&gt;We will access 2 things in Controller AppSettings, IDocumentData from appsettings we will get bucket name, Access key and Secret key, we will pass Access key and Secret key to BasicAWSCredentials method and then set RegionEndpoint.&lt;/p&gt;
 
-After that, we will get uploaded files details from **IFromFile** interface that we will assign to **TransferUtilityUploadRequest** class of AWS and then finally call **TransferUtility** class and access UploadAsync method to upload file meanwhile we are going to store all document details to the database.
+&lt;p&gt;After that, we will get uploaded files details from &lt;strong&gt;IFromFile&lt;/strong&gt; interface that we will assign to &lt;strong&gt;TransferUtilityUploadRequest&lt;/strong&gt; class of AWS and then finally call &lt;strong&gt;TransferUtility&lt;/strong&gt; class and access UploadAsync method to upload file meanwhile we are going to store all document details to the database.&lt;/p&gt;
 
-```code
-        [HttpGet]
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;        [HttpGet]
         public IActionResult UploadFile()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task&lt;IActionResult&gt; UploadFile(IFormFile file)
+        public async Task&amp;lt;IActionResult&amp;gt; UploadFile(IFormFile file)
         {
             try
             {
@@ -296,7 +298,7 @@ After that, we will get uploaded files details from **IFromFile** interface that
             catch (AmazonS3Exception amazonS3Exception)
             {
                 if (amazonS3Exception.ErrorCode != null
-                    &amp;&amp; (amazonS3Exception.ErrorCode.Equals(&quot;InvalidAccessKeyId&quot;) || amazonS3Exception.ErrorCode.Equals(&quot;InvalidSecurity&quot;)))
+                    &amp;amp;&amp;amp; (amazonS3Exception.ErrorCode.Equals(&quot;InvalidAccessKeyId&quot;) || amazonS3Exception.ErrorCode.Equals(&quot;InvalidSecurity&quot;)))
                 {
                     throw new Exception(&quot;Check the provided AWS Credentials.&quot;);
                 }
@@ -308,80 +310,77 @@ After that, we will get uploaded files details from **IFromFile** interface that
             return RedirectToAction(&quot;AllFiles&quot;);
         }
 
-```
+&lt;/code&gt;&lt;/pre&gt;
 
-### Output
+&lt;h3 id=&quot;output&quot;&gt;Output&lt;/h3&gt;
 
-We are going to access the Demo/UploadFile path for uploading the file.
+&lt;p&gt;We are going to access the Demo/UploadFile path for uploading the file.&lt;/p&gt;
 
-![image](/img/aspdotnetcore/1/23.png)
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/23.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-After uploading the file, we can see in AWS S3 objects section as shown below.
+&lt;p&gt;After uploading the file, we can see in AWS S3 objects section as shown below.&lt;/p&gt;
 
-![image](/img/aspdotnetcore/1/24.png)
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/24.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-While uploading data, we are storing file details in the database.
+&lt;p&gt;While uploading data, we are storing file details in the database.&lt;/p&gt;
 
-![image](/img/aspdotnetcore/1/25.png)
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/25.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-### All Files
+&lt;h3 id=&quot;all-files&quot;&gt;All Files&lt;/h3&gt;
 
-In this part, we are going to show all files which are stored in the database along with download and delete feature.
+&lt;p&gt;In this part, we are going to show all files which are stored in the database along with download and delete feature.&lt;/p&gt;
 
-```code
-
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
   public IActionResult AllFiles()
     {
       return View(_documentdata.GetDocumentStoresList());
     }
-```
+&lt;/code&gt;&lt;/pre&gt;
 
-![image](/img/aspdotnetcore/1/26.png)
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/26.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-### All Files View
+&lt;h3 id=&quot;all-files-view&quot;&gt;All Files View&lt;/h3&gt;
 
-```code
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+@model List&amp;lt;DocumentStore&amp;gt;
 
-@model List&lt;DocumentStore&gt;
-
-&lt;table class=&quot;table table-striped&quot;&gt;
-    &lt;thead&gt;
-        &lt;tr&gt;
-            &lt;th&gt;DocumentId&lt;/th&gt;
-            &lt;th&gt;DocumentName&lt;/th&gt;
-            &lt;th&gt;CreatedOn&lt;/th&gt;
-            &lt;th&gt;Download&lt;/th&gt;
-            &lt;th&gt;Delete&lt;/th&gt;
-        &lt;/tr&gt;
-    &lt;/thead&gt;
-    &lt;tbody&gt;
+&amp;lt;table class=&quot;table table-striped&quot;&amp;gt;
+    &amp;lt;thead&amp;gt;
+        &amp;lt;tr&amp;gt;
+            &amp;lt;th&amp;gt;DocumentId&amp;lt;/th&amp;gt;
+            &amp;lt;th&amp;gt;DocumentName&amp;lt;/th&amp;gt;
+            &amp;lt;th&amp;gt;CreatedOn&amp;lt;/th&amp;gt;
+            &amp;lt;th&amp;gt;Download&amp;lt;/th&amp;gt;
+            &amp;lt;th&amp;gt;Delete&amp;lt;/th&amp;gt;
+        &amp;lt;/tr&amp;gt;
+    &amp;lt;/thead&amp;gt;
+    &amp;lt;tbody&amp;gt;
 
         @foreach (var data in Model)
         {
-        &lt;tr&gt;
-            &lt;td&gt;@data.DocumentId&lt;/td&gt;
-            &lt;td&gt;@data.DocumentName&lt;/td&gt;
-            &lt;td&gt;@data.CreatedOn&lt;/td&gt;
-            &lt;td&gt;
-                &lt;a class=&quot;btn btn-success&quot; href=&quot;/Demo/DownloadFile/@data.DocumentId&quot;&gt;Download&lt;/a&gt;
-            &lt;/td&gt;
-            &lt;td&gt;
-                &lt;a class=&quot;btn btn-danger&quot; href=&quot;/Demo/DeleteFile/@data.DocumentId&quot;&gt;Delete&lt;/a&gt;
-            &lt;/td&gt;
+        &amp;lt;tr&amp;gt;
+            &amp;lt;td&amp;gt;@data.DocumentId&amp;lt;/td&amp;gt;
+            &amp;lt;td&amp;gt;@data.DocumentName&amp;lt;/td&amp;gt;
+            &amp;lt;td&amp;gt;@data.CreatedOn&amp;lt;/td&amp;gt;
+            &amp;lt;td&amp;gt;
+                &amp;lt;a class=&quot;btn btn-success&quot; href=&quot;/Demo/DownloadFile/@data.DocumentId&quot;&amp;gt;Download&amp;lt;/a&amp;gt;
+            &amp;lt;/td&amp;gt;
+            &amp;lt;td&amp;gt;
+                &amp;lt;a class=&quot;btn btn-danger&quot; href=&quot;/Demo/DeleteFile/@data.DocumentId&quot;&amp;gt;Delete&amp;lt;/a&amp;gt;
+            &amp;lt;/td&amp;gt;
            
-        &lt;/tr&gt;
+        &amp;lt;/tr&amp;gt;
         }
-    &lt;/tbody&gt;
-&lt;/table&gt;
+    &amp;lt;/tbody&amp;gt;
+&amp;lt;/table&amp;gt;
 
-```
+&lt;/code&gt;&lt;/pre&gt;
 
-### Download file
+&lt;h3 id=&quot;download-file&quot;&gt;Download file&lt;/h3&gt;
 
-We have created the DownloadFile action method for downloading, which takes document id as an input parameter and then gets document details. From this document details, we will take document name and pass it to GetObjectAsync method, which will get an object from S3 Bucket which contains ResponseStream and objectResponse.Headers.ContentType.
+&lt;p&gt;We have created the DownloadFile action method for downloading, which takes document id as an input parameter and then gets document details. From this document details, we will take document name and pass it to GetObjectAsync method, which will get an object from S3 Bucket which contains ResponseStream and objectResponse.Headers.ContentType.&lt;/p&gt;
 
-```code
-public async Task&lt;IActionResult&gt; DownloadFile(int id)
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;public async Task&amp;lt;IActionResult&amp;gt; DownloadFile(int id)
         {
             try
             {
@@ -409,7 +408,7 @@ public async Task&lt;IActionResult&gt; DownloadFile(int id)
             catch (AmazonS3Exception amazonS3Exception)
             {
                 if (amazonS3Exception.ErrorCode != null
-                    &amp;&amp; (amazonS3Exception.ErrorCode.Equals(&quot;InvalidAccessKeyId&quot;) || amazonS3Exception.ErrorCode.Equals(&quot;InvalidSecurity&quot;)))
+                    &amp;amp;&amp;amp; (amazonS3Exception.ErrorCode.Equals(&quot;InvalidAccessKeyId&quot;) || amazonS3Exception.ErrorCode.Equals(&quot;InvalidSecurity&quot;)))
                 {
                     throw new Exception(&quot;Check the provided AWS Credentials.&quot;);
                 }
@@ -420,18 +419,17 @@ public async Task&lt;IActionResult&gt; DownloadFile(int id)
             }
 
         }
-```
+&lt;/code&gt;&lt;/pre&gt;
 
-**Output**
+&lt;p&gt;&lt;strong&gt;Output&lt;/strong&gt;&lt;/p&gt;
 
-![image](/img/aspdotnetcore/1/27.png)
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/27.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-### Delete file
+&lt;h3 id=&quot;delete-file&quot;&gt;Delete file&lt;/h3&gt;
 
-For Deleting file, we have created a DeleteFile action method that takes document id as an input parameter and then documents details. From this document details, we will take document name and pass it to DeleteObjectAsync method which will delete an object from S3 Bucket while we are going call delete method from DocumentData class delete the file from the database.
+&lt;p&gt;For Deleting file, we have created a DeleteFile action method that takes document id as an input parameter and then documents details. From this document details, we will take document name and pass it to DeleteObjectAsync method which will delete an object from S3 Bucket while we are going call delete method from DocumentData class delete the file from the database.&lt;/p&gt;
 
-```code
-public async Task&lt;IActionResult&gt; DeleteFile(int id)
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;public async Task&amp;lt;IActionResult&amp;gt; DeleteFile(int id)
         {
             try
             {
@@ -455,7 +453,7 @@ public async Task&lt;IActionResult&gt; DeleteFile(int id)
             catch (AmazonS3Exception amazonS3Exception)
             {
                 if (amazonS3Exception.ErrorCode != null
-                    &amp;&amp; (amazonS3Exception.ErrorCode.Equals(&quot;InvalidAccessKeyId&quot;) || amazonS3Exception.ErrorCode.Equals(&quot;InvalidSecurity&quot;)))
+                    &amp;amp;&amp;amp; (amazonS3Exception.ErrorCode.Equals(&quot;InvalidAccessKeyId&quot;) || amazonS3Exception.ErrorCode.Equals(&quot;InvalidSecurity&quot;)))
                 {
                     throw new Exception(&quot;Check the provided AWS Credentials.&quot;);
                 }
@@ -467,23 +465,341 @@ public async Task&lt;IActionResult&gt; DeleteFile(int id)
             return RedirectToAction(&quot;AllFiles&quot;);
         }
 
-```
+&lt;/code&gt;&lt;/pre&gt;
 
-**Before delete**
+&lt;p&gt;&lt;strong&gt;Before delete&lt;/strong&gt;&lt;/p&gt;
 
-![image](/img/aspdotnetcore/1/28.png)
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/28.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-**After delete**
+&lt;p&gt;&lt;strong&gt;After delete&lt;/strong&gt;&lt;/p&gt;
 
-![image](/img/aspdotnetcore/1/29.png)
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/29.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-**Output**
+&lt;p&gt;&lt;strong&gt;Output&lt;/strong&gt;&lt;/p&gt;
 
-![image](/img/aspdotnetcore/1/30.png)
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/30.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-## Summary
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
 
-In this article, we have learned how to upload , download and delete files from amazon AWS S3 Cloud Storage using ASP.NET CORE in simple steps hope you have like it please share it let others learn from it.</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aspnetcore.png" /></entry><entry><title type="html">How I choose which services to use in Azure</title><link href="http://localhost:4000/blog/how-i-choose-AzureService" rel="alternate" type="text/html" title="How I choose which services to use in Azure" /><published>2021-01-07T09:55:00+00:00</published><updated>2021-01-07T09:55:00+00:00</updated><id>http://localhost:4000/blog/how-i-choose-AzureService</id><content type="html" xml:base="http://localhost:4000/blog/how-i-choose-AzureService">## Introduction
+&lt;p&gt;In this article, we have learned how to upload , download and delete files from amazon AWS S3 Cloud Storage using ASP.NET CORE in simple steps hope you have like it please share it let others learn from it.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aspnetcore.png" /></entry><entry><title type="html">HOW TO CROP AND RESIZE IMAGE IN ASP.NET CORE</title><link href="http://localhost:4000/blog/how-to-crop-and-resize-image-in-asp-net-core" rel="alternate" type="text/html" title="HOW TO CROP AND RESIZE IMAGE IN ASP.NET CORE" /><published>2021-02-14T05:54:00+00:00</published><updated>2021-02-14T05:54:00+00:00</updated><id>http://localhost:4000/blog/how-to-crop-and-resize-image-in-asp-net-core</id><content type="html" xml:base="http://localhost:4000/blog/how-to-crop-and-resize-image-in-asp-net-core">&lt;h2 id=&quot;how-to-crop-and-resize-image-in-aspnet-core&quot;&gt;HOW TO CROP AND RESIZE IMAGE IN ASP.NET CORE&lt;/h2&gt;
+
+&lt;p&gt;In this article, we are going to learn how to Crop and Resize Image and store in a folder in a step by step way.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/girishgodage/WebCropper&quot;&gt;Github link for Source&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/2/08.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Every application we develop now days has the option to set a profile photo right. Some application has a clause of fix length and Size of profile photo where the user needs to upload an image of fix length and Size which cause issues.&lt;/p&gt;
+
+&lt;p&gt;In this part we are going allow users to upload a photo then adjust the zoom of the picture as they need then we are going resize Image in different format and store in a folder.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;200 * 200   Passport size&lt;/li&gt;
+  &lt;li&gt;180 * 180   Facebook size&lt;/li&gt;
+  &lt;li&gt;32 * 32     Icon size&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/2/1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;packages-used&quot;&gt;Packages Used&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;ImageSharp&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;ImageSharp is a new, fully-featured, fully managed, cross-platform, 2D graphics library. Designed to simplify image processing, ImageSharp brings you an incredibly powerful yet beautifully simple API.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Croppie&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Croppie is a fast, easy to use image cropping plugin with tons of configuration options&lt;/p&gt;
+
+&lt;h2 id=&quot;table-of-contents&quot;&gt;Table of Contents&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Getting Started with Upload Crop Resize Image in ASP.NET Core&lt;/li&gt;
+  &lt;li&gt;Project structure&lt;/li&gt;
+  &lt;li&gt;Installing SixLabors.ImageSharp Extension from NuGet Package&lt;/li&gt;
+  &lt;li&gt;Adding Controller and View&lt;/li&gt;
+  &lt;li&gt;Adding CustomCrop View&lt;/li&gt;
+  &lt;li&gt;Adding jQuery and Croppie CDN Reference on View&lt;/li&gt;
+  &lt;li&gt;Initialize Croppie and read file Content&lt;/li&gt;
+  &lt;li&gt;Adding CustomCrop Post Action Method&lt;/li&gt;
+  &lt;li&gt;Ajax Request for Posting Cropped Image&lt;/li&gt;
+  &lt;li&gt;Upload and Cropped Image&lt;/li&gt;
+  &lt;li&gt;Output&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;getting-started-with-upload-crop-resize-image-in-aspnet-core&quot;&gt;Getting Started with Upload Crop Resize Image in ASP.NET Core&lt;/h3&gt;
+
+&lt;p&gt;We are going to create a new application with Name WebCropper for demo as shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/2/02.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Next, we are going to set Project Name “WebCropper” and location. In last part, we are going to choose .&lt;/p&gt;
+
+&lt;p&gt;Net Core framework and ASP.NET Core Version 5.0 as the framework for application and few advance settings for such as configuring https and enabling docker we are not going to enable docker settings for this project.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/2/03.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now finally click on create button to create a project.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Project structure&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The project structure generated according to the configuration.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/2/04.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After creating project next, we are going to install &lt;strong&gt;SixLabors.ImageSharp&lt;/strong&gt; Extension from NuGet Package.&lt;/p&gt;
+
+&lt;h3 id=&quot;installing-sixlaborsimagesharp-extension-from-nuget-package&quot;&gt;Installing SixLabors.ImageSharp Extension from NuGet Package&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/2/05.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After installing next, we are going to add Controller and View where we will allow uses to upload and crop photo.&lt;/p&gt;
+
+&lt;h3 id=&quot;adding-controller-and-view&quot;&gt;Adding Controller and View&lt;/h3&gt;
+
+&lt;p&gt;Let’s Add Controller with name Demo Controller and Action Method with Name CustomCrop.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+
+namespace WebCropper.Controllers
+{
+    public class DemoController : Controller
+    {
+        public IActionResult CustomCrop()
+        {
+            return View();
+        }
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next after adding Controller and Action Method next, we are going to add View with Name CustomCrop.&lt;/p&gt;
+
+&lt;p&gt;On this View, we are going to add input of type file to upload Image.&lt;/p&gt;
+
+&lt;h3 id=&quot;adding-customcrop-view&quot;&gt;Adding CustomCrop View&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;@{
+    Layout = null;
+}
+
+&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot; /&amp;gt;
+    &amp;lt;title&amp;gt;CustomCrop&amp;lt;/title&amp;gt;
+    &amp;lt;link href=&quot;~/lib/bootstrap/dist/css/bootstrap.css&quot; rel=&quot;stylesheet&quot; /&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+    &amp;lt;div class=&quot;container&quot;&amp;gt;
+        &amp;lt;div class=&quot;d-flex justify-content-center&quot;&amp;gt;
+            &amp;lt;div class=&quot;col-md-6&quot;&amp;gt;
+
+                &amp;lt;div class=&quot;card&quot; style=&quot;margin-top:10px;&quot;&amp;gt;
+                    &amp;lt;div class=&quot;card-header&quot;&amp;gt;Cropper in ASP.NET Core&amp;lt;/div&amp;gt;
+                    &amp;lt;div class=&quot;card-body&quot;&amp;gt;
+                        &amp;lt;div id=&quot;main-cropper&quot;&amp;gt;&amp;lt;/div&amp;gt;
+                        &amp;lt;input type=&quot;file&quot; id=&quot;select&quot; class=&quot;form-control&quot; value=&quot;Choose Image&quot; accept=&quot;image/*&quot;&amp;gt;
+                        &amp;lt;button id=&quot;btnupload&quot; style=&quot;margin-top: 10px;&quot; name=&quot;btnupload&quot; class=&quot;btn btn-success&quot;&amp;gt;Crop&amp;lt;/button&amp;gt;
+                    &amp;lt;/div&amp;gt;
+                &amp;lt;/div&amp;gt;
+            &amp;lt;/div&amp;gt;
+        &amp;lt;/div&amp;gt;
+    &amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next, after adding View next, we are going to add reference of image cropping plugin.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-is-croppie&quot;&gt;What is Croppie?&lt;/h3&gt;
+
+&lt;p&gt;Croppie is a fast, easy to use image cropping plugin with tons of configuration options!&lt;/p&gt;
+
+&lt;p&gt;https://foliotek.github.io/Croppie/&lt;/p&gt;
+
+&lt;p&gt;Adding jQuery and Croppie CDN Reference on View&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;&amp;lt;head&amp;gt;
+  &amp;lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot; /&amp;gt;
+  &amp;lt;title&amp;gt;CustomCrop&amp;lt;/title&amp;gt;
+  &amp;lt;link href=&quot;~/lib/bootstrap/dist/css/bootstrap.css&quot; rel=&quot;stylesheet&quot; /&amp;gt;
+  &amp;lt;script src=&quot;~/lib/jquery/dist/jquery.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+  &amp;lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css&quot; /&amp;gt;
+  &amp;lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+  &amp;lt;style&amp;gt;
+        .croppie-container {
+            width: 100%;
+            height: 80%;
+        }
+   &amp;lt;/style&amp;gt;
+&amp;lt;/head&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next, we are going to Initialize croppie.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+&amp;lt;script type=&quot;text/javascript&quot;&amp;gt;
+
+    //initialize Croppie
+    var basic = $('#main-cropper').croppie
+    ({
+        viewport: { width: 300, height: 300 },
+        boundary: { width: 500, height: 400 },
+        showZoomer: true,
+        url: '/DefaultImages/preview.jpg',
+        format:'png' //'jpeg'|'png'|'webp'
+    });
+
+    //Reading the contents of the specified Blob or File
+    function readFile(input) {
+        if (input.files &amp;amp;&amp;amp; input.files[0])
+        {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#main-cropper').croppie('bind', {
+                    url: e.target.result
+                });
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+   // Change Event to Read file content from File input
+    $('#select').on('change', function () { readFile(this); });
+
+&amp;lt;/script&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After initializing Croppie next, we are going to run the application to see Created UI.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/2/06.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After we have created UI next let’s create an Action method for handling Ajax POST request.&lt;/p&gt;
+
+&lt;h3 id=&quot;adding-customcrop-post-action-method&quot;&gt;Adding CustomCrop Post Action Method&lt;/h3&gt;
+
+&lt;p&gt;In this part, we are going create action method which is going to handle ajax POST request where we are going receive Cropped file.&lt;/p&gt;
+
+&lt;p&gt;Reading Stream of Cropped file we are going pass it to ImageSharp Load Method which will return image object on image object we can apply an operation on Image resize a then store in a folder.&lt;/p&gt;
+
+&lt;p&gt;We are going to store Image in a folder for that we are going to create a folder in wwwroot with Name Images.&lt;/p&gt;
+
+&lt;p&gt;We are going to resize Image in 3 different sizes 200, 180, 32.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/2/07.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+[HttpPost]
+        public IActionResult CustomCrop(string filename, IFormFile blob)
+        {
+            try
+            {
+                using (var image = Image.Load(blob.OpenReadStream()))
+                {
+                    string systemFileExtenstion = filename.Substring(filename.LastIndexOf('.'));
+
+                    image.Mutate(x =&amp;gt; x.Resize(180, 180));
+                    var newfileName180 = GenerateFileName(&quot;Photo_180_180_&quot;, systemFileExtenstion);
+                    var filepath160 = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), &quot;wwwroot&quot;, &quot;Images&quot;)).Root + $@&quot;\{newfileName180}&quot;;
+                    image.Save(filepath160);
+
+                    var newfileName200 = GenerateFileName(&quot;Photo_200_200_&quot;, systemFileExtenstion);
+                    var filepath200 = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), &quot;wwwroot&quot;, &quot;Images&quot;)).Root + $@&quot;\{newfileName200}&quot;;
+                    image.Mutate(x =&amp;gt; x.Resize(200, 200));
+                    image.Save(filepath200);
+
+                    var newfileName32 = GenerateFileName(&quot;Photo_32_32_&quot;, systemFileExtenstion);
+                    var filepath32 = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), &quot;wwwroot&quot;, &quot;Images&quot;)).Root + $@&quot;\{newfileName32}&quot;;
+                    image.Mutate(x =&amp;gt; x.Resize(32, 32));
+                    image.Save(filepath32);
+
+                }
+
+                return Json(new { Message = &quot;OK&quot; });
+            }
+            catch (Exception)
+            {
+                return Json(new { Message = &quot;ERROR&quot; });
+            }
+        }
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To generate Unique file name, we have created the below method.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+public string GenerateFileName(string fileTypeName, string fileextenstion)
+ {
+     if (fileTypeName == null) throw new ArgumentNullException(nameof(fileTypeName));
+     if (fileextenstion == null) throw new ArgumentNullException(nameof(fileextenstion));
+     return $&quot;{fileTypeName}_{DateTime.Now:yyyyMMddHHmmssfff}_{Guid.NewGuid():N}{fileextenstion}&quot;;
+ }
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After adding CustomCrop action method next, we are going to write XMLHttpRequest request to post filename and file to CustomCrop method.&lt;/p&gt;
+
+&lt;h3 id=&quot;ajax-request-for-posting-cropped-image&quot;&gt;Ajax Request for Posting Cropped Image&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;// Upload button to Post Cropped Image to Store.
+    $('#btnupload').on('click', function ()
+    {
+        basic.croppie('result', 'blob').then(function (blob)
+        {
+            var formData = new FormData();
+
+            formData.append('filename', 'FileName.png');
+            formData.append('blob', blob);
+            var myAppUrlSettings =
+            {
+                MyUsefulUrl: '@Url.Action(&quot;CustomCrop&quot;, &quot;Demo&quot;)'
+            }
+            var request = new XMLHttpRequest();
+            request.open('POST', myAppUrlSettings.MyUsefulUrl);
+            request.send(formData);
+            request.onreadystatechange = function () { 
+               // Call a function when the state changes.
+                if (this.readyState === XMLHttpRequest.DONE &amp;amp;&amp;amp; this.status === 200)
+                {
+                    var response = JSON.parse(request.responseText);
+
+                    if (response.message == &quot;OK&quot;)
+                    {
+                        alert('Photo Cropped Successfully!');
+                        window.location.reload();
+                    }
+                    if (response.message == &quot;ERROR&quot;)
+                    {
+                        window.location.reload();
+                    }
+                }
+            }
+        });
+    });
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After adding code for posting cropped images next, let’s run application and test.&lt;/p&gt;
+
+&lt;h3 id=&quot;upload-and-cropped-image&quot;&gt;Upload and Cropped Image&lt;/h3&gt;
+
+&lt;p&gt;In this part just upload Image and adjust Image and click on crop button to crop Image.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/2/08.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After cropping, images will be stored in the folder, as shown below.&lt;/p&gt;
+
+&lt;h3 id=&quot;output&quot;&gt;Output&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/2/09.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">HOW TO CROP AND RESIZE IMAGE IN ASP.NET CORE</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aspnetcore.png" /></entry><entry><title type="html">How I choose which services to use in Azure</title><link href="http://localhost:4000/blog/how-i-choose-AzureService" rel="alternate" type="text/html" title="How I choose which services to use in Azure" /><published>2021-01-07T09:55:00+00:00</published><updated>2021-01-07T09:55:00+00:00</updated><id>http://localhost:4000/blog/how-i-choose-AzureService</id><content type="html" xml:base="http://localhost:4000/blog/how-i-choose-AzureService">## Introduction
 
 Microsoft Azure is huge and changes fast! I’m impressed by the services and capabilities offered in Azure and by how quickly Microsoft releases new services and features. It can be overwhelming. There is so much out there — and the list continues to grow — it is sometimes hard to know which services to use for a given scenario.
 
@@ -740,151 +1056,7 @@ So, these were just a couple
 of services in the Azure space,
 just for running your application and for storing data.
 
-Obviously, there are lot of more services out there for securing your application and for doing IoT and all that stuff.</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Introduction</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/azure/12/img1.png" /></entry><entry><title type="html">Facebook Authentication And Authorization In Server-Side Blazor App</title><link href="http://localhost:4000/blog/facebook-authentication-and-authorization-in-server-side-blazor-app" rel="alternate" type="text/html" title="Facebook Authentication And Authorization In Server-Side Blazor App" /><published>2020-12-20T09:46:00+00:00</published><updated>2020-12-20T09:46:00+00:00</updated><id>http://localhost:4000/blog/facebook-authentication-and-authorization-in-server-side-blazor-app</id><content type="html" xml:base="http://localhost:4000/blog/facebook-authentication-and-authorization-in-server-side-blazor-app">## Introduction
-
-In this article, we will learn how to implement authentication and authorization using Facebook in a server-side Blazor application.
-
-## Prerequisites
-  * Install the latest .NET Core 5.0 Current  SDK from [here](https://dotnet.microsoft.com/download/dotnet-core/).
-  * Install the latest Visual Studio 2019 from [here](https://visualstudio.com/).
-  
-## Source Code
-
-Get the source code from [GitHub](https://github.com/girishgodage/Facebook-Authentication-with-server-side-Blazor).
-
-## Create Server Side Blazor Application
-
-To create a server-side Blazor app, open Visual Studio 2019 and follow the steps mentioned below:
-
-    1. Click on “Create a new project”.
-    2. Select “Blazor App” from available project types. Click on Next.
-    3. A new “Configure your new project” screen will open. Put the name of the project as BlazorFbAuth and click Create.
-    4. In the next screen, select “.NET.5.0 ” from dropdowns on the top left.
-    5. Select “Blazor Server App” from the list of available templates.
-    6. Click on Change Authentication button, a “Change Authentication” dialog box will open.
-    7.Select “Individual User Account” and click OK. Click on Create button to create the application.
-
-These steps are shown in the GIF image below.
-
-![image info](/img/blazor/5/CreateProject.gif)
-
-
-Before running the application, we need to apply migrations to our app. Navigate to Tools &gt;&gt; NuGet Package Manager &gt;&gt; Package Manager Console.
-
-It will open the Package Manager Console. Put in **Update-Database** command and hit enter. This will update the database using Entity Framework Code First Migrations.
-
-![image info](/img/blazor/5/UpdateDatabase.png)
-
-Right-click on the project in solution explorer and select properties. Select Debug from left side menu then scroll to the bottom of the page. Note the SSL enabled URL. In this case, the URL is https://localhost:44345/. We need this URL to configure the Facebook app which we will be doing in our next section. Refer to the image below.
-
-![image info](/img/blazor/5/AppURL.png)
-
-## Creating a Facebook App
-
-We need to create a Facebook app and configure Facebook Login for it. We will then use the App ID and App Secret of this Facebook app to implement Facebook authentication in our Blazor app. Navigate to https://developers.facebook.com/apps/ and sign in using your Facebook account. Follow the steps mentioned below.
-
- * Click on the “Create App” button under the “My Apps” menu on the top.
- * It will open a “Create a New App ID” dialog box. Put in the “Display Name” and “Contact Email”.
- * The default email will be your Facebook email id. However, you can change it and put any email of your choice. Click on “Create App ID” to create the app. Refer to the image below.
-
-![image info](/img/blazor/5/BlazorFBAuthAppInfo.png)
-
- * Navigate to the app dashboard by clicking on the “Dashboard” link on the navigation menu on the left.
- * Under the “Add a Product” section, select the “Facebook Login” product and click on “Set Up” button.
- * A QuickStart wizard will be launched asking you to select a platform for the app. Skip this wizard and click on Facebook Login &gt; Settings from the navigation menu on the left.
- * You will be navigated to the Client OAuth Settings page. In the Valid OAuth redirect URIs field enter the base URL of your application with /signin-facebook appended to it. For this tutorial, the URL will be https://localhost:44345/signin-facebook. Click on “Save Changes” button.
- * Now click on Settings &gt; Basic on the navigation menu. You will see the App ID and App Secret values. Make a note of these values as we need them to configure Facebook authentication in our Blazor app.
-  
-
-Refer to the GIF below for a better understanding.
-
-![image info](/img/blazor/5/FBSettings.gif)
-
-
-## Important Note
-
-&gt; The trademark or brand element of Facebook is not allowed to be used as the Display Name of your Facebook App. Therefore, words such as FB, Face, Book, Insta, etc. cannot be used as Display Name.
-
-
-## Installing Facebook authentication middleware NuGet package
-
-To configure the ASP.NET Core middleware for Facebook authentication we need to install the nuget package in our application. The version of this nuget package must match the version of .NET Core 3 which we are using in our project.
-
-Open https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Facebook/. Select the version of .NET 5.0.1 from the “Version History”. Copy the command from the “package manager” tab. Run this command in the NuGet package manager console of our application.
-
-For this application, we are using .NET 5.0.1. Therefore, we will run the following command in the package manager console of our application.
-
-```code
-    Install-Package Microsoft.AspNetCore.Authentication.Facebook -Version 5.0.1
-```
-
-Refer to the image below:
-
-![image info](/img/blazor/5/InstallFBAuthentication.png)
-
-## Configure the server-side Blazor app to use Facebook authentication
-
-We need to store the App ID and App Secret field values in our application. We will use Secret Manager tool for this purpose. The Secret Manager tool is a project tool that is used to store secrets such as password, API Key, etc. for a .NET Core project during the development process. Secret Manager tool allows us to associate app secrets with a specific project. It also allow us to share them across multiple projects.
-
-Open our web application once again and Right-click the project in Solution Explorer. Select Manage User Secrets from the context menu. A secrets.json file will open. Put the following code in it.
-
-```code
-    {
-        &quot;Authentication:Facebook:AppId&quot;: &quot;Your Facebook AppId&quot;,
-        &quot;Authentication:Facebook:AppSecret&quot;: &quot;Your Facebook AppSecret&quot;
-    }
-```
-
-Now open Startup.cs file and put the following code into ConfigureServices method.
-
-```code
-
-    services.AddAuthentication().AddFacebook(facebookOptions =&gt;
-    {
-        facebookOptions.AppId = Configuration[&quot;Authentication:Facebook:AppId&quot;];
-        facebookOptions.AppSecret = Configuration[&quot;Authentication:Facebook:AppSecret&quot;];
-        facebookOptions.Events = new OAuthEvents()
-        {
-            OnRemoteFailure = loginFailureHandler =&gt;
-            {
-            var authProperties = facebookOptions.StateDataFormat.Unprotect(loginFailureHandler.Request.Query[&quot;state&quot;]);
-            loginFailureHandler.Response.Redirect(&quot;/Identity/Account/Login&quot;);
-            loginFailureHandler.HandleResponse();
-            return Task.FromResult(0);
-            }
-        };
-    });
-```
-
-This code will read the AppId and AppSecret from the secrets.json file. The AddFacebook() method is an extension method and it is used to configure the Facebook Authentication options for our application. We are also handling the event of OnRemoteFailure in this code section. Hence, if the user denies access to his Facebook account, then he will be redirected back to the Login page of our Blazor application.
-
-## Adding authorization to Blazor pages
-
-Blazor has added a new built-in component called AuthorizeView. This component is used to display different content based on the authentication state of the application. This component will display the child component only when the user is authorized.  The AuthorizeView component is configured in \Shared\LoginDisplay.razor file.
-
-To implement authorization to a specific page, we need to use the [Authorize] attribute. Blazor has introduced a new directive @attribute, which is used to include the [Authorize] attribute for a page. In this application, we will apply [Authorize] to the FetchData component. This will prohibit unauthorized access to this component. Open FetchData.razor page and add the following lines at the top of the page.
-
-```code
-
-@attribute [Authorize]
-
-```
-
-## Execution Demo
-
-Launch the application. Navigate to Fetch Data component by clicking on the “Fetch data” link on the menu on the left. You will see a “Not authorized” message displayed on the screen. Click “Log In” on the menu at the top. In the next page click on the “Facebook” button to login with Facebook. On the next page, you will be asked to provide the login credentials of your Facebook account. Fill the details and click Log In. Upon successful login, you will be able to access the Fetch Data component. If you do not want to login then click on “Not now”. It will redirect you back to the Login page of Blazor app.
-
-Refer to the GIF below for a better understanding.
-
-![image info](/img/blazor/5/output.gif)
-
-Once you are logged in successfully into our Blazor app using Facebook, you will be also logged in to https://www.facebook.com/. This will create a set of browser cookie for https://www.facebook.com/. Therefore, the Blazor app will not ask the Facebook credentials when you try to login again. If you log out from Facebook then you have to enter credentials while logging into Blazor app.
-
-## Conclusion
-
-We learned how to implement Facebook authentication and authorization in a server-side Blazor application. We have created and configured a Facebook app to implement Facebook authentication. To implement authorization for a specific component in Blazor, we have used the [Authorize] attribute. We have used Microsoft.AspNetCore.Authentication.Facebook nuget package to configure the middleware for Facebook authentication.
-
-Please get the source code from [GitHub](https://github.com/girishgodage/Facebook-Authentication-with-server-side-Blazor) and play around to get a better understanding.</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Introduction</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/blazor/5/output.gif" /></entry><entry><title type="html">How to Deploy Angular Application to Heroku</title><link href="http://localhost:4000/blog/how-to-deploy-angular-application-to-heroku" rel="alternate" type="text/html" title="How to Deploy Angular Application to Heroku" /><published>2020-12-20T09:46:00+00:00</published><updated>2020-12-20T09:46:00+00:00</updated><id>http://localhost:4000/blog/deploy-angular-on-Heroku</id><content type="html" xml:base="http://localhost:4000/blog/how-to-deploy-angular-application-to-heroku">## Introduction
+Obviously, there are lot of more services out there for securing your application and for doing IoT and all that stuff.</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Introduction</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/azure/12/img1.png" /></entry><entry><title type="html">How to Deploy Angular Application to Heroku</title><link href="http://localhost:4000/blog/how-to-deploy-angular-application-to-heroku" rel="alternate" type="text/html" title="How to Deploy Angular Application to Heroku" /><published>2020-12-20T09:46:00+00:00</published><updated>2020-12-20T09:46:00+00:00</updated><id>http://localhost:4000/blog/deploy-angular-on-Heroku</id><content type="html" xml:base="http://localhost:4000/blog/how-to-deploy-angular-application-to-heroku">## Introduction
 
 It has always ‘seemed’ easy until you try it. Having deployed other apps to heroku, I encountered series of challenges deploying Angular 11 recently but I pulled through finally. So am writing to explain in details how I did it.
 
@@ -1166,7 +1338,151 @@ Viola!! Our Angular app is Ready and LIVE!
 
 For following through till this stage, Thank you.
 
-Provide your valuable comment below, also if you encountered any issue or want to suggest better ways.</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Introduction</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/deployment/1/AnularDeployHeroku.png" /></entry><entry><title type="html">Multi-Language Translator Using Blazor And Azure Cognitive Services</title><link href="http://localhost:4000/blog/multi-Language-Translator-using-blazor-AzureCognitiveServices" rel="alternate" type="text/html" title="Multi-Language Translator Using Blazor And Azure Cognitive Services" /><published>2020-12-17T16:55:00+00:00</published><updated>2020-12-17T16:55:00+00:00</updated><id>http://localhost:4000/blog/multi-language-translator-using-blazor-and-azure-cognitive-service</id><content type="html" xml:base="http://localhost:4000/blog/multi-Language-Translator-using-blazor-AzureCognitiveServices">## Introduction
+Provide your valuable comment below, also if you encountered any issue or want to suggest better ways.</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Introduction</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/deployment/1/AnularDeployHeroku.png" /></entry><entry><title type="html">Facebook Authentication And Authorization In Server-Side Blazor App</title><link href="http://localhost:4000/blog/facebook-authentication-and-authorization-in-server-side-blazor-app" rel="alternate" type="text/html" title="Facebook Authentication And Authorization In Server-Side Blazor App" /><published>2020-12-20T09:46:00+00:00</published><updated>2020-12-20T09:46:00+00:00</updated><id>http://localhost:4000/blog/facebook-authentication-and-authorization-in-server-side-blazor-app</id><content type="html" xml:base="http://localhost:4000/blog/facebook-authentication-and-authorization-in-server-side-blazor-app">## Introduction
+
+In this article, we will learn how to implement authentication and authorization using Facebook in a server-side Blazor application.
+
+## Prerequisites
+  * Install the latest .NET Core 5.0 Current  SDK from [here](https://dotnet.microsoft.com/download/dotnet-core/).
+  * Install the latest Visual Studio 2019 from [here](https://visualstudio.com/).
+  
+## Source Code
+
+Get the source code from [GitHub](https://github.com/girishgodage/Facebook-Authentication-with-server-side-Blazor).
+
+## Create Server Side Blazor Application
+
+To create a server-side Blazor app, open Visual Studio 2019 and follow the steps mentioned below:
+
+    1. Click on “Create a new project”.
+    2. Select “Blazor App” from available project types. Click on Next.
+    3. A new “Configure your new project” screen will open. Put the name of the project as BlazorFbAuth and click Create.
+    4. In the next screen, select “.NET.5.0 ” from dropdowns on the top left.
+    5. Select “Blazor Server App” from the list of available templates.
+    6. Click on Change Authentication button, a “Change Authentication” dialog box will open.
+    7.Select “Individual User Account” and click OK. Click on Create button to create the application.
+
+These steps are shown in the GIF image below.
+
+![image info](/img/blazor/5/CreateProject.gif)
+
+
+Before running the application, we need to apply migrations to our app. Navigate to Tools &gt;&gt; NuGet Package Manager &gt;&gt; Package Manager Console.
+
+It will open the Package Manager Console. Put in **Update-Database** command and hit enter. This will update the database using Entity Framework Code First Migrations.
+
+![image info](/img/blazor/5/UpdateDatabase.png)
+
+Right-click on the project in solution explorer and select properties. Select Debug from left side menu then scroll to the bottom of the page. Note the SSL enabled URL. In this case, the URL is https://localhost:44345/. We need this URL to configure the Facebook app which we will be doing in our next section. Refer to the image below.
+
+![image info](/img/blazor/5/AppURL.png)
+
+## Creating a Facebook App
+
+We need to create a Facebook app and configure Facebook Login for it. We will then use the App ID and App Secret of this Facebook app to implement Facebook authentication in our Blazor app. Navigate to https://developers.facebook.com/apps/ and sign in using your Facebook account. Follow the steps mentioned below.
+
+ * Click on the “Create App” button under the “My Apps” menu on the top.
+ * It will open a “Create a New App ID” dialog box. Put in the “Display Name” and “Contact Email”.
+ * The default email will be your Facebook email id. However, you can change it and put any email of your choice. Click on “Create App ID” to create the app. Refer to the image below.
+
+![image info](/img/blazor/5/BlazorFBAuthAppInfo.png)
+
+ * Navigate to the app dashboard by clicking on the “Dashboard” link on the navigation menu on the left.
+ * Under the “Add a Product” section, select the “Facebook Login” product and click on “Set Up” button.
+ * A QuickStart wizard will be launched asking you to select a platform for the app. Skip this wizard and click on Facebook Login &gt; Settings from the navigation menu on the left.
+ * You will be navigated to the Client OAuth Settings page. In the Valid OAuth redirect URIs field enter the base URL of your application with /signin-facebook appended to it. For this tutorial, the URL will be https://localhost:44345/signin-facebook. Click on “Save Changes” button.
+ * Now click on Settings &gt; Basic on the navigation menu. You will see the App ID and App Secret values. Make a note of these values as we need them to configure Facebook authentication in our Blazor app.
+  
+
+Refer to the GIF below for a better understanding.
+
+![image info](/img/blazor/5/FBSettings.gif)
+
+
+## Important Note
+
+&gt; The trademark or brand element of Facebook is not allowed to be used as the Display Name of your Facebook App. Therefore, words such as FB, Face, Book, Insta, etc. cannot be used as Display Name.
+
+
+## Installing Facebook authentication middleware NuGet package
+
+To configure the ASP.NET Core middleware for Facebook authentication we need to install the nuget package in our application. The version of this nuget package must match the version of .NET Core 3 which we are using in our project.
+
+Open https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Facebook/. Select the version of .NET 5.0.1 from the “Version History”. Copy the command from the “package manager” tab. Run this command in the NuGet package manager console of our application.
+
+For this application, we are using .NET 5.0.1. Therefore, we will run the following command in the package manager console of our application.
+
+```code
+    Install-Package Microsoft.AspNetCore.Authentication.Facebook -Version 5.0.1
+```
+
+Refer to the image below:
+
+![image info](/img/blazor/5/InstallFBAuthentication.png)
+
+## Configure the server-side Blazor app to use Facebook authentication
+
+We need to store the App ID and App Secret field values in our application. We will use Secret Manager tool for this purpose. The Secret Manager tool is a project tool that is used to store secrets such as password, API Key, etc. for a .NET Core project during the development process. Secret Manager tool allows us to associate app secrets with a specific project. It also allow us to share them across multiple projects.
+
+Open our web application once again and Right-click the project in Solution Explorer. Select Manage User Secrets from the context menu. A secrets.json file will open. Put the following code in it.
+
+```code
+    {
+        &quot;Authentication:Facebook:AppId&quot;: &quot;Your Facebook AppId&quot;,
+        &quot;Authentication:Facebook:AppSecret&quot;: &quot;Your Facebook AppSecret&quot;
+    }
+```
+
+Now open Startup.cs file and put the following code into ConfigureServices method.
+
+```code
+
+    services.AddAuthentication().AddFacebook(facebookOptions =&gt;
+    {
+        facebookOptions.AppId = Configuration[&quot;Authentication:Facebook:AppId&quot;];
+        facebookOptions.AppSecret = Configuration[&quot;Authentication:Facebook:AppSecret&quot;];
+        facebookOptions.Events = new OAuthEvents()
+        {
+            OnRemoteFailure = loginFailureHandler =&gt;
+            {
+            var authProperties = facebookOptions.StateDataFormat.Unprotect(loginFailureHandler.Request.Query[&quot;state&quot;]);
+            loginFailureHandler.Response.Redirect(&quot;/Identity/Account/Login&quot;);
+            loginFailureHandler.HandleResponse();
+            return Task.FromResult(0);
+            }
+        };
+    });
+```
+
+This code will read the AppId and AppSecret from the secrets.json file. The AddFacebook() method is an extension method and it is used to configure the Facebook Authentication options for our application. We are also handling the event of OnRemoteFailure in this code section. Hence, if the user denies access to his Facebook account, then he will be redirected back to the Login page of our Blazor application.
+
+## Adding authorization to Blazor pages
+
+Blazor has added a new built-in component called AuthorizeView. This component is used to display different content based on the authentication state of the application. This component will display the child component only when the user is authorized.  The AuthorizeView component is configured in \Shared\LoginDisplay.razor file.
+
+To implement authorization to a specific page, we need to use the [Authorize] attribute. Blazor has introduced a new directive @attribute, which is used to include the [Authorize] attribute for a page. In this application, we will apply [Authorize] to the FetchData component. This will prohibit unauthorized access to this component. Open FetchData.razor page and add the following lines at the top of the page.
+
+```code
+
+@attribute [Authorize]
+
+```
+
+## Execution Demo
+
+Launch the application. Navigate to Fetch Data component by clicking on the “Fetch data” link on the menu on the left. You will see a “Not authorized” message displayed on the screen. Click “Log In” on the menu at the top. In the next page click on the “Facebook” button to login with Facebook. On the next page, you will be asked to provide the login credentials of your Facebook account. Fill the details and click Log In. Upon successful login, you will be able to access the Fetch Data component. If you do not want to login then click on “Not now”. It will redirect you back to the Login page of Blazor app.
+
+Refer to the GIF below for a better understanding.
+
+![image info](/img/blazor/5/output.gif)
+
+Once you are logged in successfully into our Blazor app using Facebook, you will be also logged in to https://www.facebook.com/. This will create a set of browser cookie for https://www.facebook.com/. Therefore, the Blazor app will not ask the Facebook credentials when you try to login again. If you log out from Facebook then you have to enter credentials while logging into Blazor app.
+
+## Conclusion
+
+We learned how to implement Facebook authentication and authorization in a server-side Blazor application. We have created and configured a Facebook app to implement Facebook authentication. To implement authorization for a specific component in Blazor, we have used the [Authorize] attribute. We have used Microsoft.AspNetCore.Authentication.Facebook nuget package to configure the middleware for Facebook authentication.
+
+Please get the source code from [GitHub](https://github.com/girishgodage/Facebook-Authentication-with-server-side-Blazor) and play around to get a better understanding.</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Introduction</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/blazor/5/output.gif" /></entry><entry><title type="html">Multi-Language Translator Using Blazor And Azure Cognitive Services</title><link href="http://localhost:4000/blog/multi-Language-Translator-using-blazor-AzureCognitiveServices" rel="alternate" type="text/html" title="Multi-Language Translator Using Blazor And Azure Cognitive Services" /><published>2020-12-17T16:55:00+00:00</published><updated>2020-12-17T16:55:00+00:00</updated><id>http://localhost:4000/blog/multi-language-translator-using-blazor-and-azure-cognitive-service</id><content type="html" xml:base="http://localhost:4000/blog/multi-Language-Translator-using-blazor-AzureCognitiveServices">## Introduction
 
 In this article, we will create a multilanguage translator using Blazor and the Translate Text Azure Cognitive Service. This translator will be able to translate between all the languages supported by the Translate Text API. Currently, the Translate Text API supports more than 60 languages for translation. The application will accept the text to translate and the target language as the input and returns the translated text and the detected language for the input text as the output.
 
@@ -3863,390 +4179,4 @@ If you don't want to keep this application for further use, you can use the foll
 5. On the *myResourceGroup* page, make sure that the listed resources are the ones you want to delete.
 6. Select **Delete**
 7. Type **myResourceGroup** in the text box
-8. Select **Delete**.</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Introduction</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/AzureAppSerive.png" /></entry><entry><title type="html">How to build your own AI personal assistant using Python</title><link href="http://localhost:4000/blog/pythonPA" rel="alternate" type="text/html" title="How to build your own AI personal assistant using Python" /><published>2020-10-10T10:10:10+00:00</published><updated>2020-10-10T10:10:10+00:00</updated><id>http://localhost:4000/blog/PythonPersonalAssistant</id><content type="html" xml:base="http://localhost:4000/blog/pythonPA">## How to build your own AI personal assistant using Python
-
-*An AI personal assistant is a piece of software that understands verbal or written commands and completes task assigned by the client. It is an example of weak AI that is it can only execute and perform quest designed by the user.*
-
-![image info](/img/G1.png)
-
-Want to build your own personal AI assistant like Apple Siri, Microsoft Cortana and Google assistant?
-
-You can check out this Article to build one in a few simple steps!
-
-With the python programming language, a script most commonly used by the developers can be used to build your personal AI assistant to perform task designed by the users.
-
-Now, let’s write a script for our personal voice assistant using python.
-
-## Skills:
-
-The implemented voice assistant can perform the following task it can **open YouTube, Gmail, Google chrome and stack overflow. Predict current time, take a photo, search Wikipedia to abstract required data, predict weather in different cities, get top headline news from Times of India and can answer computational and geographical questions too**.
-
-The following queries of the voice assistant can be manipulated as per the users need.
-
-## Packages required:
-
-To build a personal voice assistant it’s necessary to install the following packages in your system using the pip command.
-
-1) **Speech recognition** — Speech recognition is an important feature used in house automation and in artificial intelligence devices. The main function of this library is it tries to understand whatever the humans speak and converts the speech to text.
-   
-2) **pyttsx3** — pyttxs3 is a text to speech conversion library in python. This package supports text to speech engines on Mac os x, Windows and on Linux.
-
-3) **wikipedia** — Wikipedia is a multilingual online encyclopedia used by many people from academic community ranging from freshmen to students to professors who wants to gain information over a particular topic. This package in python extracts data’s required from Wikipedia.
-   
-4) **ecapture** — This module is used to capture images from your camera
-   
-5) **datetime** — This is an inbuilt module in python and it works on date and time
-   
-6) **os** — This module is a standard library in python and it provides the function to interact with operating system
-
-7) **time** — The time module helps us to display time
-   
-8) **Web browser** — This is an in-built package in python. It extracts data from the web
-   
-9)  **Subprocess** — This is a standard library use to process various system commands like to log off or to restart your PC.
-    
-10) **Json**- The json module is used for storing and exchanging data.
-    
-11) **requests**- The request module is used to send all types of HTTP request. Its accepts URL as parameters and gives access to the given URL’S.
-    
-12) **wolfram alpha** — Wolfram Alpha is an API which can compute expert-level answers using Wolfram’s algorithms, knowledge base and AI technology. It is made possible by the Wolfram Language
-
-## Implementation:
-*Import the following libraries*
-
-```code
-
-import speech_recognition as sr
-import pyttsx3
-import datetime
-import wikipedia
-import webbrowser
-import os
-import time
-import subprocess
-from ecapture import ecapture as ec
-import wolframalpha
-import json
-import requests
-```
-
-## Setting up the speech engine:
-
-The pyttsx3 module is stored in a variable name engine.
-**Sapi5** is a **Microsoft Text to speech engine used for voice recognition**.
-
-The voice Id can be set as either 0 or 1,
-- 0 indicates Male voice
-- 1 indicates Female voice
-
-```code
-engine=pyttsx3.init('sapi5')
-voices=engine.getProperty('voices')
-engine.setProperty('voice','voices[0].id')
-
-```
-
-Now define a function **speak** which converts text to speech. The speak function takes the text as its argument,further initialize the engine.
-
-**runAndWait**: This function Blocks while processing all currently queued commands. It Invokes callbacks for engine notifications appropriately and returns back when all commands queued before this call are emptied from the queue.
-
-```
-def speak(text):
-    engine.say(text)
-    engine.runAndWait()
-```
-
-## Initiate a function to greet the user:
-
-Define a function wishMe for the AI assistant to greet the user.
-
-The **now().hour** function abstract’s the hour from the current time.
-
-If the hour is greater than zero and less than 12, the voice assistant wishes you with the message “Good Morning”.
-
-If the hour is greater than 12 and less than 18, the voice assistant wishes you with the following message “Good Afternoon”.
-
-Else it voices out the message “Good evening”
-
-```
-def wishMe():
-    hour=datetime.datetime.now().hour
-    if hour&gt;=0 and hour&lt;12:
-        speak(&quot;Hello,Good Morning&quot;)
-        print(&quot;Hello,Good Morning&quot;)
-    elif hour&gt;=12 and hour&lt;18:
-        speak(&quot;Hello,Good Afternoon&quot;)
-        print(&quot;Hello,Good Afternoon&quot;)
-    else:
-        speak(&quot;Hello,Good Evening&quot;)
-        print(&quot;Hello,Good Evening&quot;)
-```
-
-## Setting up the command function for your AI assistant :
-
-Define a function takecommand for the AI assistant to understand and to accept human language. The microphone captures the human speech and the recognizer recognizes the speech to give a response.
-
-The exception handling is used to handle the exception during the run time error and,the recognize_google function uses google audio to recognize speech.
-
-```
-def takeCommand():
-    r=sr.Recognizer()
-    with sr.Microphone() as source:
-        print(&quot;Listening...&quot;)
-        audio=r.listen(source)
-
-        try:
-            statement=r.recognize_google(audio,language='en-in')
-            print(f&quot;user said:{statement}\n&quot;)
-
-        except Exception as e:
-            speak(&quot;Pardon me, please say that again&quot;)
-            return &quot;None&quot;
-        return statement
-
-print(&quot;Loading your AI personal assistant G-One&quot;)
-speak(&quot;Loading your AI personal assistant G-One&quot;)
-wishMe()
-```
-
-## The Main function:
-The main function starts from here,the commands given by the humans is stored in the variable **statement**.
-
-```
-if __name__=='__main__':
-
-
-    while True:
-        speak(&quot;Tell me how can I help you now?&quot;)
-        statement = takeCommand().lower()
-        if statement==0:
-            continue
-```
-
-If the following trigger words are there in the statement given by the users it invokes the virtual assistant to speak the below following commands.
-
-```
-if &quot;good bye&quot; in statement or &quot;ok bye&quot; in statement or &quot;stop&quot; in statement:
-            speak('your personal assistant G-one is shutting down,Good bye')
-            print('your personal assistant G-one is shutting down,Good bye')
-            break
-```
-
-## Skill 1 -Fetching data from Wikipedia:
-
-The following commands helps to extract information from wikipedia. The **wikipedia.summary()** function takes two arguments, the statement given by the user and how many sentences from wikipedia is needed to be extracted is stored in a variable **result**.
-
-```
-if 'wikipedia' in statement:
-            speak('Searching Wikipedia...')
-            statement =statement.replace(&quot;wikipedia&quot;, &quot;&quot;)
-            results = wikipedia.summary(statement, sentences=3)
-            speak(&quot;According to Wikipedia&quot;)
-            print(results)
-            speak(results)
-
-```
-## Skill 2 -Accessing the Web Browsers — Google chrome , G-Mail and YouTube:
-
-The web browser extracts data from web. The **open_new_tab** function accepts **URL** as a parameter that needs to be accessed.
-
-The **Python time sleep function** is used to add delay in the execution of a program. We can use this function to halt the execution of the program for given **time** in seconds.
-
-```
-elif 'open youtube' in statement:
-            webbrowser.open_new_tab(&quot;https://www.youtube.com&quot;)
-            speak(&quot;youtube is open now&quot;)
-            time.sleep(5)
-
-        elif 'open google' in statement:
-            webbrowser.open_new_tab(&quot;https://www.google.com&quot;)
-            speak(&quot;Google chrome is open now&quot;)
-            time.sleep(5)
-
-        elif 'open gmail' in statement:
-            webbrowser.open_new_tab(&quot;gmail.com&quot;)
-            speak(&quot;Google Mail open now&quot;)
-            time.sleep(5)
-
-```
-
-## Skill 3 -Predicting time:
-
-The current time is abstracted from **datetime.now()** function which displays the hour, minute and second and is stored in a variable name **strTime**.
-
-```
-elif 'time' in statement:
-            strTime=datetime.datetime.now().strftime(&quot;%H:%M:%S&quot;)
-            speak(f&quot;the time is {strTime}&quot;)
-```
-
-## Skill 4 -To fetch latest news:
-If the user wants to know the latest news , The voice assistant is programmed to fetch top headline news from Time of India by using the web browser function.
-
-## Skill 5 -Capturing photo:
-
-**The ec.capture()** function is used to capture images from your camera. It accepts 3 parameter.
-
-**Camera index** — The first connected webcam will be indicated as index 0 and the next webcam will be indicated as index 1.
-
-**Window name** — It can be a variable or a string. If you don’t wish to see the window, type as False.
-
-**Save name** — A name can be given to the image and if you don’t want to save the image, type as false.
-
-```
-elif 'news' in statement:
-            news = webbrowser.open_new_tab(&quot;https://timesofindia.indiatimes.com/home/headlines”)
-            speak('Here are some headlines from the Times of India,Happy reading')
-            time.sleep(6)
-
-        elif &quot;camera&quot; in statement or &quot;take a photo&quot; in statement:
-            ec.capture(0,&quot;robo camera&quot;,&quot;img.jpg&quot;)
-```
-
-## Skill 6-Searching data from web:
-
-From the **web browser** you can search required data by passing the user statement (command) to the **open_new_tab()** function.
-
-**User**: Hey G-One, please search images of butterfly
-
-The Voice assistant opens the google window &amp; fetches butterfly images from web.
-
-```
-elif 'search'  in statement:
-            statement = statement.replace(&quot;search&quot;, &quot;&quot;)
-            webbrowser.open_new_tab(statement)
-            time.sleep(5)	
-```
-
-## Skill 7- Setting your AI assistant to answer geographical and computational questions:
-
-Here we can use a third party API called **Wolfram alpha API** to answer computational and geographical questions.It is made possible by the Wolfram Language. The **client** is an instance (class) created for wolfram alpha. The **res** variable stores the response given by the wolfram alpha.
-
-```
-elif 'ask' in statement:
-            speak('I can answer to computational and geographical questions  and what question do you want to ask now')
-            question=takeCommand()
-            app_id=&quot;Paste your unique ID here &quot;
-            client = wolframalpha.Client('R2K75H-7ELALHR35X')
-            res = client.query(question)
-            answer = next(res.results).text
-            speak(answer)
-            print(answer)
-```
-
-To access the wolfram alpha API an unique App ID is required which can be generated by the following ways:
-
-1. Login to the official page of wolfram alpha and create an account if you do not possess one.
-
-![image info](/img/python/datascience/img/6/1.png)
-
-2. Sign in using your wolfram ID
-
-![image info](/img/python/datascience/img/6/2.png)
-
-
-3. Now you will view the homepage of the website. Head to the account section in the top right corner where you see your email. In the drop down menu, select the My Apps (API) option.
-
-![image info](/img/python/datascience/img/6/3.png)
-
-4. You will see this following window, now click Get APP_ID button
-
-![image info](/img/python/datascience/img/6/4.png)
-
-5. Now you will get the following dialog box, give a suitable name and description and click the App ID button, an App ID will be generated and this is an unique ID. Using the App Id use can access the Wolfram alpha API.
-
-![image info](/img/python/datascience/img/6/5.png)
-
-
-**Human:** Hey G-One ,what is the capital of California?
-
-**G-One Voice assistant:** Sacramento, United States of America
-
-
-## Skill 8- Extra features:
-
-It would be interesting to program your AI assistant to answer the following questions like what it can and who created it,isn't it?
-
-```
-elif 'who are you' in statement or 'what can you do' in statement:
-            speak('I am G-one version 1 point O your personal assistant. I am programmed to minor tasks like'
-                  'opening youtube,google chrome, gmail and stackoverflow ,predict time,take a photo,search wikipedia,predict weather' 
-                  'In different cities, get top headline news from times of india and you can ask me computational or geographical questions too!')
-
-
-        elif &quot;who made you&quot; in statement or &quot;who created you&quot; in statement or &quot;who discovered you&quot; in statement:
-            speak(&quot;I was built by Girish&quot;)
-            print(&quot;I was built by Girish&quot;)
-```
-## Skill 9- To forecast weather:
-
-Now to program your AI assistant to detect weather we need to generate an API key from Open Weather map.
-
-Open weather map is an online service which provides weather data. By generating an API ID in the official website you can use the APP_ID to make your voice assistant detect weather of all places whenever required. The necessary modules needed to be imported for this weather detection is json and request module.
-
-The **city_name variabl**e takes the command given by the human using the **takeCommand()** function.
-
-The **get** method of **request** module returns a **response** object. And the **json** methods of response object converts json format data into python format.
-
-The variable **X** contains list of nested dictionaries which checks whether the value of ‘COD’ is 404 or not that is if the city is found or not.
-
-The values such as temperature and humidity is stored in the main key of variable **Y**.
-
-```
-elif &quot;weather&quot; in statement:
-            api_key=&quot;Apply your unique ID&quot;
-            base_url=&quot;https://api.openweathermap.org/data/2.5/weather?&quot;
-            speak(&quot;what is the city name&quot;)
-            city_name=takeCommand()
-            complete_url=base_url+&quot;appid=&quot;+api_key+&quot;&amp;q=&quot;+city_name
-            response = requests.get(complete_url)
-            x=response.json()
-            if x[&quot;cod&quot;]!=&quot;404&quot;:
-                y=x[&quot;main&quot;]
-                current_temperature = y[&quot;temp&quot;]
-                current_humidiy = y[&quot;humidity&quot;]
-                z = x[&quot;weather&quot;]
-                weather_description = z[0][&quot;description&quot;]
-                speak(&quot; Temperature in kelvin unit is &quot; +
-                      str(current_temperature) +
-                      &quot;\n humidity in percentage is &quot; +
-                      str(current_humidiy) +
-                      &quot;\n description  &quot; +
-                      str(weather_description))
-                print(&quot; Temperature in kelvin unit = &quot; +
-                      str(current_temperature) +
-                      &quot;\n humidity (in percentage) = &quot; +
-                      str(current_humidiy) +
-                      &quot;\n description = &quot; +
-                      str(weather_description))
-
-```
-
-**Human:** Hey G-One ,I want to get the weather data
-
-**G-One:** What is the city name?
-
-**Human:** Himachal Pradesh
-
-**G-One:** Temperature in kelvin unit is 301.09 , Humidity in percentage is 52 and Description is light rain.
-
-## Skill 10- To log off your PC:
-
-The subprocess.call() function here is used to process the system function to log off or to turn off your PC. This invokes your AI assistant to automatically turn off your PC.
-
-```
-    elif &quot;log off&quot; in statement or &quot;sign out&quot; in statement:
-            speak(&quot;Ok , your pc will log off in 10 sec make sure you exit from all applications&quot;)
-            subprocess.call([&quot;shutdown&quot;, &quot;/l&quot;])
-			
-    time.sleep(3)
-
-```
-
-Hurray , We have finally built our own AI voice assistant . Further you can still add more functionalities to your AI voice assistant to perform more task.
-
-Check out my GitHub profile for code:
-
-https://github.com/girishgodage/ai-personal-assistant
-
-Happy Coding !!</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">How to build your own AI personal assistant using Python</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/G1.png" /></entry></feed>
+8. Select **Delete**.</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Introduction</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/AzureAppSerive.png" /></entry></feed>

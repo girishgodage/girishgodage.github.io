@@ -12,7 +12,7 @@ author: Girish Godage
 layout: posts
 prevurl: ""
 nexturl: ""
-discussion_id: 2019-03-10-uploading-downloading-and-deleting-files-in-aws-s3-cloud-storage-using-asp-net-core
+discussion_id: 2021-03-10-uploading-downloading-and-deleting-files-in-aws-s3-cloud-storage-using-asp-net-core
 ---
 
 ## UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE
