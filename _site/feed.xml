@@ -1,157 +1,153 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-03-20T07:09:49+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE</title><link href="http://localhost:4000/blog/uploading-downloading-and-deleting-files-in-aws-s3-cloud-storage-using-asp-net-core" rel="alternate" type="text/html" title="UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE" /><published>2021-03-10T05:54:00+00:00</published><updated>2021-03-10T05:54:00+00:00</updated><id>http://localhost:4000/blog/documentupload-in-S3-using-aspnetcore</id><content type="html" xml:base="http://localhost:4000/blog/uploading-downloading-and-deleting-files-in-aws-s3-cloud-storage-using-asp-net-core">&lt;h2 id=&quot;uploading-downloading-and-deleting-files-in-aws-s3-cloud-storage-using-aspnet-core&quot;&gt;UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-03-21T06:39:24+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Girish Godage</title><subtitle>I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.</subtitle><author><name>Girish Godage</name></author><entry><title type="html">UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE</title><link href="http://localhost:4000/blog/uploading-downloading-and-deleting-files-in-aws-s3-cloud-storage-using-asp-net-core" rel="alternate" type="text/html" title="UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE" /><published>2021-03-10T05:54:00+00:00</published><updated>2021-03-10T05:54:00+00:00</updated><id>http://localhost:4000/blog/documentupload-in-S3-using-aspnetcore</id><content type="html" xml:base="http://localhost:4000/blog/uploading-downloading-and-deleting-files-in-aws-s3-cloud-storage-using-asp-net-core">## UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE
 
-&lt;p&gt;This article will learn how to upload , download and delete files from amazon AWS S3 Cloud Storage using ASP.NET CORE.&lt;/p&gt;
+This article will learn how to upload , download and delete files from amazon AWS S3 Cloud Storage using ASP.NET CORE.
 
-&lt;h2 id=&quot;what-is-amazon-s3&quot;&gt;What is Amazon S3?&lt;/h2&gt;
+## What is Amazon S3?
 
-&lt;p&gt;Amazon S3 has a simple web services interface that you can use to store and retrieve any amount of data, at any time, from anywhere on the web.&lt;/p&gt;
+Amazon S3 has a simple web services interface that you can use to store and retrieve any amount of data, at any time, from anywhere on the web.
 
-&lt;p&gt;https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html&lt;/p&gt;
+https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html
 
-&lt;h2 id=&quot;what-youll-be-building&quot;&gt;What you’ll be building&lt;/h2&gt;
+## What you'll be building
 
-&lt;p&gt;In this article, you’ll learn the following&lt;/p&gt;
+In this article, you'll learn the following
 
-&lt;ul&gt;
-  &lt;li&gt;Creating application ASP.NET Core Application&lt;/li&gt;
-  &lt;li&gt;Installing packages from NuGet&lt;/li&gt;
-  &lt;li&gt;Creating a Bucket&lt;/li&gt;
-  &lt;li&gt;View after creating a bucket.&lt;/li&gt;
-  &lt;li&gt;Creating a User&lt;/li&gt;
-  &lt;li&gt;Adding a User to Group and assigning policy&lt;/li&gt;
-  &lt;li&gt;Created Table for Storing Documents&lt;/li&gt;
-  &lt;li&gt;Added Entity and DbContext class along with interface and Concrete for Storing and Reading the documents&lt;/li&gt;
-  &lt;li&gt;AppSettings for Storing AccessKey and SecretKey  configuring database connection string&lt;/li&gt;
-  &lt;li&gt;Creating Controller&lt;/li&gt;
-  &lt;li&gt;Upload File&lt;/li&gt;
-  &lt;li&gt;AllFiles&lt;/li&gt;
-  &lt;li&gt;Download file&lt;/li&gt;
-  &lt;li&gt;Delete file&lt;/li&gt;
-&lt;/ul&gt;
+* Creating application ASP.NET Core Application
+* Installing packages from NuGet
+* Creating a Bucket
+* View after creating a bucket.
+* Creating a User
+* Adding a User to Group and assigning policy
+* Created Table for Storing Documents
+* Added Entity and DbContext class along with interface and Concrete for Storing and Reading the documents
+* AppSettings for Storing AccessKey and SecretKey  configuring database connection string
+* Creating Controller
+* Upload File
+* AllFiles
+* Download file
+* Delete file
 
-&lt;h3 id=&quot;creating-application-aspnet-core-application&quot;&gt;Creating application ASP.NET Core Application&lt;/h3&gt;
+### Creating application ASP.NET Core Application
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/01.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+![image](/img/aspdotnetcore/1/01.png)
 
-&lt;p&gt;Next, we are going to set Project Name &lt;strong&gt;“WebStorageDemo”&lt;/strong&gt; and location.&lt;/p&gt;
+Next, we are going to set Project Name **“WebStorageDemo”** and location.
 
-&lt;p&gt;We will choose .Net Core framework and ASP.NET Core Version 5.0 as the framework for application and we are not going to enable docker settings for this project.&lt;/p&gt;
+We will choose .Net Core framework and ASP.NET Core Version 5.0 as the framework for application and we are not going to enable docker settings for this project.
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/02.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+![image](/img/aspdotnetcore/1/02.png)
 
-&lt;p&gt;Now finally click on create button to create a project.&lt;/p&gt;
+Now finally click on create button to create a project.
 
-&lt;p&gt;&lt;strong&gt;Project structure&lt;/strong&gt;&lt;/p&gt;
+**Project structure**
 
-&lt;p&gt;The project structure generated according to the configuration.&lt;/p&gt;
+The project structure generated according to the configuration.
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/03.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+![image](/img/aspdotnetcore/1/03.png)
 
-&lt;p&gt;After creating project next, we are going to install below package from NuGet Packages.&lt;/p&gt;
+After creating project next, we are going to install below package from NuGet Packages.
 
-&lt;h3 id=&quot;installing-a-package-from-nuget&quot;&gt;Installing a package from NuGet&lt;/h3&gt;
+### Installing a package from NuGet
 
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;WindowsAzure.Storage&lt;/p&gt;
+1. WindowsAzure.Storage
 
-    &lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/04.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Microsoft.EntityFrameworkCore&lt;/p&gt;
+      ![image](/img/aspdotnetcore/1/04.png)
 
-    &lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/05.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Microsoft.EntityFrameworkCore.SqlServer&lt;/p&gt;
+2. Microsoft.EntityFrameworkCore
 
-    &lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/06.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
+      ![image](/img/aspdotnetcore/1/05.png)
 
-&lt;p&gt;After installing packages next, we will create a bucket for that we must have an AWS account.&lt;/p&gt;
+3. Microsoft.EntityFrameworkCore.SqlServer
 
-&lt;p&gt;If you do not have an account, then create one account for free. https://aws.amazon.com/&lt;/p&gt;
+      ![image](/img/aspdotnetcore/1/06.png)
 
-&lt;p&gt;I have already created an AWS account and logged in to the portal, for creating a bucket.&lt;/p&gt;
+After installing packages next, we will create a bucket for that we must have an AWS account.
 
-&lt;h3 id=&quot;creating-a-bucket&quot;&gt;Creating a Bucket&lt;/h3&gt;
 
-&lt;p&gt;The bucket is a virtual container where we are going to store all objects.&lt;/p&gt;
+If you do not have an account, then create one account for free. https://aws.amazon.com/
 
-&lt;p&gt;For using Amazon S3 service, we must search S3 service in search.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/07.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+I have already created an AWS account and logged in to the portal, for creating a bucket.
+   
 
-&lt;p&gt;After selecting S3 service, it redirects to buckets page.&lt;/p&gt;
+### Creating a Bucket
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/08.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+The bucket is a virtual container where we are going to store all objects.
 
-&lt;p&gt;Here for creating a bucket, we need to click on Create bucket button.&lt;/p&gt;
+For using Amazon S3 service, we must search S3 service in search.
 
-&lt;p&gt;For creating a bucket, we need to enter a unique bucket name and select region where you want this bucket to be made.&lt;/p&gt;
+![image](/img/aspdotnetcore/1/07.png)
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/09.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+After selecting S3 service, it redirects to buckets page.
 
-&lt;p&gt;Here we are going to enter the name of bucket &lt;strong&gt;(myawscorebucket)&lt;/strong&gt; and then select region as “Asia Pacific (Mumbai)” after selecting just scroll your page then you will find &lt;strong&gt;“Block Public Access settings for bucket”&lt;/strong&gt; here for the demo I am going to uncheck all checkboxes you must uncheck it according to your need.&lt;/p&gt;
+![image](/img/aspdotnetcore/1/08.png)
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/10.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+Here for creating a bucket, we need to click on Create bucket button.
 
-&lt;p&gt;Just scroll your page below you will find create bucket button just click on it to create a bucket.&lt;/p&gt;
+For creating a bucket, we need to enter a unique bucket name and select region where you want this bucket to be made.
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/11.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+![image](/img/aspdotnetcore/1/09.png)
 
-&lt;h3 id=&quot;view-after-creating-a-bucket&quot;&gt;View after creating a bucket&lt;/h3&gt;
+Here we are going to enter the name of bucket **(myawscorebucket)** and then select region as “Asia Pacific (Mumbai)” after selecting just scroll your page then you will find **“Block Public Access settings for bucket”** here for the demo I am going to uncheck all checkboxes you must uncheck it according to your need.
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/12.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+![image](/img/aspdotnetcore/1/10.png)
 
-&lt;p&gt;After creating a bucket next, we are going to create a user for we need to search IAM &lt;strong&gt;(Identity and Access Management).&lt;/strong&gt;&lt;/p&gt;
+Just scroll your page below you will find create bucket button just click on it to create a bucket.
 
-&lt;p&gt;&lt;strong&gt;Adding a User&lt;/strong&gt;&lt;/p&gt;
+![image](/img/aspdotnetcore/1/11.png)
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/13.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+### View after creating a bucket
 
-&lt;p&gt;After selecting IAM, you will see below screen.&lt;/p&gt;
+![image](/img/aspdotnetcore/1/12.png)
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/14.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+After creating a bucket next, we are going to create a user for we need to search IAM **(Identity and Access Management).**
 
-&lt;p&gt;After clicking on Add user, we will add a user name and select Access type as shown below.&lt;/p&gt;
+**Adding a User**
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/15.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+![image](/img/aspdotnetcore/1/13.png)
 
-&lt;p&gt;After filling in all details, click on the next permission button.&lt;/p&gt;
+After selecting IAM, you will see below screen.
 
-&lt;h3 id=&quot;adding-a-user-to-group-and-assigning-policy&quot;&gt;Adding a User to Group and assigning policy&lt;/h3&gt;
+![image](/img/aspdotnetcore/1/14.png)
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/16.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+After clicking on Add user, we will add a user name and select Access type as shown below.
 
-&lt;p&gt;We will create a group with the name “AWSS3FullAccess” and assign policy (AmazonS3FullAccess) to access Amazon S3.&lt;/p&gt;
+![image](/img/aspdotnetcore/1/15.png)
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/17.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+After filling in all details, click on the next permission button.
 
-&lt;p&gt;Just click on Create group button for creating a group. Next step will be making tags I will skip it, and the final screen will be Review as shown below.&lt;/p&gt;
+### Adding a User to Group and assigning policy
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/18.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+![image](/img/aspdotnetcore/1/16.png)
 
-&lt;p&gt;The review page will show all details that you have configured just click on create a user it will create user successfully as shown below.&lt;/p&gt;
+We will create a group with the name “AWSS3FullAccess” and assign policy (AmazonS3FullAccess) to access Amazon S3.
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/19.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+![image](/img/aspdotnetcore/1/17.png)
 
-&lt;p&gt;Now you have &lt;strong&gt;Access key ID&lt;/strong&gt; and &lt;strong&gt;Secret access key&lt;/strong&gt; for accessing S3 Services. Next, we have created a table in the database to store document details.&lt;/p&gt;
+Just click on Create group button for creating a group. Next step will be making tags I will skip it, and the final screen will be Review as shown below.
 
-&lt;h3 id=&quot;created-table-for-storing-documents&quot;&gt;Created Table for Storing Documents&lt;/h3&gt;
+![image](/img/aspdotnetcore/1/18.png)
 
-&lt;p&gt;Creating a table with name &lt;strong&gt;DocumentStore&lt;/strong&gt; for storing document details.&lt;/p&gt;
+The review page will show all details that you have configured just click on create a user it will create user successfully as shown below.
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/20.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+![image](/img/aspdotnetcore/1/19.png)
 
-&lt;p&gt;Added Entity and DbContext class along with interface and Concrete for Storing and Reading the document.&lt;/p&gt;
+Now you have **Access key ID** and **Secret access key** for accessing S3 Services. Next, we have created a table in the database to store document details.
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/21.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+### Created Table for Storing Documents
 
-&lt;p&gt;In this part first, we have added the DocumentStore Entity.&lt;/p&gt;
+Creating a table with name **DocumentStore** for storing document details.
 
-&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+![image](/img/aspdotnetcore/1/20.png)
+
+Added Entity and DbContext class along with interface and Concrete for Storing and Reading the document.
+
+![image](/img/aspdotnetcore/1/21.png)
+
+In this part first, we have added the DocumentStore Entity.
+
+```code
+
   using System;
   using System.ComponentModel.DataAnnotations;
   using System.ComponentModel.DataAnnotations.Schema;
@@ -169,28 +165,30 @@
       }
   }
 
-&lt;/code&gt;&lt;/pre&gt;
+```
 
-&lt;p&gt;Next, we have added DbContext with name BlobDbContext.&lt;/p&gt;
+Next, we have added DbContext with name BlobDbContext.
 
-&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;  using Microsoft.EntityFrameworkCore;
+```code
+  using Microsoft.EntityFrameworkCore;
   using WebStorageDemo.Models;
 
   namespace WebStorageDemo.Repository
   {
       public class BlobDbContext : DbContext
       {
-          public BlobDbContext(DbContextOptions&amp;lt;BlobDbContext&amp;gt; options) : base(options)
+          public BlobDbContext(DbContextOptions&lt;BlobDbContext&gt; options) : base(options)
           {
           }
-          public DbSet&amp;lt;DocumentStore&amp;gt; DocumentStore { get; set; }
+          public DbSet&lt;DocumentStore&gt; DocumentStore { get; set; }
       }
   }
-&lt;/code&gt;&lt;/pre&gt;
+```
 
-&lt;p&gt;After adding BlobDbContext next, we are going to add Interface and Concrete in the Repository folder.&lt;/p&gt;
+After adding BlobDbContext next, we are going to add Interface and Concrete in the Repository folder.
 
-&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+```code
+
   using System.Collections.Generic;
   using WebStorageDemo.Models;
 
@@ -199,55 +197,55 @@
       public interface IDocumentData
       {
           void Add(DocumentStore documentStore);
-          List&amp;lt;DocumentStore&amp;gt; GetDocumentStoresList();
+          List&lt;DocumentStore&gt; GetDocumentStoresList();
           void Delete(DocumentStore documentStore);
           DocumentStore GetDocumentbyDocumentId(int documentId);
       }
   }
-&lt;/code&gt;&lt;/pre&gt;
+```
 
-&lt;p&gt;AppSettings for Storing AccessKey and SecretKey and configuring database connection string&lt;/p&gt;
+AppSettings for Storing AccessKey and SecretKey and configuring database connection string
 
-&lt;blockquote&gt;
-  &lt;p&gt;It is not recommended to store the keys in the appsettings.json file you can use the best methods available for the demo I am storing keys in the appsettings.json file.&lt;/p&gt;
-&lt;/blockquote&gt;
+&gt; It is not recommended to store the keys in the appsettings.json file you can use the best methods available for the demo I am storing keys in the appsettings.json file.
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/22.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+![image](/img/aspdotnetcore/1/22.png)
 
-&lt;p&gt;After setting keys in the appsettings.json file next, we will configure entity framework core, appsettings and registering IDocumentData interface.&lt;/p&gt;
+After setting keys in the appsettings.json file next, we will configure entity framework core, appsettings and registering IDocumentData interface.
 
-&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+```code
+
 public void ConfigureServices(IServiceCollection services)
 {
-    services.AddScoped&amp;lt;IDocumentData, DocumentData&amp;gt;();
+    services.AddScoped&lt;IDocumentData, DocumentData&gt;();
     var connection = Configuration.GetConnectionString(&quot;DatabaseConnection&quot;);
-    services.AddDbContext&amp;lt;BlobDbContext&amp;gt;(options =&amp;gt; options.UseSqlServer(connection));
-    services.Configure&amp;lt;AppSettings&amp;gt;(Configuration.GetSection(&quot;AwsSettings&quot;));
+    services.AddDbContext&lt;BlobDbContext&gt;(options =&gt; options.UseSqlServer(connection));
+    services.Configure&lt;AppSettings&gt;(Configuration.GetSection(&quot;AwsSettings&quot;));
     services.AddControllersWithViews();
 }
 
-&lt;/code&gt;&lt;/pre&gt;
+```
 
-&lt;p&gt;Everything is configured now let’s Create Controller for Uploading, Downloading and Deleting files.&lt;/p&gt;
+Everything is configured now let’s Create Controller for Uploading, Downloading and Deleting files.
 
-&lt;h3 id=&quot;creating-controller&quot;&gt;Creating Controller&lt;/h3&gt;
+### Creating Controller
 
-&lt;p&gt;We will create Controller With name &lt;strong&gt;DemoController&lt;/strong&gt; with different action methods such as &lt;strong&gt;UploadFile, DeleteFile, DownloadFile and AllFiles&lt;/strong&gt;.&lt;/p&gt;
+We will create Controller With name **DemoController** with different action methods such as **UploadFile, DeleteFile, DownloadFile and AllFiles**.
 
-&lt;p&gt;&lt;strong&gt;Upload File&lt;/strong&gt;&lt;/p&gt;
+**Upload File**
 
-&lt;p&gt;We will access 2 things in Controller AppSettings, IDocumentData from appsettings we will get bucket name, Access key and Secret key, we will pass Access key and Secret key to BasicAWSCredentials method and then set RegionEndpoint.&lt;/p&gt;
+We will access 2 things in Controller AppSettings, IDocumentData from appsettings we will get bucket name, Access key and Secret key, we will pass Access key and Secret key to BasicAWSCredentials method and then set RegionEndpoint.
 
-&lt;p&gt;After that, we will get uploaded files details from &lt;strong&gt;IFromFile&lt;/strong&gt; interface that we will assign to &lt;strong&gt;TransferUtilityUploadRequest&lt;/strong&gt; class of AWS and then finally call &lt;strong&gt;TransferUtility&lt;/strong&gt; class and access UploadAsync method to upload file meanwhile we are going to store all document details to the database.&lt;/p&gt;
+After that, we will get uploaded files details from **IFromFile** interface that we will assign to **TransferUtilityUploadRequest** class of AWS and then finally call **TransferUtility** class and access UploadAsync method to upload file meanwhile we are going to store all document details to the database.
 
-&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;        [HttpGet]
+```code
+        [HttpGet]
         public IActionResult UploadFile()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task&amp;lt;IActionResult&amp;gt; UploadFile(IFormFile file)
+        public async Task&lt;IActionResult&gt; UploadFile(IFormFile file)
         {
             try
             {
@@ -298,7 +296,7 @@ public void ConfigureServices(IServiceCollection services)
             catch (AmazonS3Exception amazonS3Exception)
             {
                 if (amazonS3Exception.ErrorCode != null
-                    &amp;amp;&amp;amp; (amazonS3Exception.ErrorCode.Equals(&quot;InvalidAccessKeyId&quot;) || amazonS3Exception.ErrorCode.Equals(&quot;InvalidSecurity&quot;)))
+                    &amp;&amp; (amazonS3Exception.ErrorCode.Equals(&quot;InvalidAccessKeyId&quot;) || amazonS3Exception.ErrorCode.Equals(&quot;InvalidSecurity&quot;)))
                 {
                     throw new Exception(&quot;Check the provided AWS Credentials.&quot;);
                 }
@@ -310,77 +308,80 @@ public void ConfigureServices(IServiceCollection services)
             return RedirectToAction(&quot;AllFiles&quot;);
         }
 
-&lt;/code&gt;&lt;/pre&gt;
+```
 
-&lt;h3 id=&quot;output&quot;&gt;Output&lt;/h3&gt;
+### Output
 
-&lt;p&gt;We are going to access the Demo/UploadFile path for uploading the file.&lt;/p&gt;
+We are going to access the Demo/UploadFile path for uploading the file.
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/23.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+![image](/img/aspdotnetcore/1/23.png)
 
-&lt;p&gt;After uploading the file, we can see in AWS S3 objects section as shown below.&lt;/p&gt;
+After uploading the file, we can see in AWS S3 objects section as shown below.
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/24.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+![image](/img/aspdotnetcore/1/24.png)
 
-&lt;p&gt;While uploading data, we are storing file details in the database.&lt;/p&gt;
+While uploading data, we are storing file details in the database.
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/25.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+![image](/img/aspdotnetcore/1/25.png)
 
-&lt;h3 id=&quot;all-files&quot;&gt;All Files&lt;/h3&gt;
+### All Files
 
-&lt;p&gt;In this part, we are going to show all files which are stored in the database along with download and delete feature.&lt;/p&gt;
+In this part, we are going to show all files which are stored in the database along with download and delete feature.
 
-&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+```code
+
   public IActionResult AllFiles()
     {
       return View(_documentdata.GetDocumentStoresList());
     }
-&lt;/code&gt;&lt;/pre&gt;
+```
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/26.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+![image](/img/aspdotnetcore/1/26.png)
 
-&lt;h3 id=&quot;all-files-view&quot;&gt;All Files View&lt;/h3&gt;
+### All Files View
 
-&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
-@model List&amp;lt;DocumentStore&amp;gt;
+```code
 
-&amp;lt;table class=&quot;table table-striped&quot;&amp;gt;
-    &amp;lt;thead&amp;gt;
-        &amp;lt;tr&amp;gt;
-            &amp;lt;th&amp;gt;DocumentId&amp;lt;/th&amp;gt;
-            &amp;lt;th&amp;gt;DocumentName&amp;lt;/th&amp;gt;
-            &amp;lt;th&amp;gt;CreatedOn&amp;lt;/th&amp;gt;
-            &amp;lt;th&amp;gt;Download&amp;lt;/th&amp;gt;
-            &amp;lt;th&amp;gt;Delete&amp;lt;/th&amp;gt;
-        &amp;lt;/tr&amp;gt;
-    &amp;lt;/thead&amp;gt;
-    &amp;lt;tbody&amp;gt;
+@model List&lt;DocumentStore&gt;
+
+&lt;table class=&quot;table table-striped&quot;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;DocumentId&lt;/th&gt;
+            &lt;th&gt;DocumentName&lt;/th&gt;
+            &lt;th&gt;CreatedOn&lt;/th&gt;
+            &lt;th&gt;Download&lt;/th&gt;
+            &lt;th&gt;Delete&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
 
         @foreach (var data in Model)
         {
-        &amp;lt;tr&amp;gt;
-            &amp;lt;td&amp;gt;@data.DocumentId&amp;lt;/td&amp;gt;
-            &amp;lt;td&amp;gt;@data.DocumentName&amp;lt;/td&amp;gt;
-            &amp;lt;td&amp;gt;@data.CreatedOn&amp;lt;/td&amp;gt;
-            &amp;lt;td&amp;gt;
-                &amp;lt;a class=&quot;btn btn-success&quot; href=&quot;/Demo/DownloadFile/@data.DocumentId&quot;&amp;gt;Download&amp;lt;/a&amp;gt;
-            &amp;lt;/td&amp;gt;
-            &amp;lt;td&amp;gt;
-                &amp;lt;a class=&quot;btn btn-danger&quot; href=&quot;/Demo/DeleteFile/@data.DocumentId&quot;&amp;gt;Delete&amp;lt;/a&amp;gt;
-            &amp;lt;/td&amp;gt;
+        &lt;tr&gt;
+            &lt;td&gt;@data.DocumentId&lt;/td&gt;
+            &lt;td&gt;@data.DocumentName&lt;/td&gt;
+            &lt;td&gt;@data.CreatedOn&lt;/td&gt;
+            &lt;td&gt;
+                &lt;a class=&quot;btn btn-success&quot; href=&quot;/Demo/DownloadFile/@data.DocumentId&quot;&gt;Download&lt;/a&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                &lt;a class=&quot;btn btn-danger&quot; href=&quot;/Demo/DeleteFile/@data.DocumentId&quot;&gt;Delete&lt;/a&gt;
+            &lt;/td&gt;
            
-        &amp;lt;/tr&amp;gt;
+        &lt;/tr&gt;
         }
-    &amp;lt;/tbody&amp;gt;
-&amp;lt;/table&amp;gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
 
-&lt;/code&gt;&lt;/pre&gt;
+```
 
-&lt;h3 id=&quot;download-file&quot;&gt;Download file&lt;/h3&gt;
+### Download file
 
-&lt;p&gt;We have created the DownloadFile action method for downloading, which takes document id as an input parameter and then gets document details. From this document details, we will take document name and pass it to GetObjectAsync method, which will get an object from S3 Bucket which contains ResponseStream and objectResponse.Headers.ContentType.&lt;/p&gt;
+We have created the DownloadFile action method for downloading, which takes document id as an input parameter and then gets document details. From this document details, we will take document name and pass it to GetObjectAsync method, which will get an object from S3 Bucket which contains ResponseStream and objectResponse.Headers.ContentType.
 
-&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;public async Task&amp;lt;IActionResult&amp;gt; DownloadFile(int id)
+```code
+public async Task&lt;IActionResult&gt; DownloadFile(int id)
         {
             try
             {
@@ -408,7 +409,7 @@ public void ConfigureServices(IServiceCollection services)
             catch (AmazonS3Exception amazonS3Exception)
             {
                 if (amazonS3Exception.ErrorCode != null
-                    &amp;amp;&amp;amp; (amazonS3Exception.ErrorCode.Equals(&quot;InvalidAccessKeyId&quot;) || amazonS3Exception.ErrorCode.Equals(&quot;InvalidSecurity&quot;)))
+                    &amp;&amp; (amazonS3Exception.ErrorCode.Equals(&quot;InvalidAccessKeyId&quot;) || amazonS3Exception.ErrorCode.Equals(&quot;InvalidSecurity&quot;)))
                 {
                     throw new Exception(&quot;Check the provided AWS Credentials.&quot;);
                 }
@@ -419,17 +420,18 @@ public void ConfigureServices(IServiceCollection services)
             }
 
         }
-&lt;/code&gt;&lt;/pre&gt;
+```
 
-&lt;p&gt;&lt;strong&gt;Output&lt;/strong&gt;&lt;/p&gt;
+**Output**
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/27.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+![image](/img/aspdotnetcore/1/27.png)
 
-&lt;h3 id=&quot;delete-file&quot;&gt;Delete file&lt;/h3&gt;
+### Delete file
 
-&lt;p&gt;For Deleting file, we have created a DeleteFile action method that takes document id as an input parameter and then documents details. From this document details, we will take document name and pass it to DeleteObjectAsync method which will delete an object from S3 Bucket while we are going call delete method from DocumentData class delete the file from the database.&lt;/p&gt;
+For Deleting file, we have created a DeleteFile action method that takes document id as an input parameter and then documents details. From this document details, we will take document name and pass it to DeleteObjectAsync method which will delete an object from S3 Bucket while we are going call delete method from DocumentData class delete the file from the database.
 
-&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;public async Task&amp;lt;IActionResult&amp;gt; DeleteFile(int id)
+```code
+public async Task&lt;IActionResult&gt; DeleteFile(int id)
         {
             try
             {
@@ -453,7 +455,7 @@ public void ConfigureServices(IServiceCollection services)
             catch (AmazonS3Exception amazonS3Exception)
             {
                 if (amazonS3Exception.ErrorCode != null
-                    &amp;amp;&amp;amp; (amazonS3Exception.ErrorCode.Equals(&quot;InvalidAccessKeyId&quot;) || amazonS3Exception.ErrorCode.Equals(&quot;InvalidSecurity&quot;)))
+                    &amp;&amp; (amazonS3Exception.ErrorCode.Equals(&quot;InvalidAccessKeyId&quot;) || amazonS3Exception.ErrorCode.Equals(&quot;InvalidSecurity&quot;)))
                 {
                     throw new Exception(&quot;Check the provided AWS Credentials.&quot;);
                 }
@@ -465,101 +467,770 @@ public void ConfigureServices(IServiceCollection services)
             return RedirectToAction(&quot;AllFiles&quot;);
         }
 
-&lt;/code&gt;&lt;/pre&gt;
+```
 
-&lt;p&gt;&lt;strong&gt;Before delete&lt;/strong&gt;&lt;/p&gt;
+**Before delete**
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/28.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+![image](/img/aspdotnetcore/1/28.png)
 
-&lt;p&gt;&lt;strong&gt;After delete&lt;/strong&gt;&lt;/p&gt;
+**After delete**
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/29.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+![image](/img/aspdotnetcore/1/29.png)
 
-&lt;p&gt;&lt;strong&gt;Output&lt;/strong&gt;&lt;/p&gt;
+**Output**
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/1/30.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+![image](/img/aspdotnetcore/1/30.png)
 
-&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+## Summary
 
-&lt;p&gt;In this article, we have learned how to upload , download and delete files from amazon AWS S3 Cloud Storage using ASP.NET CORE in simple steps hope you have like it please share it let others learn from it.&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aspnetcore.png" /></entry><entry><title type="html">HOW TO CROP AND RESIZE IMAGE IN ASP.NET CORE</title><link href="http://localhost:4000/blog/how-to-crop-and-resize-image-in-asp-net-core" rel="alternate" type="text/html" title="HOW TO CROP AND RESIZE IMAGE IN ASP.NET CORE" /><published>2021-02-14T05:54:00+00:00</published><updated>2021-02-14T05:54:00+00:00</updated><id>http://localhost:4000/blog/how-to-crop-and-resize-image-in-asp-net-core</id><content type="html" xml:base="http://localhost:4000/blog/how-to-crop-and-resize-image-in-asp-net-core">&lt;h2 id=&quot;how-to-crop-and-resize-image-in-aspnet-core&quot;&gt;HOW TO CROP AND RESIZE IMAGE IN ASP.NET CORE&lt;/h2&gt;
+In this article, we have learned how to upload , download and delete files from amazon AWS S3 Cloud Storage using ASP.NET CORE in simple steps hope you have like it please share it let others learn from it.</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">UPLOADING DOWNLOADING AND DELETING FILES IN AWS S3 CLOUD STORAGE USING ASP.NET CORE</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aspnetcore.png" /></entry><entry><title type="html">HOW TO IMPLEMENT GLOBALIZATION AND LOCALIZATION IN ASP.NET CORE</title><link href="http://localhost:4000/blog/how-to-implement-globalization-and-localization-in-asp-net-core" rel="alternate" type="text/html" title="HOW TO IMPLEMENT GLOBALIZATION AND LOCALIZATION IN ASP.NET CORE" /><published>2021-02-15T05:54:00+00:00</published><updated>2021-02-15T05:54:00+00:00</updated><id>http://localhost:4000/blog/how-to-implement-globalization-and-localization-in-asp-net-core</id><content type="html" xml:base="http://localhost:4000/blog/how-to-implement-globalization-and-localization-in-asp-net-core">&lt;h2 id=&quot;how-to-implement-globalization-and-localization-in-aspnet-core&quot;&gt;HOW TO IMPLEMENT GLOBALIZATION AND LOCALIZATION IN ASP.NET CORE&lt;/h2&gt;
 
-&lt;p&gt;In this article, we are going to learn how to Crop and Resize Image and store in a folder in a step by step way.&lt;/p&gt;
+&lt;p&gt;In this article, we are going to learn how to implement Globalization and Localization in simple steps.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://github.com/girishgodage/WebCropper&quot;&gt;Github link for Source&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/2/08.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/3/08.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Every application we develop now days has the option to set a profile photo right. Some application has a clause of fix length and Size of profile photo where the user needs to upload an image of fix length and Size which cause issues.&lt;/p&gt;
+&lt;h3 id=&quot;what-is-globalization-and-localization&quot;&gt;What is Globalization and Localization?&lt;/h3&gt;
 
-&lt;p&gt;In this part we are going allow users to upload a photo then adjust the zoom of the picture as they need then we are going resize Image in different format and store in a folder.&lt;/p&gt;
+&lt;p&gt;Globalization is the process of designing the application in such a way that it can be used by users from across the globe (multiple cultures).&lt;/p&gt;
+
+&lt;p&gt;Localization, on the other hand, is the process of customization to make our application behave depending on the current Culture and locale. These two things go together.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;I am writing this article because I was trying to Implement Globalization and Localization in one of my projects which took a lot of time to create a working demo reading Microsoft document. Trying to write a simple version which is easy to implement in your projects.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;200 * 200   Passport size&lt;/li&gt;
-  &lt;li&gt;180 * 180   Facebook size&lt;/li&gt;
-  &lt;li&gt;32 * 32     Icon size&lt;/li&gt;
+  &lt;li&gt;DataAnnotations localization&lt;/li&gt;
+  &lt;li&gt;View localization and Accessing localization string in Controller&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/2/1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;packages-used&quot;&gt;Packages Used&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;ImageSharp&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;ImageSharp is a new, fully-featured, fully managed, cross-platform, 2D graphics library. Designed to simplify image processing, ImageSharp brings you an incredibly powerful yet beautifully simple API.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Croppie&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Croppie is a fast, easy to use image cropping plugin with tons of configuration options&lt;/p&gt;
-
-&lt;h2 id=&quot;table-of-contents&quot;&gt;Table of Contents&lt;/h2&gt;
+&lt;h3 id=&quot;table-of-contents&quot;&gt;Table of Contents&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Getting Started with Upload Crop Resize Image in ASP.NET Core&lt;/li&gt;
+  &lt;li&gt;Getting Started with Globalization and Localization in ASP.NET Core&lt;/li&gt;
   &lt;li&gt;Project structure&lt;/li&gt;
-  &lt;li&gt;Installing SixLabors.ImageSharp Extension from NuGet Package&lt;/li&gt;
-  &lt;li&gt;Adding Controller and View&lt;/li&gt;
-  &lt;li&gt;Adding CustomCrop View&lt;/li&gt;
-  &lt;li&gt;Adding jQuery and Croppie CDN Reference on View&lt;/li&gt;
-  &lt;li&gt;Initialize Croppie and read file Content&lt;/li&gt;
-  &lt;li&gt;Adding CustomCrop Post Action Method&lt;/li&gt;
-  &lt;li&gt;Ajax Request for Posting Cropped Image&lt;/li&gt;
-  &lt;li&gt;Upload and Cropped Image&lt;/li&gt;
+  &lt;li&gt;Adding Model and Setting Display Properties&lt;/li&gt;
+  &lt;li&gt;Adding Folder to Keep Resource Files&lt;/li&gt;
+  &lt;li&gt;Adding Resource Files in Folder&lt;/li&gt;
+  &lt;li&gt;Adding Dummy Class&lt;/li&gt;
+  &lt;li&gt;Configure Localization in ConfigureServices Method&lt;/li&gt;
+  &lt;li&gt;Configure Localization middleware in Configure Method&lt;/li&gt;
+  &lt;li&gt;Adding Culture Controller&lt;/li&gt;
+  &lt;li&gt;Adding Partial View (“_SetLanguagePartial.cshtml”)&lt;/li&gt;
+  &lt;li&gt;Calling SetLanguagePartial View in Layout&lt;/li&gt;
+  &lt;li&gt;Adding Customer Controller&lt;/li&gt;
+  &lt;li&gt;Adding Customer View&lt;/li&gt;
+  &lt;li&gt;Output&lt;/li&gt;
+  &lt;li&gt;Accessing Resources in Controller and View&lt;/li&gt;
+  &lt;li&gt;Register service in ConfigureServices Method in Startup class.&lt;/li&gt;
+  &lt;li&gt;Output&lt;/li&gt;
+  &lt;li&gt;Accessing LocalizationService on View&lt;/li&gt;
+  &lt;li&gt;Output&lt;/li&gt;
+  &lt;li&gt;View localization&lt;/li&gt;
+  &lt;li&gt;Values to Access on View Using ViewLocalizer&lt;/li&gt;
   &lt;li&gt;Output&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;getting-started-with-upload-crop-resize-image-in-aspnet-core&quot;&gt;Getting Started with Upload Crop Resize Image in ASP.NET Core&lt;/h3&gt;
+&lt;p&gt;We are going to create a new application with Name WebDemo for demo as shown below.&lt;/p&gt;
 
-&lt;p&gt;We are going to create a new application with Name WebCropper for demo as shown below.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/3/01.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/2/02.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Next, we are going to set Project Name “WebDemo” and location. In last part, we are going to choose .Net Core framework and ASP.NET Core Version 5.0 as the framework for application and few advance settings for such as configuring https and enabling docker we are not going to enable docker settings for this project.&lt;/p&gt;
 
-&lt;p&gt;Next, we are going to set Project Name “WebCropper” and location. In last part, we are going to choose .&lt;/p&gt;
-
-&lt;p&gt;Net Core framework and ASP.NET Core Version 5.0 as the framework for application and few advance settings for such as configuring https and enabling docker we are not going to enable docker settings for this project.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/2/03.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/3/02.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Now finally click on create button to create a project.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Project structure&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;project-structure&quot;&gt;Project structure&lt;/h3&gt;
 
 &lt;p&gt;The project structure generated according to the configuration.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/2/04.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/3/03.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;After creating project next, we are going to install &lt;strong&gt;SixLabors.ImageSharp&lt;/strong&gt; Extension from NuGet Package.&lt;/p&gt;
+&lt;p&gt;After creating project next, we are going create Model and Adding properties which we are going to localize.&lt;/p&gt;
 
-&lt;h3 id=&quot;installing-sixlaborsimagesharp-extension-from-nuget-package&quot;&gt;Installing SixLabors.ImageSharp Extension from NuGet Package&lt;/h3&gt;
+&lt;h3 id=&quot;adding-model-and-setting-display-properties&quot;&gt;Adding Model and Setting Display Properties&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/2/05.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;We are going to adding &lt;strong&gt;CustomerViewModel&lt;/strong&gt; in Model Folder. If you want to keep ViewModel in separate Class Library, you can do it.&lt;/p&gt;
 
-&lt;p&gt;After installing next, we are going to add Controller and View where we will allow uses to upload and crop photo.&lt;/p&gt;
-
-&lt;h3 id=&quot;adding-controller-and-view&quot;&gt;Adding Controller and View&lt;/h3&gt;
-
-&lt;p&gt;Let’s Add Controller with name Demo Controller and Action Method with Name CustomCrop.&lt;/p&gt;
+&lt;p&gt;Next, we have created 3 properties and also set its Display properties. This Display properties Name Must be same as Your Resource File Name. Which we are going to add in the next step.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+using System.ComponentModel.DataAnnotations;
+namespace WebDemo.Models
+{
+    public class CustomerViewModel
+    {
+        [Display(Name = &quot;FullName&quot;)]
+        public string FullName { get; set; }
+
+        [Display(Name = &quot;City&quot;)]
+        public string City { get; set; }
+
+        [Display(Name = &quot;MobileNo&quot;)]
+        public string MobileNo { get; set; }
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;adding-folder-to-keep-resource-files&quot;&gt;Adding Folder to Keep Resource Files&lt;/h3&gt;
+
+&lt;p&gt;We are going to add a folder with Name “&lt;strong&gt;Resource&lt;/strong&gt;” to stored resources in it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/3/04.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;adding-resource-files-in-folder&quot;&gt;Adding Resource Files in Folder&lt;/h3&gt;
+
+&lt;p&gt;Here we are going to add a resource file in the resources folder. We are going to create 5 resources file with for storing 5 different culture string in it.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;en (English)&lt;/p&gt;
+
+  &lt;p&gt;hi (Hindi)&lt;/p&gt;
+
+  &lt;p&gt;ar (Arabic)&lt;/p&gt;
+
+  &lt;p&gt;de (German)&lt;/p&gt;
+
+  &lt;p&gt;zh (Chinese)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;For adding Resource file just right click on Resource folder select Add -&amp;gt; New Item after select Add New Item Dialog will be displayed.&lt;/p&gt;
+
+&lt;p&gt;In Search type “Resource” to search resource file.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/3/05.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We are going to Name files as “ApplicationResource”, and each file name will have culture name in it.&lt;/p&gt;
+
+&lt;p&gt;Example&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;ApplicationResource.en.resx&lt;/p&gt;
+
+  &lt;p&gt;ApplicationResource.hi.resx&lt;/p&gt;
+
+  &lt;p&gt;ApplicationResource.ar.resx&lt;/p&gt;
+
+  &lt;p&gt;ApplicationResource.de.resx&lt;/p&gt;
+
+  &lt;p&gt;ApplicationResource.zh.resx&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;project-view-after-adding-resources-files&quot;&gt;Project View after adding Resources Files&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/3/06.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Each file we are going to add Name (Key) and Value. This is English file here we are going to keep Value in English.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/3/07.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Next, we are going to do the same add Name and Different Values according to culture files.&lt;/p&gt;
+
+&lt;p&gt;Below you see different resources file has the same name and different Values.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/3/08.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;adding-dummy-class&quot;&gt;Adding Dummy Class&lt;/h3&gt;
+
+&lt;p&gt;Dummy class to group resources files. We are going to add Class with the name “ApplicationResource”.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;namespace WebDemo.Resources
+{
+    public class ApplicationResource
+    {
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/3/09.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;configure-localization-in-configureservices-method&quot;&gt;Configure Localization in ConfigureServices Method&lt;/h3&gt;
+
+&lt;p&gt;We are going to Configure localization “Startup.ConfigureServices” Method.&lt;/p&gt;
+
+&lt;p&gt;Adds services required for application localization. In ResourcesPath option we are going set resource folder named “Resources”.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;services.AddLocalization(options =&amp;gt; options.ResourcesPath = &quot;Resources&quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+services.AddMvc()
+ .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+ .AddDataAnnotationsLocalization(options =&amp;gt;
+ {
+     options.DataAnnotationLocalizerProvider = (type, factory) =&amp;gt;
+     {
+         var assemblyName = new AssemblyName(typeof(ApplicationResource).GetTypeInfo().Assembly.FullName);
+         return factory.Create(&quot;ApplicationResource&quot;, assemblyName.Name);
+     };
+ });
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next, we are going configure RequestLocalizationOptions for application.&lt;/p&gt;
+
+&lt;p&gt;In this part, we are going add Cultures which we are going to use in application and set default culture.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+services.Configure&amp;lt;RequestLocalizationOptions&amp;gt;(options =&amp;gt;
+{
+    var supportedCultures = new[]
+    {
+        new CultureInfo(&quot;en&quot;),
+        new CultureInfo(&quot;ar&quot;),
+        new CultureInfo(&quot;de&quot;),
+        new CultureInfo(&quot;hi&quot;),
+        new CultureInfo(&quot;zh&quot;),
+    };
+
+    // State what the default culture for your application is. This will be used if no specific culture
+    // can be determined for a given request.
+    options.DefaultRequestCulture = new RequestCulture(&quot;en&quot;);
+
+    // You must explicitly state which cultures your application supports.
+    // These are the cultures the app supports for formatting numbers, dates, etc.
+    options.SupportedCultures = supportedCultures;
+
+    // These are the cultures the app supports for UI strings, i.e. we have localized resources for.
+    options.SupportedUICultures = supportedCultures;
+});
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;configure-localization-middleware-in-configure-method&quot;&gt;Configure Localization middleware in Configure Method&lt;/h3&gt;
+
+&lt;p&gt;Adding &lt;strong&gt;UseRequestLocalization&lt;/strong&gt; middleware to the HTTP pipeline (Configure Method).
+It should be added below UseRouting Middleware.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;app.UseRouting();
+
+var requestlocalizationOptions = app.ApplicationServices.GetService&amp;lt;IOptions&amp;lt;RequestLocalizationOptions&amp;gt;&amp;gt;();
+app.UseRequestLocalization(requestlocalizationOptions.Value);
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddLocalization(options =&amp;gt; options.ResourcesPath = &quot;Resources&quot;);
+    
+    services.AddMvc()
+        .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+        .AddDataAnnotationsLocalization(options =&amp;gt;
+        {
+            options.DataAnnotationLocalizerProvider = (type, factory) =&amp;gt;
+            {
+                var assemblyName = new AssemblyName(typeof(ApplicationResource).GetTypeInfo().Assembly.FullName);
+                return factory.Create(&quot;ApplicationResource&quot;, assemblyName.Name);
+            };
+        });
+
+    services.Configure&amp;lt;RequestLocalizationOptions&amp;gt;(options =&amp;gt;
+    {
+        var supportedCultures = new[]
+        {
+            new CultureInfo(&quot;en&quot;),
+            new CultureInfo(&quot;ar&quot;),
+            new CultureInfo(&quot;de&quot;),
+            new CultureInfo(&quot;hi&quot;),
+            new CultureInfo(&quot;zh&quot;),
+        };
+
+        // State what the default culture for your application is. This will be used if no specific culture
+        // can be determined for a given request.
+        options.DefaultRequestCulture = new RequestCulture(&quot;en&quot;);
+
+        // You must explicitly state which cultures your application supports.
+        // These are the cultures the app supports for formatting numbers, dates, etc.
+        options.SupportedCultures = supportedCultures;
+
+        // These are the cultures the app supports for UI strings, i.e. we have localized resources for.
+        options.SupportedUICultures = supportedCultures;
+    });
+
+    services.AddControllersWithViews();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After configuring Middleware Next, let’s Add Controller.&lt;/p&gt;
+
+&lt;h3 id=&quot;adding-culture-controller&quot;&gt;Adding Culture Controller&lt;/h3&gt;
+
+&lt;p&gt;In this part, we are going to add Controller which we are going to call from UI to set Culture and store in Cookie such that it is available for the entire application.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc;
+using System;
+
+namespace WebDemo.Controllers
+{
+    public class CultureController : Controller
+    {
+        [HttpPost]
+        public IActionResult SetLanguage(string culture, string returnUrl)
+        {
+            Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+            );
+
+            return LocalRedirect(returnUrl);
+        }
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;adding-partial-view--adding-partial-view-_setlanguagepartialcshtml&quot;&gt;Adding Partial View  Adding Partial View (“_SetLanguagePartial.cshtml”)&lt;/h3&gt;
+
+&lt;p&gt;In this part, we are going to add Partial View (“_SetLanguagePartial.cshtml”) in Views –&amp;gt; Shared folder.&lt;/p&gt;
+
+&lt;p&gt;Partial View will have a Dropdown list with culture names for selection of Culture. After selecting Culture,&lt;/p&gt;
+
+&lt;p&gt;we are going to POST Values to Culture Controller Set Language Action Method and set culture value to Cookie and reload the page.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/3/10.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer Localizer
+@inject IOptions&amp;lt;RequestLocalizationOptions&amp;gt; LocOptions
+@{
+    var requestCulture = Context.Features.Get&amp;lt;IRequestCultureFeature&amp;gt;();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c =&amp;gt; new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
+}
+
+&amp;lt;div&amp;gt;
+    &amp;lt;form asp-controller=&quot;Culture&quot;
+          asp-action=&quot;SetLanguage&quot;
+          asp-route-returnUrl=&quot;@Context.Request.Path&quot;
+          method=&quot;post&quot;&amp;gt;
+        Language :-
+        &amp;lt;select name=&quot;culture&quot;
+                onchange=&quot;this.form.submit();&quot;
+                asp-for=&quot;@requestCulture.RequestCulture.UICulture.Name&quot;
+                asp-items=&quot;cultureItems&quot;&amp;gt;
+        &amp;lt;/select&amp;gt;
+    &amp;lt;/form&amp;gt;
+&amp;lt;/div&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;calling-setlanguagepartial-view-in-layout&quot;&gt;Calling SetLanguagePartial View in Layout&lt;/h3&gt;
+
+&lt;p&gt;In this part, we are going to call _SetLanguagePartial view on Layout.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+ @await Html.PartialAsync(&quot;_SetLanguagePartial&quot;)
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+ &amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&quot;en&quot;&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;meta charset=&quot;utf-8&quot; /&amp;gt;
+    &amp;lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&amp;gt;
+    &amp;lt;title&amp;gt;@ViewData[&quot;Title&quot;] - WebDemo&amp;lt;/title&amp;gt;
+    &amp;lt;link rel=&quot;stylesheet&quot; href=&quot;~/lib/bootstrap/dist/css/bootstrap.min.css&quot; /&amp;gt;
+    &amp;lt;link rel=&quot;stylesheet&quot; href=&quot;~/css/site.css&quot; /&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+    &amp;lt;header&amp;gt;
+        &amp;lt;nav class=&quot;navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3&quot;&amp;gt;
+            &amp;lt;div class=&quot;container&quot;&amp;gt;
+                &amp;lt;a class=&quot;navbar-brand&quot; asp-area=&quot;&quot; asp-controller=&quot;Home&quot; asp-action=&quot;Index&quot;&amp;gt;WebDemo&amp;lt;/a&amp;gt;
+                &amp;lt;button class=&quot;navbar-toggler&quot; type=&quot;button&quot; data-toggle=&quot;collapse&quot; data-target=&quot;.navbar-collapse&quot; aria-controls=&quot;navbarSupportedContent&quot;
+                        aria-expanded=&quot;false&quot; aria-label=&quot;Toggle navigation&quot;&amp;gt;
+                    &amp;lt;span class=&quot;navbar-toggler-icon&quot;&amp;gt;&amp;lt;/span&amp;gt;
+                &amp;lt;/button&amp;gt;
+                &amp;lt;div class=&quot;navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse&quot;&amp;gt;
+                    &amp;lt;ul class=&quot;navbar-nav flex-grow-1&quot;&amp;gt;
+                        &amp;lt;li&amp;gt;
+                            @await Html.PartialAsync(&quot;_SetLanguagePartial&quot;)
+                        &amp;lt;/li&amp;gt;
+                    &amp;lt;/ul&amp;gt;
+                &amp;lt;/div&amp;gt;
+            &amp;lt;/div&amp;gt;
+        &amp;lt;/nav&amp;gt;
+    &amp;lt;/header&amp;gt;
+    &amp;lt;div class=&quot;container&quot;&amp;gt;
+        &amp;lt;main role=&quot;main&quot; class=&quot;pb-3&quot;&amp;gt;
+            @RenderBody()
+        &amp;lt;/main&amp;gt;
+    &amp;lt;/div&amp;gt;
+
+    &amp;lt;footer class=&quot;border-top footer text-muted&quot;&amp;gt;
+        &amp;lt;div class=&quot;container&quot;&amp;gt;
+            &amp;amp;copy; 2020 - WebDemo - &amp;lt;a asp-area=&quot;&quot; asp-controller=&quot;Home&quot; asp-action=&quot;Privacy&quot;&amp;gt;Privacy&amp;lt;/a&amp;gt;
+        &amp;lt;/div&amp;gt;
+    &amp;lt;/footer&amp;gt;
+    &amp;lt;script src=&quot;~/lib/jquery/dist/jquery.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+    &amp;lt;script src=&quot;~/lib/bootstrap/dist/js/bootstrap.bundle.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+    &amp;lt;script src=&quot;~/js/site.js&quot; asp-append-version=&quot;true&quot;&amp;gt;&amp;lt;/script&amp;gt;
+    @RenderSection(&quot;Scripts&quot;, required: false)
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;adding-customer-controller&quot;&gt;Adding Customer Controller&lt;/h3&gt;
+
+&lt;p&gt;In this part, we are going to add Customer Controller which will be using CustomerViewModel for creating View.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+namespace WebDemo.Controllers
+{
+    public class CustomerController : Controller
+    {
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;adding-customer-view&quot;&gt;Adding Customer View&lt;/h3&gt;
+
+&lt;p&gt;In this View we are using New Tag Helpers for creating and rendering HTML elements.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;@model WebDemo.Models.CustomerViewModel
+@{
+    ViewData[&quot;Title&quot;] = &quot;Create&quot;;
+}
+
+&amp;lt;div class=&quot;card&quot;&amp;gt;
+    &amp;lt;div class=&quot;card-header&quot;&amp;gt;Create&amp;lt;/div&amp;gt;
+    &amp;lt;div class=&quot;card-body&quot;&amp;gt;
+        &amp;lt;form asp-controller=&quot;Customer&quot; asp-action=&quot;Create&quot; method=&quot;post&quot;&amp;gt;
+            &amp;lt;div class=&quot;form-row&quot;&amp;gt;
+                &amp;lt;div class=&quot;col&quot;&amp;gt;
+                    &amp;lt;label asp-for=&quot;FullName&quot;&amp;gt;&amp;lt;/label&amp;gt;
+                    &amp;lt;input asp-for=&quot;FullName&quot; placeholder=&quot;Enter FullName&quot; class=&quot;form-control&quot; /&amp;gt;
+                    &amp;lt;span asp-validation-for=&quot;FullName&quot;&amp;gt;&amp;lt;/span&amp;gt;
+                &amp;lt;/div&amp;gt;
+                &amp;lt;div class=&quot;col&quot;&amp;gt;
+                    &amp;lt;label asp-for=&quot;City&quot;&amp;gt;&amp;lt;/label&amp;gt;
+                    &amp;lt;input asp-for=&quot;City&quot; placeholder=&quot;Enter City&quot; class=&quot;form-control&quot; /&amp;gt;
+                    &amp;lt;span asp-validation-for=&quot;City&quot;&amp;gt;&amp;lt;/span&amp;gt;
+                &amp;lt;/div&amp;gt;
+                &amp;lt;div class=&quot;col&quot;&amp;gt;
+                    &amp;lt;label asp-for=&quot;MobileNo&quot;&amp;gt;&amp;lt;/label&amp;gt;
+                    &amp;lt;input asp-for=&quot;MobileNo&quot; placeholder=&quot;Enter MobileNo&quot; class=&quot;form-control&quot; /&amp;gt;
+                    &amp;lt;span asp-validation-for=&quot;MobileNo&quot;&amp;gt;&amp;lt;/span&amp;gt;
+                &amp;lt;/div&amp;gt;
+            &amp;lt;/div&amp;gt;
+            &amp;lt;div class=&quot;clearfix&quot;&amp;gt;&amp;lt;/div&amp;gt;
+            &amp;lt;div class=&quot;form-row&quot;&amp;gt;
+                &amp;lt;div class=&quot;col&quot;&amp;gt;
+               &amp;lt;button style=&quot;margin-top: 10px&quot; class=&quot;btn btn-success&quot; type=&quot;submit&quot;&amp;gt; Submit&amp;lt;/button&amp;gt;
+                &amp;lt;/div&amp;gt;
+            &amp;lt;/div&amp;gt;
+        &amp;lt;/form&amp;gt;
+    &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;After adding View Now Let’s run application and Test it.&lt;/p&gt;
+
+&lt;h3 id=&quot;output&quot;&gt;Output&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/3/11.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/3/12.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Till now, we have seen how to use Localization using DataAnnotations; next, we are going to access the same resources files in Controller and View.&lt;/p&gt;
+
+&lt;h3 id=&quot;accessing-resources-in-controller-and-view&quot;&gt;Accessing Resources in Controller and View&lt;/h3&gt;
+
+&lt;p&gt;For accessing the value from the resource file, we are going to create a class with Name &lt;strong&gt;LocalizationService&lt;/strong&gt; in Resources Folder.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;LocalizationService&lt;/strong&gt; class constructor receives an &lt;strong&gt;IStringLocalizerFactory&lt;/strong&gt; type parameter which will inject at runtime.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;IStringLocalizerFactory Interface&lt;/strong&gt;: – Represents a factory that creates &lt;strong&gt;IStringLocalizer&lt;/strong&gt; instances.
+&lt;strong&gt;IStringLocalizer Interface&lt;/strong&gt;: – Represents a service that provides localized strings.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;IStringLocalizerFactory&lt;/strong&gt; has created a method which takes 2 input&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Basename: – basename of resource to load string&lt;/li&gt;
+  &lt;li&gt;Location: – location to load resources from&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In our application, we have a base name as &lt;strong&gt;“ApplicationResource”&lt;/strong&gt; and location we are going to pass the type name &lt;strong&gt;“ApplicationResource”&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;This class will have Method which will take the key as input and get its value from resource according to Culture.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;using Microsoft.Extensions.Localization;
+using System.Reflection;
+
+namespace WebDemo.Resources
+{
+    public class LocalizationService
+    {
+        private readonly IStringLocalizer _localizer;
+
+        public LocalizationService(IStringLocalizerFactory factory)
+        {
+            var type = typeof(ApplicationResource);
+            var assemblyName = new AssemblyName(type.GetTypeInfo().Assembly.FullName!);
+            _localizer = factory.Create(&quot;ApplicationResource&quot;, assemblyName.Name);
+        }
+
+        public LocalizedString GetLocalizedHtmlString(string key)
+        {
+            return _localizer[key];
+        }
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;register-service-in-configureservices-method-in-startup-class&quot;&gt;Register service in ConfigureServices Method in Startup class&lt;/h3&gt;
+
+&lt;p&gt;We are going to register this service in ConfigureService Method.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;services.AddSingleton&amp;lt;LocalizationService&amp;gt;();
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;accessing-localizationservice-in-controller&quot;&gt;Accessing LocalizationService in Controller&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/3/13.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;accessing-localizationservice-on-view&quot;&gt;Accessing LocalizationService on View&lt;/h3&gt;
+
+&lt;p&gt;For accessing on View, we need to inject LocalizationService on View.&lt;/p&gt;
+
+&lt;p&gt;Injecting LocalizationService&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+@inject LocalizationService LocalizationService
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Accessing Values Using LocalizationService&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;@LocalizationService.GetLocalizedHtmlString(&quot;FullName&quot;)
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+@using WebDemo.Resources
+@model CustomerViewModel
+@{
+    ViewData[&quot;Title&quot;] = &quot;Create&quot;;
+}
+
+@inject LocalizationService LocalizationService
+
+&amp;lt;div class=&quot;card&quot;&amp;gt;
+    &amp;lt;div class=&quot;card-header&quot;&amp;gt;Create&amp;lt;/div&amp;gt;
+    &amp;lt;div class=&quot;card-body&quot;&amp;gt;
+        &amp;lt;form asp-controller=&quot;Customer&quot; asp-action=&quot;Create&quot; method=&quot;post&quot;&amp;gt;
+            &amp;lt;div class=&quot;form-row&quot;&amp;gt;
+                &amp;lt;div class=&quot;col&quot;&amp;gt;
+                    &amp;lt;label asp-for=&quot;FullName&quot;&amp;gt;&amp;lt;/label&amp;gt; | @LocalizationService.GetLocalizedHtmlString(&quot;FullName&quot;)
+                    &amp;lt;input asp-for=&quot;FullName&quot; placeholder=&quot;Enter FullName&quot; class=&quot;form-control&quot; /&amp;gt;
+                    &amp;lt;span asp-validation-for=&quot;FullName&quot;&amp;gt;&amp;lt;/span&amp;gt;
+                &amp;lt;/div&amp;gt;
+                &amp;lt;div class=&quot;col&quot;&amp;gt;
+                    &amp;lt;label asp-for=&quot;City&quot;&amp;gt;&amp;lt;/label&amp;gt; | @LocalizationService.GetLocalizedHtmlString(&quot;City&quot;)
+                    &amp;lt;input asp-for=&quot;City&quot; placeholder=&quot;Enter City&quot; class=&quot;form-control&quot; /&amp;gt;
+                    &amp;lt;span asp-validation-for=&quot;City&quot;&amp;gt;&amp;lt;/span&amp;gt;
+                &amp;lt;/div&amp;gt;
+                &amp;lt;div class=&quot;col&quot;&amp;gt;
+                    &amp;lt;label asp-for=&quot;MobileNo&quot;&amp;gt;&amp;lt;/label&amp;gt; | @LocalizationService.GetLocalizedHtmlString(&quot;MobileNo&quot;)
+                    &amp;lt;input asp-for=&quot;MobileNo&quot; placeholder=&quot;Enter MobileNo&quot; class=&quot;form-control&quot; /&amp;gt;
+                    &amp;lt;span asp-validation-for=&quot;MobileNo&quot;&amp;gt;&amp;lt;/span&amp;gt;
+                &amp;lt;/div&amp;gt;
+
+            &amp;lt;/div&amp;gt;
+            &amp;lt;div class=&quot;clearfix&quot;&amp;gt;&amp;lt;/div&amp;gt;
+            &amp;lt;div class=&quot;form-row&quot;&amp;gt;
+                &amp;lt;div class=&quot;col&quot;&amp;gt;
+                    &amp;lt;button style=&quot;margin-top: 10px&quot; class=&quot;btn btn-success&quot; type=&quot;submit&quot;&amp;gt; Submit&amp;lt;/button&amp;gt;
+                &amp;lt;/div&amp;gt;
+            &amp;lt;/div&amp;gt;
+        &amp;lt;/form&amp;gt;
+    &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;output-1&quot;&gt;Output&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/3/14.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;view-localization&quot;&gt;View localization&lt;/h3&gt;
+
+&lt;p&gt;The &lt;strong&gt;IViewLocalizer&lt;/strong&gt; service provides localized strings for a view. The ViewLocalizer class implements this Interface and finds the resource location from the view file path.&lt;/p&gt;
+
+&lt;p&gt;To Use View Localization, we need to create a folder in Resource folder according to your View location which you need to customize.&lt;/p&gt;
+
+&lt;p&gt;Take an example we have Views folder inside that Registration folder same we need to create in the Resources folder.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note: – We have created Registration Controller with Register Action Method in it.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/3/15.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Inside that folder, we are going to Add resource with the same name as View Name.&lt;/p&gt;
+
+&lt;p&gt;If you see above snapshot our View name in Registration folder is Register for that we are going to create resource name as “Register”, and also, we are going to add culture name in the resource file name “Register.en.resx”, “Register.mr.resx”.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;en :- English&lt;/li&gt;
+  &lt;li&gt;hi :- Hindi&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;After creating resource files, we are going insert Key and Values in it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/3/16.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Next, we are going to Access this Values on Register View by using &lt;strong&gt;IViewLocalizer&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Injecting IViewLocalizer in View&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;@inject IViewLocalizer ViewLocalizer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;values-to-access-on-view-using-viewlocalizer&quot;&gt;Values to Access on View Using ViewLocalizer&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;@ViewLocalizer[&quot;Name&quot;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;register-view&quot;&gt;Register View&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer ViewLocalizer
+@{
+    ViewData[&quot;Title&quot;] = &quot;Register&quot;;
+}
+
+&amp;lt;div class=&quot;card&quot;&amp;gt;
+    &amp;lt;div class=&quot;card-body&quot;&amp;gt;
+        &amp;lt;form asp-controller=&quot;Registration&quot; asp-action=&quot;Register&quot; method=&quot;post&quot;&amp;gt;
+            &amp;lt;div class=&quot;form-row&quot;&amp;gt;
+                &amp;lt;div class=&quot;col&quot;&amp;gt;
+                    &amp;lt;label&amp;gt;@ViewLocalizer[&quot;Name&quot;]&amp;lt;/label&amp;gt;
+                    &amp;lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;Name&quot;&amp;gt;
+                &amp;lt;/div&amp;gt;
+                &amp;lt;div class=&quot;col&quot;&amp;gt;
+                    &amp;lt;label&amp;gt;@ViewLocalizer[&quot;City&quot;]&amp;lt;/label&amp;gt;
+                    &amp;lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;City&quot;&amp;gt;
+                &amp;lt;/div&amp;gt;
+            &amp;lt;/div&amp;gt;
+            &amp;lt;div class=&quot;clearfix&quot;&amp;gt;&amp;lt;/div&amp;gt;
+            &amp;lt;div class=&quot;form-row&quot;&amp;gt;
+                &amp;lt;div class=&quot;col&quot;&amp;gt;
+                    &amp;lt;button style=&quot;margin-top: 10px&quot; class=&quot;btn btn-success&quot; type=&quot;submit&quot;&amp;gt; Submit&amp;lt;/button&amp;gt;
+                &amp;lt;/div&amp;gt;
+            &amp;lt;/div&amp;gt;
+        &amp;lt;/form&amp;gt;
+    &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;output-2&quot;&gt;Output&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/3/17.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">HOW TO IMPLEMENT GLOBALIZATION AND LOCALIZATION IN ASP.NET CORE</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aspnetcore.png" /></entry><entry><title type="html">HOW TO CROP AND RESIZE IMAGE IN ASP.NET CORE</title><link href="http://localhost:4000/blog/how-to-crop-and-resize-image-in-asp-net-core" rel="alternate" type="text/html" title="HOW TO CROP AND RESIZE IMAGE IN ASP.NET CORE" /><published>2021-02-14T05:54:00+00:00</published><updated>2021-02-14T05:54:00+00:00</updated><id>http://localhost:4000/blog/how-to-crop-and-resize-image-in-asp-net-core</id><content type="html" xml:base="http://localhost:4000/blog/how-to-crop-and-resize-image-in-asp-net-core">## HOW TO CROP AND RESIZE IMAGE IN ASP.NET CORE
+
+In this article, we are going to learn how to Crop and Resize Image and store in a folder in a step by step way.
+
+[Github link for Source](https://github.com/girishgodage/WebCropper)
+
+![image](/img/aspdotnetcore/2/08.png)
+
+Every application we develop now days has the option to set a profile photo right. Some application has a clause of fix length and Size of profile photo where the user needs to upload an image of fix length and Size which cause issues.
+
+In this part we are going allow users to upload a photo then adjust the zoom of the picture as they need then we are going resize Image in different format and store in a folder.
+
+* 200 * 200   Passport size
+* 180 * 180   Facebook size
+* 32 * 32     Icon size
+
+![image](/img/aspdotnetcore/2/1.png)
+
+### Packages Used 
+
+**ImageSharp**
+
+ImageSharp is a new, fully-featured, fully managed, cross-platform, 2D graphics library. Designed to simplify image processing, ImageSharp brings you an incredibly powerful yet beautifully simple API.
+
+**Croppie**
+
+Croppie is a fast, easy to use image cropping plugin with tons of configuration options
+
+## Table of Contents
+
+* Getting Started with Upload Crop Resize Image in ASP.NET Core
+* Project structure
+* Installing SixLabors.ImageSharp Extension from NuGet Package
+* Adding Controller and View
+* Adding CustomCrop View
+* Adding jQuery and Croppie CDN Reference on View
+* Initialize Croppie and read file Content
+* Adding CustomCrop Post Action Method
+* Ajax Request for Posting Cropped Image
+* Upload and Cropped Image
+* Output
+
+### Getting Started with Upload Crop Resize Image in ASP.NET Core
+
+We are going to create a new application with Name WebCropper for demo as shown below.
+
+![image](/img/aspdotnetcore/2/02.png)
+
+Next, we are going to set Project Name “WebCropper” and location. In last part, we are going to choose .
+
+Net Core framework and ASP.NET Core Version 5.0 as the framework for application and few advance settings for such as configuring https and enabling docker we are not going to enable docker settings for this project.
+
+![image](/img/aspdotnetcore/2/03.png)
+
+Now finally click on create button to create a project.
+
+**Project structure**
+
+The project structure generated according to the configuration.
+
+![image](/img/aspdotnetcore/2/04.png)
+
+
+After creating project next, we are going to install **SixLabors.ImageSharp** Extension from NuGet Package.
+
+### Installing SixLabors.ImageSharp Extension from NuGet Package
+
+![image](/img/aspdotnetcore/2/05.png)
+
+
+After installing next, we are going to add Controller and View where we will allow uses to upload and crop photo.
+
+### Adding Controller and View
+
+Let’s Add Controller with name Demo Controller and Action Method with Name CustomCrop.
+   
+```code
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -577,75 +1248,78 @@ namespace WebCropper.Controllers
     }
 }
 
-&lt;/code&gt;&lt;/pre&gt;
+```
 
-&lt;p&gt;Next after adding Controller and Action Method next, we are going to add View with Name CustomCrop.&lt;/p&gt;
+Next after adding Controller and Action Method next, we are going to add View with Name CustomCrop.
 
-&lt;p&gt;On this View, we are going to add input of type file to upload Image.&lt;/p&gt;
+On this View, we are going to add input of type file to upload Image.
 
-&lt;h3 id=&quot;adding-customcrop-view&quot;&gt;Adding CustomCrop View&lt;/h3&gt;
+### Adding CustomCrop View
 
-&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;@{
+```code
+@{
     Layout = null;
 }
 
-&amp;lt;!DOCTYPE html&amp;gt;
-&amp;lt;html&amp;gt;
-&amp;lt;head&amp;gt;
-    &amp;lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot; /&amp;gt;
-    &amp;lt;title&amp;gt;CustomCrop&amp;lt;/title&amp;gt;
-    &amp;lt;link href=&quot;~/lib/bootstrap/dist/css/bootstrap.css&quot; rel=&quot;stylesheet&quot; /&amp;gt;
-&amp;lt;/head&amp;gt;
-&amp;lt;body&amp;gt;
-    &amp;lt;div class=&quot;container&quot;&amp;gt;
-        &amp;lt;div class=&quot;d-flex justify-content-center&quot;&amp;gt;
-            &amp;lt;div class=&quot;col-md-6&quot;&amp;gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot; /&gt;
+    &lt;title&gt;CustomCrop&lt;/title&gt;
+    &lt;link href=&quot;~/lib/bootstrap/dist/css/bootstrap.css&quot; rel=&quot;stylesheet&quot; /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;d-flex justify-content-center&quot;&gt;
+            &lt;div class=&quot;col-md-6&quot;&gt;
 
-                &amp;lt;div class=&quot;card&quot; style=&quot;margin-top:10px;&quot;&amp;gt;
-                    &amp;lt;div class=&quot;card-header&quot;&amp;gt;Cropper in ASP.NET Core&amp;lt;/div&amp;gt;
-                    &amp;lt;div class=&quot;card-body&quot;&amp;gt;
-                        &amp;lt;div id=&quot;main-cropper&quot;&amp;gt;&amp;lt;/div&amp;gt;
-                        &amp;lt;input type=&quot;file&quot; id=&quot;select&quot; class=&quot;form-control&quot; value=&quot;Choose Image&quot; accept=&quot;image/*&quot;&amp;gt;
-                        &amp;lt;button id=&quot;btnupload&quot; style=&quot;margin-top: 10px;&quot; name=&quot;btnupload&quot; class=&quot;btn btn-success&quot;&amp;gt;Crop&amp;lt;/button&amp;gt;
-                    &amp;lt;/div&amp;gt;
-                &amp;lt;/div&amp;gt;
-            &amp;lt;/div&amp;gt;
-        &amp;lt;/div&amp;gt;
-    &amp;lt;/div&amp;gt;
-&amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+                &lt;div class=&quot;card&quot; style=&quot;margin-top:10px;&quot;&gt;
+                    &lt;div class=&quot;card-header&quot;&gt;Cropper in ASP.NET Core&lt;/div&gt;
+                    &lt;div class=&quot;card-body&quot;&gt;
+                        &lt;div id=&quot;main-cropper&quot;&gt;&lt;/div&gt;
+                        &lt;input type=&quot;file&quot; id=&quot;select&quot; class=&quot;form-control&quot; value=&quot;Choose Image&quot; accept=&quot;image/*&quot;&gt;
+                        &lt;button id=&quot;btnupload&quot; style=&quot;margin-top: 10px;&quot; name=&quot;btnupload&quot; class=&quot;btn btn-success&quot;&gt;Crop&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+```
 
-&lt;p&gt;Next, after adding View next, we are going to add reference of image cropping plugin.&lt;/p&gt;
+Next, after adding View next, we are going to add reference of image cropping plugin.
 
-&lt;h3 id=&quot;what-is-croppie&quot;&gt;What is Croppie?&lt;/h3&gt;
+### What is Croppie?
 
-&lt;p&gt;Croppie is a fast, easy to use image cropping plugin with tons of configuration options!&lt;/p&gt;
+Croppie is a fast, easy to use image cropping plugin with tons of configuration options!
 
-&lt;p&gt;https://foliotek.github.io/Croppie/&lt;/p&gt;
+https://foliotek.github.io/Croppie/
 
-&lt;p&gt;Adding jQuery and Croppie CDN Reference on View&lt;/p&gt;
+Adding jQuery and Croppie CDN Reference on View
 
-&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;&amp;lt;head&amp;gt;
-  &amp;lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot; /&amp;gt;
-  &amp;lt;title&amp;gt;CustomCrop&amp;lt;/title&amp;gt;
-  &amp;lt;link href=&quot;~/lib/bootstrap/dist/css/bootstrap.css&quot; rel=&quot;stylesheet&quot; /&amp;gt;
-  &amp;lt;script src=&quot;~/lib/jquery/dist/jquery.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
-  &amp;lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css&quot; /&amp;gt;
-  &amp;lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
-  &amp;lt;style&amp;gt;
+```code
+&lt;head&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot; /&gt;
+  &lt;title&gt;CustomCrop&lt;/title&gt;
+  &lt;link href=&quot;~/lib/bootstrap/dist/css/bootstrap.css&quot; rel=&quot;stylesheet&quot; /&gt;
+  &lt;script src=&quot;~/lib/jquery/dist/jquery.js&quot;&gt;&lt;/script&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css&quot; /&gt;
+  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js&quot;&gt;&lt;/script&gt;
+  &lt;style&gt;
         .croppie-container {
             width: 100%;
             height: 80%;
         }
-   &amp;lt;/style&amp;gt;
-&amp;lt;/head&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+   &lt;/style&gt;
+&lt;/head&gt;
+```
 
-&lt;p&gt;Next, we are going to Initialize croppie.&lt;/p&gt;
+Next, we are going to Initialize croppie.
 
-&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
-&amp;lt;script type=&quot;text/javascript&quot;&amp;gt;
+```code
+
+&lt;script type=&quot;text/javascript&quot;&gt;
 
     //initialize Croppie
     var basic = $('#main-cropper').croppie
@@ -659,7 +1333,7 @@ namespace WebCropper.Controllers
 
     //Reading the contents of the specified Blob or File
     function readFile(input) {
-        if (input.files &amp;amp;&amp;amp; input.files[0])
+        if (input.files &amp;&amp; input.files[0])
         {
             var reader = new FileReader();
 
@@ -675,29 +1349,31 @@ namespace WebCropper.Controllers
    // Change Event to Read file content from File input
     $('#select').on('change', function () { readFile(this); });
 
-&amp;lt;/script&amp;gt;
+&lt;/script&gt;
 
-&lt;/code&gt;&lt;/pre&gt;
+```
 
-&lt;p&gt;After initializing Croppie next, we are going to run the application to see Created UI.&lt;/p&gt;
+After initializing Croppie next, we are going to run the application to see Created UI.
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/2/06.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;After we have created UI next let’s create an Action method for handling Ajax POST request.&lt;/p&gt;
+![image](/img/aspdotnetcore/2/06.png)
 
-&lt;h3 id=&quot;adding-customcrop-post-action-method&quot;&gt;Adding CustomCrop Post Action Method&lt;/h3&gt;
+After we have created UI next let’s create an Action method for handling Ajax POST request.
 
-&lt;p&gt;In this part, we are going create action method which is going to handle ajax POST request where we are going receive Cropped file.&lt;/p&gt;
+### Adding CustomCrop Post Action Method
 
-&lt;p&gt;Reading Stream of Cropped file we are going pass it to ImageSharp Load Method which will return image object on image object we can apply an operation on Image resize a then store in a folder.&lt;/p&gt;
+In this part, we are going create action method which is going to handle ajax POST request where we are going receive Cropped file.
 
-&lt;p&gt;We are going to store Image in a folder for that we are going to create a folder in wwwroot with Name Images.&lt;/p&gt;
+Reading Stream of Cropped file we are going pass it to ImageSharp Load Method which will return image object on image object we can apply an operation on Image resize a then store in a folder.
 
-&lt;p&gt;We are going to resize Image in 3 different sizes 200, 180, 32.&lt;/p&gt;
+We are going to store Image in a folder for that we are going to create a folder in wwwroot with Name Images.
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/2/07.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+We are going to resize Image in 3 different sizes 200, 180, 32.
 
-&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+![image](/img/aspdotnetcore/2/07.png)
+
+```code
+
 [HttpPost]
         public IActionResult CustomCrop(string filename, IFormFile blob)
         {
@@ -707,19 +1383,19 @@ namespace WebCropper.Controllers
                 {
                     string systemFileExtenstion = filename.Substring(filename.LastIndexOf('.'));
 
-                    image.Mutate(x =&amp;gt; x.Resize(180, 180));
+                    image.Mutate(x =&gt; x.Resize(180, 180));
                     var newfileName180 = GenerateFileName(&quot;Photo_180_180_&quot;, systemFileExtenstion);
                     var filepath160 = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), &quot;wwwroot&quot;, &quot;Images&quot;)).Root + $@&quot;\{newfileName180}&quot;;
                     image.Save(filepath160);
 
                     var newfileName200 = GenerateFileName(&quot;Photo_200_200_&quot;, systemFileExtenstion);
                     var filepath200 = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), &quot;wwwroot&quot;, &quot;Images&quot;)).Root + $@&quot;\{newfileName200}&quot;;
-                    image.Mutate(x =&amp;gt; x.Resize(200, 200));
+                    image.Mutate(x =&gt; x.Resize(200, 200));
                     image.Save(filepath200);
 
                     var newfileName32 = GenerateFileName(&quot;Photo_32_32_&quot;, systemFileExtenstion);
                     var filepath32 = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), &quot;wwwroot&quot;, &quot;Images&quot;)).Root + $@&quot;\{newfileName32}&quot;;
-                    image.Mutate(x =&amp;gt; x.Resize(32, 32));
+                    image.Mutate(x =&gt; x.Resize(32, 32));
                     image.Save(filepath32);
 
                 }
@@ -732,11 +1408,12 @@ namespace WebCropper.Controllers
             }
         }
 
-&lt;/code&gt;&lt;/pre&gt;
+```
 
-&lt;p&gt;To generate Unique file name, we have created the below method.&lt;/p&gt;
+To generate Unique file name, we have created the below method.
 
-&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;
+```code
+
 public string GenerateFileName(string fileTypeName, string fileextenstion)
  {
      if (fileTypeName == null) throw new ArgumentNullException(nameof(fileTypeName));
@@ -744,13 +1421,14 @@ public string GenerateFileName(string fileTypeName, string fileextenstion)
      return $&quot;{fileTypeName}_{DateTime.Now:yyyyMMddHHmmssfff}_{Guid.NewGuid():N}{fileextenstion}&quot;;
  }
 
-&lt;/code&gt;&lt;/pre&gt;
+```
 
-&lt;p&gt;After adding CustomCrop action method next, we are going to write XMLHttpRequest request to post filename and file to CustomCrop method.&lt;/p&gt;
+After adding CustomCrop action method next, we are going to write XMLHttpRequest request to post filename and file to CustomCrop method.
 
-&lt;h3 id=&quot;ajax-request-for-posting-cropped-image&quot;&gt;Ajax Request for Posting Cropped Image&lt;/h3&gt;
+### Ajax Request for Posting Cropped Image
 
-&lt;pre&gt;&lt;code class=&quot;language-code&quot;&gt;// Upload button to Post Cropped Image to Store.
+```code
+// Upload button to Post Cropped Image to Store.
     $('#btnupload').on('click', function ()
     {
         basic.croppie('result', 'blob').then(function (blob)
@@ -768,7 +1446,7 @@ public string GenerateFileName(string fileTypeName, string fileextenstion)
             request.send(formData);
             request.onreadystatechange = function () { 
                // Call a function when the state changes.
-                if (this.readyState === XMLHttpRequest.DONE &amp;amp;&amp;amp; this.status === 200)
+                if (this.readyState === XMLHttpRequest.DONE &amp;&amp; this.status === 200)
                 {
                     var response = JSON.parse(request.responseText);
 
@@ -785,21 +1463,21 @@ public string GenerateFileName(string fileTypeName, string fileextenstion)
             }
         });
     });
-&lt;/code&gt;&lt;/pre&gt;
+```
 
-&lt;p&gt;After adding code for posting cropped images next, let’s run application and test.&lt;/p&gt;
+After adding code for posting cropped images next, let’s run application and test.
 
-&lt;h3 id=&quot;upload-and-cropped-image&quot;&gt;Upload and Cropped Image&lt;/h3&gt;
+### Upload and Cropped Image
 
-&lt;p&gt;In this part just upload Image and adjust Image and click on crop button to crop Image.&lt;/p&gt;
+In this part just upload Image and adjust Image and click on crop button to crop Image.
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/2/08.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+![image](/img/aspdotnetcore/2/08.png)
 
-&lt;p&gt;After cropping, images will be stored in the folder, as shown below.&lt;/p&gt;
+After cropping, images will be stored in the folder, as shown below.
 
-&lt;h3 id=&quot;output&quot;&gt;Output&lt;/h3&gt;
+### Output
 
-&lt;p&gt;&lt;img src=&quot;/img/aspdotnetcore/2/09.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">HOW TO CROP AND RESIZE IMAGE IN ASP.NET CORE</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aspnetcore.png" /></entry><entry><title type="html">How I choose which services to use in Azure</title><link href="http://localhost:4000/blog/how-i-choose-AzureService" rel="alternate" type="text/html" title="How I choose which services to use in Azure" /><published>2021-01-07T09:55:00+00:00</published><updated>2021-01-07T09:55:00+00:00</updated><id>http://localhost:4000/blog/how-i-choose-AzureService</id><content type="html" xml:base="http://localhost:4000/blog/how-i-choose-AzureService">## Introduction
+![image](/img/aspdotnetcore/2/09.png)</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">HOW TO CROP AND RESIZE IMAGE IN ASP.NET CORE</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/aspnetcore.png" /></entry><entry><title type="html">How I choose which services to use in Azure</title><link href="http://localhost:4000/blog/how-i-choose-AzureService" rel="alternate" type="text/html" title="How I choose which services to use in Azure" /><published>2021-01-07T09:55:00+00:00</published><updated>2021-01-07T09:55:00+00:00</updated><id>http://localhost:4000/blog/how-i-choose-AzureService</id><content type="html" xml:base="http://localhost:4000/blog/how-i-choose-AzureService">## Introduction
 
 Microsoft Azure is huge and changes fast! I’m impressed by the services and capabilities offered in Azure and by how quickly Microsoft releases new services and features. It can be overwhelming. There is so much out there — and the list continues to grow — it is sometimes hard to know which services to use for a given scenario.
 
@@ -3755,428 +4433,4 @@ export class EmployeesComponent implements OnInit {
 That's it now run you server by executing &lt;code&gt;**$ json-server --watch ./API/data.json**&lt;/code&gt; then run Angular application in another terminal by executing &lt;code&gt;**$ ng serve --open**&lt;/code&gt;
 You can get source code of this tutorial in my GitHub repo [here](https://github.com/girishgodage/ang10MatDatatabeCrud)
 
-**Conclusion**: In this tutorial, we get to know how to use Http services to make server communication, use get, post, put and delete methods on data server. We use RxJs methods and operators to handle errors and network issues using &lt;code&gt;retry()&lt;/code&gt; . Added Angular Material UI library to show data rows in a Datatable. In the Material Datatable, we performed CRUD operation using Inline approach</content><author><name>Girish Godage</name></author><category term="learning" /><category term="programming" /><summary type="html">Angular 10 Material Datatable Inline HttpClient CRUD Operations using RestFull APIs</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/angular_logo.png" /></entry><entry><title type="html">Azure Static Web Apps</title><link href="http://localhost:4000/blog/azure-static-web-apps" rel="alternate" type="text/html" title="Azure Static Web Apps" /><published>2020-10-19T14:44:00+00:00</published><updated>2020-10-19T14:44:00+00:00</updated><id>http://localhost:4000/blog/azure-static-web-apps</id><content type="html" xml:base="http://localhost:4000/blog/azure-static-web-apps">## Introduction
-
-Azure Static Web Apps is a service that automatically builds and deploys full stack web apps to Azure from a GitHub repository.
-
-![image info](/img/azure/8/static-apps-overview.png)
-
-The workflow of **Azure Static Web Apps** is tailored to a developer's daily workflow. Apps are built and deployed based off GitHub interactions.
-
-When you create an Azure Static Web Apps resource, Azure sets up a **GitHub Actions workflow** in the app's source code repository that monitors a branch of your choice. Every time you **push commits** or **accept pull requests** into the watched branch, the *GitHub Action automatically builds and deploys your app and its API to Azure*.
-
-**Static web apps** are commonly built using libraries and frameworks like **Angular, React, Svelte, Vue, or Blazor**. These apps include **HTML, CSS, JavaScript, and image assets** that make up the application. *With a traditional web server, these assets are served from a single server alongside any required API endpoints*.
-
-With **Static Web Apps**, s*tatic assets are separated from a traditional web server and are instead served from points geographically distributed around the world*.
-
-This distribution makes serving files much faster as files are physically closer to end users. In addition, *API endpoints are hosted using a serverless architecture*, which avoids the need for a full back-end server all together.
-
-## Key features
-* **Web hosting** for static content like HTML, CSS, JavaScript, and images.
-* **Integrated API** support provided by Azure Functions.
-First-class GitHub integration where repository changes trigger builds and deployments.
-* **Globally distributed** static content, putting content closer to your users.
-* **Free SSL certificates**, which are automatically renewed.
-* **Custom domains** to provide branded customizations to your app.
-* **Seamless security** model with a reverse-proxy when calling APIs, which requires no CORS configuration.
-* **Authentication provider integrations** with Azure Active Directory, Facebook, Google, GitHub, and Twitter.
-* **Customizable authorization** role definition and assignments.
-* **Back-end routing rules** enabling full control over the content and routes you serve.
-* **Generated staging versions** powered by pull requests enabling preview versions of your site before publishing.
-  
-## What you can do with Static Web Apps
-
-* **Build modern web applications** with *JavaScript frameworks and libraries like Angular, React, Svelte, Vue, or using Blazor to create WebAssembly applications, with an Azure Functions back-end*.
-* **Publish static sites** with frameworks like Gatsby, Hugo, VuePress.
-* **Deploy web applications** with frameworks like Next.js and Nuxt.js.
-
-## Building your first static web app
-
-Azure Static Web Apps publishes a website to a production environment by building apps from a GitHub repository. In this quickstart, you deploy a web application to Azure Static Web apps using the Visual Studio Code extension.
-
-If you don't have an Azure subscription, [create a free trial account](https://azure.microsoft.com/free).
- 
-## Prerequisites
-* [GitHub](https://github.com/) account
-* [Azure](https://portal.azure.com/) account
-* [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure Static Web Apps extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestaticwebapps)
-
-## Create a repository
-
-This article uses a GitHub template repository to make it easy for you to get started. The template features a starter app used to deploy using Azure Static Web Apps.
-
-1. Make sure you're signed in to GitHub and navigate to the following location to create a new repository:
-  * a. https://github.com/staticwebdev/vanilla-basic/generate
-  
-2. Name your repository my-first-static-web-app
-
-&gt; Note:Azure Static Web Apps requires at least one HTML file to create a web app. The repository you create in this step includes a single index.html file.
-
-Select **Create repository from template**.
-
-![image info](/img/azure/8/create-template.png)
-
-## Clone the repository
-
-With the repository created in your GitHub account, clone the project to your local machine using the following command.
-
-```bash
-
-git clone https://github.com/&lt;YOUR_GITHUB_ACCOUNT_NAME&gt;/my-first-static-web-app.git
-```
-Make sure to replace &lt;YOUR_GITHUB_ACCOUNT_NAME&gt; with your GitHub username.
-
-Next, open Visual Studio Code and go to **File &gt; Open Folder** to open the repository you just cloned to your machine in the editor.
-
-## Create a static web app
-
-1. Inside Visual Studio Code, select the Azure logo in the Activity Bar to open the Azure extensions window.
-   
-   ![image info](/img/azure/8/extension-azure-logo.png)
-
-&gt; Note:
-**Azure and GitHub sign in are required**. If you are not already signed in to Azure and GitHub from Visual Studio Code, the extension will prompt you to sign in to both during the creation process.
-
-2. Place your mouse over the Static Web Apps label and select the plus sign.
-
-![image info](/img/azure/8/extension-create-button.png)
-
-3. The command palate opens at the top of the editor and prompts you to name your application.
-    Type **my-first-static-web-app** and press **Enter**.
-
-![image info](/img/azure/8/extension-create-app.png)
-
-4. Select the master branch and press Enter.
-
-![image info](/img/azure/8/extension-branch.png)
-
-5. Select / as the location for the application code and press Enter.
-
-
-![image info](/img/azure/8/extension-app-location.png)
-
-6. The extension is looking for the location of the API in your application. This article doesn't implement an API. Select **Skip for now** and press **Enter**.
-
-![image info](/img/azure/8/extension-api-location.png)
-
-7. Select the location where files are built for production in your app
-   
-   Clear the box and press Enter.
-
-![image info](/img/azure/8/extension-artifact-no-framework.png)
-
-8. Select a location nearest you and press Enter.
-
-![image info](/img/azure/8/extension-location.png)
-
-9.Once the app is created, a confirmation notification is shown in Visual Studio Code.
-
-![image info](/img/azure/8/extension-confirmation.png)
-
-10. In the Visual Studio Code Explorer window, return to the Static Web Apps section and right-click on Production and select Open in Portal to view app in the Azure portal.
-
-![image info](/img/azure/8/extension-open-in-portal.png)
-
-## View the website
-
-There are two aspects to deploying a static app. The first provisions the underlying Azure resources that make up your app. The second is a GitHub Actions workflow that builds and publishes your application.
-
-Before you can navigate to your new static site, the deployment build must first finish running.
-
-The Static Web Apps overview window displays a series of links that help you interact with your web app.
-    
-![image info](/img/azure/8/overview-window.png)
-
-1. *Clicking on the banner that says, Click here to check the status of your GitHub Actions runs* takes you to the GitHub Actions running against your repository. Once you verify the deployment job is complete, then you can navigate to your website via the generated URL.
-
-2. Once GitHub Actions workflow is complete, you can click on the URL link to open the website in new tab.
-
-## Clean up resources
-If you're not going to continue to use this application, you can delete the Azure Static Web Apps instance through the extension.
-
-In the Visual Studio Code Explorer window, return to the Static Web Apps section and right-click on **my-first-static-web-app** and select **Delete**.
-
-![image info](/img/azure/8/extension-delete.png)
-
-
-
-## Add an API to Azure Static Web Apps Preview with Azure Functions
-
-You can add **serverless APIs** to Azure Static Web Apps via integration with Azure Functions. This article demonstrates how to add and deploy an API to an Azure Static Web Apps site.
-
-Prerequisites
-* Azure account with an active subscription.
-  If you don't have an account, [you can create one for free](https://azure.microsoft.com/free).
-* [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure Functions extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) for Visual Studio Code
-* [Live Server Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
-* [Node.js](https://nodejs.org/download/) to run the API app locally
-
-## Create a Git repository
-
-The following steps demonstrate how to create a new repository and clone the files to your computer.
-
-1. Make sure you are logged in to GitHub and, navigate to https://github.com/staticwebdev/vanilla-basic/generate to create a new repository.
-
-2. In the Repository name box, enter my-vanilla-api.
-
-3. Click Create repository from template.
-   
-![image info](/img/azure/8/create-repository.png)
-
-Once your project is created, copy the URL in your browser for the new repository. You use this URL in Visual Studio Code to clone the Git repository.
-
-1. Press **F1** to open command in the Command Palette.
-
-2. Paste the URL into the *Git: Clone* prompt, and press **Enter**.
-
-![image info](/img/azure/8/vscode-git-0.png)
-
-Follow the prompts to select a repository location to clone the project.
-
-## Create the API
-
-Next, you create an Azure Functions project as the application's API.
-
-* Inside the **my-vanilla-api** project, create a sub-folder named **api**.
-  
-* Press **F1** to open the Command Palette
-  
-* Type **Azure Functions: Create New Project**...
-  
-* Press **Enter**
-  
-* Choose **Browse**
-  
-* Select the **api** folder as the directory for your  project workspace
-  
-* Choose **Select**
-
-![image info](/img/azure/8/create-azure-functions-vscode-1.png)
-
-8. Provide the following information at the prompts:
-
-* Select a language: Choose JavaScript
-* Select a template for your project's first function: Choose HTTP trigger
-* Provide a function name: Enter GetMessage
-* Authorization level: Choose Anonymous, which enables anyone to call your function endpoint.
-    - To learn about authorization levels, see Authorization keys.
-  
-Visual Studio Code generates an Azure Functions project with an HTTP triggered function.
-
-Your app now has a project structure similar to the following example.
-
-```
-
-├── api
-│   ├── GetMessage
-│   │   ├── function.json
-│   │   ├── index.js
-│   │   └── sample.dat
-│   ├── host.json
-│   ├── local.settings.json
-│   ├── package.json
-│   └── proxies.json
-├── index.html
-├── readme.md
-└── styles.css
-```
-
-Next, you'll change the **GetMessage** function to return a message to the front-end.
-
-1. Update the GetMessage function under api/GetMessage/index.js with the following code.
-
-``` java script
-
-module.exports = async function (context, req) {
-  context.res = {
-    body: {
-      text: &quot;Hello from the API&quot;
-    }
-  };
-};
-```
-
-2. Update the GetMessage configuration under api/GetMessage/function.json with the following settings.
-
-```
-
-{
-  &quot;bindings&quot;: [
-    {
-      &quot;authLevel&quot;: &quot;anonymous&quot;,
-      &quot;type&quot;: &quot;httpTrigger&quot;,
-      &quot;direction&quot;: &quot;in&quot;,
-      &quot;name&quot;: &quot;req&quot;,
-      &quot;methods&quot;: [
-        &quot;get&quot;
-      ],
-      &quot;route&quot;: &quot;message&quot;
-    },
-    {
-      &quot;type&quot;: &quot;http&quot;,
-      &quot;direction&quot;: &quot;out&quot;,
-      &quot;name&quot;: &quot;res&quot;
-    }
-  ]
-}
-
-```
-
-With the above settings, the API endpoint is:
-
-* Triggered when an HTTP request is made to the function
-* Available to all requests regardless of authentication status
-* Exposed via the /api/message route
-
-## Run the API locally
-Visual Studio Code integrates with Azure Functions Core Tools to let you run this project on your local development computer before you publish to Azure.
-
-&gt;Tip:
-Make sure you have all the resources listed in the prerequisites section installed before proceeding.
-
-1. Run the function by pressing F5 to start the Functions app.
-
-2. If Azure Functions Core Tools isn't already *installed*, select **Install** at the prompt.  The Core Tools shows output from the running application in the Terminal panel. As a part of the output, you can see the URL endpoint of your HTTP-triggered function running locally.
-
-![image info](/img/azure/8/create-azure-functions-vscode-2.png)
-
-3. With Core Tools running, navigate to the following URL to verify the API is running correctly: http://localhost:7071/api/message.
-
-The response in the browser should look similar to the following example:
-
-![image info](/img/azure/8/create-azure-functions-vscode-3.png)
-
-4. Press Shift + F5 to stop the debugging session.
-
-## Call the API from the application
-
-When deployed to Azure, requests to the API are automatically routed to the Functions app for requests sent to the api route. Working locally, you have to configure the application settings to proxy requests to the local API.
-
-## Local proxy
-You can configure a proxy for the Live Server Visual Studio Code extension that routes all requests to /api to the running API endpoint at http://127.0.0.1:7071/api.
-
-1. Open the .vscode/settings.json file.
-
-2. Add the following settings to specify a proxy for Live Server.
-   
-```json
-
-&quot;liveServer.settings.proxy&quot;: {
-   &quot;enable&quot;: true,
-   &quot;baseUri&quot;: &quot;/api&quot;,
-   &quot;proxyUri&quot;: &quot;http://127.0.0.1:7071/api&quot;
-}
-```
-
-This configuration is best saved in project settings file, as opposed to in the user settings file.
-
-Using project settings assures the proxy isn't applied to all other projects opened in Visual Studio Code.
-
-## Update HTML files to access the API
-
-1. Next, update the content of the index.html file with the following code to fetch the text from the API function and display it on the screen:
-
-```
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-
-&lt;head&gt;
-  &lt;meta charset=&quot;UTF-8&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;
-  &lt;title&gt;Vanilla JavaScript App&lt;/title&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-  &lt;main&gt;
-    &lt;h1&gt;Vanilla JavaScript App&lt;/h1&gt;
-    &lt;p&gt;Loading content from the API: &lt;b id=&quot;name&quot;&gt;...&lt;/b&gt;&lt;/p&gt;
-  &lt;/main&gt;
-
-  &lt;script&gt;
-    (async function() {
-      let { text } = await( await fetch(`/api/message`)).json();
-      document.querySelector('#name').textContent = text;
-    }())
-  &lt;/script&gt;
-&lt;/body&gt;
-
-&lt;/html&gt;
-```
-
-2. Press **F5** to start the API project.
-
-3. Press **F1** and choose *Live Server: Open with Live Server*.
-
-You should now see the API message in the web page.
-
-![image info](/img/azure/8/create-azure-functions-vscode-4.png)
-
-&gt;Note:You can use other HTTP servers or proxies to serve the index.html file. Accessing the index.html from file:/// will not work.
-
-4. Press Shift + F5 to stop the API project.
-
-## Commit and push your changes to GitHub
-Using Visual Studio Code, commit and push your changes to the remote git repository.
-
-1. Press **F1** to open the Command Palette
-2. Type **Git: Commit All**
-3. Add a commit message and press **Enter**
-4. Press **F1**
-5. Type in **Git: push** and press **Enter**
-
-## Create a static web app
-1. Navigate to the [Azure portal](https://portal.azure.com/)
-2. Click **Create a Resource**
-3. Search for **Static Web App**
-4. Click **Static Web App (Preview)**
-5. Click **Create**
-   
-Next, add the app-specific settings.
-
-1. Select your *Azure subscription*
-2. Select or *create a new Resource Group*
-3. Name the app **my-vanilla-api**.
-4. Select *Region* closest to you
-5. Select the **Free** SKU
-6. Click the **Sign-in with GitHub** button and authenticate with GitHub
-7. Select your preferred *Organization*
-8. Select **my-vanilla-api** from the Repository drop-down
-9. Select **master** from the Branch drop-down
-10. Click the **Next: Build &gt;** button to edit the build configuration
-    
-Next, add the following the build details.
-
-1. Enter **/** for the App location.
-
-2. Enter **api** in the Api location box.
-
-3. Clear the default value out of the *App artifact location*, leaving the box empty.
-
-4. Click **Review + create**.
-
-5. Click the **Create** button
-
-Once you click the *Create* button, Azure does two things. First, the underlying cloud services are created to support the app. Next, a background process begins to build and deploy the application.
-
-6. Click the **Go to Resource** button to take you to the web app's *Overview* page.
-
-As the app is being built in the background, you can click on the banner which contains a link to view the build status.
-
-![image info](/img/azure/8/static-app-url-from-portal.png)
-
-
-## Clean up resources
-
-If you don't want to keep this application for further use, you can use the following steps to delete the Azure Static Web App and its related resources.
-
-1. Navigate to the [Azure portal](https://portal.azure.com/)
-2. In the top search bar, type **Resource groups**
-3. Click **Resource groups**
-4. Select **myResourceGroup**
-5. On the *myResourceGroup* page, make sure that the listed resources are the ones you want to delete.
-6. Select **Delete**
-7. Type **myResourceGroup** in the text box
-8. Select **Delete**.</content><author><name>Girish Godage</name></author><category term="learning" /><summary type="html">Introduction</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/AzureAppSerive.png" /></entry></feed>
+**Conclusion**: In this tutorial, we get to know how to use Http services to make server communication, use get, post, put and delete methods on data server. We use RxJs methods and operators to handle errors and network issues using &lt;code&gt;retry()&lt;/code&gt; . Added Angular Material UI library to show data rows in a Datatable. In the Material Datatable, we performed CRUD operation using Inline approach</content><author><name>Girish Godage</name></author><category term="learning" /><category term="programming" /><summary type="html">Angular 10 Material Datatable Inline HttpClient CRUD Operations using RestFull APIs</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/img/angular_logo.png" /></entry></feed>
