@@ -1,0 +1,166 @@
+I"2"<blockquote>
+  <h2 id="create-user-flows-in-azure-active-directory-b2c">Create user flows in Azure Active Directory B2C</h2>
+</blockquote>
+
+<p>In your applications you may have user flows that enable users to sign up, sign in, or manage their profile. You can create multiple user flows of different types in your Azure Active Directory B2C (Azure AD B2C) tenant and use them in your applications as needed. User flows can be reused across applications.</p>
+
+<p>In this article, you learn how to:</p>
+
+<ul>
+  <li>Create a sign-up and sign-in user flow</li>
+  <li>Create a profile editing user flow</li>
+  <li>Create a password reset user flow</li>
+</ul>
+
+<p>This tutorial shows you how to create some recommended user flows by using the Azure portal.</p>
+
+<p>If you don’t have an Azure subscription, create a <a href="https://azure.microsoft.com/free/?WT.mc_id=A261C142F">free account</a> before you begin.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>If you haven’t already created your own <a href="azure-activedirectoryB2C_CreateTenant">Azure AD B2C Tenant</a>, create one now. You can use an existing Azure AD B2C tenant.</p>
+
+<h2 id="create-a-sign-up-and-sign-in-user-flow">Create a sign-up and sign-in user flow</h2>
+
+<p>The sign-up and sign-in user flow handles both sign-up and sign-in experiences with a single configuration. Users of your application are led down the right path depending on the context.</p>
+
+<ol>
+  <li>
+    <p>Sign in to the <a href="https://portal.azure.com/">Azure portal</a>.</p>
+  </li>
+  <li>
+    <p>Select the <strong>Directory + Subscription</strong> icon in the portal toolbar, and then select the directory that contains your Azure AD B2C tenant.</p>
+  </li>
+</ol>
+
+<p><img src="/img/azure/6/directory-subscription-pane.png" alt="image info" /></p>
+
+<ol>
+  <li>
+    <p>In the Azure portal, search for and select <strong>Azure AD B2C</strong>.</p>
+  </li>
+  <li>
+    <p>Under <strong>Policies</strong>, select <strong>User flows</strong>, and then select <strong>New user flow</strong>.</p>
+  </li>
+</ol>
+
+<p><img src="/img/azure/6/signup-signin-user-flow.png" alt="image info" /></p>
+
+<ol>
+  <li>On the Create a user flow page, select the Sign up and sign in user flow.</li>
+</ol>
+
+<p><img src="/img/azure/6/select-user-flow-type.png" alt="image info" /></p>
+
+<p>6.Under Select a version, select Recommended, and then select Create.</p>
+
+<p><img src="/img/azure/6/select-version.png" alt="image info" /></p>
+
+<ol>
+  <li>
+    <p>Enter a <strong>Name</strong> for the user flow. For example, signupsignin1.</p>
+  </li>
+  <li>
+    <p>For <strong>Identity providers</strong>, select <strong>Email signup</strong>.</p>
+  </li>
+  <li>
+    <p>For User <strong>attributes and claims</strong>, choose the claims and attributes that you want to collect and send from the user during sign-up. For example, select <strong>Show more</strong>, and then choose attributes and claims for <strong>Country/Region, Display Name, and Postal Code</strong>. Click <strong>OK</strong>.</p>
+  </li>
+</ol>
+
+<p><img src="/img/azure/6/signup-signin-attributes.png" alt="image info" /></p>
+
+<ol>
+  <li>Click <strong>Create</strong> to add the user flow. A prefix of B2C_1 is automatically prepended to the name.</li>
+</ol>
+
+<h2 id="test-the-user-flow">Test the user flow</h2>
+
+<ol>
+  <li>
+    <p>Select the user flow you created to open its overview page, then select <strong>Run user flow</strong>.</p>
+  </li>
+  <li>
+    <p>For <strong>Application</strong>, select the web application named webapp1 that you previously registered. The <strong>Reply URL</strong> should show https://jwt.ms.</p>
+  </li>
+  <li>
+    <p>Click <strong>Run user flow</strong>, and then <strong>select Sign up now</strong>.</p>
+  </li>
+</ol>
+
+<p><img src="/img/azure/6/signup-signin-run-now.png" alt="image info" /></p>
+
+<ol>
+  <li>
+    <p>Enter a valid email address, click Send <strong>verification code</strong>, enter the verification code that you receive, then select <strong>Verify code</strong>.</p>
+  </li>
+  <li>
+    <p>Enter a new password and confirm the password.</p>
+  </li>
+  <li>
+    <p>Select your country and region, enter the name that you want displayed, enter a postal code, and then click <strong>Create</strong>. The token is returned to https://jwt.ms and should be displayed to you.</p>
+  </li>
+  <li>
+    <p>You can now run the user flow again and you should be able to sign in with the account that you created. The returned token includes the claims that you selected of country/region, name, and postal code</p>
+  </li>
+</ol>
+
+<h2 id="create-a-profile-editing-user-flow">Create a profile editing user flow</h2>
+
+<p>If you want to enable users to edit their profile in your application, you use a profile editing user flow.</p>
+
+<ol>
+  <li>In the menu of the Azure AD B2C tenant overview page, select <strong>User flows</strong>, and then select <strong>New user flow</strong>.</li>
+  <li>On the <strong>Create a user flow</strong> page, select the <strong>Profile editing</strong> user flow.</li>
+  <li>Under <strong>Select a version</strong>, select <strong>Recommended</strong>, and then select <strong>Create</strong>.</li>
+  <li>Enter a <strong>Name</strong> for the user flow. For example, profileediting1.</li>
+  <li>For <strong>Identity providers</strong>, select <strong>Local Account SignIn</strong>.</li>
+  <li>For <strong>User attributes</strong>, choose the attributes that you want the customer to be able to edit in their profile. For example, select <strong>Show more</strong>, and then choose both <strong>attributes and claims for Display name and Job title</strong>. Click <strong>OK</strong>.</li>
+  <li>Click <strong>Create</strong> to add the user flow. A prefix of B2C_1 is automatically appended to the name.</li>
+</ol>
+
+<h2 id="test-the-user-flow-1">Test the user flow</h2>
+
+<ol>
+  <li>Select the user flow you created to open its overview page, then select <strong>Run user flow</strong>.</li>
+  <li>For <strong>Application</strong>, select the web application named webapp1 that you previously registered. The <strong>Reply URL</strong> should show https://jwt.ms.</li>
+  <li>Click <strong>Run user flow</strong>, and then sign in with the account that you previously created.</li>
+  <li>You now have the opportunity to change the display name and job title for the user. Click <strong>Continue</strong>. The token is returned to https://jwt.ms and should be displayed to you.</li>
+</ol>
+
+<h2 id="create-a-password-reset-user-flow">Create a password reset user flow</h2>
+
+<p>To enable users of your application to reset their password, you use a password reset user flow.</p>
+
+<ol>
+  <li>In the Azure AD B2C tenant overview menu, select <strong>User flows</strong>, and then select <strong>New user flow</strong>.</li>
+  <li>On the <strong>Create a user flow</strong> page, select the <strong>Password reset</strong> user flow.</li>
+  <li>Under <strong>Select</strong> a version, select <strong>Recommended</strong>, and then select <strong>Create</strong>.</li>
+  <li>Enter a <strong>Name</strong> for the user flow. For example, passwordreset1.</li>
+  <li>For <strong>Identity providers</strong>, enable <strong>Reset password using email address</strong>.</li>
+  <li>Under <strong>Application claims</strong>, click <strong>Show more</strong> and choose the claims that you want returned in the authorization tokens sent back to your application. For example, select User’s Object ID.</li>
+  <li>Click <strong>OK</strong>.</li>
+  <li>Click <strong>Create</strong> to add the user flow. A prefix of B2C_1 is automatically appended to the name.</li>
+</ol>
+
+<h2 id="test-the-user-flow-2">Test the user flow</h2>
+
+<ol>
+  <li>Select the user flow you created to open its overview page, then select <strong>Run user flow</strong>.</li>
+  <li>For <strong>Application</strong>, select the web application named webapp1 that you previously registered. The <strong>Reply URL</strong> should show https://jwt.ms.</li>
+  <li>Click <strong>Run user flow</strong>, verify the email address of the account that you previously created, and select <strong>Continue</strong>.</li>
+  <li>You now have the opportunity to change the password for the user. Change the password and select <strong>Continue</strong>. The token is returned to https://jwt.ms and should be displayed to you.</li>
+</ol>
+
+<h2 id="next-steps">Next steps</h2>
+
+<p>In this article, you learned how to:</p>
+
+<ul>
+  <li>Create a sign-up and sign-in user flow</li>
+  <li>Create a profile editing user flow</li>
+  <li>Create a password reset user flow</li>
+</ul>
+
+<p>Next, learn about adding identity providers to your applications to enable user sign-in with providers like Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft, or Twitter.</p>
+:ET

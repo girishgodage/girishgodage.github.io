@@ -12,7 +12,7 @@
 <!-- iOS Safari -->
 <meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
 <title>The service desk with bots using Amazon Lex and Amazon Connect (Part 2) &#8211; Girish Godage</title>
-<meta name="description" content="What! Is this guy for real? Does he really think he can replace the front line of IT with pre-canned conversations?&quot; I must admit, it's a bold statement. The IT Service Desk has been around for years and has been the foot in the door for most of us in the IT industry. It's the face of IT operations and plays an important role in ensuring an organisation's staff can perform to the best of their abilities. But what if we could take some of the repetitive tasks the service desk performs and automate them? Not only would we be saving on head count costs, we would be able to ensure correct policies and procedures are followed to uphold security and compliance. The aim of this blog is to provide a working example of the automation of one service desk scenario to show how easy and accessible the technology is, and how it can be applied to various use cases.">
+<meta name="description" content="What! Is this guy for real? Does he really think he can replace the front line of IT with pre-canned conversations?&quot; I must admit, it&apos;s a bold statement. The IT Service Desk has been around for years and has been the foot in the door for most of us in the IT industry. It&apos;s the face of IT operations and plays an important role in ensuring an organisation&apos;s staff can perform to the best of their abilities. But what if we could take some of the repetitive tasks the service desk performs and automate them? Not only would we be saving on head count costs, we would be able to ensure correct policies and procedures are followed to uphold security and compliance. The aim of this blog is to provide a working example of the automation of one service desk scenario to show how easy and accessible the technology is, and how it can be applied to various use cases.">
 <meta name="keywords" content="AWSCloud">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,7 +28,7 @@
     <meta property="og:type" content="article">
     <meta property="og:title" content="The service desk with bots using Amazon Lex and Amazon Connect (Part 2)">
     <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
-    <meta property="og:url" content="http://localhost:4000/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-2">
+    <meta property="og:url" content="https://girishgodage.in/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-2">
     <meta property="og:site_name" content="Girish Godage">
 
     <!-- Twitter Card -->
@@ -38,7 +38,7 @@
     
     <meta name="twitter:title" content="The service desk with bots using Amazon Lex and Amazon Connect (Part 2)" />
     <meta name="twitter:description" content="What! Is this guy for real? Does he really think he can replace the front line of IT with pre-canned conversations?" I must admit, it's a bold statement. The IT Service Desk has been around for years and has been the foot in the door for most of us in the IT industry. It's the face of IT operations and plays an important role in ensuring an organisation's staff can perform to the best of their abilities. But what if we could take some of the repetitive tasks the service desk performs and automate them? Not only would we be saving on head count costs, we would be able to ensure correct policies and procedures are followed to uphold security and compliance. The aim of this blog is to provide a working example of the automation of one service desk scenario to show how easy and accessible the technology is, and how it can be applied to various use cases." />
-    <meta name="twitter:url" content="http://localhost:4000/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-2" />
+    <meta name="twitter:url" content="https://girishgodage.in/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-2" />
 
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
@@ -58,7 +58,7 @@
     
 
 
-    <link rel="canonical" href="http://localhost:4000/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-2">
+    <link rel="canonical" href="https://girishgodage.in/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-2">
 <link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
     <!-- Bootstrap CSS-->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -76,13 +76,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
     
     <!-- animate.css-->
-    <link rel="stylesheet" href="http://localhost:4000/sitejs/animate.css/animate.css">
+    <link rel="stylesheet" href="https://girishgodage.in/sitejs/animate.css/animate.css">
     <!-- theme stylesheet-->
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="http://localhost:4000/css/custom.css" as="style">
-    <link rel="stylesheet" href="http://localhost:4000/css/comments.css" as="style">
+    <link rel="stylesheet" href="https://girishgodage.in/css/custom.css" as="style">
+    <link rel="stylesheet" href="https://girishgodage.in/css/comments.css" as="style">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="http://localhost:4000/img/logo-big.png">
+    <link rel="shortcut icon" href="https://girishgodage.in/img/logo-big.png">
     <!-- Fab Icon-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
     
@@ -124,27 +124,27 @@
 <!-- navbar-->
 <header class="header">
   <nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container"><a class="navbar-brand" href="http://localhost:4000"><img
-          src="http://localhost:4000/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
-          alt="logo"> <img src="http://localhost:4000/img/girish_logo.png" height="30" alt="girilogo"></a>
+    <div class="container"><a class="navbar-brand" href="https://girishgodage.in"><img
+          src="https://girishgodage.in/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
+          alt="logo"> <img src="https://girishgodage.in/img/girish_logo.png" height="30" alt="girilogo"></a>
       <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span
           class="fa fa-bars" style="color: white"></span></button>
       <div id="navbarcollapse" class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a href="http://localhost:4000#home" class="nav-link  link-scroll">Home</a></li>
-          <li class="nav-item"><a href="http://localhost:4000#about" class="nav-link link-scroll">About</a></li>
-          <li class="nav-item"><a href="http://localhost:4000#skills" class="nav-link link-scroll">Skills</a>
+          <li class="nav-item"><a href="https://girishgodage.in#home" class="nav-link  link-scroll">Home</a></li>
+          <li class="nav-item"><a href="https://girishgodage.in#about" class="nav-link link-scroll">About</a></li>
+          <li class="nav-item"><a href="https://girishgodage.in#skills" class="nav-link link-scroll">Skills</a>
           </li>
-          <li class="nav-item"><a href="http://localhost:4000#services" class="nav-link link-scroll">Services</a>
+          <li class="nav-item"><a href="https://girishgodage.in#services" class="nav-link link-scroll">Services</a>
           </li>
-          <li class="nav-item"><a href="http://localhost:4000#references" class="nav-link link-scroll">My
+          <li class="nav-item"><a href="https://girishgodage.in#references" class="nav-link link-scroll">My
               work</a></li>
-          <li class="nav-item"><a href="http://localhost:4000#contact" class="nav-link link-scroll">Contact</a>
+          <li class="nav-item"><a href="https://girishgodage.in#contact" class="nav-link link-scroll">Contact</a>
           </li>
-          <li class="nav-item"><a href="http://localhost:4000/project" class="nav-link link-scroll">My
+          <li class="nav-item"><a href="https://girishgodage.in/project" class="nav-link link-scroll">My
               Projects</a></li>
-          <li class="nav-item"><a href="http://localhost:4000/blog" class="nav-link link-scroll">Blog</a></li>
+          <li class="nav-item"><a href="https://girishgodage.in/blog" class="nav-link link-scroll">Blog</a></li>
         </ul>
       </div>
     </div>
@@ -220,7 +220,7 @@
   <li>In the Amazon Console, navigate to <strong>IAM</strong></li>
   <li>Select <strong>Policies</strong> then <strong>Create policy</strong></li>
   <li>Switch to the <strong>JSON</strong> editor, then copy and paste the following policy, replacing the KMS resource with the KMS ARN created above
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> {
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> {
  "Version": "2012-10-17",
  "Statement": [
      {
@@ -273,7 +273,7 @@ Okay, so let’s get started on building the lambda function. Log in to your Ama
   </li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 import ldap
 import os
 import boto3
@@ -341,7 +341,7 @@ def lambda_handler(event, context):
   <li>Now, we need to create the Lambda deployment package. As the package size is correlated with the speed of Lambda function cold starts, we need to filter out anything that’s not necessary to reduce the package size. The following zip’s the script and LDAP library:</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
     Cd ~/resetpw
 zip -r ~/resetpw.zip . -x "setuptools*/*" "pkg_resources/*" "easy_install*"*
 
@@ -351,7 +351,7 @@ zip -r ~/resetpw.zip . -x "setuptools*/*" "pkg_resources/*" "easy_install*"*
   <li>We need to deploy this package as a Lambda function. I’ve got AWSCLI installed in my Amazon Linux container, so I’m using the following CLI to create the Lambda function. Alternatively, you can download the zip file and manually create the Lambda function in the AWS console using the same parameters specified in the CLI below.</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 
 aws lambda create-function --function-name reset_function --region us-east-1 --zip-file fileb://root/resetpw.zip --role resetpw --handler reset_function.lambda_handler --runtime python2.7 --timeout 30 --vpc-config SubnetIds=subnet-a12b3cde,SecurityGroupIds=sg-0ab12c30 --memory-size 128*
 
@@ -597,9 +597,9 @@ title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
             <div class="col-12 col-md-2">
             <h5>Quick Links</h5>
             <ul>
-               <li><a href="http://localhost:4000#about">About</a></li>
-               <li><a href="http://localhost:4000#contact">Contact</a></li>
-               <li><a href="http://localhost:4000/sitemap.xml">Sitemap</a></li>               
+               <li><a href="https://girishgodage.in#about">About</a></li>
+               <li><a href="https://girishgodage.in#contact">Contact</a></li>
+               <li><a href="https://girishgodage.in/sitemap.xml">Sitemap</a></li>               
             </ul>
          </div>
             <div class="col-12 col-md-4 text-center text-lg-right mt-4 mt-lg-0">
@@ -614,24 +614,24 @@ title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
     </div>
 
         <!-- JavaScript files-->
-    <script src="http://localhost:4000/sitejs/jquery/jquery.min.js"></script>
-    <script src="http://localhost:4000/sitejs/popper.js/umd/popper.min.js"> </script>
-    <script src="http://localhost:4000/sitejs/bootstrap/js/bootstrap.min.js"></script>
-    <script src="http://localhost:4000/sitejs/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="http://localhost:4000/sitejs/owl.carousel/owl.carousel.min.js"></script>
-    <script src="http://localhost:4000/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
-    <script src="http://localhost:4000/sitejs/jquery.counterup/jquery.counterup.js"></script>
-    <script src="http://localhost:4000/js/front.js"></script>
-    <script src="http://localhost:4000/js/comment.js"></script>
+    <script src="https://girishgodage.in/sitejs/jquery/jquery.min.js"></script>
+    <script src="https://girishgodage.in/sitejs/popper.js/umd/popper.min.js"> </script>
+    <script src="https://girishgodage.in/sitejs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://girishgodage.in/sitejs/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="https://girishgodage.in/sitejs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="https://girishgodage.in/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="https://girishgodage.in/sitejs/jquery.counterup/jquery.counterup.js"></script>
+    <script src="https://girishgodage.in/js/front.js"></script>
+    <script src="https://girishgodage.in/js/comment.js"></script>
        <!-- Script pointing to search-script.js -->
-    <script src="http://localhost:4000/js/search-script.js" type="text/javascript"></script>
+    <script src="https://girishgodage.in/js/search-script.js" type="text/javascript"></script>
    
     <!-- Configuration -->
     <script>
          SimpleJekyllSearch({
          searchInput: document.getElementById('search-input'),
          resultsContainer: document.getElementById('results-container'),
-         json: 'http://localhost:4000/search.json'
+         json: 'https://girishgodage.in/search.json'
          })
          </script>
 

@@ -1,0 +1,248 @@
+I"�[<h2 id="dependency-injection">Dependency Injection</h2>
+
+<p>In the third part we’ll take a look into the ASP.NET Core dependency injection and how to customize it to use a different dependency injection container if needed.</p>
+
+<h2 id="why-using-a-different-dependency-injection-container">Why using a different dependency injection container?</h2>
+
+<p>In the most projects you don’t really need to use a different dependency injection container than the exiting one. The DI implementation in ASP.NET Core supports the main basic features and works well and pretty fast. Anyway, some other DI container support some interesting features you maybe want to use in your application.</p>
+
+<ul>
+  <li>Maybe you like to create an application that supports modules as lightweight dependencies.
+    <ul>
+      <li>E.g. modules you want to put into a specific directory and they get automatically registered in your application</li>
+      <li>This could be done with NInject.</li>
+    </ul>
+  </li>
+  <li>Maybe you want to configure the services in a configuration file outside the application, in an XML or JSON file instead in C# only
+    <ul>
+      <li>This is a common feature in various DI containers, but not yet supported in ASP.NET Core.</li>
+    </ul>
+  </li>
+  <li>Maybe you don’t want to have an immutable DI container, because you want to add services at runtime.
+    <ul>
+      <li>This is also a common feature in some DI containers.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="a-look-at-the-configureservices-method">A look at the ConfigureServices Method</h2>
+
+<p>Create a new ASP.NET Core project and open the <code class="language-plaintext highlighter-rouge">Startup.cs</code>, you will find the method to configure the services which looks like this:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">services</span><span class="p">.</span><span class="n">Configure</span><span class="p">&lt;</span><span class="n">CookiePolicyOptions</span><span class="p">&gt;(</span><span class="n">options</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="c1">// This lambda determines whether user </span>
+        <span class="c1">// consent for non-essential cookies is </span>
+        <span class="c1">// needed for a given request.</span>
+        <span class="n">options</span><span class="p">.</span><span class="n">CheckConsentNeeded</span> <span class="p">=</span> <span class="n">context</span> <span class="p">=&gt;</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">});</span>
+    
+    <span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">IService</span><span class="p">,</span> <span class="n">MyService</span><span class="p">&gt;();</span> <span class="c1">// custom service</span>
+
+    <span class="n">services</span><span class="p">.</span><span class="nf">AddControllersWithViews</span><span class="p">();</span>
+    <span class="n">services</span><span class="p">.</span><span class="nf">AddRazorPages</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This method gets the <code class="language-plaintext highlighter-rouge">IServiceCollection</code>, which already filled with a bunch of services which are needed by ASP.NET Core. This services got added by the hosting services and parts of ASP.NET Core that got executed before the method <code class="language-plaintext highlighter-rouge">ConfigureSercices</code> is called.</p>
+
+<p>Inside the method some more services gets added. First a configuration class that contains cookie policy options is added to the <code class="language-plaintext highlighter-rouge">ServiceCollection</code>. In this sample I also add a custom service called <code class="language-plaintext highlighter-rouge">MyService</code> that implements the <code class="language-plaintext highlighter-rouge">IService</code> interface. After that the method <code class="language-plaintext highlighter-rouge">AddMvc()</code> adds another bunch of services needed by the MVC framework. Until yet we have around 140 services registered to the <code class="language-plaintext highlighter-rouge">IServiceCollection</code>. But the service collections isn’t the actual dependency injection container.</p>
+
+<p>The actual DI container is wrapped in the so called service provider, which will be created out of the service collection. The <code class="language-plaintext highlighter-rouge">IServiceCollection</code> has an extension method registered to create a <code class="language-plaintext highlighter-rouge">IServiceProvider</code> out of the service collection.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">IServiceProvider</span> <span class="n">provider</span> <span class="p">=</span> <span class="n">services</span><span class="p">.</span><span class="nf">BuildServiceProvider</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">ServiceProvider</code> than contains the immutable container that cannot be changed at runtime. With the default method <code class="language-plaintext highlighter-rouge">ConfigureServices</code> the <code class="language-plaintext highlighter-rouge">IServiceProvider</code> gets created in the background after this method was called, but it is possible to change the method a little bit:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="n">IServiceProvider</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">services</span><span class="p">.</span><span class="n">Configure</span><span class="p">&lt;</span><span class="n">CookiePolicyOptions</span><span class="p">&gt;(</span><span class="n">options</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="c1">// This lambda determines whether user </span>
+        <span class="c1">// consent for non-essential cookies is </span>
+        <span class="c1">// needed for a given request.</span>
+        <span class="n">options</span><span class="p">.</span><span class="n">CheckConsentNeeded</span> <span class="p">=</span> <span class="n">context</span> <span class="p">=&gt;</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">});</span>
+    
+    <span class="n">services</span><span class="p">.</span><span class="n">AddTransient</span><span class="p">&lt;</span><span class="n">IService</span><span class="p">,</span> <span class="n">MyService</span><span class="p">&gt;();</span> <span class="c1">// custom service</span>
+
+    <span class="n">services</span><span class="p">.</span><span class="nf">AddControllersWithViews</span><span class="p">();</span>
+    <span class="n">services</span><span class="p">.</span><span class="nf">AddRazorPages</span><span class="p">();</span>
+    
+    <span class="k">return</span> <span class="n">services</span><span class="p">.</span><span class="nf">BuildServiceProvider</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>I changed the return type to <code class="language-plaintext highlighter-rouge">IServiceProvider</code> and return the <code class="language-plaintext highlighter-rouge">ServiceProvider</code> created with the method <code class="language-plaintext highlighter-rouge">BuildServiceProvider()</code>. This change will still work in ASP.NET Core.</p>
+
+<h2 id="use-a-different-serviceprovider">Use a different <code class="language-plaintext highlighter-rouge">ServiceProvider</code></h2>
+
+<p>To change to a different or custom DI container you need to replace the default implementation of the <code class="language-plaintext highlighter-rouge">IServiceProvider</code> with a different one. Additionally you need to find a way to move the already registered services to the new container.</p>
+
+<p>The next code sample uses Autofac as a third party container.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet add package Autofac.Extensions.DependencyInjection
+</code></pre></div></div>
+
+<p>I use Autofac in this snippet because you are easily able to see what is happening here:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="n">IServiceProvider</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="n">services</span><span class="p">.</span><span class="n">Configure</span><span class="p">&lt;</span><span class="n">CookiePolicyOptions</span><span class="p">&gt;(</span><span class="n">options</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="c1">// This lambda determines whether user </span>
+        <span class="c1">// consent for non-essential cookies is </span>
+        <span class="c1">// needed for a given request.</span>
+        <span class="n">options</span><span class="p">.</span><span class="n">CheckConsentNeeded</span> <span class="p">=</span> <span class="n">context</span> <span class="p">=&gt;</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">});</span>
+    
+    <span class="c1">// services.AddTransient&lt;IService, MyService&gt;(); // custom service</span>
+
+    <span class="n">services</span><span class="p">.</span><span class="nf">AddControllersWithViews</span><span class="p">();</span>
+    <span class="n">services</span><span class="p">.</span><span class="nf">AddRazorPages</span><span class="p">();</span>
+
+    <span class="c1">// create a Autofac container builder</span>
+    <span class="kt">var</span> <span class="n">builder</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ContainerBuilder</span><span class="p">();</span>
+
+    <span class="c1">// read service collection to Autofac</span>
+    <span class="n">builder</span><span class="p">.</span><span class="nf">Populate</span><span class="p">(</span><span class="n">services</span><span class="p">);</span>
+
+    <span class="c1">// use and configure Autofac</span>
+    <span class="n">builder</span><span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">MyService</span><span class="p">&gt;().</span><span class="n">As</span><span class="p">&lt;</span><span class="n">IService</span><span class="p">&gt;();</span> <span class="c1">// custom service</span>
+
+    <span class="c1">// build the Autofac container</span>
+    <span class="n">ApplicationContainer</span> <span class="p">=</span> <span class="n">builder</span><span class="p">.</span><span class="nf">Build</span><span class="p">();</span>
+
+    <span class="c1">// creating the IServiceProvider out of the Autofac container</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">AutofacServiceProvider</span><span class="p">(</span><span class="n">ApplicationContainer</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// IContainer instance in the Startup class </span>
+<span class="k">public</span> <span class="n">IContainer</span> <span class="n">ApplicationContainer</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Also Autofac works with a kind of a service collection inside the <code class="language-plaintext highlighter-rouge">ContainerBuilder</code> and it creates the actual container out of the <code class="language-plaintext highlighter-rouge">ContainerBuilder</code>. To get the registered services out of the <code class="language-plaintext highlighter-rouge">IServiceCollection</code> into the <code class="language-plaintext highlighter-rouge">ContainerBuilder</code>, Autofac uses the <code class="language-plaintext highlighter-rouge">Populate()</code> method. This copies all the existing services to the Autofac container.</p>
+
+<p>Our custom service <code class="language-plaintext highlighter-rouge">MyService</code> now gets registered using the Autofac way.</p>
+
+<p>After that, the container gets build and stored in a property of type <code class="language-plaintext highlighter-rouge">IContainer</code>. In the last line of the method <code class="language-plaintext highlighter-rouge">ConfigureServices</code> we create a <code class="language-plaintext highlighter-rouge">AutofacServiceProvider</code> and pass in the <code class="language-plaintext highlighter-rouge">IContainer</code>. This is the <code class="language-plaintext highlighter-rouge">IServiceProvider</code> we need to return to use Autofac within our application.</p>
+
+<h2 id="introducing-scrutor">Introducing Scrutor</h2>
+
+<p>You don’t always need to replace the existing .NET Core DI container to get and use nice features. In the beginning I mentioned the auto registration of services. This can also be done with a nice NuGet package called <a href="https://www.nuget.org/packages/Scrutor/">Scrutor</a> by <a href="https://twitter.com/khellang">Kristian Hellang</a> (<a href="https://kristian.hellang.com/">https://kristian.hellang.com/</a>). Scrutor extends the IServiceCollection to automatically register services to the .NET Core DI container.</p>
+
+<blockquote>
+  <p>“Assembly scanning and decoration extensions for Microsoft.Extensions.DependencyInjection”
+https://github.com/khellang/Scrutor</p>
+</blockquote>
+
+<p><a href="https://andrewlock.net">Andrew Lock</a> published a pretty detailed blog post about Scrutor. It doesn’t make sense to repeat that. Read that awesome post and learn more about it: <a href="https://andrewlock.net/using-scrutor-to-automatically-register-your-services-with-the-asp-net-core-di-container/">Using Scrutor to automatically register your services with the ASP.NET Core DI container</a></p>
+
+<h2 id="update-on-aspnet-core-30">Update on ASP.NET Core 3.0</h2>
+
+<p>The last sections only work in ASP.NET Core prior to version 3.0. Since the Hosting model changed in ASP.NET Core 3.0 the Startup method <code class="language-plaintext highlighter-rouge">ConfigureService()</code>, cannot return an <code class="language-plaintext highlighter-rouge">IServiceProvider</code> anymore. To register a custom IoC container you need to register a different <code class="language-plaintext highlighter-rouge">IServiceProviderFactory</code>. In that case an <code class="language-plaintext highlighter-rouge">AutofacServiceProviderFactory</code>, if you use Autofac.</p>
+
+<p>I created a small extension method to register Autofac:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">IHostBuilderExtension</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="n">IHostBuilder</span> <span class="nf">UseAutofacServiceProviderFactory</span><span class="p">(</span>
+        <span class="k">this</span> <span class="n">IHostBuilder</span> <span class="n">hostbuilder</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">hostbuilder</span><span class="p">.</span><span class="n">UseServiceProviderFactory</span><span class="p">&lt;</span><span class="n">ContainerBuilder</span><span class="p">&gt;(</span>
+            <span class="k">new</span> <span class="nf">AutofacServiceProviderFactory</span><span class="p">());</span>
+        <span class="k">return</span> <span class="n">hostbuilder</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">AutofacServiceProviderFactory</code> is provided by the latest version of the <code class="language-plaintext highlighter-rouge">Autofac.Extensions.DependencyInjection</code> package.</p>
+
+<p>And this is used in the <code class="language-plaintext highlighter-rouge">Program.cs</code> like this:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nf">CreateHostBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">).</span><span class="nf">Build</span><span class="p">().</span><span class="nf">Run</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="n">IHostBuilder</span> <span class="nf">CreateHostBuilder</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">=&gt;</span>
+        <span class="n">Host</span><span class="p">.</span><span class="nf">CreateDefaultBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+            <span class="p">.</span><span class="nf">UseAutofacServiceProviderFactory</span><span class="p">()</span>
+            <span class="p">.</span><span class="nf">ConfigureWebHostDefaults</span><span class="p">(</span><span class="n">webBuilder</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>
+                <span class="n">webBuilder</span>
+                    <span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;();</span>
+            <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>If you have this in place you are able to use Autofac as you like. In the <code class="language-plaintext highlighter-rouge">Startup.cs</code> you are able to use the <code class="language-plaintext highlighter-rouge">IServiceCollection</code> to register the dependencies or to add an additional method called <code class="language-plaintext highlighter-rouge">ConfigureContainer</code> to do it the Autofac way:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ConfigureContainer is where you can register things directly</span>
+<span class="c1">// with Autofac. This runs after ConfigureServices so the things</span>
+<span class="c1">// here will override registrations made in ConfigureServices.</span>
+<span class="c1">// Don't build the container; that gets done for you. If you</span>
+<span class="c1">// need a reference to the container, you need to use the</span>
+<span class="c1">// "Without ConfigureContainer" mechanism shown later.</span>
+<span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureContainer</span><span class="p">(</span><span class="n">ContainerBuilder</span> <span class="n">builder</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">builder</span><span class="p">.</span><span class="n">RegisterType</span><span class="p">&lt;</span><span class="n">MyService</span><span class="p">&gt;().</span><span class="n">As</span><span class="p">&lt;</span><span class="n">IService</span><span class="p">&gt;();</span> <span class="c1">// custom service</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Using this approach you are able to use any .NET Standard compatible DI container to replace the existing one. If the container of your choice doesn’t provide a <code class="language-plaintext highlighter-rouge">ServiceProvider</code>, create your own that implements <code class="language-plaintext highlighter-rouge">IServiceProvider</code> and uses the DI container inside. If the container of your choice doesn’t provide a method to populate the registered services into the container, create your own method. Loop over the registered services and add them to the other container.</p>
+
+<p>Actually the last step sounds easy, but can be a hard task. Because you need to translate all the possible <code class="language-plaintext highlighter-rouge">IServiceCollection</code> registrations into registrations of the different container. The complexity of that task depends on the implementation details of the other one.</p>
+
+<p>Anyway, you have the choice to use any DI container which is compatible to the .NET Standard. You have the choice to change a lot of default implementations in ASP.NET Core.</p>
+
+<p>So you can with the default HTTPS behavior on Windows. To learn more about that please read the next chapter.</p>
+
+<hr />
+<h2 id="sessions">Sessions</h2>
+
+<p>This is series of articles on Building Conf planner app with Asp.net Core:</p>
+
+<ul>
+  <li><a href="/blog/customize-logging" target="_blank">1 - Logging</a></li>
+  <li><a href="/blog/customize-configuration" target="_blank">2 - Configuration</a></li>
+  <li><a href="/blog/customize-dependency-injection" target="_blank">3 - Dependency Injection</a></li>
+  <li><a href="/blog/customize-https" target="_blank">4 - Https</a></li>
+  <li><a href="/blog/customize-hostedservices" target="_blank">5 - Hostedservices</a></li>
+  <li><a href="/blog/customize-middleware" target="_blank">6 - Middlewares</a></li>
+  <li><a href="/blog/customize-outputformatter" target="_blank">7 - Outputformatter</a></li>
+  <li><a href="/blog/customize-modelbinders" target="_blank">8 - Modelbinders </a></li>
+  <li><a href="/blog/customize-actionfilters" target="_blank">9 - Actionfilters</a></li>
+  <li><a href="/blog/customize-taghelpers" target="_blank">10 - Taghelpers</a></li>
+  <li><a href="/blog/customize-webhostbuilder" target="_blank">11 - Webhostbuilder</a></li>
+  <li><a href="/blog/customize-hosting" target="_blank">12 - Hosting </a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/customize-configuration" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/customize-https" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

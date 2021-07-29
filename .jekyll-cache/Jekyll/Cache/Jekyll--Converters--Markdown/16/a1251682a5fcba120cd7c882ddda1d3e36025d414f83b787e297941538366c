@@ -1,0 +1,831 @@
+I"g<h2 id="amazon-textract---automatically-extract-text-and-structured-data-from-documents">Amazon Textract - Automatically extract text and structured data from documents</h2>
+
+<p>Documents are a primary tool for record keeping, communication, collaboration, and transactions across many industries, including financial, medical, legal, and real estate. The millions of mortgage applications and hundreds of millions of W2 tax forms processed each year are just a few examples of such documents. A lot of information is locked in unstructured documents. It usually requires time-consuming and complex processes to enable search and discovery, business process automation, and compliance control for these documents.</p>
+
+<p>In this post, I show how you can take advantage of Amazon Textract to automatically extract text and data from scanned documents without any machine learning (ML) experience. While AWS takes care of building, training, and deploying advanced ML models in a highly available and scalable environment, you take advantage of these models with simple-to-use API actions. Here are the use cases that I cover in this post:</p>
+
+<ul>
+  <li>Text detection from documents</li>
+  <li>Multi-column detection and reading order</li>
+  <li>Natural language processing and document classification</li>
+  <li>Natural language processing for medical documents</li>
+  <li>Document translation</li>
+  <li>Search and discovery</li>
+  <li>Form extraction and processing</li>
+  <li>Compliance control with document redaction</li>
+  <li>Table extraction and processing</li>
+  <li>PDF document processing</li>
+</ul>
+
+<h3 id="amazon-textract">Amazon Textract</h3>
+<p>Before I get started with the use cases, let me review and introduce some of the core features. Amazon Textract goes beyond simple optical character recognition (OCR) to also identify the contents of fields in forms and information stored in tables. This allows you to use Amazon Textract to instantly “read” virtually any type of document and accurately extract text and data without the need for any manual effort or custom code.</p>
+
+<p>The following images show an example document and corresponding extracted text, form, and table data using Amazon Textract in the AWS Management Console.</p>
+
+<p><img src="/img/awscloud/8/textract-ga-1.gif" alt="image info" /></p>
+
+<p>The following image shows the lines extracted as raw text from the document.</p>
+
+<p><img src="/img/awscloud/8/textract-ga-2.gif" alt="image info" /></p>
+
+<p>The following image shows the extracted form fields and their corresponding values.</p>
+
+<p><img src="/img/awscloud/8/textract-ga-3.gif" alt="image info" /></p>
+
+<p>The following image shows the extracted table, cells, and the text in those cells.</p>
+
+<p><img src="/img/awscloud/8/textract-ga-4.gif" alt="image info" /></p>
+
+<p>To quickly download a zip file containing the output, choose Download results. You can choose various formats, including raw JSON, text, and CSV files for forms and tables.</p>
+
+<p><img src="/img/awscloud/8/textract-ga-5.gif" alt="image info" /></p>
+
+<p>In addition to the detected content, Amazon Textract provides additional information, like confidence scores and bounded boxes for detected elements. It gives you control on how you consume extracted content and integrate it into various business applications.</p>
+
+<p>Amazon Textract provides both <strong>synchronous and asynchronous</strong> API actions to extract document text and analyze the document text data.</p>
+
+<p><strong>Synchronous APIs</strong> can be used for <em>single-page</em> documents and low latency use cases such as mobile capture. <strong>Asynchronous APIs</strong> can be used for <em>multi-page</em> documents such as PDF documents with thousands of pages. For more information, see the Amazon Textract API Reference.</p>
+
+<h3 id="use-cases">Use cases</h3>
+<p>Now, write some code to take advantage of Amazon Textract API operations using the AWS SDK and see how easy it is to build power-smart applications. I will also use the JSON Parser Library for some of the below use cases.</p>
+
+<h3 id="text-detection-from-documents">Text detection from documents</h3>
+
+<p>I start with a simple example on how to detect text from a document. Use the following image as an input document to Amazon Textract. As you can see, the sample image is not of good quality, but Amazon Textract can still detect the text with accuracy.</p>
+
+<p><img src="/img/awscloud/8/textract-ga-6.gif" alt="image info" /></p>
+
+<p>The following code example shows how to use a few lines of code to send this sample image to Amazon Textract and get a JSON response back. You then iterate over the blocks in JSON and print the detected text, as shown below.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">boto3</span>
+
+<span class="c1"># Document
+</span><span class="n">s3BucketName</span> <span class="o">=</span> <span class="s">"ki-textract-demo-docs"</span>
+<span class="n">documentName</span> <span class="o">=</span> <span class="s">"simple-document-image.jpg"</span>
+
+<span class="c1"># Amazon Textract client
+</span><span class="n">textract</span> <span class="o">=</span> <span class="n">boto3</span><span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="s">'textract'</span><span class="p">)</span>
+
+<span class="c1"># Call Amazon Textract
+</span><span class="n">response</span> <span class="o">=</span> <span class="n">textract</span><span class="p">.</span><span class="n">detect_document_text</span><span class="p">(</span>
+    <span class="n">Document</span><span class="o">=</span><span class="p">{</span>
+        <span class="s">'S3Object'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">'Bucket'</span><span class="p">:</span> <span class="n">s3BucketName</span><span class="p">,</span>
+            <span class="s">'Name'</span><span class="p">:</span> <span class="n">documentName</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+
+<span class="c1">#print(response)
+</span>
+<span class="c1"># Print detected text
+</span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s">"Blocks"</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="s">"BlockType"</span><span class="p">]</span> <span class="o">==</span> <span class="s">"LINE"</span><span class="p">:</span>
+        <span class="k">print</span> <span class="p">(</span><span class="s">'</span><span class="se">\033</span><span class="s">[94m'</span> <span class="o">+</span>  <span class="n">item</span><span class="p">[</span><span class="s">"Text"</span><span class="p">]</span> <span class="o">+</span> <span class="s">'</span><span class="se">\033</span><span class="s">[0m'</span><span class="p">)</span>
+
+</code></pre></div></div>
+<p>The following JSON response is what you receive from Amazon Textract, with blocks representing detected text in the document.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  {
+    "Blocks": [
+        {
+            "Geometry": {
+                "BoundingBox": {
+                    "Width": 1.0, 
+                    "Top": 0.0, 
+                    "Left": 0.0, 
+                    "Height": 1.0
+                }, 
+                "Polygon": [
+                    {
+                        "Y": 0.0, 
+                        "X": 0.0
+                    }, 
+                    {
+                        "Y": 0.0, 
+                        "X": 1.0
+                    }, 
+                    {
+                        "Y": 1.0, 
+                        "X": 1.0
+                    }, 
+                    {
+                        "Y": 1.0, 
+                        "X": 0.0
+                    }
+                ]
+            }, 
+            "Relationships": [
+                {
+                    "Type": "CHILD", 
+                    "Ids": [
+                        "2602b0a6-20e3-4e6e-9e46-3be57fd0844b", 
+                        "82aedd57-187f-43dd-9eb1-4f312ca30042", 
+                        "52be1777-53f7-42f6-a7cf-6d09bdc15a30", 
+                        "7ca7caa6-00ef-4cda-b1aa-5571dfed1a7c"
+                    ]
+                }
+            ], 
+            "BlockType": "PAGE", 
+            "Id": "8136b2dc-37c1-4300-a9da-6ed8b276ea97"
+        }..... 
+        
+    ], 
+    "DocumentMetadata": {
+        "Pages": 1
+    }
+}
+
+
+</code></pre></div></div>
+<p>The following image shows the output of the detected</p>
+
+<p><img src="/img/awscloud/8/textract-ga-7.gif" alt="image info" /></p>
+
+<h3 id="multi-column-detection-and-reading-order">Multi-column detection and reading order</h3>
+<p>Traditional OCR solutions read left to right, do not detect multiple columns, and end up generating incorrect reading order for multi-column documents. In addition to detecting text, Amazon Textract provides additional geometry information that can be used to detect multiple columns and print the text in reading order.
+The following image is a two-column document. Similar to the earlier example, the image is not good quality but Amazon Textract still performs well.</p>
+
+<p><img src="/img/awscloud/8/textract-ga-8-2.gif" alt="image info" /></p>
+
+<p>The following example code shows processing the document with Amazon Textract and taking advantage of geometry information to print the text in reading order.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">boto3</span>
+
+<span class="c1"># Document
+</span><span class="n">s3BucketName</span> <span class="o">=</span> <span class="s">"ki-textract-demo-docs"</span>
+<span class="n">documentName</span> <span class="o">=</span> <span class="s">"two-column-image.jpg"</span>
+
+<span class="c1"># Amazon Textract client
+</span><span class="n">textract</span> <span class="o">=</span> <span class="n">boto3</span><span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="s">'textract'</span><span class="p">)</span>
+
+<span class="c1"># Call Amazon Textract
+</span><span class="n">response</span> <span class="o">=</span> <span class="n">textract</span><span class="p">.</span><span class="n">detect_document_text</span><span class="p">(</span>
+    <span class="n">Document</span><span class="o">=</span><span class="p">{</span>
+        <span class="s">'S3Object'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">'Bucket'</span><span class="p">:</span> <span class="n">s3BucketName</span><span class="p">,</span>
+            <span class="s">'Name'</span><span class="p">:</span> <span class="n">documentName</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+
+<span class="c1">#print(response)
+</span>
+<span class="c1"># Detect columns and print lines
+</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s">"Blocks"</span><span class="p">]:</span>
+      <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="s">"BlockType"</span><span class="p">]</span> <span class="o">==</span> <span class="s">"LINE"</span><span class="p">:</span>
+        <span class="n">column_found</span><span class="o">=</span><span class="bp">False</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">column</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">columns</span><span class="p">):</span>
+            <span class="n">bbox_left</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s">"Geometry"</span><span class="p">][</span><span class="s">"BoundingBox"</span><span class="p">][</span><span class="s">"Left"</span><span class="p">]</span>
+            <span class="n">bbox_right</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s">"Geometry"</span><span class="p">][</span><span class="s">"BoundingBox"</span><span class="p">][</span><span class="s">"Left"</span><span class="p">]</span> <span class="o">+</span> <span class="n">item</span><span class="p">[</span><span class="s">"Geometry"</span><span class="p">][</span><span class="s">"BoundingBox"</span><span class="p">][</span><span class="s">"Width"</span><span class="p">]</span>
+            <span class="n">bbox_centre</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s">"Geometry"</span><span class="p">][</span><span class="s">"BoundingBox"</span><span class="p">][</span><span class="s">"Left"</span><span class="p">]</span> <span class="o">+</span> <span class="n">item</span><span class="p">[</span><span class="s">"Geometry"</span><span class="p">][</span><span class="s">"BoundingBox"</span><span class="p">][</span><span class="s">"Width"</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span>
+            <span class="n">column_centre</span> <span class="o">=</span> <span class="n">column</span><span class="p">[</span><span class="s">'left'</span><span class="p">]</span> <span class="o">+</span> <span class="n">column</span><span class="p">[</span><span class="s">'right'</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">bbox_centre</span> <span class="o">&gt;</span> <span class="n">column</span><span class="p">[</span><span class="s">'left'</span><span class="p">]</span> <span class="ow">and</span> <span class="n">bbox_centre</span> <span class="o">&lt;</span> <span class="n">column</span><span class="p">[</span><span class="s">'right'</span><span class="p">])</span> <span class="ow">or</span> <span class="p">(</span><span class="n">column_centre</span> <span class="o">&gt;</span> <span class="n">bbox_left</span> <span class="ow">and</span> <span class="n">column_centre</span> <span class="o">&lt;</span> <span class="n">bbox_right</span><span class="p">):</span>
+                <span class="c1">#Bbox appears inside the column
+</span>                <span class="n">lines</span><span class="p">.</span><span class="n">append</span><span class="p">([</span><span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="s">"Text"</span><span class="p">]])</span>
+                <span class="n">column_found</span><span class="o">=</span><span class="bp">True</span>
+                <span class="k">break</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">column_found</span><span class="p">:</span>
+            <span class="n">columns</span><span class="p">.</span><span class="n">append</span><span class="p">({</span><span class="s">'left'</span><span class="p">:</span><span class="n">item</span><span class="p">[</span><span class="s">"Geometry"</span><span class="p">][</span><span class="s">"BoundingBox"</span><span class="p">][</span><span class="s">"Left"</span><span class="p">],</span> <span class="s">'right'</span><span class="p">:</span><span class="n">item</span><span class="p">[</span><span class="s">"Geometry"</span><span class="p">][</span><span class="s">"BoundingBox"</span><span class="p">][</span><span class="s">"Left"</span><span class="p">]</span> <span class="o">+</span> <span class="n">item</span><span class="p">[</span><span class="s">"Geometry"</span><span class="p">][</span><span class="s">"BoundingBox"</span><span class="p">][</span><span class="s">"Width"</span><span class="p">]})</span>
+            <span class="n">lines</span><span class="p">.</span><span class="n">append</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">columns</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">item</span><span class="p">[</span><span class="s">"Text"</span><span class="p">]])</span>
+
+<span class="n">lines</span><span class="p">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+    <span class="k">print</span> <span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+</code></pre></div></div>
+<p>The following image shows the output of the detected text in the correct reading order.</p>
+
+<p><img src="/img/awscloud/8/textract-ga-9.gif" alt="image info" /></p>
+
+<h3 id="natural-language-processing-and-document-classification">Natural language processing and document classification</h3>
+
+<p>Customer emails, support tickets, product reviews, social media, even advertising copy all represent insights into customer sentiment that can be put to work for your business.</p>
+
+<p>A lot of such content contains images or scanned versions of documents. After text is extracted from these documents, you can use Amazon Comprehend to detect sentiment, entities, key phrases, syntax and topics. You can also train Amazon Comprehend to detect custom entities based on your business domain. These insights can then be used to classify documents, automate business process workflows, and ensure compliance.</p>
+
+<p>The following example code shows processing the first image sample used earlier with Amazon Textract to extract text and then using Amazon Comprehend to detect sentiment and entities.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">boto3</span>
+
+<span class="c1"># Document
+</span><span class="n">s3BucketName</span> <span class="o">=</span> <span class="s">"ki-textract-demo-docs"</span>
+<span class="n">documentName</span> <span class="o">=</span> <span class="s">"simple-document-image.jpg"</span>
+
+<span class="c1"># Amazon Textract client
+</span><span class="n">textract</span> <span class="o">=</span> <span class="n">boto3</span><span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="s">'textract'</span><span class="p">)</span>
+
+<span class="c1"># Call Amazon Textract
+</span><span class="n">response</span> <span class="o">=</span> <span class="n">textract</span><span class="p">.</span><span class="n">detect_document_text</span><span class="p">(</span>
+    <span class="n">Document</span><span class="o">=</span><span class="p">{</span>
+        <span class="s">'S3Object'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">'Bucket'</span><span class="p">:</span> <span class="n">s3BucketName</span><span class="p">,</span>
+            <span class="s">'Name'</span><span class="p">:</span> <span class="n">documentName</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+
+<span class="c1">#print(response)
+</span>
+<span class="c1"># Print text
+</span><span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Text</span><span class="se">\n</span><span class="s">========"</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s">""</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s">"Blocks"</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="s">"BlockType"</span><span class="p">]</span> <span class="o">==</span> <span class="s">"LINE"</span><span class="p">:</span>
+        <span class="k">print</span> <span class="p">(</span><span class="s">'</span><span class="se">\033</span><span class="s">[94m'</span> <span class="o">+</span>  <span class="n">item</span><span class="p">[</span><span class="s">"Text"</span><span class="p">]</span> <span class="o">+</span> <span class="s">'</span><span class="se">\033</span><span class="s">[0m'</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">item</span><span class="p">[</span><span class="s">"Text"</span><span class="p">]</span>
+
+<span class="c1"># Amazon Comprehend client
+</span><span class="n">comprehend</span> <span class="o">=</span> <span class="n">boto3</span><span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="s">'comprehend'</span><span class="p">)</span>
+
+<span class="c1"># Detect sentiment
+</span><span class="n">sentiment</span> <span class="o">=</span>  <span class="n">comprehend</span><span class="p">.</span><span class="n">detect_sentiment</span><span class="p">(</span><span class="n">LanguageCode</span><span class="o">=</span><span class="s">"en"</span><span class="p">,</span> <span class="n">Text</span><span class="o">=</span><span class="n">text</span><span class="p">)</span>
+<span class="k">print</span> <span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Sentiment</span><span class="se">\n</span><span class="s">========</span><span class="se">\n</span><span class="s">{}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">sentiment</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'Sentiment'</span><span class="p">)))</span>
+
+<span class="c1"># Detect entities
+</span><span class="n">entities</span> <span class="o">=</span>  <span class="n">comprehend</span><span class="p">.</span><span class="n">detect_entities</span><span class="p">(</span><span class="n">LanguageCode</span><span class="o">=</span><span class="s">"en"</span><span class="p">,</span> <span class="n">Text</span><span class="o">=</span><span class="n">text</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Entities</span><span class="se">\n</span><span class="s">========"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">entity</span> <span class="ow">in</span> <span class="n">entities</span><span class="p">[</span><span class="s">"Entities"</span><span class="p">]:</span>
+    <span class="k">print</span> <span class="p">(</span><span class="s">"{}</span><span class="se">\t</span><span class="s">=&gt;</span><span class="se">\t</span><span class="s">{}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">entity</span><span class="p">[</span><span class="s">"Type"</span><span class="p">],</span> <span class="n">entity</span><span class="p">[</span><span class="s">"Text"</span><span class="p">]))</span>
+
+</code></pre></div></div>
+
+<p>The following image shows the output text along with the text analysis from Amazon Comprehend. You can see that it found the sentiment to be “Neutral” and detected “Amazon” as an organization, “Seattle, WA” as a location and “July 5th, 1994” as a date, along with other entities.</p>
+
+<p><img src="/img/awscloud/8/textract-ga-10.gif" alt="image info" /></p>
+
+<h3 id="natural-language-processing-for-medical-documents">Natural language processing for medical documents</h3>
+<p>One of the important ways to improve patient care and accelerate clinical research is by understanding and analyzing the insights and relationships that are “trapped” in free-form medical text. These can include hospital admission notes and a patient’s medical history.
+In this example, use the following document to extract text using Amazon Textract. You then use Amazon Comprehend Medical to extract medical entities, such as medical condition, medication, dosage, strength, and protected health information (PHI).</p>
+
+<p><img src="/img/awscloud/8/patient-notes.gif" alt="image info" /></p>
+
+<p>The following example code shows how different medical entities are detected.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">boto3</span>
+
+<span class="c1"># Document
+</span><span class="n">s3BucketName</span> <span class="o">=</span> <span class="s">"ki-textract-demo-docs"</span>
+<span class="n">documentName</span> <span class="o">=</span> <span class="s">"medical-notes.png"</span>
+
+<span class="c1"># Amazon Textract client
+</span><span class="n">textract</span> <span class="o">=</span> <span class="n">boto3</span><span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="s">'textract'</span><span class="p">)</span>
+
+<span class="c1"># Call Amazon Textract
+</span><span class="n">response</span> <span class="o">=</span> <span class="n">textract</span><span class="p">.</span><span class="n">detect_document_text</span><span class="p">(</span>
+    <span class="n">Document</span><span class="o">=</span><span class="p">{</span>
+        <span class="s">'S3Object'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">'Bucket'</span><span class="p">:</span> <span class="n">s3BucketName</span><span class="p">,</span>
+            <span class="s">'Name'</span><span class="p">:</span> <span class="n">documentName</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+
+<span class="c1">#print(response)
+</span>
+<span class="c1"># Print text
+</span><span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Text</span><span class="se">\n</span><span class="s">========"</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s">""</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s">"Blocks"</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="s">"BlockType"</span><span class="p">]</span> <span class="o">==</span> <span class="s">"LINE"</span><span class="p">:</span>
+        <span class="k">print</span> <span class="p">(</span><span class="s">'</span><span class="se">\033</span><span class="s">[94m'</span> <span class="o">+</span>  <span class="n">item</span><span class="p">[</span><span class="s">"Text"</span><span class="p">]</span> <span class="o">+</span> <span class="s">'</span><span class="se">\033</span><span class="s">[0m'</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">item</span><span class="p">[</span><span class="s">"Text"</span><span class="p">]</span>
+
+<span class="c1"># Amazon Comprehend client
+</span><span class="n">comprehend</span> <span class="o">=</span> <span class="n">boto3</span><span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="s">'comprehendmedical'</span><span class="p">)</span>
+
+<span class="c1"># Detect medical entities
+</span><span class="n">entities</span> <span class="o">=</span>  <span class="n">comprehend</span><span class="p">.</span><span class="n">detect_entities</span><span class="p">(</span><span class="n">Text</span><span class="o">=</span><span class="n">text</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Midical Entities</span><span class="se">\n</span><span class="s">========"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">entity</span> <span class="ow">in</span> <span class="n">entities</span><span class="p">[</span><span class="s">"Entities"</span><span class="p">]:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"- {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">entity</span><span class="p">[</span><span class="s">"Text"</span><span class="p">]))</span>
+    <span class="k">print</span> <span class="p">(</span><span class="s">"   Type: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">entity</span><span class="p">[</span><span class="s">"Type"</span><span class="p">]))</span>
+    <span class="k">print</span> <span class="p">(</span><span class="s">"   Category: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">entity</span><span class="p">[</span><span class="s">"Category"</span><span class="p">]))</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">entity</span><span class="p">[</span><span class="s">"Traits"</span><span class="p">]):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"   Traits:"</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">trait</span> <span class="ow">in</span> <span class="n">entity</span><span class="p">[</span><span class="s">"Traits"</span><span class="p">]:</span>
+            <span class="k">print</span> <span class="p">(</span><span class="s">"    - {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">trait</span><span class="p">[</span><span class="s">"Name"</span><span class="p">]))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The following image and text block shows the output of the detected text with information categorized by type. It detected “40yo” as the age with category “Protected Health Information”. It also detected different medical conditions, including sleeping trouble, rash, inferior turbinates, erythematous eruption, and others. It recognized different medications and anatomy information.</p>
+
+<p><img src="/img/awscloud/8/textract-ga-12.gif" alt="image info" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Medical</span> <span class="n">Entities</span>
+<span class="o">========</span>
+<span class="o">-</span> <span class="mi">40</span><span class="n">yo</span>
+   <span class="n">Type</span><span class="p">:</span> <span class="n">AGE</span>
+   <span class="n">Category</span><span class="p">:</span> <span class="n">PROTECTED_HEALTH_INFORMATION</span>
+<span class="o">-</span> <span class="n">Sleeping</span> <span class="n">trouble</span>
+   <span class="n">Type</span><span class="p">:</span> <span class="n">DX_NAME</span>
+   <span class="n">Category</span><span class="p">:</span> <span class="n">MEDICAL_CONDITION</span>
+   <span class="n">Traits</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">SYMPTOM</span>
+<span class="o">-</span> <span class="n">Clonidine</span>
+   <span class="n">Type</span><span class="p">:</span> <span class="n">GENERIC_NAME</span>
+   <span class="n">Category</span><span class="p">:</span> <span class="n">MEDICATION</span>
+<span class="o">-</span> <span class="n">Rash</span>
+   <span class="n">Type</span><span class="p">:</span> <span class="n">DX_NAME</span>
+   <span class="n">Category</span><span class="p">:</span> <span class="n">MEDICAL_CONDITION</span>
+   <span class="n">Traits</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">SYMPTOM</span>
+<span class="o">-</span> <span class="n">face</span>
+   <span class="n">Type</span><span class="p">:</span> <span class="n">SYSTEM_ORGAN_SITE</span>
+   <span class="n">Category</span><span class="p">:</span> <span class="n">ANATOMY</span>
+<span class="o">-</span> <span class="n">leg</span>
+   <span class="n">Type</span><span class="p">:</span> <span class="n">SYSTEM_ORGAN_SITE</span>
+   <span class="n">Category</span><span class="p">:</span> <span class="n">ANATOMY</span>
+<span class="o">-</span> <span class="n">Vyvanse</span>
+   <span class="n">Type</span><span class="p">:</span> <span class="n">BRAND_NAME</span>
+   <span class="n">Category</span><span class="p">:</span> <span class="n">MEDICATION</span>
+<span class="o">-</span> <span class="n">Clonidine</span>
+   <span class="n">Type</span><span class="p">:</span> <span class="n">GENERIC_NAME</span>
+   <span class="n">Category</span><span class="p">:</span> <span class="n">MEDICATION</span>
+<span class="o">-</span> <span class="n">HEENT</span>
+   <span class="n">Type</span><span class="p">:</span> <span class="n">SYSTEM_ORGAN_SITE</span>
+   <span class="n">Category</span><span class="p">:</span> <span class="n">ANATOMY</span>
+<span class="o">-</span> <span class="n">Boggy</span> <span class="n">inferior</span> <span class="n">turbinates</span>
+   <span class="n">Type</span><span class="p">:</span> <span class="n">DX_NAME</span>
+   <span class="n">Category</span><span class="p">:</span> <span class="n">MEDICAL_CONDITION</span>
+   <span class="n">Traits</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">SIGN</span>
+<span class="o">-</span> <span class="n">inferior</span>
+   <span class="n">Type</span><span class="p">:</span> <span class="n">DIRECTION</span>
+   <span class="n">Category</span><span class="p">:</span> <span class="n">ANATOMY</span>
+<span class="o">-</span> <span class="n">turbinates</span>
+   <span class="n">Type</span><span class="p">:</span> <span class="n">SYSTEM_ORGAN_SITE</span>
+   <span class="n">Category</span><span class="p">:</span> <span class="n">ANATOMY</span>
+<span class="o">-</span> <span class="n">oropharyngeal</span> <span class="n">lesion</span>
+   <span class="n">Type</span><span class="p">:</span> <span class="n">DX_NAME</span>
+   <span class="n">Category</span><span class="p">:</span> <span class="n">MEDICAL_CONDITION</span>
+   <span class="n">Traits</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">SIGN</span>
+    <span class="o">-</span> <span class="n">NEGATION</span>
+<span class="o">-</span> <span class="n">Lungs</span>
+   <span class="n">Type</span><span class="p">:</span> <span class="n">SYSTEM_ORGAN_SITE</span>
+   <span class="n">Category</span><span class="p">:</span> <span class="n">ANATOMY</span>
+<span class="o">-</span> <span class="n">clear</span> <span class="n">Heart</span>
+   <span class="n">Type</span><span class="p">:</span> <span class="n">DX_NAME</span>
+   <span class="n">Category</span><span class="p">:</span> <span class="n">MEDICAL_CONDITION</span>
+   <span class="n">Traits</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">SIGN</span>
+<span class="o">-</span> <span class="n">Heart</span>
+   <span class="n">Type</span><span class="p">:</span> <span class="n">SYSTEM_ORGAN_SITE</span>
+   <span class="n">Category</span><span class="p">:</span> <span class="n">ANATOMY</span>
+<span class="o">-</span> <span class="n">Regular</span> <span class="n">rhythm</span>
+   <span class="n">Type</span><span class="p">:</span> <span class="n">DX_NAME</span>
+   <span class="n">Category</span><span class="p">:</span> <span class="n">MEDICAL_CONDITION</span>
+   <span class="n">Traits</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">SIGN</span>
+<span class="o">-</span> <span class="n">Skin</span>
+   <span class="n">Type</span><span class="p">:</span> <span class="n">SYSTEM_ORGAN_SITE</span>
+   <span class="n">Category</span><span class="p">:</span> <span class="n">ANATOMY</span>
+<span class="o">-</span> <span class="n">erythematous</span> <span class="n">eruption</span>
+   <span class="n">Type</span><span class="p">:</span> <span class="n">DX_NAME</span>
+   <span class="n">Category</span><span class="p">:</span> <span class="n">MEDICAL_CONDITION</span>
+   <span class="n">Traits</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">SIGN</span>
+<span class="o">-</span> <span class="n">hairline</span>
+   <span class="n">Type</span><span class="p">:</span> <span class="n">SYSTEM_ORGAN_SITE</span>
+   <span class="n">Category</span><span class="p">:</span> <span class="n">ANATOMY</span>
+</code></pre></div></div>
+
+<h3 id="document-translation">Document translation</h3>
+<p>Many organizations localize content for international users, such as websites and applications. They must translate large volumes of documents efficiently. You can use Amazon Textract along with Amazon Translate to extract text and data and then translate them into other languages.</p>
+
+<p>The following code example shows translating the text in the first image to German.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">boto3</span>
+
+<span class="c1"># Document
+</span><span class="n">s3BucketName</span> <span class="o">=</span> <span class="s">"ki-textract-demo-docs"</span>
+<span class="n">documentName</span> <span class="o">=</span> <span class="s">"simple-document-image.jpg"</span>
+
+<span class="c1"># Amazon Textract client
+</span><span class="n">textract</span> <span class="o">=</span> <span class="n">boto3</span><span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="s">'textract'</span><span class="p">)</span>
+
+<span class="c1"># Call Amazon Textract
+</span><span class="n">response</span> <span class="o">=</span> <span class="n">textract</span><span class="p">.</span><span class="n">detect_document_text</span><span class="p">(</span>
+    <span class="n">Document</span><span class="o">=</span><span class="p">{</span>
+        <span class="s">'S3Object'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">'Bucket'</span><span class="p">:</span> <span class="n">s3BucketName</span><span class="p">,</span>
+            <span class="s">'Name'</span><span class="p">:</span> <span class="n">documentName</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+
+<span class="c1">#print(response)
+</span>
+<span class="c1"># Amazon Translate client
+</span><span class="n">translate</span> <span class="o">=</span> <span class="n">boto3</span><span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="s">'translate'</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="p">(</span><span class="s">''</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s">"Blocks"</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="s">"BlockType"</span><span class="p">]</span> <span class="o">==</span> <span class="s">"LINE"</span><span class="p">:</span>
+        <span class="k">print</span> <span class="p">(</span><span class="s">'</span><span class="se">\033</span><span class="s">[94m'</span> <span class="o">+</span>  <span class="n">item</span><span class="p">[</span><span class="s">"Text"</span><span class="p">]</span> <span class="o">+</span> <span class="s">'</span><span class="se">\033</span><span class="s">[0m'</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">translate</span><span class="p">.</span><span class="n">translate_text</span><span class="p">(</span><span class="n">Text</span><span class="o">=</span><span class="n">item</span><span class="p">[</span><span class="s">"Text"</span><span class="p">],</span> <span class="n">SourceLanguageCode</span><span class="o">=</span><span class="s">"en"</span><span class="p">,</span> <span class="n">TargetLanguageCode</span><span class="o">=</span><span class="s">"de"</span><span class="p">)</span>
+        <span class="k">print</span> <span class="p">(</span><span class="s">'</span><span class="se">\033</span><span class="s">[92m'</span> <span class="o">+</span> <span class="n">result</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'TranslatedText'</span><span class="p">)</span> <span class="o">+</span> <span class="s">'</span><span class="se">\033</span><span class="s">[0m'</span><span class="p">)</span>
+    <span class="k">print</span> <span class="p">(</span><span class="s">''</span><span class="p">)</span>
+</code></pre></div></div>
+<p>The following image shows the output of the detected text, translated to German line by line.</p>
+
+<p><img src="/img/awscloud/8/textract-ga-13.gif" alt="image info" /></p>
+
+<h3 id="search-and-discovery">Search and discovery</h3>
+
+<p>Extracting structured data from documents and creating a smart index using <strong>Amazon Elasticsearch Service (Amazon ES)</strong> allows you to search through millions of documents quickly. For example, <em>a mortgage company could use Amazon Textract to process millions of scanned loan applications in a matter of hours and have the extracted data indexed in Amazon ES. This would allow them to create search experiences like searching for loan applications where the applicant name is John Doe, or searching for contracts where the interest rate is 2 percent.</em></p>
+
+<p>The following code example shows how you can extract text from the first image, store it in Amazon ES, and then search it using Kibana. You can also build a custom UI experience by taking advantage of the Amazon ES APIs. Later in the post, as you learn how to extract forms and tables, that structured data can then be indexed similarly to enable smart search.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">boto3</span>
+<span class="kn">from</span> <span class="nn">elasticsearch</span> <span class="kn">import</span> <span class="n">Elasticsearch</span><span class="p">,</span> <span class="n">RequestsHttpConnection</span>
+<span class="kn">from</span> <span class="nn">requests_aws4auth</span> <span class="kn">import</span> <span class="n">AWS4Auth</span>
+
+<span class="k">def</span> <span class="nf">indexDocument</span><span class="p">(</span><span class="n">bucketName</span><span class="p">,</span> <span class="n">objectName</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+
+    <span class="c1"># Update host with endpoint of your Elasticsearch cluster
+</span>    <span class="c1">#host = "search--xxxxxxxxxxxxxx.us-east-1.es.amazonaws.com
+</span>    <span class="n">host</span> <span class="o">=</span> <span class="s">"searchxxxxxxxxxxxxxxxx.us-east-1.es.amazonaws.com"</span>
+    <span class="n">region</span> <span class="o">=</span> <span class="s">'us-east-1'</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+        <span class="n">service</span> <span class="o">=</span> <span class="s">'es'</span>
+        <span class="n">ss</span> <span class="o">=</span> <span class="n">boto3</span><span class="p">.</span><span class="n">Session</span><span class="p">()</span>
+        <span class="n">credentials</span> <span class="o">=</span> <span class="n">ss</span><span class="p">.</span><span class="n">get_credentials</span><span class="p">()</span>
+        <span class="n">region</span> <span class="o">=</span> <span class="n">ss</span><span class="p">.</span><span class="n">region_name</span>
+
+        <span class="n">awsauth</span> <span class="o">=</span> <span class="n">AWS4Auth</span><span class="p">(</span><span class="n">credentials</span><span class="p">.</span><span class="n">access_key</span><span class="p">,</span> <span class="n">credentials</span><span class="p">.</span><span class="n">secret_key</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">service</span><span class="p">,</span> <span class="n">session_token</span><span class="o">=</span><span class="n">credentials</span><span class="p">.</span><span class="n">token</span><span class="p">)</span>
+
+        <span class="n">es</span> <span class="o">=</span> <span class="n">Elasticsearch</span><span class="p">(</span>
+            <span class="n">hosts</span> <span class="o">=</span> <span class="p">[{</span><span class="s">'host'</span><span class="p">:</span> <span class="n">host</span><span class="p">,</span> <span class="s">'port'</span><span class="p">:</span> <span class="mi">443</span><span class="p">}],</span>
+            <span class="n">http_auth</span> <span class="o">=</span> <span class="n">awsauth</span><span class="p">,</span>
+            <span class="n">use_ssl</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span>
+            <span class="n">verify_certs</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span>
+            <span class="n">connection_class</span> <span class="o">=</span> <span class="n">RequestsHttpConnection</span>
+        <span class="p">)</span>
+
+        <span class="n">document</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">"name"</span><span class="p">:</span> <span class="s">"{}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">objectName</span><span class="p">),</span>
+            <span class="s">"bucket"</span> <span class="p">:</span> <span class="s">"{}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">bucketName</span><span class="p">),</span>
+            <span class="s">"content"</span> <span class="p">:</span> <span class="n">text</span>
+        <span class="p">}</span>
+
+        <span class="n">es</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s">"textract"</span><span class="p">,</span> <span class="n">doc_type</span><span class="o">=</span><span class="s">"document"</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">objectName</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="n">document</span><span class="p">)</span>
+
+        <span class="k">print</span><span class="p">(</span><span class="s">"Indexed document: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">objectName</span><span class="p">))</span>
+
+<span class="c1"># Document
+</span><span class="n">s3BucketName</span> <span class="o">=</span> <span class="s">"ki-textract-demo-docs"</span>
+<span class="n">documentName</span> <span class="o">=</span> <span class="s">"simple-document-image.jpg"</span>
+
+<span class="c1"># Amazon Textract client
+</span><span class="n">textract</span> <span class="o">=</span> <span class="n">boto3</span><span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="s">'textract'</span><span class="p">)</span>
+
+<span class="c1"># Call Amazon Textract
+</span><span class="n">response</span> <span class="o">=</span> <span class="n">textract</span><span class="p">.</span><span class="n">detect_document_text</span><span class="p">(</span>
+    <span class="n">Document</span><span class="o">=</span><span class="p">{</span>
+        <span class="s">'S3Object'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">'Bucket'</span><span class="p">:</span> <span class="n">s3BucketName</span><span class="p">,</span>
+            <span class="s">'Name'</span><span class="p">:</span> <span class="n">documentName</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+
+<span class="c1">#print(response)
+</span>
+<span class="c1"># Print detected text
+</span><span class="n">text</span> <span class="o">=</span> <span class="s">""</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s">"Blocks"</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="s">"BlockType"</span><span class="p">]</span> <span class="o">==</span> <span class="s">"LINE"</span><span class="p">:</span>
+        <span class="k">print</span> <span class="p">(</span><span class="s">'</span><span class="se">\033</span><span class="s">[94m'</span> <span class="o">+</span>  <span class="n">item</span><span class="p">[</span><span class="s">"Text"</span><span class="p">]</span> <span class="o">+</span> <span class="s">'</span><span class="se">\033</span><span class="s">[0m'</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">+=</span> <span class="n">item</span><span class="p">[</span><span class="s">"Text"</span><span class="p">]</span>
+
+<span class="n">indexDocument</span><span class="p">(</span><span class="n">s3BucketName</span><span class="p">,</span> <span class="n">documentName</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+<span class="c1"># You can view index documents in Kibana Dashboard
+</span></code></pre></div></div>
+
+<p>The following image shows the output of extracted text in Kibana search results.</p>
+
+<p><img src="/img/awscloud/8/textract-ga-14.gif" alt="image info" /></p>
+
+<h3 id="form-extraction-and-processing">Form extraction and processing</h3>
+
+<p>Amazon Textract can provide the inputs required to automatically process forms without human intervention. For example, <em>a bank could write code to read PDFs of loan applications. The information contained in the document could be used to initiate all of the necessary background and credit checks to approve the loan so that customers can get instant results for their application rather than having to wait several days for manual review and validation.
+The following image is an employment application with form fields and a table.</em></p>
+
+<p><img src="/img/awscloud/8/textract-ga-15.gif" alt="image info" /></p>
+
+<p>The following code example shows how to extract forms from the employment application and process different fields.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">boto3</span>
+<span class="kn">from</span> <span class="nn">trp</span> <span class="kn">import</span> <span class="n">Document</span>
+
+<span class="c1"># Document
+</span><span class="n">s3BucketName</span> <span class="o">=</span> <span class="s">"ki-textract-demo-docs"</span>
+<span class="n">documentName</span> <span class="o">=</span> <span class="s">"employmentapp.png"</span>
+
+<span class="c1"># Amazon Textract client
+</span><span class="n">textract</span> <span class="o">=</span> <span class="n">boto3</span><span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="s">'textract'</span><span class="p">)</span>
+
+<span class="c1"># Call Amazon Textract
+</span><span class="n">response</span> <span class="o">=</span> <span class="n">textract</span><span class="p">.</span><span class="n">analyze_document</span><span class="p">(</span>
+    <span class="n">Document</span><span class="o">=</span><span class="p">{</span>
+        <span class="s">'S3Object'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">'Bucket'</span><span class="p">:</span> <span class="n">s3BucketName</span><span class="p">,</span>
+            <span class="s">'Name'</span><span class="p">:</span> <span class="n">documentName</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="n">FeatureTypes</span><span class="o">=</span><span class="p">[</span><span class="s">"FORMS"</span><span class="p">])</span>
+
+<span class="c1">#print(response)
+</span>
+<span class="n">doc</span> <span class="o">=</span> <span class="n">Document</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">.</span><span class="n">pages</span><span class="p">:</span>
+    <span class="c1"># Print fields
+</span>    <span class="k">print</span><span class="p">(</span><span class="s">"Fields:"</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">page</span><span class="p">.</span><span class="n">form</span><span class="p">.</span><span class="n">fields</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Key: {}, Value: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">field</span><span class="p">.</span><span class="n">key</span><span class="p">,</span> <span class="n">field</span><span class="p">.</span><span class="n">value</span><span class="p">))</span>
+
+    <span class="c1"># Get field by key
+</span>    <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Get Field by Key:"</span><span class="p">)</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="s">"Phone Number:"</span>
+    <span class="n">field</span> <span class="o">=</span> <span class="n">page</span><span class="p">.</span><span class="n">form</span><span class="p">.</span><span class="n">getFieldByKey</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">field</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Key: {}, Value: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">field</span><span class="p">.</span><span class="n">key</span><span class="p">,</span> <span class="n">field</span><span class="p">.</span><span class="n">value</span><span class="p">))</span>
+
+    <span class="c1"># Search fields by key
+</span>    <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Search Fields:"</span><span class="p">)</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="s">"address"</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="n">page</span><span class="p">.</span><span class="n">form</span><span class="p">.</span><span class="n">searchFieldsByKey</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Key: {}, Value: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">field</span><span class="p">.</span><span class="n">key</span><span class="p">,</span> <span class="n">field</span><span class="p">.</span><span class="n">value</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>The following image is the output of detected form for the employment application.</p>
+
+<p><img src="/img/awscloud/8/textract-ga-19.gif" alt="image info" /></p>
+
+<h3 id="compliance-control-with-document-redaction">Compliance control with document redaction</h3>
+
+<p>Because Amazon Textract identifies data types and form labels automatically, AWS helps secure infrastructure so that you can maintain compliance with information controls. For example, <em>an insurer could use Amazon Textract to feed a workflow that automatically redacts personally identifiable information (PII) for review before archiving claim forms. Amazon Textract recognizes the important fields that require protection.</em></p>
+
+<p>The following code example shows extracting all the form fields in the employment application used earlier, and then redacting all the address fields.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">boto3</span>
+<span class="kn">from</span> <span class="nn">trp</span> <span class="kn">import</span> <span class="n">Document</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span>
+
+<span class="c1"># Document
+</span><span class="n">s3BucketName</span> <span class="o">=</span> <span class="s">"ki-textract-demo-docs"</span>
+<span class="n">documentName</span> <span class="o">=</span> <span class="s">"employmentapp.png"</span>
+
+<span class="c1"># Amazon Textract client
+</span><span class="n">textract</span> <span class="o">=</span> <span class="n">boto3</span><span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="s">'textract'</span><span class="p">)</span>
+
+<span class="c1"># Call Amazon Textract
+</span><span class="n">response</span> <span class="o">=</span> <span class="n">textract</span><span class="p">.</span><span class="n">analyze_document</span><span class="p">(</span>
+    <span class="n">Document</span><span class="o">=</span><span class="p">{</span>
+        <span class="s">'S3Object'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">'Bucket'</span><span class="p">:</span> <span class="n">s3BucketName</span><span class="p">,</span>
+            <span class="s">'Name'</span><span class="p">:</span> <span class="n">documentName</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="n">FeatureTypes</span><span class="o">=</span><span class="p">[</span><span class="s">"FORMS"</span><span class="p">])</span>
+
+<span class="c1">#print(response)
+</span>
+<span class="n">doc</span> <span class="o">=</span> <span class="n">Document</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+<span class="c1"># Redact document
+</span><span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="n">documentName</span><span class="p">)</span>
+
+<span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">size</span>
+
+<span class="k">if</span><span class="p">(</span><span class="n">doc</span><span class="p">.</span><span class="n">pages</span><span class="p">):</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="n">pages</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">page</span><span class="p">.</span><span class="n">form</span><span class="p">.</span><span class="n">fields</span><span class="p">:</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">field</span><span class="p">.</span><span class="n">key</span> <span class="ow">and</span> <span class="n">field</span><span class="p">.</span><span class="n">value</span> <span class="ow">and</span> <span class="s">"address"</span> <span class="ow">in</span> <span class="n">field</span><span class="p">.</span><span class="n">key</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">lower</span><span class="p">()):</span>
+        <span class="c1">#if(field.key and field.value):
+</span>            <span class="k">print</span><span class="p">(</span><span class="s">"Redacting =&gt; Key: {}, Value: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">field</span><span class="p">.</span><span class="n">key</span><span class="p">.</span><span class="n">text</span><span class="p">,</span> <span class="n">field</span><span class="p">.</span><span class="n">value</span><span class="p">.</span><span class="n">text</span><span class="p">))</span>
+            
+            <span class="n">x1</span> <span class="o">=</span> <span class="n">field</span><span class="p">.</span><span class="n">value</span><span class="p">.</span><span class="n">geometry</span><span class="p">.</span><span class="n">boundingBox</span><span class="p">.</span><span class="n">left</span><span class="o">*</span><span class="n">width</span>
+            <span class="n">y1</span> <span class="o">=</span> <span class="n">field</span><span class="p">.</span><span class="n">value</span><span class="p">.</span><span class="n">geometry</span><span class="p">.</span><span class="n">boundingBox</span><span class="p">.</span><span class="n">top</span><span class="o">*</span><span class="n">height</span><span class="o">-</span><span class="mi">2</span>
+            <span class="n">x2</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">+</span> <span class="p">(</span><span class="n">field</span><span class="p">.</span><span class="n">value</span><span class="p">.</span><span class="n">geometry</span><span class="p">.</span><span class="n">boundingBox</span><span class="p">.</span><span class="n">width</span><span class="o">*</span><span class="n">width</span><span class="p">)</span><span class="o">+</span><span class="mi">5</span>
+            <span class="n">y2</span> <span class="o">=</span> <span class="n">y1</span> <span class="o">+</span> <span class="p">(</span><span class="n">field</span><span class="p">.</span><span class="n">value</span><span class="p">.</span><span class="n">geometry</span><span class="p">.</span><span class="n">boundingBox</span><span class="p">.</span><span class="n">height</span><span class="o">*</span><span class="n">height</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span>
+
+            <span class="n">draw</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="p">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+            <span class="n">draw</span><span class="p">.</span><span class="n">rectangle</span><span class="p">([</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">],</span> <span class="n">fill</span><span class="o">=</span><span class="s">"Black"</span><span class="p">)</span>
+
+<span class="n">img</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="s">"redacted-{}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">documentName</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>The following image is the output redacted version of employment application.</p>
+
+<p><img src="/img/awscloud/8/textract-ga-16.gif" alt="image info" /></p>
+
+<h3 id="table-extraction-and-processing">Table extraction and processing</h3>
+
+<p>Amazon Textract can detect tables and their content. A company can extract all the amounts from an expense report and apply rules, such as any expense more than $1000 needs extra review.</p>
+
+<p><img src="/img/awscloud/8/textract-ga-17.gif" alt="image info" /></p>
+
+<p>The following code example uses the expense report sample document and prints the content of each cell, along with a warning message if any expense is more than $1000.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">boto3</span>
+<span class="kn">from</span> <span class="nn">trp</span> <span class="kn">import</span> <span class="n">Document</span>
+
+<span class="c1"># Document
+</span><span class="n">s3BucketName</span> <span class="o">=</span> <span class="s">"ki-textract-demo-docs"</span>
+<span class="n">documentName</span> <span class="o">=</span> <span class="s">"expense.png"</span>
+
+<span class="c1"># Amazon Textract client
+</span><span class="n">textract</span> <span class="o">=</span> <span class="n">boto3</span><span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="s">'textract'</span><span class="p">)</span>
+
+<span class="c1"># Call Amazon Textract
+</span><span class="n">response</span> <span class="o">=</span> <span class="n">textract</span><span class="p">.</span><span class="n">analyze_document</span><span class="p">(</span>
+    <span class="n">Document</span><span class="o">=</span><span class="p">{</span>
+        <span class="s">'S3Object'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">'Bucket'</span><span class="p">:</span> <span class="n">s3BucketName</span><span class="p">,</span>
+            <span class="s">'Name'</span><span class="p">:</span> <span class="n">documentName</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="n">FeatureTypes</span><span class="o">=</span><span class="p">[</span><span class="s">"TABLES"</span><span class="p">])</span>
+
+<span class="c1">#print(response)
+</span>
+<span class="n">doc</span> <span class="o">=</span> <span class="n">Document</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">isFloat</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+  <span class="k">except</span> <span class="nb">ValueError</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">False</span>
+  <span class="k">return</span> <span class="bp">True</span>
+
+<span class="n">warning</span> <span class="o">=</span> <span class="s">""</span>
+<span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">.</span><span class="n">pages</span><span class="p">:</span>
+     <span class="c1"># Print tables
+</span>    <span class="k">for</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">page</span><span class="p">.</span><span class="n">tables</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">table</span><span class="p">.</span><span class="n">rows</span><span class="p">):</span>
+            <span class="n">itemName</span>  <span class="o">=</span> <span class="s">""</span>
+            <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">cell</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">.</span><span class="n">cells</span><span class="p">):</span>
+                <span class="k">print</span><span class="p">(</span><span class="s">"Table[{}][{}] = {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">cell</span><span class="p">.</span><span class="n">text</span><span class="p">))</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+                    <span class="n">itemName</span> <span class="o">=</span> <span class="n">cell</span><span class="p">.</span><span class="n">text</span>
+                <span class="k">elif</span><span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">isFloat</span><span class="p">(</span><span class="n">cell</span><span class="p">.</span><span class="n">text</span><span class="p">)):</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">cell</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+                    <span class="k">if</span><span class="p">(</span><span class="n">value</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">):</span>
+                        <span class="n">warning</span> <span class="o">+=</span> <span class="s">"{} is greater than $1000."</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">itemName</span><span class="p">)</span>
+<span class="k">if</span><span class="p">(</span><span class="n">warning</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Review needed:</span><span class="se">\n</span><span class="s">====================</span><span class="se">\n</span><span class="s">"</span> <span class="o">+</span> <span class="n">warning</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>The following text is the output of the table cells and the text within.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Table</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">Expense</span> <span class="n">Description</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Type</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">Date</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">Merchant</span> <span class="n">Name</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">Amount</span> <span class="p">(</span><span class="n">USD</span><span class="p">)</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">Furniture</span> <span class="p">(</span><span class="n">Desks</span> <span class="ow">and</span> <span class="n">Chairs</span><span class="p">)</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Office</span> <span class="n">Supplies</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="mi">1019</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">Merchant</span> <span class="n">One</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1500.00</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">Team</span> <span class="n">Lunch</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Food</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mi">2019</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">Merchant</span> <span class="n">Two</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mf">100.00</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">Team</span> <span class="n">Dinner</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Food</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">2019</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">Merchant</span> <span class="n">Three</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mf">300.00</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">Laptop</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Office</span> <span class="n">Supplies</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span><span class="o">/</span><span class="mi">13</span><span class="o">/</span><span class="mi">2019</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">Merchant</span> <span class="n">Three</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mf">200.00</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">6</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">6</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">6</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">6</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">6</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">7</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">7</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">7</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">7</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">7</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">8</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">8</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">8</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">8</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">Total</span> 
+<span class="n">Table</span><span class="p">[</span><span class="mi">8</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2100.00</span> 
+
+<span class="n">Review</span> <span class="n">needed</span><span class="p">:</span>
+<span class="o">====================</span>
+<span class="n">Furniture</span> <span class="p">(</span><span class="n">Desks</span> <span class="ow">and</span> <span class="n">Chairs</span><span class="p">)</span> <span class="ow">is</span> <span class="n">greater</span> <span class="n">than</span> <span class="err">$</span><span class="mf">1000.</span>
+</code></pre></div></div>
+
+<h3 id="pdf-document-processing-async-api-operations">PDF document processing (async API operations)</h3>
+<p>For the earlier examples, you used images with the sync API operations. Now, see how you can process PDF files using the async API operations.</p>
+
+<p>First, use <strong>StartDocumentTextDetection or StartDocumentAnalysis</strong> to start an Amazon Textract job. As the job completes, Amazon Textract publishes the results of an Amazon Textract request, including completion status, to Amazon SNS. You can then use <strong>GetDocumentTextDetection</strong> or <strong>GetDocumentAnalysis</strong> to get the results from Amazon Textract.</p>
+
+<p>The following code example shows how to start a job, get job status, and then process the results. <strong>Click here for the sample PDF document</strong>. For more information, see <strong>Calling Amazon Textract Asynchronous Operations.</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">boto3</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">startJob</span><span class="p">(</span><span class="n">s3BucketName</span><span class="p">,</span> <span class="n">objectName</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">boto3</span><span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="s">'textract'</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">start_document_text_detection</span><span class="p">(</span>
+    <span class="n">DocumentLocation</span><span class="o">=</span><span class="p">{</span>
+        <span class="s">'S3Object'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">'Bucket'</span><span class="p">:</span> <span class="n">s3BucketName</span><span class="p">,</span>
+            <span class="s">'Name'</span><span class="p">:</span> <span class="n">objectName</span>
+        <span class="p">}</span>
+    <span class="p">})</span>
+
+    <span class="k">return</span> <span class="n">response</span><span class="p">[</span><span class="s">"JobId"</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">isJobComplete</span><span class="p">(</span><span class="n">jobId</span><span class="p">):</span>
+    <span class="c1"># For production use cases, use SNS based notification 
+</span>    <span class="c1"># Details at: https://docs.aws.amazon.com/textract/latest/dg/api-async.html
+</span>    <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">boto3</span><span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="s">'textract'</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">get_document_text_detection</span><span class="p">(</span><span class="n">JobId</span><span class="o">=</span><span class="n">jobId</span><span class="p">)</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s">"JobStatus"</span><span class="p">]</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Job status: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">status</span><span class="p">))</span>
+
+    <span class="k">while</span><span class="p">(</span><span class="n">status</span> <span class="o">==</span> <span class="s">"IN_PROGRESS"</span><span class="p">):</span>
+        <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">get_document_text_detection</span><span class="p">(</span><span class="n">JobId</span><span class="o">=</span><span class="n">jobId</span><span class="p">)</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s">"JobStatus"</span><span class="p">]</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Job status: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">status</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">status</span>
+
+<span class="k">def</span> <span class="nf">getJobResults</span><span class="p">(</span><span class="n">jobId</span><span class="p">):</span>
+
+    <span class="n">pages</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">client</span> <span class="o">=</span> <span class="n">boto3</span><span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="s">'textract'</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">get_document_text_detection</span><span class="p">(</span><span class="n">JobId</span><span class="o">=</span><span class="n">jobId</span><span class="p">)</span>
+    
+    <span class="n">pages</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Resultset page recieved: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pages</span><span class="p">)))</span>
+    <span class="n">nextToken</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">if</span><span class="p">(</span><span class="s">'NextToken'</span> <span class="ow">in</span> <span class="n">response</span><span class="p">):</span>
+        <span class="n">nextToken</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s">'NextToken'</span><span class="p">]</span>
+
+    <span class="k">while</span><span class="p">(</span><span class="n">nextToken</span><span class="p">):</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">get_document_text_detection</span><span class="p">(</span><span class="n">JobId</span><span class="o">=</span><span class="n">jobId</span><span class="p">,</span> <span class="n">NextToken</span><span class="o">=</span><span class="n">nextToken</span><span class="p">)</span>
+
+        <span class="n">pages</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Resultset page recieved: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pages</span><span class="p">)))</span>
+        <span class="n">nextToken</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">if</span><span class="p">(</span><span class="s">'NextToken'</span> <span class="ow">in</span> <span class="n">response</span><span class="p">):</span>
+            <span class="n">nextToken</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s">'NextToken'</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">pages</span>
+
+<span class="c1"># Document
+</span><span class="n">s3BucketName</span> <span class="o">=</span> <span class="s">"ki-textract-demo-docs"</span>
+<span class="n">documentName</span> <span class="o">=</span> <span class="s">"Amazon-Textract-Pdf.pdf"</span>
+
+<span class="n">jobId</span> <span class="o">=</span> <span class="n">startJob</span><span class="p">(</span><span class="n">s3BucketName</span><span class="p">,</span> <span class="n">documentName</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Started job with id: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">jobId</span><span class="p">))</span>
+<span class="k">if</span><span class="p">(</span><span class="n">isJobComplete</span><span class="p">(</span><span class="n">jobId</span><span class="p">)):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">getJobResults</span><span class="p">(</span><span class="n">jobId</span><span class="p">)</span>
+
+<span class="c1">#print(response)
+</span>
+<span class="c1"># Print detected text
+</span><span class="k">for</span> <span class="n">resultPage</span> <span class="ow">in</span> <span class="n">response</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">resultPage</span><span class="p">[</span><span class="s">"Blocks"</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="s">"BlockType"</span><span class="p">]</span> <span class="o">==</span> <span class="s">"LINE"</span><span class="p">:</span>
+            <span class="k">print</span> <span class="p">(</span><span class="s">'</span><span class="se">\033</span><span class="s">[94m'</span> <span class="o">+</span>  <span class="n">item</span><span class="p">[</span><span class="s">"Text"</span><span class="p">]</span> <span class="o">+</span> <span class="s">'</span><span class="se">\033</span><span class="s">[0m'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The following image shows the job status as the API call proceeds.</p>
+
+<p><img src="/img/awscloud/8/textract-ga-18.gif" alt="image info" /></p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>In this post, I showed you how to use <strong>Amazon Textract</strong> to automatically extract text and data from scanned documents without any machine learning (ML) experience. I covered use cases in fields such as <strong>finance, healthcare, and HR</strong>, but there are many other opportunities where the ability to unlock text and data from unstructured documents could be most useful. To learn more about Amazon Textract, read about processing <strong>single-page</strong> and <strong>multi-page</strong> documents, <strong>working with block objects</strong>, and <strong>code samples</strong>.</p>
+
+<p>You can start using Amazon Textract in US East (N. Virginia), US East (Ohio), US West (Oregon), and EU (Ireland) today.</p>
+:ET

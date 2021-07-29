@@ -1,0 +1,268 @@
+I"�l<h2 id="webhostbuilder">WebHostBuilder</h2>
+
+<p>When I wrote the blog post about HTTPS, a reader asked how to configure the HTTPS settings using user secrets.</p>
+
+<blockquote>
+  <p>“How would I go about using user secrets to pass the password to <code class="language-plaintext highlighter-rouge">listenOptions.UseHttps(...)</code>? I can’t fetch the configuration from within <code class="language-plaintext highlighter-rouge">Program.cs</code> no matter what I try. I’ve been Googling solutions for like a half hour so any help would be greatly appreciated.”
+<a href="https://github.com/JuergenGutsch/blog/issues/110#issuecomment-441177441">https://github.com/JuergenGutsch/blog/issues/110#issuecomment-441177441</a></p>
+</blockquote>
+
+<p>In this post I’m going to answer this question.</p>
+
+<h2 id="webhostbuildercontext">WebHostBuilderContext</h2>
+
+<p>It is about this Kestrel configuration in the <code class="language-plaintext highlighter-rouge">Program.cs</code>. In that post I wrote that you should use user secrets to configure the certificates password:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nf">CreateWebHostBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">).</span><span class="nf">Build</span><span class="p">().</span><span class="nf">Run</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="n">IWebHostBuilder</span> <span class="nf">CreateWebHostBuilder</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">=&gt;</span>
+        <span class="n">WebHost</span><span class="p">.</span><span class="nf">CreateDefaultBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+        	<span class="p">.</span><span class="nf">UseKestrel</span><span class="p">(</span><span class="n">options</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>
+                <span class="n">options</span><span class="p">.</span><span class="nf">Listen</span><span class="p">(</span><span class="n">IPAddress</span><span class="p">.</span><span class="n">Loopback</span><span class="p">,</span> <span class="m">5000</span><span class="p">);</span>
+                <span class="n">options</span><span class="p">.</span><span class="nf">Listen</span><span class="p">(</span><span class="n">IPAddress</span><span class="p">.</span><span class="n">Loopback</span><span class="p">,</span> <span class="m">5001</span><span class="p">,</span> <span class="n">listenOptions</span> <span class="p">=&gt;</span>
+                <span class="p">{</span>
+                    <span class="n">listenOptions</span><span class="p">.</span><span class="nf">UseHttps</span><span class="p">(</span><span class="s">"certificate.pfx"</span><span class="p">,</span> <span class="s">"topsecret"</span><span class="p">);</span>
+                <span class="p">});</span>
+            <span class="p">})</span>
+        	<span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The reader wrote that he couldn’t fetch the configuration inside this code. And he is true, if we are only looking at this snippet. You need to know that the method <code class="language-plaintext highlighter-rouge">UseKestrel()</code> is overloaded:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">.</span><span class="nf">UseKestrel</span><span class="p">((</span><span class="n">host</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>This first argument is a <code class="language-plaintext highlighter-rouge">WebHostBuilderContext</code>. Using this you are able to access the configuration.</p>
+
+<p>So lets rewrite the lambda a little bit to use this context:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">.</span><span class="nf">UseKestrel</span><span class="p">((</span><span class="n">host</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">filename</span> <span class="p">=</span> <span class="n">host</span><span class="p">.</span><span class="n">Configuration</span><span class="p">.</span><span class="nf">GetValue</span><span class="p">(</span><span class="s">"AppSettings:certfilename"</span><span class="p">,</span> <span class="s">""</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">password</span> <span class="p">=</span> <span class="n">host</span><span class="p">.</span><span class="n">Configuration</span><span class="p">.</span><span class="nf">GetValue</span><span class="p">(</span><span class="s">"AppSettings:certpassword"</span><span class="p">,</span> <span class="s">""</span><span class="p">);</span>
+    
+    <span class="n">options</span><span class="p">.</span><span class="nf">Listen</span><span class="p">(</span><span class="n">IPAddress</span><span class="p">.</span><span class="n">Loopback</span><span class="p">,</span> <span class="m">5000</span><span class="p">);</span>
+    <span class="n">options</span><span class="p">.</span><span class="nf">Listen</span><span class="p">(</span><span class="n">IPAddress</span><span class="p">.</span><span class="n">Loopback</span><span class="p">,</span> <span class="m">5001</span><span class="p">,</span> <span class="n">listenOptions</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">listenOptions</span><span class="p">.</span><span class="nf">UseHttps</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">password</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>In this sample I chose to write the keys using the colon divider because this is the way you need to read nested configurations from the <code class="language-plaintext highlighter-rouge">appsettings.json</code>:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"AppSettings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"certfilename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"certificate.pfx"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"certpassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topsecret"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"Logging"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"LogLevel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"Default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Warning"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"AllowedHosts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>You are also able to read from the user secrets store with this keys set up:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet user-secrets init
+dotnet user-secrets <span class="nb">set</span> <span class="s2">"AppSettings:certfilename"</span> <span class="s2">"certificate.pfx"</span>
+dotnet user-secrets <span class="nb">set</span> <span class="s2">"AppSettings:certpassword"</span> <span class="s2">"topsecret"</span>
+</code></pre></div></div>
+
+<p>As well as environment variables:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SET <span class="nv">APPSETTINGS_CERTFILENAME</span><span class="o">=</span>certificate.pfx
+SET <span class="nv">APPSETTINGS_CERTPASSWORD</span><span class="o">=</span>topsecret
+</code></pre></div></div>
+
+<h2 id="why-does-it-work">Why does it work?</h2>
+
+<p>Do you remember the days back where you needed to configure app configuration in the <code class="language-plaintext highlighter-rouge">Startup.cs</code> ASP.NET Core? That was configured in the constructor of the Startup class and looked similar like this, if you added user secrets:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kt">var</span> <span class="n">builder</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ConfigurationBuilder</span><span class="p">()</span>
+        <span class="p">.</span><span class="nf">SetBasePath</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">ContentRootPath</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">AddJsonFile</span><span class="p">(</span><span class="s">"appsettings.json"</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">AddJsonFile</span><span class="p">(</span><span class="s">$"appsettings.</span><span class="p">{</span><span class="n">env</span><span class="p">.</span><span class="n">EnvironmentName</span><span class="p">}</span><span class="s">.json"</span><span class="p">,</span> <span class="n">optional</span><span class="p">:</span> <span class="k">true</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="nf">IsDevelopment</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="n">builder</span><span class="p">.</span><span class="nf">AddUserSecrets</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="n">builder</span><span class="p">.</span><span class="nf">AddEnvironmentVariables</span><span class="p">();</span>
+    <span class="n">Configuration</span> <span class="p">=</span> <span class="n">builder</span><span class="p">.</span><span class="nf">Build</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>This code now is wrapped inside the <code class="language-plaintext highlighter-rouge">CreateDefaultBuilder</code> Method (<a href="https://github.com/aspnet/AspNetCore/blob/3c09d644cccdb21801f7a79e1188a1a1212de5d9/src/DefaultBuilder/src/WebHost.cs">see on GitHub</a>) and looks like this:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">builder</span><span class="p">.</span><span class="nf">ConfigureAppConfiguration</span><span class="p">((</span><span class="n">hostingContext</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">env</span> <span class="p">=</span> <span class="n">hostingContext</span><span class="p">.</span><span class="n">HostingEnvironment</span><span class="p">;</span>
+
+    <span class="n">config</span><span class="p">.</span><span class="nf">AddJsonFile</span><span class="p">(</span><span class="s">"appsettings.json"</span><span class="p">,</span> <span class="n">optional</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> <span class="n">reloadOnChange</span><span class="p">:</span> <span class="k">true</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">AddJsonFile</span><span class="p">(</span><span class="s">$"appsettings.</span><span class="p">{</span><span class="n">env</span><span class="p">.</span><span class="n">EnvironmentName</span><span class="p">}</span><span class="s">.json"</span><span class="p">,</span> <span class="n">optional</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> <span class="n">reloadOnChange</span><span class="p">:</span> <span class="k">true</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="nf">IsDevelopment</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">appAssembly</span> <span class="p">=</span> <span class="n">Assembly</span><span class="p">.</span><span class="nf">Load</span><span class="p">(</span><span class="k">new</span> <span class="nf">AssemblyName</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">ApplicationName</span><span class="p">));</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">appAssembly</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">config</span><span class="p">.</span><span class="nf">AddUserSecrets</span><span class="p">(</span><span class="n">appAssembly</span><span class="p">,</span> <span class="n">optional</span><span class="p">:</span> <span class="k">true</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">config</span><span class="p">.</span><span class="nf">AddEnvironmentVariables</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">args</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">config</span><span class="p">.</span><span class="nf">AddCommandLine</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>It is almost the same code and it is one of the first things that gets executed when building the <code class="language-plaintext highlighter-rouge">WebHost</code>. It needs to be one of the first things because the Kestrel is configurable via the app configuration. Maybe you know that you are able to specify ports and URLs and so on using environment variables or the <code class="language-plaintext highlighter-rouge">appsettings.json</code>:</p>
+
+<p>I found this lines in the <a href="https://github.com/aspnet/AspNetCore/blob/3c09d644cccdb21801f7a79e1188a1a1212de5d9/src/DefaultBuilder/src/WebHost.cs">WebHost.cs</a>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">builder</span><span class="p">.</span><span class="nf">UseKestrel</span><span class="p">((</span><span class="n">builderContext</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="n">options</span><span class="p">.</span><span class="nf">Configure</span><span class="p">(</span><span class="n">builderContext</span><span class="p">.</span><span class="n">Configuration</span><span class="p">.</span><span class="nf">GetSection</span><span class="p">(</span><span class="s">"Kestrel"</span><span class="p">));</span>
+<span class="p">})</span>
+
+</code></pre></div></div>
+
+<p>That means you are able to add this lines to the <code class="language-plaintext highlighter-rouge">appsettings.json</code> to configure Kestrel endpoints:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"Kestrel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"EndPoints"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"Http"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"Url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5555"</span><span class="w">
+ </span><span class="p">}}}</span><span class="w">
+
+</span></code></pre></div></div>
+
+<p>Or to use environment variables like this to configure the endpoint:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SET <span class="nv">KESTREL_ENDPOINTS_HTTP_URL</span><span class="o">=</span>http://localhost:5555
+
+</code></pre></div></div>
+
+<p>Also this configuration isn’t executed</p>
+
+<h2 id="update-on-aspnet-core-30">Update on ASP.NET Core 3.0</h2>
+
+<p>Since the hosting model in ASP.NET Core 3.0 is more generic, it looks a little bit different, but works the same way as in version 2.x.</p>
+
+<p>In ASP.NET Core 3.0 a generic <code class="language-plaintext highlighter-rouge">IHostBuilder</code> is created using the method <code class="language-plaintext highlighter-rouge">CreateDefaultBuilder()</code>. That <code class="language-plaintext highlighter-rouge">IHostBuilder</code> could also be an <code class="language-plaintext highlighter-rouge">IWebHostBuilder</code> to configure hosting of a web application, or a <code class="language-plaintext highlighter-rouge">IBlazorHostBuilder</code> to configure hosting of an application on WebAssembly, or even a simple <code class="language-plaintext highlighter-rouge">HostBuilder</code> to configure a Worker Service host. On an empty web application the Program.cs looks like this:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">public</span> <span class="k">class</span> <span class="nc">Program</span>
+ <span class="p">{</span>
+     <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+     <span class="p">{</span>
+         <span class="nf">CreateHostBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">).</span><span class="nf">Build</span><span class="p">().</span><span class="nf">Run</span><span class="p">();</span>
+     <span class="p">}</span>
+
+     <span class="k">public</span> <span class="k">static</span> <span class="n">IHostBuilder</span> <span class="nf">CreateHostBuilder</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">=&gt;</span>
+         <span class="n">Host</span><span class="p">.</span><span class="nf">CreateDefaultBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+         <span class="p">.</span><span class="nf">ConfigureWebHostDefaults</span><span class="p">(</span><span class="n">webBuilder</span> <span class="p">=&gt;</span>
+         <span class="p">{</span>
+             <span class="n">webBuilder</span><span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;();</span>
+         <span class="p">});</span>
+ <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Now let’s adopt the concepts of configuration to the <code class="language-plaintext highlighter-rouge">IHostBuilder</code>. You are able to configure the <code class="language-plaintext highlighter-rouge">IHostBuilder</code> as well as the <code class="language-plaintext highlighter-rouge">IWebHostBuilder</code> in the Program class using the <code class="language-plaintext highlighter-rouge">appsettings.json</code>, the user secrets store as well as the environment variables:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nf">CreateHostBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">).</span><span class="nf">Build</span><span class="p">().</span><span class="nf">Run</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="n">IHostBuilder</span> <span class="nf">CreateHostBuilder</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">=&gt;</span>
+        <span class="n">Host</span><span class="p">.</span><span class="nf">CreateDefaultBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+            <span class="p">.</span><span class="nf">ConfigureLogging</span><span class="p">((</span><span class="n">context</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                <span class="kt">var</span> <span class="n">logLevel</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">Configuration</span>
+                    <span class="p">.</span><span class="nf">GetValue</span><span class="p">(</span><span class="s">"Logging:LogLevel"</span><span class="p">,</span> <span class="s">""</span><span class="p">);</span>
+                
+            <span class="p">})</span>
+            <span class="p">.</span><span class="nf">ConfigureWebHostDefaults</span><span class="p">(</span><span class="n">webBuilder</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>
+                <span class="n">webBuilder</span>
+                    <span class="p">.</span><span class="nf">UseKestrel</span><span class="p">((</span><span class="n">host</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span> <span class="p">=&gt;</span>
+                    <span class="p">{</span>
+                        <span class="kt">var</span> <span class="n">filename</span> <span class="p">=</span> <span class="n">host</span><span class="p">.</span><span class="n">Configuration</span>
+                            <span class="p">.</span><span class="nf">GetValue</span><span class="p">(</span><span class="s">"AppSettings:certfilename"</span><span class="p">,</span> <span class="s">""</span><span class="p">);</span>
+                        <span class="kt">var</span> <span class="n">password</span> <span class="p">=</span> <span class="n">host</span><span class="p">.</span><span class="n">Configuration</span>
+                            <span class="p">.</span><span class="nf">GetValue</span><span class="p">(</span><span class="s">"AppSettings:certpassword"</span><span class="p">,</span> <span class="s">""</span><span class="p">);</span>
+                        
+                        <span class="n">options</span><span class="p">.</span><span class="nf">Listen</span><span class="p">(</span><span class="n">IPAddress</span><span class="p">.</span><span class="n">Loopback</span><span class="p">,</span> <span class="m">5000</span><span class="p">);</span>
+                        <span class="n">options</span><span class="p">.</span><span class="nf">Listen</span><span class="p">(</span><span class="n">IPAddress</span><span class="p">.</span><span class="n">Loopback</span><span class="p">,</span> <span class="m">5001</span><span class="p">,</span> <span class="n">listenOptions</span> <span class="p">=&gt;</span>
+                        <span class="p">{</span>
+                            <span class="n">listenOptions</span><span class="p">.</span><span class="nf">UseHttps</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">password</span><span class="p">);</span>
+                        <span class="p">});</span>
+                    <span class="p">})</span>
+                    <span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;();</span>
+            <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Inside the <code class="language-plaintext highlighter-rouge">Program.cs</code> you are able to use app configuration inside the lambdas of the configuration methods, if you have access to the <code class="language-plaintext highlighter-rouge">WebHostBuilderContext</code>. This way you can use all the configuration you like to configure the <code class="language-plaintext highlighter-rouge">WebHostBuilder</code>.</p>
+
+<hr />
+<h2 id="sessions">Sessions</h2>
+
+<p>This is series of articles on Building Conf planner app with Asp.net Core:</p>
+
+<ul>
+  <li><a href="/blog/customize-logging" target="_blank">1 - Logging</a></li>
+  <li><a href="/blog/customize-configuration" target="_blank">2 - Configuration</a></li>
+  <li><a href="/blog/customize-dependency-injection" target="_blank">3 - Dependency Injection</a></li>
+  <li><a href="/blog/customize-https" target="_blank">4 - Https</a></li>
+  <li><a href="/blog/customize-hostedservices" target="_blank">5 - Hostedservices</a></li>
+  <li><a href="/blog/customize-middleware" target="_blank">6 - Middlewares</a></li>
+  <li><a href="/blog/customize-outputformatter" target="_blank">7 - Outputformatter</a></li>
+  <li><a href="/blog/customize-modelbinders" target="_blank">8 - Modelbinders </a></li>
+  <li><a href="/blog/customize-actionfilters" target="_blank">9 - Actionfilters</a></li>
+  <li><a href="/blog/customize-taghelpers" target="_blank">10 - Taghelpers</a></li>
+  <li><a href="/blog/customize-webhostbuilder" target="_blank">11 - Webhostbuilder</a></li>
+  <li><a href="/blog/customize-hosting" target="_blank">12 - Hosting </a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/customize-taghelpers" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/customize-hosting" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

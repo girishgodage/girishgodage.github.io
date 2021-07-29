@@ -1,0 +1,107 @@
+I"ç<p>Spring Batch is a lightweight, comprehensive batch framework that is designed for use in developing robust batch applications.</p>
+
+<h2 id="you-will-learn">You will learn</h2>
+<ul>
+  <li>What is Spring Batch?</li>
+  <li>How does Spring Batch make building batch programs easier?</li>
+  <li>What are important features of Spring Batch?</li>
+  <li>What are important concepts to understand in Spring Batch?</li>
+  <li>What are the best practices in using Spring Batch?</li>
+</ul>
+
+<h3 id="what-is-spring-batch">What Is Spring Batch?</h3>
+
+<p>Spring Batch is a lightweight, comprehensive batch framework that is designed for use in developing robust batch applications.</p>
+
+<h3 id="why-is-spring-batch-useful">Why Is Spring Batch Useful?</h3>
+
+<p>The requirements of typical batch programs are very similar:</p>
+
+<ul>
+  <li><strong>Restartability</strong>: It is normally required to restart a batch program from where it had failed</li>
+  <li><strong>Different readers and writers</strong>: You need the ability to talk to different kinds of data sources and sinks. These include talking to a database, an external messaging service such as JMS, and many others.</li>
+  <li><strong>Chunk Processing</strong>:  If for instance there are a million records to be written to storage, it is a practical idea to split it into manageable chunks of 1000 records each, and write these chinks one at a time. Even if one such chink fails, the other operations are not affected.</li>
+  <li><strong>Ease Of Transaction Management</strong>: Transaction management should be simple to implement properly, even when using chunk processing.</li>
+  <li><strong>Ease of parallel processing</strong>: It should be possible to run the batch tasks using parallel processing. For this, it is important that the configuration be simple, so that overhead is minimized.</li>
+</ul>
+
+<h3 id="understanding-spring-batch">Understanding Spring Batch</h3>
+
+<p>A <strong>Job</strong> in Spring Batch is nothing but a sequence of <strong>Steps</strong>. Each Step can be configured before execution, with the following attributes:</p>
+
+<ul>
+  <li><strong>next</strong>: The next Step to execute</li>
+  <li><strong>tasklet</strong>: The task that needs to be done as part of this Step.</li>
+  <li><strong>decision</strong>: This decides in which situations this Step needs to be run</li>
+</ul>
+
+<h4 id="the-job-instance">The Job Instance</h4>
+
+<p>A Job Launcher is used in order to execute a Spring Batch Job. Note the following points about a Job thus created:</p>
+
+<ul>
+  <li>Each execution of a Job is called a Job Instance. Each Job Instance is provided with a unique execution id, which is useful to restart the job if it fails.</li>
+  <li>A Job can be configured with parameters. These can be passed to it from the Job Launcher.</li>
+</ul>
+
+<h4 id="how-spring-batch-works">How Spring Batch Works</h4>
+
+<p>A typical Job would look like the following:</p>
+
+<p><img src="/images/Capture-086-02.png" alt="image info" /></p>
+
+<p>Each Job can have multiple Steps, and sometimes it is useful to organize the Steps into Flows. Different flows can usually be run in parallel, and the rest of the steps are run in strict sequential order.</p>
+
+<p>Spring Batch 3.0 supports JSR-352 - a Java specification for batch processing.</p>
+
+<h3 id="best-practices-for-spring-batch">Best Practices For Spring Batch</h3>
+
+<p>The following are the recommended practices when using Spring Batch:</p>
+
+<ul>
+  <li>Be careful about exception handling and transaction management. These become the most critical issues with managing batch programs.</li>
+  <li>Deploy your batch programs as near to the data as possible. This improves their performance greatly, and that of the entire enterprise.</li>
+  <li>Allocate enough memory.</li>
+  <li>Stress test the application from the start of the project.</li>
+</ul>
+
+<h3 id="summary">Summary</h3>
+
+<p>In this article, we had a good look at Spring Batch, a framework for crating robust enterprise-level batch applications. The needs of most enterprise batch applications are fairly the same. Spring Batch implements several best practices in developing batch applications.</p>
+
+<hr />
+<h3 id="spring-framework">Spring Framework</h3>
+
+<p>This is the first article in a series of articles on Spring Framework:</p>
+
+<ul>
+  <li><a href="/blog/introduction-to-the-spring-framework" target="_blank">1 - Introduction To Spring Framework</a></li>
+  <li><a href="/blog/spring-framework-what-is-a-dependency" target="_blank">2 - What Is A Dependency?</a></li>
+  <li><a href="/blog/spring-framework-dependency-injection-inversion-of-control" target="_blank">3 - What Is Dependency Injection?</a></li>
+  <li><a href="/blog/spring-and-spring-boot-what-is-component-scan" target="_blank">4 - What Is Component Scan?</a></li>
+  <li><a href="/blog/spring-framework-architectures-and-modules" target="_blank">5 - Architecture of Spring Framework - Modularity and Spring Modules</a></li>
+  <li><a href="/blog/spring-projects-with-examples" target="_blank">6 - What Are Spring Projects?</a></li>
+  <li><a href="/blog/spring-basics-introduction-to-spring-batch" target="_blank">7 - Introduction To Spring Batch</a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/spring-projects-with-examples" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/spring-basics-introduction-to-spring-batch" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

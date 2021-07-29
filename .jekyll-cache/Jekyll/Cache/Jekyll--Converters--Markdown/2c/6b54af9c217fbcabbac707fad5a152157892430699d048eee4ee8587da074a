@@ -1,0 +1,128 @@
+I"�<h3 id="the-need-for-event-driven-architecture">The Need For Event Driven Architecture</h3>
+
+<p>Microservices architectures have multiple small-sized microservices talking to each other. Here is one such architecture:
+<img src="/images/Capture-060-02.png" alt="image info" /></p>
+
+<p>There are a set of common components - technical as well as infrastructure. Examples of technical components are Security and Logging components. Examples of infrastructure components include Naming Server, API Gateway and Centralized Logging.</p>
+
+<p>When implementing microservices, you would want to make them as event driven as possible. Why? Let’s take an example</p>
+
+<h3 id="take-a-use-case">Take A Use Case</h3>
+
+<p>Consider the use case of an online shopping application. Whenever there is an order, it is received by the order service. There are several actions that need to be carried out in order service:</p>
+<ul>
+  <li>Update the stock</li>
+  <li>Send out email and SMS</li>
+  <li>Notify the packaging team.</li>
+</ul>
+
+<h4 id="monolithic-approach">Monolithic Approach</h4>
+
+<p>An initial approach could be to have a single monolith application to take care of all the functionality.</p>
+
+<h4 id="microservices-approach">Microservices Approach</h4>
+
+<p>Alternatively, these are fairly independent activities, and the entire application can be structured to have microservices for them, in a straightforward manner.</p>
+
+<p><img src="/images/Capture-060-03.png" alt="image info" /></p>
+
+<p>In this approach, you create an order event for the request coming in, and place it in the Queue. The rest of the individual services listen in to the queue for order events, and do the processing subsequently.</p>
+
+<h4 id="how-to-choose">How to choose?</h4>
+
+<blockquote>
+  <p>How do we make the decision which of the two application architectures to choose?</p>
+</blockquote>
+
+<p>The nature of your application decides this.</p>
+
+<p>If your system does not have a very high load at any given time, and also does not have any pressing scalability requirements, then you might want go with a monolith approach.</p>
+
+<p>However, when your system is a large , handling millions of requests every day, and also has very stringent scalability requirements, you might be better off with the microservices approach.</p>
+
+<blockquote>
+  <p>An event driven architecture would be the one best suited to your needs.</p>
+</blockquote>
+
+<h3 id="advantages-of-event-driven-architectures">Advantages Of Event Driven Architectures</h3>
+
+<h4 id="improved-flexibility-and-maintainability">Improved Flexibility And Maintainability</h4>
+
+<p>One of the most important needs of an application is maintainability. Ease of maintainability comes with proper <strong>separation of concerns</strong>.</p>
+
+<p>In our example above, the OrderService is only responsible for collecting the order and placing it in the queue. It does not worry about how it is going to be processed, who is going to process it, and so on.</p>
+
+<p>Similarly,  the StockService is only responsible for updating the stock, and the same with the other microservices.</p>
+
+<p>If there is a need for an additional processing step on an order, you write a new microservice to listen on the queue, and easily integrate it into the system.</p>
+
+<p>Such an architecture is clearly extensible, and also easily maintainable, due to separation of concerns.</p>
+
+<h4 id="high-scalability">High Scalability</h4>
+
+<p>Let’s consider an example : One fine day, a large volume of emails need to be sent out.</p>
+
+<p>In that case, you have the freedom to create a large number of instances of the EmailService, to handle additional load.</p>
+
+<p>A similar thing can be spoken about the other microservices in the mix, depending on the need of the hour.</p>
+
+<p>This is a clear advantage of this architecture, over using a single component to handle all the functionality.</p>
+
+<h4 id="improved-availability">Improved Availability</h4>
+
+<p>Let’s say one of the services listening for order events from the queue, such as the PackageService, goes down.</p>
+
+<p>In the first architecture approach of using a monolithic approach, any one functionality going down would mean the application cannot process orders any more.</p>
+
+<p>In case of an event driven architecture, the PackageService going down would not prevent the OrderService from putting the order event into the Queue. The OrderService can notify the user of successful request receipt.</p>
+
+<p>A notification request would then be sent to the troubleshooting team about the PackageServer going down, and while it is being restored, the order event remains in the Queue. It can be processed by all the other services during this time, and when PAckageService comes back up, it can process the event as if nothing untoward has happened.</p>
+
+<h4 id="good-reliability">Good Reliability</h4>
+
+<p>Event driven architectures ensure a good standard of reliability for the system as a whole. However, the individual microservices can function with different levels of reliability. For example the StockService normally needs to ensure a high level of reliability, the EmailService and SMSService a medium level of reliability, and the PackageService - between low and medium levels of reliability.</p>
+
+<h4 id="good-performance-and-responsiveness">Good Performance and Responsiveness</h4>
+
+<p>Note that in our example event driven architecture, all that the OrderService does is receive the order and place it on the queue, before acknowledging the user. The user does not need to wait till all the steps are performed on an order. This has high high responsiveness, and is seen by the user as high performance.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>In this article, we had a look at event driven architectures. We saw that event driven architecture is ideal for implementing applications with high load, and strict scalability needs.</p>
+
+<p>We saw an example of an online shopping application that employs such an architecture. The advantages of using such an architecture include improved flexibility and maintainability, high scalability, imrpoved availability, good reliability and good performance.</p>
+
+<hr />
+<h3 id="best-practices-with-cloud-and-microservices">Best Practices with Cloud and Microservices</h3>
+
+<p>This is the first article in a series of six articles on best practices with cloud and microservices:</p>
+<ul>
+  <li><a href="/blog/12-factor-app-cloud-native-microservices-best-practices" target="_blank">1 - The 12 Factor App - Best Practices In Cloud Native Applications and Microservices</a></li>
+  <li><a href="/blog/introduction-to-event-driven-architectures-with-microservices" target="_blank">2 - Microservices Architectures - Event Driven Approach</a></li>
+  <li><a href="/blog/software-best-practices-building-a-vertical-slice" target="_blank">3 - Why do you build a Vertical Slice?</a></li>
+  <li><a href="/blog/messaging-queues-and-asynchronous-communication-in-microservices" target="_blank">4 - Microservice Architecture Best Practices - Messaging Queues</a></li>
+  <li><a href="/blog/creating-archetypes-in-microservices-architectures-best-practices" target="_blank">5 - Build an Archetype</a></li>
+  <li><a href="/blog/asynchronous-communication-with-queues-in-microservices" target="_blank">6 - Asynchronous communication with queues and microservices - A perfect combination?</a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/12-factor-app-cloud-native-microservices-best-practices" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/software-best-practices-building-a-vertical-slice" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

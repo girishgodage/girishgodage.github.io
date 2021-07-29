@@ -1,0 +1,318 @@
+I"DE<p>This guide will help you learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot.</p>
+
+<blockquote>
+  <p>We will create a couple of microservices and get them to talk to each other using Eureka Naming Server and Ribbon for Client Side Load Balancing.</p>
+</blockquote>
+
+<p>In part 1 of this series, lets get introduced to the concept of microservices and understand how to create great microservices with Spring Boot and Spring Cloud.</p>
+
+<h2 id="you-will-learn">You will learn</h2>
+<ul>
+  <li>What is a Monolith?</li>
+  <li>What is a Microservice?</li>
+  <li>What are the Challenges with Microservices?</li>
+  <li>How does Spring Boot and Spring Cloud make developing Microservices easy?</li>
+  <li>How to implement client side load balancing with Ribbon?</li>
+  <li>How to implement a Naming Server (Eureka Naming Server)?</li>
+  <li>How to connect the microservices with Naming Server and Ribbon?</li>
+</ul>
+
+<h2 id="microservices-overview---a-big-picture">Microservices Overview - A Big Picture</h2>
+
+<p>In this series of articles, we would create two microservices:</p>
+<ul>
+  <li>Forex Service - Abbreviated as FS</li>
+  <li>Currency Conversion Service - Abbreviated as CCS</li>
+</ul>
+
+<blockquote>
+  <p>Do not worry if you are not clear about a few things. The idea is to give a big picture before we get our hands dirty and create the microservices step by step</p>
+</blockquote>
+
+<h3 id="forex-service">Forex Service</h3>
+
+<p>Forex Service (FS) is the Service Provider. It provides currency exchange values for various currency. Let’s assume that it talks to a Forex Exchange and provides the current conversion value between currencies.</p>
+
+<p>An example request and response is shown below:</p>
+
+<p>GET to http://localhost:8000/currency-exchange/from/EUR/to/INR</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">    </span><span class="p">{</span><span class="w">
+    </span><span class="err">id:</span><span class="w"> </span><span class="mi">10002</span><span class="p">,</span><span class="w">
+    </span><span class="err">from:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+    </span><span class="err">to:</span><span class="w"> </span><span class="s2">"INR"</span><span class="p">,</span><span class="w">
+    </span><span class="err">conversionMultiple:</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w">
+    </span><span class="err">port:</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The request above is the currency exchange value for EUR to INR. In the response, conversionMultiple is 75.</p>
+
+<blockquote>
+  <p>We will talk about port in the response a little later.</p>
+</blockquote>
+
+<h3 id="currency-conversion-service">Currency Conversion Service</h3>
+
+<p>Currency Conversion Service (CCS) can convert a bucket of currencies into another currency. It uses the Forex Service to get current currency exchange values. CCS is the Service Consumer.</p>
+
+<p>An example request and response is shown below:</p>
+
+<p>GET to http://localhost:8100/currency-converter/from/EUR/to/INR/quantity/10000</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">    </span><span class="p">{</span><span class="w">
+    </span><span class="err">id:</span><span class="w"> </span><span class="mi">10002</span><span class="p">,</span><span class="w">
+    </span><span class="err">from:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+    </span><span class="err">to:</span><span class="w"> </span><span class="s2">"INR"</span><span class="p">,</span><span class="w">
+    </span><span class="err">conversionMultiple:</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w">
+    </span><span class="err">quantity:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+    </span><span class="err">totalCalculatedAmount:</span><span class="w"> </span><span class="mi">750000</span><span class="p">,</span><span class="w">
+    </span><span class="err">port:</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The request above is to find the value of 10000 EUR in INR. The totalCalculatedAmount is 750000 INR.</p>
+
+<p>The diagram below shows the communication between CCS and FS.</p>
+
+<p><img src="/images/Spring-Boot-Microservice-1-CCS-FS.png" alt="Image" title="Spring-Boot-Microservice-1-CCS-FS" /></p>
+
+<h3 id="eureka-naming-server-and-ribbon">Eureka Naming Server and Ribbon</h3>
+
+<p>Based on the load, we can have multiple instances of the Currency Conversion Service and the Forex Service running.
+<img src="/images/Spring-Boot-Microservice-2-CCS.png" alt="Image" title="Spring-Boot-Microservice-2-CCS.png" />
+<img src="/images/Spring-Boot-Microservice-3-FSInstances.png" alt="Image" title="Spring-Boot-Microservice-3-FSInstances.png" /></p>
+
+<p>And the number of instances for each service might vary with time. Below picture shows a specific instance where there are 5 instances of the Forex Service.</p>
+
+<p><img src="/images/Spring-Boot-Microservice-4-5FSInstances.png" alt="Image" title="Spring-Boot-Microservice-4-5FSInstances.png" /></p>
+
+<p>What needs to happen in the above situation is load should be uniformly distributed among these 5 instances.
+<img src="/images/Spring-Boot-Microservice-5-CCSToFS5instances.png" alt="Image" title="Spring-Boot-Microservice-5-CCSToFS5instances.png" /></p>
+
+<p>In this series of articles, we will use Ribbon for Load Balancing and Eureka Naming server for registering all microservices.
+<img src="/images/Spring-Boot-Microservice-6-EurekaNamingServer-Deployment.png" alt="Image" title="Spring-Boot-Microservice-6-EurekaNamingServer-Deployment.png" /></p>
+
+<blockquote>
+  <p>Do not worry if you are not clear about a few things. The idea is to give a big picture before we get our hands dirty and create the microservices step by step</p>
+</blockquote>
+
+<h2 id="what-is-a-monolith-application">What is a Monolith Application?</h2>
+
+<p>Have you ever worked in a project</p>
+<ul>
+  <li>Which is released (taken to production) once every few months</li>
+  <li>Which has a wide range of features and functionality</li>
+  <li>Which has a team of more than 50 working for it</li>
+  <li>Where debugging problems is a big challenge</li>
+  <li>Where bringing in new technology and new process is almost impossible</li>
+</ul>
+
+<p>These are typical characteristics of a Monolith applications.</p>
+
+<blockquote>
+  <p>Monolith applications are typically huge - more 100,000 line of code. In some instances even more than million lines of code.</p>
+</blockquote>
+
+<p>Monoliths are characterized by</p>
+<ul>
+  <li>Large Application Size</li>
+  <li>Long Release Cycles</li>
+  <li>Large Teams</li>
+</ul>
+
+<p>Typical Challenges include</p>
+<ul>
+  <li>Scalability Challenges</li>
+  <li>New Technology Adoption</li>
+  <li>New Processes - Agile?</li>
+  <li>Difficult to Automation Test</li>
+  <li>Difficult ot Adapt to Modern Development Practices</li>
+  <li>Adapting to Device Explosion</li>
+</ul>
+
+<h2 id="microservices">Microservices</h2>
+
+<p>Microservice Architectures evolved as a solution to the scalability and innovotation challenges with Monolith architectures.</p>
+
+<p>There are a number of definitions proposed for Microservices</p>
+
+<blockquote>
+  <p>Small autonomous services that work together - Sam Newman</p>
+</blockquote>
+
+<blockquote>
+  <p>Developing a single application as a suite of small services each running in its own process and communicating with lightweight mechanisms, often an HTTP resource API. These services are built around business capabilities and independently deployable by fully automated deployment machinery. There is a bare minimum of centralized management of these services, which may be written in different programming languages and use different data storage technologies - James Lewis and Martin Fowler</p>
+</blockquote>
+
+<p>While there is no single accepted definition for microservices, for me, there are a few important characteristics:</p>
+<ul>
+  <li>REST - Built around RESTful Resources. Communication can be HTTP or event based.</li>
+  <li>Small Well Chosen Deployable Units - Bounded Contexts</li>
+  <li>Cloud Enabled - Dynamic Scaling</li>
+</ul>
+
+<h2 id="how-does-microservice-architecture-look-like">How does Microservice Architecture look like?</h2>
+
+<p>This is how a monolith would look like. One application for everything.</p>
+
+<p><img src="/images/MonolithApplication.png" alt="" /></p>
+
+<p>This is how the same application would look like when developed using Microservices Architecture.
+<img src="/images/MicroservicesArchitectureSplit.png" alt="" /></p>
+
+<p>Microservice Architectures involve a number of small, well designed, components interacting with messages.
+<img src="/images/Microservices-Chain-Example.png" alt="" /></p>
+
+<h2 id="advantages-of-microservices">Advantages of Microservices</h2>
+
+<p>Advantages</p>
+<ul>
+  <li>New Technology &amp; Process Adaption becomes easier. You can try new technologies with the newer microservices that we create.</li>
+  <li>Faster Release Cycles</li>
+  <li>Scaling with Cloud</li>
+</ul>
+
+<h2 id="challenges-with-microservice-architectures">Challenges with Microservice Architectures</h2>
+
+<p>While developing a number of smaller components might look easy, there are a number of inherent complexities that are associated with microservices architectures.</p>
+
+<p>Lets look at some of the challenges:</p>
+<ul>
+  <li>Quick Setup needed : You cannot spend a month setting up each microservice. You should be able to create microservices quickly.</li>
+  <li>Automation : Because there are a number of smaller components instead of a monolith, you need to automate everything - Builds, Deployment, Monitoring etc.</li>
+  <li>Visibility : You now have a number of smaller components to deploy and maintain. Maybe 100 or maybe 1000 components. You should be able to monitor and identify problems automatically. You need great visibility around all the components.</li>
+  <li>Bounded Context : Deciding the boundaries of a microservice is not an easy task. Bounded Contexts from Domain Driven Design is a good starting point. Your understanding of the domain evolves over a period of time. You need to ensure that the microservice boundaries evolve.</li>
+  <li>Configuration Management : You need to maintain configurations for hundreds of components across environments. You would need a Configuration Management solution</li>
+  <li>Dynamic Scale Up and Scale Down : The advantages of microservices will only be realized if your applications can scaled up and down easily in the cloud.</li>
+  <li>Pack of Cards : If a microservice at the bottom of the call chain fails, it can have knock on effects on all other microservices. Microservices should be fault tolerant by Design.</li>
+  <li>Debugging : When there is a problem that needs investigation, you might need to look into multiple services across different components. Centralized Logging and Dashboards are essential to make it easy to debug problems.</li>
+  <li>Consistency : You cannot have a wide range of tools solving the same problem. While it is important to foster innovation, it is also important to have some decentralized governance around the languages, platforms, technology and tools used for implementing/deploying/monitoring microservices.</li>
+</ul>
+
+<h2 id="solutions-to-challenges-with-microservice-architectures">Solutions to Challenges with Microservice Architectures</h2>
+
+<h3 id="spring-boot">Spring Boot</h3>
+
+<blockquote>
+  <p>Enable building production ready applications quickly</p>
+</blockquote>
+
+<p>Provide non-functional features</p>
+<ul>
+  <li>embedded servers  (easy deployment with containers)</li>
+  <li>metrics (monitoring)</li>
+  <li>health checks (monitoring)</li>
+  <li>externalized configuration</li>
+</ul>
+
+<h3 id="spring-cloud">Spring Cloud</h3>
+
+<blockquote>
+  <p>Spring Cloud provides solutions to cloud enable your microservices. It leverages and builds on top of some of the Cloud solutions opensourced by Netflix (Netflix OSS).</p>
+</blockquote>
+
+<h4 id="important-spring-cloud-modules">Important Spring Cloud Modules</h4>
+
+<p>Dynamic Scale Up and Down. Using a combination of</p>
+<ul>
+  <li>Naming Server (Eureka)</li>
+  <li>Ribbon (Client Side Load Balancing)</li>
+  <li>Feign (Easier REST Clients)</li>
+</ul>
+
+<p>Visibility and Monitoring with</p>
+<ul>
+  <li>Zipkin Distributed Tracing</li>
+  <li>Netflix API Gateway</li>
+</ul>
+
+<p>Configuration Management with</p>
+<ul>
+  <li>Spring Cloud Config Server</li>
+</ul>
+
+<p>Fault Tolerance with</p>
+<ul>
+  <li>Hystrix</li>
+</ul>
+
+<h2 id="microservice-series-of-articles">Microservice Series of Articles</h2>
+
+<p>In this series of articles, we would create two microservices:</p>
+<ul>
+  <li>Forex Service - Abbreviated as FS</li>
+  <li>Currency Conversion Service - Abbreviated as CCS</li>
+</ul>
+
+<p>The diagram below shows the communication between CCS and FS. We would establish communication between these two components.</p>
+
+<p><img src="/images/Spring-Boot-Microservice-1-CCS-FS.png" alt="Image" title="Spring-Boot-Microservice-1-CCS-FS" /></p>
+
+<p>We would want to be able to dynamically scale up and scale down the number of instances of each of these services.</p>
+
+<p><img src="/images/Spring-Boot-Microservice-2-CCS.png" alt="Image" title="Spring-Boot-Microservice-2-CCS.png" />
+<img src="/images/Spring-Boot-Microservice-3-FSInstances.png" alt="Image" title="Spring-Boot-Microservice-3-FSInstances.png" /></p>
+
+<p>And the number of instances for each service might vary with time. Below picture shows a specific instance where there are 5 instances of the Forex Service.</p>
+
+<p><img src="/images/Spring-Boot-Microservice-4-5FSInstances.png" alt="Image" title="Spring-Boot-Microservice-4-5FSInstances.png" /></p>
+
+<p>Implementing a solution for dynamic scale up and down needs to answer two questions</p>
+<ul>
+  <li>How does the Currency Conversion Service (CCS) know how many instances of Forex Service (FS) are active?</li>
+  <li>How does the Currency Conversion Service (CCS) distribute the load between the active instances.</li>
+</ul>
+
+<p>Because we want this to be dynamic, we cannot hardcode the urls of FS in CCS. Thats why we bring in a Naming Server.</p>
+
+<p><img src="/images/Spring-Boot-Microservice-6-EurekaNamingServer-Deployment.png" alt="Image" title="Spring-Boot-Microservice-6-EurekaNamingServer-Deployment.png" /></p>
+
+<p>All instances of the components (CCS and FS) register with the Eureka Naming Server. When FS needs to call the CCS, it will ask Eureka Naming Server for the active instances. We will use Ribbon to do Client Side Load Balancing between the different instances of FS.</p>
+
+<p>A high level sequence diagram of what would happen when there is a request from CCS to FS is shown below:
+<img src="/images/Spring-Boot-Microservice-7-Eureka-Sequence-Diagram.png" alt="Image" title="Spring-Boot-Microservice-7-Eureka-Sequence-Diagram.png" /></p>
+
+<p>Here are the next series of Articles</p>
+<ul>
+  <li>Creating a Forex Microservice - We will create a simple rest service based on Spring Boot Starter Web and Spring Boot Started JPA. We will use Hibernate as JPA implmentation and connect to H2 database.</li>
+  <li>Create the CCS - Currency Conversion Service - We will create a simple rest service using feign to invoke the Forex Microservice</li>
+  <li>Use Ribbon for Load Balancing</li>
+  <li>Implement Eureka Naming Service and connect FS and CCS through Eureka.</li>
+</ul>
+
+<hr />
+<h3 id="springboot-microservice">SpringBoot Microservice</h3>
+
+<p>This is a 5 Part Article Series</p>
+
+<p>Microservices with Spring Boot</p>
+<ul>
+  <li>Part 1 - <a href="/blog/creating-microservices-with-spring-boot-part-1-getting-started" target="_blank">Getting Started with Microservices Architecture</a></li>
+  <li>Part 2 - <a href="/blog/creating-microservices-with-spring-boot-part-2-forex-microservice" target="_blank">Creating Forex Microservice</a></li>
+  <li>Part 3 - <a href="/blog/creating-microservices-with-spring-boot-part-3-currency-conversion-microservice" target="_blank">Creating Currency Conversion Microservice</a></li>
+  <li>Part 4 - <a href="/blog/microservices-with-spring-boot-part-4-ribbon-for-load-balancing" target="_blank">Using Ribbon for Load Balancing</a></li>
+  <li>Part 5 - <a href="/blog/microservices-with-spring-boot-part-5-eureka-naming-server" target="_blank">Using Eureka Naming Server</a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/creating-microservices-with-spring-boot-part-1-getting-started" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/creating-microservices-with-spring-boot-part-2-forex-microservice" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

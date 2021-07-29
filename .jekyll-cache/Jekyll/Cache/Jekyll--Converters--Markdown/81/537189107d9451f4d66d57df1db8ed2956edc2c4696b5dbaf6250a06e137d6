@@ -1,0 +1,115 @@
+I"µ<h1 id="challenges">Challenges</h1>
+
+<p>Now that weâ€™ve built the basic site, there might be time for some challenges! Below are a list of feature ideas that take advantage of other ASP.NET Core features:</p>
+
+<h2 id="identity">Identity</h2>
+<ul>
+  <li>Add support external authentication like Google or Twitter authentication - https://docs.microsoft.com/en-us/aspnet/core/security/authentication/social/?view=aspnetcore-2.2</li>
+</ul>
+
+<h2 id="logging">Logging</h2>
+<ul>
+  <li>Add <code class="language-plaintext highlighter-rouge">Serilog</code>, a 3rd party logger to the front end and disable built in console logging.</li>
+</ul>
+
+<h2 id="images">Images</h2>
+<ul>
+  <li>Allow attendees to upload images.</li>
+  <li>Resize the image using <a href="https://github.com/JimBobSquarePants/ImageSharp">ImageSharp</a></li>
+</ul>
+
+<h2 id="caching">Caching</h2>
+<ul>
+  <li>Add appropriate caching to FrontEnd site:
+    <ul>
+      <li><a href="https://docs.microsoft.com/en-us/aspnet/core/performance/caching/memory">Memory cache</a></li>
+      <li><a href="https://docs.microsoft.com/en-us/aspnet/core/performance/caching/distributed">Distributed cache</a></li>
+      <li><a href="https://docs.microsoft.com/en-us/aspnet/core/performance/caching/response">Response caching</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="tag-helpers">Tag Helpers</h2>
+<ul>
+  <li>Render Markdown for the session Abstract (instead of HTML) using a custom markdown tag helper.</li>
+</ul>
+
+<h2 id="data">Data</h2>
+<ul>
+  <li>Change database provider to <a href="https://www.postgresql.org/">Postgres</a> - https://www.nuget.org/packages/Npgsql/</li>
+  <li>Change database provider to <a href="https://www.mysql.com/">MySql</a> - https://www.nuget.org/packages/MySql.Data/</li>
+</ul>
+
+<h2 id="testing">Testing</h2>
+<ul>
+  <li>Write unit tests for the BackEnd Controllers</li>
+  <li>Write unit tests for the FrontEnd Razor pages</li>
+  <li>Write functional tests</li>
+</ul>
+
+<h2 id="frontend-features">FrontEnd Features</h2>
+<ul>
+  <li>Make the names slugs instead of using IDs in the urls to navigate entities</li>
+  <li>Configure <a href="https://github.com/App-vNext/Polly/wiki/Polly-and-HttpClientFactory">retry policy using Polly library</a></li>
+  <li>Support multiple conferences
+    <ul>
+      <li>Add conference date</li>
+      <li>Make the home page show upcoming conferences (within 5 days)</li>
+      <li>Move agenda to separate page</li>
+    </ul>
+  </li>
+  <li>Add admin pages to manage:
+    <ul>
+      <li>Tracks</li>
+      <li>Attendees</li>
+      <li>Conferences</li>
+      <li>Sessions</li>
+      <li>Speakers (allow speaker image upload)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="backend-features">BackEnd Features</h2>
+<ul>
+  <li>Add date filtering to the BackEnd APIs</li>
+  <li>Add support for returning XML from the APIs</li>
+  <li>Add links to related entities in the responses e.g. Attendee has a list of sessions, return URLs for each of the session resources related to Attendee.</li>
+</ul>
+
+<hr />
+<h2 id="sessions">Sessions</h2>
+
+<p>This is series of articles on Building Conf planner app with Asp.net Core:</p>
+
+<ul>
+  <li><a href="/blog/CreateBackEndAPIproject" target="_blank">1 - Build the back-end API with basic EF model</a></li>
+  <li><a href="/blog/BuildoutBackEndandRefactor" target="_blank">2 - Finish the back-end API and EF model, refactor into view modelsl</a></li>
+  <li><a href="/blog/Addfront-endrenderagendasetupfront-endmodels" target="_blank">3 - Add front-end, render agenda, set up front-end models</a></li>
+  <li><a href="/blog/Addauthfeatures" target="_blank">4 - Add authentication, add admin policy, allow editing sessions, users can sign-in with Identity, custom auth tag helper</a></li>
+  <li><a href="/blog/Addpersonalagenda" target="_blank">5 - Add user association and personal agenda</a></li>
+  <li><a href="/blog/ProductionReadinessandDeployment" target="_blank">6 - Deployment, Azure and other production environments, configuring environments, diagnostics</a></li>
+  <li><a href="/blog/Challenges" target="_blank">7 - Challenges</a></li>
+  <li><a href="/blog/SPAFrontEnd" target="_blank">8 - SPA front-end </a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/ProductionReadinessandDeployment" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/SPAFrontEnd" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

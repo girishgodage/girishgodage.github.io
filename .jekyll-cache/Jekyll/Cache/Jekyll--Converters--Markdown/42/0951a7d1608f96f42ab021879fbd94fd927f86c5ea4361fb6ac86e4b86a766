@@ -1,0 +1,207 @@
+I"�2<p>High Cohesion is one of the important aims when your architect and design your software. What is it all about?</p>
+
+<h1 id="you-will-learn">You will learn</h1>
+<ul>
+  <li>What is Cohesion?</li>
+  <li>Why is Cohesion important?</li>
+  <li>What are the different parts of applications that need high Cohesion?</li>
+  <li>How do we acheive high cohesion?</li>
+</ul>
+
+<h3 id="what-is-cohesion">What Is Cohesion?</h3>
+
+<p>Cohesion is all about grouping related things in your software, together, at one place.</p>
+
+<p>Drawing from a real-life example, there would be a thousand things in your home. But if asked to fetch your tennis racket, you can get it in a matter of minutes, if not seconds. If you are asked to get a cooking utensil, you immediate go the the kitchen. How is it that you are able to retreive things quickly? Because you have organized them in a highly cohesive way. You have put all the related things together.</p>
+
+<p>That is cohesion at play in real life.</p>
+
+<h3 id="levels-of-cohesion">Levels Of Cohesion</h3>
+
+<p>Cohesion in software is applicable at multiple levels:</p>
+
+<ul>
+  <li>Methods: We group related methods together to create a class</li>
+  <li>Classes: We group related classes and create a package</li>
+  <li>Packages: We group related packages to probably create a component</li>
+  <li>Components</li>
+  <li>Applications</li>
+  <li>Microservices</li>
+</ul>
+
+<h3 id="cohesion-a-first-example">Cohesion: A First Example</h3>
+
+<p>Have a look at the following code:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	<span class="kd">class</span> <span class="nc">DownloadAndStore</span> <span class="o">{</span>
+		<span class="kt">void</span> <span class="nf">downloadFromInternet</span><span class="o">()</span> <span class="o">{</span>
+			<span class="c1">//...</span>
+		<span class="o">}</span>
+		<span class="kt">void</span> <span class="nf">parseData</span><span class="o">()</span> <span class="o">{</span>
+			<span class="c1">//...</span>
+		<span class="o">}</span>
+		<span class="kt">void</span> <span class="nf">storeIntoDatabase</span><span class="o">()</span> <span class="o">{</span>
+			<span class="c1">//...</span>
+		<span class="o">}</span>
+		<span class="kt">void</span> <span class="nf">doEverything</span><span class="o">()</span> <span class="o">{</span>
+			<span class="n">downloadFromInternet</span><span class="o">();</span>
+			<span class="n">parseData</span><span class="o">();</span>
+			<span class="n">storeIntoDatabase</span><span class="o">();</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">DownloadAndStore</code> has the responsibility of doing three tasks, and has methods to do each one of them:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">downloadFromInternet()</code> connects to a server and downloads a file</li>
+  <li><code class="language-plaintext highlighter-rouge">parseData()</code> needs an understanding of the data format to get the data from this file</li>
+  <li><code class="language-plaintext highlighter-rouge">saveToDatabase()</code> needs to talk to a database server to save the data</li>
+</ul>
+
+<p>To perform them at one go, it defines another method, aptly named <code class="language-plaintext highlighter-rouge">doEverything()</code> to call the other three.</p>
+
+<p><code class="language-plaintext highlighter-rouge">DownloadAndStore</code> is a prime example of a class that has <strong>very low cohesion</strong>. Each of the listed three methods is doing something totally unrelated to the others.</p>
+
+<h4 id="an-improved-solution">An Improved Solution</h4>
+
+<p>A better solution would be to have an implementation like the following:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	<span class="kd">class</span> <span class="nc">InternetDownloader</span> <span class="o">{</span>
+		<span class="kd">public</span> <span class="kt">void</span> <span class="nf">downloadFromInternet</span><span class="o">()</span> <span class="o">{</span>
+			<span class="c1">//...</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+	<span class="kd">class</span> <span class="nc">DataParser</span> <span class="o">{</span>
+		<span class="kd">public</span> <span class="kt">void</span> <span class="nf">parseData</span><span class="o">()</span> <span class="o">{</span>
+			<span class="c1">//...</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+	<span class="kd">class</span> <span class="nc">DatabaseStorer</span> <span class="o">{</span>
+		<span class="kd">public</span> <span class="kt">void</span> <span class="nf">storeIntoDatabase</span><span class="o">()</span> <span class="o">{</span>
+			<span class="c1">//...</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+	<span class="kd">class</span> <span class="nc">DownloadAndStore</span> <span class="o">{</span>
+		<span class="kd">public</span> <span class="kt">void</span> <span class="nf">doEverything</span><span class="o">()</span> <span class="o">{</span>
+			<span class="k">new</span> <span class="nf">InternetDownloader</span><span class="o">().</span><span class="na">downloadFromInternet</span><span class="o">();</span>
+			<span class="k">new</span> <span class="nf">DataParser</span><span class="o">().</span><span class="na">parseData</span><span class="o">();</span>
+			<span class="k">new</span> <span class="nf">DatabaseStorer</span><span class="o">().</span><span class="na">storeToDatabase</span><span class="o">();</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>In this code organization:</p>
+
+<ul>
+  <li>Classes named <code class="language-plaintext highlighter-rouge">InternetDownloader</code>, <code class="language-plaintext highlighter-rouge">DataParser</code> and <code class="language-plaintext highlighter-rouge">DatabaseStorer</code> are defined, each with a single important thing to do</li>
+  <li>Methods of these classes are invoked to accomplish what is needed, within an external class, <code class="language-plaintext highlighter-rouge">DownloadAndStore</code>.</li>
+</ul>
+
+<p>This is a better solution, because it increases the possibilities of code reuse. Let’s explore this a little further.</p>
+
+<h3 id="layered-architecture-and-cohesion">Layered Architecture And Cohesion</h3>
+
+<p>Consider a simple web application, that is organized into three layers:</p>
+
+<p><img src="/img/sw_design/12/Capture-08-01.png" alt="image info" /></p>
+
+<p>Organizing an application into layers helps to allocate responsibility clearly and separately. Here,</p>
+<ul>
+  <li>All the UI logic would be confined to the Web layer</li>
+  <li>All the business logic would be the responsibility of the Business layer</li>
+  <li>All the data storage and retrieval would be taken up by the Data layer</li>
+</ul>
+
+<p>This is an example of cohesion at the application layer level. Each layer is highly cohesive, because it does one specific thing, whether large or small.</p>
+
+<h3 id="component-level-cohesion">Component-Level Cohesion</h3>
+
+<p>Another instance where cohesion comes into play when you design components to be used in an enterprise application:</p>
+
+<p><img src="/img/sw_design/12/Capture-05-02.png" alt="image info" /></p>
+
+<p>Authorization and Authentication approaches might be similar across the microservices in your enterprise. Hence, you could define a common security component. The security component only bothers about whether a given user has the right access and the right credentials - nothing else. It can be easily reused across multiple microservices. It is highly cohesive. It does security and it does it very well.</p>
+
+<p>Note that if you try to enhance the features of the Security component by adding a logging capability as well, then its reusability goes down greatly. Both security and logging are better off implemented separately, as  independent cohesive reusable components.</p>
+
+<h3 id="example-the-spring-framework">Example: The Spring Framework</h3>
+
+<p>One of the best examples of cohesion popularly in use is the Spring Framework:</p>
+
+<p><img src="/img/sw_design/12/Capture-06-03.png" alt="image info" /></p>
+
+<p>The framework is not implemented as one big component. It is organized as a set of modules, each one of which can be composed of smaller components. Here is how it is organized, in brief:</p>
+
+<ul>
+  <li><strong>Core Container</strong>: The core feature of Spring is <strong><em>Dependency Injection</em></strong>. This module is composed of core components such as Beans, Core, Context, and SpEL.</li>
+  <li><strong>AOP, Aspects, Instrumentation and Messaging</strong> are separate, smaller components</li>
+  <li><strong>The Spring MVC Framework</strong> is a separate module with components that handle web application needs</li>
+  <li>The <strong>Data Access and Integration</strong> module has components such as JDBC, ORM, Transactions and others</li>
+  <li>With the evolution of microservices, <strong>Spring Cloud</strong> is an additional module that has been designed to contain a set of cohesive components</li>
+</ul>
+
+<h4 id="leveraging-cohesion-in-spring">Leveraging Cohesion In Spring</h4>
+
+<p>Each component has its own boundary; it is concerned with taking up a single responsibility, and doing it well. The more cohesive a component is, the more reusable it becomes.</p>
+
+<p>The modular structure of the Spring framework enables a programmer to pull in only those components that she actually needs. If she needs just the core functionality, the Core components sufficient. If database integration is necessary, then she can make use of the JDBC components, for instance.</p>
+
+<h3 id="how-to-make-software-more-cohesive">How To Make Software More Cohesive?</h3>
+
+<p>The guiding light that you need to follow to improve the cohesion in your software, is the <strong>Single Responsibility Principle (SRP)</strong>.</p>
+
+<p>When you look at your method/class/package/component, take to a minute to also think about its <strong>responsibility</strong>. If you can describe it in a single phrase or sentence, then you’ve done a good job defining it.</p>
+
+<p>However, if you end up joining together many phrases and sentences with several “and”s, then you violate the SRP. Your software could end up have low cohesion.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>In this video, we talked about cohesion in significant detail. Cohesion is all about grouping related things together. Cohesion is applicable at multiple levels in a single application, such as method/class/package/component/application. You group related methods into a class, related classes into a package, and related packages perhaps into a component.</p>
+
+<p>We also examined the fact that cohesive classes and components are highly reusable. In addition, organizing an application into multiple layers also improves their cohesion. Then, we observed how the Spring Framework is organized into cohesive modules, each with a single responsibility. Finally, we looked at how Single Responsibility Principle can be used to build cohesive software.</p>
+
+<hr />
+
+<h3 id="software-design">Software Design</h3>
+
+<p>This is the article in a series of articles on Software Design:</p>
+
+<ul>
+  <li><a href="/blog/software-design-keep-your-design-simple" target="_blank">1 - How do you keep your design simple?</a></li>
+  <li><a href="/blog/design-patterns-for-beginners-with-java-examples" target="_blank">2 - Design Patterns For Beginners - with Java Examples</a></li>
+  <li><a href="/blog/software-design-what-is-abstraction" target="_blank">3 - What is Abstraction?</a></li>
+  <li><a href="/blog/software-design-encapsulation-with-examples" target="_blank">4 - Encapsulation - with examples</a></li>
+  <li><a href="/blog/software-design-coupling-with-examples" target="_blank">5 - Coupling - with examples</a></li>
+  <li><a href="/blog/software-design-cohesion-with-examples" target="_blank">6 - Cohesion - with examples</a></li>
+  <li><a href="/blog/software-design-introduction-to-evolutionary-design" target="_blank">7 - Introduction to Evolutionary Design</a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/software-design-coupling-with-examples" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/software-design-introduction-to-evolutionary-design" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

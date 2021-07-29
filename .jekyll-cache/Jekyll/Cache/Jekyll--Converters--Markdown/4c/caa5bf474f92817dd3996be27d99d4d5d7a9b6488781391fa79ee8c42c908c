@@ -1,0 +1,246 @@
+I"�c<h2 id="configuration">Configuration</h2>
+
+<p>This second part of the blog series about customizing ASP.NET Core is about the application configuration, how to use it and how to customize the configuration to use different ways to configure your app. Maybe you already have an existing XML configuration or want to share a YAML configuration file over different kind of applications. Sometimes it also makes sense to read configuration values out of a database. This second part of the blog series about customizing ASP.NET Core is about the application configuration, how to use it and how to customize the configuration to use different ways to configure your app.</p>
+
+<h2 id="configure-the-configuration">Configure the configuration</h2>
+
+<p>As well as the logging, since ASP.NET Core 2.0 the configuration is also hidden in the default configuration of the <code class="language-plaintext highlighter-rouge">WebHostBuilder</code> and not part of the <code class="language-plaintext highlighter-rouge">Startup.cs</code> anymore. This is done for the same reasons to keep the Startup clean and simple:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nf">CreateWebHostBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">).</span><span class="nf">Build</span><span class="p">().</span><span class="nf">Run</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="n">IWebHostBuilder</span> <span class="nf">CreateWebHostBuilder</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">=&gt;</span>
+        <span class="n">WebHost</span><span class="p">.</span><span class="nf">CreateDefaultBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>                
+            <span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In ASP.NET Core 3.0 it looks like this:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nf">CreateWebHostBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">).</span><span class="nf">Build</span><span class="p">().</span><span class="nf">Run</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="n">IHostBuilder</span> <span class="nf">CreateHostBuilder</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">=&gt;</span>
+        <span class="n">Host</span><span class="p">.</span><span class="nf">CreateDefaultBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+            <span class="p">.</span><span class="nf">ConfigureWebHostDefaults</span><span class="p">(</span><span class="n">webBuilder</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>                
+                <span class="n">webBuilder</span><span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;();</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Fortunately you are also able to override the default settings to customize the configuration in a way you need it.</p>
+
+<p>When you create a new ASP.NET Core project you already have an <code class="language-plaintext highlighter-rouge">appsettings.json</code> and an <code class="language-plaintext highlighter-rouge">appsettings.Development.json</code> configured. You can and you should use this configuration files to configure your app. You should because this is the pre-configured way and most ASP.NET Core developers will look for an <code class="language-plaintext highlighter-rouge">appsettings.json</code> to configure the application. This is absolutely fine and works pretty well.</p>
+
+<p>But maybe you already have an existing XML configuration or want to share a YAML configuration file over different kind of applications. This could also make sense. Sometimes it also makes sense to read configuration values out of a database.</p>
+
+<p>The next snippet shows the encapsulated default configuration to read the <code class="language-plaintext highlighter-rouge">appsettigns.json</code> files:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Host</span><span class="p">.</span><span class="nf">CreateDefaultBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">ConfigureWebHostDefaults</span><span class="p">(</span><span class="n">webBuilder</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">webBuilder</span>
+            <span class="p">.</span><span class="nf">ConfigureAppConfiguration</span><span class="p">((</span><span class="n">builderContext</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>
+                <span class="kt">var</span> <span class="n">env</span> <span class="p">=</span> <span class="n">builderContext</span><span class="p">.</span><span class="n">HostingEnvironment</span><span class="p">;</span>
+
+                <span class="n">config</span><span class="p">.</span><span class="nf">SetBasePath</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">ContentRootPath</span><span class="p">);</span>
+                <span class="n">config</span><span class="p">.</span><span class="nf">AddJsonFile</span><span class="p">(</span>
+                    	<span class="s">"appsettings.json"</span><span class="p">,</span> 
+                        <span class="n">optional</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">reloadOnChange</span><span class="p">:</span> <span class="k">true</span><span class="p">);</span>
+                <span class="n">config</span><span class="p">.</span><span class="nf">AddJsonFile</span><span class="p">(</span>
+                    	<span class="s">$"appsettings.</span><span class="p">{</span><span class="n">env</span><span class="p">.</span><span class="n">EnvironmentName</span><span class="p">}</span><span class="s">.json"</span><span class="p">,</span> 
+                    	<span class="n">optional</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> <span class="n">reloadOnChange</span><span class="p">:</span> <span class="k">true</span><span class="p">);</span>
+
+                <span class="n">config</span><span class="p">.</span><span class="nf">AddEnvironmentVariables</span><span class="p">();</span>
+            <span class="p">})</span>
+            <span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;();</span>
+    <span class="p">});</span>
+</code></pre></div></div>
+
+<p>This configuration also set the base path of the application and adds the configuration via environment variables. The method <code class="language-plaintext highlighter-rouge">ConfigureAppConfiguration</code> accepts a lambda method that gets a <code class="language-plaintext highlighter-rouge">ConfigurationBuilderContext</code> and a <code class="language-plaintext highlighter-rouge">ConfigurationBuilder</code> passed in.</p>
+
+<p>Whenever you customize the application configuration you should add the configuration via environment variables as the last step. The order of the configuration matters and the latter added configuration providers will override the previously added configurations. Be sure the environment variables always override the configurations via file. This way you ensure the configure on azure web apps via the configuration UI on Azure, which will be passed to the application as environment variables.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">IConfigurationBuilder</code> has a lot of extension methods to add more configurations like XML or INI configuration files, in-memory configurations and so on. You can find a lot more configuration providers built by the community to read in YAML files, database values and a lot more. In this demo I’m going to show you how to read INI files in.</p>
+
+<h2 id="typed-configurations">Typed configurations</h2>
+
+<p>Before trying to read INI files, it makes sense to show how to use typed configuration instead of reading the configuration via the <code class="language-plaintext highlighter-rouge">IConfiguration</code> key by key.</p>
+
+<p>To read a type configuration you need to define the type to configure. I usually create a class called <code class="language-plaintext highlighter-rouge">AppSettings</code> like this:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">AppSettings</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Foo</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Bar</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This is a simple POCO class that will only contain the application setting values. This classes than can be filled with specific configuration sections inside the method <code class="language-plaintext highlighter-rouge">ConfigureServices</code> in the <code class="language-plaintext highlighter-rouge">Startup.cs</code></p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">services</span><span class="p">.</span><span class="n">Configure</span><span class="p">&lt;</span><span class="n">AppSettings</span><span class="p">&gt;(</span><span class="n">Configuration</span><span class="p">.</span><span class="nf">GetSection</span><span class="p">(</span><span class="s">"AppSettings"</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>This way the typed configuration also gets registered as a service in the dependency injection container and can be used everywhere in the application. You are able to create different configuration types per configuration section. In the most cases one section should be fine, but maybe it makes sense to divide the settings into different sections.</p>
+
+<p>This configuration than can be used via dependency injection in every part of your application. The next snippets shows how to use the configuration in a MVC controller:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">HomeController</span> <span class="p">:</span> <span class="n">Controller</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="n">AppSettings</span> <span class="n">_options</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nf">HomeController</span><span class="p">(</span><span class="n">IOptions</span><span class="p">&lt;</span><span class="n">AppSettings</span><span class="p">&gt;</span> <span class="n">options</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_options</span> <span class="p">=</span> <span class="n">options</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">IOptions&lt;AppSettings&gt;</code> is a wrapper around our <code class="language-plaintext highlighter-rouge">AppSettings</code> type and the property <code class="language-plaintext highlighter-rouge">Value</code> contains the actual instance of the <code class="language-plaintext highlighter-rouge">AppSettings</code> including the values from the configuration file.</p>
+
+<p>To try that, the <code class="language-plaintext highlighter-rouge">appsettings.json</code> need to have the <code class="language-plaintext highlighter-rouge">AppSettings</code> section configured, otherwise the values are null or not set.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"Logging"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"LogLevel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"Default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Warning"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"AllowedHosts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"AppSettings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"Foo"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Bar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bar"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="configuration-using-ini-files">Configuration using INI files</h2>
+
+<p>To also use INI files to configure the application, you need to add the INI configuration inside the method <code class="language-plaintext highlighter-rouge">ConfigureAppConfiguration()</code> in the <code class="language-plaintext highlighter-rouge">Program.cs</code>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">config</span><span class="p">.</span><span class="nf">AddIniFile</span><span class="p">(</span>
+    <span class="s">"appsettings.ini"</span><span class="p">,</span> 
+    <span class="n">optional</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> 
+    <span class="n">reloadOnChange</span><span class="p">:</span> <span class="k">true</span><span class="p">);</span>
+<span class="n">config</span><span class="p">.</span><span class="nf">AddJsonFile</span><span class="p">(</span>
+    <span class="s">$"appsettings.</span><span class="p">{</span><span class="n">env</span><span class="p">.</span><span class="n">EnvironmentName</span><span class="p">}</span><span class="s">.ini"</span><span class="p">,</span> 
+    <span class="n">optional</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> 
+    <span class="n">reloadOnChange</span><span class="p">:</span> <span class="k">true</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>This code loads the INI files the same way as the JSON configuration files. The first line is a required configuration and the second one an optional configuration depending on the current runtime environment.</p>
+
+<p>The INI file could look like this:</p>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[AppSettings]</span>
+<span class="py">Bar</span><span class="p">=</span><span class="s">"FooBar"</span>
+</code></pre></div></div>
+
+<p>This file also contains a section called <code class="language-plaintext highlighter-rouge">AppSettings</code> and a property called <code class="language-plaintext highlighter-rouge">Bar</code>.</p>
+
+<p>Initially I wrote that the order of the configuration matters. If you added the two lines to configure via INI files after the configuration via JSON files, the INI files will override the settings from the JSON files. The property <code class="language-plaintext highlighter-rouge">Bar</code> gets overridden with “FooBar” and the property <code class="language-plaintext highlighter-rouge">Foo</code> stays the same because it will not be overridden. Also the values out of the INI file will be available via the previously created <code class="language-plaintext highlighter-rouge">AppSettings</code> class.</p>
+
+<p>Every other configuration provider will work the same way. Let’s see how a configuration provider would look like.</p>
+
+<h2 id="configuration-providers">Configuration Providers</h2>
+
+<p>A configuration provider is an implementation of an IConfigurationProvider that get’s created by an configuration source, which is an implementation of an IConfigurationSource. The configuration provider then reads the date from somewhere and provides it via a Dictionary.</p>
+
+<p>To add a custom or third party configuration provider to ASP.NET Core you need to call the method “Add on the configuration builder” and put the configuration source in:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Host</span><span class="p">.</span><span class="nf">CreateDefaultBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">ConfigureWebHostDefaults</span><span class="p">(</span><span class="n">webBuilder</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">webBuilder</span>
+            <span class="p">.</span><span class="nf">ConfigureAppConfiguration</span><span class="p">((</span><span class="n">builderContext</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>
+                <span class="kt">var</span> <span class="n">env</span> <span class="p">=</span> <span class="n">builderContext</span><span class="p">.</span><span class="n">HostingEnvironment</span><span class="p">;</span>
+
+                <span class="n">config</span><span class="p">.</span><span class="nf">SetBasePath</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">ContentRootPath</span><span class="p">);</span>
+                <span class="n">config</span><span class="p">.</span><span class="nf">AddJsonFile</span><span class="p">(</span>
+                    	<span class="s">"appsettings.json"</span><span class="p">,</span> 
+                        <span class="n">optional</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">reloadOnChange</span><span class="p">:</span> <span class="k">true</span><span class="p">);</span>
+                <span class="n">config</span><span class="p">.</span><span class="nf">AddJsonFile</span><span class="p">(</span>
+                    	<span class="s">$"appsettings.</span><span class="p">{</span><span class="n">env</span><span class="p">.</span><span class="n">EnvironmentName</span><span class="p">}</span><span class="s">.json"</span><span class="p">,</span> 
+                    	<span class="n">optional</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> <span class="n">reloadOnChange</span><span class="p">:</span> <span class="k">true</span><span class="p">);</span>
+
+
+                <span class="c1">// add new configuration source</span>
+                <span class="n">config</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">MyCustomConfigurationSource</span>
+                <span class="p">{</span>
+                    <span class="n">SourceConfig</span> <span class="p">=</span> <span class="c1">//configure whatever source </span>
+                    <span class="n">Optional</span> <span class="p">=</span> <span class="k">false</span><span class="p">,</span>
+                    <span class="n">ReloadOnChange</span> <span class="p">=</span> <span class="k">true</span>
+                <span class="p">});</span>
+
+                <span class="n">config</span><span class="p">.</span><span class="nf">AddEnvironmentVariables</span><span class="p">();</span>
+            <span class="p">})</span>
+            <span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;();</span>
+    <span class="p">});</span>
+
+</code></pre></div></div>
+
+<p>Usually you would create an extension method to add the configuration source more easily:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">config</span><span class="p">.</span><span class="nf">AddMyCustomSource</span><span class="p">(</span><span class="s">"source"</span><span class="p">,</span> <span class="n">optional</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">reloadOnChange</span><span class="p">:</span> <span class="k">true</span><span class="p">);</span>
+
+</code></pre></div></div>
+
+<!-- [A really detailed concrete example about how to create a custom configuration provider](https://andrewlock.net/creating-a-custom-iconfigurationprovider-in-asp-net-core-to-parse-yaml/) is written by the fellow MVP [Andrew Lock](https://andrewlock.net). -->
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>In most cases it’s not needed to add a different configuration provider or to create your own configuration provider, but it’s good to know how to change it in case you need it. Also using typed configuration is a nice way to read the settings. In classic ASP.NET we used a manually created façade to read the application settings in a typed way. Now this is automatically done by just providing a class. This class get’s automatically filled and provided via <strong>dependency injection</strong>.</p>
+
+<p>To learn more about <strong>Dependency Injection</strong> in ASP.NET Core 3.0 have a look into the next chapter.</p>
+
+<hr />
+<h2 id="sessions">Sessions</h2>
+
+<p>This is series of articles on Building Conf planner app with Asp.net Core:</p>
+
+<ul>
+  <li><a href="/blog/customize-logging" target="_blank">1 - Logging</a></li>
+  <li><a href="/blog/customize-configuration" target="_blank">2 - Configuration</a></li>
+  <li><a href="/blog/customize-dependency-injection" target="_blank">3 - Dependency Injection</a></li>
+  <li><a href="/blog/customize-https" target="_blank">4 - Https</a></li>
+  <li><a href="/blog/customize-hostedservices" target="_blank">5 - Hostedservices</a></li>
+  <li><a href="/blog/customize-middleware" target="_blank">6 - Middlewares</a></li>
+  <li><a href="/blog/customize-outputformatter" target="_blank">7 - Outputformatter</a></li>
+  <li><a href="/blog/customize-modelbinders" target="_blank">8 - Modelbinders </a></li>
+  <li><a href="/blog/customize-actionfilters" target="_blank">9 - Actionfilters</a></li>
+  <li><a href="/blog/customize-taghelpers" target="_blank">10 - Taghelpers</a></li>
+  <li><a href="/blog/customize-webhostbuilder" target="_blank">11 - Webhostbuilder</a></li>
+  <li><a href="/blog/customize-hosting" target="_blank">12 - Hosting </a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/customize-logging" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/customize-dependency-injection" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

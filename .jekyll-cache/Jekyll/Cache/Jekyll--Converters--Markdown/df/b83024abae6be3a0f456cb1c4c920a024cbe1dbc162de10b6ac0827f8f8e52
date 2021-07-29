@@ -1,0 +1,532 @@
+I"�P<h3 id="client-side-blazor-authentication-using-azure-ad-and-a-custom-authenticationstateprovider">Client Side Blazor Authentication Using Azure AD and a Custom AuthenticationStateProvider</h3>
+
+<p>In this article, using client (WebAssembly) Blazor, we will demonstrate how to use Authentication Using Azure AD and a Custom AuthenticationStateProvider</p>
+
+<p><img src="/img/blazor/1/BlazorClientADAnimation.gif" alt="image info" /></p>
+
+<p>You can easily implement <strong>authentication</strong> for your <strong>Client Side Blazor applications</strong> using <strong>Azure Active Directory</strong>.</p>
+
+<p>We do this by <a href="https://docs.microsoft.com/en-us/aspnet/core/security/blazor/?view=aspnetcore-3.1&amp;tabs=visual-studio#implement-a-custom-authenticationstateprovider">Implementing a custom AuthenticationStateProvider</a>.</p>
+
+<h2 id="walk-thru">Walk-Thru</h2>
+
+<p><img src="/img/blazor/1/5.png" alt="image info" /></p>
+
+<p>When we navigate to the <strong>Fetch data</strong> page, without being <em>logged in</em>, it will indicate that you <strong>Must be logged in</strong>.</p>
+
+<p>To <em>log in</em>, click the <strong>Log In link</strong>.</p>
+
+<p><img src="/img/blazor/1/6.png" alt="image info" /></p>
+
+<p>You can log in with an <strong>Azure Active Directory</strong> account that has <a href="https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/developer-guidance-for-integrating-applications">authorization to log into the Azure registered application</a>.</p>
+
+<p><img src="/img/blazor/1/7.png" alt="image info" /></p>
+
+<p>Once the user is <em>logged in</em>, navigating to the <strong>Fetch data</strong> page displays the data.</p>
+
+<p>The <strong>logged in user’s name</strong> is <em>also displayed</em> at the top of the application.</p>
+
+<h2 id="step-1--install-blazor-client-side-blazor-webassembly">Step 1 : Install Blazor Client Side (Blazor WebAssembly)</h2>
+
+<p>See the following directions to install Blazor WebAssembly (Client Side Blazor):</p>
+
+<p>https://docs.microsoft.com/en-us/aspnet/core/blazor/get-started?view=aspnetcore-3.1&amp;tabs=visual-studio</p>
+
+<h2 id="create-the-project">Create The Project</h2>
+
+<p>Open <strong>Visual Studio 2019 (or higher)</strong>.</p>
+
+<p><img src="/img/blazor/1/8.png" alt="image info" /></p>
+
+<p>Create a <strong>new project</strong>.</p>
+
+<p><img src="/img/blazor/1/9.png" alt="image info" /></p>
+
+<p>Select <strong>Blazor App</strong>.</p>
+
+<p><img src="/img/blazor/1/10.png" alt="image info" /></p>
+
+<p>Name the project <strong>BlazorClientAD</strong></p>
+
+<p><img src="/img/blazor/1/11.png" alt="image info" /></p>
+
+<p>Select the <strong>ASP.NET 3.1 (or higher)</strong> Blazor WebAssembly template and select <strong>ASP.NET Core hosted</strong>.</p>
+
+<p><img src="/img/blazor/1/12.png" alt="image info" /></p>
+
+<p>The <strong>Solution</strong> will be created.</p>
+
+<p>Open the <strong>launchSettings.json</strong> file.</p>
+
+<p><img src="/img/blazor/1/13.png" alt="image info" /></p>
+
+<p>Note the <strong>sslPort</strong>.</p>
+
+<p>You will need it in the next section.</p>
+
+<h2 id="set-up-the-application-in-azure">Set-Up The Application In Azure</h2>
+
+<p><img src="/img/blazor/1/14.png" alt="image info" /></p>
+
+<p>You will need a <a href="https://azure.microsoft.com/en-us/free">free Azure Account</a> for the following steps.</p>
+
+<p>Log into https://portal.azure.com/ and select the <strong>Azure Active Directory</strong> node.</p>
+
+<p><img src="/img/blazor/1/15.png" alt="image info" /></p>
+
+<p>Next, select <strong>App registrations</strong>.</p>
+
+<p><img src="/img/blazor/1/16.png" alt="image info" /></p>
+
+<p>Select <strong>New registration</strong>.</p>
+
+<p><img src="/img/blazor/1/17.png" alt="image info" /></p>
+
+<p>Create a Registration.</p>
+
+<p>For Redirect URI, select Web, and use the following url (replacing {your sslPort} with the number you copied earlier):</p>
+
+<blockquote>
+  <p>https://localhost:{your sslPort}/signin-oidc</p>
+</blockquote>
+
+<p><img src="/img/blazor/1/18.png" alt="image info" /></p>
+
+<p>On the Overview node for the application, copy the <strong>Application (client) ID</strong>.</p>
+
+<p><img src="/img/blazor/1/19.png" alt="image info" /></p>
+
+<p>Click on the <strong>Authentication</strong> node and <strong>enable ID Tokens</strong>.</p>
+
+<h2 id="configure-the-application">Configure The Application</h2>
+
+<p><img src="/img/blazor/1/20.png" alt="image info" /></p>
+
+<p>Return to <strong>Visual Studio</strong>, and add a <strong>appsettings.json</strong> file to the <strong>Server</strong> project using the following code (replacing <strong>{Your Application (client ID)}</strong> with the ID you copied in the previous step):</p>
+
+<pre><code class="language-dotnetcli">
+{
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/common",
+    "ClientId": "{Your Application (client) ID}",
+    "CallbackPath": "/signin-oidc"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "AllowedHosts": "*"
+}
+
+</code></pre>
+<p><img src="/img/blazor/1/21.png" alt="image info" /></p>
+
+<p><em>Right-click</em> on the <strong>Server</strong> project and select <strong>Manage NuGet Packages</strong>…</p>
+
+<p><img src="/img/blazor/1/22.png" alt="image info" /></p>
+
+<p>Install:</p>
+
+<blockquote>
+  <p>Microsoft.AspNetCore.Authentication.AzureAD.UI</p>
+</blockquote>
+
+<p><img src="/img/blazor/1/23.png" alt="image info" /></p>
+
+<p>Open the <strong>Startup.cs</strong> file in the <strong>Server</strong> project.</p>
+
+<p>Add the following <strong>using statements</strong>:</p>
+
+<pre><code class="language-dotnetcli">
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authentication.AzureAD.UI;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using System.Threading.Tasks;
+
+</code></pre>
+
+<p>Add the following to the top of the class:</p>
+
+<pre><code class="language-dotnetcli">
+        public IConfiguration Configuration { get; }
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+</code></pre>
+
+<p>Add the following to the end of the ConfigureServices section:</p>
+
+<pre><code class="language-dotnetcli">
+services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
+    .AddAzureAD(options =&gt; Configuration.Bind("AzureAd", options));
+services.Configure&lt;OpenIdConnectOptions&gt;(AzureADDefaults.OpenIdScheme,
+options =&gt;
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        // Instead of using the default validation (validating against a 
+        // single issuer value, as we do in
+        // line of business apps), we inject our own multitenant 
+        // validation logic
+        ValidateIssuer = false,
+        // If the app is meant to be accessed by entire organizations, 
+        // add your issuer validation logic here.
+        // IssuerValidator = 
+        // (issuer, securityToken, validationParameters) =&gt; {
+        //    if (myIssuerValidationLogic(issuer)) return issuer;
+        //}
+    };
+    options.Events = new OpenIdConnectEvents
+    {
+        OnTicketReceived = context =&gt;
+        {
+            // This is called on successful authentication
+            // This is an opportunity to write to the database 
+            // or alter internal roles ect.
+            return Task.CompletedTask;
+        },
+        OnAuthenticationFailed = context =&gt;
+        {
+            context.Response.Redirect("/Error");
+            context.HandleResponse(); // Suppress the exception
+            return Task.CompletedTask;
+        }
+    };
+});
+
+</code></pre>
+
+<p>Add the following to the <strong>Configure</strong> section (under the <strong>UseRouting</strong>() line):</p>
+
+<pre><code class="language-dotnetcli">
+        app.UseAuthentication();
+        app.UseAuthorization();
+</code></pre>
+
+<p><img src="/img/blazor/1/24.png" alt="image info" /></p>
+
+<p>In the Client project, open the <strong>_Imports.razor</strong> file and add the following lines:</p>
+
+<pre><code class="language-dotnetcli">
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
+
+</code></pre>
+
+<h2 id="server-side-user-security">Server Side User Security</h2>
+
+<p><img src="/img/blazor/1/25.png" alt="image info" /></p>
+
+<p>All security must be enforced in the <strong>Server</strong> project.</p>
+
+<p>Add a file called <strong>BlazorUser.cs</strong> using the following code:</p>
+
+<pre><code class="language-csharp-interactive">
+using System;
+using System.Collections.Generic;
+using System.Text;
+namespace BlazorClientAD.Shared
+{
+    public class BlazorUser
+    {
+        public string UserName { get; set; }
+    }
+}
+
+</code></pre>
+
+<p><img src="/img/blazor/1/26.png" alt="image info" /></p>
+
+<p>Add a file to the Controllers folder in the Server project called <strong>UserController.cs</strong> using the following code:</p>
+
+<pre><code class="language-csharp-interactive">
+using BlazorClientAD.Shared;
+using Microsoft.AspNetCore.Mvc;
+namespace BlazorClientAD.Server.Controllers
+{
+    [ApiController]
+    public class UserController : Controller
+    {
+        [HttpGet("api/user/GetUser")]
+        public BlazorUser GetUser()
+        {
+            BlazorUser objBlazorUser = new BlazorUser();
+            if (this.User.Identity.IsAuthenticated)
+            {
+                objBlazorUser.UserName = this.User.Identity.Name;
+            }
+            else
+            {
+                objBlazorUser.UserName = ""; // Not logged in
+            }
+            return objBlazorUser;
+        }
+    }
+}
+
+</code></pre>
+
+<p>This code provides a method for the <strong>Blazor client</strong> side <strong>custom authentication provider</strong> (that we will create later), to determine if the user is <em>logged in</em>.</p>
+
+<p><img src="/img/blazor/1/27.png" alt="image info" /></p>
+
+<p>In the Controllers folder in the Server project, open the <strong>WeatherForecastController.cs</strong> file and add the following using statement:</p>
+
+<pre><code class="language-dotnetcli">
+using Microsoft.AspNetCore.Authorization;
+
+</code></pre>
+
+<p>Add the following above the public IEnumerable<WeatherForecast> Get() method:</WeatherForecast></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        [Authorize]
+</code></pre></div></div>
+
+<p>This will prevent <em>non-authenticated users</em> from calling this method.</p>
+
+<p>This is where we are implementing the required <strong>server side security</strong> that <strong>cannot</strong> be bypassed by a user manipulating <strong>client side</strong> code in the <strong>Blazor WebAssembly</strong> project.</p>
+
+<h2 id="implement-a-custom-authenticationstateprovider">Implement A Custom AuthenticationStateProvider</h2>
+
+<p><img src="/img/blazor/1/28.png" alt="image info" /></p>
+
+<p>In the <strong>Client</strong> project, create a <strong>Util</strong> folder and a file called <strong>CustomAuthenticationProvider.cs</strong> with the following code:</p>
+
+<pre><code class="language-csharp-interactive">
+using BlazorClientAD.Shared;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
+using System.Net.Http;
+using System.Security.Claims;
+using System.Threading.Tasks;
+namespace BlazorClientAD
+{
+    public class CustomAuthenticationProvider : AuthenticationStateProvider
+    {
+        private readonly HttpClient _httpClient;
+        public CustomAuthenticationProvider(HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+        }
+        public override async Task&lt;AuthenticationState&gt;
+            GetAuthenticationStateAsync()
+        {
+            ClaimsPrincipal user;
+            // Call the GetUser method to get the status
+            // This only sets things like the AuthorizeView
+            // and the AuthenticationState CascadingParameter
+            var result =
+                await _httpClient.GetJsonAsync&lt;BlazorUser&gt;("api/user/GetUser");
+            // Was a UserName returned?
+            if (result.UserName != "")
+            {
+                // Create a ClaimsPrincipal for the user
+                var identity = new ClaimsIdentity(new[]
+                {
+                   new Claim(ClaimTypes.Name, result.UserName),
+                }, "AzureAdAuth");
+                user = new ClaimsPrincipal(identity);
+            }
+            else
+            {
+                user = new ClaimsPrincipal(); // Not logged in
+            }
+            return await Task.FromResult(new AuthenticationState(user));
+        }
+    }
+}
+</code></pre>
+
+<p>The purpose of this code is to call the <strong>GetUser</strong> method, created earlier, to determine if the user is <em>logged in</em>.</p>
+
+<p>If the user is <em>logged in</em>, it creates a <strong>ClaimsPrincipal</strong> with a <strong>user</strong>, otherwise it creates a <strong>ClaimsPrincipal</strong> without a <strong>user</strong>. The <strong>Blazor security</strong> knows that a <strong>ClaimsPrincipal</strong> with a <strong>user</strong> indicates that a user is <em>logged in</em>.</p>
+
+<p>In the next step, this class will be registered as the <strong>AuthenticationStateProvider</strong>, and the <strong>Blazor security</strong> will allow us to show and hide elements using the built-in <strong>authentication</strong> tags and interfaces.</p>
+
+<p><img src="/img/blazor/1/29.png" alt="image info" /></p>
+
+<p>In the <strong>Client</strong> project, open the <strong>Program.cs</strong> file, and replace all the code with the following:</p>
+
+<pre><code class="language-dotnetcli">
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Blazor.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Components.Authorization;
+namespace BlazorClientAD.Client
+{
+    public class Program
+    {
+        public static async Task Main(string[] args)
+        {
+            var builder = WebAssemblyHostBuilder.CreateDefault(args);
+            // Use our CustomAuthenticationProvider as the 
+            // AuthenticationStateProvider
+            builder.Services.AddScoped&lt;AuthenticationStateProvider,
+                CustomAuthenticationProvider&gt;();
+            // Add Authentication support
+            builder.Services.AddOptions();
+            builder.Services.AddAuthorizationCore();
+            builder.RootComponents.Add&lt;App&gt;("app");
+            await builder.Build().RunAsync();
+        }
+    }
+}
+</code></pre>
+
+<p><img src="/img/blazor/1/30.png" alt="image info" /></p>
+
+<p>In the <strong>Client</strong> project, open the <strong>App.razor</strong> file and add replace all the code with the following:</p>
+
+<pre><code class="language-dotnetcli">
+&lt;Router AppAssembly="@typeof(Program).Assembly"&gt;
+    &lt;Found Context="routeData"&gt;
+        &lt;AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" /&gt;
+    &lt;/Found&gt;
+    &lt;NotFound&gt;
+        &lt;CascadingAuthenticationState&gt;
+            &lt;LayoutView Layout="@typeof(MainLayout)"&gt;
+                &lt;p&gt;Sorry, there's nothing at this address.&lt;/p&gt;
+            &lt;/LayoutView&gt;
+        &lt;/CascadingAuthenticationState&gt;
+    &lt;/NotFound&gt;
+&lt;/Router&gt;
+
+</code></pre>
+
+<p>This will implement authentication in the routing.</p>
+
+<h2 id="create-the-login--logout-buttons">Create the Login / Logout Buttons</h2>
+
+<p><img src="/img/blazor/1/31.png" alt="image info" /></p>
+
+<p>In the <strong>Client</strong> project, add a <strong>LoginDisplay.razor</strong> file to the <strong>Shared</strong> directory using the following code:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;AuthorizeView&gt;
+    &lt;Authorized&gt;
+        &lt;h6&gt;Hello, @context.User.Identity.Name! &lt;/h6&gt;
+        &lt;a href="AzureAD/Account/SignOut"&gt;[Log out]&lt;/a&gt;
+    &lt;/Authorized&gt;
+    &lt;NotAuthorized&gt;
+        &lt;a href="AzureAD/Account/SignIn"&gt;[Log in]&lt;/a&gt;
+    &lt;/NotAuthorized&gt;
+&lt;/AuthorizeView&gt;
+
+</code></pre></div></div>
+
+<p>Notice this directs the user to endpoints that begin with AzureAD/Account.</p>
+
+<p>These endpoints will be serviced by code from the <strong>Microsoft.AspNetCore.Authentication.AzureAD.UI</strong> NuGet package that was installed earlier.</p>
+
+<p><img src="/img/blazor/1/32.png" alt="image info" /></p>
+
+<p>In the <strong>Client</strong> project, open the <strong>MainLayout.razor</strong> file and add replace all the code with the following:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@inherits LayoutComponentBase
+&lt;div class="sidebar"&gt;
+    &lt;NavMenu /&gt;
+&lt;/div&gt;
+&lt;div class="main"&gt;
+    &lt;div class="top-row px-4"&gt;
+        &lt;LoginDisplay /&gt;
+    &lt;/div&gt;
+    &lt;div class="content px-4"&gt;
+        @Body
+    &lt;/div&gt;
+&lt;/div&gt;
+ 
+</code></pre></div></div>
+
+<p>This adds the <strong>LoginDisplay</strong> control to the top of the page in the application.</p>
+
+<p><img src="/img/blazor/1/33.png" alt="image info" /></p>
+
+<p>In the <strong>Client</strong> project, open the <strong>Index.razor</strong> file in the Pages directory, and add the following to the top of the file:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+@page "/Account/SignOut"
+ 
+</code></pre></div></div>
+
+<p>When the <em>user</em> logs out of the application, the <em>user</em> will be sent to the <strong>Account/SignOut</strong> url. This code allows the Index.razor page to also service that destination.</p>
+
+<h2 id="consume-the-blazor-client-side-security">Consume The Blazor Client Side Security</h2>
+
+<p><img src="/img/blazor/1/34.png" alt="image info" /></p>
+
+<p>Finally, in the Client project, open the FetchData.razor file, in the Pages directory, and add replace all the code with the following:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+@page "/fetchdata"
+@using BlazorClientAD.Shared
+@inject HttpClient Http
+&lt;h1&gt;Weather forecast&lt;/h1&gt;
+&lt;p&gt;This component demonstrates fetching data from the server.&lt;/p&gt;
+&lt;AuthorizeView&gt;
+    &lt;Authorized&gt;
+        @if (forecasts == null)
+        {
+            &lt;p&gt;&lt;em&gt;Loading...&lt;/em&gt;&lt;/p&gt;
+        }
+        else
+        {
+            &lt;table class="table"&gt;
+                &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;Date&lt;/th&gt;
+                        &lt;th&gt;Temp. (C)&lt;/th&gt;
+                        &lt;th&gt;Temp. (F)&lt;/th&gt;
+                        &lt;th&gt;Summary&lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                    @foreach (var forecast in forecasts)
+                    {
+                        &lt;tr&gt;
+                            &lt;td&gt;@forecast.Date.ToShortDateString()&lt;/td&gt;
+                            &lt;td&gt;@forecast.TemperatureC&lt;/td&gt;
+                            &lt;td&gt;@forecast.TemperatureF&lt;/td&gt;
+                            &lt;td&gt;@forecast.Summary&lt;/td&gt;
+                        &lt;/tr&gt;
+                    }
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+        }
+    &lt;/Authorized&gt;
+    &lt;NotAuthorized&gt;
+        &lt;p&gt;Must be logged in&lt;/p&gt;
+    &lt;/NotAuthorized&gt;
+&lt;/AuthorizeView&gt;
+@code {
+    [CascadingParameter]
+    private Task&lt;AuthenticationState&gt;
+        authenticationStateTask
+    { get; set; }
+    private WeatherForecast[] forecasts;
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await authenticationStateTask;
+        var user = authState.User;
+        if (user.Identity != null)
+        {
+            if (user.Identity.IsAuthenticated)
+            {
+                forecasts =
+                    await Http
+                    .GetJsonAsync&lt;WeatherForecast[]&gt;("WeatherForecast");
+            }
+        }
+    }
+}
+ 
+</code></pre></div></div>
+
+<p>The <strong>AuthorizeView</strong> tag and <strong>AuthenticationState</strong> Cascading Parameter will be triggered by the custom authentication provider created earlier.</p>
+
+<p><strong>Note:</strong> This is helpful for the application to determine what should be shown, but, because <strong>Blazor Client Side security</strong> can be bypassed, security must always be enforced in the <strong>server side code</strong>.</p>
+:ET

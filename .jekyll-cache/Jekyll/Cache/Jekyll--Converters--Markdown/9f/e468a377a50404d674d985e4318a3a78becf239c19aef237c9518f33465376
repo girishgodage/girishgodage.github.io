@@ -1,0 +1,90 @@
+I"V<p>In this article, we look at what an API Gateway is, in the context of microservices.</p>
+
+<h2 id="you-will-learn">You will learn</h2>
+<ul>
+  <li>What is an API Gateway?</li>
+  <li>Why do we need API Gateways?</li>
+  <li>How does an API Gateway Work?</li>
+</ul>
+
+<h3 id="handling-cross-cutting-concerns">Handling Cross Cutting Concerns</h3>
+
+<p>Whenever we design and develop a large software application, we make use of  a <strong>layered architecture</strong>. For instance, in a web application, it is quite common to see an architecture similar to the following:</p>
+
+<p><img src="/images/Capture-02-01.png" alt="image info" /></p>
+
+<p>Here, we see that the application is organized into a Web layer, a Business layer, and a Data layer.</p>
+
+<p>In a layered architecture, there are specific parts that are common to all these different layers. Such parts include:</p>
+<ul>
+  <li>Logging</li>
+  <li>Security</li>
+  <li>Performance</li>
+  <li>Auditing</li>
+</ul>
+
+<p>All these features are applicable across layers, hence it makes sense to implement them in a common way.</p>
+
+<p>Aspect Oriented programming is a well established way of handling these concerns. Use of constructs such as filters and interceptors is common while implementing them.</p>
+
+<h3 id="the-need-for-api-gateway">The Need For API Gateway</h3>
+
+<p>When we talk about a microservices architecture, we deal with multiple microservices talking to each other:
+<img src="/images/Capture-059-02.png" alt="image info" /></p>
+
+<p>Where do you implement all the features that are common across microservices?</p>
+<ul>
+  <li>authentication</li>
+  <li>logging</li>
+  <li>auditing</li>
+  <li>rate limiting</li>
+</ul>
+
+<p>That’s where the API Gateway comes into the picture.</p>
+
+<h3 id="how-does-an-api-gateway-work">How does an API Gateway Work?</h3>
+
+<p>In microservices, we route all requests - both internal and external - through API Gateways. We can implement all the common features like authentication, logging, auditing, and rate limiting in the API Gateway.</p>
+
+<p>For example, you may not want Microservice3 to be called more than 10 times by a particular client. You could do that as part of rate limiting in the API gateway.</p>
+
+<p>You can implement the common features across microservices in the API gateway. A popular API Gateway implementation is Zuul API Gateway.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>Just like AOP handles cross cutting concerns in standalone applications, the API gateway manages common features for microservices in an enterprise.</p>
+
+<hr />
+<h3 id="cloud-and-microservices-terminology">Cloud and Microservices Terminology</h3>
+
+<p>This is the article in a series of six articles on terminology used with cloud and microservices:</p>
+<ul>
+  <li><a href="/blog/service-discovery-in-microservices" target="_blank">1 - Microservices Architectures - What is Service Discovery?</a></li>
+  <li><a href="/blog/introduction-to-centralized-configuration-with-spring-cloud-config-server" target="_blank">2 - Microservices Architectures - Centralized Configuration and Config Server</a></li>
+  <li><a href="/blog/introduction-to-api-gateways-with-microservices" target="_blank">3 - Microservices Architectures - API Gateways</a></li>
+  <li><a href="/blog/introduction-to-centralized-logging-with-microservices" target="_blank">4 - Microservices Architectures - Importance of Centralized Logging</a></li>
+  <li><a href="/blog/introduction-to-auto-scaling-or-dynamic-scaling-in-cloud" target="_blank">5 - Microservices Architectures - Introduction to Auto Scaling</a></li>
+  <li><a href="/blog/fault-tolerance-in-microservices" target="_blank">6 - Microservices Architectures - What is Fault Tolerance?</a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/introduction-to-centralized-configuration-with-spring-cloud-config-server" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/introduction-to-centralized-logging-with-microservices" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

@@ -1,0 +1,85 @@
+I"�0<h2 id="azure-devops--manage-your-application-lifecycle-in-cloud">AZURE DEVOPS – MANAGE YOUR APPLICATION LIFECYCLE IN CLOUD</h2>
+
+<p><strong>Application lifecycle management (ALM)</strong> is the product lifecycle management of computer programs.</p>
+
+<p>It encompasses <strong>requirements management</strong>, <strong>software architecture</strong>, <strong>computer programming</strong>, <strong>software testing</strong>, <strong>software maintenance</strong>, <strong>change management</strong>, <strong>continuous integration</strong>, <strong>project management</strong>, and <strong>release management</strong>.</p>
+
+<p>An <strong>ALM tool</strong> should have the capability to maintain all the aspects of a software lifecycle, such as <span style="background-color: #2197CB"><strong>capturing the ideas, users requirement, planning of work, maintaining source code, deploying code using continuous integration and continuous delivery (CI/CD)</strong></span>. It should also provide real time project insights to the key stake holders of a project. We can think of an ALM software as one stop shop for a software project/product management as a whole.</p>
+
+<p>In this post we will take a look at <strong>Microsoft’s Azure DevOps offering</strong>, it’s capability as an ALM solution and will see how you can use it for your ALM journey.</p>
+
+<h2 id="what-is-azure-devops">What is Azure DevOps?</h2>
+
+<p>In a single sentence, Azure DevOps is a suite of offering in the cloud that you need to <strong>build your software product/project from beginning to end</strong>.</p>
+
+<p><strong>Azure DevOps</strong>, formerly known as Visual Studio Team System (VSTS). It helps you to plan your project, manage source code in repositories like <em>Git, TFVC, Subversion, GitHub and deploys the code through the CI/CD pipeline system to cloud or in on-premise resources</em>.</p>
+
+<p>Additionally it gives a <strong>collaborative platform</strong> for <strong>developers, business users and test engineers, project managers</strong> under one umbrella to <strong>real time tracking of work</strong> and <strong>quick shipment</strong> of the product.</p>
+
+<h2 id="six-pillars-of-azure-devops">Six pillars of Azure DevOps</h2>
+
+<p>Azure DevOps has six major pillars which helped it to shape as complete ALM offering in the the cloud. Let’s briefly look into the the major pillars of Azure DevOps</p>
+
+<p><img src="/img/devops/2/AzureBoard.png" alt="Image" title="Azure Boards" /><strong>Azure Boards</strong> is a place to <strong>manage and plan</strong> all of your work.** All ideas** and <strong>business requirements</strong> for your software can be <strong>captured here</strong>. You can create <strong>epics</strong>, <strong>features</strong>, <strong>user stories</strong> and then <strong>estimate them</strong> and <strong>plan capacity</strong> of your <em>team members</em> and start the <strong>sprint</strong>.</p>
+
+<p>Additionally you can have a real time view of the work item progression in <strong>Kanban boards</strong>, <strong>sprint burn down charts</strong>.</p>
+
+<p><img src="/img/devops/2/AzureRepos.png" alt="Image" title="Azure Repos" /><strong>Azure Repos</strong>  supports various source control system like <em>Azure Git, Public GitHub, GitHub Enterprise,  Microsoft’s own Team foundation version control (TFVC), External Git</em>.</p>
+
+<p>You can choose any one of the repositories for your choice for software development and source code. Once development is done developers can create a pull request with their changes, send it for code review and take part of a collaborative development environment.</p>
+
+<p><img src="/img/devops/2/AzurePipeline.png" alt="Image" title="Azure Pipeline" /><strong>Azure Pipelines</strong>  are used for <strong>continuous integration</strong> and <strong>continuous delivery  (CI/CD)</strong> of your code. It allows you to <strong>ship your code faster</strong>.</p>
+
+<p>Once your code is <strong>developed and committed</strong> to the repos, a <strong>build</strong> gets triggered in the <strong>build pipeline</strong>.<span style="background-color: #2197CB"> This build pipeline gets the <strong>latest code from the repos</strong>, builds them in the build agent. On a successful build, the <em>build artifacts gets published using Release pipeline in your targeted deployment environment</em>.</span></p>
+
+<p><img src="/img/devops/2/AzureTestPlans.png" alt="Image" title="Azure Test Plans" /><strong>Azure Test Plans</strong>  is for <strong>planning</strong> and <strong>executing</strong> your <strong>manual</strong>, <strong>automated</strong>  and l<strong>oad test cases</strong>. Once the <em>build is succeeded test engineers can run a set of tests on the build for verification and validation of the desired functionality</em>. And they can raise and log any defects or observation on failure  of any of the planned test scenarios in the Azure Boards.</p>
+
+<p><img src="/img/devops/2/AzureArtifacts.png" alt="Image" title="Azure Artifacts" /><strong>Azure Artifacts</strong>  manages your private NuGet, npm, Maven packages in a private feed. You can integrate this feed in your favourite IDE such as Visual Studio or Visual Studio Code and restore the packages from this feed while development. Additionally you can integrate this feed in the build pipeline and restore packages from this private repository. <strong>Azure Artifacts</strong> helps a lot where there are a lot of shared common packages in use in the application and you want to control standards, version of those cross cutting atrifacts.</p>
+
+<p><img src="/img/devops/2/AzureOverview.png" alt="Image" title="Azure Overview" /><strong>Azure Overview</strong>  gives real time insights of the project  <strong>such as teams velocity</strong>, <strong>CI/CD</strong> results, <strong>number of defects raised vs solved</strong> at any point of time to name a few. <strong>Executive dashboards</strong> can be created with inbuilt capability of it. These dashboard helps greatly for <strong>executive status reporting with risk and quality matrices</strong>.</p>
+
+<p><strong>Additionally</strong> it supports creating <strong>Wiki pages for the project</strong>. Wiki pages can be used to <strong>create</strong> any <strong>documents/ manual</strong> which are <strong>relevant</strong> for the <strong>ongoing or a completed project</strong>.</p>
+
+<h2 id="alm-with-azure-devops-in-action">ALM with Azure DevOps in action</h2>
+
+<p>Now that we have fair <strong>understanding of six pillars</strong> of Azure DevOps, now lets see how all of these helps in ALM with an example. refer to the Infographic of  this post. This describes ALM in action with Azure DevOps very briefly.</p>
+
+<p><img src="/img/devops/2/Azure-DevOps-ALM.png" alt="Image" title="Azure DevOps ALM" /></p>
+
+<p>In the beginning of the project or product it starts with an idea or some business requirement and after going through  multiple steps it takes shape of a usable product. In this example infographic</p>
+
+<ul>
+  <li><strong>1.</strong> Customer comes with requirement.</li>
+  <li><strong>2.</strong> Business analysts/ Product owner analyses the requirement and starts documenting them in the Azure Boards. They starts <strong>creating Epic, Feature and user stories</strong>.</li>
+  <li><strong>3.</strong> Engineering team then starts <strong>estimating</strong> the work and <strong>plan</strong> those user stories for sprint.
+    <ul>
+      <li><strong>3.1.</strong> In <strong>parallel</strong> test engineers starts for <strong>Test planning</strong> in Test Plans based on the acceptance criteria of the <strong>user stories</strong>.</li>
+    </ul>
+  </li>
+  <li><strong>4.</strong> Once sprint kicked in – developers starts picking user stories from the <strong>backlogs</strong> created at step 2 and <strong>starts implementing them</strong>.</li>
+  <li><strong>5.</strong> Once developers are done with the development they creates a <strong>pull request</strong> and sends for <strong>code review</strong>. Upon satisfaction of the code reviewer, developer commits the code in the Azure Repos.</li>
+  <li><strong>6.</strong> A build gets triggered in the <strong>Build Pipeline</strong> as soon as the <strong>code gets committed</strong> in the Azure Repos using continuous integration (CI).<span style="background-color: #2197CB"> A CI build gets the latest code form the repos, builds them in the build agents, restores any private packages from the feed setup in the Azure Artifacts. It runs unit tests, generates code coverage result and finally generates the build output for deployment.</span> If any one of the steps configured in the build pipeline fails then whole commit gets rejected and developers gets a build failure notification. Developer fixes the build and commits one more time and CI build triggers automatically.</li>
+  <li><strong>7.</strong> Build output needs to be moved to the deployment environment. In a <strong>Release Pipeline</strong> source of the build artifacts is the output of the CI build of previous step 6, destination will be the servers where these artifacts needs to be deployed. In this example it is deploying the artifacts to the Azure Cloud App Services and Azure SQL databases for a TESTING environment (step 7.1). A gate or approval mechanism can be set before the deployment happens, this gives control to the approvers to pick and choose which build to be deploy.</li>
+  <li><strong>8.</strong> Now that build is deployed in TESTING environment, test engineers starts testing and verifying the build quality. They run a set of manual, automated and load tests as planned during the planning phase (step 3.1) in Azure Test Plans. If they observe any defects then they log then in Azure Boards backlog and creates a new bug/issue/observation. Developer picks these defects once these are planned and fed back to the sprint, fixes the defects and commits to the Azure Repos which eventually triggers CI/CD in Azure Pipelines.</li>
+  <li><strong>9.</strong> If test engineers are satisfied with the build quality and functionality delivered, then this build gets promoted to the upper environment (step 9.1). In this example it is UAT environment for business users to test.</li>
+  <li><strong>10.</strong> Business users now gets a new build in UAT environment with all the features planned for the current sprint. Business user starts verifying the build and functionality in UAT environment.</li>
+  <li><strong>11.</strong> If business users finds any defects then they log them into the Azure Boards backlogs as <strong>bug/observation</strong>. Development and build cycle continues once these defects are planned and fed back to the sprint.</li>
+  <li><strong>12.</strong> If business users are satisfied with the functionality and the build quality then the build gets promoted to the <strong>PRODUCTION</strong> environment (<strong>step 12.1</strong>)</li>
+</ul>
+
+<p>Once this is released to <strong>production</strong>, end users starts using the system. If any issue occurs in the production then it again gets logged in the Azure Boards backlog as an <strong>Incident/ Bug/ Issue</strong>.</p>
+
+<p>Like this <strong>planning</strong>, <strong>development</strong> and <strong>build cycle</strong> continues towards shipment of the product.  In the whole process key <strong>stakeholders</strong> of the project keeps an eye on <strong>Azure Overview dashboards</strong> to identify and mitigate any risks.</p>
+
+<h2 id="wrap-up">Wrap up</h2>
+
+<p>Okay, so we are at the end of this post. In this post we have covered six pillars of the Azure Dev Ops and how this can be leveraged to manage your applications life cycle. Azure DevOps is a browser based application in public cloud with first class support and integration with numerous opensource languages and platforms. You can manage your ALM in peace of mind end to end in Azure DevOps.</p>
+
+<ul>
+  <li>If you want to know more about the pricing check <a href="https://azure.microsoft.com/en-gb/pricing/details/devops/azure-devops-services/">this</a> out.</li>
+  <li>To learn more about Azure DevOps check <a href="https://www.youtube.com/watch?v=kn2f5a2Z_n4">this</a> video.</li>
+</ul>
+
+<p>Oh.. wait, In the meanwhile, you can get started with your free account in Azure DevOps and start exploring. Just log in to https://dev.azure.com with your Microsoft account and start your ALM journey in cloud with Azure DevOps.</p>
+
+:ET

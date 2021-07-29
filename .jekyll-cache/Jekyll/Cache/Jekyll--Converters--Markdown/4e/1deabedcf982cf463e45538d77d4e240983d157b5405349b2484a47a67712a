@@ -1,0 +1,307 @@
+I"0d<blockquote>
+  <h2 id="what-is-azure-active-directory-b2c">What is Azure Active Directory B2C?</h2>
+</blockquote>
+
+<p><strong>Azure Active Directory B2C</strong> provides business-to-customer <strong>identity as a service</strong>. Your customers use their preferred social, enterprise, or local account identities to get single sign-on access to your applications and APIs.</p>
+
+<p><img src="/img/azure/3/azureadb2c-overview.png" alt="image info" /></p>
+
+<p><strong>Azure Active Directory B2C (Azure AD B2C)</strong> is a customer identity access management (CIAM) solution capable of <strong>supporting millions of users and billions of authentications per day</strong>. 
+It takes care of the <strong>scaling</strong> and <strong>safety</strong> of the <em>authentication platform</em>, monitoring and automatically handling threats like <strong>denial-of-service, password spray, or brute force attacks</strong>.</p>
+
+<h2 id="custom-branded-identity-solution">Custom-branded identity solution</h2>
+
+<p>Azure AD B2C is a <strong>white-label authentication solution</strong>. You can customize the entire user experience with your brand so that it blends seamlessly with your web and mobile applications.</p>
+
+<p><strong>Customize every page displayed by Azure AD B2C when your users sign up, sign in, and modify their profile information</strong>. Customize the <strong>HTML, CSS, and JavaScript</strong> in your user journeys so that the Azure AD B2C experience <strong>looks and feels like it’s a native part of your application</strong>.</p>
+
+<p><img src="/img/azure/3/sign-in-small.png" alt="image info" /></p>
+
+<h2 id="single-sign-on-access-with-a-user-provided-identity">Single sign-on access with a user-provided identity</h2>
+
+<p>Azure AD B2C uses standards-based authentication protocols including <strong>OpenID Connect, OAuth 2.0, and SAML</strong>. It integrates with most modern applications and commercial off-the-shelf software.</p>
+
+<p><img src="/img/azure/3/scenario-singlesignon.png" alt="image info" /></p>
+
+<p>By serving as the <strong>central authentication authority</strong> for your <strong><em>web applications, mobile apps, and API</em></strong>s, Azure AD B2C enables you to build a single <strong>sign-on (SSO) solution</strong> for them all. Centralize the collection of <strong>user profile and preference information</strong>, and <em>capture detailed analytics</em> about <strong>sign-in behavior</strong> and <strong>sign-up conversion</strong>.</p>
+
+<h2 id="integrate-with-external-user-stores">Integrate with external user stores</h2>
+
+<p>Azure AD B2C provides a directory that <strong>can hold 100 custom attributes per user</strong>. However, you can also <strong>integrate with external systems</strong>. For example, use Azure AD B2C for <strong>authentication</strong>, but delegate to an external <strong>customer relationship management (CRM) ** or **customer loyalty database</strong> as the source of truth for customer data.</p>
+
+<p>Another external user store scenario is to have Azure AD B2C handle the authentication for your application, but <strong>integrate with an external system that stores user profile or personal data</strong>. For example, to satisfy data residency requirements like <strong>regional or on-premises data</strong> storage policies.</p>
+
+<p><img src="/img/azure/3/scenario-remoteprofile.png" alt="image info" /></p>
+
+<p>Azure AD B2C can facilitate <strong>collecting the information from the user during registration or profile editing</strong>, then <em>hand that data off to the external system</em>. Then, during future <strong>authentications</strong>, Azure AD B2C can retrieve the data from the external system and, if needed, include it as a part of the authentication token response it sends to your application.</p>
+
+<h2 id="progressive-profiling">Progressive profiling</h2>
+
+<p>Another user journey option includes <strong>progressive profiling</strong>. Progressive profiling allows your <strong>customers to quickly complete their first transaction by collecting a minimal amount of information</strong>. Then, gradually collect more profile data from the customer on future sign-ins.</p>
+
+<p><img src="/img/azure/3/scenario-progressive.png" alt="image info" /></p>
+
+<h2 id="third-party-identity-verification-and-proofing">Third-party identity verification and proofing</h2>
+
+<p>Use Azure AD B2C to facilitate <em>identity verification and proofing by collecting user data, then passing it to a third party system to perform validation, trust scoring, and approval for user account creation</em>.</p>
+
+<p><img src="/img/azure/3/scenario-idproofing.png" alt="image info" /></p>
+
+<p>These are just some of the things you can do with Azure AD B2C as your business-to-customer identity platform.</p>
+
+<blockquote>
+  <h2 id="technical-and-feature-overview-of-azure-active-directory-b2c">Technical and feature overview of Azure Active Directory B2C</h2>
+</blockquote>
+
+<p>Here are the <strong>primary resources</strong> you work with in the service, its features, and how these enable you to provide a fully custom identity experience for your customers in your applications.</p>
+
+<h2 id="azure-ad-b2c-tenant">Azure AD B2C tenant</h2>
+
+<p>In Azure Active Directory B2C (Azure AD B2C), <strong>a tenant</strong> represents <strong>your organization</strong> and is a <strong>directory of users</strong>. <em>Each Azure AD B2C tenant is distinct and separate from other Azure AD B2C tenants</em>. An Azure AD B2C tenant is different than an Azure Active Directory tenant, which you may already have.</p>
+
+<p>The primary resources you work with in an Azure AD B2C tenant are:</p>
+
+<ul>
+  <li>
+    <p><strong>Directory</strong> - The directory is where Azure AD B2C <strong>stores</strong> your <strong>users’ credentials</strong> and <strong>profile data</strong>, as well as your <strong>application registrations</strong>.</p>
+  </li>
+  <li><strong>Application registrations</strong> - You <strong>register your web, mobile, and native applications</strong> with Azure AD B2C to <strong>enable identity management</strong>. Also, <strong>any APIs</strong> you want to protect with Azure AD B2C.</li>
+  <li><strong>User flows and custom policies</strong> - The built-in <strong>(user flows)</strong> and fully customizable <strong>(custom policies)</strong> identity experiences for your applications.
+    <ul>
+      <li>Use user flows for <strong>quick configuration and enablement of common identity tasks like sign up, sign in, and profile editing</strong>.</li>
+      <li>Use <strong>custom policies</strong> to enable user experiences not only for the <strong>common identity tasks</strong>, but also for crafting support for <strong>complex identity workflows</strong> unique to your organization, customers, employees, partners, and citizens.</li>
+    </ul>
+  </li>
+  <li><strong>Identity providers</strong> - Federation settings for:
+    <ul>
+      <li><strong>Social identity</strong> providers like Facebook, LinkedIn, or Twitter that you want to support in your applications.</li>
+      <li><strong>External identity</strong> providers that support standard identity protocols like OAuth 2.0, OpenID Connect, and more.</li>
+      <li><strong>Local accounts</strong> that enable users to sign up and sign in with a username (or email address or other ID) and password.</li>
+    </ul>
+  </li>
+  <li><strong>Keys</strong> - Add and manage encryption keys for signing and validating tokens, client secrets, certificates, and passwords.</li>
+</ul>
+
+<p>An <strong>Azure AD B2C tenant</strong> is the <strong>first resource</strong> you need to create to get started with Azure AD B2C. Learn how in Tutorial: <a href="azure-acticedirectoryB2C_CreateTenant"><strong>Create an Azure Active Directory B2C tenant</strong></a>.</p>
+
+<h2 id="accounts-in-azure-ad-b2c">Accounts in Azure AD B2C</h2>
+<p>Azure AD B2C defines <strong>several types of user accounts</strong>. Azure Active Directory, Azure Active Directory <strong>B2B</strong>, and Azure Active Directory <strong>B2C</strong> share these account types.</p>
+
+<ul>
+  <li><strong>Work account</strong> - Users with work accounts can manage resources in a tenant, and with an <strong>administrator role</strong>, can also manage tenants. Users with work accounts can <em>create new consumer accounts, reset passwords, block/unblock accounts, and set permissions or assign an account to a security group.</em></li>
+  <li><strong>Guest account</strong> - External users you invite to your tenant as guests. A typical scenario for inviting a guest user to your Azure AD B2C tenant <strong>is to share administration responsibilities</strong>.</li>
+  <li><strong>Consumer account</strong> - Consumer accounts are the accounts created in your Azure AD B2C directory when <strong>users complete the sign-up user journey</strong> in an application you’ve registered in your tenant.</li>
+</ul>
+
+<p><img src="/img/azure/3/portal-01-users.png" alt="image info" /></p>
+
+<h2 id="consumer-accounts">Consumer accounts</h2>
+<p>With a consumer account, users can sign in to the applications that you’ve secured with Azure AD B2C. Users with consumer accounts can’t, however, access Azure resources, for example the Azure portal.</p>
+
+<p>A consumer account can be associated with these identity types:</p>
+
+<ul>
+  <li>
+    <p><strong>Local identity</strong>, with the username and password stored locally in the Azure AD B2C directory. We often refer to these identities as <strong>“local accounts.”</strong></p>
+  </li>
+  <li>
+    <p><strong>Social or enterprise identities</strong>, where the identity of the user is managed by a federated identity provider like Facebook, Microsoft, ADFS, or Salesforce.</p>
+  </li>
+</ul>
+
+<p>A user with a consumer account can sign in with multiple identities, for example username, email, employee ID, government ID, and others. A single account can have multiple identities, both local and social.</p>
+
+<p><img src="/img/azure/3/identities.png" alt="image info" /></p>
+
+<p>Azure AD B2C lets you manage common attributes of consumer account profiles like <strong>display name, surname, given name, city, and others</strong>. You can also <strong>extend the Azure AD schema</strong> to store additional information about your users. For example, their <strong>country/region</strong> or <strong>residency</strong>, <strong>preferred language</strong>, and <strong>preferences</strong> like whether they want to <strong>subscribe to a newsletter</strong> or <strong>enable multi-factor authentication</strong>.</p>
+
+<h2 id="external-identity-providers">External identity providers</h2>
+
+<p>You can configure Azure AD B2C to allow users to sign in to your application with credentials from <strong>external social or enterprise identity providers (IdP)</strong>. Azure AD B2C supports external identity providers like <strong>Facebook, Microsoft account, Google, Twitter, and any identity provider</strong> that supports <em>OAuth 1.0, OAuth 2.0, OpenID Connect, and SAML</em> protocols.</p>
+
+<p><img src="/img/azure/3/external-idps.png" alt="image info" /></p>
+
+<p>With external identity provider federation, you can offer your consumers the ability to <strong>sign in with their existing social or enterprise accounts</strong>, <em>without having to create a new account just for your application.</em></p>
+
+<p>On the sign-up or sign-in page, Azure AD B2C presents a list of external identity providers the user can choose for <strong>sign-in</strong>. Once they select one of the external identity providers, they’re taken (redirected) to the selected provider’s website to complete the sign in process. After the user successfully signs in, they’re returned to Azure AD B2C for authentication of the account in your application.</p>
+
+<p><img src="/img/azure/3/external-idp.png" alt="image info" /></p>
+
+<h2 id="identity-experiences-user-flows-or-custom-policies">Identity experiences: user flows or custom policies</h2>
+
+<p>The extensible policy framework of Azure AD B2C is its core strength. Policies describe your users’ identity experiences such as sign up, sign in, and profile editing.</p>
+
+<p>In Azure AD B2C, there are <strong>two primary paths</strong> you can take to provide these identity experiences: <strong>user flows</strong> and <strong>custom policies</strong>.</p>
+
+<ul>
+  <li>
+    <p><strong>User flows</strong> are predefined, built-in, configurable policies that we provide so you can create <strong>sign-up, sign-in, and policy editing</strong> experiences in minutes.</p>
+  </li>
+  <li>
+    <p><strong>Custom policies</strong> enable you to create your own user journeys for complex identity experience scenarios.</p>
+  </li>
+</ul>
+
+<p>Both user flows and custom policies are powered by the <strong>Identity Experience Framework, Azure AD B2C’s policy orchestration engine.</strong></p>
+
+<h2 id="user-flow">User flow</h2>
+<p>To help you quickly set up the most common identity tasks, the Azure portal includes several predefined and configurable policies called user flows.</p>
+
+<p>You can configure user flow settings like these to control identity experience behaviors in your applications:</p>
+
+<ul>
+  <li>Account types used for sign-in, such as social accounts like a Facebook, or local accounts that use an email address and password for sign-in</li>
+  <li>Attributes to be collected from the consumer, such as first name, postal code, or country/region of residency</li>
+  <li>Azure Multi-Factor Authentication (MFA)</li>
+  <li>Customization of the user interface</li>
+  <li>Set of claims in a token that your application receives after the user completes the user flow</li>
+  <li>Session management</li>
+  <li>…and more.</li>
+</ul>
+
+<p>Most common identity scenarios for the majority of mobile, web, and single-page applications can be defined and implemented effectively with user flows. We recommend that you use the built-in user flows unless you have complex user journey scenarios that require the full flexibility of custom policies.</p>
+
+<h2 id="custom-policy">Custom policy</h2>
+<p>Custom policies unlock access to the full power of the <strong>Identity Experience Framework (IEF) orchestration engine</strong>. With custom policies, you can leverage IEF to build almost any authentication, user registration, or profile editing experience that you can imagine.</p>
+
+<p>The Identity Experience Framework gives you the ability to construct user journeys with any combination of steps. For example:</p>
+
+<ul>
+  <li>Federate with other identity providers</li>
+  <li>First- and third-party multi-factor authentication (MFA) challenges</li>
+  <li>Collect any user input</li>
+  <li>Integrate with external systems using REST API communication</li>
+</ul>
+
+<p>Each such user journey is defined by a policy, and you can build as many or as few policies as you need to enable the best user experience for your organization.</p>
+
+<p><img src="/img/azure/3/custom-policy.png" alt="image info" /></p>
+
+<p>A custom policy is defined by several XML files that refer to each other in a hierarchical chain. The XML elements define the claims schema, claims transformations, content definitions, claims providers, technical profiles, user journey orchestration steps, and other aspects of the identity experience.</p>
+
+<p>The powerful flexibility of custom policies is most appropriate for when you need to build complex identity scenarios. Developers configuring custom policies must define the trusted relationships in careful detail to include metadata endpoints, exact claims exchange definitions, and configure secrets, keys, and certificates as needed by each identity provider.</p>
+
+<h2 id="protocols-and-tokens">Protocols and tokens</h2>
+
+<ul>
+  <li>
+    <p>For applications, Azure AD B2C supports the <strong>OAuth 2.0, OpenID Connect, and SAML protocols</strong> for user journeys. Your application starts the user journey by issuing authentication requests to Azure AD B2C. The result of a request to Azure AD B2C is a <strong>security token</strong>, such as an <strong>ID token, access token, or SAML token</strong>. This security token defines the user’s identity within the application.</p>
+  </li>
+  <li>
+    <p>For external identities, Azure AD B2C supports <strong>federation with any OAuth 1.0, OAuth 2.0, OpenID Connect, and SAML identity providers.</strong></p>
+  </li>
+</ul>
+
+<p>The following diagram shows how Azure AD B2C can communicate using a variety of protocols within the same authentication flow:</p>
+
+<p><img src="/img/azure/3/protocols.png" alt="image info" /></p>
+
+<ol>
+  <li>The relying party application initiates an authorization request to Azure AD B2C using OpenID Connect.</li>
+  <li>When a user of the application chooses to sign in using an external identity provider that uses the SAML protocol, Azure AD B2C invokes the SAML protocol to communicate with that identity provider.</li>
+  <li>After the user completes the sign-in operation with the external identity provider, Azure AD B2C then returns the token to the relying party application using OpenID Connect.</li>
+</ol>
+
+<h2 id="application-integration">Application integration</h2>
+<p>When a user wants to sign in to your application, whether it’s a web, mobile, desktop, or single-page application (SPA), the application initiates an authorization request to a user flow- or custom policy-provided endpoint. The user flow or custom policy defines and controls the user’s experience. When they complete a user flow, for example the sign-up or sign-in flow, Azure AD B2C generates a token, then redirects the user back to your application</p>
+
+<p><img src="/img/azure/3/app-integration.png" alt="image info" /></p>
+
+<p>Multiple applications can use the same user flow or custom policy. A single application can use multiple user flows or custom policies.</p>
+
+<p><strong>For example</strong>, to sign in to an application, the application uses the sign up or sign in user flow. After the user has signed in, they may want to edit their profile, so the application initiates another authorization request, this time using the profile edit user flow.</p>
+
+<h2 id="seamless-user-experiences">Seamless user experiences</h2>
+<p>In Azure AD B2C, you can craft your users’ identity experiences so that the pages they’re shown blend seamlessly with the look and feel of your brand. You get nearly full control of the HTML and CSS content presented to your users when they proceed through your application’s identity journeys. With this flexibility, you can maintain brand and visual consistency between your application and Azure AD B2C.</p>
+
+<p><img src="/img/azure/3/seamless-ux.png" alt="image info" /></p>
+
+<h2 id="localization">Localization</h2>
+<p>Language customization in Azure AD B2C allows you to accommodate different languages to suit your customer needs. <strong>Microsoft provides the translations for 36 languages</strong>, but you can also provide your own translations for any language. Even if your experience is provided for only a single language, you can customize any text on the pages.</p>
+
+<p><img src="/img/azure/3/localization.png" alt="image info" /></p>
+
+<h2 id="add-your-own-business-logic">Add your own business logic</h2>
+
+<p>If you choose to use custom policies, you can integrate with a RESTful API in a user journey to add your own business logic to the journey. For example, Azure AD B2C can exchange data with a RESTful service to:</p>
+
+<ul>
+  <li>Display custom user-friendly error messages.</li>
+  <li>Validate user input to prevent malformed data from persisting in your user directory. For example, you can modify the data entered by the user, such as capitalizing their first name if they entered it in all lowercase.</li>
+  <li>Enrich user data by further integrating with your corporate line-of-business application.</li>
+  <li>Using RESTful calls, you can send push notifications, update corporate databases, run a user migration process, manage permissions, audit databases, and more.</li>
+</ul>
+
+<p>Loyalty programs are another scenario enabled by Azure AD B2C’s support for calling REST APIs. For example, your RESTful service can receive a user’s email address, query your customer database, then return the user’s loyalty number to Azure AD B2C. The return data can be stored in the user’s directory account in Azure AD B2C, then be further evaluated in subsequent steps in the policy, or be included in the access token.</p>
+
+<p><img src="/img/azure/3/lob-integration.png" alt="image info" /></p>
+
+<p>You can add a REST API call at any step in the user journey defined by a custom policy. For example, you can call a REST API:</p>
+
+<ul>
+  <li>During sign-in, just before Azure AD B2C validates the credentials</li>
+  <li>Immediately after sign-in</li>
+  <li>Before Azure AD B2C creates a new account in the directory</li>
+  <li>After Azure AD B2C creates a new account in the directory</li>
+  <li>Before Azure AD B2C issues an access token</li>
+</ul>
+
+<h2 id="protect-customer-identities">Protect customer identities</h2>
+<p>Azure AD B2C complies with the security, privacy, and other commitments described in the Microsoft Azure Trust Center.</p>
+
+<p>Sessions are modeled as encrypted data, with the decryption key known only to the Azure AD B2C Security Token Service. A strong encryption algorithm, AES-192, is used. All communication paths are protected with TLS for confidentiality and integrity. Our Security Token Service uses an Extended Validation (EV) certificate for TLS. In general, the Security Token Service mitigates cross-site scripting (XSS) attacks by not rendering untrusted input.</p>
+
+<p><img src="/img/azure/3/user-data.png" alt="image info" /></p>
+
+<h2 id="access-to-user-data">Access to user data</h2>
+
+<p>Azure AD B2C tenants share many characteristics with enterprise Azure Active Directory tenants used for employees and partners. Shared aspects include mechanisms for viewing administrative roles, assigning roles, and auditing activities.</p>
+
+<p>You can assign roles to control who can perform certain administrative actions in Azure AD B2C, including:</p>
+
+<ul>
+  <li>Create and manage all aspects of user flows</li>
+  <li>Create and manage the attribute schema available to all user flows</li>
+  <li>Configure identity providers for use in direct federation</li>
+  <li>Create and manage trust framework policies in the Identity Experience Framework (custom policies)</li>
+  <li>Manage secrets for federation and encryption in the Identity Experience Framework (custom policies)</li>
+</ul>
+
+<h2 id="multi-factor-authentication-mfa">Multi-factor authentication (MFA)</h2>
+
+<p>Azure AD B2C multi-factor authentication (MFA) helps safeguard access to data and applications while maintaining simplicity for your users. It provides additional security by requiring a second form of authentication, and delivers strong authentication by offering a range of easy-to-use authentication methods. Your users may or may not be challenged for MFA based on configuration decisions that you can make as an administrator.</p>
+
+<h2 id="smart-account-lockout">Smart account lockout</h2>
+
+<p>To prevent brute-force password guessing attempts, Azure AD B2C uses a sophisticated strategy to lock accounts based on the IP of the request, the passwords entered, and several other factors. The duration of the lockout is automatically increased based on risk and the number of attempts.</p>
+
+<p><img src="/img/azure/3/smart-lockout1.png" alt="image info" /></p>
+
+<h2 id="password-complexity">Password complexity</h2>
+
+<p>During sign up or password reset, your users must supply a password that meets complexity rules. By default, Azure AD B2C enforces a strong password policy. Azure AD B2C also provides configuration options for specifying the complexity requirements of the passwords your customers use.</p>
+
+<p>You can configure password complexity requirements in both <strong>user flows</strong> and <strong>custom policies</strong>.</p>
+
+<h2 id="auditing-and-logs">Auditing and logs</h2>
+
+<p>Azure AD B2C emits audit logs containing activity information about its resources, issued tokens, and administrator access. You can use these audit logs to understand platform activity and diagnose issues. Audit log entries are available soon after the activity that generated the event occurs.</p>
+
+<p>In an audit log, which is available for your Azure AD B2C tenant or for a particular user, you can find information including:</p>
+
+<ul>
+  <li>Activities concerning the authorization of a user to access B2C resources (for example, an administrator accessing a list of B2C policies)</li>
+  <li>Activities related to directory attributes retrieved when an administrator signs in using the Azure portal</li>
+  <li>Create, read, update, and delete (CRUD) operations on B2C applications</li>
+  <li>CRUD operations on keys stored in a B2C key container</li>
+  <li>CRUD operations on B2C resources (for example, policies and identity providers)</li>
+  <li>Validation of user credentials and token issuance</li>
+</ul>
+
+<p><img src="/img/azure/3/audit-log.png" alt="image info" /></p>
+
+<h2 id="usage-insights">Usage insights</h2>
+
+<p>Azure AD B2C allows you to discover when people sign up or sign in to your web app, where your users are located, and what browsers and operating systems they use. By integrating Azure Application Insights into Azure AD B2C by using custom policies, you can gain insight into how people sign up, sign in, reset their password or edit their profile. With such knowledge, you can make data-driven decisions for your upcoming development cycles.</p>
+
+:ET

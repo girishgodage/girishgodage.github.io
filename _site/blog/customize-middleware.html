@@ -12,7 +12,7 @@
 <!-- iOS Safari -->
 <meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
 <title>ASP. NET Core - Middlewares &#8211; Girish Godage</title>
-<meta name="description" content="Wow, it is already the sixth part of this series. In this chapter I'm going to write about Middlewares and how you can use them to customize your app a little more. I quickly go through the basics about Middlewares and then I'll write about some more special things you can do with Middlewares.">
+<meta name="description" content="Wow, it is already the sixth part of this series. In this chapter I&apos;m going to write about Middlewares and how you can use them to customize your app a little more. I quickly go through the basics about Middlewares and then I&apos;ll write about some more special things you can do with Middlewares.">
 <meta name="keywords" content="AspDotnetCoreCustomize">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,7 +28,7 @@
     <meta property="og:type" content="article">
     <meta property="og:title" content="ASP. NET Core - Middlewares">
     <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
-    <meta property="og:url" content="http://localhost:4000/blog/customize-middleware">
+    <meta property="og:url" content="https://girishgodage.in/blog/customize-middleware">
     <meta property="og:site_name" content="Girish Godage">
 
     <!-- Twitter Card -->
@@ -38,7 +38,7 @@
     
     <meta name="twitter:title" content="ASP. NET Core - Middlewares" />
     <meta name="twitter:description" content="Wow, it is already the sixth part of this series. In this chapter I'm going to write about Middlewares and how you can use them to customize your app a little more. I quickly go through the basics about Middlewares and then I'll write about some more special things you can do with Middlewares." />
-    <meta name="twitter:url" content="http://localhost:4000/blog/customize-middleware" />
+    <meta name="twitter:url" content="https://girishgodage.in/blog/customize-middleware" />
 
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
@@ -58,7 +58,7 @@
     
 
 
-    <link rel="canonical" href="http://localhost:4000/blog/customize-middleware">
+    <link rel="canonical" href="https://girishgodage.in/blog/customize-middleware">
 <link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
     <!-- Bootstrap CSS-->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -76,13 +76,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
     
     <!-- animate.css-->
-    <link rel="stylesheet" href="http://localhost:4000/sitejs/animate.css/animate.css">
+    <link rel="stylesheet" href="https://girishgodage.in/sitejs/animate.css/animate.css">
     <!-- theme stylesheet-->
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="http://localhost:4000/css/custom.css" as="style">
-    <link rel="stylesheet" href="http://localhost:4000/css/comments.css" as="style">
+    <link rel="stylesheet" href="https://girishgodage.in/css/custom.css" as="style">
+    <link rel="stylesheet" href="https://girishgodage.in/css/comments.css" as="style">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="http://localhost:4000/img/logo-big.png">
+    <link rel="shortcut icon" href="https://girishgodage.in/img/logo-big.png">
     <!-- Fab Icon-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
     
@@ -124,27 +124,27 @@
 <!-- navbar-->
 <header class="header">
   <nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container"><a class="navbar-brand" href="http://localhost:4000"><img
-          src="http://localhost:4000/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
-          alt="logo"> <img src="http://localhost:4000/img/girish_logo.png" height="30" alt="girilogo"></a>
+    <div class="container"><a class="navbar-brand" href="https://girishgodage.in"><img
+          src="https://girishgodage.in/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
+          alt="logo"> <img src="https://girishgodage.in/img/girish_logo.png" height="30" alt="girilogo"></a>
       <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span
           class="fa fa-bars" style="color: white"></span></button>
       <div id="navbarcollapse" class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a href="http://localhost:4000#home" class="nav-link  link-scroll">Home</a></li>
-          <li class="nav-item"><a href="http://localhost:4000#about" class="nav-link link-scroll">About</a></li>
-          <li class="nav-item"><a href="http://localhost:4000#skills" class="nav-link link-scroll">Skills</a>
+          <li class="nav-item"><a href="https://girishgodage.in#home" class="nav-link  link-scroll">Home</a></li>
+          <li class="nav-item"><a href="https://girishgodage.in#about" class="nav-link link-scroll">About</a></li>
+          <li class="nav-item"><a href="https://girishgodage.in#skills" class="nav-link link-scroll">Skills</a>
           </li>
-          <li class="nav-item"><a href="http://localhost:4000#services" class="nav-link link-scroll">Services</a>
+          <li class="nav-item"><a href="https://girishgodage.in#services" class="nav-link link-scroll">Services</a>
           </li>
-          <li class="nav-item"><a href="http://localhost:4000#references" class="nav-link link-scroll">My
+          <li class="nav-item"><a href="https://girishgodage.in#references" class="nav-link link-scroll">My
               work</a></li>
-          <li class="nav-item"><a href="http://localhost:4000#contact" class="nav-link link-scroll">Contact</a>
+          <li class="nav-item"><a href="https://girishgodage.in#contact" class="nav-link link-scroll">Contact</a>
           </li>
-          <li class="nav-item"><a href="http://localhost:4000/project" class="nav-link link-scroll">My
+          <li class="nav-item"><a href="https://girishgodage.in/project" class="nav-link link-scroll">My
               Projects</a></li>
-          <li class="nav-item"><a href="http://localhost:4000/blog" class="nav-link link-scroll">Blog</a></li>
+          <li class="nav-item"><a href="https://girishgodage.in/blog" class="nav-link link-scroll">Blog</a></li>
         </ul>
       </div>
     </div>
@@ -185,13 +185,13 @@
 
 <h2 id="about-middlewares">About Middlewares</h2>
 
-<p>The most of you already know what Middlewares are, but some of you maybe not. Even if you already use ASP.NET Core for a while, you don’t really need to know details about Middlewares, because they are mostly hidden behind nicely named extension methods like <code class="highlighter-rouge">UseMvc()</code>, <code class="highlighter-rouge">UseAuthentication()</code>, <code class="highlighter-rouge">UseDeveloperExceptionPage()</code> and so on. Every time you call a <code class="highlighter-rouge">Use</code>-method in the <code class="highlighter-rouge">Startup.cs</code> in the <code class="highlighter-rouge">Configure</code> method, you’ll implicitly use at least one or maybe more Middlewares.</p>
+<p>The most of you already know what Middlewares are, but some of you maybe not. Even if you already use ASP.NET Core for a while, you don’t really need to know details about Middlewares, because they are mostly hidden behind nicely named extension methods like <code class="language-plaintext highlighter-rouge">UseMvc()</code>, <code class="language-plaintext highlighter-rouge">UseAuthentication()</code>, <code class="language-plaintext highlighter-rouge">UseDeveloperExceptionPage()</code> and so on. Every time you call a <code class="language-plaintext highlighter-rouge">Use</code>-method in the <code class="language-plaintext highlighter-rouge">Startup.cs</code> in the <code class="language-plaintext highlighter-rouge">Configure</code> method, you’ll implicitly use at least one or maybe more Middlewares.</p>
 
 <p>A middleware is a peace of code that handles the request pipeline. Imagine the request pipeline as huge tube where you can call something in and where an echo comes back. The Middlewares are responsible for the creation of this echo or to manipulate the sound, to enrich the information or to handle the source sound or to handle the echo.</p>
 
 <p>Middlewares are executed in the order they are configured. The first configured middleware is the first that gets executed.</p>
 
-<p>In an ASP.NET Core web, if the client requests an image or any other static file, the <code class="highlighter-rouge">StaticFileMiddleware</code> searches for that resource and return that resource if it finds one. If not this middleware does nothing except to call the next one. If there is no last middleware that handles the request pipeline, the request returns nothing. The <code class="highlighter-rouge">MvcMiddleware</code> also checks the requested resource, tries to map it to a configured route, executes the controller, creates a view and returns a HTML or Web API result. If the <code class="highlighter-rouge">MvcMiddleware</code> does not find a matching controller, it anyway will return a result in this case it is a 404 Status result. It returns an echo in any case. This is why the <code class="highlighter-rouge">MvcMiddleware</code> is the last configured middleware.</p>
+<p>In an ASP.NET Core web, if the client requests an image or any other static file, the <code class="language-plaintext highlighter-rouge">StaticFileMiddleware</code> searches for that resource and return that resource if it finds one. If not this middleware does nothing except to call the next one. If there is no last middleware that handles the request pipeline, the request returns nothing. The <code class="language-plaintext highlighter-rouge">MvcMiddleware</code> also checks the requested resource, tries to map it to a configured route, executes the controller, creates a view and returns a HTML or Web API result. If the <code class="language-plaintext highlighter-rouge">MvcMiddleware</code> does not find a matching controller, it anyway will return a result in this case it is a 404 Status result. It returns an echo in any case. This is why the <code class="language-plaintext highlighter-rouge">MvcMiddleware</code> is the last configured middleware.</p>
 
 <p><img src="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/index/_static/request-delegate-pipeline.png?view=aspnetcore-2.1" alt="" /></p>
 
@@ -205,7 +205,7 @@
 <span class="nb">cd </span>MiddlewaresSample
 </code></pre></div></div>
 
-<p>Open the Startup.cs with your favorite editor. It should be pretty empty compared to a regular ASP.NET Core application. Rewrite the <code class="highlighter-rouge">Configure()</code> method like this:</p>
+<p>Open the Startup.cs with your favorite editor. It should be pretty empty compared to a regular ASP.NET Core application. Rewrite the <code class="language-plaintext highlighter-rouge">Configure()</code> method like this:</p>
 
 <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Startup</span>
 <span class="p">{</span>
@@ -234,9 +234,9 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>There is the <code class="highlighter-rouge">DeveloperExceptionPageMiddleware</code> used and a special lambda Middleware that only writes “Hello World!” to the response stream. The response stream is the echo I wrote about previously. This special middleware stops the pipeline and returns something like an echo. So it is the last one.</p>
+<p>There is the <code class="language-plaintext highlighter-rouge">DeveloperExceptionPageMiddleware</code> used and a special lambda Middleware that only writes “Hello World!” to the response stream. The response stream is the echo I wrote about previously. This special middleware stops the pipeline and returns something like an echo. So it is the last one.</p>
 
-<p>Leave this middleware and add the following lines right before the <code class="highlighter-rouge">app.Run()</code>:</p>
+<p>Leave this middleware and add the following lines right before the <code class="language-plaintext highlighter-rouge">app.Run()</code>:</p>
 
 <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">app</span><span class="p">.</span><span class="nf">Use</span><span class="p">(</span><span class="k">async</span> <span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">next</span><span class="p">)</span> <span class="p">=&gt;</span>
 <span class="p">{</span>
@@ -252,9 +252,9 @@
 <span class="p">});</span>
 </code></pre></div></div>
 
-<p>These two calls of <code class="highlighter-rouge">app.Use()</code> also create two lambda Middlewares, but this time the Middlewares are calling the next ones. Each middleware knows the next one and calls it. Both middlewares writing to the response stream before and after the next middleware are called. This should demonstrate how the pipeline works. Before the next middleware is called the actual request is handled and after the next middleware is called, the response (echo) is handled.</p>
+<p>These two calls of <code class="language-plaintext highlighter-rouge">app.Use()</code> also create two lambda Middlewares, but this time the Middlewares are calling the next ones. Each middleware knows the next one and calls it. Both middlewares writing to the response stream before and after the next middleware are called. This should demonstrate how the pipeline works. Before the next middleware is called the actual request is handled and after the next middleware is called, the response (echo) is handled.</p>
 
-<p>If you now run the application (using <code class="highlighter-rouge">dotnet run</code>) and open the displayed URL in the browser, you should see a plain text result like this:</p>
+<p>If you now run the application (using <code class="language-plaintext highlighter-rouge">dotnet run</code>) and open the displayed URL in the browser, you should see a plain text result like this:</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>===&gt;&gt;&gt;&gt;&gt;&gt; Hello World! &lt;&lt;&lt;&lt;&lt;&lt;===
 </code></pre></div></div>
@@ -263,7 +263,7 @@
 
 <h2 id="writing-a-custom-middleware">Writing a custom middleware</h2>
 
-<p>ASP.NET Core is based on Middlewares. All the logic that gets executed during a request is somehow based on a middleware. So we are able to use this to add custom functionality to the web. We want to know the execution time of every request that goes through the request pipeline. I do this by creating and starting a <code class="highlighter-rouge">Stopwatch</code> before the next middleware is called and by stop measuring the execution time after the next middleware is called:</p>
+<p>ASP.NET Core is based on Middlewares. All the logic that gets executed during a request is somehow based on a middleware. So we are able to use this to add custom functionality to the web. We want to know the execution time of every request that goes through the request pipeline. I do this by creating and starting a <code class="language-plaintext highlighter-rouge">Stopwatch</code> before the next middleware is called and by stop measuring the execution time after the next middleware is called:</p>
 
 <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">app</span><span class="p">.</span><span class="nf">Use</span><span class="p">(</span><span class="k">async</span> <span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">next</span><span class="p">)</span> <span class="p">=&gt;</span>
 <span class="p">{</span>
@@ -283,7 +283,7 @@
 
 <p>After that I write out the elapsed milliseconds to the response stream.</p>
 
-<p>If you write some more Middlewares the <code class="highlighter-rouge">Configure</code> method in the <code class="highlighter-rouge">Startup.cs</code> gets pretty messy. This is why the most Middlewares are written as separate classes. This could look like this:</p>
+<p>If you write some more Middlewares the <code class="language-plaintext highlighter-rouge">Configure</code> method in the <code class="language-plaintext highlighter-rouge">Startup.cs</code> gets pretty messy. This is why the most Middlewares are written as separate classes. This could look like this:</p>
 
 <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">StopwatchMiddleWare</span>
 <span class="p">{</span>
@@ -311,13 +311,13 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>This way we get the next middleware via the constructor and the current context in the <code class="highlighter-rouge">Invoke()</code> method.</p>
+<p>This way we get the next middleware via the constructor and the current context in the <code class="language-plaintext highlighter-rouge">Invoke()</code> method.</p>
 
 <blockquote>
   <p>Note: The Middleware is initialized on the start of the application and exists once during the application lifetime. The constructor gets called once. On the other hand the Invoke() method is called once per request.</p>
 </blockquote>
 
-<p>To use this middleware, there is a generic <code class="highlighter-rouge">UseMiddleware()</code> method available you can use in the configure method:</p>
+<p>To use this middleware, there is a generic <code class="language-plaintext highlighter-rouge">UseMiddleware()</code> method available you can use in the configure method:</p>
 
 <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">app</span><span class="p">.</span><span class="n">UseMiddleware</span><span class="p">&lt;</span><span class="n">StopwatchMiddleware</span><span class="p">&gt;();</span>
 </code></pre></div></div>
@@ -341,7 +341,7 @@
 
 <p>This is the way you can provide additional functionality to a ASP.NET Core web through the request pipeline. You are able to manipulate the request or even the response using Middlewares.</p>
 
-<p>The <code class="highlighter-rouge">AuthenticationMiddleware</code> for example tries to request user information from the request. If it doesn’t find any, it asked the client about it by sending a specific response back to the client. If it finds some, it adds the information to the request context and makes it available to the entire application this way.</p>
+<p>The <code class="language-plaintext highlighter-rouge">AuthenticationMiddleware</code> for example tries to request user information from the request. If it doesn’t find any, it asked the client about it by sending a specific response back to the client. If it finds some, it adds the information to the request context and makes it available to the entire application this way.</p>
 
 <h2 id="what-else-can-we-do-using-middlewares">What else can we do using Middlewares?</h2>
 
@@ -380,7 +380,7 @@
 
 <p>The path “/map1” is a specific branch that continues the request pipeline inside. The same with “/map2”. Both maps have their own middleware configurations inside. All other not specified paths will follow the main branch.</p>
 
-<p>There is also a <code class="highlighter-rouge">MapWhen()</code> method to branch the pipeline based on a condition instead of branch based on a path:</p>
+<p>There is also a <code class="language-plaintext highlighter-rouge">MapWhen()</code> method to branch the pipeline based on a condition instead of branch based on a path:</p>
 
 <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">)</span>
 <span class="p">{</span>
@@ -409,7 +409,7 @@
 
 <p>You are also able to nest the maps to create child and grandchild branches if needed.</p>
 
-<p><code class="highlighter-rouge">Map()</code> or <code class="highlighter-rouge">MapWhen()</code> is used to provide a special API or resource based an a specific path or a specific condition. The ASP.NET Core HealthCheck API is done like this. It first uses <code class="highlighter-rouge">MapWhen()</code> to specify the port to use and then the <code class="highlighter-rouge">Map()</code> to set the path for the HealthCheck API, or it uses <code class="highlighter-rouge">Map()</code> only if no port is specified. At the end the HealthCheckMiddleware is used:</p>
+<p><code class="language-plaintext highlighter-rouge">Map()</code> or <code class="language-plaintext highlighter-rouge">MapWhen()</code> is used to provide a special API or resource based an a specific path or a specific condition. The ASP.NET Core HealthCheck API is done like this. It first uses <code class="language-plaintext highlighter-rouge">MapWhen()</code> to specify the port to use and then the <code class="language-plaintext highlighter-rouge">Map()</code> to set the path for the HealthCheck API, or it uses <code class="language-plaintext highlighter-rouge">Map()</code> only if no port is specified. At the end the HealthCheckMiddleware is used:</p>
 
 <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">UseHealthChecksCore</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="n">PathString</span> <span class="n">path</span><span class="p">,</span> <span class="kt">int</span><span class="p">?</span> <span class="n">port</span><span class="p">,</span> <span class="kt">object</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
 <span class="p">{</span>
@@ -433,7 +433,7 @@
   <p>Another question that is Middlewares related, I am not sure why I never seen anyone using IMiddleware instead of writing InvokeAsync manually?!!</p>
 </blockquote>
 
-<p><code class="highlighter-rouge">IMiddleware</code> is new in ASP.NET Core 2.0 and actually I never knew that it existed before he tweeted about it. I’ll definitely have a deeper look into <code class="highlighter-rouge">IMiddleware</code> and will write about it. Until that you should read Hishams really good post about it: <a href="http://www.hishambinateya.com/why-you-arenot-using-imiddleware">Why you aren’t using IMiddleware?</a></p>
+<p><code class="language-plaintext highlighter-rouge">IMiddleware</code> is new in ASP.NET Core 2.0 and actually I never knew that it existed before he tweeted about it. I’ll definitely have a deeper look into <code class="language-plaintext highlighter-rouge">IMiddleware</code> and will write about it. Until that you should read Hishams really good post about it: <a href="http://www.hishambinateya.com/why-you-arenot-using-imiddleware">Why you aren’t using IMiddleware?</a></p>
 
 <h2 id="update-on-aspnet-core-30">Update on ASP.NET Core 3.0</h2>
 
@@ -473,7 +473,7 @@
 <span class="p">});</span>
 </code></pre></div></div>
 
-<p>Yes. There is no <code class="highlighter-rouge">UseMvc()</code> used anymore, even if it still exists and is still working on the <code class="highlighter-rouge">IApplicationBiulder</code> level to not break existing code. Now there are new methods to activate ASP.NET Core features more granularly.</p>
+<p>Yes. There is no <code class="language-plaintext highlighter-rouge">UseMvc()</code> used anymore, even if it still exists and is still working on the <code class="language-plaintext highlighter-rouge">IApplicationBiulder</code> level to not break existing code. Now there are new methods to activate ASP.NET Core features more granularly.</p>
 
 <p>These are the most used new Map methods for ASP.NET Core 3.0:</p>
 
@@ -487,7 +487,7 @@
 
 <p>There are a lot more methods to define fallback endpoints, to map routes and HTTP methods to delegates and middlewares.</p>
 
-<p>If you want to create middlewares that work on all request, like the <code class="highlighter-rouge">StopWatchMiddleware</code>, this will work as before on the <code class="highlighter-rouge">IApplicationBuilder</code>. If you have a Middleware that should work on a specific path or route, you should create a Map method for it to map it to that route. It is not longer recommended to handle the route inside the middleware. With this approach the middlewares are a lot more generic and they will work on multiple routes with a single configuration.</p>
+<p>If you want to create middlewares that work on all request, like the <code class="language-plaintext highlighter-rouge">StopWatchMiddleware</code>, this will work as before on the <code class="language-plaintext highlighter-rouge">IApplicationBuilder</code>. If you have a Middleware that should work on a specific path or route, you should create a Map method for it to map it to that route. It is not longer recommended to handle the route inside the middleware. With this approach the middlewares are a lot more generic and they will work on multiple routes with a single configuration.</p>
 
 <p>I recently wrote a Middleware to provide a GraphQL endpoint in a ASP.NET Core application. I wrote a Middleware for it and I needed to rewrite it to follow the ASP.NET Core 3.0 way of routing. The old way would still work, but will handle the paths and routes separately from the new ASP.NET Core routing.</p>
 
@@ -599,9 +599,9 @@ title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
             <div class="col-12 col-md-2">
             <h5>Quick Links</h5>
             <ul>
-               <li><a href="http://localhost:4000#about">About</a></li>
-               <li><a href="http://localhost:4000#contact">Contact</a></li>
-               <li><a href="http://localhost:4000/sitemap.xml">Sitemap</a></li>               
+               <li><a href="https://girishgodage.in#about">About</a></li>
+               <li><a href="https://girishgodage.in#contact">Contact</a></li>
+               <li><a href="https://girishgodage.in/sitemap.xml">Sitemap</a></li>               
             </ul>
          </div>
             <div class="col-12 col-md-4 text-center text-lg-right mt-4 mt-lg-0">
@@ -616,24 +616,24 @@ title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
     </div>
 
         <!-- JavaScript files-->
-    <script src="http://localhost:4000/sitejs/jquery/jquery.min.js"></script>
-    <script src="http://localhost:4000/sitejs/popper.js/umd/popper.min.js"> </script>
-    <script src="http://localhost:4000/sitejs/bootstrap/js/bootstrap.min.js"></script>
-    <script src="http://localhost:4000/sitejs/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="http://localhost:4000/sitejs/owl.carousel/owl.carousel.min.js"></script>
-    <script src="http://localhost:4000/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
-    <script src="http://localhost:4000/sitejs/jquery.counterup/jquery.counterup.js"></script>
-    <script src="http://localhost:4000/js/front.js"></script>
-    <script src="http://localhost:4000/js/comment.js"></script>
+    <script src="https://girishgodage.in/sitejs/jquery/jquery.min.js"></script>
+    <script src="https://girishgodage.in/sitejs/popper.js/umd/popper.min.js"> </script>
+    <script src="https://girishgodage.in/sitejs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://girishgodage.in/sitejs/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="https://girishgodage.in/sitejs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="https://girishgodage.in/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="https://girishgodage.in/sitejs/jquery.counterup/jquery.counterup.js"></script>
+    <script src="https://girishgodage.in/js/front.js"></script>
+    <script src="https://girishgodage.in/js/comment.js"></script>
        <!-- Script pointing to search-script.js -->
-    <script src="http://localhost:4000/js/search-script.js" type="text/javascript"></script>
+    <script src="https://girishgodage.in/js/search-script.js" type="text/javascript"></script>
    
     <!-- Configuration -->
     <script>
          SimpleJekyllSearch({
          searchInput: document.getElementById('search-input'),
          resultsContainer: document.getElementById('results-container'),
-         json: 'http://localhost:4000/search.json'
+         json: 'https://girishgodage.in/search.json'
          })
          </script>
 

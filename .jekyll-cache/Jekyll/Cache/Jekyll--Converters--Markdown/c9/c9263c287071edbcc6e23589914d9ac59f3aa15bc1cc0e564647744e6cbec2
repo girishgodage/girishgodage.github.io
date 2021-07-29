@@ -1,0 +1,126 @@
+I"�<h3 id="what-is-simple-design">What is Simple Design?</h3>
+
+<p>** With agile and extreme programming, the focus is on keeping your design simple. How do you       keep your design simple? How do you decide whether your code is good enough? **</p>
+
+<p>It is very important to keep the design of your application simple.</p>
+
+<p>In almost all agile projects, the aim is to meet today’s requirements, with clean code.</p>
+
+<blockquote>
+  <p>You go for complex design, only when simple design does not solve your problem.</p>
+</blockquote>
+
+<h3 id="the-four-principles-of-simple-design">The Four Principles Of Simple Design</h3>
+
+<p>A software application is said to have a simple design if it:</p>
+
+<ul>
+  <li><strong>Runs all tests</strong></li>
+  <li><strong>Contains no duplication</strong></li>
+  <li><strong>Expresses intent of programmers</strong></li>
+  <li><strong>Minimizes number of classes and methods</strong></li>
+</ul>
+
+<p>Let’s now look at these aspects a little closely, by turn.</p>
+
+<h4 id="runs-all-tests">Runs All Tests</h4>
+
+<p>We want to keep running all the tests continuously, because we want the code to work, at all times.</p>
+
+<p>An important corollary of this principle is you need to have a large number of automation tests. All unit, integration and API tests must be automated.</p>
+
+<p>You should launch these tests as part of your build, and they should also be a part of Continuous Integration (CI).</p>
+
+<p>With CI, you commit code into the repository, all the tests are run, and immediate feedback is there for you to act on.</p>
+
+<p>Since the software is being tested all the time, it is stable.</p>
+
+<h4 id="contains-no-duplication">Contains No Duplication</h4>
+
+<p>The second principle stresses on the fact that your code should have as little duplication as possible.</p>
+
+<p>A good example is to create common components, whereever possible, in the design of large applications. This helps centralize the logic and allow other applications to reuse them.</p>
+
+<p>Why do we hate duplication?</p>
+
+<p>If there is a need for a change, the same change needs to repeated at all these locations. The result : More effort and also possibilities of more defects when you miss making the change in every location. That is a sign of bad design.</p>
+
+<h4 id="expresses-intent-of-programmers">Expresses Intent Of Programmers</h4>
+
+<p>Your code should be easy to read, and your design, simple to understand. This principle is also called <strong>Clarity Of Code</strong>.</p>
+
+<p>Have a look at the following piece of code:</p>
+
+<h5 id="example-01-v1">Example-01 v1</h5>
+
+<p><img src="/img/sw_design/1/Capture-09-01.png" alt="image info" /></p>
+
+<p>Do you understand what it does?</p>
+
+<p>Now look at the following version of the same program:</p>
+
+<h5 id="example-01-v2">Example-01 v2</h5>
+
+<p><img src="/img/sw_design/1/Capture-09-02.png" alt="image info" /></p>
+
+<p>Do you understand what it’s trying to do?</p>
+
+<p>Actually, Example-01 v2 results from applying the Four Principles of Simple Design to Example-01 v1.</p>
+
+<p>Start with creating good names for variables, methods and classes. That improves clarity.</p>
+
+<h4 id="minimize-number-of-classes-and-methods">Minimize number of classes and methods</h4>
+
+<p>You should have</p>
+
+<ul>
+  <li>Small methods</li>
+  <li>Small classes</li>
+  <li>Minimum number classes and methods</li>
+</ul>
+
+<p>Isn’t it simple.</p>
+
+<p>Lesser code you have, lesser code you have to maintain.</p>
+
+<p>Always aim to keep things simple.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>In this article, we looked at the four principles of simple design. These are the first steps to ensure that the design of your application remains simple. It lays the foundation for applying more advanced principles to improving your design.</p>
+
+<hr />
+<h3 id="software-design-principles">Software Design Principles</h3>
+
+<p>This is the article in a series of articles on important Software Design Principles:</p>
+
+<ul>
+  <li><a href="/blog/four-principles-of-simple-design" target="_blank">1 - Introduction to Four Principles Of Simple Design</a></li>
+  <li><a href="/blog/software-design-seperation-of-concerns-with-examples" target="_blank">2 - Software Design - Separation Of Concerns - with examples</a></li>
+  <li><a href="/blog/software-design-solid-principles" target="_blank">3 - Object Oriented Software Design - Solid Principles - with examples</a></li>
+  <li><a href="/blog/software-design-single-responsibility-principle" target="_blank">4 - Software Design - Single Responsibility Principle - with examples</a></li>
+  <li><a href="/blog/software-design-open-closed-principle" target="_blank">5 - Software Design - Open Closed Principle - with examples</a></li>
+  <li><a href="/blog/software-design-dependency-inversion-principle" target="_blank">6 - Software Design - What is Dependency Inversion Principle?</a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/four-principles-of-simple-design" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/software-design-seperation-of-concerns-with-examples" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

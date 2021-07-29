@@ -1,0 +1,374 @@
+I"��<h2 id="the-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-1">The service desk with bots using Amazon Lex and Amazon Connect (Part 1)</h2>
+
+<p>What! Is this guy for real? Does he really think he can replace the front line of IT with pre-canned conversations?” I must admit, it’s a bold statement. The IT Service Desk has been around for years and has been the foot in the door for most of us in the IT industry. It’s the face of IT operations and plays an important role in ensuring an organisation’s staff can perform to the best of their abilities. But what if we could take some of the repetitive tasks the service desk performs and automate them? Not only would we be saving on head count costs, we would be able to ensure correct policies and procedures are followed to uphold security and compliance. The aim of this blog is to provide a working example of the automation of one service desk scenario to show how easy and accessible the technology is, and how it can be applied to various use cases.</p>
+
+<p>To make it easier to follow along, I’ve broken this blog up into a number of parts. Part 1 will focus on the high-level architecture for the scenario and begin creating the Lex chatbot.</p>
+
+<p><img src="/img/awscloud/19/selfservicedora.png" alt="image info" /></p>
+
+<h2 id="scenario">Scenario</h2>
+<p>Arguably, the most common service desk request is the password reset. While this is a pretty simple issue for the service desk to resolve, many service desk staff seem to skip over, or not realise the importance of user verification. Both the simple resolution and the strict verification requirement make this a prime scenario to automate.</p>
+
+<h2 id="architecture">Architecture</h2>
+<p>So what does the architecture look like? The diagram below dictates the expected process flow. Let’s step through each item in the diagram.</p>
+
+<p><img src="/img/awscloud/19/amazon-connect-page-1-1.png" alt="image info" /></p>
+
+<h3 id="amazon-connect">Amazon Connect</h3>
+<p>The process begins when the user calls the service desk and requests to have their password reset. In our architecture, the service desk uses Amazon Connect which is a cloud based customer contact centre service, allowing you to create contact flows, manage agents, and track performance metrics. We’re also able to plug in an Amazon Lex chatbot to handle user requests and offload the call to a human if the chatbot is unable to understand the user’s intent.</p>
+
+<h3 id="amazon-lex">Amazon Lex</h3>
+<p>After the user has stated their request to change their password, we need to begin the user verification process. Their intent is recognised by our Amazon Lex chatbot, which initiates the dialog for the user verification process to ensure they are who they really say they are.</p>
+
+<h3 id="aws-lambda">AWS Lambda</h3>
+<p>After the user has provided verification information, AWS Lambda, which is a compute on demand service, is used to validate the user’s input and verify it against internal records. To do this, Lambda interrogates Active Directory to validate the user.</p>
+
+<h3 id="amazon-sns">Amazon SNS</h3>
+<p>Once the user has been validated, their password is reset to a random string in Active Directory and the password is messaged to the user’s phone using Amazon’s Simple Notification Service. This completes the interaction.</p>
+
+<h2 id="building-our-chatbot">Building our Chatbot</h2>
+<p>Before we get into the details, it’s worth mentioning that the aim of this blog is to convey the technology capability. There’s many ways of enhancing the solution or improving validation of user input that I’ve skipped over, so while this isn’t a finished production ready product, it’s certainly a good foundation to begin building an automated call centre.</p>
+
+<p>To begin, let’s start with building our Chatbot in <strong>Amazon Lex</strong>. In the Amazon Console, navigate to Amazon Lex. You’ll notice it’s only available in Ireland and US East. As Amazon Connect and my Active Directory environment is also in US East, that’s the region I’ve chosen.</p>
+
+<p>Go ahead and select <strong>Create Bot</strong>, then choose to create your own <strong>Custom Bot</strong>. I’ve named mine “<strong>UserAdministration</strong>”. Choose an Output voice and set the session timeout to 5 minutes. An IAM Role will automatically be created on your behalf to allow your bot to use Amazon Polly for speech. For COPPA, select <strong>No</strong>, then select <strong>Create</strong>.</p>
+
+<p><img src="/img/awscloud/19/custombot.png" alt="image info" /></p>
+
+<p>Once the bot has been created, we need to identify the user action expected to be performed, which is known as an intent. A bot can have multiple intents, but for our scenario, we’re only creating one, which is the password reset intent. Go ahead and select <strong>Create Intent</strong>, then in the Add Intent window, select <strong>Create new intent</strong>. My intent name is <strong>“ResetPW”</strong>. Select <strong>Add</strong>, which should add the intent to your bot. We now need to specify some expected sample utterances, which are phrases the user can use to trigger the Reset Password intent. There’s quite a few that could be listed here, but I’m going to limit mine to the following:</p>
+
+<ul>
+  <li><strong>I forgot my password</strong></li>
+  <li><strong>I need to reset my password</strong></li>
+  <li><strong>Can you please reset my password</strong></li>
+</ul>
+
+<p><img src="/img/awscloud/19/utterances.png" alt="image info" /></p>
+
+<p>The next section is the configuration for the Lambda validation function. Let’s skip past this for the time being and move onto the slots. Slots are used to collect information from the user. In our case, we need to collect verification information to ensure the user is who they say they are. The verification information collected is going to vary between environments. I’m looking to collect the following to verify against Active Directory:</p>
+
+<ul>
+  <li><strong>User ID</strong> – In my case, this is a 6-digit employee number that is also the sAMAccountName in Active Directory</li>
+  <li><strong>User’s birthday</strong> – This is a custom attribute in my Active Directory</li>
+  <li><strong>Month started</strong> – This is a custom attribute in my Active Directory</li>
+</ul>
+
+<p>In addition to this, it’s also worth collecting and verifying the user’s mobile number. This can be done by passing the caller ID information from Amazon Connect, however we’ll skip this, as the bulk of our testing will be text chat and we need to ensure we have a consistent experience.</p>
+
+<p>To define a slot, we need to specify three items:</p>
+
+<ul>
+  <li><strong>Name of the slot</strong> – Think of this as the variable name.</li>
+  <li><strong>Slot type</strong> – The data type expected. This is used to train the machine learning model to recognise the value for the slot.</li>
+  <li><strong>Prompt</strong> – How the user is prompted to provide the value sought.</li>
+</ul>
+
+<p>Many slot types are provided by Amazon, two of which has been used in this scenario. For “MonthStarted”, I’ve decided to create my own custom slot type, as the in-built “AMAZON.Month” slot type wasn’t strictly enforcing recognisable months. To create your own slot type, press the <strong>plus</strong> symbol on the left-hand side of the page next to <strong>Slot Types</strong>, then provide a name and description for your slot type. Select to <strong>Restrict to Slot values and Synonyms</strong>, then enter each month and its abbreviation. Once completed, click Add slot to intent.</p>
+
+<p><img src="/img/awscloud/19/monthsofyear.png" alt="image info" /></p>
+
+<p>Once the custom slot type has been configured, it’s time to set up the slots for the intent. The screenshot below shows the slots that have been configured and the expected order to prompt the user.</p>
+
+<p><img src="/img/awscloud/19/slots.png" alt="image info" /></p>
+
+<p>Last step (for this blog post), is to have the bot verify the information collected is correct. Tick the Confirmation Prompt box and in the Confirm text box provided, enter the following:</p>
+
+<p>Just to confirm, your user ID is {UserID}, your Date of Birth is {DOB} and the month you started is {MonthStarted}. Is this correct?</p>
+
+<p>For the Cancel text box, enter the following:
+Sorry about that. Please call back and try again.</p>
+
+<p><img src="/img/awscloud/19/confirmation.png" alt="image info" /></p>
+
+<p>Be sure to leave the <strong>fulfillment</strong> to <strong>Return parameters to client</strong> and hit <strong>Save Intent</strong>.</p>
+
+<p>Great! We’ve built the bare basics of our bot. It doesn’t really do much yet, but let’s take it for a spin anyway and get a feel for what to expect. In the top right-hand corner, there’s a <strong>build</strong> button. Go ahead and click the button.</p>
+
+<p>This takes some time, as building a bot triggers machine learning and creates the models for your bot. Once completed, the bot should be available to text or voice chat on the right side of the page. As you move through the prompts, you can see at the bottom the slots getting populated with the expected format. i.e. 14th April 1983 is converted to 1983-04-14.</p>
+
+<p><img src="/img/awscloud/19/chatlog.png" alt="image info" /></p>
+
+<p>So at the moment, our bot doesn’t do much but collect the information we need. Admittedly, the conversation is a bit robotic as well. In the next few blogs, we’ll give the bot a bit more of a personality, we’ll do some input validation, and we’ll begin to integrate with Active Directory. Once we’ve got our bot working as expected, we’ll bolt on Amazon Connect to allow users to dial in and converse with our new bot.</p>
+
+<h2 id="creating-the-lambda-initialisation-and-validation-function">Creating the Lambda initialisation and validation function</h2>
+
+<p>As data validation requires compute, we’ll need to start by creating an AWS Lambda function. Head over to the AWS console, then navigate to the AWS Lambda page. Once you’re there, select Create Function and choose to Author from Scratch then specify the following:</p>
+
+<ul>
+  <li><strong>Name</strong>: ResetPWCheck</li>
+  <li><strong>Runtime</strong>: Python 2.7 (it’s really a matter of preference)</li>
+  <li><strong>Role</strong>: I use an existing Out of the Box role, “Lambda_basic_execution”, as I only need access to CloudWatch logs for debugging.</li>
+</ul>
+
+<p><img src="/img/awscloud/19/createfunction.png" alt="image info" /></p>
+
+<p>Once you’ve populated all the fields, go ahead and select Create Function. The script we’ll be using is provided (further down) in this blog, however before we go through the script in detail, there are two items worth mentioning.</p>
+
+<h3 id="input-events-and-response-formats">Input Events and Response Formats</h3>
+<p>It’s well worth familiarising yourself with the page on Lambda Function Input Event and Response Formats in the Lex Developer guide. Every time input is provided to Lex, it invokes the Lambda initalisation and validation function.
+<em><strong>For example</strong>, when I tell my chatbot “I need to reset my password”, the lambda function is invoked and the following event is passed:</em></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+    <span class="s">"currentIntent"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"slots"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">"DOB"</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+            <span class="s">"MonthStarted"</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+            <span class="s">"UserID"</span><span class="p">:</span> <span class="bp">None</span>
+        <span class="p">},</span>
+        <span class="s">"confirmationStatus"</span><span class="p">:</span> <span class="s">"None"</span><span class="p">,</span>
+        <span class="s">"name"</span><span class="p">:</span> <span class="s">"ResetPW"</span><span class="p">,</span>
+        <span class="s">"slotDetails"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">"DOB"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s">"originalValue"</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+                <span class="s">"resolutions"</span><span class="p">:</span> <span class="p">[]</span>
+            <span class="p">},</span>
+            <span class="s">"MonthStarted"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s">"originalValue"</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+                <span class="s">"resolutions"</span><span class="p">:</span> <span class="p">[]</span>
+            <span class="p">},</span>
+            <span class="s">"UserID"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s">"originalValue"</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+                <span class="s">"resolutions"</span><span class="p">:</span> <span class="p">[]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s">"userId"</span><span class="p">:</span> <span class="s">"sd0xe8xzbgf1kyvtbnzsuymxky2a5bnq"</span><span class="p">,</span>
+    <span class="s">"bot"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"alias"</span><span class="p">:</span> <span class="s">"$LATEST"</span><span class="p">,</span>
+        <span class="s">"version"</span><span class="p">:</span> <span class="s">"$LATEST"</span><span class="p">,</span>
+        <span class="s">"name"</span><span class="p">:</span> <span class="s">"UserAdministration"</span>
+    <span class="p">},</span>
+    <span class="s">"inputTranscript"</span><span class="p">:</span> <span class="s">"I need to reset my password"</span><span class="p">,</span>
+    <span class="s">"requestAttributes"</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
+    <span class="s">"invocationSource"</span><span class="p">:</span> <span class="s">"DialogCodeHook"</span><span class="p">,</span>
+    <span class="s">"outputDialogMode"</span><span class="p">:</span> <span class="s">"Text"</span><span class="p">,</span>
+    <span class="s">"messageVersion"</span><span class="p">:</span> <span class="s">"1.0"</span><span class="p">,</span>
+    <span class="s">"sessionAttributes"</span><span class="p">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Amazon Lex expects a response from the Lambda function in JSON format that provides it with the next dialog action.</p>
+
+<h3 id="persisting-variables-with-session-attributes">Persisting Variables with Session Attributes</h3>
+
+<p>There are many ways to determine within your Lambda function where you’re up to in your chat dialog, however my preferred method is to pass state information within the SessionAttributes object of the input event and response as a key/value pair. The SessionAttributes can persist between invocations of the Lambda function (every time input is provided to the chatbot), however you must remember to collect and pass the attributes between input and responses to ensure it persists.</p>
+
+<h3 id="input-validation-code">Input Validation Code</h3>
+<p>With that out of the way, let’s begin looking at the code. The below script is what I’ve used which you can simply copy and paste, assuming you’re using the same slot and intent names in your Lex bot that were used.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">elicit_slot</span><span class="p">(</span><span class="n">messageType</span><span class="p">,</span> <span class="n">messageContent</span><span class="p">,</span> <span class="n">slots</span><span class="p">,</span> <span class="n">slotToElicit</span><span class="p">,</span> <span class="n">completed</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">"sessionAttributes"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">"Completed"</span><span class="p">:</span> <span class="n">completed</span>
+        <span class="p">},</span>
+        <span class="s">"dialogAction"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">"type"</span><span class="p">:</span> <span class="s">"ElicitSlot"</span><span class="p">,</span>
+            <span class="s">"message"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s">"contentType"</span><span class="p">:</span> <span class="n">messageType</span><span class="p">,</span>
+                <span class="s">"content"</span><span class="p">:</span> <span class="n">messageContent</span>
+            <span class="p">},</span>
+            <span class="s">"intentName"</span><span class="p">:</span> <span class="s">"ResetPW"</span><span class="p">,</span>
+            <span class="s">"slots"</span><span class="p">:</span> <span class="n">slots</span><span class="p">,</span>
+            <span class="s">"slotToElicit"</span><span class="p">:</span> <span class="n">slotToElicit</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="k">def</span> <span class="nf">delegate_slot</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="n">completed</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">"sessionAttributes"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">"Completed"</span><span class="p">:</span> <span class="n">completed</span>
+        <span class="p">},</span>
+        <span class="s">"dialogAction"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">"type"</span><span class="p">:</span> <span class="s">"Delegate"</span><span class="p">,</span>
+            <span class="s">"slots"</span><span class="p">:</span> <span class="n">slots</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="k">def</span> <span class="nf">chkUserId</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="n">sessionAttributes</span><span class="p">):</span>
+    <span class="k">if</span><span class="p">((</span><span class="n">slots</span><span class="p">[</span><span class="s">'UserID'</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">)</span> <span class="ow">or</span> <span class="p">((</span><span class="n">slots</span><span class="p">[</span><span class="s">"UserID"</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">slots</span><span class="p">[</span><span class="s">"UserID"</span><span class="p">])</span> <span class="o">!=</span> <span class="mi">6</span><span class="p">))):</span>
+        <span class="n">messageContent</span> <span class="o">=</span> <span class="s">"That format seems incorrect. Let's try again. What is your user id?"</span>
+        <span class="k">return</span> <span class="n">elicit_slot</span><span class="p">(</span><span class="s">"PlainText"</span><span class="p">,</span> <span class="n">messageContent</span><span class="p">,</span> <span class="n">slots</span><span class="p">,</span> <span class="s">"UserID"</span><span class="p">,</span> <span class="s">"None"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">delegate_slot</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="s">"userid"</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">chkDob</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="n">sessionAttributes</span><span class="p">):</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">slots</span><span class="p">[</span><span class="s">"DOB"</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">):</span>
+        <span class="n">messageContent</span> <span class="o">=</span> <span class="s">"That format seems incorrect. Let's try again. What is your Date of Birth?"</span>
+        <span class="k">return</span> <span class="n">elicit_slot</span><span class="p">(</span><span class="s">"PlainText"</span><span class="p">,</span> <span class="n">messageContent</span><span class="p">,</span> <span class="n">slots</span><span class="p">,</span> <span class="s">"DOB"</span><span class="p">,</span> <span class="s">"userid"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">delegate_slot</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="s">"dob"</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">chkMonth</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="n">sessionAttributes</span><span class="p">,</span> <span class="n">confirmation</span><span class="p">,</span> <span class="n">outputDialogMode</span><span class="p">):</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">slots</span><span class="p">[</span><span class="s">"MonthStarted"</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">):</span>
+        <span class="n">messageContent</span> <span class="o">=</span> <span class="s">"That month seems incorrect. Let's try again. What month did you start?"</span>
+        <span class="k">return</span> <span class="n">elicit_slot</span><span class="p">(</span><span class="s">"PlainText"</span><span class="p">,</span> <span class="n">messageContent</span><span class="p">,</span> <span class="n">slots</span><span class="p">,</span> <span class="s">"MonthStarted"</span><span class="p">,</span> <span class="s">"dob"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">confirmIntent</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="n">sessionAttributes</span><span class="p">,</span> <span class="n">confirmation</span><span class="p">,</span> <span class="n">outputDialogMode</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">confirmIntent</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="n">sessionAttributes</span><span class="p">,</span> <span class="n">confirmation</span><span class="p">,</span> <span class="n">outputDialogMode</span><span class="p">):</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">confirmation</span> <span class="o">==</span> <span class="s">"None"</span><span class="p">):</span>
+        <span class="n">endData</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">"dialogAction"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s">"type"</span><span class="p">:</span> <span class="s">"ConfirmIntent"</span><span class="p">,</span>
+                <span class="s">"message"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="p">},</span>
+                <span class="s">"intentName"</span><span class="p">:</span> <span class="s">"ResetPW"</span><span class="p">,</span>
+                <span class="s">"slots"</span><span class="p">:</span> <span class="n">slots</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">outputDialogMode</span> <span class="o">==</span> <span class="s">"Voice"</span><span class="p">):</span>
+            <span class="n">endData</span><span class="p">[</span><span class="s">"dialogAction"</span><span class="p">][</span><span class="s">"message"</span><span class="p">][</span><span class="s">"contentType"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"SSML"</span>
+            <span class="n">endData</span><span class="p">[</span><span class="s">"dialogAction"</span><span class="p">][</span><span class="s">"message"</span><span class="p">][</span><span class="s">"content"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"&lt;speak&gt;Just to confirm, your user id is &lt;say-as interpret-as=</span><span class="se">\"</span><span class="s">digits</span><span class="se">\"</span><span class="s">&gt;"</span> <span class="o">+</span> <span class="n">slots</span><span class="p">[</span><span class="s">"UserID"</span><span class="p">]</span> <span class="o">+</span> \
+                <span class="s">"&lt;/say-as&gt;, your date of birth is "</span> <span class="o">+</span> \
+                <span class="n">slots</span><span class="p">[</span><span class="s">"DOB"</span><span class="p">]</span> <span class="o">+</span> <span class="s">" and the month of your start date is "</span> <span class="o">+</span> \
+                <span class="n">slots</span><span class="p">[</span><span class="s">"MonthStarted"</span><span class="p">]</span> <span class="o">+</span> <span class="s">". Is that correct?&lt;/speak&gt;"</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">endData</span><span class="p">[</span><span class="s">"dialogAction"</span><span class="p">][</span><span class="s">"message"</span><span class="p">][</span><span class="s">"contentType"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"PlainText"</span>
+            <span class="n">endData</span><span class="p">[</span><span class="s">"dialogAction"</span><span class="p">][</span><span class="s">"message"</span><span class="p">][</span><span class="s">"content"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"Just to confirm, your user id is "</span> <span class="o">+</span> <span class="n">slots</span><span class="p">[</span><span class="s">"UserID"</span><span class="p">]</span> <span class="o">+</span> \
+                <span class="s">", your date of birth is "</span> <span class="o">+</span> \
+                <span class="n">slots</span><span class="p">[</span><span class="s">"DOB"</span><span class="p">]</span> <span class="o">+</span> <span class="s">" and the month of your start date is "</span> <span class="o">+</span> \
+                <span class="n">slots</span><span class="p">[</span><span class="s">"MonthStarted"</span><span class="p">]</span> <span class="o">+</span> <span class="s">". Is that correct?"</span>
+    <span class="k">elif</span><span class="p">((</span><span class="n">confirmation</span> <span class="o">==</span> <span class="s">"Denied"</span><span class="p">)):</span>
+        <span class="n">endData</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">"dialogAction"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s">"type"</span><span class="p">:</span> <span class="s">"Close"</span><span class="p">,</span>
+                <span class="s">"fulfillmentState"</span><span class="p">:</span> <span class="s">"Failed"</span><span class="p">,</span>
+                <span class="s">"message"</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s">"contentType"</span><span class="p">:</span> <span class="s">"PlainText"</span><span class="p">,</span>
+                    <span class="s">"content"</span><span class="p">:</span> <span class="s">"Please call back and try again."</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">endData</span> <span class="o">=</span> <span class="n">delegate_slot</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="s">"confirmed"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">endData</span>
+
+
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">slots</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s">'currentIntent'</span><span class="p">][</span><span class="s">'slots'</span><span class="p">]</span>
+    <span class="n">sessionAttributes</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s">'sessionAttributes'</span><span class="p">]</span>
+    <span class="n">confirmation</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s">'currentIntent'</span><span class="p">][</span><span class="s">"confirmationStatus"</span><span class="p">]</span>
+    <span class="n">outputDialogMode</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s">"outputDialogMode"</span><span class="p">]</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">sessionAttributes</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="s">"Completed"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sessionAttributes</span><span class="p">):</span>
+        <span class="n">messageContent</span> <span class="o">=</span> <span class="s">"Sure, i can help with that! But first, i need to verify your identity. What is your user id?"</span>
+        <span class="k">return</span> <span class="n">elicit_slot</span><span class="p">(</span><span class="s">"PlainText"</span><span class="p">,</span> <span class="n">messageContent</span><span class="p">,</span> <span class="n">slots</span><span class="p">,</span> <span class="s">"UserID"</span><span class="p">,</span> <span class="s">"None"</span><span class="p">)</span>
+    
+    <span class="k">if</span><span class="p">(</span><span class="n">sessionAttributes</span><span class="p">[</span><span class="s">"Completed"</span><span class="p">]</span> <span class="o">==</span> <span class="s">"None"</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">chkUserId</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="n">sessionAttributes</span><span class="p">)</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">sessionAttributes</span><span class="p">[</span><span class="s">"Completed"</span><span class="p">]</span> <span class="o">==</span> <span class="s">"userid"</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">chkDob</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="n">sessionAttributes</span><span class="p">)</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">sessionAttributes</span><span class="p">[</span><span class="s">"Completed"</span><span class="p">]</span> <span class="o">==</span> <span class="s">"dob"</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">chkMonth</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="n">sessionAttributes</span><span class="p">,</span> <span class="n">confirmation</span><span class="p">,</span> <span class="n">outputDialogMode</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Let’s break it down.</p>
+
+<p>When the lambda function is first invoked, we check to see if any state is set in the sessionAttributes. If not, we can assume this is the first time the lambda function is invoked and as a result, provide a welcoming response while requesting the User’s ID. To ensure the user isn’t welcomed again, we set a session state so the Lambda function knows to move to User ID validation when next invoked. This is done by setting the “Completed” : “None” key/value pair in the response SessionAttributes.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span><span class="p">(</span><span class="n">sessionAttributes</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="s">"Completed"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sessionAttributes</span><span class="p">):</span>
+        <span class="n">messageContent</span> <span class="o">=</span> <span class="s">"Sure, i can help with that! But first, i need to verify your identity. What is your user id?"</span>
+        <span class="k">return</span> <span class="n">elicit_slot</span><span class="p">(</span><span class="s">"PlainText"</span><span class="p">,</span> <span class="n">messageContent</span><span class="p">,</span> <span class="n">slots</span><span class="p">,</span> <span class="s">"UserID"</span><span class="p">,</span> <span class="s">"None"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Next, we check the User ID. You’ll notice the chkUserId function checks for two things; That the slot is populated, and if it is, the length of the field. Because the slot type is AMAZON.Number, any non-numeric characters that are entered will be rejected by the slot. If this occurs, the slot will be left empty, hence this is something we’re looking out for. We also want to ensure the User ID is 6 digits, otherwise it is considered invalid. If the input is correct, we set the session state key/value pair to indicate User ID validation is complete then allow the dialog to continue, otherwise we request the user to re-enter their User ID.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">chkUserId</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="n">sessionAttributes</span><span class="p">):</span>
+    <span class="k">if</span><span class="p">((</span><span class="n">slots</span><span class="p">[</span><span class="s">'UserID'</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">)</span> <span class="ow">or</span> <span class="p">((</span><span class="n">slots</span><span class="p">[</span><span class="s">"UserID"</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">slots</span><span class="p">[</span><span class="s">"UserID"</span><span class="p">])</span> <span class="o">!=</span> <span class="mi">6</span><span class="p">))):</span>
+        <span class="n">messageContent</span> <span class="o">=</span> <span class="s">"That format seems incorrect. Let's try again. What is your user id?"</span>
+        <span class="k">return</span> <span class="n">elicit_slot</span><span class="p">(</span><span class="s">"PlainText"</span><span class="p">,</span> <span class="n">messageContent</span><span class="p">,</span> <span class="n">slots</span><span class="p">,</span> <span class="s">"UserID"</span><span class="p">,</span> <span class="s">"None"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">delegate_slot</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="s">"userid"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Next, we check the Date of Birth. Because the slot type is strict regarding input, we don’t do much validation here. An utterance for this slot type generally maps to a complete date: YYYY-MM-DD. For validation purpose, we’re just looking for an empty slot. Like the User ID check, we set the session state and allow the dialog to continue if all looks good.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">chkDob</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="n">sessionAttributes</span><span class="p">):</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">slots</span><span class="p">[</span><span class="s">"DOB"</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">):</span>
+        <span class="n">messageContent</span> <span class="o">=</span> <span class="s">"That format seems incorrect. Let's try again. What is your Date of Birth?"</span>
+        <span class="k">return</span> <span class="n">elicit_slot</span><span class="p">(</span><span class="s">"PlainText"</span><span class="p">,</span> <span class="n">messageContent</span><span class="p">,</span> <span class="n">slots</span><span class="p">,</span> <span class="s">"DOB"</span><span class="p">,</span> <span class="s">"userid"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">delegate_slot</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="s">"dob"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Finally, we check the last slot which is the Month Started. Assuming the input for the month started is correct, we then confirm the intent by reading all the slot values back to the user and asking if it’s correct. You’ll notice here that there’s a bit of logic to determine if the user is using voice or text to interact with Lex. If voice is used, we use Speech Synthesis Markup Language (SSML) to ensure the UserID value is read as digits, rather than as the full number.
+If the user is happy with the slot values, the validation completes and Lex then moves to the next Lambda function to fulfil the intent (next blog). If the user isn’t happy with the slot values, the lambda function exits telling the user to call back and try again.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">confirmIntent</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="n">sessionAttributes</span><span class="p">,</span> <span class="n">confirmation</span><span class="p">,</span> <span class="n">outputDialogMode</span><span class="p">):</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">confirmation</span> <span class="o">==</span> <span class="s">"None"</span><span class="p">):</span>
+        <span class="n">endData</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">"dialogAction"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s">"type"</span><span class="p">:</span> <span class="s">"ConfirmIntent"</span><span class="p">,</span>
+                <span class="s">"message"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="p">},</span>
+                <span class="s">"intentName"</span><span class="p">:</span> <span class="s">"ResetPW"</span><span class="p">,</span>
+                <span class="s">"slots"</span><span class="p">:</span> <span class="n">slots</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">outputDialogMode</span> <span class="o">==</span> <span class="s">"Voice"</span><span class="p">):</span>
+            <span class="n">endData</span><span class="p">[</span><span class="s">"dialogAction"</span><span class="p">][</span><span class="s">"message"</span><span class="p">][</span><span class="s">"contentType"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"SSML"</span>
+            <span class="n">endData</span><span class="p">[</span><span class="s">"dialogAction"</span><span class="p">][</span><span class="s">"message"</span><span class="p">][</span><span class="s">"content"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"&lt;speak&gt;Just to confirm, your user id is &lt;say-as interpret-as=</span><span class="se">\"</span><span class="s">digits</span><span class="se">\"</span><span class="s">&gt;"</span> <span class="o">+</span> <span class="n">slots</span><span class="p">[</span><span class="s">"UserID"</span><span class="p">]</span> <span class="o">+</span> \
+                <span class="s">"&lt;/say-as&gt;, your date of birth is "</span> <span class="o">+</span> \
+                <span class="n">slots</span><span class="p">[</span><span class="s">"DOB"</span><span class="p">]</span> <span class="o">+</span> <span class="s">" and the month of your start date is "</span> <span class="o">+</span> \
+                <span class="n">slots</span><span class="p">[</span><span class="s">"MonthStarted"</span><span class="p">]</span> <span class="o">+</span> <span class="s">". Is that correct?&lt;/speak&gt;"</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">endData</span><span class="p">[</span><span class="s">"dialogAction"</span><span class="p">][</span><span class="s">"message"</span><span class="p">][</span><span class="s">"contentType"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"PlainText"</span>
+            <span class="n">endData</span><span class="p">[</span><span class="s">"dialogAction"</span><span class="p">][</span><span class="s">"message"</span><span class="p">][</span><span class="s">"content"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"Just to confirm, your user id is "</span> <span class="o">+</span> <span class="n">slots</span><span class="p">[</span><span class="s">"UserID"</span><span class="p">]</span> <span class="o">+</span> \
+                <span class="s">", your date of birth is "</span> <span class="o">+</span> \
+                <span class="n">slots</span><span class="p">[</span><span class="s">"DOB"</span><span class="p">]</span> <span class="o">+</span> <span class="s">" and the month of your start date is "</span> <span class="o">+</span> \
+                <span class="n">slots</span><span class="p">[</span><span class="s">"MonthStarted"</span><span class="p">]</span> <span class="o">+</span> <span class="s">". Is that correct?"</span>
+    <span class="k">elif</span><span class="p">((</span><span class="n">confirmation</span> <span class="o">==</span> <span class="s">"Denied"</span><span class="p">)):</span>
+        <span class="n">endData</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">"dialogAction"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s">"type"</span><span class="p">:</span> <span class="s">"Close"</span><span class="p">,</span>
+                <span class="s">"fulfillmentState"</span><span class="p">:</span> <span class="s">"Failed"</span><span class="p">,</span>
+                <span class="s">"message"</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s">"contentType"</span><span class="p">:</span> <span class="s">"PlainText"</span><span class="p">,</span>
+                    <span class="s">"content"</span><span class="p">:</span> <span class="s">"Please call back and try again."</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">endData</span> <span class="o">=</span> <span class="n">delegate_slot</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="s">"confirmed"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">endData</span>
+</code></pre></div></div>
+
+<p>Okay, now that our Lambda function is finished, we need to enable it as a code hook for initialisation and validation. Head over to your Lex bot, select the “ResetPW” intent, then tick the box under <strong>Lambda initialisation and validation</strong> and select your Lambda function. A prompt will be given to provide permissions to allow your Lex bot to invoke the lambda function. Select <strong>OK</strong>.</p>
+
+<p><img src="/img/awscloud/19/lambdaval.png" alt="image info" /></p>
+
+<p>Let’s hit Build on the chatbot, and test it out.</p>
+
+<p><img src="/img/awscloud/19/chatlog2.png" alt="image info" /></p>
+
+<p>So, we’ve managed to make the conversation a bit more human like and we can now detect invalid input. If you use the microphone to chat with your bot, you’ll notice the User ID value is read as digits. That’s it for this blog. Next blog, we’ll integrate Active Directory and actually get a password reset and sent via SNS to a mobile phone.</p>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-1" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/create-service-desk-with-bots-using-amazon-lex-and-amazon-connect-part-2" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

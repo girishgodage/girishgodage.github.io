@@ -1,0 +1,138 @@
+I"`<h2 id="amazon-forecast----grow-your-business-by-forecasting-its-future">Amazon Forecast -  Grow your business by forecasting its future</h2>
+
+<hr />
+
+<p>Want to predict your upcoming sales revenue??</p>
+
+<p>Want to know appropriate inventory levels of a particular item to stock??</p>
+
+<p>Want to predict the right level of available resources, such as staffing levels, raw material etc. to maximize revenue and control costs??</p>
+
+<hr />
+
+<p>To run a successful business, you should be ready for the future. No matter the scale of the business, you should be ready for any circumstance. Almost all companies have been facing the problem of predicting its sales revenue, inventory management, workforce and resource management, financial planning, supply chain, healthcare, etc.</p>
+
+<p>Before machine learning, people could only predict based on their experiences. But obviously, that cannot be precise. Since all the companies have been storing all these transactions (sales figures, inventory data) for a long time, this can be used to forecast the future using machine learning.</p>
+
+<blockquote>
+  <p>A good forecaster is not smarter than everyone else. He merely has his ignorance better organized.</p>
+</blockquote>
+
+<h2 id="amazon-forecast">Amazon Forecast:</h2>
+
+<p>Amazon Forecast is a fully managed service that uses machine learning to deliver highly accurate forecasts. It can achieve forecasting accuracy levels that used to take months of engineering in as little as a few hours with no machine learning experience to get started.</p>
+
+<p><em>Amazon Forecast supports the following dataset domains:</em></p>
+
+<ul>
+  <li><strong>RETAIL Domain</strong> — For retail demand forecasting</li>
+  <li><strong>INVENTORY_PLANNING Domain</strong> — For supply chain and inventory planning</li>
+  <li><strong>EC2 CAPACITY Domain</strong> — For forecasting Amazon Elastic Compute Cloud (Amazon EC2) capacity</li>
+  <li><strong>WORK_FORCE Domain</strong> — For workforce planning</li>
+  <li><strong>WEB_TRAFFIC Domain</strong> — For estimating future web traffic</li>
+  <li><strong>METRICS Domain</strong> — For forecasting metrics, such as revenue and cash flow</li>
+  <li><strong>CUSTOM Domain</strong> — For all other types of time-series forecasting</li>
+</ul>
+
+<h3 id="steps">Steps:</h3>
+
+<ul>
+  <li><strong>Create Dataset and Import data</strong></li>
+  <li><strong>Train a Predictor</strong></li>
+  <li><strong>Generate Forecasts</strong></li>
+</ul>
+
+<h3 id="problem-statement-download-dataset">Problem Statement (<a href="https://drive.google.com/open?id=1vel5vEv12hW5QM8SMiThbFPKoAbpNL7F">Download Dataset</a>):</h3>
+
+<p>Predicting the sales of an item for the next 10 days based on past sales records for 30 months.</p>
+
+<h3 id="create-dataset-and-import-data">Create Dataset and Import data:</h3>
+
+<p>To Start Forecasting your data, Upload it to an S3 Bucket.</p>
+
+<p>Open <strong>Amazon Forecast console</strong> and select “Create Dataset Group”.</p>
+
+<p>To create a dataset group, there are 3 more steps:</p>
+
+<ol>
+  <li><strong>Create Dataset Group</strong></li>
+  <li><strong>Create Target Time Series Dataset</strong></li>
+  <li><strong>Import Target Time Series Data</strong></li>
+</ol>
+
+<h3 id="1create-dataset-group">1.Create Dataset Group:</h3>
+
+<p>You can give any Dataset Group Name and since our dataset is of forecasting retail we have selected Domain as “Retail”.</p>
+
+<p><img src="/img/awscloud/11/1_T0zQWSxDGPxfySrGi_sdhw.png" alt="image info" /></p>
+
+<h3 id="2create-target-time-series-dataset">2.Create Target Time Series Dataset:</h3>
+
+<p>In this step, you have to describe the Data scheme and the Frequency of your data needs to be given to Amazon Forecast.</p>
+
+<p><img src="/img/awscloud/11/1_HxGfagvGpJOp0f11pnzeEQ.png" alt="image info" /></p>
+
+<h3 id="3import-target-time-series-data">3.Import Target Time Series Data:</h3>
+
+<p>In this step, Give the timestamp format of your dataset. It has to be a form of “yyyy-MM-dd” or “yyyy-MM-dd HH:mm:ss”.</p>
+
+<p>You can create a new IAM role or select an existing role.</p>
+
+<p>In the Data Location field, enter the path of your dataset present in S3.</p>
+
+<p><img src="/img/awscloud/11/1_XW4MCKIUNBQ1wX3vA2_2Iw.png" alt="image info" /></p>
+
+<p>To complete your first step, click on “Start Import” and wait for the import to complete.</p>
+
+<h3 id="train-a-predictor">Train a Predictor:</h3>
+
+<p>After the import is done, you would see a screen as shown below. Click on the “Start” button beside “Predictor Training”.</p>
+
+<p><img src="/img/awscloud/11/1_AqJFbioVP_GBSdGEGBa8Kw.png" alt="image info" /></p>
+
+<p>In this step, we will forecast for the next 10 days. So we’ve set the Forecast horizon as 10. For the “Algorithm Selection” you can select a manual algorithm or select “AutoML”. The rest of the things can be kept as default and click “Train Predictor”.</p>
+
+<p>Amazon Forecast will now start to train the forecasting model by understanding the data and forming an algorithm that fits best for the provided dataset. It might take around 10–20 minutes depending on the size of your dataset.</p>
+
+<p><img src="/img/awscloud/11/1_JfjomGjqHuAuMpg2PlBOvw.png" alt="image info" /></p>
+
+<h3 id="generate-forecasts">Generate Forecasts:</h3>
+
+<p>After training your dataset, It’s finally time to generate the forecast and have a look into the future!!</p>
+
+<p><img src="/img/awscloud/11/1_79SgZBhVXO7l6nzq5rmheg.png" alt="image info" /></p>
+
+<p>After the training, you would see the above screen. Click on the “Start” button right next to “Forecast Generation”.</p>
+
+<p>Here you can enter any name for your forecast and select the Training model that we have just trained.</p>
+
+<p><img src="/img/awscloud/11/1_DjLCbgSe42NOUl2bvlQ5Hg.png" alt="image info" /></p>
+
+<p>Once that is done. It’s time to now forecast sales.</p>
+
+<p>Click on “Lookup Forecast” as seen below.</p>
+
+<p><img src="/img/awscloud/11/1_bUapDWkcRcviTJk8ypPWMQ.png" alt="image info" /></p>
+
+<p>Here you would be asked for the select your forecaster. Select a start date and end date. Remember, That the difference between the start and end date should not be greater than the “Forecast Horizon” that you had mentioned while training your model.</p>
+
+<p>Since in our data we had only one item. We had to put the item_id as 1. Now hit “Get Forecast” and scroll down to see the results.</p>
+
+<p><img src="/img/awscloud/11/1_ctjZv-2Q8AFLKtsZIye6wQ.png" alt="image info" /></p>
+
+<p>You would see something the result as mentioned below. The results have Time on the X-axis and the expected sales on the Y-axis.</p>
+
+<p><img src="/img/awscloud/11/1_-2KHqVwyn5oMEfx1fiLO_w.png" alt="image info" /></p>
+
+<p>The result does look confusing as to what is P10, P50 and P90 forecasts. These are the Prediction quantiles. By calculating prediction quantiles, the model shows how much uncertainty is associated with each forecast.</p>
+
+<p>For the P10 prediction, the true value is expected to be lower than the predicted value, 10% of the time. For the P50 prediction, the true value is expected to be lower than the predicted value, 50% of the time. For the P90 prediction, the true value is expected to be lower than the predicted value, 90% of the time.</p>
+
+<p>If you think you might face a problem of storage space or cost of investment if you overstock the item, you might wanna choose the P10 forecast. as you will be overstock for only 10% of the time else you would be sold out every day.
+But on the other hand, the cost of not selling the item is extremely high or the cost of invested capital is low or it would result in huge amounts of lost revenue you might wanna choose the P90 forecast.</p>
+
+<h2 id="summary">Summary:</h2>
+
+<p>We have imported the data to an S3 bucket and uploaded them to the Forecast dataset. Trained the model using the AutoML predictor and used that to generate a forecast. You have successfully built your first “Time Series Forecasting” model, using Amazon Forecast.</p>
+
+:ET

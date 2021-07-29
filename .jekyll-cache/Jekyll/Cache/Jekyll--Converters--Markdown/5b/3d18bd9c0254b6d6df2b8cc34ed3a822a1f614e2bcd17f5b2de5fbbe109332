@@ -1,0 +1,166 @@
+I"!'<p>Let’s learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot. We will create a couple of microservices and get them to talk to each other using Eureka Naming Server and Ribbon for Client Side Load Balancing.</p>
+
+<h2 id="microservices-overview">Microservices Overview</h2>
+
+<p>In the previous two parts, we created the microservices and established communication between them.</p>
+
+<p>GET to http://localhost:8100/currency-converter-feign/from/EUR/to/INR/quantity/10000</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="err">id:</span><span class="w"> </span><span class="mi">10002</span><span class="p">,</span><span class="w">
+    </span><span class="err">from:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+    </span><span class="err">to:</span><span class="w"> </span><span class="s2">"INR"</span><span class="p">,</span><span class="w">
+    </span><span class="err">conversionMultiple:</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w">
+    </span><span class="err">quantity:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+    </span><span class="err">totalCalculatedAmount:</span><span class="w"> </span><span class="mi">750000</span><span class="p">,</span><span class="w">
+    </span><span class="err">port:</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<blockquote>
+  <p>When we execute the above service, you would see that a request is also sent over to the forex-service.</p>
+</blockquote>
+
+<p>Thats cool!</p>
+
+<p>We have now created two microservices and established communication between them.</p>
+
+<p><img src="/images/Spring-Boot-Microservice-1-CCS-FS.png" alt="Image" title="Spring-Boot-Microservice-1-CCS-FS" /></p>
+
+<p>However, we are hardcoding the url for FS in CCS component <code class="language-plaintext highlighter-rouge">CurrencyExchangeServiceProxy</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  @FeignClient(name="forex-service" url="localhost:8000")
+  public interface CurrencyExchangeServiceProxy {
+    @GetMapping("/currency-exchange/from/{from}/to/{to}")
+    public CurrencyConversionBean retrieveExchangeValue
+      (@PathVariable("from") String from, @PathVariable("to") String to);
+  }
+
+</code></pre></div></div>
+
+<p>That means when new instances of Forex Service are launched up, we have no way to distributing load to them.</p>
+
+<p>In this part, let’s now enable client side load distribution using Ribbon.</p>
+
+<h2 id="tools-you-will-need">Tools you will need</h2>
+<ul>
+  <li>Maven 3.0+ is your build tool</li>
+  <li>Your favorite IDE. We use Eclipse.</li>
+  <li>JDK 1.8+</li>
+</ul>
+
+<h2 id="enabling-ribbon">Enabling Ribbon</h2>
+
+<p>Add Ribbon Dependency to pom.xml</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-cloud-starter-netflix-ribbon&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+</code></pre></div></div>
+
+<p>Enable RibbonClient in CurrencyExchangeServiceProxy</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  @FeignClient(name="forex-service")
+  @RibbonClient(name="forex-service")
+  public interface CurrencyExchangeServiceProxy {
+</code></pre></div></div>
+
+<p>Configure the instances in application.properties</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  forex-service.ribbon.listOfServers=localhost:8000,localhost:8001
+</code></pre></div></div>
+
+<h2 id="launch-up-forex-service-on-8001">Launch up Forex Service on 8001</h2>
+
+<p>In the above step, we configured ribbon to distribute load to instances. However, we do not have any instance of Forex Service running on 8001.</p>
+
+<p>We can launch it up by configuring a launch configuration as shown in the figure below.</p>
+
+<p><img src="/images/Spring-Boot-Microservice-91-LauchingFSOn8081.png" alt="Image" title="Spring-Boot-Microservice-91-LauchingFSOn8081" /></p>
+
+<h2 id="ribbon-in-action">Ribbon in Action</h2>
+
+<p>Currently we have the following service up and running</p>
+<ul>
+  <li>Currency Conversion Micro Service (CCS) on 8100</li>
+  <li>Two instances of Forex MicroService on 8000 and 8001</li>
+</ul>
+
+<p>Now you would see that the requests to CCS would get distributed between the two instances of Forex Microservice by Ribbon</p>
+
+<h3 id="request-1">Request 1</h3>
+<p>GET to http://localhost:8100/currency-converter-feign/from/EUR/to/INR/quantity/10000</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="err">id:</span><span class="w"> </span><span class="mi">10002</span><span class="p">,</span><span class="w">
+    </span><span class="err">from:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+    </span><span class="err">to:</span><span class="w"> </span><span class="s2">"INR"</span><span class="p">,</span><span class="w">
+    </span><span class="err">conversionMultiple:</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w">
+    </span><span class="err">quantity:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+    </span><span class="err">totalCalculatedAmount:</span><span class="w"> </span><span class="mi">750000</span><span class="p">,</span><span class="w">
+    </span><span class="err">port:</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="request-2">Request 2</h3>
+<p>GET to http://localhost:8100/currency-converter-feign/from/EUR/to/INR/quantity/10000</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="err">id:</span><span class="w"> </span><span class="mi">10002</span><span class="p">,</span><span class="w">
+    </span><span class="err">from:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
+    </span><span class="err">to:</span><span class="w"> </span><span class="s2">"INR"</span><span class="p">,</span><span class="w">
+    </span><span class="err">conversionMultiple:</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w">
+    </span><span class="err">quantity:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+    </span><span class="err">totalCalculatedAmount:</span><span class="w"> </span><span class="mi">750000</span><span class="p">,</span><span class="w">
+    </span><span class="err">port:</span><span class="w"> </span><span class="mi">8001</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>You can see that the port numbers in the two responses are different.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>We have now created two microservices and established communication between them.</p>
+
+<p><img src="/images/Spring-Boot-Microservice-1-CCS-FS.png" alt="Image" title="Spring-Boot-Microservice-1-CCS-FS" /></p>
+
+<p>We are using Ribbon to distribute load between the two instances of Forex Service.</p>
+
+<p>However, we are hardcoding the urls of both instances of  FS in CCS. That means every time there is a new instance of FS, we would need to change the configuration of CCS. Thats not cool.</p>
+
+<p>In the next part, we will use Eureka Naming Server to fix this problem.</p>
+
+<hr />
+<h3 id="springboot-microservice">SpringBoot Microservice</h3>
+
+<p>This is a 5 Part Article Series</p>
+
+<p>Microservices with Spring Boot</p>
+<ul>
+  <li>Part 1 - <a href="/blog/creating-microservices-with-spring-boot-part-1-getting-started" target="_blank">Getting Started with Microservices Architecture</a></li>
+  <li>Part 2 - <a href="/blog/creating-microservices-with-spring-boot-part-2-forex-microservice" target="_blank">Creating Forex Microservice</a></li>
+  <li>Part 3 - <a href="/blog/creating-microservices-with-spring-boot-part-3-currency-conversion-microservice" target="_blank">Creating Currency Conversion Microservice</a></li>
+  <li>Part 4 - <a href="/blog/microservices-with-spring-boot-part-4-ribbon-for-load-balancing" target="_blank">Using Ribbon for Load Balancing</a></li>
+  <li>Part 5 - <a href="/blog/microservices-with-spring-boot-part-5-eureka-naming-server" target="_blank">Using Eureka Naming Server</a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/creating-microservices-with-spring-boot-part-3-currency-conversion-microservice" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/microservices-with-spring-boot-part-5-eureka-naming-server" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

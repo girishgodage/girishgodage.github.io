@@ -1,0 +1,394 @@
+I"�n<h2 id="authenticate-applications-through-facial-recognition-with-amazon-cognito-and-amazon-rekognition">Authenticate applications through facial recognition with Amazon Cognito and Amazon Rekognition</h2>
+
+<p>With increased use of different applications, social networks, financial platforms, emails and cloud storage solutions, managing different passwords and credentials can become a burden. In many cases, sharing one password across all these applications and platforms is just not possible. Different security standards may be required, such as passwords composed by only numeric characters, password renewal policies, and providing security questions.</p>
+
+<p>But what if you could enhance the ways users authenticate themselves in their application in a more convenient, simpler and above everything, more secure way? In this post, I will show how to leverage Amazon Cognito user pools to customize your authentication flows and allow logging into your applications using Amazon Rekognition for facial recognition using a sample application.</p>
+
+<h2 id="solution-overview">Solution Overview</h2>
+
+<p>We will build a Mobile or Web application that allows users to sign in using an email and require the user to upload a document containing his or her photo. We will use the <strong>AWS Amplify Framework</strong> to integrate our Front-End application with <strong>Amazon S3</strong> and store this image in a secure and encrypted bucket.  Our solution will trigger a Lambda function for each new image uploaded to this bucket so that we can index the images inside Amazon Rekognition and save the metadata in a <strong>DynamoDB</strong> table for later queries.</p>
+
+<p>For authentication, this solution uses Amazon Cognito User Pools combined with Lambda functions to customize the authentication flows together with the <strong>Amazon Rekognition CompareFaces</strong> API to identify the confidence level between user photos provided during Sign Up and Sign In. Here is the architecture of the solution:</p>
+
+<p><img src="/img/awscloud/12/cognito-rekognition-architecure.png" alt="image info" /></p>
+
+<p>Here’s a step-wise description of the above data-flow architecture diagram:</p>
+
+<p><strong>1.</strong> User signs up into the Cognito User Pool.</p>
+
+<p><strong>2.</strong> User uploads – during Sign Up – a document image containing his/her photo and name, to an S3 Bucket (e.g. Passport).</p>
+
+<p><strong>3.</strong> A Lambda function is triggered containing the uploaded image as payload.</p>
+
+<p><strong>4.</strong> The function first indexes the image in a specific Amazon Rekognition Collection to store these user documents.</p>
+
+<p><strong>5.</strong> The same function then persists in a DynamoDB table as the indexed image metadata, together with the email registered in Amazon Cognito User Pool for later queries.</p>
+
+<p><strong>6.</strong> User enters an email in the custom Sign In page, which makes a request to Cognito User Pool.</p>
+
+<p><strong>7.</strong> Amazon Cognito User Pool triggers the “Define Auth Challenge” trigger that determines which custom challenges are to be created at this moment.</p>
+
+<p><strong>8.</strong> The User Pool then invokes the “Create Auth Challenge” trigger. This trigger queries the DynamoDB table for the user containing the given email id to retrieve its indexed photo from the Amazon Rekognition Collection.</p>
+
+<p><strong>9.</strong> The User Pool invokes the “Verify Auth Challenge” trigger. This verifies if the challenge was indeed successfully completed; if it finds an image, it will compare it with the photo taken during Sign In to measure its confidence between both the images.</p>
+
+<p><strong>10.</strong> The User Pool, once again, invokes the “Define Auth Challenge” trigger that verifies if the challenge was answered. No no further challenges are created, if the ‘Define Auth challenge’ is able to verify the user-supplied answer. The trigger response, back to the User Poll will include an “issueTokens:true” attribute to authenticate itself and finally issue the user a JSON Web Token (JWT) (see step 6).</p>
+
+<h3 id="serverless-application-and-the-different-lambdas-invoked">Serverless Application and the different Lambdas invoked</h3>
+
+<p>The following solution is available as a Serverless application. You can deploy it directly from AWS Serverless Application Repository. Core parts of this implementation are:</p>
+
+<ul>
+  <li>Users are required to use a valid email as user name.</li>
+  <li>The solution includes a Cognito App Client configured to “Only allow custom authentication” as Amazon Cognito requires a password for user sign up. We are creating a random password to these users, since we don’t want them to Sign In using these passwords later.</li>
+  <li>We use two Amazon S3 Buckets: one to store document images uploaded during Sign Up and one to store user photos taken when Signing In for face comparisons.</li>
+  <li>We use two different Lambda runtimes (Python and Node.js) to demonstrate how AWS Serverless Application Model (SAM) handles multiple runtimes in the same project and development environment for the developer’s perspective.</li>
+</ul>
+
+<p>The following Lambda functions are triggered to implement the images indexing in Amazon Rekognition and customize Amazon Cognito User Pools custom authentication challenges:</p>
+
+<p><strong>1. Create Rekognition Collection</strong> (Python 3.6)– This Lambda function gets triggered only once, at the beginning of deployment, to create a Custom Collection in Amazon Rekognition to index documents for user Sign Ups.</p>
+
+<p><strong>2. Index Images</strong> (Python 3.6) – This Lambda function gets triggered for each new document upload to Amazon S3 during Sign Up and indexes the uploaded document in the Amazon Rekognition Collection (mentioned in the previous step) and then persists its metadata into DynamoDB.</p>
+
+<p><strong>3.Define Auth Challenge</strong> (Node.js 8.10) – This Lambda function tracks the custom authentication flow, which is comparable to a decider function in a state machine. It determines which challenges are presented, in what order, to the user. At the end, it reports back to the user pool if the user succeeded or failed authentication. The Lambda function is invoked at the start of the custom authentication flow and also after each completion of the “Verify Auth Challenge Response” trigger.</p>
+
+<p><strong>4. Create Auth Challenge</strong> (Node.js 8.10) – This Lambda function gets invoked, based on the instruction of the “Define Auth Challenge” trigger, to create a unique challenge for the user. We will use this function to query DynamoDB for existing user records and if their given metadata are valid.</p>
+
+<p><strong>5. Verify Auth Challenge Response</strong> (Node.js 8.10) – This Lambda function gets invoked by the user pool when the user provides the answer to the challenge. Its only job is to determine if that answer is correct. In this case, it compares both images provided during Sign Up and Sign In, using the Amazon Rekognition CompareFaces API and considers a API responses containing a confidence level equals or greater than 90% as a valid challenge response</p>
+
+<p>In the sections below, let’s step through the code for the different Lambda functions we described above.</p>
+
+<h3 id="1-create-an-amazon-rekognition-collection">1. Create an Amazon Rekognition Collection</h3>
+
+<p>As described above, this function creates a Collection in Amazon Rekognition that will later receive user photos uploaded during Sign Up.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">boto3</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+
+    <span class="n">maxResults</span><span class="o">=</span><span class="mi">1</span>
+    <span class="n">collectionId</span><span class="o">=</span><span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="p">[</span><span class="s">'COLLECTION_NAME'</span><span class="p">]</span>
+    
+    <span class="n">client</span><span class="o">=</span><span class="n">boto3</span><span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="s">'rekognition'</span><span class="p">)</span>
+
+    <span class="c1">#Create a collection
+</span>    <span class="k">print</span><span class="p">(</span><span class="s">'Creating collection:'</span> <span class="o">+</span> <span class="n">collectionId</span><span class="p">)</span>
+    <span class="n">response</span><span class="o">=</span><span class="n">client</span><span class="p">.</span><span class="n">create_collection</span><span class="p">(</span><span class="n">CollectionId</span><span class="o">=</span><span class="n">collectionId</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Collection ARN: '</span> <span class="o">+</span> <span class="n">response</span><span class="p">[</span><span class="s">'CollectionArn'</span><span class="p">])</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Status code: '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s">'StatusCode'</span><span class="p">]))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Done...'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+</code></pre></div></div>
+
+<h3 id="2-index-images-into-amazon-rekognition">2. Index Images into Amazon Rekognition</h3>
+
+<p>This function is responsible for receiving uploaded images during the sign up from users and index the images in the Amazon Rekognition Collection created by the Lambda described above to persist its metadata in an Amazon Dynamodb table.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">boto3</span>
+<span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">dynamodb</span> <span class="o">=</span> <span class="n">boto3</span><span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="s">'dynamodb'</span><span class="p">)</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="s">'s3'</span><span class="p">)</span>
+<span class="n">rekognition</span> <span class="o">=</span> <span class="n">boto3</span><span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="s">'rekognition'</span><span class="p">)</span>
+
+<span class="c1"># --------------- Helper Functions ------------------
+</span>
+<span class="k">def</span> <span class="nf">index_faces</span><span class="p">(</span><span class="n">bucket</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">rekognition</span><span class="p">.</span><span class="n">index_faces</span><span class="p">(</span>
+        <span class="n">Image</span><span class="o">=</span><span class="p">{</span><span class="s">"S3Object"</span><span class="p">:</span>
+            <span class="p">{</span><span class="s">"Bucket"</span><span class="p">:</span> <span class="n">bucket</span><span class="p">,</span>
+            <span class="s">"Name"</span><span class="p">:</span> <span class="n">key</span><span class="p">}},</span>
+            <span class="n">CollectionId</span><span class="o">=</span><span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="p">[</span><span class="s">'COLLECTION_NAME'</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">response</span>
+    
+<span class="k">def</span> <span class="nf">update_index</span><span class="p">(</span><span class="n">tableName</span><span class="p">,</span><span class="n">faceId</span><span class="p">,</span> <span class="n">fullName</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">dynamodb</span><span class="p">.</span><span class="n">put_item</span><span class="p">(</span>
+        <span class="n">TableName</span><span class="o">=</span><span class="n">tableName</span><span class="p">,</span>
+        <span class="n">Item</span><span class="o">=</span><span class="p">{</span>
+            <span class="s">'RekognitionId'</span><span class="p">:</span> <span class="p">{</span><span class="s">'S'</span><span class="p">:</span> <span class="n">faceId</span><span class="p">},</span>
+            <span class="s">'FullName'</span><span class="p">:</span> <span class="p">{</span><span class="s">'S'</span><span class="p">:</span> <span class="n">fullName</span><span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">)</span> 
+    
+<span class="c1"># --------------- Main handler ------------------
+</span>
+<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+
+    <span class="c1"># Get the object from the event
+</span>    <span class="n">bucket</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s">'Records'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">'s3'</span><span class="p">][</span><span class="s">'bucket'</span><span class="p">][</span><span class="s">'name'</span><span class="p">]</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="n">urllib</span><span class="p">.</span><span class="n">parse</span><span class="p">.</span><span class="n">unquote_plus</span><span class="p">(</span>
+        <span class="n">event</span><span class="p">[</span><span class="s">'Records'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">'s3'</span><span class="p">][</span><span class="s">'object'</span><span class="p">][</span><span class="s">'key'</span><span class="p">].</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">))</span>
+
+    <span class="k">try</span><span class="p">:</span>
+
+        <span class="c1"># Calls Amazon Rekognition IndexFaces API to detect faces in S3 object 
+</span>        <span class="c1"># to index faces into specified collection
+</span>        
+        <span class="n">response</span> <span class="o">=</span> <span class="n">index_faces</span><span class="p">(</span><span class="n">bucket</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+        
+        <span class="c1"># Commit faceId and full name object metadata to DynamoDB
+</span>        
+        <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="s">'ResponseMetadata'</span><span class="p">][</span><span class="s">'HTTPStatusCode'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">faceId</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s">'FaceRecords'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">'Face'</span><span class="p">][</span><span class="s">'FaceId'</span><span class="p">]</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">s3</span><span class="p">.</span><span class="n">head_object</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="n">bucket</span><span class="p">,</span><span class="n">Key</span><span class="o">=</span><span class="n">key</span><span class="p">)</span>
+            <span class="n">email</span> <span class="o">=</span> <span class="n">ret</span><span class="p">[</span><span class="s">'Metadata'</span><span class="p">][</span><span class="s">'email'</span><span class="p">]</span>
+            <span class="n">update_index</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="p">[</span><span class="s">'COLLECTION_NAME'</span><span class="p">],</span><span class="n">faceId</span><span class="p">,</span> <span class="n">email</span><span class="p">)</span> 
+        <span class="k">return</span> <span class="n">response</span>
+    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Error processing object {} from bucket {}. "</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">bucket</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="n">e</span>
+
+</code></pre></div></div>
+
+<h2 id="3-define-auth-challenge-function">3. Define Auth Challenge Function</h2>
+
+<p>This is the decider function that manages the authentication flow. In the session array that’s provided to this Lambda function (event.request.session), the entire state of the authentication flow is present. If it’s empty, it means the custom authentication flow just started. If it has items, the custom authentication flow is underway, i.e. a challenge was presented to the user, the user provided an answer, and it was verified to be right or wrong. In either case, the decider function has to decide what to do next:</p>
+
+<pre><code class="language-node.js">exports.handler = async (event, context) =&gt; {
+
+    console.log("Define Auth Challenge: " + JSON.stringify(event));
+
+    if (event.request.session &amp;&amp;
+        event.request.session.length &gt;= 3 &amp;&amp;
+        event.request.session.slice(-1)[0].challengeResult === false) {
+        // The user provided a wrong answer 3 times; fail auth
+        event.response.issueTokens = false;
+        event.response.failAuthentication = true;
+    } else if (event.request.session &amp;&amp;
+        event.request.session.length &amp;&amp;
+        event.request.session.slice(-1)[0].challengeResult === true) {
+        // The user provided the right answer; succeed auth
+        event.response.issueTokens = true;
+        event.response.failAuthentication = false;
+    } else {
+        // The user did not provide a correct answer yet; present challenge
+        event.response.issueTokens = false;
+        event.response.failAuthentication = false;
+        event.response.challengeName = 'CUSTOM_CHALLENGE';
+    }
+
+    return event;
+}
+
+</code></pre>
+
+<h3 id="4-create-auth-challenge-function">4. Create Auth Challenge Function</h3>
+
+<p>This function queries DynamoDB for a record containing the given e-mail to retrieve its image ID inside Amazon Rekognition Collection and define as a challenge that the user must provide a photo that relates to the same person.</p>
+
+<pre><code class="language-node.js">const aws = require('aws-sdk');
+const dynamodb = new aws.DynamoDB.DocumentClient();
+
+exports.handler = async (event, context) =&gt; {
+
+    console.log("Create auth challenge: " + JSON.stringify(event));
+
+    if (event.request.challengeName == 'CUSTOM_CHALLENGE') {
+        event.response.publicChallengeParameters = {};
+
+        let answer = '';
+        // Querying for Rekognition ids for the e-mail provided
+        const params = {
+            TableName: process.env.COLLECTION_NAME,
+            IndexName: "FullName-index",
+            ProjectionExpression: "RekognitionId",
+            KeyConditionExpression: "FullName = :userId",
+            ExpressionAttributeValues: {
+                ":userId": event.request.userAttributes.email
+            }
+        }
+        
+        try {
+            const data = await dynamodb.query(params).promise();
+            data.Items.forEach(function (item) {
+                
+                answer = item.RekognitionId;
+
+                event.response.publicChallengeParameters.captchaUrl = answer;
+                event.response.privateChallengeParameters = {};
+                event.response.privateChallengeParameters.answer = answer;
+                event.response.challengeMetadata = 'REKOGNITION_CHALLENGE';
+                
+                console.log("Create Challenge Output: " + JSON.stringify(event));
+                return event;
+            });
+        } catch (err) {
+            console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
+            throw err;
+        }
+    }
+    return event;
+}
+
+</code></pre>
+<h3 id="5-verify-auth-challenge-response-function">5. Verify Auth Challenge Response Function</h3>
+
+<p>This function verifies within Amazon Rekognition if it can find an image with the confidence level equals or over 90% compared to the image uploaded during Sign In, and if this image refers to the user claims to be through the given e-mail address.</p>
+
+<pre><code class="language-Node.js">var aws = require('aws-sdk');
+var rekognition = new aws.Rekognition();
+
+exports.handler = async (event, context) =&gt; {
+
+    console.log("Verify Auth Challenge: " + JSON.stringify(event));
+    let userPhoto = '';
+    event.response.answerCorrect = false;
+
+    // Searching existing faces indexed on Rekognition using the provided photo on s3
+
+    const objectName = event.request.challengeAnswer;
+    const params = {
+        "CollectionId": process.env.COLLECTION_NAME,
+        "Image": {
+            "S3Object": {
+                "Bucket": process.env.BUCKET_SIGN_UP,
+                "Name": objectName
+            }
+        },
+        "MaxFaces": 1,
+        "FaceMatchThreshold": 90
+    };
+    try {
+        const data = await rekognition.searchFacesByImage(params).promise();
+
+        // Evaluates if Rekognition was able to find a match with the required 
+        // confidence threshold
+
+        if (data.FaceMatches[0]) {
+            console.log('Face Id: ' + data.FaceMatches[0].Face.FaceId);
+            console.log('Similarity: ' + data.FaceMatches[0].Similarity);
+            userPhoto = data.FaceMatches[0].Face.FaceId;
+            if (userPhoto) {
+                if (event.request.privateChallengeParameters.answer == userPhoto) {
+                    event.response.answerCorrect = true;
+                }
+            }
+        }
+    } catch (err) {
+        console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
+        throw err;
+    }
+    return event;
+}
+
+</code></pre>
+
+<h3 id="the-front-end-application">The Front End Application</h3>
+<p>Now that we’ve stepped through all the Lambdas, let’s create a custom Sign In page, in order to orchestrate and test our scenario. You can use AWS Amplify Framework to integrate your Sign In page to Amazon Cognito and the photo uploads to Amazon S3.</p>
+
+<p>The AWS Amplify Framework allows you to implement your application using your favourite framework (React, Angular, Vue, HTML/JavaScript, etc). You can customize the snippets below as per your requirements. The snippets below demonstrate how to import and initialize AWS Amplify Framework on React:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Amplify from 'aws-amplify';
+
+Amplify.configure({
+  Auth: {
+    region: 'your region',
+    userPoolId: 'your userPoolId',
+    userPoolWebClientId: 'your clientId',
+  },
+  Storage: { 
+    region: 'your region', 
+    bucket: 'your sign up bucket'
+  }
+});
+</code></pre></div></div>
+
+<h3 id="signing-up">Signing Up</h3>
+
+<p>For users to be able to sign themselves up, as mentioned above, we will “generate” a random password on their behalf since it is required by Amazon Cognito for user sign up. However, once we create our Cognito User Pool Client, we ensure that authentication only happens following the custom authentication flow – never using user and password.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import { Auth } from 'aws-amplify';
+
+signUp = async event =&gt; {
+  const params = {
+    username: this.state.email,
+    password: getRandomString(30),
+    attributes: {
+      name: this.state.fullName
+    }
+  };
+  await Auth.signUp(params);
+};
+
+function getRandomString(bytes) {
+  const randomValues = new Uint8Array(bytes);
+  window.crypto.getRandomValues(randomValues);
+  return Array.from(randomValues).map(intToHex).join('');
+}
+
+function intToHex(nr) {
+  return nr.toString(16).padStart(2, '0');
+}
+</code></pre></div></div>
+<h3 id="signing-in">Signing in</h3>
+<p>Starts the custom authentication flow to the user.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import { Auth } from "aws-amplify";
+
+signIn = () =&gt; { 
+    try { 
+        user = await Auth.signIn(this.state.email);
+        this.setState({ user });
+    } catch (e) { 
+        console.log('Oops...');
+    } 
+};
+</code></pre></div></div>
+
+<h3 id="answering-the-custom-challenge">Answering the Custom Challenge</h3>
+
+<p>In this step, we open the camera through Browser to take a user photo and then upload it to Amazon S3, so we can start the face comparison.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Webcam from "react-webcam";
+
+// Instantiate and set webcam to open and take a screenshot
+// when user is presented with a custom challenge
+
+/* Webcam implementation goes here */
+
+
+// Retrieves file uploaded to S3 and sends as a File to Rekognition 
+// as answer for the custom challenge
+dataURLtoFile = (dataurl, filename) =&gt; {
+  var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+  while(n--){
+      u8arr[n] = bstr.charCodeAt(n);
+  }
+  return new File([u8arr], filename, {type:mime});
+};
+
+sendChallengeAnswer = () =&gt; {
+
+    // Capture image from user camera and send it to S3
+    const imageSrc = this.webcam.getScreenshot();
+    const attachment = await s3UploadPub(dataURLtoFile(imageSrc, "id.png"));
+    
+    // Send the answer to the User Pool
+    const answer = `public/${attachment}`;
+    user = await Auth.sendCustomChallengeAnswer(cognitoUser, answer);
+    this.setState({ user });
+    
+    try {
+        // This will throw an error if the user is not yet authenticated:
+        await Auth.currentSession();
+    } catch {
+        console.log('Apparently the user did not enter the right code');
+    }
+    
+};
+
+</code></pre></div></div>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>In this blog post, we implemented an authentication mechanism using facial recognition using the custom authentication flows provided by Amazon Cognito combined with Amazon Rekognition. Depending on your organization and workload security criteria and requirements, this scenario might work from both security and user experience point of views. Additionally, we can enhance the security factor by chaining multiple Auth Challenges not only based on the user photo, but also a combination of Liveness Detection, a combination of their document numbers used for signing up and other additional MFA’s.</p>
+
+<p>Since this is an entirely Serverless-based solution, you can customize it as your requirements arise using AWS Lambda functions. You can read more on custom authentication in our developer guide.</p>
+:ET

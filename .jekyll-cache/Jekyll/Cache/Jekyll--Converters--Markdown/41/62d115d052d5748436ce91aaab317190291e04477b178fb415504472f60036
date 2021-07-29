@@ -1,0 +1,120 @@
+I"P<p>Abstraction is one of the fundamental concepts of software engineering. It is all about hiding complexity in building various parts of your application.</p>
+
+<h1 id="you-will-learn">You will learn</h1>
+
+<p>In this guide, we look at:</p>
+<ul>
+  <li>What is Abstraction?</li>
+  <li>A few examples of abstraction</li>
+  <li>Why is Abstraction Important in Software Design?</li>
+  <li>How can you introduce good abstractions?</li>
+</ul>
+
+<h3 id="what-is-abstraction">What Is Abstraction?</h3>
+
+<p>Abstraction is one of the fundamental concepts of software engineering.</p>
+
+<h4 id="an-example-of-abstraction">An Example Of Abstraction</h4>
+
+<p>Consider a real-world analogy. Let’s say you want to ride a motor bike. All you need to start the motor bike is to put the key on, push the start button, and use the accelerator. While riding, you may need to use the brake as well.</p>
+
+<p>You are not really concerned about how the engine, accelerator and brake are working during the ride. All that is <strong>abstract</strong> to you, and you are not concerned with it (unless you are mechanic).</p>
+
+<h4 id="another-example">Another Example</h4>
+
+<p>Take another example - printing a document from your computer. You just open the document, click on the “print” command, and in a short while, the printed document is ready. You are not really bothered about how the computer stores the document in 0s and 1s, nor about hoe it is transferred to the printer.</p>
+
+<h3 id="abstraction-in-your-application">Abstraction In Your Application</h3>
+
+<p>Whenever we build applications, we do so in layers. Here is the layered architecture of a simple web application:</p>
+
+<p><img src="/img/sw_design/9/Capture-012-01.png" alt="image info" /></p>
+
+<p>An advantage of doing so is that the Web layer does not need to know anything about the Data layer. It is <strong>abstracted away</strong> from the Data layer. All that it needs to be concerned with, is that it can delegate requests to the Business layer, and the business layer would take care of rest of the flow. Layering in an application is, in a way, abstracting away complexity.</p>
+
+<h3 id="abstraction-in-programming">Abstraction In Programming</h3>
+
+<p>Let’s go one level deeper and look at what happens underneath the hood when we write computer programs.</p>
+
+<h4 id="programming-in-high-level-languages">Programming In High-Level Languages</h4>
+
+<p>Have you ever written an assembly language program? Those funny ones with 1s and 0s. Actually, thats the only language that your computer would understand.</p>
+
+<p>If you want to develop a web service, will we use Assembly Language? Far from it. We would instead use a high-level language such as Java or Python, to do that. These are human readable languages, that spare us the task of programming in 0s and 1s.</p>
+
+<p>The high level programming languages are an abstraction on top of machine or assembly language.</p>
+
+<h4 id="writing-sql-queries">Writing SQL Queries</h4>
+
+<p>Think of how you write SQL queries to interact with a database. You just write what data you are concerned with, without paying heed to how it is stored in, or retrieved from the database. We expect the database to take care of all that.</p>
+
+<p>SQL is an abstraction layer for retrieving data from your database.</p>
+
+<h4 id="calling-built-in-methods">Calling Built-In Methods</h4>
+
+<p>In a high level programming language, calling built in utility methods available in its packages is another example of abstraction. Here is an example in Python:</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	<span class="o">&gt;&gt;&gt;</span> <span class="s">'Hello World'</span><span class="p">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">'World'</span><span class="p">)</span>
+	<span class="bp">True</span>
+	<span class="o">&gt;&gt;&gt;</span> <span class="s">'Hello'</span><span class="p">.</span><span class="n">islower</span><span class="p">()</span>
+	<span class="bp">False</span>
+	<span class="o">&gt;&gt;&gt;</span>
+
+</code></pre></div></div>
+
+<p>When we call the built-in utility <code class="language-plaintext highlighter-rouge">endswith()</code>, we are not concerned with how it is implemented. We only care about the fact that when called with <code class="language-plaintext highlighter-rouge">World</code> as a parameter on <code class="language-plaintext highlighter-rouge">Hello World</code>, it returns <code class="language-plaintext highlighter-rouge">True</code>.</p>
+
+<p>Same is the case with <code class="language-plaintext highlighter-rouge">islower()</code>.Their implementations are abstracted away from you.</p>
+
+<h3 id="abstraction-in-microservices">Abstraction In Microservices</h3>
+
+<p>Consider the following enterprise application architecture:</p>
+
+<p><img src="/img/sw_design/9/Capture-012-02.png" alt="image info" /></p>
+
+<p>It is quite common in such architectures to have common components for security, logging and archetype. The reason we have them is that we want them to take care of a specific responsibility.</p>
+
+<p>Let’s say you want to handle authorization and authentication. By using a specific Security component to handle this functionality, you are abstracting away this logic from the rest of the application. The higher level microservices shown only need to know how to integrate with the security component. It does not need to know the inner details of the security component.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>In this article, we had a look at what abstraction is, and understood that it is the basic pillar used to hide complexity. We also saw that abstraction takes up different forms at different levels. We looked at a number of examples to explore the same.</p>
+
+<hr />
+
+<h3 id="software-design">Software Design</h3>
+
+<p>This is the article in a series of articles on Software Design:</p>
+
+<ul>
+  <li><a href="/blog/software-design-keep-your-design-simple" target="_blank">1 - How do you keep your design simple?</a></li>
+  <li><a href="/blog/design-patterns-for-beginners-with-java-examples" target="_blank">2 - Design Patterns For Beginners - with Java Examples</a></li>
+  <li><a href="/blog/software-design-what-is-abstraction" target="_blank">3 - What is Abstraction?</a></li>
+  <li><a href="/blog/software-design-encapsulation-with-examples" target="_blank">4 - Encapsulation - with examples</a></li>
+  <li><a href="/blog/software-design-coupling-with-examples" target="_blank">5 - Coupling - with examples</a></li>
+  <li><a href="/blog/software-design-cohesion-with-examples" target="_blank">6 - Cohesion - with examples</a></li>
+  <li><a href="/blog/software-design-introduction-to-evolutionary-design" target="_blank">7 - Introduction to Evolutionary Design</a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/design-patterns-for-beginners-with-java-examples" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/software-design-encapsulation-with-examples" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

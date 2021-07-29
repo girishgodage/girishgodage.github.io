@@ -1,0 +1,205 @@
+I"I7<h3 id="amazon-dynamodb--a-complete-guide">Amazon DynamoDB – A Complete Guide</h3>
+
+<p>DynamoDB is a fully managed NoSQL database service provided by Amazon. These days, databases have become the backbone for any company irrespective of how big they are. Traditional database systems which were initially used, are not the go-to solution today because of the dynamic change in requirements and type of data procured. In this Amazon DynamoDB tutorial, I will be discussing the new and fast way of storing and retrieving data using DynamoDB.</p>
+
+<p>In this Amazon DynamoDB tutorial, I will be discussing the following topics:</p>
+
+<ul>
+  <li><strong>What Is DynamoDB?</strong></li>
+  <li><strong>Terminologies Associated With DynamoDB</strong></li>
+  <li><strong>Accessing Amazon DynamoDB</strong></li>
+  <li><strong>Features Of DynamoDB</strong></li>
+  <li><strong>DynamoDB API</strong></li>
+  <li><strong>DynamoDB: Case Studies</strong></li>
+  <li><strong>Demo: Creating, Inserting And Querying A Table In DynamoDB</strong></li>
+</ul>
+
+<h3 id="what-is-dynamodb">What Is DynamoDB?</h3>
+
+<p>Amazon DynamoDB is a fully managed NoSQL service that works on key-value pair and other data structure documents provided by Amazon. It requires only a primary key and doesn’t require a schema to create a table. It can store any amount of data and serve any amount of traffic. With DyanmoDB, you can expect a good performance even when it scales up. It is a very simple and small API that follows key-value method to store, access and perform advanced data retrieval.</p>
+
+<p>DynamoDB comprises of three fundamental units known as table, attribute, and items. A table holds a set of items, an attribute is the simplest element that stores data without any further division and item holds a set of attributes.</p>
+
+<p>Now that you know what is DynamoDB, let’s move further in this Amazon DynamoDB tutorial and introduce you to the terms used here.</p>
+
+<h3 id="terminologies-associated-with-dynamodb">Terminologies Associated With DynamoDB</h3>
+<p>Here with DynamoDB, everything is kept simple, the terms used with DynamoDB are easy to understand which makes it unique from the rest of the Database services. The terms used are as follows:</p>
+
+<ul>
+  <li><strong>Table, Items, and Attributes</strong>
+    <ol>
+      <li>A <strong>table</strong> can be visualized as a group of items. Taking an example of Employee records, <em>you will have Employee Name, Employee ID, Address and Phone Number all such items will be stored in a table.</em></li>
+      <li>An <strong>item</strong> is a set of attributes in a table. You can also understand an item as a set of attributes that can uniquely define your entry in a table. For example, <em>an item in Employee records will identify a single employee.</em></li>
+      <li>An <strong>attribute</strong> is a single field that is attached to an item. E.g. <em>Employee Name</em>.</li>
+    </ol>
+  </li>
+  <li>
+    <p><strong>Primary Key</strong></p>
+
+    <p>A primary key is a unique attribute that is necessary while creating a table, it cannot be null at any given point. Hence, while inserting an item into the table, a primary key attribute is a must. E.g. <em>Employee ID is the primary key for the table Employee records. Two items cannot have a similar primary key</em>. DynamoDB supports two types of Primary key.</p>
+
+    <ul>
+      <li>
+        <p><strong>Simple Primary Key</strong>
+A simple primary key is also known as Partition key, this is basically a single attribute. DynamoDB uses Partition key’s value to distinguish items in a table. E.g. <em>Employee ID in Employee records table.</em></p>
+      </li>
+      <li>
+        <p><strong>Composite Primary Key</strong>
+A composite primary key is also known as Partition key and Sort key. This type of key is generally made up of two items. <strong>The primary component is the Partition key and the secondary component is the Sort key</strong>. E.g.* Car Details table with Brand name and Model number as a composite primary key*.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Secondary Index</strong><br />
+A secondary index can be understood as the attribute that lets you query the data, with or without the help of a Primary key. DynamoDB has these secondary indexes that help you achieve this additional access.</p>
+  </li>
+  <li><strong>DynamoDB Streams</strong>
+This is an additional/optional feature provided by DynamoDB to keep a track of data modification events in a table. Here, each event is represented by a stream record and if this service is enabled, then you get a new event every time when there is a new item created, an item is updated or an item is deleted.</li>
+</ul>
+
+<p>These are the different terms used, without any further delay let’s proceed with the DynamoDB tutorial and find out how to access a table.</p>
+
+<h3 id="accessing-amazon-dynamodb">Accessing Amazon DynamoDB</h3>
+<p>Accessing DynamoDB is very easy and can be done using the following methods:</p>
+
+<ul>
+  <li><strong>Console</strong>
+You can access DynamoDB simply by clicking <a href="https://console.aws.amazon.com/dynamodb/home">here</a>.</li>
+  <li><strong>CLI(Command Line Interface)</strong>
+Using CLI, you can simply open your command prompt and type the relevant commands and access the table. For more details, click <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tools.CLI.html">here</a>.</li>
+  <li><strong>Using API</strong>
+Using AWS SDKs you can make the most of DynamoDB. AWS SDK supports a variety of languages like Java, JavaScript, .NET, Python, PHP etc. For more details, click <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Using.API.html">here</a>.</li>
+</ul>
+
+<h3 id="features-of-dynamodb">Features Of DynamoDB</h3>
+
+<p>DynamoDB is a NoSQL database service. DynamoDB is designed in such a way that the user can get high-performance, run scalable applications that would not be possible with the traditional database system. These additional features of DynamoDB can be seen under the following categories:</p>
+
+<ol>
+  <li><strong>On-demand capacity mode</strong>: The applications using the on-demand service, DynamoDB automatically scales up/down to accommodate the traffic.</li>
+  <li><strong>Built-in support for ACID transactions</strong>: DynamoDB provides native/ server-side support for transactions.</li>
+  <li><strong>On-demand backup</strong>: This feature allows you to create a complete backup of your work at any given point of time.</li>
+  <li><strong>Point-in-time recovery</strong>: This feature helps you with the protection of your data in case of accidental read/ write operations.</li>
+  <li><strong>Encryption at rest</strong>: It keeps the data encrypted even when the table is not in use. This enhances security with the help of encryption keys.</li>
+</ol>
+
+<h3 id="dynamodb-api">DynamoDB API</h3>
+<p>DynamoDB is a database tool and to interact with an application, it requires API. The APIs in DynamoDB are:</p>
+
+<p>#### Control Plane
+  Control Plane consists of operations responsible for “Creating” and “Managing” a DynamoDB table. The API operations that can be used are as follows:</p>
+
+<ul>
+  <li><strong>CreateTable</strong>: Creates a new table.</li>
+  <li><strong>DescribeTable</strong>: Provides information about the table.</li>
+  <li><strong>ListTable</strong>: Returns all the table names in your list.</li>
+  <li><strong>DeleteTable</strong>: Deletes the table and all its dependencies from DynamoDB.</li>
+</ul>
+
+<p>#### Data Plane
+  Data Plane consists of “<strong>CRUD</strong>” operation, i.e. “Create”, “Read”, “Update”, and “Delete” options to perform different actions on your table. Here in Data Plane, there are multiple operations that can be done on a table. The operations here are as follows:</p>
+
+<ul>
+  <li><strong>Creating Data</strong>
+    <ul>
+      <li><strong>PutItem</strong>: You can write a single data item to your table with the help of Primary key.</li>
+      <li><strong>BatchWriteItem</strong>: It is a better version of PutItem, with this you can write upto 25 items to your table.</li>
+    </ul>
+  </li>
+  <li><strong>Reading Data</strong>
+    <ul>
+      <li><strong>GetItem</strong>: It retrieves a single item from a table with the help of the primary key.</li>
+      <li><strong>BatchGetItem</strong>: The better version of GetItem it can retrieve upto 100 items from multiple tables.</li>
+      <li><strong>Query</strong>: It is basically a command that retrieves an item which has a specific partition key.</li>
+      <li><strong>Scan</strong>: Works in a similar way as Query but doesn’t require partition key aslo it works on a specific table.</li>
+    </ul>
+  </li>
+  <li><strong>Updating Data</strong>
+    <ul>
+      <li><strong>UpdateItem</strong>: It modifies a single or multiple data items in a table with the help of Primary Key.</li>
+    </ul>
+  </li>
+  <li><strong>Deleting Data</strong>
+    <ul>
+      <li><strong>DeleteItem</strong>: It deletes a single item from the table with the help of Primary Key.</li>
+      <li><strong>BatchWriteItem</strong>: The better version of DeleteItem it can delete upto 25 items in a table.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>DynamoDB Stream</strong>
+  DynamoDB Stream is nothing but a service used to track data stream that is loaded into a table and retrieved from a table. To modify the streaming, the user can use the following commands:</p>
+
+    <ul>
+      <li><strong>ListStream</strong>: It gives a list of all streams.</li>
+      <li><strong>DescribeStream</strong>: It gives detail about the stream and the resources used.</li>
+      <li><strong>GetShardIterator</strong>: It gives a Shard iterator that is a data structure to store information about the stream.</li>
+      <li><strong>GetRecords</strong>: Using Shard iterator GetRecords retrieves information about streams.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>So, now that you have a decent idea about the different APIs supported by DynamoDB. Let’s take a look at the different case studies where customers have benefited with DynamoDB.</p>
+
+<h2 id="dynamodb-case-studies">DynamoDB: Case Studies</h2>
+<p>I have listed down the case studies of some big companies and startups, as to how they benefited using DynamoDB.</p>
+
+<p>#### 1. MLB Advanced Media
+  MLBAM said in one of their reviews about Amazon DynamoDB that it helped them to scale up the support for games on a single day, DynamoDB also helped them to power the queries and support for fast data retrieval. 
+  #### 2. Expedia
+  Expedia’s real-time analytics application collects data for test &amp; learn experiments. This experiment processed nearly 200 million messages daily, they stated that DynamoDB was easy to setup and the monitoring was easier and scaling was smooth and that’s the reason they moved to using DynamoDB.
+  #### 3. Nexon
+  Nexon stated that they used Amazon DynamoDB as their primary database for blockbuster mobile game HIT. They stated that Nexon’s HIT leveraged DynamoDB to deliver a steady latency to deliver a fantastic mobile gaming experience.</p>
+
+<p>This is how the trending NoSQL database “Amazon DynamoDB” helped companies to reach the pinnacle of user experience. Let’s move further in this Amazon DynamoDB tutorial and see how to implement the different queries.</p>
+
+<h2 id="demo-creating-inserting-and-querying-a-table-in-dynamodb">Demo: Creating, Inserting And Querying A Table In DynamoDB</h2>
+<p>Let’s find out how to create a table in DynamoDB.</p>
+
+<p><strong>Step 1</strong>: Navigate to the DynamoDB section in AWS or click <a href="https://console.aws.amazon.com/dynamodb">here</a>. Select “<em>Create Table</em>”.</p>
+
+<p><img src="/img/database/2/1-2.png" alt="image info" /></p>
+
+<p><strong>Step 2</strong>: Fill in with the necessary details and click on “<em>Create</em>”.</p>
+
+<p><img src="/img/database/2/2-1.png" alt="image info" /></p>
+
+<p><strong>Step 3</strong>: You can view your table being created. Click on “<em>Overview</em>” to understand your table, click on “<em>Items</em>” to edit, insert and query on the table. There are many more options you can use to understand your table better.</p>
+
+<p><img src="/img/database/2/3-1.png" alt="image info" /></p>
+
+<p>Now that you have created a table, let’s go ahead and insert a few items and understand how NoSQL works.</p>
+
+<p><strong>Step 1</strong>: Navigate to “<em>Items</em>” and click on “<em>Create item</em>”.</p>
+
+<p><img src="/img/database/2/1-3.png" alt="image info" /></p>
+
+<p><strong>Step 2</strong>: It will open a JSON file where you can add different items. Click on the “<strong>+</strong>” symbol and select “<em>Append</em>” and select what type of data you want to enter.</p>
+
+<p><img src="/img/database/2/2_00.png" alt="image info" /></p>
+
+<p><strong>Step 3</strong>: This is what it looks like after adding multiple columns to your table. Click on “<em>Save</em>”</p>
+
+<p><img src="/img/database/2/2-01.png" alt="image info" /></p>
+
+<p><strong>Step 4</strong>: Since it is a NoSQL architecture, you can play around with the columns you add to the table. E.g. “<em>Position</em>”.</p>
+
+<p><img src="/img/database/2/2-02.png" alt="image info" /></p>
+
+<p><strong>Step 5</strong>: This is how your table will look like once you have inserted the data.</p>
+
+<p><img src="/img/database/2/3-3.png" alt="image info" /></p>
+
+<p>Now that we have a table ready, let’s go ahead and look at some basic queries.</p>
+
+<p><strong>Step 1</strong>: Here you can frame your query and click on “Start Search” to get the desired result.</p>
+
+<p>E.g. <em>I am searching for all the mobile numbers that are greater than or equals to “1234”.</em></p>
+
+<p><img src="/img/database/2/1-4.png" alt="image info" /></p>
+
+<p><strong>Step 2</strong>: Here, I am searching for the record which has EmpId as “ED4”.</p>
+
+<p><img src="/img/database/2/2-3.png" alt="image info" /></p>
+
+<p>This is a small tutorial on how to use DynamoDB to suffice your needs. I hope you found this Amazon DynamoDB tutorial informative.</p>
+:ET

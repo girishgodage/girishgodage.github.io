@@ -1,0 +1,109 @@
+I"�<p>One of the most important features of the Spring framework is its modularity. It is not one big monolith framework. What is the architecture of Spring Framework? What are Spring Modules? How are they organized?</p>
+
+<h2 id="you-will-learn">You will learn</h2>
+<ul>
+  <li>What is the architecture of Spring Framework?</li>
+  <li>How is Spring Framework Modularized?</li>
+  <li>What are different Spring Modules?</li>
+  <li>Which modules provide which Spring Features like Dependency Injection and Auto wiring?</li>
+  <li>How can you develop applications with multiple layers with Spring?</li>
+</ul>
+
+<h3 id="spring-architecture-and-modules">Spring Architecture and Modules</h3>
+
+<p>Let’s look at the modules that are present in a typical Spring Project.
+<img src="/images/Capture-095-02.png" alt="image info" /></p>
+
+<p>It is not organized as one big JAR file. It is composed of a large number of smaller JAR files.</p>
+
+<p>Spring is organized into modules. Here is how Spring is organized conceptually:
+<img src="/images/Capture-095-03.png" alt="image info" /></p>
+
+<h3 id="container">Container</h3>
+
+<p>This is the most heavily used part of the Spring framework. This includes modules such as:</p>
+<ul>
+  <li>Beans: To manage the application dependencies</li>
+  <li>Core</li>
+  <li>Context: To maintain the application context</li>
+</ul>
+
+<h3 id="database-access-and-integration">Database Access And Integration</h3>
+
+<p>Spring provide excellent options for implementing data and integration layers.</p>
+
+<p>The important data access modules are:</p>
+<ul>
+  <li><strong>JDBC</strong> : To talk to relational database using JDBC</li>
+  <li><strong>ORM</strong> : Provides good integration with all ORM (Object Relational Mapping) frameworks, such as Hibernate and MyBatis.</li>
+  <li><strong>JMS</strong> : If you want to talk to another application over a queue, JMS provides an excellent option. Spring has good integration with JMS.</li>
+  <li><strong>OXM</strong> : This module provides good integration in scenarios where object to XML mappings are required.</li>
+  <li><strong>Transactions</strong> : Transaction management is an important part of data access integration functionality. Ideally, you want the transaction to be fully successful, or completely rolled back. If a transaction has 4 steps and failed at the third step, the previous two successful steps must also be rolled back. Spring has great support for transaction management.</li>
+</ul>
+
+<h3 id="web">Web</h3>
+
+<p>Spring has very good support to develop your web layer:</p>
+<ul>
+  <li>Spring MVC : It is Spring’s own web framework</li>
+  <li>Struts : Spring provides good integration with Struts.</li>
+</ul>
+
+<h3 id="cross-cutting-features">Cross Cutting Features</h3>
+
+<p>An application is typically developed in multiple layers. For example, a web application is often designed to have three layers: web, business and data:</p>
+
+<p><img src="/images/Capture-095-04.png" alt="image info" /></p>
+
+<p>There are many things that are applicable to more than one layer. Those are called <strong>cross cutting concerns</strong>.</p>
+
+<h4 id="unit-testing">Unit Testing</h4>
+
+<p>One important cross cutting concern is unit testing. We want to be able to unit test code in all the three layers mentioned above. Spring Test framework provides good support for unit testing.</p>
+
+<h4 id="aop">AOP</h4>
+
+<p>AOP stands for Aspect oriented programming. This module is useful for implementing features such as security and logging. Spring AOP provides basic AOP features.</p>
+
+<p>Spring provides good integration with the AspectJ framework to do advanced AOP.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>In this article, we had a brief look at the modular structure of the Spring framework. It is not a single monolith, but is organized as a set of small modules.</p>
+
+<hr />
+<h3 id="spring-framework">Spring Framework</h3>
+
+<p>This is the first article in a series of articles on Spring Framework:</p>
+
+<ul>
+  <li><a href="/blog/introduction-to-the-spring-framework" target="_blank">1 - Introduction To Spring Framework</a></li>
+  <li><a href="/blog/spring-framework-what-is-a-dependency" target="_blank">2 - What Is A Dependency?</a></li>
+  <li><a href="/blog/spring-framework-dependency-injection-inversion-of-control" target="_blank">3 - What Is Dependency Injection?</a></li>
+  <li><a href="/blog/spring-and-spring-boot-what-is-component-scan" target="_blank">4 - What Is Component Scan?</a></li>
+  <li><a href="/blog/spring-framework-architectures-and-modules" target="_blank">5 - Architecture of Spring Framework - Modularity and Spring Modules</a></li>
+  <li><a href="/blog/spring-projects-with-examples" target="_blank">6 - What Are Spring Projects?</a></li>
+  <li><a href="/blog/spring-basics-introduction-to-spring-batch" target="_blank">7 - Introduction To Spring Batch</a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/spring-and-spring-boot-what-is-component-scan" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/spring-projects-with-examples" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

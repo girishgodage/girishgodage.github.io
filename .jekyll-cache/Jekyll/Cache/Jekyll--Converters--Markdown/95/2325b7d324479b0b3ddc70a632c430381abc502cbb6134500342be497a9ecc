@@ -1,0 +1,381 @@
+I"�M<h2 id="how-to-build-your-own-ai-personal-assistant-using-python">How to build your own AI personal assistant using Python</h2>
+
+<p><em>An AI personal assistant is a piece of software that understands verbal or written commands and completes task assigned by the client. It is an example of weak AI that is it can only execute and perform quest designed by the user.</em></p>
+
+<p><img src="/img/G1.png" alt="image info" /></p>
+
+<p>Want to build your own personal AI assistant like Apple Siri, Microsoft Cortana and Google assistant?</p>
+
+<p>You can check out this Article to build one in a few simple steps!</p>
+
+<p>With the python programming language, a script most commonly used by the developers can be used to build your personal AI assistant to perform task designed by the users.</p>
+
+<p>Now, let’s write a script for our personal voice assistant using python.</p>
+
+<h2 id="skills">Skills:</h2>
+
+<p>The implemented voice assistant can perform the following task it can <strong>open YouTube, Gmail, Google chrome and stack overflow. Predict current time, take a photo, search Wikipedia to abstract required data, predict weather in different cities, get top headline news from Times of India and can answer computational and geographical questions too</strong>.</p>
+
+<p>The following queries of the voice assistant can be manipulated as per the users need.</p>
+
+<h2 id="packages-required">Packages required:</h2>
+
+<p>To build a personal voice assistant it’s necessary to install the following packages in your system using the pip command.</p>
+
+<p>1) <strong>Speech recognition</strong> — Speech recognition is an important feature used in house automation and in artificial intelligence devices. The main function of this library is it tries to understand whatever the humans speak and converts the speech to text.</p>
+
+<p>2) <strong>pyttsx3</strong> — pyttxs3 is a text to speech conversion library in python. This package supports text to speech engines on Mac os x, Windows and on Linux.</p>
+
+<p>3) <strong>wikipedia</strong> — Wikipedia is a multilingual online encyclopedia used by many people from academic community ranging from freshmen to students to professors who wants to gain information over a particular topic. This package in python extracts data’s required from Wikipedia.</p>
+
+<p>4) <strong>ecapture</strong> — This module is used to capture images from your camera</p>
+
+<p>5) <strong>datetime</strong> — This is an inbuilt module in python and it works on date and time</p>
+
+<p>6) <strong>os</strong> — This module is a standard library in python and it provides the function to interact with operating system</p>
+
+<p>7) <strong>time</strong> — The time module helps us to display time</p>
+
+<p>8) <strong>Web browser</strong> — This is an in-built package in python. It extracts data from the web</p>
+
+<p>9)  <strong>Subprocess</strong> — This is a standard library use to process various system commands like to log off or to restart your PC.</p>
+
+<p>10) <strong>Json</strong>- The json module is used for storing and exchanging data.</p>
+
+<p>11) <strong>requests</strong>- The request module is used to send all types of HTTP request. Its accepts URL as parameters and gives access to the given URL’S.</p>
+
+<p>12) <strong>wolfram alpha</strong> — Wolfram Alpha is an API which can compute expert-level answers using Wolfram’s algorithms, knowledge base and AI technology. It is made possible by the Wolfram Language</p>
+
+<h2 id="implementation">Implementation:</h2>
+<p><em>Import the following libraries</em></p>
+
+<pre><code class="language-code">
+import speech_recognition as sr
+import pyttsx3
+import datetime
+import wikipedia
+import webbrowser
+import os
+import time
+import subprocess
+from ecapture import ecapture as ec
+import wolframalpha
+import json
+import requests
+</code></pre>
+
+<h2 id="setting-up-the-speech-engine">Setting up the speech engine:</h2>
+
+<p>The pyttsx3 module is stored in a variable name engine.
+<strong>Sapi5</strong> is a <strong>Microsoft Text to speech engine used for voice recognition</strong>.</p>
+
+<p>The voice Id can be set as either 0 or 1,</p>
+<ul>
+  <li>0 indicates Male voice</li>
+  <li>1 indicates Female voice</li>
+</ul>
+
+<pre><code class="language-code">engine=pyttsx3.init('sapi5')
+voices=engine.getProperty('voices')
+engine.setProperty('voice','voices[0].id')
+
+</code></pre>
+
+<p>Now define a function <strong>speak</strong> which converts text to speech. The speak function takes the text as its argument,further initialize the engine.</p>
+
+<p><strong>runAndWait</strong>: This function Blocks while processing all currently queued commands. It Invokes callbacks for engine notifications appropriately and returns back when all commands queued before this call are emptied from the queue.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def speak(text):
+    engine.say(text)
+    engine.runAndWait()
+</code></pre></div></div>
+
+<h2 id="initiate-a-function-to-greet-the-user">Initiate a function to greet the user:</h2>
+
+<p>Define a function wishMe for the AI assistant to greet the user.</p>
+
+<p>The <strong>now().hour</strong> function abstract’s the hour from the current time.</p>
+
+<p>If the hour is greater than zero and less than 12, the voice assistant wishes you with the message “Good Morning”.</p>
+
+<p>If the hour is greater than 12 and less than 18, the voice assistant wishes you with the following message “Good Afternoon”.</p>
+
+<p>Else it voices out the message “Good evening”</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def wishMe():
+    hour=datetime.datetime.now().hour
+    if hour&gt;=0 and hour&lt;12:
+        speak("Hello,Good Morning")
+        print("Hello,Good Morning")
+    elif hour&gt;=12 and hour&lt;18:
+        speak("Hello,Good Afternoon")
+        print("Hello,Good Afternoon")
+    else:
+        speak("Hello,Good Evening")
+        print("Hello,Good Evening")
+</code></pre></div></div>
+
+<h2 id="setting-up-the-command-function-for-your-ai-assistant-">Setting up the command function for your AI assistant :</h2>
+
+<p>Define a function takecommand for the AI assistant to understand and to accept human language. The microphone captures the human speech and the recognizer recognizes the speech to give a response.</p>
+
+<p>The exception handling is used to handle the exception during the run time error and,the recognize_google function uses google audio to recognize speech.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def takeCommand():
+    r=sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Listening...")
+        audio=r.listen(source)
+
+        try:
+            statement=r.recognize_google(audio,language='en-in')
+            print(f"user said:{statement}\n")
+
+        except Exception as e:
+            speak("Pardon me, please say that again")
+            return "None"
+        return statement
+
+print("Loading your AI personal assistant G-One")
+speak("Loading your AI personal assistant G-One")
+wishMe()
+</code></pre></div></div>
+
+<h2 id="the-main-function">The Main function:</h2>
+<p>The main function starts from here,the commands given by the humans is stored in the variable <strong>statement</strong>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if __name__=='__main__':
+
+
+    while True:
+        speak("Tell me how can I help you now?")
+        statement = takeCommand().lower()
+        if statement==0:
+            continue
+</code></pre></div></div>
+
+<p>If the following trigger words are there in the statement given by the users it invokes the virtual assistant to speak the below following commands.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if "good bye" in statement or "ok bye" in statement or "stop" in statement:
+            speak('your personal assistant G-one is shutting down,Good bye')
+            print('your personal assistant G-one is shutting down,Good bye')
+            break
+</code></pre></div></div>
+
+<h2 id="skill-1--fetching-data-from-wikipedia">Skill 1 -Fetching data from Wikipedia:</h2>
+
+<p>The following commands helps to extract information from wikipedia. The <strong>wikipedia.summary()</strong> function takes two arguments, the statement given by the user and how many sentences from wikipedia is needed to be extracted is stored in a variable <strong>result</strong>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if 'wikipedia' in statement:
+            speak('Searching Wikipedia...')
+            statement =statement.replace("wikipedia", "")
+            results = wikipedia.summary(statement, sentences=3)
+            speak("According to Wikipedia")
+            print(results)
+            speak(results)
+
+</code></pre></div></div>
+<h2 id="skill-2--accessing-the-web-browsers--google-chrome--g-mail-and-youtube">Skill 2 -Accessing the Web Browsers — Google chrome , G-Mail and YouTube:</h2>
+
+<p>The web browser extracts data from web. The <strong>open_new_tab</strong> function accepts <strong>URL</strong> as a parameter that needs to be accessed.</p>
+
+<p>The <strong>Python time sleep function</strong> is used to add delay in the execution of a program. We can use this function to halt the execution of the program for given <strong>time</strong> in seconds.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>elif 'open youtube' in statement:
+            webbrowser.open_new_tab("https://www.youtube.com")
+            speak("youtube is open now")
+            time.sleep(5)
+
+        elif 'open google' in statement:
+            webbrowser.open_new_tab("https://www.google.com")
+            speak("Google chrome is open now")
+            time.sleep(5)
+
+        elif 'open gmail' in statement:
+            webbrowser.open_new_tab("gmail.com")
+            speak("Google Mail open now")
+            time.sleep(5)
+
+</code></pre></div></div>
+
+<h2 id="skill-3--predicting-time">Skill 3 -Predicting time:</h2>
+
+<p>The current time is abstracted from <strong>datetime.now()</strong> function which displays the hour, minute and second and is stored in a variable name <strong>strTime</strong>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>elif 'time' in statement:
+            strTime=datetime.datetime.now().strftime("%H:%M:%S")
+            speak(f"the time is {strTime}")
+</code></pre></div></div>
+
+<h2 id="skill-4--to-fetch-latest-news">Skill 4 -To fetch latest news:</h2>
+<p>If the user wants to know the latest news , The voice assistant is programmed to fetch top headline news from Time of India by using the web browser function.</p>
+
+<h2 id="skill-5--capturing-photo">Skill 5 -Capturing photo:</h2>
+
+<p><strong>The ec.capture()</strong> function is used to capture images from your camera. It accepts 3 parameter.</p>
+
+<p><strong>Camera index</strong> — The first connected webcam will be indicated as index 0 and the next webcam will be indicated as index 1.</p>
+
+<p><strong>Window name</strong> — It can be a variable or a string. If you don’t wish to see the window, type as False.</p>
+
+<p><strong>Save name</strong> — A name can be given to the image and if you don’t want to save the image, type as false.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>elif 'news' in statement:
+            news = webbrowser.open_new_tab("https://timesofindia.indiatimes.com/home/headlines”)
+            speak('Here are some headlines from the Times of India,Happy reading')
+            time.sleep(6)
+
+        elif "camera" in statement or "take a photo" in statement:
+            ec.capture(0,"robo camera","img.jpg")
+</code></pre></div></div>
+
+<h2 id="skill-6-searching-data-from-web">Skill 6-Searching data from web:</h2>
+
+<p>From the <strong>web browser</strong> you can search required data by passing the user statement (command) to the <strong>open_new_tab()</strong> function.</p>
+
+<p><strong>User</strong>: Hey G-One, please search images of butterfly</p>
+
+<p>The Voice assistant opens the google window &amp; fetches butterfly images from web.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>elif 'search'  in statement:
+            statement = statement.replace("search", "")
+            webbrowser.open_new_tab(statement)
+            time.sleep(5)	
+</code></pre></div></div>
+
+<h2 id="skill-7--setting-your-ai-assistant-to-answer-geographical-and-computational-questions">Skill 7- Setting your AI assistant to answer geographical and computational questions:</h2>
+
+<p>Here we can use a third party API called <strong>Wolfram alpha API</strong> to answer computational and geographical questions.It is made possible by the Wolfram Language. The <strong>client</strong> is an instance (class) created for wolfram alpha. The <strong>res</strong> variable stores the response given by the wolfram alpha.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>elif 'ask' in statement:
+            speak('I can answer to computational and geographical questions  and what question do you want to ask now')
+            question=takeCommand()
+            app_id="Paste your unique ID here "
+            client = wolframalpha.Client('R2K75H-7ELALHR35X')
+            res = client.query(question)
+            answer = next(res.results).text
+            speak(answer)
+            print(answer)
+</code></pre></div></div>
+
+<p>To access the wolfram alpha API an unique App ID is required which can be generated by the following ways:</p>
+
+<ol>
+  <li>Login to the official page of wolfram alpha and create an account if you do not possess one.</li>
+</ol>
+
+<p><img src="/img/python/datascience/img/6/1.png" alt="image info" /></p>
+
+<ol>
+  <li>Sign in using your wolfram ID</li>
+</ol>
+
+<p><img src="/img/python/datascience/img/6/2.png" alt="image info" /></p>
+
+<ol>
+  <li>Now you will view the homepage of the website. Head to the account section in the top right corner where you see your email. In the drop down menu, select the My Apps (API) option.</li>
+</ol>
+
+<p><img src="/img/python/datascience/img/6/3.png" alt="image info" /></p>
+
+<ol>
+  <li>You will see this following window, now click Get APP_ID button</li>
+</ol>
+
+<p><img src="/img/python/datascience/img/6/4.png" alt="image info" /></p>
+
+<ol>
+  <li>Now you will get the following dialog box, give a suitable name and description and click the App ID button, an App ID will be generated and this is an unique ID. Using the App Id use can access the Wolfram alpha API.</li>
+</ol>
+
+<p><img src="/img/python/datascience/img/6/5.png" alt="image info" /></p>
+
+<p><strong>Human:</strong> Hey G-One ,what is the capital of California?</p>
+
+<p><strong>G-One Voice assistant:</strong> Sacramento, United States of America</p>
+
+<h2 id="skill-8--extra-features">Skill 8- Extra features:</h2>
+
+<p>It would be interesting to program your AI assistant to answer the following questions like what it can and who created it,isn’t it?</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>elif 'who are you' in statement or 'what can you do' in statement:
+            speak('I am G-one version 1 point O your personal assistant. I am programmed to minor tasks like'
+                  'opening youtube,google chrome, gmail and stackoverflow ,predict time,take a photo,search wikipedia,predict weather' 
+                  'In different cities, get top headline news from times of india and you can ask me computational or geographical questions too!')
+
+
+        elif "who made you" in statement or "who created you" in statement or "who discovered you" in statement:
+            speak("I was built by Girish")
+            print("I was built by Girish")
+</code></pre></div></div>
+<h2 id="skill-9--to-forecast-weather">Skill 9- To forecast weather:</h2>
+
+<p>Now to program your AI assistant to detect weather we need to generate an API key from Open Weather map.</p>
+
+<p>Open weather map is an online service which provides weather data. By generating an API ID in the official website you can use the APP_ID to make your voice assistant detect weather of all places whenever required. The necessary modules needed to be imported for this weather detection is json and request module.</p>
+
+<p>The <strong>city_name variabl</strong>e takes the command given by the human using the <strong>takeCommand()</strong> function.</p>
+
+<p>The <strong>get</strong> method of <strong>request</strong> module returns a <strong>response</strong> object. And the <strong>json</strong> methods of response object converts json format data into python format.</p>
+
+<p>The variable <strong>X</strong> contains list of nested dictionaries which checks whether the value of ‘COD’ is 404 or not that is if the city is found or not.</p>
+
+<p>The values such as temperature and humidity is stored in the main key of variable <strong>Y</strong>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>elif "weather" in statement:
+            api_key="Apply your unique ID"
+            base_url="https://api.openweathermap.org/data/2.5/weather?"
+            speak("what is the city name")
+            city_name=takeCommand()
+            complete_url=base_url+"appid="+api_key+"&amp;q="+city_name
+            response = requests.get(complete_url)
+            x=response.json()
+            if x["cod"]!="404":
+                y=x["main"]
+                current_temperature = y["temp"]
+                current_humidiy = y["humidity"]
+                z = x["weather"]
+                weather_description = z[0]["description"]
+                speak(" Temperature in kelvin unit is " +
+                      str(current_temperature) +
+                      "\n humidity in percentage is " +
+                      str(current_humidiy) +
+                      "\n description  " +
+                      str(weather_description))
+                print(" Temperature in kelvin unit = " +
+                      str(current_temperature) +
+                      "\n humidity (in percentage) = " +
+                      str(current_humidiy) +
+                      "\n description = " +
+                      str(weather_description))
+
+</code></pre></div></div>
+
+<p><strong>Human:</strong> Hey G-One ,I want to get the weather data</p>
+
+<p><strong>G-One:</strong> What is the city name?</p>
+
+<p><strong>Human:</strong> Himachal Pradesh</p>
+
+<p><strong>G-One:</strong> Temperature in kelvin unit is 301.09 , Humidity in percentage is 52 and Description is light rain.</p>
+
+<h2 id="skill-10--to-log-off-your-pc">Skill 10- To log off your PC:</h2>
+
+<p>The subprocess.call() function here is used to process the system function to log off or to turn off your PC. This invokes your AI assistant to automatically turn off your PC.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    elif "log off" in statement or "sign out" in statement:
+            speak("Ok , your pc will log off in 10 sec make sure you exit from all applications")
+            subprocess.call(["shutdown", "/l"])
+			
+    time.sleep(3)
+
+</code></pre></div></div>
+
+<p>Hurray , We have finally built our own AI voice assistant . Further you can still add more functionalities to your AI voice assistant to perform more task.</p>
+
+<p>Check out my GitHub profile for code:</p>
+
+<p>https://github.com/girishgodage/ai-personal-assistant</p>
+
+<p>Happy Coding !!</p>
+:ET

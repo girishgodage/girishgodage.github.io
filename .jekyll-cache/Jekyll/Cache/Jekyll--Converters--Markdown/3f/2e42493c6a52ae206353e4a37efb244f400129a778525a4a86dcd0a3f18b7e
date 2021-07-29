@@ -1,0 +1,111 @@
+I"Ù<p>Microservices architectures are very popular today. In this article, we discuss the important challenges in developing a microservices architecture.</p>
+
+<ul>
+  <li>Identifying Microservice Boundaries - Implementing Bounded Context</li>
+  <li>Having Proper Configuration Management</li>
+  <li>Implementing Technology for Dynamic Scale Up And Scale Down</li>
+  <li>Ensuring High Visibility</li>
+  <li>Ensuring High Fault Tolerance</li>
+</ul>
+
+<h3 id="identifying-microservice-boundaries---implementing-bounded-context">Identifying Microservice Boundaries - Implementing Bounded Context</h3>
+
+<p>We are aware that in a microservices architecture, instead of single big monolith application, we build a number of independent microservices talking with each other:</p>
+
+<p><img src="/images/Capture-066-02.png" alt="image info" /></p>
+
+<blockquote>
+  <p>An important question one faces while designing such a system is, how do we define the boundaries of individual microservices?</p>
+</blockquote>
+
+<p>How do you decide what one service does, and what it should not do?</p>
+
+<p>This is particularly difficult for a new application, as there may not be enough business knowledge to establish the right boundaries.</p>
+
+<p>The task of deciding the boundaries of microservices is an evolving process. It is not something you necessarily get right the first time.</p>
+
+<p>It often involves using domain driven design while playing around the functionality of the microservices. As you gain design knowledge, you need to put that knowledge back into the microservices architecture.</p>
+
+<p>The best practices include following domain driven design.</p>
+
+<h3 id="having-proper-configuration-management">Having Proper Configuration Management</h3>
+
+<p>Configuration management poses quite a stiff challenge in implementing microservices.</p>
+
+<p>Suppose that in our system, we have a few microservices, each of which has multiple instances in each environment:</p>
+
+<p><img src="/images/Capture-066-03.png" alt="image info" /></p>
+
+<p>In a slightly larger system, there could be 10 microservices with 5 environments, and 50 instances at the least. We are talking about tons of configuration  here!</p>
+
+<p>This will involve a lot of work for the operations team, just to maintain all these configuration.</p>
+
+<p>Typically, centralized configuration helps you manage configuration.</p>
+
+<h3 id="implementing-technology-for-dynamic-scale-up-and-scale-down">Implementing Technology for Dynamic Scale Up And Scale Down</h3>
+
+<p>For a microservices architecture, establishing the technology to do dynamic scaling of infrastructure, is a mountain to scale in itself.</p>
+
+<p>The loads on different microservices could be different, at different instances of time:</p>
+
+<p><img src="/images/Capture-066-03.png" alt="image info" /></p>
+
+<p>At a particular point of time, you may need 2 instances of Microservice2. However at a later point in time, that need may go up to 4. Again, it could shoot up to 10 later. In essence, we need to bring up new instances of a microservices when they are in demand, and bring them down when no longer needed.</p>
+
+<p>All this scaling needs to be done with dynamic load balancing. At the point of time shown in the diagram, the load from Microservice1 needs to be distributed among the 4 instances of Microservice2. Later, when there are 10 instances of Microservice2, there needs to be another load redistribution among those 10 instances.</p>
+
+<p>Building an architecture for this involves a number of technical components - Naming Server, Load Balancers, Monitoring tools to identify whether to scale in or scale out.</p>
+
+<h3 id="ensuring-high-visibility">Ensuring High Visibility</h3>
+
+<p>Ensuring visibility is one of the most important challenges that needs to be addressed.</p>
+
+<p><img src="/images/Capture-066-02.png" alt="image info" /></p>
+
+<p>If we say that the functionality of the above system needs to be distributed among 10 microservices, but there is a bug, how do you identify where the bug is? There is clearly a need for a centralized log, where we need to find out what happened with a specific request.</p>
+
+<p>We also need to have effective monitoring across the microservices.</p>
+
+<h3 id="ensuring-high-fault-tolerance">Ensuring High Fault Tolerance</h3>
+
+<p>If not well designed, a microservices architecture can behave like a pack of cards. A microservice at the end of such a chain would be fundamental to the system behaving well.</p>
+
+<p>Therefore, it is very important for you to have sufficient fault tolerance in place, in your system.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>In this article, we looked at the various challenges that need to be addressed, while designing a microservices architecture. We covered areas such as bounded context, configuration management, dynamic scale up and scale down, visibility and fault tolerance.</p>
+
+<hr />
+<h3 id="introduction-to-cloud-microservice---challenges-and-advantages">Introduction to Cloud, Microservice - Challenges and Advantages</h3>
+
+<p>This is the article in a series of five articles on cloud and microservices:</p>
+<ul>
+  <li><a href="/blog/introduction-to-cloud" target="_blank">1 - Microservices Architecutres - Quick introduction to Cloud - Why, What and How?</a></li>
+  <li><a href="/blog/introduction-to-spring-cloud" target="_blank">2 - Microservice Architectures - Introduction to Spring Cloud</a></li>
+  <li><a href="/blog/microservice-architectures-advantages-of-microservices" target="_blank">3 - Microservices Architectures - Advantages Of Microservices</a></li>
+  <li><a href="/blog/microservice-architectures-challenges-with-microservices" target="_blank">4 - Microservice Architectures - Challenges with building Microservices</a></li>
+  <li><a href="/blog/microservice-architectures-soa-vs-microservices" target="_blank">5 - Microservices Architectures - Microservices vs SOA</a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/microservice-architectures-advantages-of-microservices" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/microservice-architectures-soa-vs-microservices" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

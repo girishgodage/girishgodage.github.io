@@ -1,0 +1,234 @@
+I"NM<h2 id="amazon-personalize---can-now-use-10x-more-item-attributes-to-improve-relevance-of-recommendations">Amazon Personalize - can now use 10X more item attributes to improve relevance of recommendations</h2>
+
+<p><strong>Amazon Personalize</strong> is a machine learning service which enables you to <strong>personalize your website, app, ads, emails, and more,</strong> with custom machine learning models which can be created in Amazon Personalize, with no prior machine learning experience. AWS is pleased to announce that Amazon Personalize now supports ten times more item attributes for modeling in Personalize. Previously, you could use up to five item attributes while building an ML model in Amazon Personalize. This limit is now 50 attributes. You can now use more information about your items, <strong><em>for example, category, brand, price, duration, size, author, year of release etc., to increase the relevance of recommendations.</em></strong></p>
+
+<p>In this post, you learn how to add item metadata with custom attributes to Amazon Personalize and create a model using this data and user interactions. This post uses the Amazon customer reviews data for beauty products. For more information and to download this data, see <strong>Amazon Customer Reviews Dataset</strong>. We will use the history of what items the users have reviewed along with user and item metadata to generate product recommendations for them.</p>
+
+<h2 id="pre-processing-the-data">Pre-processing the data</h2>
+
+<p>To model the data in Amazon Personalize, you need to break it into the following datasets:</p>
+
+<ul>
+  <li><strong>Users</strong> – Contains metadata about the users</li>
+  <li><strong>Items</strong> – Contains metadata about the items</li>
+  <li><strong>Interactions</strong> – Contains interactions (for this post, reviews) and metadata about the interactions</li>
+</ul>
+
+<p>For each respective dataset, this post uses the following attributes:</p>
+
+<ul>
+  <li><strong>Users</strong> – customer_id, helpful_votes, and total_votes</li>
+  <li><strong>Items</strong> – product_id, product_category, and product_parent</li>
+  <li><strong>Interactions</strong> – product_id, customer_id, review_date, and star_rating</li>
+</ul>
+
+<p>This post does not use the other attributes available, which include <em>marketplace, review_id, product_title, vine, verified_purchase, review_headline, and review_body.</em></p>
+
+<p>Additionally, to conform with the keywords in <strong>Amazon Personalize</strong>, this post <strong>renames customer_id to USER_ID, product_id to ITEM_ID, and review_date to TIMESTAMP.</strong></p>
+
+<p>To download and process the data for input to Amazon Personalize, use the following Python example codes.</p>
+
+<p>For the Users dataset, enter the following code:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bash
+#Downloading data
+$aws s3 cp s3://amazon-reviews-pds/tsv/amazon_reviews_us_Beauty_v1_00.tsv.gz .
+$gunzip amazon_reviews_us_Beauty_v1_00.tsv.gz 
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#Generating the user dataset
+</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s">'customer_id'</span><span class="p">,</span> <span class="s">'helpful_votes'</span><span class="p">,</span> <span class="s">'total_votes'</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'amazon_reviews_us_Beauty_v1_00.tsv'</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">'</span><span class="se">\t</span><span class="s">'</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="n">fields</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'customer_id'</span><span class="p">:</span><span class="s">'USER_ID'</span><span class="p">})</span>
+<span class="n">df</span><span class="p">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">'User_dataset.csv'</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>The following screenshot shows the Users dataset. This output can be generated by</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="/img/awscloud/10/personalize-10x-1.gif" alt="image info" /></p>
+
+<p>For the Items dataset, enter the following code:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#Generating the item dataset
+</span><span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s">'product_id'</span><span class="p">,</span> <span class="s">'product_category'</span><span class="p">,</span> <span class="s">'product_parent'</span><span class="p">]</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'amazon_reviews_us_Beauty_v1_00.tsv'</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">'</span><span class="se">\t</span><span class="s">'</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="n">fields</span><span class="p">)</span>
+<span class="n">df1</span><span class="o">=</span> <span class="n">df1</span><span class="p">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'product_id'</span><span class="p">:</span><span class="s">'ITEM_ID'</span><span class="p">})</span>
+
+<span class="c1">#Clip category names to 999 characters to confirm to Personalize limits
+</span><span class="n">maxlen</span> <span class="o">=</span> <span class="mi">999</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df1</span><span class="p">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">product_category</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s">'product_category'</span><span class="p">][:</span><span class="n">maxlen</span><span class="p">]</span>
+    <span class="n">df1</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="s">'product_category'</span><span class="p">,</span> <span class="n">product_category</span><span class="p">)</span>
+<span class="n">df1</span><span class="p">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">'Item_dataset.csv'</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>The following screenshot shows the Items dataset. This output can be generated by</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="/img/awscloud/10/personalize-10x-2.gif" alt="image info" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#Generating the interactions dataset
+</span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s">'product_id'</span><span class="p">,</span> <span class="s">'customer_id'</span><span class="p">,</span> <span class="s">'review_date'</span><span class="p">,</span> <span class="s">'star_rating'</span><span class="p">]</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'amazon_reviews_us_Beauty_v1_00.tsv'</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">'</span><span class="se">\t</span><span class="s">'</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="n">fields</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">df2</span><span class="o">=</span> <span class="n">df2</span><span class="p">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">'product_id'</span><span class="p">:</span><span class="s">'ITEM_ID'</span><span class="p">,</span> <span class="s">'customer_id'</span><span class="p">:</span><span class="s">'USER_ID'</span><span class="p">,</span> <span class="s">'review_date'</span><span class="p">:</span><span class="s">'TIMESTAMP'</span><span class="p">})</span>
+
+<span class="c1">#Converting timstamp to UNIX timestamp and rounding milliseconds
+</span><span class="n">num_errors</span> <span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df2</span><span class="p">.</span><span class="n">iterrows</span><span class="p">():</span> 
+    <span class="n">time_input</span><span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s">"TIMESTAMP"</span><span class="p">]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">time_input</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">time_input</span><span class="p">,</span> <span class="s">"%Y-%m-%d"</span><span class="p">)</span>
+        <span class="n">timestamp</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">datetime</span><span class="p">.</span><span class="n">timestamp</span><span class="p">(</span><span class="n">time_input</span><span class="p">))</span>
+        <span class="n">df2</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="s">"TIMESTAMP"</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"exception at index: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">index</span><span class="p">))</span>
+        <span class="n">num_errors</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Total rows in error: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">num_errors</span><span class="p">))</span>
+<span class="n">df2</span><span class="p">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">"Interaction_dataset.csv"</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+</code></pre></div></div>
+<p>The following screenshot shows the Items dataset. This output can be generated by</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="/img/awscloud/10/personalize-10x-3.gif" alt="image info" /></p>
+
+<h3 id="ingesting-the-data">Ingesting the data</h3>
+
+<p>After you process the preceding data, you can ingest it in Amazon Personalize.</p>
+
+<h3 id="creating-a-dataset-group">Creating a dataset group</h3>
+<p>To create a dataset group to store events (user interactions) sent by your application and the metadata for users and items, complete the following steps:</p>
+<ul>
+  <li>On the Amazon Personalize console, under <strong>Dataset groups</strong>, choose <strong>Create dataset group</strong>.</li>
+  <li>For <strong>Dataset group name</strong>, enter the name of your dataset group. This post enters the name <em>DemoLimitIncrease</em>.</li>
+  <li>Choose <strong>Next</strong>.</li>
+</ul>
+
+<p><img src="/img/awscloud/10/personalize-10x-4.gif" alt="image info" /></p>
+
+<h3 id="creating-a-dataset-and-defining-schema">Creating a dataset and defining schema</h3>
+
+<p>After you create the dataset group, create a dataset and define schema for each of them. The following steps are for your Items dataset:</p>
+
+<ul>
+  <li>For <strong>Dataset name</strong>, enter a name.</li>
+  <li>Under <strong>Schema details</strong>, select <strong>Create new schema</strong>.</li>
+  <li>For <strong>New schema name</strong>, enter a name.</li>
+  <li>For <strong>Schema definition</strong>, enter the following code:</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    "type": "record",
+    "name": "Items",
+    "namespace": "com.amazonaws.personalize.schema",
+    "fields": [
+        {
+            "name": "ITEM_ID",
+            "type": "string"
+        },
+        {
+            "name": "product_parent",
+            "type": "string",
+            "categorical": true
+        },
+        {
+            "name": "product_category",
+            "type": "string",
+            "categorical": true
+        }
+    ],
+    "version": "1.0"}
+
+</code></pre></div></div>
+<ul>
+  <li>
+    <p>Choose Next.</p>
+
+    <p><img src="/img/awscloud/10/personalize-10x-5.gif" alt="image info" /></p>
+  </li>
+</ul>
+
+<p>Follow the same steps for the Users and Interactions datasets and define the schema to conform to the columns you want to import.</p>
+
+<h3 id="importing-the-data">Importing the data</h3>
+
+<p>After you create the dataset, import the data from Amazon S3. Make sure you provide Amazon Personalize read access to your bucket. To import your Items data, complete the following steps:</p>
+
+<ul>
+  <li>Under <strong>Dataset import job details</strong>, for <strong>Dataset import job name</strong>, enter a name.</li>
+  <li>For <strong>IAM Service role</strong>, choose <strong>AmazonPersonalize-ExecutionRole</strong>.</li>
+  <li>For <strong>Data location</strong>, enter the location of your S3 bucket.</li>
+  <li>Choose <strong>Create dataset import job.</strong></li>
+</ul>
+
+<p><img src="/img/awscloud/10/personalize-10x-6-2.gif" alt="image info" /></p>
+
+<p>Follow the same steps to import your Users and Interactions datasets.</p>
+
+<h3 id="training-a-model">Training a model</h3>
+
+<p>After you ingest the data into Amazon Personalize, you are ready to train a model (solutionVersion). To do so, map the recipe (algorithm) you want to use to your use case. The following are your available options:</p>
+
+<ul>
+  <li>For user personalization, such as recommending items to a user, use one of the following recipes:
+    <ul>
+      <li>HRNN – Trains only on interaction data and provides a baseline</li>
+      <li>HRNN-Metadata – Trains on interaction+user, item, and interaction metadata and is recommended when you have such data available</li>
+      <li>HRNN-Coldstart – Use when you want to recommend cold (new) items to a user</li>
+    </ul>
+  </li>
+  <li>For recommending items similar to an input item, use SIMS.</li>
+  <li>For reranking a list of input items for a given user, use Personalized-Ranking.</li>
+</ul>
+
+<p>This post uses the HRNN-Metadata recipe to define a solution and then train a solutionVersion (model). Complete the following steps:</p>
+
+<ul>
+  <li>On the Amazon Personalize console, under <strong>Dataset groups</strong>, choose <strong>DemoLimitIncrease</strong>.</li>
+  <li>Choose <strong>Solutions</strong>.</li>
+  <li>Choose <strong>Create solution</strong>.</li>
+  <li>Under <strong>Solution configuration</strong>, for <strong>Solution name</strong>, enter a name</li>
+  <li>For <strong>Recipe selection</strong>, select Manual.</li>
+  <li>For <strong>Recipe</strong>, choose aws-hrnn-metadata.</li>
+  <li>Choose <strong>Next</strong>.</li>
+</ul>
+
+<p><img src="/img/awscloud/10/personalize-10x-7.gif" alt="image info" /></p>
+
+<p>You can also change the default hyperparameters or perform hyperparameter optimization for a solution.</p>
+
+<h3 id="getting-recommendations">Getting recommendations</h3>
+<p>To get recommendations, create a campaign using the solution and solution version you just created. Complete the following steps:</p>
+
+<ul>
+  <li>Under <strong>Dataset groups</strong>, under <strong>DemoLimitIncrease</strong>, choose Campaigns.</li>
+  <li>Choose <strong>Create new campaign</strong>.</li>
+  <li>Under <strong>Campaign details</strong>, for <strong>Campaign name</strong>, enter a name</li>
+  <li>For <strong>Solution</strong>, choose the <strong>solution name</strong> from previous step.</li>
+  <li>For <strong>Solution version ID</strong>, choose the <strong>solution version</strong> you just created.</li>
+  <li>For <strong>Minimum provisioned transactions per second</strong>, enter 1.</li>
+  <li>Choose <strong>Create campaign</strong>.</li>
+</ul>
+
+<p><img src="/img/awscloud/10/personalize-10x-8.gif" alt="image info" /></p>
+
+<ul>
+  <li>After the campaign is created you can see the details in the console and use it to get recommendations.</li>
+</ul>
+
+<p><img src="/img/awscloud/10/personalize-10x-9.gif" alt="image info" /></p>
+
+<p>After you set up the campaign, you can programmatically call the campaign to get recommendations in form of item IDs. You can also use the console to get the recommendations and perform spot checks. Additionally, Amazon Personalize offers the ability to batch process recommendations. For more information, see Now available: Batch Recommendations in Amazon Personalize.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>You can now use these recommendations to power display experiences, such as personalize the homepage of your beauty website based on what you know about the user or send a promotional email with recommendations. Performing real-time recommendations with Amazon Personalize requires you to also send user events as they occur. For more information, see Amazon Personalize is Now Generally Available. Get started with Amazon Personalize today!</p>
+:ET

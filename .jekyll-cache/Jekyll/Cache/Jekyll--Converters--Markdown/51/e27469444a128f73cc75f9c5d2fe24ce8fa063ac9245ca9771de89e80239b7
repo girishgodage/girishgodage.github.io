@@ -1,0 +1,182 @@
+I"@;<h2 id="hosting">Hosting</h2>
+
+<p>In this 12th part of this series, I’m going to write about how to customize hosting in ASP.NET Core. We will look into the hosting options, different kind of hosting and a quick look into hosting on the IIS. And while writing this post this again seems to get a long one.</p>
+
+<blockquote>
+  <p>This will change in ASP.NET Core 3.0. I anyway decided to do this post about ASP.NET Core 2.2 because it still needs some time until ASP.NET Core 3.0 is released.</p>
+</blockquote>
+
+<p>This post is just an overview bout the different kind of application hosting. It is surely possible to go a lot more into the details for each topic, but this would increase the size of this post a lot and I need some more topics for future blog posts ;-)</p>
+
+<h2 id="quick-setup">Quick setup</h2>
+
+<p>For this series we just need to setup a small empty web application.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet new web <span class="nt">-n</span> ExploreHosting <span class="nt">-o</span> ExploreHosting
+</code></pre></div></div>
+
+<p>That’s it. Open it with Visual Studio Code:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>ExploreHosting
+code <span class="nb">.</span>
+</code></pre></div></div>
+
+<p>And voila, we get a simple project open in VS Code:</p>
+
+<p><img src="/img/customize-aspnetcore/simpleproject.PNG" alt="" /></p>
+
+<h2 id="webhostbuilder">WebHostBuilder</h2>
+
+<p>Like in the last post, we will focus on the <code class="language-plaintext highlighter-rouge">Program.cs</code>. The <code class="language-plaintext highlighter-rouge">WebHostBuilder</code> is our friend. This is where we configure and create the web host. The next snippet is the default configuration of every new ASP.NET Core web we create using <code class="language-plaintext highlighter-rouge">File =&gt; New =&gt; Project</code> in Visual Studio or <code class="language-plaintext highlighter-rouge">dotnet new</code> with the .NET CLI:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nf">CreateWebHostBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">).</span><span class="nf">Build</span><span class="p">().</span><span class="nf">Run</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="n">IWebHostBuilder</span> <span class="nf">CreateWebHostBuilder</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">=&gt;</span>
+        <span class="n">WebHost</span><span class="p">.</span><span class="nf">CreateDefaultBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+        	<span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>As we already know from the previous posts the default build has all the needed stuff pre-configured. All you need to run an application successfully on Azure or on an on-premise IIS is configured for you.</p>
+
+<p>But you are able to override almost all of this default configurations. Also the hosting configuration.</p>
+
+<h3 id="kestrel">Kestrel</h3>
+
+<p>After the <code class="language-plaintext highlighter-rouge">WebHostBuilder</code> is created we can use various functions to configure the builder. Here we already see one of them, which specifies the <code class="language-plaintext highlighter-rouge">Startup</code> class that should be used. In the last post we saw the <code class="language-plaintext highlighter-rouge">UseKestrel</code> method to configure the Kestrel options:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">.</span><span class="nf">UseKestrel</span><span class="p">((</span><span class="n">host</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Reminder: Kestrel is one possibility to host your application. Kestrel is a web server built in .NET and based on .NET socket implementations. Previously it was built on top of libuv, which is the same web server that is used by NodeJS. Microsoft removes the dependency to libuv and created an own web server implementation based on .NET sockets.</p>
+
+  <p>Docs: https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel</p>
+</blockquote>
+
+<p>This first argument is a <code class="language-plaintext highlighter-rouge">WebHostBuilderContext</code> to access already configured hosting settings or the configuration itself. The second argument is an object to configure Kestrel. This snippet shows what we did in the last post to configure the socket endpoints where the host needs to listen to:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">.</span><span class="nf">UseKestrel</span><span class="p">((</span><span class="n">host</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">filename</span> <span class="p">=</span> <span class="n">host</span><span class="p">.</span><span class="n">Configuration</span><span class="p">.</span><span class="nf">GetValue</span><span class="p">(</span><span class="s">"AppSettings:certfilename"</span><span class="p">,</span> <span class="s">""</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">password</span> <span class="p">=</span> <span class="n">host</span><span class="p">.</span><span class="n">Configuration</span><span class="p">.</span><span class="nf">GetValue</span><span class="p">(</span><span class="s">"AppSettings:certpassword"</span><span class="p">,</span> <span class="s">""</span><span class="p">);</span>
+    
+    <span class="n">options</span><span class="p">.</span><span class="nf">Listen</span><span class="p">(</span><span class="n">IPAddress</span><span class="p">.</span><span class="n">Loopback</span><span class="p">,</span> <span class="m">5000</span><span class="p">);</span>
+    <span class="n">options</span><span class="p">.</span><span class="nf">Listen</span><span class="p">(</span><span class="n">IPAddress</span><span class="p">.</span><span class="n">Loopback</span><span class="p">,</span> <span class="m">5001</span><span class="p">,</span> <span class="n">listenOptions</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">listenOptions</span><span class="p">.</span><span class="nf">UseHttps</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">password</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>This will override the default configuration where you are able to pass in URLs, eg. using the <code class="language-plaintext highlighter-rouge">applicationUrl</code> property of the <code class="language-plaintext highlighter-rouge">launchSettings.json</code> or an environment variable.</p>
+
+<h3 id="httpsys">HTTP.sys</h3>
+
+<p>Do you know that there is another hosting option? A different web server implementation? It is <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/httpsys">HTTP.sys</a>. This is a pretty mature library deep within Windows that can be used to host your ASP.NET COre application.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">.</span><span class="nf">UseHttpSys</span><span class="p">(</span><span class="n">options</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>The HTTP.sys is different to Kestrel. It cannot be used in IIS because it is not compatible with the <a href="https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/aspnet-core-module?view=aspnetcore-2.2">ASP.NET Core Module</a> for IIS.</p>
+
+<p>The main reason to use HTTP.sys instead of Kestrel is Windows Authentication which cannot be used in Kestrel only. Another reason is, if you need to expose it to the internet without the IIS.</p>
+
+<p>Also the IIS is running on top of HTTP.sys for years. Which means <code class="language-plaintext highlighter-rouge">UseHttpSys()</code> and IIS are using the same web server implementation. To learn more about HTTP.sys please read the <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/httpsys">docs</a>.</p>
+
+<h3 id="hosting-on-iis">Hosting on IIS</h3>
+
+<p>An ASP.NET Core Application shouldn’t be directly exposed to the internet, even if it’s supported for even Kestrel or the HTTP.sys. It would be the best to have something like a reverse proxy in between or at least a service that watches the hosting process. For ASP.NET Core the IIS isn’t only a reverse proxy. It also takes care of the hosting process in case it brakes because of an error or whatever. It’ll restart the process in that case. Also Nginx may be used as an reverse proxy on Linux that also takes care of the hosting process.</p>
+
+<p>To host an ASP.NET Core web on an IIS or on Azure you need to publish it first. Publishing doesn’t only compiles the project. It also prepares the project to host it on IIS, on Azure or on an webserver on Linux like Nginx.</p>
+
+<blockquote>
+  <p>dotnet publish -o ..\published -r win32-x64</p>
+</blockquote>
+
+<p><img src="/img/customize-aspnetcore/dotnet-publish.png" alt="" /></p>
+
+<p>This produces an output that can be mapped in the IIS. It also creates a web.config to add settings for the IIS or Azure. It contains the compiled web application as a DLL.</p>
+
+<p>If you publish a self-contained application it also contains the runtime itself. A self-contained application brings it’s own .NET Core runtime, but the size of the delivery increases a lot.</p>
+
+<p>And on the IIS? Just create a new web and map it to the folder where you placed the published output:</p>
+
+<p><img src="/img/customize-aspnetcore/iis-hosting.png" alt="" /></p>
+
+<p>It get’s a little more complicated if you need to change the security, if you have some database connections and so on. This would be a topic for a separate blog post. But in this small sample it simply works:</p>
+
+<p><img src="/img/customize-aspnetcore/iis-hosted.PNG" alt="" /></p>
+
+<p>This is the output of the small Middleware in the <code class="language-plaintext highlighter-rouge">startup.cs</code> of the demo project:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">app</span><span class="p">.</span><span class="nf">Run</span><span class="p">(</span><span class="k">async</span> <span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="nf">WriteAsync</span><span class="p">(</span><span class="s">"Hello World!"</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="nginx">Nginx</h2>
+
+<p>Unfortunately I cannot write about Nginx, because I don’t have a running Linux currently to play around with it. This is one of the many future projects I have. I just got ASP.NET Core running on Linux using the Kestrel webserver.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>ASP.NET Core and the .NET CLI already contain all the tools to get it running on various platforms and to set it up to get it ready for Azure and the IIS, as well as Nginx. This is super easy and well described in the docs.</p>
+
+<p>I’ll definitely go deeper into some of the topics and in ASP.NET Core there are some pretty cool hosting features that make it a lot more flexible to host your application:</p>
+
+<p>Currently we have the <code class="language-plaintext highlighter-rouge">WebHostBuilder</code> that creates the hosting environment of the applications. In 3.0 we get the <code class="language-plaintext highlighter-rouge">HostBuilder</code> that is able to create a hosting environment that is completely independent from any web context. I’m going to write about the <code class="language-plaintext highlighter-rouge">HostBuilder</code> in one of the next blog posts.</p>
+
+<hr />
+<h2 id="sessions">Sessions</h2>
+
+<p>This is series of articles on Building Conf planner app with Asp.net Core:</p>
+
+<ul>
+  <li><a href="/blog/customize-logging" target="_blank">1 - Logging</a></li>
+  <li><a href="/blog/customize-configuration" target="_blank">2 - Configuration</a></li>
+  <li><a href="/blog/customize-dependency-injection" target="_blank">3 - Dependency Injection</a></li>
+  <li><a href="/blog/customize-https" target="_blank">4 - Https</a></li>
+  <li><a href="/blog/customize-hostedservices" target="_blank">5 - Hostedservices</a></li>
+  <li><a href="/blog/customize-middleware" target="_blank">6 - Middlewares</a></li>
+  <li><a href="/blog/customize-outputformatter" target="_blank">7 - Outputformatter</a></li>
+  <li><a href="/blog/customize-modelbinders" target="_blank">8 - Modelbinders </a></li>
+  <li><a href="/blog/customize-actionfilters" target="_blank">9 - Actionfilters</a></li>
+  <li><a href="/blog/customize-taghelpers" target="_blank">10 - Taghelpers</a></li>
+  <li><a href="/blog/customize-webhostbuilder" target="_blank">11 - Webhostbuilder</a></li>
+  <li><a href="/blog/customize-hosting" target="_blank">12 - Hosting </a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/customize-webhostbuilder" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/customize-hosting" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

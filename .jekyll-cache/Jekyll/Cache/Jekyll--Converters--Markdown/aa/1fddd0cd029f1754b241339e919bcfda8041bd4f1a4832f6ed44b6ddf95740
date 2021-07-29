@@ -1,0 +1,242 @@
+I"GV<h2 id="modelbinders">ModelBinders</h2>
+
+<p>In the last chapter about <code class="language-plaintext highlighter-rouge">OutputFormatters</code> I wrote about sending data out to the clients in different formats. In this post we are going to do it the other way. This post is about data you get into your Web API from outside. What if you get data in a special format or what if you get data you need to validate in a special way. <code class="language-plaintext highlighter-rouge">ModelBinders</code> will help you to handle this.</p>
+
+<h2 id="about-modelbinders">About ModelBinders</h2>
+
+<p>ModelBinders are responsible to bind the incoming data to specific action method parameters. It binds the data sent with the request to the parameters. The default binders are able to bind data that are sent via the QueryString or sent within the request body. Within the body the data can be sent in URL format or JSON.</p>
+
+<p>The model binding tries to find the values in the request by the parameter names. The form values, the route data and the query string values are stored as a key-value pair collection and the binding tries to find the parameter name in the keys of the collection.</p>
+
+<h2 id="preparation-of-the-test-project">Preparation of the test project</h2>
+
+<p>In this chapter I’d like to send CSV data to a Web API method. I will reuse the CSV data we created in the last post:</p>
+
+<pre><code class="language-csv">Id,FirstName,LastName,Age,EmailAddress,Address,City,Phone
+48,Samantha,White,18,Angel.Morgan@shaw.ca,"8202 77th Street ",Mascouche,(682) 381-4092
+1,Eric,Wright,2,Briana.Ross@gmx.com,"8104 Scott Avenue ",Canutillo,(253) 366-5637
+55,Amber,Watson,46,Sarah.Foster@gmx.com,"9206 Lewis Avenue ",Coleman,(632) 375-4415
+99,Alexander,King,59,Ross.Timms@live.com,"3089 Paerdegat 7th Street ",Monte Alto,(366) 319-4154
+69,Autumn,Hayes,25,Mark.Diaz@shaw.ca,"3263 Avenue O  ",Montreal West (Montréal-Ouest),(283) 438-7801
+94,Destiny,James,47,Kylie.Walker@telus.net,"1057 14th Street ",Montreal,(570) 574-3208
+59,Christina,Bennett,87,Madeline.Adams@att.com,"5672 19th Lane ",Corrigan,(467) 304-0309
+71,Isaac,Hayes,33,Trevor.Robinson@hotmail.com,"9707 Langham Street ",Huntington,(635) 317-0231
+23,Jason,Morgan,77,Jennifer.Powell@rogers.ca,"4413 Debevoise Avenue ",Pinole,(265) 467-1984
+43,Jenna,Brandzin,92,Natalie.Reed@gmail.com,"4691 Sea Breeze Avenue ",Cushing-Douglass,(502) 427-9135
+79,Madison,Verstraete,69,Abigail.Wright@hotmail.com,"2066 104th Street ",Moose Lake,(448) 423-7550
+80,Lorrie,Long,89,Melissa.Bennett@microsoft.com,"3048 Allen Avenue ",Munday,(576) 707-6183
+79,Alejandro,Daeninck,51,Matthew.Phillips@att.com,"9997 41st Street ",North Bay,(455) 297-2648
+14,Makayla,Clark,44,Joshua.Jackson@rogers.ca,"4518 Folsom Place ",Cortland,(772) 692-0732
+12,Isaac,Sanchez,37,Paige.MacKenzie@live.com,"2094 Mc Kenny Street ",Brockville,(563) 735-0233
+68,Jesus,Brandzin,34,Molly.Clark@telus.net,"3532 Durland Place ",Comfort,(627) 319-9704
+59,Logan,Howard,59,Jorge.Brandzin@rogers.ca,"3458 Wythe Avenue ",Enderby,(226) 520-9653
+48,Nathaniel,Richardson,58,Amanda.Pitt@gmail.com,"6926 Sunnyside Court ",Los Altos Hills,(513) 338-4602
+34,Tiffany,Miller,18,Claire.Alexander@att.com,"1985 Devon Avenue ",Sansom Park,(357) 274-3606
+</code></pre>
+
+<p>So let’s start by creating a new project using the .NET CLI:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet new webapi <span class="nt">-n</span> ModelBinderSample <span class="nt">-o</span> ModelBinderSample
+</code></pre></div></div>
+
+<p>This creates a new Web API project.</p>
+
+<p>In this new project I created a new controller with a small action inside:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">namespace</span> <span class="nn">ModelBinderSample.Controllers</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"api/[controller]"</span><span class="p">)]</span>
+    <span class="p">[</span><span class="n">ApiController</span><span class="p">]</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">PersonsController</span> <span class="p">:</span> <span class="n">ControllerBase</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="n">ActionResult</span><span class="p">&lt;</span><span class="kt">object</span><span class="p">&gt;</span> <span class="nf">Post</span><span class="p">(</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;</span> <span class="n">persons</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span>
+            <span class="p">{</span>
+                <span class="n">ItemsRead</span> <span class="p">=</span> <span class="n">persons</span><span class="p">.</span><span class="nf">Count</span><span class="p">(),</span>
+                <span class="n">Persons</span> <span class="p">=</span> <span class="n">persons</span>
+            <span class="p">};</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This looks basically like any other action. It accepts a list of persons and returns an anonymous object that contains the number of persons as well as the list of persons. This action is pretty useless, but helps us to debug the ModelBinder using Postman.</p>
+
+<p>We also need the Person class:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">FirstName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">LastName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Age</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">EmailAddress</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Address</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">City</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Phone</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This actually will work fine, if we would send JSON based data to that action.</p>
+
+<p>As a last preparation step, we need to add the CsvHelper NuGet package to easier parse the CSV data. I also love to use the .NET CLI here:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet package add CsvHelper
+</code></pre></div></div>
+
+<h2 id="creating-a-csvmodelbinder">Creating a CsvModelBinder</h2>
+
+<p>To create the <code class="language-plaintext highlighter-rouge">ModelBinder</code> add a new class called <code class="language-plaintext highlighter-rouge">CsvModelBinder</code>, which implements the <code class="language-plaintext highlighter-rouge">IModelBinder</code>. The next snippet shows a generic binder that should work with any list of models:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">CsvModelBinder</span> <span class="p">:</span> <span class="n">IModelBinder</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">Task</span> <span class="nf">BindModelAsync</span><span class="p">(</span><span class="n">ModelBindingContext</span> <span class="n">bindingContext</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">bindingContext</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">ArgumentNullException</span><span class="p">(</span><span class="k">nameof</span><span class="p">(</span><span class="n">bindingContext</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Specify a default argument name if none is set by ModelBinderAttribute</span>
+        <span class="kt">var</span> <span class="n">modelName</span> <span class="p">=</span> <span class="n">bindingContext</span><span class="p">.</span><span class="n">ModelName</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">String</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">modelName</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">modelName</span> <span class="p">=</span> <span class="s">"model"</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Try to fetch the value of the argument by name</span>
+        <span class="kt">var</span> <span class="n">valueProviderResult</span> <span class="p">=</span> <span class="n">bindingContext</span><span class="p">.</span><span class="n">ValueProvider</span><span class="p">.</span><span class="nf">GetValue</span><span class="p">(</span><span class="n">modelName</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">valueProviderResult</span> <span class="p">==</span> <span class="n">ValueProviderResult</span><span class="p">.</span><span class="n">None</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">Task</span><span class="p">.</span><span class="n">CompletedTask</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">bindingContext</span><span class="p">.</span><span class="n">ModelState</span><span class="p">.</span><span class="nf">SetModelValue</span><span class="p">(</span><span class="n">modelName</span><span class="p">,</span> <span class="n">valueProviderResult</span><span class="p">);</span>
+
+        <span class="kt">var</span> <span class="k">value</span> <span class="p">=</span> <span class="n">valueProviderResult</span><span class="p">.</span><span class="n">FirstValue</span><span class="p">;</span>
+        <span class="c1">// Check if the argument value is null or empty</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">String</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="k">value</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">Task</span><span class="p">.</span><span class="n">CompletedTask</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kt">var</span> <span class="n">stringReader</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StringReader</span><span class="p">(</span><span class="k">value</span><span class="p">);</span>
+        <span class="kt">var</span> <span class="n">reader</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">CsvReader</span><span class="p">(</span><span class="n">stringReader</span><span class="p">);</span>
+
+        <span class="kt">var</span> <span class="n">modelElementType</span> <span class="p">=</span> <span class="n">bindingContext</span><span class="p">.</span><span class="n">ModelMetadata</span><span class="p">.</span><span class="n">ElementType</span><span class="p">;</span>
+        <span class="kt">var</span> <span class="n">model</span> <span class="p">=</span> <span class="n">reader</span><span class="p">.</span><span class="nf">GetRecords</span><span class="p">(</span><span class="n">modelElementType</span><span class="p">).</span><span class="nf">ToList</span><span class="p">();</span>
+
+        <span class="n">bindingContext</span><span class="p">.</span><span class="n">Result</span> <span class="p">=</span> <span class="n">ModelBindingResult</span><span class="p">.</span><span class="nf">Success</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="n">Task</span><span class="p">.</span><span class="n">CompletedTask</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In the method <code class="language-plaintext highlighter-rouge">BindModelAsync</code> we get the <code class="language-plaintext highlighter-rouge">ModelBindingContext</code> with all the information in it we need to get the data and to deserialize it.</p>
+
+<p>First the <code class="language-plaintext highlighter-rouge">context</code> get’s checked against null. After that we set a default argument name to the model, if none is specified. If this is done we are able to fetch the value by the name we previously set.</p>
+
+<p>If there’s no value, we shouldn’t throw an exception in this case. The reason is that maybe the next configured <code class="language-plaintext highlighter-rouge">ModelBinder</code> is responsible. If we throw an exception the execution of the current request is canceled and the next configured <code class="language-plaintext highlighter-rouge">ModelBinder</code> doesn’t have the chance to get executed.</p>
+
+<p>With a <code class="language-plaintext highlighter-rouge">StringReader</code> we read the value into the <code class="language-plaintext highlighter-rouge">CsvReader</code> and deserialize it to the list of models. We get the type for the deserialization out of the <code class="language-plaintext highlighter-rouge">ModelMetadata</code> property. This contains all the relevant information about the current model.</p>
+
+<h2 id="using-the-modelbinder">Using the ModelBinder</h2>
+
+<p>The Binder isn’t used automatically, because it isn’t registered in the dependency injection container and not configured to use within the MVC framework.</p>
+
+<p>The easiest way use this model binder is to use the ModelBinderAttribute on the argument of the action where the model should be bound:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span>
+<span class="k">public</span> <span class="n">ActionResult</span><span class="p">&lt;</span><span class="kt">object</span><span class="p">&gt;</span> <span class="nf">Post</span><span class="p">(</span>
+    <span class="p">[</span><span class="nf">ModelBinder</span><span class="p">(</span><span class="n">binderType</span><span class="p">:</span> <span class="k">typeof</span><span class="p">(</span><span class="n">CsvModelBinder</span><span class="p">))]</span> 
+    <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;</span> <span class="n">persons</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span>
+    <span class="p">{</span>
+        <span class="n">ItemsRead</span> <span class="p">=</span> <span class="n">persons</span><span class="p">.</span><span class="nf">Count</span><span class="p">(),</span>
+        <span class="n">Persons</span> <span class="p">=</span> <span class="n">persons</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Here the type of our <code class="language-plaintext highlighter-rouge">CsvModelBinder</code> is set as <code class="language-plaintext highlighter-rouge">binderType</code> to that attribute.</p>
+
+<p><a href="https://twitter.com/stevejgordon">Steve Gordon</a> wrote about a second option in his blog post: <a href="https://www.stevejgordon.co.uk/html-encode-string-aspnet-core-model-binding/">Custom ModelBinding in ASP.NET MVC Core</a>. He uses a <code class="language-plaintext highlighter-rouge">ModelBinderProvider</code> to add the <code class="language-plaintext highlighter-rouge">ModelBinder</code> to the list of existing ones.</p>
+
+<p>I personally prefer the explicit declaration, because the most custom <code class="language-plaintext highlighter-rouge">ModelBinders</code> will be pretty specific to an action or to a specific type and there’s no hidden magic in the background.</p>
+
+<h2 id="testing-the-modelbinder">Testing the ModelBinder</h2>
+
+<p>To test it, we need to create a new Request in Postman. I set the request type to POST and put the URL https://localhost:5001/api/persons in the address bar. Now I need to add the CSV data in the body of the request. Because it is a URL formatted body, I needed to put the data as <code class="language-plaintext highlighter-rouge">persons</code> variable into the body:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>persons=Id,FirstName,LastName,Age,EmailAddress,Address,City,Phone
+48,Samantha,White,18,Angel.Morgan@shaw.ca,"8202 77th Street ",Mascouche,(682) 381-4092
+1,Eric,Wright,2,Briana.Ross@gmx.com,"8104 Scott Avenue ",Canutillo,(253) 366-5637
+55,Amber,Watson,46,Sarah.Foster@gmx.com,"9206 Lewis Avenue ",Coleman,(632) 375-4415
+
+</code></pre></div></div>
+
+<p>After pressing send, I got the result as shown below:</p>
+
+<p><img src="/img/customize-aspnetcore/modelbinder.PNG" alt="" /></p>
+
+<p>Now the clients are able to send CSV based data to the server.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>This is a good way to transform the input in a way the action really needs. You could also use the ModelBinders to do some custom validation against the database or whatever you need to do before the model get’s passed to the action.</p>
+
+<p>To learn more about ModelBinders, you need to have a look into the pretty detailed documentation:</p>
+
+<ul>
+  <li><a href="https://docs.microsoft.com/en-us/aspnet/core/mvc/models/model-binding">Model Binding in ASP.NET Core</a></li>
+  <li><a href="https://docs.microsoft.com/en-us/aspnet/core/mvc/advanced/custom-model-binding">Custom Model Binding in ASP.NET Core</a></li>
+</ul>
+
+<p>While playing around with the <code class="language-plaintext highlighter-rouge">ModelBinderProvider</code> Steve describes in his blog, I stumbled upon <code class="language-plaintext highlighter-rouge">InputFormatters</code>. Would this actually be the right way to transform CSV input into objects? I definitely need to learn some more details about the <code class="language-plaintext highlighter-rouge">InputFormatters</code>and will use this as 12th topic of this series.</p>
+
+<p>In the next chapter, I will show you what you can do with <strong>ActionFilters</strong>.</p>
+
+<hr />
+<h2 id="sessions">Sessions</h2>
+
+<p>This is series of articles on Building Conf planner app with Asp.net Core:</p>
+
+<ul>
+  <li><a href="/blog/customize-logging" target="_blank">1 - Logging</a></li>
+  <li><a href="/blog/customize-configuration" target="_blank">2 - Configuration</a></li>
+  <li><a href="/blog/customize-dependency-injection" target="_blank">3 - Dependency Injection</a></li>
+  <li><a href="/blog/customize-https" target="_blank">4 - Https</a></li>
+  <li><a href="/blog/customize-hostedservices" target="_blank">5 - Hostedservices</a></li>
+  <li><a href="/blog/customize-middleware" target="_blank">6 - Middlewares</a></li>
+  <li><a href="/blog/customize-outputformatter" target="_blank">7 - Outputformatter</a></li>
+  <li><a href="/blog/customize-modelbinders" target="_blank">8 - Modelbinders </a></li>
+  <li><a href="/blog/customize-actionfilters" target="_blank">9 - Actionfilters</a></li>
+  <li><a href="/blog/customize-taghelpers" target="_blank">10 - Taghelpers</a></li>
+  <li><a href="/blog/customize-webhostbuilder" target="_blank">11 - Webhostbuilder</a></li>
+  <li><a href="/blog/customize-hosting" target="_blank">12 - Hosting </a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/customize-outputformatter" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/customize-actionfilters" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

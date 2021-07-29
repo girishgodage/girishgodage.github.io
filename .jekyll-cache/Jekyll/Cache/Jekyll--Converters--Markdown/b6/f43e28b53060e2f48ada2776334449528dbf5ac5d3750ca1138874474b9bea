@@ -1,0 +1,175 @@
+I"'<p>With extreme programming and agile, the focus is being lean and doing just in time design. In this context, how do you ensure that your design remains good and evolves along with the application requirements?</p>
+
+<h3 id="we-learn">We learn</h3>
+<ul>
+  <li>What is Evolutionary Design?</li>
+  <li>Why is it important?</li>
+  <li>How can you use Evolutionary Design in the best way possible?</li>
+  <li>What Are The Advantages Of Evolutionary Design?</li>
+  <li>How does Evolutionary Design fit in with agile?</li>
+  <li>What are the best practices with Evolutionary Design?</li>
+</ul>
+
+<h3 id="waterfall-model-in-perspective">Waterfall Model In Perspective</h3>
+
+<p>One of the first software implementation model was the <strong>Waterfall Model</strong>. Before we start with Evolutionary Design, lets look at how design was done in a Waterfall Model.</p>
+
+<p>The Waterfall Model typically involves the following project stages:</p>
+<ul>
+  <li>Architecture</li>
+  <li>Design</li>
+  <li>Programming/Coding</li>
+  <li>Testing</li>
+</ul>
+
+<p>The duration of each of these phases could be a month, two months or even three months.</p>
+
+<p>Before you can get to the programming step, you need to be involved for a long time in the architecture and design phases. The result of this is that you have the components of your program fully specified - the classes, methods among others - before you even start coding.</p>
+
+<p>This model assumes that you can design software just like you design your buildings or bridges.</p>
+
+<p>However, there were several problems with this approach and we quickly moved on to other design approaches as new sotware development models evolved.</p>
+
+<h3 id="introducing-evolutionary-design">Introducing Evolutionary Design</h3>
+
+<p>In the waterfall model, we architect and design the entire system before we even start coding.</p>
+
+<p>Evolutionary Design adopts a radically different approach. It focuses on having a simple design that works to start with. Now, what is simple design?</p>
+
+<p>A software application is said to have a simple design if it:</p>
+
+<ul>
+  <li><strong>Runs all tests</strong> : There are good unit tests and all tests succeed all the time.</li>
+  <li><strong>Contains no duplication</strong> : There is no duplication of code or intent.</li>
+  <li><strong>Expresses intent of programmers</strong> : Code is clear, easy to read and simple.</li>
+  <li><strong>Minimizes number of classes and methods</strong> : Architecture and Design are as simple as possible to get things dones. Classes and Methods are as small as possible without losing clarity or performance.</li>
+</ul>
+
+<p>The thought process behind Evolution Design is that once the design is simple, you can enhance it easily to meet future needs.</p>
+
+<h3 id="evolutionary-design-and-agile">Evolutionary Design and Agile</h3>
+
+<p>Evolution design fits very well with the agile way of working.</p>
+
+<p>Agile focuses on getting things done in small cycles. You design a little. You code a little. You test a little. You move your code to production often. Focusing on 4 principles of Simple Design helps you in keeping the design simple and evolve design over a period of time instead of a one time design.</p>
+
+<h3 id="architecture-vs-design">Architecture vs Design</h3>
+
+<p>While the focus of agile is on just in time design, it is important to distinguish between design decisions and architectural decisions.</p>
+
+<p>Some decision are difficult to change, once you made the choice. For example:</p>
+<ul>
+  <li>What frameworks to use to build your application?</li>
+  <li>How do you integrate with other applications?</li>
+  <li>What is the boundary of the application you are building?</li>
+</ul>
+
+<p>These decisions are what I call - architectural decisions. It is important to take time while making architectural decisions and involve your architecture team as well.</p>
+
+<h3 id="how-evolutionary-design-works">How Evolutionary Design Works</h3>
+
+<p>In Evolutionary design, we follow an iterative approach:</p>
+<ol>
+  <li>Does your feature involve an architectural decision? If not, go to next step. Otherwise, get your architecture team involved and possibly do a prototype to test your architecural decision.</li>
+  <li>Code the feature</li>
+  <li>Refactor code to meet 4 Principles of Simple Design</li>
+  <li>Repeat</li>
+</ol>
+
+<h3 id="what-are-the-advantages-of-evolutionary-design">What Are The Advantages Of Evolutionary Design?</h3>
+
+<p>The following are the stand-out advantages of Evolutionary Design:</p>
+
+<ul>
+  <li><strong>Avoids over-design</strong> : When we follow older design methods, we tend to prepare our software to handle future requirements. This is a classic case of over-design.</li>
+  <li><strong>Avoids wastage of effort</strong>: This could happen when we design for future requirements that never happen</li>
+  <li><strong>Designs just-in-time</strong>: It follows an iterative cycle of development, where the focus is on current requirements, delivering current value, and incorporating relevant feedback.</li>
+</ul>
+
+<h3 id="what-challenges-arise-with-evolutionary-design">What Challenges Arise With Evolutionary Design?</h3>
+
+<p>The following are the significant challenges posed by Evolutionary Design:</p>
+
+<h4 id="needs-a-clear-separation-between-architecture-and-design">Needs a clear separation between Architecture and Design</h4>
+
+<p>All design cannot be done in the nick of time; architecture decisions are difficult to change and time must be devoted to those. You may want to create a separate category of user story, or even a separate process sprint to cover the architecture decisions. Also, everyone in the project needs to be clear about these two kinds of decisions for the project.</p>
+
+<h4 id="need-for-skilled-and-experienced-architects-and-developers">Need for skilled and experienced architects and developers</h4>
+
+<p>A group of inexperienced or less experienced developers cannot pull off a well-designed software application, using evolutionary design. You need guidance from experienced people.</p>
+
+<h4 id="need-for-continuous-integration">Need for Continuous Integration</h4>
+
+<p>Continuous Integration is essential for Evolutionary Design is effective:</p>
+
+<ul>
+  <li>To be sure your tests are running regularly</li>
+  <li>To ensure that code quality is under check</li>
+</ul>
+
+<h4 id="needs-high-quality-tests">Needs High Quality Tests</h4>
+
+<p>Your unit tests need to be really top-class. If these unit tests are not good, then refactoring the code is out of question. This leads to the design getting stagnated, as the 
+developers are reluctant to refactor the code. Now, the design is no longer evolutionary!</p>
+
+<h3 id="understanding-the-best-practices">Understanding The Best Practices</h3>
+
+<p>The two major points to stress on here are:</p>
+
+<h4 id="use-test-driven-development-tdd">Use Test-Driven Development (TDD)</h4>
+
+<p>This is the best way to ensure that your low-level design is good. With TDD, your focus before you write any code is how you will go about testing it. For example, you start thinking about how someone will use your class and its methods, before you write the method. You thus have an <em>outside-in</em> perspective, and that’s always good to have as a developer. This results in the software having a good and robust API.</p>
+
+<p>Another things that results from TDD is you have great unit tests!</p>
+
+<p>When following TDD, you first write a unit test, make it fail, and then write the code to make it pass. So, you have more reliable tests.</p>
+
+<h4 id="use-continuous-integration">Use Continuous Integration</h4>
+
+<p>As we saw a short while ago, we need to make sure we keep running the tests we write, regularly. This ensures you get immediate feedback if something has gone wrong.</p>
+
+<h3 id="how-to-learn-evolutionary-design">How To Learn Evolutionary Design?</h3>
+
+<p>The best way to learn this is by using <strong>pair programming</strong>: pair with good, experienced programmers. This will give you insights into how to evolve your program’s design, over a period of time.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>In this article, we gave you an insight into Evolutionary Design. Evolutionary Design helps us avoid over design and keeps our design simple.</p>
+
+<hr />
+
+<h3 id="software-design">Software Design</h3>
+
+<p>This is the article in a series of articles on Software Design:</p>
+
+<ul>
+  <li><a href="/blog/software-design-keep-your-design-simple" target="_blank">1 - How do you keep your design simple?</a></li>
+  <li><a href="/blog/design-patterns-for-beginners-with-java-examples" target="_blank">2 - Design Patterns For Beginners - with Java Examples</a></li>
+  <li><a href="/blog/software-design-what-is-abstraction" target="_blank">3 - What is Abstraction?</a></li>
+  <li><a href="/blog/software-design-encapsulation-with-examples" target="_blank">4 - Encapsulation - with examples</a></li>
+  <li><a href="/blog/software-design-coupling-with-examples" target="_blank">5 - Coupling - with examples</a></li>
+  <li><a href="/blog/software-design-cohesion-with-examples" target="_blank">6 - Cohesion - with examples</a></li>
+  <li><a href="/blog/software-design-introduction-to-evolutionary-design" target="_blank">7 - Introduction to Evolutionary Design</a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/software-design-cohesion-with-examples" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/software-design-introduction-to-evolutionary-design" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

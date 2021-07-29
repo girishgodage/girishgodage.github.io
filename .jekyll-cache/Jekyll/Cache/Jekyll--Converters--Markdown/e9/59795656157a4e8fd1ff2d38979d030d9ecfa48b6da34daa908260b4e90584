@@ -1,0 +1,91 @@
+I"Ü<h3 id="microservices-architectures-are-very-popular-today-in-this-article-we-take-a-look-at-how-microservices-architectures-are-different-from-service-oriented-architectures-soa">Microservices architectures are very popular today. In this article, we take a look at how microservices architectures are different from Service Oriented Architectures (SOA).</h3>
+
+<h3 id="deployability">Deployability</h3>
+
+<p>Both Microservices and Service Oriented Architectures primarily talk about creating small services.</p>
+
+<p>Whenever we talk of microservices, we refer to small sized services that are also independently deployable.</p>
+
+<p><img src="/images/Capture-065-02.png" alt="image info" /></p>
+
+<p>For example, we should be able to release Microservice1 without affecting the behavior of any of the other microservices. We would be able to take such a microservice to production very quickly.</p>
+
+<p>The focus of SOA might be on creating independent services, but not exactly independently deployable ones. In SOA, while we focused on API, the deployable units were generally large.</p>
+
+<h3 id="thin-pipes-v-enterprise-system-bus">Thin Pipes v Enterprise System Bus</h3>
+
+<p>With the evolution of its architectures, SOA ended up having large Enterprise Service Buses (ESBs). ESBs were introduced to enable loose coupling between SOA components.</p>
+
+<p><img src="/images/Capture-065-03.png" alt="image info" /></p>
+
+<p>In order to implement a new feature in an application, changes are needed both on the application logic, as well as in the enterprise bus.</p>
+
+<p>The enterprise system bus become a central spoke where a lot of business logic also made its way. Over a period of time, these sucked in a lot of business logic, making the application difficult to maintain.</p>
+
+<p>Microservices architectures keep minimum logic in the communication infrastructure - thin pipes.</p>
+
+<h3 id="tied-to-xml">Tied To XML</h3>
+
+<p>SOA was tied to the XML technologies, inheriting its formalities and complexities.</p>
+
+<h3 id="governance">Governance</h3>
+
+<p>With SOA, there is always an centralize architecture team that decides what logic goes into an ESB, and what cannot, among other things.</p>
+
+<p>On the other hand, microservices architectures focuses on having decentralized governance.</p>
+
+<h3 id="lets-take-an-example">Letâ€™s take an example</h3>
+
+<p>Consider a banking application. Along with a savings account, a customer gets a debit card for free. An Insurance Savings Account and a Debit Card are different banking products, managed by different product systems.</p>
+
+<p><img src="/images/Capture-065-03.png" alt="image info" /></p>
+
+<h4 id="soa">SOA</h4>
+
+<p>In the SOA architecture, the ESB takes the order from the selling application, and handles the communication with the systems that create the appropriate products.</p>
+
+<p>The ESB ends up having a lot of business logic, making it top-heavy.</p>
+
+<h4 id="microservices">Microservices</h4>
+
+<p>Typical microservices architecture makes use of an event driven architecture. It makes extensive use of a message queue to ensure reliable communication between different microservices, each having it own responsibility.</p>
+
+<p>The sales app would create an order event, and put it in the queue. Each of the other services would look at the event, and process it if relevant to them.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>In this article, we had a look at the differences between microservices architecture and SOA. We  looked at independent deployability, de-centralized governance, and the event based nature of microservices architectures.</p>
+
+<hr />
+<h3 id="introduction-to-cloud-microservice---challenges-and-advantages">Introduction to Cloud, Microservice - Challenges and Advantages</h3>
+
+<p>This is the article in a series of five articles on cloud and microservices:</p>
+<ul>
+  <li><a href="/blog/introduction-to-cloud" target="_blank">1 - Microservices Architecutres - Quick introduction to Cloud - Why, What and How?</a></li>
+  <li><a href="/blog/introduction-to-spring-cloud" target="_blank">2 - Microservice Architectures - Introduction to Spring Cloud</a></li>
+  <li><a href="/blog/microservice-architectures-advantages-of-microservices" target="_blank">3 - Microservices Architectures - Advantages Of Microservices</a></li>
+  <li><a href="/blog/microservice-architectures-challenges-with-microservices" target="_blank">4 - Microservice Architectures - Challenges with building Microservices</a></li>
+  <li><a href="/blog/microservice-architectures-soa-vs-microservices" target="_blank">5 - Microservices Architectures - Microservices vs SOA</a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/microservice-architectures-challenges-with-microservices" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/microservice-architectures-soa-vs-microservices" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

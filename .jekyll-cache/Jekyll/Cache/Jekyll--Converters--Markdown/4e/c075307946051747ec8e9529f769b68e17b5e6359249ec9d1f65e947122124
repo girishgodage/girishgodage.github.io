@@ -1,0 +1,157 @@
+I"Z"<p>In this article, we focus our attention on the Dynamic Scaling or Auto Scaling. Why do we need applications that can auto scale?</p>
+
+<h2 id="you-will-learn">You will learn</h2>
+<ul>
+  <li>What is Auto or Dynamic Scaling?</li>
+  <li>Why is Dynamic Scaling important in a microservices context?</li>
+  <li>How can you implement Dynamic Scaling in Cloud?</li>
+</ul>
+
+<h3 id="load-on-applications-varies">Load On Applications Varies</h3>
+
+<p>Load on your applications vary depending on time of the day, the day of the month or the month of the year.</p>
+
+<p>Take for instance, amazon.com. It has very high loads during Thanks Giving Period, up to 20 times the normal load. However, during the major sports events such as Superbowl or a Football World Cup, the traffic could be considerably lesser - because every body is busy watching the event.</p>
+
+<blockquote>
+  <p>How can you setup infrastructure for applications to manage varying loads?</p>
+</blockquote>
+
+<p>It is quite possible that the infrastructure needed to handle 10x the load, is ten times that needed to handle 1x the load.</p>
+
+<p>If you have on premise infrastructure, you need a large infrastructure in place to handle peak load.</p>
+
+<p>During periods with lesser load, a lot of infrastructure would be sitting idle.</p>
+
+<h3 id="cloud-to-the-rescue">Cloud To The Rescue</h3>
+
+<p>That’s where cloud comes into picture.  With cloud, you can request more resources when the load is high and give them back to the cloud when you have less load.</p>
+
+<blockquote>
+  <p>This is called Scale Out (create more instances as load increases) and Scale In (reduces instances as load goes down)</p>
+</blockquote>
+
+<p>How do you build applications that are cloud enabled - applications that work well in the cloud?</p>
+
+<p>That’s where a microservices architecture comes into picture.</p>
+
+<h3 id="introducing-auto-scaling-example">Introducing Auto Scaling Example</h3>
+
+<p>Building your application using microservices enables you to increase the number of microservice instances during high load, and reduce them during less load.</p>
+
+<p>Consider the following example of a CurrencyConversionService:</p>
+
+<p><img src="/images/Capture-055-02.png" alt="image info" /></p>
+
+<p><img src="/images/Capture-055-03.png" alt="image info" /></p>
+
+<p>The CurrencyConversionService talks to the ForexService. The ForexService is concerned with calculating how many INR can result from 1 USD, or how many INR can result from 1 EUR.</p>
+
+<p>The CurrencyConversionService takes a bag of currencies and amounts, and produce the total amount in a currency of your choice. For example, it will tell the total worth in INR of 10 EUR and 25 USD.</p>
+
+<p>The ForexService might also be consumed from a number of other microservices.</p>
+
+<h4 id="scaling-infrastructure-to-match-load">Scaling Infrastructure To Match Load</h4>
+
+<p>The load on ForexService might be different from the load on CurrencyConversionService. You might need to have different number of instances of CurrencyConversionService and ForexService. For example, there may be two instances of the CurrencyConversionService, and five instances of the ForexService:</p>
+
+<p><img src="/images/Capture-055-04.png" alt="image info" /></p>
+
+<p><img src="/images/Capture-055-05.png" alt="image info" /></p>
+
+<p>At a later point in time, the load on CurrencyConversionService could be low, needing just two instances. On the other hand, a much higher load on ForexService could need 50 instances. The requests coming in from the 2 instances of CurrencyConversionService are distributed across the 50 instances of the ForexService.</p>
+
+<p>That in essence, is the requirement for auto scaling - dynamically changing number of microservice instances, and evenly distributing the load across them.</p>
+
+<h3 id="implementing-auto-scaling">Implementing Auto Scaling</h3>
+
+<p>There are a few important concepts involved in implementing auto scaling. The following sections discuss them in some detail.</p>
+
+<h4 id="naming-server">Naming Server</h4>
+
+<p>Naming servers enables something called <strong>location transparency</strong>. Every microservice registers with the naming service. Any microservice that needs to talk to another microservice, will ask the naming server for its location.</p>
+
+<p>Whenever a new instance of CurrencyConversionService or ForexService comes up, it registers with the naming server. 
+<img src="/images/Capture-055-06.png" alt="image info" /></p>
+
+<p>When CurrencyConversionService wants to talk to ForexService, it asks the naming server for available instances.</p>
+
+<h3 id="implementing-location-transparency">Implementing Location Transparency</h3>
+
+<p>CurrencyConversionService knows that there are five instances of the ForexService.</p>
+
+<blockquote>
+  <p>How does it distribute the load among all these instances?</p>
+</blockquote>
+
+<p>That’s where a load balancer comes into the picture.</p>
+
+<p>A popular client side load balancing framework is Ribbon.
+<img src="/images/Capture-055-07.png" alt="image info" /></p>
+
+<p>Let’s look at a diagram to understand whats happening:</p>
+
+<p><img src="/images/Capture-055-08.png" alt="image info" /></p>
+
+<p>As soon as any instance of CurrencyConversionService or ForexService comes up, it registers itself with the naming server. If the CCSInstance2 wants to know the URL of ForexService instances, it again talks to the naming server. The naming server responds with a list of all instances of the ForexService - FSInstance1 and FSinstance2, and their corresponding URLs.</p>
+
+<p>The Ribbon load balancer does a round-robin among the ForexService instances to balance out the load among the instances.</p>
+
+<blockquote>
+  <p>Ribbon offers wide variety of load balancing algorithms to choose from.</p>
+</blockquote>
+
+<h3 id="when-to-increase-and-decrease-instances">When to increase and decrease instances?</h3>
+
+<p>There is one question we did not really talk about.</p>
+
+<p>How do we know when to increase or decrease the number of instances of a microservices?</p>
+
+<p>That is where application monitoring and container (Docker) management (using Kubernetes) comes into the picture.</p>
+
+<p><img src="/images/Capture-055-09.png" alt="image info" /></p>
+
+<p>An application needs to be monitored to find out how much load it has. For this, the application has to expose metrics for us to track the load.</p>
+
+<p>You can containerize each microservice using Docker and create an image.</p>
+
+<p>Kubernetes has the capability to manage containers. Kubernetes can configured to auto scale based on the load. Kubernetes can identify the application instances, monitor their loads, and automatically scale up and down.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>In this article, we talked about auto scaling. We look at important parts of implementing auto scaling - naming server, load balancer, containers (Docker) and container orchestration (Kubernetes).</p>
+
+<hr />
+<h3 id="cloud-and-microservices-terminology">Cloud and Microservices Terminology</h3>
+
+<p>This is the article in a series of six articles on terminology used with cloud and microservices:</p>
+<ul>
+  <li><a href="/blog/service-discovery-in-microservices" target="_blank">1 - Microservices Architectures - What is Service Discovery?</a></li>
+  <li><a href="/blog/introduction-to-centralized-configuration-with-spring-cloud-config-server" target="_blank">2 - Microservices Architectures - Centralized Configuration and Config Server</a></li>
+  <li><a href="/blog/introduction-to-api-gateways-with-microservices" target="_blank">3 - Microservices Architectures - API Gateways</a></li>
+  <li><a href="/blog/introduction-to-centralized-logging-with-microservices" target="_blank">4 - Microservices Architectures - Importance of Centralized Logging</a></li>
+  <li><a href="/blog/introduction-to-auto-scaling-or-dynamic-scaling-in-cloud" target="_blank">5 - Microservices Architectures - Introduction to Auto Scaling</a></li>
+  <li><a href="/blog/fault-tolerance-in-microservices" target="_blank">6 - Microservices Architectures - What is Fault Tolerance?</a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/introduction-to-centralized-logging-with-microservices" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/fault-tolerance-in-microservices" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

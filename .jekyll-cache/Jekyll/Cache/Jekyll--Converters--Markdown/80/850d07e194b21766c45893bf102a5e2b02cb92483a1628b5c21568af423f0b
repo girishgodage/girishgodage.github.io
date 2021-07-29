@@ -1,0 +1,477 @@
+I"�F<p>Software design is typically complex. Object oriented design takes it to the next level. There are a number of design patterns to be aware of. Can we make things simple?</p>
+
+<p>SOLID Principles is a great starting point for Object Oriented Design.</p>
+
+<h3 id="we-learn">We learn</h3>
+
+<ul>
+  <li>What are SOLID Principles?</li>
+  <li>What are the best practices in designing objected oriented software?</li>
+</ul>
+
+<h3 id="what-are-the-solid-principles">What Are The SOLID Principles?</h3>
+
+<p>Plainly listed out, the SOLID principles are:</p>
+
+<ul>
+  <li><strong>SRP</strong>: Single Responsibility Principle</li>
+  <li><strong>OCP</strong>: Open Closed Principle</li>
+  <li><strong>LSP</strong>: Liskov Substitution Principle</li>
+  <li><strong>ISP</strong>: Interface Segregation Principle</li>
+  <li><strong>DIP</strong>: Dependency Inversion Principle</li>
+</ul>
+
+<p>Let’s look at each of these by turn.</p>
+
+<h3 id="single-responsibility-principle-srp">Single Responsibility Principle (SRP)</h3>
+
+<blockquote>
+  <p>“A class should have one, and only one reason to change”</p>
+</blockquote>
+
+<p>This principle is not just applicable to a class, but also at the level of a package, a component, an application, or a service. Each of these should each have just one responsibility.</p>
+
+<blockquote>
+  <p>You should be able to state what each element does in a single sentence.</p>
+</blockquote>
+
+<p>When your class or component or application has single responsibility, the options for reuse increases significantly.</p>
+
+<p>Have a look at the following class:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	public class Task {
+		public void downloadFile(String location) {
+			//...
+		}
+		
+		public void parseTheFile(File file) {
+			//...
+		}
+
+		public void persistTheData(Data data) {
+			//...
+		}
+	}
+
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Task</code> has three main responsibilities:</p>
+
+<ul>
+  <li>Download a file from a location</li>
+  <li>Parse the contents of the file</li>
+  <li>Save the data obtained to a database</li>
+</ul>
+
+<p>It clearly does not satisfy SRP. Let’s look at another example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	public class Employee {
+		public Money calculatePay() {
+			//...
+		}
+
+		public String reportHours() {
+			//...
+		}
+
+		public void save() {
+			//...
+		}
+	}
+
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Employee</code> has multiple responsibilities as well:</p>
+
+<ul>
+  <li>Calculate the employee’s pay</li>
+  <li>Create a report of hours of work put in</li>
+  <li>Save the employee details to a database</li>
+</ul>
+
+<p>Above examples need re-design to meet Single Responsibility Principle.</p>
+
+<h3 id="open-closed-principle-ocp">Open Closed Principle (OCP)</h3>
+
+<blockquote>
+  <p>“Software entities should be open for extension, but closed for modification”</p>
+</blockquote>
+
+<p>Let’s take a quick look at the calculateArea method in the Shape class.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class Shape {
+	public double calculateArea(Shape[] shapes) {
+		double area = 0;
+		for(Shape shape:shapes) {
+			if(shape instanceof Rectangle) {
+				//Calculate Area of Rectange
+			}
+			else if(shape instanceof Circle) {
+				//Calculate Area of Circle
+			}
+		}
+		return area;
+	}
+}
+
+class Rectangle extends Shape {
+	
+}
+
+class Circle extends Shape {
+	
+	
+}
+
+</code></pre></div></div>
+
+<p>Is there a problem with <code class="language-plaintext highlighter-rouge">calculateArea()</code> method?</p>
+
+<p>What if we add a new shape? What if we remove a shape? What if we want to change the area algorithm for one of the shapes.</p>
+
+<p>For all these modifications, <code class="language-plaintext highlighter-rouge">calculateArea()</code> method needs to change.</p>
+
+<p>How can we make it better?</p>
+
+<blockquote>
+  <p>Parts of the above code below pseudo code, for ease of explanation</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+abstract class Shape {
+
+	
+    abstract double area();
+}
+
+class Rectangle extends Shape {
+
+	@Override
+	double area() {
+		// Area implementation for Rectangle
+		return 0;
+	}
+	
+}
+
+class Circle extends Shape {
+
+	@Override
+	double area() {
+		// Area implementation for Rectangle
+		return 0;
+	}
+	
+}
+
+</code></pre></div></div>
+
+<p>A better solution would be to allow each of the shapes, to define their own <code class="language-plaintext highlighter-rouge">area()</code> method. We have created an abstract class called <code class="language-plaintext highlighter-rouge">Shape</code> (which could also have been an interface), and have each of the different shapes extend it. Each shape also overrides <code class="language-plaintext highlighter-rouge">Shape</code>’s abstract <code class="language-plaintext highlighter-rouge">area()</code> method, to compute its specific area.</p>
+
+<p>The standalone <code class="language-plaintext highlighter-rouge">calculateArea()</code> method would now look like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>abstract class Shape {
+	
+	
+	public double calculateArea(Shape[] shapes)
+	{
+		double area = 0;
+		for(Shape shape:shapes) {
+			area += shape.area();
+		}
+		return area;
+	}
+	
+    abstract double area();
+}
+
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">calculateArea()</code> is now responsible just for looping around the shapes, and invoking the <code class="language-plaintext highlighter-rouge">area()</code> method of individual shapes.</p>
+
+<p>This is a very good example of the OCP.</p>
+
+<p>If you now want to add another shape, then you need to extend the <code class="language-plaintext highlighter-rouge">Shape</code> class, and override its <code class="language-plaintext highlighter-rouge">area()</code> method:. That’s it.</p>
+
+<p>Here, <code class="language-plaintext highlighter-rouge">Shape</code> class is open to extension, and <code class="language-plaintext highlighter-rouge">calculateArea()</code> is closed to modification.</p>
+
+<h3 id="liskov-substitution-principle-lsp">Liskov Substitution Principle (LSP)</h3>
+
+<p>According to this principle:</p>
+
+<blockquote>
+  <p>“Subtypes must be substitutable for their base types”</p>
+</blockquote>
+
+<p>One of the things people try to do with object oriented programming, is to use inheritance even when it is not appropriate. They may do it just for the sake of reusing the code. Have a look at this example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	class Rectangle {
+		void setWidth(double w)
+		void setHeight(double h)
+
+		double getWidth()
+		double getHeight()
+	}
+
+	class Square extends Rectangle {
+		void setWidth(double w) 	// Set both width and height to w
+		void setHeight(double h) 	// Set both height and width to h
+
+		double getWidth()
+		double getHeight()
+	}
+
+</code></pre></div></div>
+
+<p>We have a <code class="language-plaintext highlighter-rouge">Rectangle</code> class that has methods to set and get its width and height. Suppose we have a fresh requirement for a <code class="language-plaintext highlighter-rouge">Square</code> class.</p>
+
+<p>Instead of implementing it as a separate class, Let’s say we extend <code class="language-plaintext highlighter-rouge">Rectangle</code> (as we know from school geometry that a square is a rectangle). <code class="language-plaintext highlighter-rouge">Square</code> redefines all the set and get methods that it inherits from <code class="language-plaintext highlighter-rouge">Rectangle</code> to set both height and width to the same values.</p>
+
+<blockquote>
+  <p>Note that the pair of setters and the pair of getters inside <code class="language-plaintext highlighter-rouge">Square</code>  are redundant.</p>
+</blockquote>
+
+<p>Consider a piece of client code such as this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	void test(Rectangle r) {
+		r.setWidth(5);
+		r.setHeight(4);
+
+		assertEquals(5*4, r.getWidth() * r.getHeight());
+	}
+
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">test()</code> is a method to test rectangles. A <code class="language-plaintext highlighter-rouge">Square</code> is a <code class="language-plaintext highlighter-rouge">Rectangle</code>, hence <code class="language-plaintext highlighter-rouge">test()</code> can be called on a <code class="language-plaintext highlighter-rouge">Square</code> object as well. Unfortunately, since both <code class="language-plaintext highlighter-rouge">setWidth()</code> and <code class="language-plaintext highlighter-rouge">setHeight()</code> modify both the width and height to be equal, the expression <code class="language-plaintext highlighter-rouge">r.getWidth() * r.getHeight()</code> always amounts to <code class="language-plaintext highlighter-rouge">4 * 4</code>, as that was the last value set. <code class="language-plaintext highlighter-rouge">test()</code> always fails for a <code class="language-plaintext highlighter-rouge">Square</code>!</p>
+
+<p>LSP states that inheritance should be used very carefully. Make sure that the super class is always fully replaceable by each of its sub classes.</p>
+
+<h3 id="interface-segregation-principle-isp">Interface Segregation Principle (ISP)</h3>
+
+<blockquote>
+  <p>If two systems are communicating to each other, then the dependency should be in the smallest possible interface.</p>
+</blockquote>
+
+<p>Clients should not be forced to implement interfaces that they don’t use</p>
+
+<p>Instead of one fat interfaces, a group of smaller interfaces is preferred, each one addressing a sub-module.</p>
+
+<p>Let’s look at an example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	
+	public abstract class Animal {
+		public abstract void feed();
+	}
+
+	public class Dog extends Animal {
+		public void feed() {
+			//...
+		}
+	}
+
+	public class Tiger extends Animal {
+		public void feed() {
+			//...
+		}
+	}
+
+</code></pre></div></div>
+
+<p>Let’s say we now need to add a feature called <code class="language-plaintext highlighter-rouge">groom()</code> to each  kind of <code class="language-plaintext highlighter-rouge">Animal</code>.</p>
+
+<p>One option is to add it to <code class="language-plaintext highlighter-rouge">Animal</code> as an abstract method:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	
+	public abstract class Animal {
+		public abstract void feed();
+		public abstract void groom();
+	}
+
+	public class Dog extends Animal {
+		public void feed() {
+			//...
+		}
+		
+		public void groom() {
+			//...
+		}
+	}
+
+	public class Tiger extends Animal {
+		public void feed() {
+			//...
+		}
+
+		// DUMMY implementation, to keep compiler happy
+		public void groom() {
+			//...
+		}
+	}
+
+</code></pre></div></div>
+
+<p>In that case, both <code class="language-plaintext highlighter-rouge">Dog</code> and <code class="language-plaintext highlighter-rouge">Tiger</code> need to provide implementations for <code class="language-plaintext highlighter-rouge">groom()</code>.</p>
+
+<p>Now, <code class="language-plaintext highlighter-rouge">groom()</code> makes sense for a <code class="language-plaintext highlighter-rouge">Dog</code>, but not so much for a <code class="language-plaintext highlighter-rouge">Tiger</code>.</p>
+
+<p>However, we are forced to provide a dummy implementation in <code class="language-plaintext highlighter-rouge">Tiger</code> to make the code compile.</p>
+
+<p>Above example does not adhere to ISP.</p>
+
+<p>Let’s see how to fix this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	
+	public abstract class Animal {
+		public abstract void feed();
+	}
+
+	public class Pet extends Animal {
+		public abstract void groom();
+		public void feed() {
+			//...
+		}
+	}
+
+	public class Dog extends Pet {
+		public void feed() {
+			//...
+		}
+		
+		public void groom() {
+			//...
+		}
+	}
+
+	public class Tiger extends Animal {
+		public void feed() {
+			//...
+		}
+	}
+
+</code></pre></div></div>
+
+<p>The new interface <code class="language-plaintext highlighter-rouge">Pet</code> extends the existing <code class="language-plaintext highlighter-rouge">Animal</code>, and also adds its own abstract method <code class="language-plaintext highlighter-rouge">groom()</code>. Now, <code class="language-plaintext highlighter-rouge">Dog</code> will extend <code class="language-plaintext highlighter-rouge">Pet</code>, as it needs both <code class="language-plaintext highlighter-rouge">feed()</code> and <code class="language-plaintext highlighter-rouge">groom()</code>, whereas <code class="language-plaintext highlighter-rouge">Tiger</code> chooses to extend just <code class="language-plaintext highlighter-rouge">Animal</code> for <code class="language-plaintext highlighter-rouge">feed()</code>.</p>
+
+<p>ISP recommends that you keep your interfaces as small as possible.</p>
+
+<p>The moment you have a fat interface, any changes to that interface will result in changes in all your implementations.</p>
+
+<h3 id="dependency-inversion-principle-dip">Dependency Inversion Principle (DIP)</h3>
+
+<p>The Dependency Inversion Principle states that:</p>
+
+<blockquote>
+  <p>“Depend upon abstract classes (interfaces), not upon concrete classes”</p>
+</blockquote>
+
+<p>Let’s look at an example of what this means:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+abstract class OutputDevice {
+	void copy(String device) {
+		Keyboard keyboard = new Keyboard();
+		int character;
+		while ((character = keyboard.read()) != -1) {
+			if (device.equals("Printer")) {
+				writeToPrinter(character);
+			} else {
+				writeToDevice(character);
+			}
+		}
+	}
+
+	private void writeToDevice(int character) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void writeToPrinter(int c) {
+		// TODO Auto-generated method stub
+		
+	}
+}
+
+
+</code></pre></div></div>
+
+<p>What does the <code class="language-plaintext highlighter-rouge">copy()</code> method do?</p>
+
+<p>It reads a character from the keyboard, and then decides where this character needs to go. If it’s a printer, write to the printer. Else, send it to the disk.</p>
+
+<p>The problem here is that as the number of <code class="language-plaintext highlighter-rouge">OutputDevice</code> types increase, the logic of <code class="language-plaintext highlighter-rouge">copy()</code> needs to change every single time.</p>
+
+<p>Let’s look at an alternate implementation:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	public interface Reader {
+		public char read();
+	}
+
+	public interface Writer {
+		public void write(char ch);
+	}
+
+	void copy(Reader r, Writer w) {
+		int c;
+
+		while((c = r.read()) != EOF) {
+			w.write(c);
+		}
+	}
+
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">copy()</code> method explicitly states its dependencies - <code class="language-plaintext highlighter-rouge">Reader</code> and <code class="language-plaintext highlighter-rouge">Writer</code> interfaces.</p>
+
+<p>It inverts responsibility, and leaves the creation of <code class="language-plaintext highlighter-rouge">Reader</code> and <code class="language-plaintext highlighter-rouge">Writer</code> to its users.</p>
+
+<p><code class="language-plaintext highlighter-rouge">copy()</code> will not change even when there are new <code class="language-plaintext highlighter-rouge">Writer</code> or <code class="language-plaintext highlighter-rouge">Reader</code> implementations.</p>
+
+<p>This is called Dependency Inversion principle.</p>
+
+<p>Frameworks like Spring make it easy to implement Dependency Inversion.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>In this article, we looked at the five SOLID principles: SRP, OCP, LSP, ISP and DIP. We also looked at a few code examples to understand more about each one of them.</p>
+
+<hr />
+
+<h3 id="software-design-principles">Software Design Principles</h3>
+
+<p>This is the article in a series of articles on important Software Design Principles:</p>
+
+<ul>
+  <li><a href="/blog/four-principles-of-simple-design" target="_blank">1 - Introduction to Four Principles Of Simple Design</a></li>
+  <li><a href="/blog/software-design-seperation-of-concerns-with-examples" target="_blank">2 - Software Design - Separation Of Concerns - with examples</a></li>
+  <li><a href="/blog/software-design-solid-principles" target="_blank">3 - Object Oriented Software Design - Solid Principles - with examples</a></li>
+  <li><a href="/blog/software-design-single-responsibility-principle" target="_blank">4 - Software Design - Single Responsibility Principle - with examples</a></li>
+  <li><a href="/blog/software-design-open-closed-principle" target="_blank">5 - Software Design - Open Closed Principle - with examples</a></li>
+  <li><a href="/blog/software-design-dependency-inversion-principle" target="_blank">6 - Software Design - What is Dependency Inversion Principle?</a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/software-design-seperation-of-concerns-with-examples" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/software-design-single-responsibility-principle" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

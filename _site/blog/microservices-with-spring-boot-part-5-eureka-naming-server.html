@@ -12,7 +12,7 @@
 <!-- iOS Safari -->
 <meta name="apple-mobile-web-app-status-bar-style" content="#2A80EE">
 <title>Microservices with Spring Boot - Part 5 - Using Eureka Naming Server &#8211; Girish Godage</title>
-<meta name="description" content="Let's learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot. We will create a couple of microservices and get them to talk to each other using Eureka Naming Server and Ribbon for Client Side Load Balancing. In part 5 of this series, we will focus on enabling Eureka Naming Server and have the microservices communicate with it.">
+<meta name="description" content="Let&apos;s learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot. We will create a couple of microservices and get them to talk to each other using Eureka Naming Server and Ribbon for Client Side Load Balancing. In part 5 of this series, we will focus on enabling Eureka Naming Server and have the microservices communicate with it.">
 <meta name="keywords" content="SpringBootMicroservices">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,7 +28,7 @@
     <meta property="og:type" content="article">
     <meta property="og:title" content="Microservices with Spring Boot - Part 5 - Using Eureka Naming Server">
     <meta property="og:description" content="I am a passionate Leader, who has a good command in technology &amp; Mangement. Also, I am a creative designer and an innovatie techie.">
-    <meta property="og:url" content="http://localhost:4000/blog/microservices-with-spring-boot-part-5-eureka-naming-server">
+    <meta property="og:url" content="https://girishgodage.in/blog/microservices-with-spring-boot-part-5-eureka-naming-server">
     <meta property="og:site_name" content="Girish Godage">
 
     <!-- Twitter Card -->
@@ -38,7 +38,7 @@
     
     <meta name="twitter:title" content="Microservices with Spring Boot - Part 5 - Using Eureka Naming Server" />
     <meta name="twitter:description" content="Let's learn the basics of microservices and microservices architectures. We will also start looking at a basic implementation of a microservice with Spring Boot. We will create a couple of microservices and get them to talk to each other using Eureka Naming Server and Ribbon for Client Side Load Balancing. In part 5 of this series, we will focus on enabling Eureka Naming Server and have the microservices communicate with it." />
-    <meta name="twitter:url" content="http://localhost:4000/blog/microservices-with-spring-boot-part-5-eureka-naming-server" />
+    <meta name="twitter:url" content="https://girishgodage.in/blog/microservices-with-spring-boot-part-5-eureka-naming-server" />
 
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-touch-icon-57x57.png">
@@ -58,7 +58,7 @@
     
 
 
-    <link rel="canonical" href="http://localhost:4000/blog/microservices-with-spring-boot-part-5-eureka-naming-server">
+    <link rel="canonical" href="https://girishgodage.in/blog/microservices-with-spring-boot-part-5-eureka-naming-server">
 <link rel="alternate" type="application/rss+xml" title="RSS Feed for Girish Godage" href="/feed.xml" />
     <!-- Bootstrap CSS-->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -76,13 +76,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.css">
     
     <!-- animate.css-->
-    <link rel="stylesheet" href="http://localhost:4000/sitejs/animate.css/animate.css">
+    <link rel="stylesheet" href="https://girishgodage.in/sitejs/animate.css/animate.css">
     <!-- theme stylesheet-->
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="http://localhost:4000/css/custom.css" as="style">
-    <link rel="stylesheet" href="http://localhost:4000/css/comments.css" as="style">
+    <link rel="stylesheet" href="https://girishgodage.in/css/custom.css" as="style">
+    <link rel="stylesheet" href="https://girishgodage.in/css/comments.css" as="style">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="http://localhost:4000/img/logo-big.png">
+    <link rel="shortcut icon" href="https://girishgodage.in/img/logo-big.png">
     <!-- Fab Icon-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
     
@@ -124,27 +124,27 @@
 <!-- navbar-->
 <header class="header">
   <nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container"><a class="navbar-brand" href="http://localhost:4000"><img
-          src="http://localhost:4000/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
-          alt="logo"> <img src="http://localhost:4000/img/girish_logo.png" height="30" alt="girilogo"></a>
+    <div class="container"><a class="navbar-brand" href="https://girishgodage.in"><img
+          src="https://girishgodage.in/img/logo-big.png" width="50" height="50" class="d-inline-block align-center"
+          alt="logo"> <img src="https://girishgodage.in/img/girish_logo.png" height="30" alt="girilogo"></a>
       <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span
           class="fa fa-bars" style="color: white"></span></button>
       <div id="navbarcollapse" class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a href="http://localhost:4000#home" class="nav-link  link-scroll">Home</a></li>
-          <li class="nav-item"><a href="http://localhost:4000#about" class="nav-link link-scroll">About</a></li>
-          <li class="nav-item"><a href="http://localhost:4000#skills" class="nav-link link-scroll">Skills</a>
+          <li class="nav-item"><a href="https://girishgodage.in#home" class="nav-link  link-scroll">Home</a></li>
+          <li class="nav-item"><a href="https://girishgodage.in#about" class="nav-link link-scroll">About</a></li>
+          <li class="nav-item"><a href="https://girishgodage.in#skills" class="nav-link link-scroll">Skills</a>
           </li>
-          <li class="nav-item"><a href="http://localhost:4000#services" class="nav-link link-scroll">Services</a>
+          <li class="nav-item"><a href="https://girishgodage.in#services" class="nav-link link-scroll">Services</a>
           </li>
-          <li class="nav-item"><a href="http://localhost:4000#references" class="nav-link link-scroll">My
+          <li class="nav-item"><a href="https://girishgodage.in#references" class="nav-link link-scroll">My
               work</a></li>
-          <li class="nav-item"><a href="http://localhost:4000#contact" class="nav-link link-scroll">Contact</a>
+          <li class="nav-item"><a href="https://girishgodage.in#contact" class="nav-link link-scroll">Contact</a>
           </li>
-          <li class="nav-item"><a href="http://localhost:4000/project" class="nav-link link-scroll">My
+          <li class="nav-item"><a href="https://girishgodage.in/project" class="nav-link link-scroll">My
               Projects</a></li>
-          <li class="nav-item"><a href="http://localhost:4000/blog" class="nav-link link-scroll">Blog</a></li>
+          <li class="nav-item"><a href="https://girishgodage.in/blog" class="nav-link link-scroll">Blog</a></li>
         </ul>
       </div>
     </div>
@@ -200,7 +200,7 @@
 
 <p>However, we are hardcoding the urls of both instances of Forex Service in CCS.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  forex-service.ribbon.listOfServers=localhost:8000,localhost:8001
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  forex-service.ribbon.listOfServers=localhost:8000,localhost:8001
 </code></pre></div></div>
 
 <p>That means every time there is a new instance of FS, we would need to change the configuration of CCS. Thats not cool.</p>
@@ -229,8 +229,8 @@
 <ul>
   <li>Launch Spring Initializr and choose the following
     <ul>
-      <li>Choose <code class="highlighter-rouge">com.girishgodage.springboot.microservice.eureka.naming.server</code> as Group</li>
-      <li>Choose <code class="highlighter-rouge">spring-boot-microservice-eureka-naming-server</code> as Artifact</li>
+      <li>Choose <code class="language-plaintext highlighter-rouge">com.girishgodage.springboot.microservice.eureka.naming.server</code> as Group</li>
+      <li>Choose <code class="language-plaintext highlighter-rouge">spring-boot-microservice-eureka-naming-server</code> as Artifact</li>
       <li>Choose following dependencies
         <ul>
           <li>Eureka</li>
@@ -249,9 +249,9 @@
 
 <h2 id="enabling-eureka">Enabling Eureka</h2>
 
-<p>EnableEurekaServer in <code class="highlighter-rouge">SpringBootMicroserviceEurekaNamingServerApplication</code>.</p>
+<p>EnableEurekaServer in <code class="language-plaintext highlighter-rouge">SpringBootMicroserviceEurekaNamingServerApplication</code>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  @SpringBootApplication
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  @SpringBootApplication
   @EnableEurekaServer
   public class SpringBootMicroserviceEurekaNamingServerApplication {
 </code></pre></div></div>
@@ -269,9 +269,9 @@
 
 <h2 id="launching-eureka-naming-server">Launching Eureka Naming Server</h2>
 
-<p>Launch <code class="highlighter-rouge">SpringBootMicroserviceEurekaNamingServerApplication</code> as a Java application.</p>
+<p>Launch <code class="language-plaintext highlighter-rouge">SpringBootMicroserviceEurekaNamingServerApplication</code> as a Java application.</p>
 
-<p>You can launch up Eureka at <code class="highlighter-rouge">http://localhost:8761</code></p>
+<p>You can launch up Eureka at <code class="language-plaintext highlighter-rouge">http://localhost:8761</code></p>
 
 <p>You would see that there are no instances yet connect to Eureka.</p>
 
@@ -282,7 +282,7 @@
 <p>Make these changes on both the microservices</p>
 
 <p>Add to pom.xml</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;dependency&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;dependency&gt;
       &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
       &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;
     &lt;/dependency&gt;
@@ -308,7 +308,7 @@
 <p>All that you would need to do is to remove this configuration</p>
 
 <p>Remove this configuration in application.properties</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  forex-service.ribbon.listOfServers=localhost:8000,localhost:8001
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  forex-service.ribbon.listOfServers=localhost:8000,localhost:8001
 </code></pre></div></div>
 
 <p>Restart the CCS instance.</p>
@@ -503,7 +503,7 @@
 
 <h6 id="spring-boot-microservice-currency-conversion-servicesrcmainjavacomgirishgodagespringbootmicroserviceexamplecurrencyconversioncurrencyconversionbeanjava">/spring-boot-microservice-currency-conversion-service/src/main/java/com/girishgodage/springboot/microservice/example/currencyconversion/CurrencyConversionBean.java</h6>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">girishgodage</span><span class="o">.</span><span class="na">springboot</span><span class="o">.</span><span class="na">microservice</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">currencyconversion</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">package</span> <span class="nn">com.girishgodage.springboot.microservice.example.currencyconversion</span><span class="o">;</span>
   <span class="kn">import</span> <span class="nn">java.math.BigDecimal</span><span class="o">;</span>
 
   <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CurrencyConversionBean</span> <span class="o">{</span>
@@ -593,7 +593,7 @@
 
 <h6 id="spring-boot-microservice-currency-conversion-servicesrcmainjavacomgirishgodagespringbootmicroserviceexamplecurrencyconversioncurrencyconversioncontrollerjava">/spring-boot-microservice-currency-conversion-service/src/main/java/com/girishgodage/springboot/microservice/example/currencyconversion/CurrencyConversionController.java</h6>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">girishgodage</span><span class="o">.</span><span class="na">springboot</span><span class="o">.</span><span class="na">microservice</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">currencyconversion</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">package</span> <span class="nn">com.girishgodage.springboot.microservice.example.currencyconversion</span><span class="o">;</span>
 
   <span class="kn">import</span> <span class="nn">java.math.BigDecimal</span><span class="o">;</span>
   <span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
@@ -652,7 +652,7 @@
 
 <h6 id="spring-boot-microservice-currency-conversion-servicesrcmainjavacomgirishgodagespringbootmicroserviceexamplecurrencyconversioncurrencyexchangeserviceproxyjava">/spring-boot-microservice-currency-conversion-service/src/main/java/com/girishgodage/springboot/microservice/example/currencyconversion/CurrencyExchangeServiceProxy.java</h6>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">girishgodage</span><span class="o">.</span><span class="na">springboot</span><span class="o">.</span><span class="na">microservice</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">currencyconversion</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">package</span> <span class="nn">com.girishgodage.springboot.microservice.example.currencyconversion</span><span class="o">;</span>
 
   <span class="kn">import</span> <span class="nn">org.springframework.cloud.openfeign.FeignClient</span><span class="o">;</span>
   <span class="kn">import</span> <span class="nn">org.springframework.cloud.netflix.ribbon.RibbonClient</span><span class="o">;</span>
@@ -671,7 +671,7 @@
 
 <h6 id="spring-boot-microservice-currency-conversion-servicesrcmainjavacomgirishgodagespringbootmicroserviceexamplecurrencyconversionspringbootmicroservicecurrencyconversionapplicationjava">/spring-boot-microservice-currency-conversion-service/src/main/java/com/girishgodage/springboot/microservice/example/currencyconversion/SpringBootMicroserviceCurrencyConversionApplication.java</h6>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">girishgodage</span><span class="o">.</span><span class="na">springboot</span><span class="o">.</span><span class="na">microservice</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">currencyconversion</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">package</span> <span class="nn">com.girishgodage.springboot.microservice.example.currencyconversion</span><span class="o">;</span>
 
   <span class="kn">import</span> <span class="nn">org.springframework.boot.SpringApplication</span><span class="o">;</span>
   <span class="kn">import</span> <span class="nn">org.springframework.boot.autoconfigure.SpringBootApplication</span><span class="o">;</span>
@@ -700,7 +700,7 @@
 
 <h6 id="spring-boot-microservice-currency-conversion-servicesrctestjavacomgirishgodagespringbootmicroserviceexamplecurrencyconversionspringbootmicroservicecurrencyconversionapplicationtestsjava">/spring-boot-microservice-currency-conversion-service/src/test/java/com/girishgodage/springboot/microservice/example/currencyconversion/SpringBootMicroserviceCurrencyConversionApplicationTests.java</h6>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">girishgodage</span><span class="o">.</span><span class="na">springboot</span><span class="o">.</span><span class="na">microservice</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">currencyconversion</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">package</span> <span class="nn">com.girishgodage.springboot.microservice.example.currencyconversion</span><span class="o">;</span>
 
   <span class="kn">import</span> <span class="nn">org.junit.Test</span><span class="o">;</span>
   <span class="kn">import</span> <span class="nn">org.junit.runner.RunWith</span><span class="o">;</span>
@@ -827,7 +827,7 @@
 
 <h6 id="spring-boot-microservice-eureka-naming-serversrcmainjavacomgirishgodagespringbootmicroserviceeurekanamingserverspringbootmicroserviceeurekanamingserverapplicationjava">/spring-boot-microservice-eureka-naming-server/src/main/java/com/girishgodage/springboot/microservice/eureka/naming/server/SpringBootMicroserviceEurekaNamingServerApplication.java</h6>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">girishgodage</span><span class="o">.</span><span class="na">springboot</span><span class="o">.</span><span class="na">microservice</span><span class="o">.</span><span class="na">eureka</span><span class="o">.</span><span class="na">naming</span><span class="o">.</span><span class="na">server</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">package</span> <span class="nn">com.girishgodage.springboot.microservice.eureka.naming.server</span><span class="o">;</span>
 
   <span class="kn">import</span> <span class="nn">org.springframework.boot.SpringApplication</span><span class="o">;</span>
   <span class="kn">import</span> <span class="nn">org.springframework.boot.autoconfigure.SpringBootApplication</span><span class="o">;</span>
@@ -856,7 +856,7 @@
 
 <h6 id="spring-boot-microservice-eureka-naming-serversrctestjavacomgirishgodagespringbootmicroserviceeurekanamingserverspringbootmicroserviceeurekanamingserverapplicationtestsjava">/spring-boot-microservice-eureka-naming-server/src/test/java/com/girishgodage/springboot/microservice/eureka/naming/server/SpringBootMicroserviceEurekaNamingServerApplicationTests.java</h6>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">girishgodage</span><span class="o">.</span><span class="na">springboot</span><span class="o">.</span><span class="na">microservice</span><span class="o">.</span><span class="na">eureka</span><span class="o">.</span><span class="na">naming</span><span class="o">.</span><span class="na">server</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">package</span> <span class="nn">com.girishgodage.springboot.microservice.eureka.naming.server</span><span class="o">;</span>
 
   <span class="kn">import</span> <span class="nn">org.junit.Test</span><span class="o">;</span>
   <span class="kn">import</span> <span class="nn">org.junit.runner.RunWith</span><span class="o">;</span>
@@ -1001,7 +1001,7 @@
 
 <h6 id="spring-boot-microservice-forex-servicesrcmainjavacomgirishgodagespringbootmicroserviceexampleforexexchangevaluejava">/spring-boot-microservice-forex-service/src/main/java/com/girishgodage/springboot/microservice/example/forex/ExchangeValue.java</h6>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">girishgodage</span><span class="o">.</span><span class="na">springboot</span><span class="o">.</span><span class="na">microservice</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">forex</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">package</span> <span class="nn">com.girishgodage.springboot.microservice.example.forex</span><span class="o">;</span>
   <span class="kn">import</span> <span class="nn">java.math.BigDecimal</span><span class="o">;</span>
 
   <span class="kn">import</span> <span class="nn">javax.persistence.Column</span><span class="o">;</span>
@@ -1066,7 +1066,7 @@
 
 <h6 id="spring-boot-microservice-forex-servicesrcmainjavacomgirishgodagespringbootmicroserviceexampleforexexchangevaluerepositoryjava">/spring-boot-microservice-forex-service/src/main/java/com/girishgodage/springboot/microservice/example/forex/ExchangeValueRepository.java</h6>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">girishgodage</span><span class="o">.</span><span class="na">springboot</span><span class="o">.</span><span class="na">microservice</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">forex</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">package</span> <span class="nn">com.girishgodage.springboot.microservice.example.forex</span><span class="o">;</span>
   <span class="kn">import</span> <span class="nn">org.springframework.data.jpa.repository.JpaRepository</span><span class="o">;</span>
 
   <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ExchangeValueRepository</span> <span class="kd">extends</span> 
@@ -1078,7 +1078,7 @@
 
 <h6 id="spring-boot-microservice-forex-servicesrcmainjavacomgirishgodagespringbootmicroserviceexampleforexforexcontrollerjava">/spring-boot-microservice-forex-service/src/main/java/com/girishgodage/springboot/microservice/example/forex/ForexController.java</h6>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">girishgodage</span><span class="o">.</span><span class="na">springboot</span><span class="o">.</span><span class="na">microservice</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">forex</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">package</span> <span class="nn">com.girishgodage.springboot.microservice.example.forex</span><span class="o">;</span>
   <span class="kn">import</span> <span class="nn">java.math.BigDecimal</span><span class="o">;</span>
 
   <span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="o">;</span>
@@ -1114,7 +1114,7 @@
 
 <h6 id="spring-boot-microservice-forex-servicesrcmainjavacomgirishgodagespringbootmicroserviceexampleforexspringbootmicroserviceforexserviceapplicationjava">/spring-boot-microservice-forex-service/src/main/java/com/girishgodage/springboot/microservice/example/forex/SpringBootMicroserviceForexServiceApplication.java</h6>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">girishgodage</span><span class="o">.</span><span class="na">springboot</span><span class="o">.</span><span class="na">microservice</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">forex</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">package</span> <span class="nn">com.girishgodage.springboot.microservice.example.forex</span><span class="o">;</span>
 
   <span class="kn">import</span> <span class="nn">org.springframework.boot.SpringApplication</span><span class="o">;</span>
   <span class="kn">import</span> <span class="nn">org.springframework.boot.autoconfigure.SpringBootApplication</span><span class="o">;</span>
@@ -1145,7 +1145,7 @@
 
 <h6 id="spring-boot-microservice-forex-servicesrcmainresourcesdatasql">/spring-boot-microservice-forex-service/src/main/resources/data.sql</h6>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  insert into exchange_value(id,currency_from,currency_to,conversion_multiple,port)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  insert into exchange_value(id,currency_from,currency_to,conversion_multiple,port)
   values(10001,'USD','INR',65,0);
   insert into exchange_value(id,currency_from,currency_to,conversion_multiple,port)
   values(10002,'EUR','INR',75,0);
@@ -1156,7 +1156,7 @@
 
 <h6 id="spring-boot-microservice-forex-servicesrctestjavacomgirishgodagespringbootmicroserviceexampleforexspringbootmicroserviceforexserviceapplicationtestsjava">/spring-boot-microservice-forex-service/src/test/java/com/girishgodage/springboot/microservice/example/forex/SpringBootMicroserviceForexServiceApplicationTests.java</h6>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">girishgodage</span><span class="o">.</span><span class="na">springboot</span><span class="o">.</span><span class="na">microservice</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">forex</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">package</span> <span class="nn">com.girishgodage.springboot.microservice.example.forex</span><span class="o">;</span>
 
   <span class="kn">import</span> <span class="nn">org.junit.Test</span><span class="o">;</span>
   <span class="kn">import</span> <span class="nn">org.junit.runner.RunWith</span><span class="o">;</span>
@@ -1266,9 +1266,9 @@ title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
             <div class="col-12 col-md-2">
             <h5>Quick Links</h5>
             <ul>
-               <li><a href="http://localhost:4000#about">About</a></li>
-               <li><a href="http://localhost:4000#contact">Contact</a></li>
-               <li><a href="http://localhost:4000/sitemap.xml">Sitemap</a></li>               
+               <li><a href="https://girishgodage.in#about">About</a></li>
+               <li><a href="https://girishgodage.in#contact">Contact</a></li>
+               <li><a href="https://girishgodage.in/sitemap.xml">Sitemap</a></li>               
             </ul>
          </div>
             <div class="col-12 col-md-4 text-center text-lg-right mt-4 mt-lg-0">
@@ -1283,24 +1283,24 @@ title="Go to top"> <i class="fa fa-chevron-up"  style="font-size:36px"></i>
     </div>
 
         <!-- JavaScript files-->
-    <script src="http://localhost:4000/sitejs/jquery/jquery.min.js"></script>
-    <script src="http://localhost:4000/sitejs/popper.js/umd/popper.min.js"> </script>
-    <script src="http://localhost:4000/sitejs/bootstrap/js/bootstrap.min.js"></script>
-    <script src="http://localhost:4000/sitejs/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="http://localhost:4000/sitejs/owl.carousel/owl.carousel.min.js"></script>
-    <script src="http://localhost:4000/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
-    <script src="http://localhost:4000/sitejs/jquery.counterup/jquery.counterup.js"></script>
-    <script src="http://localhost:4000/js/front.js"></script>
-    <script src="http://localhost:4000/js/comment.js"></script>
+    <script src="https://girishgodage.in/sitejs/jquery/jquery.min.js"></script>
+    <script src="https://girishgodage.in/sitejs/popper.js/umd/popper.min.js"> </script>
+    <script src="https://girishgodage.in/sitejs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://girishgodage.in/sitejs/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="https://girishgodage.in/sitejs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="https://girishgodage.in/sitejs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="https://girishgodage.in/sitejs/jquery.counterup/jquery.counterup.js"></script>
+    <script src="https://girishgodage.in/js/front.js"></script>
+    <script src="https://girishgodage.in/js/comment.js"></script>
        <!-- Script pointing to search-script.js -->
-    <script src="http://localhost:4000/js/search-script.js" type="text/javascript"></script>
+    <script src="https://girishgodage.in/js/search-script.js" type="text/javascript"></script>
    
     <!-- Configuration -->
     <script>
          SimpleJekyllSearch({
          searchInput: document.getElementById('search-input'),
          resultsContainer: document.getElementById('results-container'),
-         json: 'http://localhost:4000/search.json'
+         json: 'https://girishgodage.in/search.json'
          })
          </script>
 

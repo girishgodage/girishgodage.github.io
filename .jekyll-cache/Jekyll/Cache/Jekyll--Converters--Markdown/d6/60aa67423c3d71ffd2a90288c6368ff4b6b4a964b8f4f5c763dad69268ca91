@@ -1,0 +1,220 @@
+I"� <p>Object oriented programming (OOP) is all about thinking in terms of objects. Let’s dig deeper.</p>
+
+<h2 id="you-will-learn">You will learn</h2>
+
+<ul>
+  <li>What Is Structured Programming?</li>
+  <li>What Is Object Oriented Programming?</li>
+  <li>How is Object Oriented Programming different from Structured Programming?</li>
+  <li>How can you think in terms of objects - state and responsibility?</li>
+  <li>We look at a few examples of designing object oriented programs.</li>
+</ul>
+
+<p>Before we discuss OOP, let us first look at structured programming.</p>
+
+<h3 id="what-is-structured-programming">What Is Structured Programming?</h3>
+
+<p>If you have ever done any programming in languages such as C and Pascal, then you have done what is called <strong>procedural</strong>, or <strong>structured programming</strong>. Such programming involves thinking in terms of procedures (or methods/functions). If you have a problem to solve, you split the logic of the solution into a sequence of multiple procedures, as the steps. You would start thinking about what functions need to be written.</p>
+
+<h4 id="example-flight-problem">Example: Flight Problem</h4>
+
+<p>Suppose the problem at hand is flying from one city to another. The different steps involved in that would take the form of a sequence of procedures as shown below:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	// Global Data
+
+	fly() {
+		travelToairport();
+		findCheckInCounter();
+		checkIn();
+		passSecurityCheck();
+		waitForBoardingCall();
+		boardTheFlight();
+		wishTheAirHostess();
+		takeOff();
+		haveFun();
+		landing();
+	}
+
+</code></pre></div></div>
+
+<p>We are looking to combine the functions that we write, to solve the stated problem.</p>
+
+<h3 id="what-is-object-oriented-programming">What Is Object Oriented Programming?</h3>
+
+<p>Object Oriented Programming (OOP) brings a new thought process to the table. OOP focuses instead on the actors in the system called objects. It focuses on:</p>
+
+<ul>
+  <li>The data that these objects contain</li>
+  <li>The actions that can be performed on them</li>
+</ul>
+
+<p>If this sounds complex to you, then you are not alone!</p>
+
+<p>Every new programmer who is introduced to OOP feels pretty much the same way.</p>
+
+<p>How would OOP approach the problem of taking a flight from one city to another?</p>
+
+<h3 id="example-flight-problem-revisited">Example: Flight Problem Revisited</h3>
+
+<p>Lets take a step by step approach:</p>
+
+<h4 id="step-1--identify-objects">Step-1 : Identify Objects</h4>
+
+<p>We first think about the different objects involved in the solution.</p>
+
+<ul>
+  <li>Aeroplane</li>
+  <li>Airhostess</li>
+  <li>Passenger</li>
+</ul>
+
+<p>In addition to these, we could have more objects such as:</p>
+
+<ul>
+  <li>Cab</li>
+  <li>Airport</li>
+  <li>Co-passengers</li>
+  <li>Pilot</li>
+</ul>
+
+<p>and many more.</p>
+
+<h4 id="step-2">Step-2</h4>
+
+<p>Once you have identified the objects of the system, you next determine the data an object would contains and actions that can be performed on it.</p>
+
+<p>Aeroplane</p>
+
+<ul>
+  <li>Data : airline, make, type, position</li>
+  <li>Actions : takeOff(), land(), cruise()</li>
+</ul>
+
+<p>Airhostess</p>
+
+<ul>
+  <li>Data : name, address</li>
+  <li>Actions : wish(), serve()</li>
+</ul>
+
+<p>Passenger</p>
+
+<ul>
+  <li>Data : name, address</li>
+  <li>Actions : takeCab(), checkIn(), walk(), smile()</li>
+</ul>
+
+<p>Of course, there could be a lot more data and actions in each of the objects that we have elaborated on, above.</p>
+
+<p>In summary, structured programming is only concerned about identifying procedures, and combining them to form a solution. In contrast, OOP focuses on the objects involves, and deals with their individual data and actions.</p>
+
+<h3 id="understanding-oop-terminology">Understanding OOP Terminology</h3>
+
+<p>Let’s now deal with a few standard terms that are used, when dealing with OOP.</p>
+
+<h4 id="class">Class</h4>
+
+<p>A class is nothing but a template used to create objects within a program. A class allows you to define the data that can be stored inside the object, as well as what actions can be performed on them. What you see below is the definition of a simple class, named Planet:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	class Planet {
+		name, location, distanceFromSun //state
+		revolve(), rotate() // behavior
+	}
+
+</code></pre></div></div>
+
+<h4 id="object">Object</h4>
+
+<p>An object is defined as an instance of a class. For example, earth and venus are instances of the Planet class. Here is how you go about creating Planet instances:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	Planet earth = new Planet();
+	Planet venus = new Planet();
+
+</code></pre></div></div>
+
+<p>You can have other instances as well. If Planet defined the attributes of a planet, then earth and venus are live instances of planets.</p>
+
+<h4 id="state">State</h4>
+
+<p>The data that an object might contain is also referred to as its <strong>state</strong>. These are represented by the member variables inside the class.</p>
+
+<p>The state of an object can change over a period of time.</p>
+
+<p>The position of an Aeroplane at this point of time, would be different from what it will be after say, an hour’s time. Similarly, the distance of the earth from the Sun changes with the passage of time.</p>
+
+<h4 id="behavior">Behavior</h4>
+
+<p>The actions that can be performed on an object are referred to as its <strong>behavior</strong>. This translates to the methods that can be defined inside a class.</p>
+
+<h3 id="lets-try-some-exercises">Let’s Try Some Exercises</h3>
+
+<p>Let’s now apply what we have learned so far, by applying OOPs to a couple of exercises.</p>
+
+<h4 id="exercise-1--online-shopping-system">Exercise 1 : Online Shopping System</h4>
+
+<p>Think about the different things that are involved in creating an online shopping system. Make sure to focus on their data, and enumerate what actions can be performed on them.</p>
+
+<h4 id="exercise-2--person">Exercise 2 : Person</h4>
+
+<p>Think about the different things that are related to a Person. Make sure to focus on the data that such a class stores, and enumerate what actions can be performed on a Person.</p>
+
+<h3 id="solutions-to-exercises">Solutions To Exercises</h3>
+
+<h4 id="exercise-1--online-shopping-system-1">Exercise 1 : Online Shopping System</h4>
+<p>Customer</p>
+
+<ul>
+  <li>Data : name, address</li>
+  <li>Actions : login(), logout(), selectProduct(product)</li>
+</ul>
+
+<p>Shopping Cart</p>
+
+<ul>
+  <li>Data : items</li>
+  <li>Actions : addItem(item), removeItem(item)</li>
+</ul>
+
+<p>Product</p>
+
+<ul>
+  <li>Data : name, price, quantityAvailable</li>
+  <li>Actions : order(), changePrice()</li>
+</ul>
+
+<h4 id="exercise-2--person-1">Exercise 2 : Person</h4>
+
+<ul>
+  <li>Data - name, address, hobbies, work</li>
+  <li>Actions - walk(), run(), sleep(), eat(), drink()</li>
+</ul>
+
+<p>The idea behind these exercises was to get you thinking about applying concepts in OOP.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>In this article, we had a introductory look at object oriented programming, or OOP. We first saw the approach taken by structured programming, that focuses on procedures. OOP brings a different approach by focusing on objects involved, and their data and actions. We introduced some OOP terminology, such as class, object, state and behavior. Finally, we explored a couple of exercises to try and apply the simple concepts of OOP that we saw here.</p>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/programming-basics-five-things-to-think-about-while-programming" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/introduction-to-aspect-oriented-programming-and-cross-cutting-concerns" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

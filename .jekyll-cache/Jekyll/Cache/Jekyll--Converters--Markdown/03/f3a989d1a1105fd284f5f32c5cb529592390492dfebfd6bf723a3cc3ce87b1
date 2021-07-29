@@ -1,0 +1,120 @@
+I"�<p>In this article, we discuss why queues are needed, and how they form the cornerstone of asynchronous communication in microservices architectures.</p>
+
+<h1 id="what-you-will-learn">What you will learn</h1>
+<ul>
+  <li>What is a Queue?</li>
+  <li>What is asynchronous communication or asynchronous messaging?</li>
+  <li>What are the advantages of using Queues in microservices architectures?</li>
+</ul>
+
+<h3 id="why-asynchronous-messaging">Why Asynchronous Messaging?</h3>
+
+<p>Why is asynchronous messaging important?</p>
+
+<p>Consider the simple example of an ordering service:</p>
+
+<p><img src="/images/Capture-050-02.png" alt="image info" /></p>
+
+<p>A customer places an order through the OrderService. Let’s say following steps are involved:</p>
+<ul>
+  <li>It needs to send a request to the StockService</li>
+  <li>Send communication to the user through the EmailService and SMSService</li>
+  <li>Call the PackageService to start delivery</li>
+</ul>
+
+<h3 id="option-1--single-component-for-all-processing">Option 1 : Single Component for all processing</h3>
+
+<p>One way to design this application would be to have a single component that accomplishes all this functionality. For example, write a Java class which accepts the order, and does the entire processing itself.</p>
+
+<h3 id="option-2--introducing-asynchronous-messaging-using-queues">Option 2 : Introducing Asynchronous Messaging using Queues</h3>
+
+<p>The other option is to have a queue in-between the receiving OrderService component, and the rest of the components. When the OrderService receives an order, it places the request on the Queue. The rest of the components are independent services, listening on the Queue.</p>
+
+<p>As soon as an order is placed on the queue:</p>
+<ul>
+  <li>The StockService processes the order and updates the database</li>
+  <li>The EmailService sends out an email to the customer</li>
+  <li>The SMSService sends out an SMS to the user</li>
+  <li>The PackageService does the required package processing on the item</li>
+</ul>
+
+<h3 id="single-component-v-queue">Single Component v Queue</h3>
+
+<p>If your business goal is to support a few hundreds or thousands of users, then a simple architecture would be a good choice. The first architecture might be all you need.</p>
+
+<p>However, when we talk of a large scale e-commerce web application such as Amazon.com, that receives millions of orders in a short time, you need a lot of flexibility. That’s when you go for the second approach, of bringing a queue in.</p>
+
+<h3 id="advantages-of-using-a-messaging-queue">Advantages of Using A Messaging Queue</h3>
+
+<p>Let’s look at the advantages of using asynchronous communication based on a messaging queue.</p>
+
+<h4 id="a-queue-improves-reliability">A Queue Improves Reliability</h4>
+
+<p>Let’s say the SMSService is down for a short time.</p>
+
+<p>In Option 1, since the OrderService directly invokes the SMSService on receiving an order, an SMS cannot be sent out. That might mean canceling the order, as all steps are part of a single transaction. Failure of one of the components would lead to cancellation of the customer request, with a need for him to re-initiate the order - at a later point in time.</p>
+
+<p>However in the second approach, called <strong>asynchronous</strong> communication, the order request is placed on the queue. When the SMSService comes back up, it will find the order event and process it. It can then send out the SMS messages for all its pending requests.</p>
+
+<h4 id="a-queue-provides-scalability">A Queue Provides Scalability</h4>
+
+<p>Suppose on a given day, there is a need to send out 100,000 SMS messages. An option with having asynchronous communication is that you can increase the number of instances of the SMSService. This flexibility in number of instances of the components, improves system scalability.</p>
+
+<h4 id="a-queue-improves-testability">A Queue Improves Testability</h4>
+
+<p>Each of the components/services are loosely tied, and have independent requirements. It is thus much easier to test each one of them, preferably in isolation.</p>
+
+<h4 id="a-queue-improves-maintainability">A Queue Improves Maintainability</h4>
+
+<p>A queue also improves system maintainability, as the application is divided into smaller services.</p>
+
+<h4 id="a-queue-improves-flexibility">A Queue Improves Flexibility</h4>
+
+<p>Not only increase instances of existing services, a queue makes the system flexible to add more services in future. All that you need to do is add a new service listen to events on the queue and consuming them. The new service could be plugged in, with a minimum of down time.</p>
+
+<h4 id="popular-message-queues">Popular Message Queues</h4>
+
+<p>An extremely popular message queue framework is RabbitMQ.</p>
+
+<p>Different frameworks use different communication protocols, but the concept underlying all of them is the same. At the core, a queue separates the component that generates the event, from the services that consume the event.</p>
+
+<p>In general, if you need a system that addresses a very large user base, whose users submit a large number of requests to be processed,  go for queue-based systems.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>In this article, we looked at the fact that there are two types of architectures - synchronous and asynchronous. Synchronous systems have the disadvantage that one component being down, causes loss of service to the entire system. Asynchronous systems solve this problem by introducing an intermediary queue to hold events. An architecture based on asynchronous communication using a queue improves testability, scalability, maintainability and flexibility.</p>
+
+<hr />
+<h3 id="best-practices-with-cloud-and-microservices">Best Practices with Cloud and Microservices</h3>
+
+<p>This is the first article in a series of six articles on best practices with cloud and microservices:</p>
+<ul>
+  <li><a href="/blog/12-factor-app-cloud-native-microservices-best-practices" target="_blank">1 - The 12 Factor App - Best Practices In Cloud Native Applications and Microservices</a></li>
+  <li><a href="/blog/introduction-to-event-driven-architectures-with-microservices" target="_blank">2 - Microservices Architectures - Event Driven Approach</a></li>
+  <li><a href="/blog/software-best-practices-building-a-vertical-slice" target="_blank">3 - Why do you build a Vertical Slice?</a></li>
+  <li><a href="/blog/messaging-queues-and-asynchronous-communication-in-microservices" target="_blank">4 - Microservice Architecture Best Practices - Messaging Queues</a></li>
+  <li><a href="/blog/creating-archetypes-in-microservices-architectures-best-practices" target="_blank">5 - Build an Archetype</a></li>
+  <li><a href="/blog/asynchronous-communication-with-queues-in-microservices" target="_blank">6 - Asynchronous communication with queues and microservices - A perfect combination?</a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/software-best-practices-building-a-vertical-slice" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/creating-archetypes-in-microservices-architectures-best-practices" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

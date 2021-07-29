@@ -1,0 +1,190 @@
+I""&<p>In this article, we will describe the first steps, in taking an architecture from monolith to microservice.</p>
+
+<h2 id="you-will-learn">You will learn</h2>
+<ul>
+  <li>What are the important features of microservices architectures?</li>
+  <li>What are the important challenges?</li>
+  <li>How do you break a monolith to microservices?</li>
+</ul>
+
+<p>Let’s start with the basics of a monolith architecture,  understand the microservices architecture, and figure out what should you do to migrate from the former to the latter.</p>
+
+<h3 id="monolith-architecture">Monolith Architecture</h3>
+
+<p>The salient features of monolith applications are:</p>
+
+<ul>
+  <li>Released, or taken to production, once every few week or months or years</li>
+  <li>Generally have a wide range of features and functionality</li>
+  <li>Have a development team of over 50 people working on them</li>
+  <li>Debugging problems that arise in them, is a huge challenge</li>
+  <li>It is almost impossible to bring in new technologies and technical processes, midway through the lifetime of such an application</li>
+</ul>
+
+<blockquote>
+  <p>Monolith applications are typically huge, with them having a million lines of code on average.</p>
+</blockquote>
+
+<p>A monolithic application would look something like the following:</p>
+
+<p><img src="/images/Capture-064-02.png" alt="image info" /></p>
+
+<p>You have a large application talking to a large database.</p>
+
+<h3 id="microservices-architecture">Microservices Architecture</h3>
+
+<p>In microservices architectures, instead of building a large application, we build a number of smaller microservices.</p>
+
+<p>Here is how you would split up the monolith MovieApplication:</p>
+
+<p><img src="/images/Capture-064-03.png" alt="image info" /></p>
+
+<blockquote>
+  <p>As you can see here, the databases are also separated out.</p>
+</blockquote>
+
+<p>Microservices architecture involves a number of small, well-designed microservices, that exchange messages among themselves:
+<img src="/images/Capture-059-02.png" alt="image info" /></p>
+
+<h3 id="microservices-architecture-is-tough">Microservices Architecture Is Tough</h3>
+
+<p>While a microservices architecture looks very easy at a high level, implementing it is not a trivial process at all.</p>
+
+<blockquote>
+  <p>There are a number of important decisions to make for moving to Microservices Architectures</p>
+</blockquote>
+
+<p>Examples:</p>
+<ul>
+  <li>What are the boundaries of the individual microservices?</li>
+  <li>How small should a microservice be, and what functionality should go into it?</li>
+  <li>What all data needs to go into the database that a particular microservice talks to extensively?</li>
+  <li>How should the microservices communicate with each other?</li>
+</ul>
+
+<h3 id="challenges-with-the-microservices-architectures">Challenges with the Microservices Architectures</h3>
+
+<p>The challenges that need to be tacked when setting up a microservices architecture are described below.</p>
+
+<h4 id="quick-setup-needed">Quick Setup Needed</h4>
+
+<p>You can NOT spend a month setting up each microservice. You should be able to setup a microservice quickly.</p>
+
+<h4 id="automation">Automation</h4>
+
+<p>Because there are a number of smaller components instead of a monolith, there needs to be automation in every activity, such as builds, deployment, monitoring, etc.</p>
+
+<h4 id="visibility">Visibility</h4>
+
+<p>You have a potentially large number of smaller components to deploy and maintain. This number could be 100 today, and a 1000 tomorrow. You should be able to monitor and identify problems automatically. You need great visibility around all the components.</p>
+
+<h4 id="bounded-context">Bounded Context</h4>
+
+<p>Deciding the boundaries of a microservice is not an easy task. Applying Bounded Context principles from Domain Driven Design is usually a good starting point.</p>
+
+<p>Your understanding of the domain evolves over a period of time. You need to ensure that the microservice boundaries evolve with time.</p>
+
+<h4 id="configuration-management">Configuration Management</h4>
+
+<p>You need to maintain configurations for hundreds of components across environments. It would be best to have a configuration management solution.</p>
+
+<h4 id="dynamic-scale-up-and-scale-down">Dynamic Scale Up And Scale Down</h4>
+
+<p>The advantages of a microservices architecture can be realized only of the application can scale up and scale down easily in the cloud.</p>
+
+<h4 id="pack-of-cards">Pack Of Cards</h4>
+
+<p>If the microservice at the bottom of a call chain fails, it can have knock on effects on all the other microservices. Microservices should be fault tolerant by design.</p>
+
+<h4 id="debugging">Debugging</h4>
+
+<p>When there is a problem that needs investigation, you might need to look into multiple services across different components. Centralized logging and dashboards are essential to make it easy to debug problems.</p>
+
+<h4 id="consistency">Consistency</h4>
+
+<p>You cannot have a wide range of tools solving the same problem. While it is important to encourage innovation, it is also essential to have decentralized governance around the languages, platforms, technologies and tools used for implementing, deploying and monitoring microservices.</p>
+
+<h3 id="going-from-monolith-to-microservices---it-is-not-a-switch">Going from Monolith To Microservices - It is Not A Switch</h3>
+
+<p>You may have noticed that after describing monolith applications, we directly jumped into the challenges of microservices.</p>
+
+<blockquote>
+  <p>The reason we did not first talk about the advantages of microservices, is that you need a reality check when you migrate from one architecture to another. You need to realize this is not something you can do in a few weeks or months.</p>
+</blockquote>
+
+<blockquote>
+  <p>Getting a microservices architecture right involves a few years of work. It’s not a switch, but a journey.</p>
+</blockquote>
+
+<p>During that journey, both architectures live side by side.</p>
+
+<blockquote>
+  <p>You would hope that number of applications using the microservices architecture grows over time.</p>
+</blockquote>
+
+<h4 id="ask-why-are-you-migrating-from-monolith-to-microservices">Ask Why are you migrating From Monolith To Microservices</h4>
+
+<p>This is the most important question to ask! Don’t do microservices because it is a buzzword. Do it because your business needs it.</p>
+
+<blockquote>
+  <p>Why are you migrating from Monolith to Microservices?</p>
+</blockquote>
+
+<p>What do you want to achieve?</p>
+<ul>
+  <li>Do you want to be able to adopt new technologies and processes, in a faster manner?</li>
+  <li>Do you want faster release cycles for your application?</li>
+  <li>Do you want to scale more easily in the cloud?</li>
+</ul>
+
+<p>You need to be very aware of which of these reasons is the biggest one, for your migration.</p>
+
+<blockquote>
+  <p>The approach you use to actually migrate would differ, based on the exact reason for migration.</p>
+</blockquote>
+
+<p>Let’s look at these approaches in a little more detail.</p>
+
+<h5 id="if-your-reason-is---to-adopt-new-technologies">If your reason is - to Adopt New Technologies</h5>
+
+<p>Let’s say the reason is the ability to adopt newer technologies. In that case, you can start off with designing microservices for the next set of features you intend to implement. In other words, all the requirements for new feature implementation in the monolith application, are the best candidates to become microservices.</p>
+
+<p>You need to answer questions such as:</p>
+<ul>
+  <li>How do you design the database?</li>
+  <li>How do make sure the communication between the old monolith and the new components, is proper?</li>
+</ul>
+
+<h5 id="if-your-reason-is---to-have-faster-release-cycles">If your reason is - to have Faster Release Cycles</h5>
+
+<p>Your business may not be happy with the pace at which new features are being released to production. In that scenario, you first need to identify those parts of the application, where there are frequent changes.</p>
+
+<p>Once you do this, you can extract the fast moving parts and create microservices around them.</p>
+
+<blockquote>
+  <p>The idea behind this is , when there is a change, only release the related microservice.</p>
+</blockquote>
+
+<h5 id="if-your-reason-is---to-scale-with-the-cloud">If your reason is - to Scale With The Cloud</h5>
+
+<p>If the driving force behind the migration is scaling with the cloud, then you need to analyze what needs to be done to put your application in the cloud.</p>
+
+<p>Start with research and Proof-of-Concept prototypes to understand the dependencies involved. You need to find out which dependencies are important to break, and anticipate the problems you may face on making the application cloud-native.</p>
+
+<h5 id="more-than-one">More than one</h5>
+
+<p>Your business might need more that one of the above. Prioritize them and get started with the most important ones.</p>
+
+<blockquote>
+  <p>Clearly, the path to migration will not be the same for all. However, with whatever microservices that you design in your journey, make sure they address the challenges that we saw earlier, in an effective manner.</p>
+</blockquote>
+
+<h3 id="summary">Summary</h3>
+
+<p>In this article, we had a good look at the activities involved in moving from a monolith to a microservices architecture. We observed that it is not an easy journey, as the though process involved in designing the two kinds of systems, is radically different.</p>
+
+<p>The actual journey of your migration will heavily depend upon the exact reason why you want to do it. Ultimately, with whatever microservices you come up with, make sure they effectively address the challenges that exist in such a system.</p>
+
+<hr />
+
+:ET

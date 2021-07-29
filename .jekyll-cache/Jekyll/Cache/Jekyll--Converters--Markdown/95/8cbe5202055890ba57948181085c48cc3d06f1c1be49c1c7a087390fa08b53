@@ -1,0 +1,75 @@
+I"�<p>In this article, we explore the concept of centralized logging, with respect to microservices.</p>
+
+<h3 id="you-will-learn">You will learn</h3>
+<ul>
+  <li>What is centralized logging?</li>
+  <li>Why do we need centralized logging?</li>
+  <li>Why are microservices difficult to debug?</li>
+</ul>
+
+<h3 id="the-need-for-visibility">The Need For Visibility</h3>
+
+<p>In a microservices architecture, there are a number of small microservices talking to each other:</p>
+
+<p><img src="/images/Capture-057-02.png" alt="image info" /></p>
+
+<p>In the above example, let’s assume there is a problem with Microservice5, due to which Microservice1 throws an error.</p>
+
+<p>How does a developer debug the problem?</p>
+
+<p>He would like to know the details of what’s happening in every microservice from Microservice1 through Microservice5. From such a trace, it should be possible to identify that something went wrong at Microservice5.</p>
+
+<p>The more you break things down into smaller microservices, the more visibility you need into what’s going on in the background. Otherwise, a lot of time and effort needs to be spent in debugging problems.</p>
+
+<p>One of the popular ways to improve visibility is by using <strong>centralized logging</strong>.</p>
+
+<h3 id="centralized-logging-using-log-streams">Centralized Logging Using Log Streams</h3>
+
+<p>Using Log Streams is one way to implement centralized logging. The common way to implement it is to stream microservice logs to a common queue. Distributed logging server listens to the queue and acts as log store. It provides search capabilities to search the trace.</p>
+
+<h3 id="popular-implementations">Popular Implementations</h3>
+
+<p>Some of the popular implementations include</p>
+<ul>
+  <li>the ELK stack (Elastic Search, Logstash and Kibana) for Centralized Logging</li>
+  <li>Zipkin, Open Tracing API And Zaeger for Distributed Tracing</li>
+</ul>
+
+<h3 id="summary">Summary</h3>
+
+<p>In this article, we had a look at centralized logging. We saw that there is a need for high visibility in microservices architecture. Centralized logging provides visibility for better debugging of problems. Using log streams is one way of implementing centralized logging.</p>
+
+<hr />
+<h3 id="cloud-and-microservices-terminology">Cloud and Microservices Terminology</h3>
+
+<p>This is the article in a series of six articles on terminology used with cloud and microservices:</p>
+<ul>
+  <li><a href="/blog/service-discovery-in-microservices" target="_blank">1 - Microservices Architectures - What is Service Discovery?</a></li>
+  <li><a href="/blog/introduction-to-centralized-configuration-with-spring-cloud-config-server" target="_blank">2 - Microservices Architectures - Centralized Configuration and Config Server</a></li>
+  <li><a href="/blog/introduction-to-api-gateways-with-microservices" target="_blank">3 - Microservices Architectures - API Gateways</a></li>
+  <li><a href="/blog/introduction-to-centralized-logging-with-microservices" target="_blank">4 - Microservices Architectures - Importance of Centralized Logging</a></li>
+  <li><a href="/blog/introduction-to-auto-scaling-or-dynamic-scaling-in-cloud" target="_blank">5 - Microservices Architectures - Introduction to Auto Scaling</a></li>
+  <li><a href="/blog/fault-tolerance-in-microservices" target="_blank">6 - Microservices Architectures - What is Fault Tolerance?</a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/introduction-to-api-gateways-with-microservices" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/introduction-to-auto-scaling-or-dynamic-scaling-in-cloud" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

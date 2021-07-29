@@ -1,0 +1,379 @@
+I"bz<h2 id="creating-a-new-project-using-visual-studio">Creating a new project using Visual Studio</h2>
+
+<ol>
+  <li>
+    <p>Create and add a new project named <code class="language-plaintext highlighter-rouge">BackEnd</code> and name the solution <code class="language-plaintext highlighter-rouge">ConferencePlanner</code> using File / New / ASP. NET Core Web Application. Select the Web API template, No Auth, no Docker support.</p>
+
+    <h5 id="open-a-visual-studio">Open a Visual Studio</h5>
+    <p><img src="/img/aspdotnetcore/confplanner/2/2.png" alt="" title="Open a Visual Studio" /></p>
+
+    <h5 id="creating-a-new-solution-in-visual-studio">Creating a new solution in Visual Studio</h5>
+    <p><img src="/img/aspdotnetcore/confplanner/2/2.png" alt="" title="Creating a new solution in Visual Studio" /></p>
+
+    <h5 id="adding-a-project-to-the-solution">Adding a project to the solution</h5>
+    <p><img src="/img/aspdotnetcore/confplanner/2/3.png" alt="" title="Adding a project to the solution" /></p>
+
+    <h5 id="web-api-project-settings">Web API Project settings</h5>
+    <p><img src="/img/aspdotnetcore/confplanner/2/4.png" alt="" title="Web API Project settings" /></p>
+
+    <blockquote>
+      <p><strong><em>Note:</em> If not using Visual Studio, create the project using <code class="language-plaintext highlighter-rouge">dotnet new webapi</code> at the cmd line, details as follows:</strong></p>
+      <ol>
+        <li>Create folder ConferencePlanner and call <code class="language-plaintext highlighter-rouge">dotnet new sln</code> at the cmd line to create a solution</li>
+        <li>Create sub-folder BackEnd and create a project using <code class="language-plaintext highlighter-rouge">dotnet new webapi</code> at the cmd line inside the folder BackEnd</li>
+        <li>Add the project to the solution using <code class="language-plaintext highlighter-rouge">dotnet sln add BackEnd/BackEnd.csproj</code></li>
+      </ol>
+    </blockquote>
+  </li>
+  <li>Add a new <code class="language-plaintext highlighter-rouge">Models</code> folder to the root of the application.</li>
+  <li>Add a new <code class="language-plaintext highlighter-rouge">Speaker</code> class using the following code:</li>
+</ol>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+    <span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+    <span class="k">using</span> <span class="nn">System.ComponentModel.DataAnnotations</span><span class="p">;</span>
+    <span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+    <span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+
+    <span class="k">namespace</span> <span class="nn">BackEnd.Models</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">class</span> <span class="nc">Speaker</span>
+        <span class="p">{</span>
+           <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+           <span class="p">[</span><span class="n">Required</span><span class="p">]</span>
+           <span class="p">[</span><span class="nf">StringLength</span><span class="p">(</span><span class="m">200</span><span class="p">)]</span>
+           <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+           <span class="p">[</span><span class="nf">StringLength</span><span class="p">(</span><span class="m">4000</span><span class="p">)]</span>
+           <span class="k">public</span> <span class="kt">string</span> <span class="n">Bio</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+           <span class="p">[</span><span class="nf">StringLength</span><span class="p">(</span><span class="m">1000</span><span class="p">)]</span>
+           <span class="k">public</span> <span class="k">virtual</span> <span class="kt">string</span> <span class="n">WebSite</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="err">```</span>
+
+   <span class="err">#####</span> <span class="n">Project</span> <span class="n">Structure</span> 
+   <span class="p">![](/</span><span class="n">img</span><span class="p">/</span><span class="n">aspdotnetcore</span><span class="p">/</span><span class="n">confplanner</span><span class="p">/</span><span class="m">2</span><span class="p">/</span><span class="m">5.</span><span class="n">png</span> <span class="s">"Project Structure"</span><span class="p">)</span>
+
+<span class="m">1.</span> <span class="n">Add</span> <span class="n">a</span> <span class="n">reference</span> <span class="n">to</span> <span class="n">the</span> <span class="n">NuGet</span> <span class="n">package</span> <span class="err">`</span><span class="n">Microsoft</span><span class="p">.</span><span class="n">EntityFrameworkCore</span><span class="p">.</span><span class="n">SqlServer</span><span class="err">`</span> <span class="n">version</span> <span class="err">`</span><span class="m">3.0</span><span class="p">.</span><span class="m">0</span><span class="err">`</span> <span class="p">.</span>
+
+    <span class="p">![](/</span><span class="n">img</span><span class="p">/</span><span class="n">aspdotnetcore</span><span class="p">/</span><span class="n">confplanner</span><span class="p">/</span><span class="m">2</span><span class="p">/</span><span class="m">6.</span><span class="n">png</span> <span class="s">"Add a reference to the NuGet package"</span><span class="p">)</span> 
+
+    <span class="p">&gt;</span> <span class="n">This</span> <span class="n">can</span> <span class="n">be</span> <span class="n">done</span> <span class="k">from</span> <span class="n">the</span> <span class="n">command</span> <span class="n">line</span> <span class="k">using</span> <span class="err">`</span><span class="nn">dotnet</span> <span class="k">add</span> <span class="n">package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">EntityFrameworkCore</span><span class="p">.</span><span class="n">SqlServer</span> <span class="p">--</span><span class="n">version</span> <span class="m">3.0</span><span class="p">.</span><span class="m">0</span><span class="err">`</span> 
+    
+
+<span class="m">1.</span> <span class="n">Add</span> <span class="n">a</span> <span class="n">reference</span> <span class="n">to</span> <span class="n">the</span> <span class="n">NuGet</span> <span class="n">package</span> <span class="err">`</span><span class="n">Microsoft</span><span class="p">.</span><span class="n">EntityFrameworkCore</span><span class="p">.</span><span class="n">Sqlite</span><span class="err">`</span> <span class="n">version</span> <span class="err">`</span><span class="m">3.0</span><span class="p">.</span><span class="m">0</span><span class="err">`</span> <span class="p">.</span>
+
+    <span class="p">![](/</span><span class="n">img</span><span class="p">/</span><span class="n">aspdotnetcore</span><span class="p">/</span><span class="n">confplanner</span><span class="p">/</span><span class="m">2</span><span class="p">/</span><span class="m">7.</span><span class="n">png</span> <span class="s">"Add a reference to the NuGet package"</span><span class="p">)</span> 
+
+    <span class="p">&gt;</span> <span class="n">This</span> <span class="n">can</span> <span class="n">be</span> <span class="n">done</span> <span class="k">from</span> <span class="n">the</span> <span class="n">command</span> <span class="n">line</span> <span class="k">using</span> <span class="err">`</span><span class="nn">dotnet</span> <span class="k">add</span> <span class="n">package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">EntityFrameworkCore</span><span class="p">.</span><span class="n">Sqlite</span> <span class="p">--</span><span class="n">version</span> <span class="m">3.0</span><span class="p">.</span><span class="m">0</span><span class="err">`</span> 
+
+<span class="m">1.</span> <span class="n">Next</span> <span class="n">we</span><span class="err">'</span><span class="n">ll</span> <span class="n">create</span> <span class="n">a</span> <span class="k">new</span> <span class="n">Entity</span> <span class="n">Framework</span> <span class="n">DbContext</span><span class="p">.</span> <span class="n">Create</span> <span class="n">a</span> <span class="k">new</span> <span class="err">`</span><span class="n">ApplicationDbContext</span><span class="err">`</span> <span class="k">class</span> <span class="nc">in</span> <span class="n">the</span> <span class="err">`</span><span class="n">Models</span><span class="err">`</span> <span class="n">folder</span> <span class="k">using</span> <span class="nn">the</span> <span class="n">following</span> <span class="n">code</span><span class="p">:</span>
+
+    
+
+<span class="err">```</span> <span class="n">csharp</span>
+    <span class="k">using</span> <span class="nn">Microsoft.EntityFrameworkCore</span><span class="p">;</span>
+
+    <span class="k">namespace</span> <span class="nn">BackEnd.Models</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">class</span> <span class="nc">ApplicationDbContext</span> <span class="p">:</span> <span class="n">DbContext</span>
+        <span class="p">{</span>
+            <span class="k">public</span> <span class="nf">ApplicationDbContext</span><span class="p">(</span><span class="n">DbContextOptions</span><span class="p">&lt;</span><span class="n">ApplicationDbContext</span><span class="p">&gt;</span> <span class="n">options</span><span class="p">)</span>
+                <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+            <span class="p">{</span>
+
+            <span class="p">}</span>
+
+            <span class="k">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Speaker</span><span class="p">&gt;</span> <span class="n">Speakers</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="err">```</span>
+
+    <span class="p">![](/</span><span class="n">img</span><span class="p">/</span><span class="n">aspdotnetcore</span><span class="p">/</span><span class="n">confplanner</span><span class="p">/</span><span class="m">2</span><span class="p">/</span><span class="m">8.</span><span class="n">png</span> <span class="s">"Create a new `ApplicationDbContext` "</span><span class="p">)</span> 
+
+<span class="m">1.</span> <span class="n">Add</span> <span class="n">a</span> <span class="n">connection</span> <span class="kt">string</span> <span class="n">to</span> <span class="n">the</span> <span class="n">appsettings</span><span class="p">.</span><span class="n">json</span> <span class="n">file</span> <span class="k">for</span> <span class="k">this</span> <span class="n">database</span><span class="p">:</span>
+
+    
+
+<span class="err">```</span> <span class="n">json</span>
+   <span class="p">{</span>
+     <span class="s">"ConnectionStrings"</span><span class="p">:</span> <span class="p">{</span>
+       <span class="s">"DefaultConnection"</span><span class="p">:</span> <span class="s">"Server=(localdb)\\mssqllocaldb;Database=aspnet-BackEnd-931E56BD-86CB-4A96-BD99-2C6A6ABB0829;Trusted_Connection=True;MultipleActiveResultSets=true"</span>
+     <span class="p">},</span>
+     <span class="s">"Logging"</span><span class="p">:</span> <span class="p">{</span>
+       <span class="s">"LogLevel"</span><span class="p">:</span> <span class="p">{</span>
+         <span class="s">"Default"</span><span class="p">:</span> <span class="s">"Warning"</span><span class="p">,</span>
+         <span class="s">"Microsoft"</span><span class="p">:</span> <span class="s">"Warning"</span><span class="p">,</span>
+         <span class="s">"Microsoft.Hosting.Lifetime"</span><span class="p">:</span> <span class="s">"Information"</span>
+       <span class="p">}</span>
+     <span class="p">},</span>
+     <span class="s">"AllowedHosts"</span><span class="p">:</span> <span class="s">"*"</span>
+   <span class="p">}</span>
+    <span class="err">```</span>
+
+   <span class="p">![](/</span><span class="n">img</span><span class="p">/</span><span class="n">aspdotnetcore</span><span class="p">/</span><span class="n">confplanner</span><span class="p">/</span><span class="m">2</span><span class="p">/</span><span class="m">9.</span><span class="n">png</span> <span class="s">"Add a connection string to the appsettings.json"</span><span class="p">)</span>  
+
+<span class="err">##</span> <span class="n">Register</span> <span class="n">the</span> <span class="n">DB</span> <span class="n">Context</span> <span class="n">Service</span>
+
+<span class="m">1.</span> <span class="n">Add</span> <span class="n">the</span> <span class="n">following</span> <span class="n">code</span> <span class="n">to</span> <span class="n">the</span> <span class="n">top</span> <span class="n">of</span> <span class="n">the</span> <span class="err">`</span><span class="nf">ConfigureServices</span><span class="p">()</span><span class="err">`</span> <span class="n">method</span> <span class="k">in</span> <span class="err">`</span><span class="n">Startup</span><span class="p">.</span><span class="n">cs</span><span class="err">`</span> <span class="p">:</span>
+
+    
+
+<span class="err">```</span> <span class="n">csharp</span>
+    <span class="n">services</span><span class="p">.</span><span class="n">AddDbContext</span><span class="p">&lt;</span><span class="n">ApplicationDbContext</span><span class="p">&gt;(</span><span class="n">options</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">RuntimeInformation</span><span class="p">.</span><span class="nf">IsOSPlatform</span><span class="p">(</span><span class="n">OSPlatform</span><span class="p">.</span><span class="n">Windows</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">options</span><span class="p">.</span><span class="nf">UseSqlServer</span><span class="p">(</span><span class="n">Configuration</span><span class="p">.</span><span class="nf">GetConnectionString</span><span class="p">(</span><span class="s">"DefaultConnection"</span><span class="p">));</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="n">options</span><span class="p">.</span><span class="nf">UseSqlite</span><span class="p">(</span><span class="s">"Data Source=conferences.db"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+    <span class="err">```</span>
+
+    <span class="p">![](/</span><span class="n">img</span><span class="p">/</span><span class="n">aspdotnetcore</span><span class="p">/</span><span class="n">confplanner</span><span class="p">/</span><span class="m">2</span><span class="p">/</span><span class="m">10.</span><span class="n">png</span> <span class="s">"Register the DB Context Service"</span><span class="p">)</span>
+
+    <span class="p">&gt;</span> <span class="n">This</span> <span class="n">code</span> <span class="n">registers</span> <span class="n">the</span> <span class="err">`</span><span class="n">ApplicationDbContext</span><span class="err">`</span> <span class="n">service</span> <span class="n">so</span> <span class="n">it</span> <span class="n">can</span> <span class="n">be</span> <span class="n">injected</span> <span class="k">into</span> <span class="n">controllers</span><span class="p">.</span> <span class="n">Additionally</span><span class="p">,</span> <span class="n">it</span> <span class="n">configures</span> <span class="n">operating</span> <span class="n">system</span> <span class="n">specific</span> <span class="n">database</span> <span class="n">technologies</span> <span class="n">and</span> <span class="n">connection</span> <span class="n">strings</span>
+
+<span class="err">##</span> <span class="n">Configuring</span> <span class="n">EF</span> <span class="n">Migrations</span>
+
+<span class="m">1.</span> <span class="n">Add</span> <span class="n">a</span> <span class="n">reference</span> <span class="n">to</span> <span class="n">the</span> <span class="n">NuGet</span> <span class="n">package</span> <span class="err">`</span><span class="n">Microsoft</span><span class="p">.</span><span class="n">EntityFrameworkCore</span><span class="p">.</span><span class="n">Tools</span><span class="err">`</span> <span class="n">version</span> <span class="err">`</span><span class="m">3.0</span><span class="p">.</span><span class="m">0</span><span class="err">`</span> <span class="p">.</span>
+
+    <span class="p">![](/</span><span class="n">img</span><span class="p">/</span><span class="n">aspdotnetcore</span><span class="p">/</span><span class="n">confplanner</span><span class="p">/</span><span class="m">2</span><span class="p">/</span><span class="m">11.</span><span class="n">png</span> <span class="s">"Add a reference to the NuGet package"</span><span class="p">)</span>
+    <span class="p">&gt;</span> <span class="p">**</span><span class="n">If</span> <span class="n">you</span><span class="err">'</span><span class="n">re</span> <span class="n">not</span> <span class="k">using</span> <span class="nn">Visual</span> <span class="n">Studio</span><span class="p">**</span> <span class="n">install</span> <span class="n">the</span> <span class="n">package</span> <span class="k">from</span> <span class="n">the</span> <span class="n">command</span> <span class="n">line</span> <span class="n">with</span> <span class="err">`</span><span class="n">dotnet</span> <span class="k">add</span> <span class="n">package</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">EntityFrameworkCore</span><span class="p">.</span><span class="n">Tools</span> <span class="p">--</span><span class="n">version</span> <span class="m">3.0</span><span class="p">.</span><span class="m">0</span><span class="err">`</span> 
+
+<span class="err">###</span> <span class="n">Visual</span> <span class="n">Studio</span><span class="p">:</span> <span class="n">Package</span> <span class="n">Manager</span> <span class="n">Console</span> 
+
+<span class="m">1.</span> <span class="n">In</span> <span class="n">Visual</span> <span class="n">Studio</span><span class="p">,</span> <span class="k">select</span> <span class="n">the</span> <span class="n">Tools</span> <span class="p">-&gt;</span> <span class="n">NuGet</span> <span class="n">Package</span> <span class="n">Manager</span> <span class="p">-&gt;</span> <span class="n">Package</span> <span class="n">Manager</span> <span class="n">Console</span>
+
+<span class="p">![](/</span><span class="n">img</span><span class="p">/</span><span class="n">aspdotnetcore</span><span class="p">/</span><span class="n">confplanner</span><span class="p">/</span><span class="m">2</span><span class="p">/</span><span class="m">12.</span><span class="n">png</span> <span class="s">" Package Manager Console"</span><span class="p">)</span>
+
+<span class="m">1.</span> <span class="n">Run</span> <span class="n">the</span> <span class="n">following</span> <span class="n">commands</span> <span class="k">in</span> <span class="n">the</span> <span class="n">Package</span> <span class="n">Manager</span> <span class="n">Console</span>
+
+   
+
+<span class="err">```</span> <span class="n">console</span>
+   <span class="n">Add</span><span class="p">-</span><span class="n">Migration</span> <span class="n">Initial</span>
+   <span class="n">Update</span><span class="p">-</span><span class="n">Database</span>
+</code></pre></div></div>
+
+<p><img src="/img/aspdotnetcore/confplanner/2/14.png" alt="" title=" Package Manager Console 1" /></p>
+
+<h3 id="command-line">Command line</h3>
+
+<ol>
+  <li>Install the EntityFramework global tool <code class="language-plaintext highlighter-rouge">dotnet-ef</code> using the following command:</li>
+</ol>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">   dotnet tool install -g dotnet-ef --version 3.0.0
+</span></code></pre></div></div>
+
+<ol>
+  <li>
+    <p>Open a command prompt and navigate to the project directory.(The directory containing the <code class="language-plaintext highlighter-rouge">Startup.cs</code> file).</p>
+  </li>
+  <li>
+    <p>Run the following commands in the command prompt:</p>
+  </li>
+</ol>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">    dotnet build
+    dotnet ef migrations add Initial
+    dotnet ef database update
+    ```
+
+Commands Explained
+
+| Command       |Description       |
+| ------------- |-------------|
+| `dotnet ef migrations add Initial` / `Add-Migration Initial` | generates code to create the initial database schema based on the model specified in 'ApplicationDbContext.cs'. `Initial` is the name of the migration.|  
+| `dotnet ef database update` / `Update-Database` | creates the database      |
+
+</span><span class="gp">  &gt;</span>For more information on these commands and scaffolding <span class="k">in </span>general, see <span class="o">[</span>this tutorial]<span class="o">(</span>https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/adding-model#add-initial-migration-and-update-the-database<span class="o">)</span><span class="nb">.</span>
+<span class="go">
+</span><span class="gp">  &gt;</span>If your database ever gets <span class="k">in </span>a bad state and you<span class="s1">'d like to reset things, you can use `dotnet ef database drop` followed by `dotnet ef database update` to remove your database and run all migrations again.
+</span><span class="go">
+</span><span class="gp">#</span><span class="c"># A quick look at the Weather Forecast Controller</span>
+<span class="go">
+First, open the `Controllers` folder and take a quick look at the `WeatherForecastController` . You'll see a simple function that corresponds to the HTTP GET verb. You'll see the output of this controller in a bit, but first we'll build our own API controller for the `Speakers` model class.
+
+</span><span class="gp">#</span><span class="c"># Scaffolding an API Controller</span>
+<span class="go">
+</span><span class="gp">#</span><span class="c">## Using Visual Studio</span>
+<span class="go">
+1. Right-click the `Controllers` folder and select Add/Controller. Select "API Controller with actions, using Entity Framework".
+
+![](/img/aspdotnetcore/confplanner/2/18.png " API Controller")
+
+1. In the dialog, select the `Speaker` model for the Model Class, `ApplicationDbContext` for the "Data Context Class" and click the `Add` button.
+
+   ![](/img/aspdotnetcore/confplanner/2/19.png)
+
+</span><span class="gp">#</span><span class="c">## Using the cmd line</span>
+<span class="go">
+1. Install the "Microsoft.VisualStudio.Web.CodeGeneration.Design" package
+
+    
+
+``` console
+    dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 3.0.0
+    ```
+
+1. Install the `aspnet-codegenerator` global tool by running the following command:
+
+    
+
+``` console
+    dotnet tool install -g dotnet-aspnet-codegenerator --version 3.0.0
+    ```
+
+</span><span class="gp">&gt;</span><span class="w"> </span>Note: You will need to close and reopen the console window to be able to use this tool.
+<span class="go">
+2. Run the following in the project folder at the cmd line:
+
+    
+
+``` console
+    dotnet aspnet-codegenerator controller -api -name SpeakersController -m Speaker -dc BackEnd.Models.ApplicationDbContext -outDir Controllers
+    ```
+
+</span><span class="gp">#</span><span class="c"># Testing the API using the Swashbuckle</span>
+<span class="go">
+In this section, we'll be adding documentation to our API using the Swashbuckle NuGet package.
+
+[Swashbuckle. AspNetCore](https://github.com/domaindrivendev/swashbuckle.aspnetcore) is an open source project for generating Swagger documents for Web APIs that are built with ASP. NET Core.
+
+[Swagger](https://swagger.io) is a machine readable representation of a RESTful API that enables support for interactive documentation, client SDK generation and discoverability.
+
+Additional information on using Swashbuckle in ASP. NET Core is available in this tutorial: [ASP. NET Web API Help Pages using Swagger](https://docs.microsoft.com/en-us/aspnet/core/tutorials/web-api-help-pages-using-swagger)
+
+1. Add a reference to the NuGet package `Swashbuckle.AspNetCore` version `5.0.0-rc4` .
+
+    ![](/img/aspdotnetcore/confplanner/2/21.png)
+</span><span class="gp">    &gt;</span><span class="w"> </span>This can be <span class="k">done </span>from the <span class="nb">command </span>line using <span class="sb">`</span>dotnet add package Swashbuckle.AspNetCore <span class="nt">--version</span> 5.0.0-rc4<span class="sb">`</span> 
+<span class="go">
+1. Add the Swashbuckle services in your `ConfigureServices` method:
+
+    
+
+``` csharp
+</span><span class="gp">    services.AddControllers();</span><span class="w">
+</span><span class="go">
+</span><span class="gp">    services.AddSwaggerGen(options =&gt;</span><span class="w">
+</span><span class="go">        options.SwaggerDoc("v1", new OpenApiInfo { Title = "Conference Planner API", Version = "v1" })
+</span><span class="gp">    );</span><span class="w">
+</span><span class="go">    ```
+
+    ![](/img/aspdotnetcore/confplanner/2/22.png)
+
+1. Configure Swashbuckle by adding the following lines just before `UseRouting` in the `Configure` method in `Startup.cs` :
+
+    
+
+``` csharp
+</span><span class="gp">    app.UseSwagger();</span><span class="w">
+</span><span class="go">
+</span><span class="gp">    app.UseSwaggerUI(options =&gt;</span><span class="w">
+</span><span class="go">        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Conference Planner API v1")
+</span><span class="gp">    );</span><span class="w">
+</span><span class="go">    ```
+
+    ![](/img/aspdotnetcore/confplanner/2/23.png)
+</span><span class="gp">    &gt;</span><span class="w"> </span><span class="k">***</span>Note:<span class="k">*</span> Due to how the middleware and pipeline are structured, you<span class="s1">'ll want to place this before the `app.UseEndpoints()` statement.**
+</span><span class="go">
+1. Add a redirect to the end of the pipeline that redirects to the swagger end point. 
+
+   
+
+``` csharp
+</span><span class="gp">   app.Run(context =&gt;</span><span class="w">
+</span><span class="go">   {
+</span><span class="gp">       context.Response.Redirect("/swagger");</span><span class="w">
+</span><span class="gp">       return Task.CompletedTask;</span><span class="w">
+</span><span class="gp">   });</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/img/aspdotnetcore/confplanner/2/24.png" alt="" /></p>
+
+<ol>
+  <li>Run the application (F5 in Visual Studio or <code class="language-plaintext highlighter-rouge">dotnet run</code> from console).</li>
+  <li>
+    <p>Browse to the Swagger UI at <code class="language-plaintext highlighter-rouge">http://localhost:&lt;random_port&gt;/swagger</code> .</p>
+
+    <p><img src="/img/aspdotnetcore/confplanner/2/25.png" alt="" /></p>
+  </li>
+  <li>
+    <p>First, click on the <em>GET</em> button in <em>WeatherForecast</em> section. You’ll see the values that were listed in the <code class="language-plaintext highlighter-rouge">WeatherForecastController</code> earlier.</p>
+
+    <p><img src="/img/aspdotnetcore/confplanner/2/26.png" alt="" /></p>
+  </li>
+  <li>In the <em>Speakers</em> section, click on the <em>GET</em> button. You’ll see there are not speakers returned. Let’s add one!</li>
+  <li>
+    <p>In the <em>Speakers</em> section, click on the <em>POST</em> button. Referencing the example on the right, fill in a speaker request. Leave the <code class="language-plaintext highlighter-rouge">ID</code> blank, that will be filled in by the database.</p>
+
+    <p><img src="/img/aspdotnetcore/confplanner/2/27.png" alt="" /></p>
+  </li>
+</ol>
+
+<p><code class="language-plaintext highlighter-rouge">json
+    {
+      "name": "Girish Godage",
+      "bio": "Technical Leader",
+      "webSite": "https://girishgodage.in"
+    }
+   </code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![](/img/aspdotnetcore/confplanner/2/28.png)
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>When you click the <em>Try it out!</em> button, you should see a success response from the server. Now, clicking the <em>GET</em> button above should show your newly added speaker.</p>
+
+    <p><img src="/img/aspdotnetcore/confplanner/2/29.png" alt="" /></p>
+  </li>
+</ol>
+
+<hr />
+<h2 id="sessions">Sessions</h2>
+
+<p>This is series of articles on Building Conf planner app with Asp.net Core:</p>
+
+<ul>
+  <li><a href="/blog/CreateBackEndAPIproject" target="_blank">1 - Build the back-end API with basic EF model</a></li>
+  <li><a href="/blog/BuildoutBackEndandRefactor" target="_blank">2 - Finish the back-end API and EF model, refactor into view modelsl</a></li>
+  <li><a href="/blog/Addfront-endrenderagendasetupfront-endmodels" target="_blank">3 - Add front-end, render agenda, set up front-end models</a></li>
+  <li><a href="/blog/Addauthfeatures" target="_blank">4 - Add authentication, add admin policy, allow editing sessions, users can sign-in with Identity, custom auth tag helper</a></li>
+  <li><a href="/blog/Addpersonalagenda" target="_blank">5 - Add user association and personal agenda</a></li>
+  <li><a href="/blog/ProductionReadinessandDeployment" target="_blank">6 - Deployment, Azure and other production environments, configuring environments, diagnostics</a></li>
+  <li><a href="/blog/Challenges" target="_blank">7 - Challenges</a></li>
+  <li><a href="/blog/SPAFrontEnd" target="_blank">8 - SPA front-end </a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/app-building-Workshop-start" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/BuildoutBackEndandRefactor" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

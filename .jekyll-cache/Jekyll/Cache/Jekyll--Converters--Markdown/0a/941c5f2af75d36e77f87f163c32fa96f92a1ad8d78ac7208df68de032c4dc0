@@ -1,0 +1,367 @@
+I"�S<h2 id="spring-data-jpa-spring-data-rest-and-mongodb">Spring Data JPA, Spring Data REST and MongoDB</h2>
+<p>This guide will help you understand the basics of Spring Data. We will look at the various options that Spring Data provides and a couple of examples - Spring Data JPA and Spring Data Mongodb</p>
+
+<h2 id="you-will-learn">You will learn</h2>
+<ul>
+  <li>Basics of Spring Data</li>
+  <li>Why is Spring Data needed?</li>
+  <li>What are the different interfaces provided by Spring Data?</li>
+  <li>How to get started with Spring Data?</li>
+</ul>
+
+<h2 id="what-is-spring-data">What is Spring Data?</h2>
+
+<p>Think about the evolution of databases in the last few years.</p>
+
+<p>When Spring Framework was created, in early 2000s, the only kind of database was relational database - Oracle, MS SQL Server, My SQL etc. In the last few years, there are a wide variety of databases that are getting popular - most of them not relational and not using SQL. Wide variety of terminology is used to refer to these databases. NoSQL, for example.</p>
+
+<p>ORM frameworks (Hibernate) and specifications(JPA) were good fit for the relational databases. But, the newer databases, have different needs.</p>
+
+<p>From http://projects.spring.io/spring-data/</p>
+<blockquote>
+  <p>Spring Data’s mission is to provide a familiar and consistent, Spring-based programming model for data access while still retaining the special traits of the underlying data store. It makes it easy to use data access technologies, relational and non-relational databases, map-reduce frameworks, and cloud-based data services.</p>
+</blockquote>
+
+<p>To make it simpler, Spring Data provides Abstractions (interfaces) you can use irrespective of underlying data source.</p>
+
+<h2 id="spring-data-commons">Spring Data Commons</h2>
+
+<p>Spring Data Commons provides all the common abstractions that enable you to connect with different data stores.</p>
+
+<h3 id="crud-repository">Crud Repository</h3>
+<p>The key interface in Spring Data Commons is <code class="language-plaintext highlighter-rouge">CrudRepository</code>. It provides generic CRUD operations irrespective of the underlying data store. It extends Repository which is the base class for all the repositories providing access to data stores.</p>
+
+<p>All the methods in the <code class="language-plaintext highlighter-rouge">CrudRepository</code> interface are shown below</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public interface CrudRepository&lt;T, ID&gt; extends Repository&lt;T, ID&gt; {
+	&lt;S extends T&gt; S save(S entity);
+
+	&lt;S extends T&gt; Iterable&lt;S&gt; saveAll(Iterable&lt;S&gt; entities);
+
+	Optional&lt;T&gt; findById(ID id);
+
+	boolean existsById(ID id);
+
+	Iterable&lt;T&gt; findAll();
+
+	Iterable&lt;T&gt; findAllById(Iterable&lt;ID&gt; ids);
+
+	long count();
+
+	void deleteById(ID id);
+
+	void delete(T entity);
+
+	void deleteAll(Iterable&lt;? extends T&gt; entities);
+
+	void deleteAll();
+}
+</code></pre></div></div>
+
+<p>The methods in the CrudRepository are self explanatory.</p>
+
+<h3 id="pagingandsortingrepository">PagingAndSortingRepository</h3>
+
+<p>The other important interface in Spring Data is PagingAndSortingRepository. PagingAndSortingRepository provides options to</p>
+<ul>
+  <li>Sort your data using <code class="language-plaintext highlighter-rouge">Sort</code> interface</li>
+  <li>Paginate your data using <code class="language-plaintext highlighter-rouge">Pageable</code> interface, which provides methods for pagination - getPageNumber(), getPageSize(), next(), previousOrFirst() etc.</li>
+</ul>
+
+<p>public abstract interface PagingAndSortingRepository extends CrudRepository {</p>
+
+<p>public Iterable findAll(Sort sort);</p>
+
+<p>public Page findAll(Pageable pageable);</p>
+
+<p>}</p>
+
+<h3 id="defining-custom-repositories">Defining Custom Repositories</h3>
+
+<p>You can create a custom repository extending any of the repository classes - Repository, PagingAndSortingRepository or CrudRepository.</p>
+
+<p>An example is shown below</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">PersonRepository</span> <span class="kd">extends</span> <span class="nc">CrudRepository</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">,</span> <span class="nc">Long</span><span class="o">&gt;</span> <span class="o">{</span>
+</code></pre></div></div>
+
+<h3 id="defining-custom-queries">Defining custom queries</h3>
+<p>Spring Data also provides the feature of query creation from interface method names.</p>
+
+<p>Look at the example below:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="nf">findByFirstNameAndLastname</span><span class="o">(</span><span class="nc">String</span> <span class="n">firstName</span><span class="o">,</span> <span class="nc">String</span> <span class="n">lastname</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Above method helps you search a data store by passing in the first name and last name of a person. This would generate the appropriate query for the data store to return the person details.</p>
+
+<blockquote>
+  <p>You can find more details in the spring data documentation - https://docs.spring.io/spring-data/commons/docs/current/reference/html/#repositories.query-methods.query-creation</p>
+</blockquote>
+
+<h3 id="auditing-with-spring-data">Auditing with Spring Data</h3>
+
+<p>Spring Data also provides auditing capabilities through simple annotations.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class Student {
+
+  @CreatedBy
+  private User createdUser;
+
+  @CreatedDate
+  private DateTime createdDate;
+
+  // … further properties omitted
+}
+</code></pre></div></div>
+
+<p>There are corresponding annotations for updates as well</p>
+<ul>
+  <li>LastModifiedBy</li>
+  <li>LastModifiedDate</li>
+</ul>
+
+<h2 id="spring-data-implementations">Spring Data Implementations</h2>
+
+<p>There are Spring Data Modules specific to the data store you would want to use.</p>
+<ul>
+  <li>Spring Data JPA - Connect to relational databases using ORM frameworks.</li>
+  <li>Spring Data MongoDB - Repositories for MongoDB.</li>
+  <li>Spring Data REST - Exposes HATEOAS RESTful resources around Spring Data repositories.</li>
+  <li>Spring Data Redis - Repositories for Redis.</li>
+</ul>
+
+<h3 id="spring-data-jpa">Spring Data JPA</h3>
+
+<p>Spring Data JPA helps you to connect to relational databases using ORM frameworks.</p>
+
+<p>The dependency is shown below:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;dependencies&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.data&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-data-jpa&lt;/artifactId&gt;
+  &lt;/dependency&gt;
+&lt;dependencies&gt;
+</code></pre></div></div>
+
+<p>The default JPA implementation used is Hibernate.</p>
+
+<p>The core interface is the JpaRepository.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public interface JpaRepository&lt;T, ID&gt; 
+	extends PagingAndSortingRepository&lt;T, ID&gt;, 
+	        QueryByExampleExecutor&lt;T&gt;
+</code></pre></div></div>
+
+<p>Some of the additional methods it provides (compared to PagingAndSortingRepository) are shown below. As you can see, all these methods are specific to JPA.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/**
+ * Saves an entity and flushes changes instantly.
+ *
+ * @param entity
+ * @return the saved entity
+ */
+&lt;S extends T&gt; S saveAndFlush(S entity);
+
+	/**
+ * Deletes the given entities in a batch which means it will create a single {@link Query}. Assume that we will clear
+ * the {@link javax.persistence.EntityManager} after the call.
+ *
+ * @param entities
+ */
+void deleteInBatch(Iterable&lt;T&gt; entities);
+
+/**
+ * Deletes all entities in a batch call.
+ */
+void deleteAllInBatch();
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>Recommended Reading for Spring Data JPA - http://www.springboottutorial.com/introduction-to-jpa-with-spring-boot-data-jpa</p>
+</blockquote>
+
+<h3 id="spring-data-rest">Spring Data REST</h3>
+
+<p>Spring Data REST can be used to expose HATEOAS RESTful resources around Spring Data repositories.</p>
+
+<p>An example using JPA is shown below</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RepositoryRestResource</span><span class="o">(</span><span class="n">collectionResourceRel</span> <span class="o">=</span> <span class="s">"todos"</span><span class="o">,</span> <span class="n">path</span> <span class="o">=</span> <span class="s">"todos"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">TodoRepository</span>
+		<span class="kd">extends</span> <span class="nc">PagingAndSortingRepository</span><span class="o">&lt;</span><span class="nc">Todo</span><span class="o">,</span> <span class="nc">Long</span><span class="o">&gt;</span> <span class="o">{</span>
+
+</code></pre></div></div>
+
+<p>A few example REST Services are shown below:</p>
+
+<h4 id="post">POST</h4>
+<ul>
+  <li>URL : http://localhost:8080/todos</li>
+  <li>Use Header : Content-Type:application/json</li>
+</ul>
+
+<p>Request Content</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jill"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Learn Hibernate"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"done"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<p>Response Content</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "user": "Jill",
+  "desc": "Learn Hibernate",
+  "done": false,
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/todos/1"
+    },
+    "todo": {
+      "href": "http://localhost:8080/todos/1"
+    }
+  }
+}
+</code></pre></div></div>
+<p>The response contains the href of the newly created resource.</p>
+
+<h4 id="get">GET</h4>
+
+<ul>
+  <li>URI - http://localhost:8080/todos</li>
+</ul>
+
+<p>Response</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"_embedded"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"todos"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"user"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Jill"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"desc"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Learn Hibernate"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"done"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"_links"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"self"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"href"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8080/todos/1"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"todo"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"href"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8080/todos/1"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"_links"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"href"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8080/todos"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"profile"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"href"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8080/profile/todos"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"search"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"href"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8080/todos/search"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"page"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"size"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalElements"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalPages"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>GET to http://localhost:8080/todos/1</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"user"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Jill"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"desc"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Learn Hibernate"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"done"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"_links"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"self"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"href"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8080/todos/1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"todo"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"href"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8080/todos/1"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Spring Data Rest also supports search using column names</p>
+<ul>
+  <li>Example - http://localhost:8080/todos?user=Jill</li>
+</ul>
+
+<p>Spring Data Rest can be extended by defining custom methods in the repositories.
+http://localhost:8080/todos/search/findByUser?user=Jill can be used expose specific search method defined below.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RepositoryRestResource</span><span class="o">(</span><span class="n">collectionResourceRel</span> <span class="o">=</span> <span class="s">"todos"</span><span class="o">,</span> <span class="n">path</span> <span class="o">=</span> <span class="s">"todos"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">TodoRepository</span>
+		<span class="kd">extends</span> <span class="nc">PagingAndSortingRepository</span><span class="o">&lt;</span><span class="nc">Todo</span><span class="o">,</span> <span class="nc">Long</span><span class="o">&gt;</span> <span class="o">{</span>
+
+	<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Todo</span><span class="o">&gt;</span> <span class="nf">findByUser</span><span class="o">(</span><span class="nd">@Param</span><span class="o">(</span><span class="s">"user"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">user</span><span class="o">);</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Spring Data REST supports</p>
+<ul>
+  <li>Spring Data JPA</li>
+  <li>Spring Data MongoDB</li>
+  <li>Spring Data Neo4j</li>
+  <li>Spring Data GemFire</li>
+  <li>Spring Data Cassandra</li>
+</ul>
+
+<blockquote>
+  <p>Recommended Reading for Spring Data Rest - http://www.springboottutorial.com/introduction-to-spring-data-rest-using-spring-boot</p>
+</blockquote>
+
+<h3 id="spring-data-mongodb">Spring Data MongoDB</h3>
+
+<p>Spring Data MongoDB provides support for using MongoDB as data store.</p>
+
+<p>The key interface is MongoRepository.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MongoRepository</span><span class="o">&lt;</span><span class="no">T</span><span class="o">,</span> <span class="no">ID</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="nc">PagingAndSortingRepository</span><span class="o">&lt;</span><span class="no">T</span><span class="o">,</span> <span class="no">ID</span><span class="o">&gt;,</span> <span class="nc">QueryByExampleExecutor</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> 
+</code></pre></div></div>
+
+<p>Some of the important methods (provided in addition to PagingAndSortingRepository) are shown below. You can see examples of search by example.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	/* 
+	 * (non-Javadoc)
+	 * @see org.springframework.data.repository.query.QueryByExampleExecutor#findAll(org.springframework.data.domain.Example)
+	 */
+	@Override
+	&lt;S extends T&gt; List&lt;S&gt; findAll(Example&lt;S&gt; example);
+
+	/* 
+	 * (non-Javadoc)
+	 * @see org.springframework.data.repository.query.QueryByExampleExecutor#findAll(org.springframework.data.domain.Example, org.springframework.data.domain.Sort)
+	 */
+	@Override
+	&lt;S extends T&gt; List&lt;S&gt; findAll(Example&lt;S&gt; example, Sort sort);
+</code></pre></div></div>
+
+<hr />
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/spring-boot-with-mysql-and-oracle" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

@@ -1,0 +1,321 @@
+I"�0<h2 id="how-to-crop-and-resize-image-in-aspnet-core">HOW TO CROP AND RESIZE IMAGE IN ASP.NET CORE</h2>
+
+<p>In this article, we are going to learn how to Crop and Resize Image and store in a folder in a step by step way.</p>
+
+<p><a href="https://github.com/girishgodage/WebCropper">Github link for Source</a></p>
+
+<p><img src="/img/aspdotnetcore/2/08.png" alt="image" /></p>
+
+<p>Every application we develop now days has the option to set a profile photo right. Some application has a clause of fix length and Size of profile photo where the user needs to upload an image of fix length and Size which cause issues.</p>
+
+<p>In this part we are going allow users to upload a photo then adjust the zoom of the picture as they need then we are going resize Image in different format and store in a folder.</p>
+
+<ul>
+  <li>200 * 200   Passport size</li>
+  <li>180 * 180   Facebook size</li>
+  <li>32 * 32     Icon size</li>
+</ul>
+
+<p><img src="/img/aspdotnetcore/2/1.png" alt="image" /></p>
+
+<h3 id="packages-used">Packages Used</h3>
+
+<p><strong>ImageSharp</strong></p>
+
+<p>ImageSharp is a new, fully-featured, fully managed, cross-platform, 2D graphics library. Designed to simplify image processing, ImageSharp brings you an incredibly powerful yet beautifully simple API.</p>
+
+<p><strong>Croppie</strong></p>
+
+<p>Croppie is a fast, easy to use image cropping plugin with tons of configuration options</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ul>
+  <li>Getting Started with Upload Crop Resize Image in ASP.NET Core</li>
+  <li>Project structure</li>
+  <li>Installing SixLabors.ImageSharp Extension from NuGet Package</li>
+  <li>Adding Controller and View</li>
+  <li>Adding CustomCrop View</li>
+  <li>Adding jQuery and Croppie CDN Reference on View</li>
+  <li>Initialize Croppie and read file Content</li>
+  <li>Adding CustomCrop Post Action Method</li>
+  <li>Ajax Request for Posting Cropped Image</li>
+  <li>Upload and Cropped Image</li>
+  <li>Output</li>
+</ul>
+
+<h3 id="getting-started-with-upload-crop-resize-image-in-aspnet-core">Getting Started with Upload Crop Resize Image in ASP.NET Core</h3>
+
+<p>We are going to create a new application with Name WebCropper for demo as shown below.</p>
+
+<p><img src="/img/aspdotnetcore/2/02.png" alt="image" /></p>
+
+<p>Next, we are going to set Project Name “WebCropper” and location. In last part, we are going to choose .</p>
+
+<p>Net Core framework and ASP.NET Core Version 5.0 as the framework for application and few advance settings for such as configuring https and enabling docker we are not going to enable docker settings for this project.</p>
+
+<p><img src="/img/aspdotnetcore/2/03.png" alt="image" /></p>
+
+<p>Now finally click on create button to create a project.</p>
+
+<p><strong>Project structure</strong></p>
+
+<p>The project structure generated according to the configuration.</p>
+
+<p><img src="/img/aspdotnetcore/2/04.png" alt="image" /></p>
+
+<p>After creating project next, we are going to install <strong>SixLabors.ImageSharp</strong> Extension from NuGet Package.</p>
+
+<h3 id="installing-sixlaborsimagesharp-extension-from-nuget-package">Installing SixLabors.ImageSharp Extension from NuGet Package</h3>
+
+<p><img src="/img/aspdotnetcore/2/05.png" alt="image" /></p>
+
+<p>After installing next, we are going to add Controller and View where we will allow uses to upload and crop photo.</p>
+
+<h3 id="adding-controller-and-view">Adding Controller and View</h3>
+
+<p>Let’s Add Controller with name Demo Controller and Action Method with Name CustomCrop.</p>
+
+<pre><code class="language-code">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+
+namespace WebCropper.Controllers
+{
+    public class DemoController : Controller
+    {
+        public IActionResult CustomCrop()
+        {
+            return View();
+        }
+    }
+}
+
+</code></pre>
+
+<p>Next after adding Controller and Action Method next, we are going to add View with Name CustomCrop.</p>
+
+<p>On this View, we are going to add input of type file to upload Image.</p>
+
+<h3 id="adding-customcrop-view">Adding CustomCrop View</h3>
+
+<pre><code class="language-code">@{
+    Layout = null;
+}
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta name="viewport" content="width=device-width" /&gt;
+    &lt;title&gt;CustomCrop&lt;/title&gt;
+    &lt;link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="d-flex justify-content-center"&gt;
+            &lt;div class="col-md-6"&gt;
+
+                &lt;div class="card" style="margin-top:10px;"&gt;
+                    &lt;div class="card-header"&gt;Cropper in ASP.NET Core&lt;/div&gt;
+                    &lt;div class="card-body"&gt;
+                        &lt;div id="main-cropper"&gt;&lt;/div&gt;
+                        &lt;input type="file" id="select" class="form-control" value="Choose Image" accept="image/*"&gt;
+                        &lt;button id="btnupload" style="margin-top: 10px;" name="btnupload" class="btn btn-success"&gt;Crop&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Next, after adding View next, we are going to add reference of image cropping plugin.</p>
+
+<h3 id="what-is-croppie">What is Croppie?</h3>
+
+<p>Croppie is a fast, easy to use image cropping plugin with tons of configuration options!</p>
+
+<p>https://foliotek.github.io/Croppie/</p>
+
+<p>Adding jQuery and Croppie CDN Reference on View</p>
+
+<pre><code class="language-code">&lt;head&gt;
+  &lt;meta name="viewport" content="width=device-width" /&gt;
+  &lt;title&gt;CustomCrop&lt;/title&gt;
+  &lt;link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" /&gt;
+  &lt;script src="~/lib/jquery/dist/jquery.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css" /&gt;
+  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"&gt;&lt;/script&gt;
+  &lt;style&gt;
+        .croppie-container {
+            width: 100%;
+            height: 80%;
+        }
+   &lt;/style&gt;
+&lt;/head&gt;
+</code></pre>
+
+<p>Next, we are going to Initialize croppie.</p>
+
+<pre><code class="language-code">
+&lt;script type="text/javascript"&gt;
+
+    //initialize Croppie
+    var basic = $('#main-cropper').croppie
+    ({
+        viewport: { width: 300, height: 300 },
+        boundary: { width: 500, height: 400 },
+        showZoomer: true,
+        url: '/DefaultImages/preview.jpg',
+        format:'png' //'jpeg'|'png'|'webp'
+    });
+
+    //Reading the contents of the specified Blob or File
+    function readFile(input) {
+        if (input.files &amp;&amp; input.files[0])
+        {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#main-cropper').croppie('bind', {
+                    url: e.target.result
+                });
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+   // Change Event to Read file content from File input
+    $('#select').on('change', function () { readFile(this); });
+
+&lt;/script&gt;
+
+</code></pre>
+
+<p>After initializing Croppie next, we are going to run the application to see Created UI.</p>
+
+<p><img src="/img/aspdotnetcore/2/06.png" alt="image" /></p>
+
+<p>After we have created UI next let’s create an Action method for handling Ajax POST request.</p>
+
+<h3 id="adding-customcrop-post-action-method">Adding CustomCrop Post Action Method</h3>
+
+<p>In this part, we are going create action method which is going to handle ajax POST request where we are going receive Cropped file.</p>
+
+<p>Reading Stream of Cropped file we are going pass it to ImageSharp Load Method which will return image object on image object we can apply an operation on Image resize a then store in a folder.</p>
+
+<p>We are going to store Image in a folder for that we are going to create a folder in wwwroot with Name Images.</p>
+
+<p>We are going to resize Image in 3 different sizes 200, 180, 32.</p>
+
+<p><img src="/img/aspdotnetcore/2/07.png" alt="image" /></p>
+
+<pre><code class="language-code">
+[HttpPost]
+        public IActionResult CustomCrop(string filename, IFormFile blob)
+        {
+            try
+            {
+                using (var image = Image.Load(blob.OpenReadStream()))
+                {
+                    string systemFileExtenstion = filename.Substring(filename.LastIndexOf('.'));
+
+                    image.Mutate(x =&gt; x.Resize(180, 180));
+                    var newfileName180 = GenerateFileName("Photo_180_180_", systemFileExtenstion);
+                    var filepath160 = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images")).Root + $@"\{newfileName180}";
+                    image.Save(filepath160);
+
+                    var newfileName200 = GenerateFileName("Photo_200_200_", systemFileExtenstion);
+                    var filepath200 = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images")).Root + $@"\{newfileName200}";
+                    image.Mutate(x =&gt; x.Resize(200, 200));
+                    image.Save(filepath200);
+
+                    var newfileName32 = GenerateFileName("Photo_32_32_", systemFileExtenstion);
+                    var filepath32 = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images")).Root + $@"\{newfileName32}";
+                    image.Mutate(x =&gt; x.Resize(32, 32));
+                    image.Save(filepath32);
+
+                }
+
+                return Json(new { Message = "OK" });
+            }
+            catch (Exception)
+            {
+                return Json(new { Message = "ERROR" });
+            }
+        }
+
+</code></pre>
+
+<p>To generate Unique file name, we have created the below method.</p>
+
+<pre><code class="language-code">
+public string GenerateFileName(string fileTypeName, string fileextenstion)
+ {
+     if (fileTypeName == null) throw new ArgumentNullException(nameof(fileTypeName));
+     if (fileextenstion == null) throw new ArgumentNullException(nameof(fileextenstion));
+     return $"{fileTypeName}_{DateTime.Now:yyyyMMddHHmmssfff}_{Guid.NewGuid():N}{fileextenstion}";
+ }
+
+</code></pre>
+
+<p>After adding CustomCrop action method next, we are going to write XMLHttpRequest request to post filename and file to CustomCrop method.</p>
+
+<h3 id="ajax-request-for-posting-cropped-image">Ajax Request for Posting Cropped Image</h3>
+
+<pre><code class="language-code">// Upload button to Post Cropped Image to Store.
+    $('#btnupload').on('click', function ()
+    {
+        basic.croppie('result', 'blob').then(function (blob)
+        {
+            var formData = new FormData();
+
+            formData.append('filename', 'FileName.png');
+            formData.append('blob', blob);
+            var myAppUrlSettings =
+            {
+                MyUsefulUrl: '@Url.Action("CustomCrop", "Demo")'
+            }
+            var request = new XMLHttpRequest();
+            request.open('POST', myAppUrlSettings.MyUsefulUrl);
+            request.send(formData);
+            request.onreadystatechange = function () { 
+               // Call a function when the state changes.
+                if (this.readyState === XMLHttpRequest.DONE &amp;&amp; this.status === 200)
+                {
+                    var response = JSON.parse(request.responseText);
+
+                    if (response.message == "OK")
+                    {
+                        alert('Photo Cropped Successfully!');
+                        window.location.reload();
+                    }
+                    if (response.message == "ERROR")
+                    {
+                        window.location.reload();
+                    }
+                }
+            }
+        });
+    });
+</code></pre>
+
+<p>After adding code for posting cropped images next, let’s run application and test.</p>
+
+<h3 id="upload-and-cropped-image">Upload and Cropped Image</h3>
+
+<p>In this part just upload Image and adjust Image and click on crop button to crop Image.</p>
+
+<p><img src="/img/aspdotnetcore/2/08.png" alt="image" /></p>
+
+<p>After cropping, images will be stored in the folder, as shown below.</p>
+
+<h3 id="output">Output</h3>
+
+<p><img src="/img/aspdotnetcore/2/09.png" alt="image" /></p>
+
+:ET

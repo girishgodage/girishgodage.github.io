@@ -1,0 +1,194 @@
+I"�K<h2 id="actionfilter">ActionFilter</h2>
+
+<p>We keep on customizing on the controller level in this ninth post of this series. I’ll have a look into ActionFilters and how to create your own ActionFilter to keep your Actions small and readable.</p>
+
+<h2 id="about-actionfilters">About ActionFilters</h2>
+
+<p>Action filters are a little bit like middlewares, but are executed immediately on a specific action or on all actions of a specific controller. If you apply an ActionFilter as a global one, it executes on all actions in your application. ActionFilters are created to execute code right before or after the action is executed. They are introduced to execute aspects that are not part of the actual action logic. Authorization is such an aspect. I’m sure you already know the <code class="language-plaintext highlighter-rouge">AuthorizeAttribute</code> to allow users or groups to access specific Actions or Controllers. The <code class="language-plaintext highlighter-rouge">AuthorizeAttribute</code> actually is an ActionFilter. It checks whether the logged-on user is authorized or not. If not it redirects to the login page.</p>
+
+<p>The next sample shows the skeletons of a normal ActionFilters and an async ActionFilter:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">SampleActionFilter</span> <span class="p">:</span> <span class="n">IActionFilter</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">OnActionExecuting</span><span class="p">(</span><span class="n">ActionExecutingContext</span> <span class="n">context</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// do something before the action executes</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">OnActionExecuted</span><span class="p">(</span><span class="n">ActionExecutedContext</span> <span class="n">context</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// do something after the action executes</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">SampleAsyncActionFilter</span> <span class="p">:</span> <span class="n">IAsyncActionFilter</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">OnActionExecutionAsync</span><span class="p">(</span>
+        <span class="n">ActionExecutingContext</span> <span class="n">context</span><span class="p">,</span>
+        <span class="n">ActionExecutionDelegate</span> <span class="n">next</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// do something before the action executes</span>
+        <span class="kt">var</span> <span class="n">resultContext</span> <span class="p">=</span> <span class="k">await</span> <span class="nf">next</span><span class="p">();</span>
+        <span class="c1">// do something after the action executes; resultContext.Result will be set</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>As you can see here, there are always two methods to place code to execute before and after the target action is executed. This ActionFilters cannot be used as attribute. If you want to use the ActionFilters as attribute in your Controllers, you need to derive from <code class="language-plaintext highlighter-rouge">Attribute</code> or from <code class="language-plaintext highlighter-rouge">ActionFilterAttribute</code>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">ValidateModelAttribute</span> <span class="p">:</span> <span class="n">ActionFilterAttribute</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnActionExecuting</span><span class="p">(</span><span class="n">ActionExecutingContext</span> <span class="n">context</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(!</span><span class="n">context</span><span class="p">.</span><span class="n">ModelState</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">context</span><span class="p">.</span><span class="n">Result</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">BadRequestObjectResult</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">ModelState</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This code shows a simple ActionFilter which always returns a <code class="language-plaintext highlighter-rouge">BadRequestObjectResult</code>, if the <code class="language-plaintext highlighter-rouge">ModelState</code> is not valid. This may be useful within a Web API as a default check on <code class="language-plaintext highlighter-rouge">POST</code>, <code class="language-plaintext highlighter-rouge">PUT</code> and <code class="language-plaintext highlighter-rouge">PATCH</code> requests. This could be extended with a lot more validation logic. We’ll see how to use it later on.</p>
+
+<p>Another possible use case for an ActionFilter is logging. You don’t need to log in the controller Actions directly. You can do this in an action filter to keep your actions readable with relevant code:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">LoggingActionFilter</span> <span class="p">:</span> <span class="n">IActionFilter</span>
+<span class="p">{</span>
+    <span class="n">ILogger</span> <span class="n">_logger</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nf">LoggingActionFilter</span><span class="p">(</span><span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="p">)</span>
+    <span class="p">{</span>
+
+        <span class="n">_logger</span> <span class="p">=</span> <span class="n">loggerFactory</span><span class="p">.</span><span class="n">CreateLogger</span><span class="p">&lt;</span><span class="n">LoggingActionFilter</span><span class="p">&gt;();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">OnActionExecuting</span><span class="p">(</span><span class="n">ActionExecutingContext</span> <span class="n">context</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// do something before the action executes</span>
+        <span class="n">_logger</span><span class="p">.</span><span class="nf">LogInformation</span><span class="p">(</span><span class="s">$"Action '</span><span class="p">{</span><span class="n">context</span><span class="p">.</span><span class="n">ActionDescriptor</span><span class="p">.</span><span class="n">DisplayName</span><span class="p">}</span><span class="s">' executing"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">OnActionExecuted</span><span class="p">(</span><span class="n">ActionExecutedContext</span> <span class="n">context</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// do something after the action executes</span>
+        <span class="n">_logger</span><span class="p">.</span><span class="nf">LogInformation</span><span class="p">(</span><span class="s">$"Action '</span><span class="p">{</span><span class="n">context</span><span class="p">.</span><span class="n">ActionDescriptor</span><span class="p">.</span><span class="n">DisplayName</span><span class="p">}</span><span class="s">' executed"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This logs an informational message out to the console. You are able to get more information about the current Action out of the <code class="language-plaintext highlighter-rouge">ActionExecutingContext</code> or the <code class="language-plaintext highlighter-rouge">ActionExecutedContext</code> e.g. the arguments, the argument values and so on. This makes the ActionFilters pretty useful.</p>
+
+<h2 id="using-the-actionfilters">Using the ActionFilters</h2>
+
+<p>ActionFilters that actually are Attributes can be registered as an attribute of an Action or a Controller:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span>
+<span class="p">[</span><span class="n">ValidateModel</span><span class="p">]</span> <span class="c1">// ActionFilter as attribute</span>
+<span class="k">public</span> <span class="n">ActionResult</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;</span> <span class="nf">Post</span><span class="p">([</span><span class="n">FromBody</span><span class="p">]</span> <span class="n">Person</span> <span class="n">model</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// save the person</span>
+    
+	<span class="k">return</span> <span class="n">model</span><span class="p">;</span> <span class="c1">//just to test the action</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Here we use the <code class="language-plaintext highlighter-rouge">ValidateModelAttribute</code> that checks the <code class="language-plaintext highlighter-rouge">ModelState</code> and returns a <code class="language-plaintext highlighter-rouge">BadRequestObjectResult</code> in case the <code class="language-plaintext highlighter-rouge">ModelState</code> is invalid and we don’t need to check the <code class="language-plaintext highlighter-rouge">ModelState</code> in the actual Action.</p>
+
+<p>To register ActionFilters globally you need to extend the MVC registration in the <code class="language-plaintext highlighter-rouge">CofnigureServices</code> method of the <code class="language-plaintext highlighter-rouge">Startup.cs</code>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">services</span><span class="p">.</span><span class="nf">AddControllersWithViews</span><span class="p">()</span>
+    <span class="p">.</span><span class="nf">AddMvcOptions</span><span class="p">(</span><span class="n">options</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">options</span><span class="p">.</span><span class="n">Filters</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="nf">SampleActionFilter</span><span class="p">());</span>
+        <span class="n">options</span><span class="p">.</span><span class="n">Filters</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="nf">SampleAsyncActionFilter</span><span class="p">());</span>
+    <span class="p">});</span>
+</code></pre></div></div>
+
+<p>ActionFilters registered like this, are getting executed on every action. This way you are able to use ActionFilters that don’t derive from Attribute.</p>
+
+<p>The Logging <code class="language-plaintext highlighter-rouge">LoggingActionFilter</code> we created previously is a little more special. It is depending on an instance of an <code class="language-plaintext highlighter-rouge">ILoggerFactory</code>, which need to be passed into the constructor. This won’t work well as an attribute, because Attributes don’t support constructor injection via dependency injection. The <code class="language-plaintext highlighter-rouge">ILoggerFactory</code> is registered in the ASP.NET Core dependency injection container and needs to be injected into the <code class="language-plaintext highlighter-rouge">LoggingActionFilter</code>.</p>
+
+<p>Because of this, there are some more ways to register ActionFilters. Globally we are able to register it as a type, that gets instantiated by the dependency injection container and the dependencies can be solved by the container.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">services</span><span class="p">.</span><span class="nf">AddControllersWithViews</span><span class="p">()</span>
+    <span class="p">.</span><span class="nf">AddMvcOptions</span><span class="p">(</span><span class="n">options</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">options</span><span class="p">.</span><span class="n">Filters</span><span class="p">.</span><span class="n">Add</span><span class="p">&lt;</span><span class="n">LoggingActionFilter</span><span class="p">&gt;();</span>
+    <span class="p">})</span>
+</code></pre></div></div>
+
+<p>This works well. We now have the <code class="language-plaintext highlighter-rouge">ILoggerFactory</code> in the filter.</p>
+
+<p>To support automatic resolution in Attributes, you need to use the <code class="language-plaintext highlighter-rouge">ServiceFilterAttribute</code> on the Controller or Action level:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="nf">ServiceFilter</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">LoggingActionFilter</span><span class="p">))]</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">HomeController</span> <span class="p">:</span> <span class="n">Controller</span>
+<span class="p">{</span>
+</code></pre></div></div>
+
+<p>In addition to the global filter registration, the ActionFilter needs to be registered in the <code class="language-plaintext highlighter-rouge">ServiceCollection</code> before we can use it with the <code class="language-plaintext highlighter-rouge">ServiceFilterAttribute</code>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">&lt;</span><span class="n">LoggingActionFilter</span><span class="p">&gt;();</span>
+</code></pre></div></div>
+
+<p>To be complete, there is another way to use ActionFilters that needs arguments passed into the constructor.  You can use the <code class="language-plaintext highlighter-rouge">TypeFilterAttribute</code> to automatically instantiate the filter. But using this attribute, the Filter isn’t instantiate by the dependency injection container and the arguments need to get specified as argument of the <code class="language-plaintext highlighter-rouge">TypeFilterAttribute</code>. See the next snippet from the <a href="https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/filters">docs</a>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="nf">TypeFilter</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">AddHeaderAttribute</span><span class="p">),</span>
+    <span class="n">Arguments</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">object</span><span class="p">[]</span> <span class="p">{</span> <span class="s">"Author"</span><span class="p">,</span> <span class="s">"Juergen Gutsch (@sharpcms)"</span> <span class="p">})]</span>
+<span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Hi</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="nf">Content</span><span class="p">(</span><span class="s">$"Hi </span><span class="p">{</span><span class="n">name</span><span class="p">}</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>The Type of the filter and the arguments are specified with the <code class="language-plaintext highlighter-rouge">TypeFilterAttribute</code>.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Personally I like the way to keep the actions clean using ActionFilters. If I find repeating tasks inside my Actions, that are not really relevant to the actual responsibility of the Action, I try to move it out to an ActionFilter, or maybe a ModelBinder or a MiddleWare, depending on how globally it should work. The more it is relevant to an Action the more likely I use an ActionFilter.</p>
+
+<p>There are some more kind of filters, which all work similar. To learn more about the different kind of filters, you definitely need to <a href="https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/filters">read the docs</a>.</p>
+
+<p>In the tenth part of the series we move to the actual view logic and extend the Razor Views with custom <strong>TagHelpers</strong>.</p>
+
+<hr />
+<h2 id="sessions">Sessions</h2>
+
+<p>This is series of articles on Building Conf planner app with Asp.net Core:</p>
+
+<ul>
+  <li><a href="/blog/customize-logging" target="_blank">1 - Logging</a></li>
+  <li><a href="/blog/customize-configuration" target="_blank">2 - Configuration</a></li>
+  <li><a href="/blog/customize-dependency-injection" target="_blank">3 - Dependency Injection</a></li>
+  <li><a href="/blog/customize-https" target="_blank">4 - Https</a></li>
+  <li><a href="/blog/customize-hostedservices" target="_blank">5 - Hostedservices</a></li>
+  <li><a href="/blog/customize-middleware" target="_blank">6 - Middlewares</a></li>
+  <li><a href="/blog/customize-outputformatter" target="_blank">7 - Outputformatter</a></li>
+  <li><a href="/blog/customize-modelbinders" target="_blank">8 - Modelbinders </a></li>
+  <li><a href="/blog/customize-actionfilters" target="_blank">9 - Actionfilters</a></li>
+  <li><a href="/blog/customize-taghelpers" target="_blank">10 - Taghelpers</a></li>
+  <li><a href="/blog/customize-webhostbuilder" target="_blank">11 - Webhostbuilder</a></li>
+  <li><a href="/blog/customize-hosting" target="_blank">12 - Hosting </a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/customize-modelbinders" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/customize-taghelpers" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

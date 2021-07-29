@@ -1,0 +1,672 @@
+I"Bf<h2 id="how-to-implement-globalization-and-localization-in-aspnet-core">HOW TO IMPLEMENT GLOBALIZATION AND LOCALIZATION IN ASP.NET CORE</h2>
+
+<p>In this article, we are going to learn how to implement Globalization and Localization in simple steps.</p>
+
+<p><a href="https://github.com/girishgodage/WebDemo">Github link for Source</a></p>
+
+<p><img src="/img/aspdotnetcore/3/08.png" alt="image" /></p>
+
+<h3 id="what-is-globalization-and-localization">What is Globalization and Localization?</h3>
+
+<p>Globalization is the process of designing the application in such a way that it can be used by users from across the globe (multiple cultures).</p>
+
+<p>Localization, on the other hand, is the process of customization to make our application behave depending on the current Culture and locale. These two things go together.</p>
+
+<blockquote>
+  <p>I am writing this article because I was trying to Implement Globalization and Localization in one of my projects which took a lot of time to create a working demo reading Microsoft document. Trying to write a simple version which is easy to implement in your projects.</p>
+</blockquote>
+
+<ul>
+  <li>DataAnnotations localization</li>
+  <li>View localization and Accessing localization string in Controller</li>
+</ul>
+
+<h3 id="table-of-contents">Table of Contents</h3>
+
+<ul>
+  <li>Getting Started with Globalization and Localization in ASP.NET Core</li>
+  <li>Project structure</li>
+  <li>Adding Model and Setting Display Properties</li>
+  <li>Adding Folder to Keep Resource Files</li>
+  <li>Adding Resource Files in Folder</li>
+  <li>Adding Dummy Class</li>
+  <li>Configure Localization in ConfigureServices Method</li>
+  <li>Configure Localization middleware in Configure Method</li>
+  <li>Adding Culture Controller</li>
+  <li>Adding Partial View (“_SetLanguagePartial.cshtml”)</li>
+  <li>Calling SetLanguagePartial View in Layout</li>
+  <li>Adding Customer Controller</li>
+  <li>Adding Customer View</li>
+  <li>Output</li>
+  <li>Accessing Resources in Controller and View</li>
+  <li>Register service in ConfigureServices Method in Startup class.</li>
+  <li>Output</li>
+  <li>Accessing LocalizationService on View</li>
+  <li>Output</li>
+  <li>View localization</li>
+  <li>Values to Access on View Using ViewLocalizer</li>
+  <li>Output</li>
+</ul>
+
+<p>We are going to create a new application with Name WebDemo for demo as shown below.</p>
+
+<p><img src="/img/aspdotnetcore/3/01.png" alt="image" /></p>
+
+<p>Next, we are going to set Project Name “WebDemo” and location. In last part, we are going to choose .Net Core framework and ASP.NET Core Version 5.0 as the framework for application and few advance settings for such as configuring https and enabling docker we are not going to enable docker settings for this project.</p>
+
+<p><img src="/img/aspdotnetcore/3/02.png" alt="image" /></p>
+
+<p>Now finally click on create button to create a project.</p>
+
+<h3 id="project-structure">Project structure</h3>
+
+<p>The project structure generated according to the configuration.</p>
+
+<p><img src="/img/aspdotnetcore/3/03.png" alt="image" /></p>
+
+<p>After creating project next, we are going create Model and Adding properties which we are going to localize.</p>
+
+<h3 id="adding-model-and-setting-display-properties">Adding Model and Setting Display Properties</h3>
+
+<p>We are going to adding <strong>CustomerViewModel</strong> in Model Folder. If you want to keep ViewModel in separate Class Library, you can do it.</p>
+
+<p>Next, we have created 3 properties and also set its Display properties. This Display properties Name Must be same as Your Resource File Name. Which we are going to add in the next step.</p>
+
+<pre><code class="language-code">
+using System.ComponentModel.DataAnnotations;
+namespace WebDemo.Models
+{
+    public class CustomerViewModel
+    {
+        [Display(Name = "FullName")]
+        public string FullName { get; set; }
+
+        [Display(Name = "City")]
+        public string City { get; set; }
+
+        [Display(Name = "MobileNo")]
+        public string MobileNo { get; set; }
+    }
+}
+
+</code></pre>
+
+<h3 id="adding-folder-to-keep-resource-files">Adding Folder to Keep Resource Files</h3>
+
+<p>We are going to add a folder with Name “<strong>Resource</strong>” to stored resources in it.</p>
+
+<p><img src="/img/aspdotnetcore/3/04.png" alt="image" /></p>
+
+<h3 id="adding-resource-files-in-folder">Adding Resource Files in Folder</h3>
+
+<p>Here we are going to add a resource file in the resources folder. We are going to create 5 resources file with for storing 5 different culture string in it.</p>
+
+<blockquote>
+  <p>en (English)</p>
+
+  <p>hi (Hindi)</p>
+
+  <p>ar (Arabic)</p>
+
+  <p>de (German)</p>
+
+  <p>zh (Chinese)</p>
+</blockquote>
+
+<p>For adding Resource file just right click on Resource folder select Add -&gt; New Item after select Add New Item Dialog will be displayed.</p>
+
+<p>In Search type “Resource” to search resource file.</p>
+
+<p><img src="/img/aspdotnetcore/3/05.png" alt="image" /></p>
+
+<p>We are going to Name files as “ApplicationResource”, and each file name will have culture name in it.</p>
+
+<p>Example</p>
+
+<blockquote>
+  <p>ApplicationResource.en.resx</p>
+
+  <p>ApplicationResource.hi.resx</p>
+
+  <p>ApplicationResource.ar.resx</p>
+
+  <p>ApplicationResource.de.resx</p>
+
+  <p>ApplicationResource.zh.resx</p>
+</blockquote>
+
+<h3 id="project-view-after-adding-resources-files">Project View after adding Resources Files</h3>
+
+<p><img src="/img/aspdotnetcore/3/06.png" alt="image" /></p>
+
+<p>Each file we are going to add Name (Key) and Value. This is English file here we are going to keep Value in English.</p>
+
+<p><img src="/img/aspdotnetcore/3/07.png" alt="image" /></p>
+
+<p>Next, we are going to do the same add Name and Different Values according to culture files.</p>
+
+<p>Below you see different resources file has the same name and different Values.</p>
+
+<p><img src="/img/aspdotnetcore/3/08.png" alt="image" /></p>
+
+<h3 id="adding-dummy-class">Adding Dummy Class</h3>
+
+<p>Dummy class to group resources files. We are going to add Class with the name “ApplicationResource”.</p>
+
+<pre><code class="language-code">namespace WebDemo.Resources
+{
+    public class ApplicationResource
+    {
+    }
+}
+
+</code></pre>
+
+<p><img src="/img/aspdotnetcore/3/09.png" alt="image" /></p>
+
+<h3 id="configure-localization-in-configureservices-method">Configure Localization in ConfigureServices Method</h3>
+
+<p>We are going to Configure localization “Startup.ConfigureServices” Method.</p>
+
+<p>Adds services required for application localization. In ResourcesPath option we are going set resource folder named “Resources”.</p>
+
+<pre><code class="language-code">services.AddLocalization(options =&gt; options.ResourcesPath = "Resources");
+</code></pre>
+
+<pre><code class="language-code">
+services.AddMvc()
+ .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+ .AddDataAnnotationsLocalization(options =&gt;
+ {
+     options.DataAnnotationLocalizerProvider = (type, factory) =&gt;
+     {
+         var assemblyName = new AssemblyName(typeof(ApplicationResource).GetTypeInfo().Assembly.FullName);
+         return factory.Create("ApplicationResource", assemblyName.Name);
+     };
+ });
+
+</code></pre>
+
+<p>Next, we are going configure RequestLocalizationOptions for application.</p>
+
+<p>In this part, we are going add Cultures which we are going to use in application and set default culture.</p>
+
+<pre><code class="language-code">
+services.Configure&lt;RequestLocalizationOptions&gt;(options =&gt;
+{
+    var supportedCultures = new[]
+    {
+        new CultureInfo("en"),
+        new CultureInfo("ar"),
+        new CultureInfo("de"),
+        new CultureInfo("hi"),
+        new CultureInfo("zh"),
+    };
+
+    // State what the default culture for your application is. This will be used if no specific culture
+    // can be determined for a given request.
+    options.DefaultRequestCulture = new RequestCulture("en");
+
+    // You must explicitly state which cultures your application supports.
+    // These are the cultures the app supports for formatting numbers, dates, etc.
+    options.SupportedCultures = supportedCultures;
+
+    // These are the cultures the app supports for UI strings, i.e. we have localized resources for.
+    options.SupportedUICultures = supportedCultures;
+});
+
+</code></pre>
+
+<h3 id="configure-localization-middleware-in-configure-method">Configure Localization middleware in Configure Method</h3>
+
+<p>Adding <strong>UseRequestLocalization</strong> middleware to the HTTP pipeline (Configure Method).
+It should be added below UseRouting Middleware.</p>
+
+<pre><code class="language-code">app.UseRouting();
+
+var requestlocalizationOptions = app.ApplicationServices.GetService&lt;IOptions&lt;RequestLocalizationOptions&gt;&gt;();
+app.UseRequestLocalization(requestlocalizationOptions.Value);
+
+</code></pre>
+
+<pre><code class="language-code">
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddLocalization(options =&gt; options.ResourcesPath = "Resources");
+    
+    services.AddMvc()
+        .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+        .AddDataAnnotationsLocalization(options =&gt;
+        {
+            options.DataAnnotationLocalizerProvider = (type, factory) =&gt;
+            {
+                var assemblyName = new AssemblyName(typeof(ApplicationResource).GetTypeInfo().Assembly.FullName);
+                return factory.Create("ApplicationResource", assemblyName.Name);
+            };
+        });
+
+    services.Configure&lt;RequestLocalizationOptions&gt;(options =&gt;
+    {
+        var supportedCultures = new[]
+        {
+            new CultureInfo("en"),
+            new CultureInfo("ar"),
+            new CultureInfo("de"),
+            new CultureInfo("hi"),
+            new CultureInfo("zh"),
+        };
+
+        // State what the default culture for your application is. This will be used if no specific culture
+        // can be determined for a given request.
+        options.DefaultRequestCulture = new RequestCulture("en");
+
+        // You must explicitly state which cultures your application supports.
+        // These are the cultures the app supports for formatting numbers, dates, etc.
+        options.SupportedCultures = supportedCultures;
+
+        // These are the cultures the app supports for UI strings, i.e. we have localized resources for.
+        options.SupportedUICultures = supportedCultures;
+    });
+
+    services.AddControllersWithViews();
+}
+</code></pre>
+
+<p>After configuring Middleware Next, let’s Add Controller.</p>
+
+<h3 id="adding-culture-controller">Adding Culture Controller</h3>
+
+<p>In this part, we are going to add Controller which we are going to call from UI to set Culture and store in Cookie such that it is available for the entire application.</p>
+
+<pre><code class="language-code">
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc;
+using System;
+
+namespace WebDemo.Controllers
+{
+    public class CultureController : Controller
+    {
+        [HttpPost]
+        public IActionResult SetLanguage(string culture, string returnUrl)
+        {
+            Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+            );
+
+            return LocalRedirect(returnUrl);
+        }
+    }
+}
+
+</code></pre>
+
+<h3 id="adding-partial-view--adding-partial-view-_setlanguagepartialcshtml">Adding Partial View  Adding Partial View (“_SetLanguagePartial.cshtml”)</h3>
+
+<p>In this part, we are going to add Partial View (“_SetLanguagePartial.cshtml”) in Views –&gt; Shared folder.</p>
+
+<p>Partial View will have a Dropdown list with culture names for selection of Culture. After selecting Culture,</p>
+
+<p>we are going to POST Values to Culture Controller Set Language Action Method and set culture value to Cookie and reload the page.</p>
+
+<p><img src="/img/aspdotnetcore/3/10.png" alt="image" /></p>
+
+<pre><code class="language-code">@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer Localizer
+@inject IOptions&lt;RequestLocalizationOptions&gt; LocOptions
+@{
+    var requestCulture = Context.Features.Get&lt;IRequestCultureFeature&gt;();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c =&gt; new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
+}
+
+&lt;div&gt;
+    &lt;form asp-controller="Culture"
+          asp-action="SetLanguage"
+          asp-route-returnUrl="@Context.Request.Path"
+          method="post"&gt;
+        Language :-
+        &lt;select name="culture"
+                onchange="this.form.submit();"
+                asp-for="@requestCulture.RequestCulture.UICulture.Name"
+                asp-items="cultureItems"&gt;
+        &lt;/select&gt;
+    &lt;/form&gt;
+&lt;/div&gt;
+
+</code></pre>
+
+<h3 id="calling-setlanguagepartial-view-in-layout">Calling SetLanguagePartial View in Layout</h3>
+
+<p>In this part, we are going to call _SetLanguagePartial view on Layout.</p>
+
+<pre><code class="language-code">
+ @await Html.PartialAsync("_SetLanguagePartial")
+
+</code></pre>
+
+<pre><code class="language-code">
+ &lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;title&gt;@ViewData["Title"] - WebDemo&lt;/title&gt;
+    &lt;link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /&gt;
+    &lt;link rel="stylesheet" href="~/css/site.css" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"&gt;
+            &lt;div class="container"&gt;
+                &lt;a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"&gt;WebDemo&lt;/a&gt;
+                &lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation"&gt;
+                    &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+                &lt;/button&gt;
+                &lt;div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"&gt;
+                    &lt;ul class="navbar-nav flex-grow-1"&gt;
+                        &lt;li&gt;
+                            @await Html.PartialAsync("_SetLanguagePartial")
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;div class="container"&gt;
+        &lt;main role="main" class="pb-3"&gt;
+            @RenderBody()
+        &lt;/main&gt;
+    &lt;/div&gt;
+
+    &lt;footer class="border-top footer text-muted"&gt;
+        &lt;div class="container"&gt;
+            &amp;copy; 2020 - WebDemo - &lt;a asp-area="" asp-controller="Home" asp-action="Privacy"&gt;Privacy&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/footer&gt;
+    &lt;script src="~/lib/jquery/dist/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+    &lt;script src="~/js/site.js" asp-append-version="true"&gt;&lt;/script&gt;
+    @RenderSection("Scripts", required: false)
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+
+<h3 id="adding-customer-controller">Adding Customer Controller</h3>
+
+<p>In this part, we are going to add Customer Controller which will be using CustomerViewModel for creating View.</p>
+
+<pre><code class="language-code">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+namespace WebDemo.Controllers
+{
+    public class CustomerController : Controller
+    {
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+    }
+}
+
+</code></pre>
+
+<h3 id="adding-customer-view">Adding Customer View</h3>
+
+<p>In this View we are using New Tag Helpers for creating and rendering HTML elements.</p>
+
+<pre><code class="language-code">@model WebDemo.Models.CustomerViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+&lt;div class="card"&gt;
+    &lt;div class="card-header"&gt;Create&lt;/div&gt;
+    &lt;div class="card-body"&gt;
+        &lt;form asp-controller="Customer" asp-action="Create" method="post"&gt;
+            &lt;div class="form-row"&gt;
+                &lt;div class="col"&gt;
+                    &lt;label asp-for="FullName"&gt;&lt;/label&gt;
+                    &lt;input asp-for="FullName" placeholder="Enter FullName" class="form-control" /&gt;
+                    &lt;span asp-validation-for="FullName"&gt;&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class="col"&gt;
+                    &lt;label asp-for="City"&gt;&lt;/label&gt;
+                    &lt;input asp-for="City" placeholder="Enter City" class="form-control" /&gt;
+                    &lt;span asp-validation-for="City"&gt;&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class="col"&gt;
+                    &lt;label asp-for="MobileNo"&gt;&lt;/label&gt;
+                    &lt;input asp-for="MobileNo" placeholder="Enter MobileNo" class="form-control" /&gt;
+                    &lt;span asp-validation-for="MobileNo"&gt;&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="clearfix"&gt;&lt;/div&gt;
+            &lt;div class="form-row"&gt;
+                &lt;div class="col"&gt;
+               &lt;button style="margin-top: 10px" class="btn btn-success" type="submit"&gt; Submit&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+</code></pre>
+<p>After adding View Now Let’s run application and Test it.</p>
+
+<h3 id="output">Output</h3>
+
+<p><img src="/img/aspdotnetcore/3/11.png" alt="image" /></p>
+
+<p><img src="/img/aspdotnetcore/3/12.png" alt="image" /></p>
+
+<p>Till now, we have seen how to use Localization using DataAnnotations; next, we are going to access the same resources files in Controller and View.</p>
+
+<h3 id="accessing-resources-in-controller-and-view">Accessing Resources in Controller and View</h3>
+
+<p>For accessing the value from the resource file, we are going to create a class with Name <strong>LocalizationService</strong> in Resources Folder.</p>
+
+<p><strong>LocalizationService</strong> class constructor receives an <strong>IStringLocalizerFactory</strong> type parameter which will inject at runtime.</p>
+
+<p><strong>IStringLocalizerFactory Interface</strong>: – Represents a factory that creates <strong>IStringLocalizer</strong> instances.
+<strong>IStringLocalizer Interface</strong>: – Represents a service that provides localized strings.</p>
+
+<p><strong>IStringLocalizerFactory</strong> has created a method which takes 2 input</p>
+
+<ul>
+  <li>Basename: – basename of resource to load string</li>
+  <li>Location: – location to load resources from</li>
+</ul>
+
+<p>In our application, we have a base name as <strong>“ApplicationResource”</strong> and location we are going to pass the type name <strong>“ApplicationResource”</strong>.</p>
+
+<p>This class will have Method which will take the key as input and get its value from resource according to Culture.</p>
+
+<pre><code class="language-code">using Microsoft.Extensions.Localization;
+using System.Reflection;
+
+namespace WebDemo.Resources
+{
+    public class LocalizationService
+    {
+        private readonly IStringLocalizer _localizer;
+
+        public LocalizationService(IStringLocalizerFactory factory)
+        {
+            var type = typeof(ApplicationResource);
+            var assemblyName = new AssemblyName(type.GetTypeInfo().Assembly.FullName!);
+            _localizer = factory.Create("ApplicationResource", assemblyName.Name);
+        }
+
+        public LocalizedString GetLocalizedHtmlString(string key)
+        {
+            return _localizer[key];
+        }
+    }
+}
+
+</code></pre>
+
+<h3 id="register-service-in-configureservices-method-in-startup-class">Register service in ConfigureServices Method in Startup class</h3>
+
+<p>We are going to register this service in ConfigureService Method.</p>
+
+<pre><code class="language-code">services.AddSingleton&lt;LocalizationService&gt;();
+
+</code></pre>
+
+<h3 id="accessing-localizationservice-in-controller">Accessing LocalizationService in Controller</h3>
+
+<p><img src="/img/aspdotnetcore/3/13.png" alt="image" /></p>
+
+<h3 id="accessing-localizationservice-on-view">Accessing LocalizationService on View</h3>
+
+<p>For accessing on View, we need to inject LocalizationService on View.</p>
+
+<p>Injecting LocalizationService</p>
+
+<pre><code class="language-code">
+@inject LocalizationService LocalizationService
+
+</code></pre>
+
+<p>Accessing Values Using LocalizationService</p>
+
+<pre><code class="language-code">@LocalizationService.GetLocalizedHtmlString("FullName")
+
+</code></pre>
+
+<pre><code class="language-code">
+@using WebDemo.Resources
+@model CustomerViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+@inject LocalizationService LocalizationService
+
+&lt;div class="card"&gt;
+    &lt;div class="card-header"&gt;Create&lt;/div&gt;
+    &lt;div class="card-body"&gt;
+        &lt;form asp-controller="Customer" asp-action="Create" method="post"&gt;
+            &lt;div class="form-row"&gt;
+                &lt;div class="col"&gt;
+                    &lt;label asp-for="FullName"&gt;&lt;/label&gt; | @LocalizationService.GetLocalizedHtmlString("FullName")
+                    &lt;input asp-for="FullName" placeholder="Enter FullName" class="form-control" /&gt;
+                    &lt;span asp-validation-for="FullName"&gt;&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class="col"&gt;
+                    &lt;label asp-for="City"&gt;&lt;/label&gt; | @LocalizationService.GetLocalizedHtmlString("City")
+                    &lt;input asp-for="City" placeholder="Enter City" class="form-control" /&gt;
+                    &lt;span asp-validation-for="City"&gt;&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class="col"&gt;
+                    &lt;label asp-for="MobileNo"&gt;&lt;/label&gt; | @LocalizationService.GetLocalizedHtmlString("MobileNo")
+                    &lt;input asp-for="MobileNo" placeholder="Enter MobileNo" class="form-control" /&gt;
+                    &lt;span asp-validation-for="MobileNo"&gt;&lt;/span&gt;
+                &lt;/div&gt;
+
+            &lt;/div&gt;
+            &lt;div class="clearfix"&gt;&lt;/div&gt;
+            &lt;div class="form-row"&gt;
+                &lt;div class="col"&gt;
+                    &lt;button style="margin-top: 10px" class="btn btn-success" type="submit"&gt; Submit&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h3 id="output-1">Output</h3>
+
+<p><img src="/img/aspdotnetcore/3/14.png" alt="image" /></p>
+
+<h3 id="view-localization">View localization</h3>
+
+<p>The <strong>IViewLocalizer</strong> service provides localized strings for a view. The ViewLocalizer class implements this Interface and finds the resource location from the view file path.</p>
+
+<p>To Use View Localization, we need to create a folder in Resource folder according to your View location which you need to customize.</p>
+
+<p>Take an example we have Views folder inside that Registration folder same we need to create in the Resources folder.</p>
+
+<p><strong>Note: – We have created Registration Controller with Register Action Method in it.</strong></p>
+
+<p><img src="/img/aspdotnetcore/3/15.png" alt="image" /></p>
+
+<p>Inside that folder, we are going to Add resource with the same name as View Name.</p>
+
+<p>If you see above snapshot our View name in Registration folder is Register for that we are going to create resource name as “Register”, and also, we are going to add culture name in the resource file name “Register.en.resx”, “Register.mr.resx”.</p>
+
+<ul>
+  <li>en :- English</li>
+  <li>hi :- Hindi</li>
+</ul>
+
+<p>After creating resource files, we are going insert Key and Values in it.</p>
+
+<p><img src="/img/aspdotnetcore/3/16.png" alt="image" /></p>
+
+<p>Next, we are going to Access this Values on Register View by using <strong>IViewLocalizer</strong>.</p>
+
+<p>Injecting IViewLocalizer in View</p>
+<pre><code class="language-code">@inject IViewLocalizer ViewLocalizer
+</code></pre>
+
+<h3 id="values-to-access-on-view-using-viewlocalizer">Values to Access on View Using ViewLocalizer</h3>
+
+<pre><code class="language-code">@ViewLocalizer["Name"]
+</code></pre>
+
+<h3 id="register-view">Register View</h3>
+
+<pre><code class="language-code">@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer ViewLocalizer
+@{
+    ViewData["Title"] = "Register";
+}
+
+&lt;div class="card"&gt;
+    &lt;div class="card-body"&gt;
+        &lt;form asp-controller="Registration" asp-action="Register" method="post"&gt;
+            &lt;div class="form-row"&gt;
+                &lt;div class="col"&gt;
+                    &lt;label&gt;@ViewLocalizer["Name"]&lt;/label&gt;
+                    &lt;input type="text" class="form-control" id="Name"&gt;
+                &lt;/div&gt;
+                &lt;div class="col"&gt;
+                    &lt;label&gt;@ViewLocalizer["City"]&lt;/label&gt;
+                    &lt;input type="text" class="form-control" id="City"&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="clearfix"&gt;&lt;/div&gt;
+            &lt;div class="form-row"&gt;
+                &lt;div class="col"&gt;
+                    &lt;button style="margin-top: 10px" class="btn btn-success" type="submit"&gt; Submit&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+</code></pre>
+
+<h3 id="output-2">Output</h3>
+
+<p><img src="/img/aspdotnetcore/3/17.png" alt="image" /></p>
+:ET

@@ -1,0 +1,216 @@
+I"�P<h2 id="6-multi-cloud-architecture-designs-for-an-effective-cloud-strategy">6 Multi-Cloud Architecture Designs for an Effective Cloud Strategy</h2>
+
+<p>Deploying a multi-tenant application across multiple cloud platforms can be very challenging. In this blog, we’ve explained 6 multi-cloud architecture designs which can help businesses to build an effective multi-cloud strategy.</p>
+
+<p><img src="/img/awscloud/14/Blog-Diagram1.png" alt="image info" /></p>
+
+<p>Enterprises increasingly want to take advantage of the flexibility and choice of multiple cloud offerings in order to use best cloud services while achieving satisfactory cost reduction benefits. In fact, the International Data Corporation predicted in a futurescape report last year that multi-cloud adoption will increase drastically and more than 85% of enterprise IT corporations will invest in multi-cloud architecture by 2020. With the enterprise hurtling towards digital transformation at breakneck speeds, the adoption of cloud, both public and private, has accelerated. And working across different clouds across various platforms brings a whole lot of challenges in its wake. <strong>Lack of understanding of cloud technology</strong> is the most basic one which CTO’s face.</p>
+
+<p>This is the first blog of our three blog series on multi-cloud system architecture. In this blog, you will get to know about multi-cloud architecture design for different organizational requirements. In the second blog, we have discussed <strong>Strategies to manage Multi-cloud environment effectively.</strong></p>
+
+<p>Now before moving to the Multi-cloud architecture, just have a brief understanding of basic cloud architecture models.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+  <li>How Basic Cloud Architecture Looks Like?</li>
+  <li>Multi-cloud Strategy</li>
+  <li>Multi-cloud Architecture</li>
+  <li>Multi-cloud vs Hybrid cloud</li>
+  <li>Tips for Managing Your Multi-Cloud Environment</li>
+  <li>Benefits of Multi-cloud Architecture</li>
+</ul>
+
+<h2 id="how-basic-cloud-architecture-looks-like">How Basic Cloud Architecture Looks Like?</h2>
+
+<p><img src="/img/awscloud/14/Basic-Cloud-Architecture.png" alt="image info" /></p>
+
+<p>The basic cloud architecture which is quite common around the web is 3-Tier architecture.</p>
+
+<p>The architecture consists of 3 major tiers – Load balancer server, Application Server, Database Server. There is one dedicated server for each tier.</p>
+
+<p>As in the above cloud architecture diagram, for failover and recovery purpose we have used redundant server at each tier. This is called Redundant 3-Tier architecture, used in production environment. Non-redundant architecture which consist of single server for each tier are only for testing the interactivity between each tier of your application.</p>
+
+<p>This is the most basic one, you can use additional server depending on the application. For example, to add faster backup functionality in my app, I have used Striped Volume set at the database tier.</p>
+
+<p>Now let’s take an <strong><em>example of Netflix</em></strong>.</p>
+
+<p>How Netflix manages such a huge collection of videos and provides a great streaming experience without disruptions?</p>
+
+<p>This is because of its multi-data centers located geographically around the world which backups each other in case of any disaster. Also streaming from local datacenter giver faster viewing experience.</p>
+
+<p>In the above architecture we can have multi-datacenter, each having its own load balancer tier, Application tier and Database tier.</p>
+
+<p>How it can be done? Look at the below image.</p>
+
+<p><img src="/img/awscloud/14/Multi-data-Centers-Architecture.png" alt="image info" /></p>
+
+<p>The most fascinating experience of cloud is its horizontal Auto Scaling feature. This gives you the ability to grow or shrink number of server resources on demand, and this work is done by load balancer. We have added Server Arrays to set up a particular tier of architecture to autoscale based on predefined alert conditions.</p>
+
+<h2 id="multi-cloud-strategy">Multi-Cloud Strategy</h2>
+
+<p>Multi-cloud strategy is the concomitant use of two or more cloud services such as <strong>AWS, Azure, Google Cloud and more</strong>.</p>
+
+<p>This means you can use <strong>Google cloud to serve your US users</strong> and <strong>Microsoft Azure for your customers in Europe</strong>.</p>
+
+<p>Or you might <strong>use Azure SQL for your databases and Cognito for user management while using AWS EC2 instances and Load Balancing, all for a single application</strong>.</p>
+
+<p>In addition, you can run your app primarily on Digital Ocean but is completely replicated and backed up on AWS.</p>
+
+<p>You can run different app on different clouds. You can have <strong><em>your development and test environments on one cloud, and your production environment on another</em></strong>.</p>
+
+<p>Multi-cloud management is another aspect, which involves <strong>monitoring the cost of cloud deployment</strong>. It is important to reap benefits of multi-cloud.</p>
+
+<p>But to take advantage of multi-cloud benefits, it is very important to manage and monitor your cloud deployment and costs.</p>
+
+<p>Multi-cloud strategy is particularly effective if enterprises dealing with below challenges:</p>
+
+<ul>
+  <li>Users are not located near any data center, or widely distributed geographically.</li>
+  <li>Facing regulations limit in particular countries for storing data, e.g., EU.</li>
+  <li>Environment where public clouds are used with on-premises resources.</li>
+  <li>Cloud-based application is not resilient which can affect disaster recovery when loss of a single data center.</li>
+</ul>
+
+<h2 id="multi-cloud-architecture">Multi-Cloud Architecture</h2>
+<p>In order to build highly scalable and reliable applications, a multi-cloud architecture design is appropriate. Our objective is to provide architectural guidance for migrating cloud-based systems that run on multiple independent clouds. Let’s take a look at some of the prominent multi-cloud architectures and migration strategy.</p>
+
+<h3 id="cloudification">Cloudification</h3>
+<p>In this architecture, application component is hosted on-premise and after migration, it can use different cloud services of other cloud platforms to improve performance.</p>
+
+<p><img src="/img/awscloud/14/Cloudification.png" alt="image info" /></p>
+
+<p>Here application component C1 is been hosted on-premise but after adopting multi-cloud, it uses AWS storage service AWS S3 and for compute, it uses Azure virtual machines.</p>
+
+<p><strong><em>Benefits: Improves availability as application re-hosting in multiple cloud platforms and avoid vendor lock-in.</em></strong></p>
+
+<h2 id="multi-cloud-relocation">Multi-Cloud Relocation</h2>
+<p>In this architecture application component is re-hosted on cloud platform and use other cloud services of multiple cloud platform to enhance capabilities.</p>
+
+<p><img src="/img/awscloud/14/Multi-Cloud-Relocation.png" alt="image info" /></p>
+
+<p>Here application component C1 is re-hosted on AWS platform after migration and open to use environmental services of Azure. It is using AWS S3 for storage and has option available for compute either AWS or Azure.</p>
+
+<p><strong><em>Benefits: Improves availability as application re-hosting in multiple cloud platforms and avoid vendor lock-in.</em></strong></p>
+
+<h2 id="multi-cloud-refactor">Multi-Cloud Refactor</h2>
+
+<p>To provide better QoS, an on-premise application is re-architected for deployment on multiple cloud platforms. Here application needs to re-architected as fine-grained components so that deployment of high-usage components can be optimized independently. Here deployment of high-usage components is optimized independently of low-usage ones. The parallel design enables better throughput to multi-cloud platforms.</p>
+
+<p><img src="/img/awscloud/14/Multi-Cloud-Relocation.png" alt="image info" /></p>
+
+<p>Here AC1 and AC2 are two application components hosted on-premise before migration. As both the components are independent integrity units, AC1 is deployed on AWS using AWS S3. On the other hand, AC2 is deployed on Azure and it can use any Azure’s cloud service as per requirements.</p>
+
+<p><strong><em>Benefits: Optimal scalability/performance, range of multi-cloud deployment options, agility to respond to business/IT change.</em></strong></p>
+
+<p><strong>Challenges</strong>: On-premise application is modernized in isolation. Modernization is performed primarily for technical reasons. Component architecture which is only determined bottom-up may need to be re-evaluated because of multi-cloud environment.</p>
+
+<h2 id="multi-cloud-rebinding">Multi-Cloud Rebinding</h2>
+<p>A re-architected application is deployed partially on multiple cloud environments and enables the application to continue to function using secondary deployment when there is a failure with the primary platform.</p>
+
+<p><img src="/img/awscloud/14/Multi-Cloud-Rebinding.png" alt="image info" /></p>
+
+<p>Here AC1 and AC2 are two application components hosted on-premise before migration. As both the components are independent integrity units, AC1 is remains on-premise while two AC2 are deployed on AWS and Azure for disaster recovery. AC1 and two AC2 components are connected via EBS or Service bus.</p>
+
+<p><strong><em>Benefits: As unhealthy services become healthy again, traffic can be delivered, returning system responsiveness to maximum.</em></strong></p>
+
+<p><strong>Challenges</strong>: This architecture does not guarantee seamless failover. There will be downtime.</p>
+
+<h2 id="multi-cloud-rebinding-with-cloud-brokerage">Multi-Cloud Rebinding with Cloud Brokerage</h2>
+
+<p>A re-architected application is deployed partially on multiple cloud environments. This enables the application to continue to function using secondary deployment when there is a failure with the primary platform using cloud brokerage services.</p>
+
+<p><img src="/img/awscloud/14/Rebinding-with-Cloud-Brokerage.png" alt="image info" /></p>
+
+<p>In this architecture AC1 has been deployed on-premise and two re-architected AC2 are deployed on two cloud platforms AWS and Azure. Here Cloud broker services integrates all three components and provides flexibility to choose services from multiple providers <strong>(Cloud platforms AWS and Azure)</strong>.</p>
+
+<p><strong><em>Benefits: As unhealthy services become healthy again, traffic can be delivered, returning system responsiveness to maximum.</em></strong></p>
+
+<p><strong>Challenges</strong>: This architecture does not guarantee seamless failover. There will be downtime.</p>
+
+<h2 id="multi-application-modernization">Multi-Application Modernization</h2>
+
+<p>Different on-premise applications A1/A2, AC1 are re-architected as a portfolio and deployed on cloud environment.</p>
+
+<p><img src="/img/awscloud/14/Multi-Application-Modernization.png" alt="image info" /></p>
+
+<p><strong><em>Benefits: It provides consistent information and rules in shared components. Reduced operation and maintenance costs for shared components is another benefit.</em></strong></p>
+
+<p><strong>Challenges</strong>: Lack of business commitment to shared capabilities.</p>
+
+<h2 id="multi-cloud-vs-hybrid-cloud">Multi-cloud vs Hybrid cloud</h2>
+<p>On the first pass, both may appear same and these terms used interchangeably by some, but they are not the same. Here we’ve explained the differences, which are subtle but very distinct, between the two.</p>
+
+<h3 id="hybrid-cloud">Hybrid cloud</h3>
+<p>Hybrid cloud is a mix of public and private cloud that connects the public cloud such as AWS to your on-premise system and is orchestrated to perform together for a single task. In this scenario, you’re optimizing your workload so it runs in the right environment at the right time. Using Hybrid cloud, organizations can access highly elastic compute resources from the chosen provider, perhaps for managing and storing additional workloads at peak times and for general day to applications. But all the mission-critical stuff remains on-premise infrastructure for multiple reasons like privacy regulations and security.</p>
+
+<p>Why implement Hybrid cloud?</p>
+
+<p>For certain use cases, organizations require a combination of a private and public cloud to leverage unique benefits offered by them.</p>
+
+<p>Organizations can leverage cloudbusting, in which application workloads burst into the public cloud for additional compute resources after they reach a threshold level in private cloud.</p>
+
+<p>It makes sense for organizations to use public cloud resources for a new, untested application before embarking on the capital expenditure associated with launching in a private cloud. Once an organization defines a steady-state workload pipeline to run an application, it may choose to bring the application to on-premise systems.</p>
+
+<p>Moreover, cloud customers can use hybrid clouds to promote high availability (HA) and disaster recovery (DR). <strong><em>For example, in a Disaster recovery scenario, an organization can keep its recovery environment in a public cloud and production environment in a private cloud, ready to spin up as necessary. The organization replicates data across to the public cloud, but all other resources remain non-operational until needed.</em></strong></p>
+
+<p>Hybrid cloud architecture provides maximum agility for meeting the needs of the organizations by providing infrastructure where IT operations can be automated to improve the user experience.</p>
+
+<h3 id="multi-cloud">Multi-cloud</h3>
+<p>Multi-cloud represents more than 1 cloud deployment of the same type and it can be public or private cloud, sourced from different cloud providers. Business adopt Multi-cloud to mix and match a range of public and private clouds to use best of breed applications and services.</p>
+
+<p>Both Multi and Hybrid cloud approaches are not mutually exclusive: You can have both, simultaneously. In fact, Most organizations seek to improve security and performance through an expanded portfolio of environments.</p>
+
+<p>Just for the info, multi-cloud architecture is different from multi tenant architecture. Former we have already discussed, later refers to software architecture in which a single instance of software runs on a server and serves multiple tenants.</p>
+
+<p><strong>Why implement Multi-cloud?</strong></p>
+
+<p>Different Multi-cloud use cases can be leveraged to offer IT teams increases flexibility and control over workloads and data.</p>
+
+<p>As multi-cloud offers flexible cloud environment, organizations can meet specific workload or application requirements- both technically and commercially- by adopting it.</p>
+
+<p>Organizations also see geographic advantages to using multiple cloud providers, to address app latency problems. Also, some companies may start using specific cloud providers for short time to achieve short-term goals and then stop using it.</p>
+
+<p>Additionally, vendor lock-in concerns and possible cloud provider outages are two issues that pop up frequently when IT leaders advocate for multi-cloud strategy.</p>
+
+<h2 id="tips-for-managing-your-multi-cloud-environment">Tips for Managing Your Multi-Cloud Environment</h2>
+
+<p>Multi-cloud environments come with their challenges—complexity, resources, expertise, cost, and management issues, to name a few—and management seems to be the common denominator.</p>
+
+<p>Consider this situation.</p>
+
+<p>You are running a workload that requires large pools of storage and networking resources on a private cloud. At the same time, you have another workload running on Amazon’s service and yet another on Microsoft’s. Each workload is running on the ideal cloud, but now you have multiple clouds to manage.</p>
+
+<p>How would you do that effectively?</p>
+
+<p>Here are 5 things to keep in mind when building an effective multi-cloud environment.</p>
+
+<ul>
+  <li><em>Analyze your entire network, and then identify which service of particular cloud provider is the best for your specific requirement, to avoid system complexity and poor utilization of resources.</em></li>
+  <li><em>Having multiple cloud providers increases low-level maintenance and monitoring tasks. It’s better to automate them.</em></li>
+  <li><em>Focus on policy standardisation that are applied automatically to each cloud environment. The policies cover such areas as data storage, workloads, traffic flows, virtual servers, compliance/ regulations, security and reporting.</em></li>
+  <li><em>Use integrated data center management system designed for virtual environments. It helps building system in which your server, network, storage, operations, security, and applications teams work according to common goals.</em></li>
+  <li>Identify the apps in your organization that are best suited for multi-cloud environment. Unlike traditional apps, cloud-native apps are flexible and service-oriented, comprised of collections of containers and services, based on a scale-out architecture. Also, these are easy to automate, move, and scale.</li>
+</ul>
+
+<h3 id="benefits-of-multi-cloud-architecture">Benefits of Multi-cloud Architecture</h3>
+
+<h4 id="disaster-recovery">Disaster recovery</h4>
+<p>It gets risky when an organization uses one cloud platform to manage all organisational resources. A cyber attack can take down all the operations for a long-time leaving end users inaccessible until it resolves. When you use multi-cloud architecture, it makes your company’s services resilient against these types of cyber attacks because there are other clouds available to take the workloads when one cloud goes down.</p>
+
+<h5 id="avoiding-vendor-lock-in">Avoiding vendor lock-in</h5>
+<p>The multi-cloud platform allows organizations to select the best services from every cloud platform, create custom infrastructure specific to their organizational goals. Rather than managing business processes to fit a specific provider’s setup and execution, businesses can explore different providers to find the best match for each part of business operations.</p>
+
+<h4 id="data-management">Data management</h4>
+<p>There are different data types generated in the organization. For example, some database requires cold storage which is not accessed regularly while hot data accessed 10 times a day and must be stored in frequently-accessed storage, e.g., AWS S3 standard storage. Rather than lump all your data into one cloud, you can diversify to take advantage of the right service for the right function.</p>
+
+<h4 id="cloud-cost-optimization">Cloud cost optimization</h4>
+<p>Before adopting the Multicloud strategy, you should do a performance analysis of your workloads that are either on-premises or already in the cloud and comparing that to what’s available in each cloud. As a result, you can identify the options that will meet your workload performance requirements at the cheapest cost. For example, You can save money by running spot instances for workloads designed to be fault tolerant, while running legacy workloads on reserved instances.</p>
+
+<h4 id="low-latency">Low latency</h4>
+<p>When application users are distributed worldwide and data transfer is done from single data center, lots of users will experience slow response time. There will delays when data traffic has to travel across several nodes before reaching end-users. This delay, called latency is inherent in cloud services delivered from servers at distant locations.</p>
+
+<p>In a multi-cloud environment, cloud architects can deploy data centers to multiple regions according to user locations. The datacenter closest to end-users can serve the requested data with minimum server hops. This capability is especially useful for global organizations that need to serve data across geographically disparate locations while maintaining a unified end-user experience.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>Multi-Cloud architecture provides an environment where businesses can build secure and powerful cloud environments outside the traditional infrastructure. Maximizing the impact of multi-cloud, however, means tackling the challenges of app sprawl, unique portals, compliance, migration and security head-on. The main goal multi-cloud strategy is to use as many clouds as per requirements to address the limitations of using one cloud from a single provider. Though toggling between cloud providers to perform tasks can be complicated, especially right out of the gate, cloud service providers are working to make toggling between clouds increasingly efficient. The more efficient it becomes; the more multi-cloud computing will evolve.</p>
+:ET

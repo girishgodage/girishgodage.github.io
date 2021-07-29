@@ -1,0 +1,102 @@
+I"ƒ<p>In this article, we explore the concept of centralized configuration, in the context of microservices.</p>
+
+<h3 id="you-will-learn">You will learn</h3>
+<ul>
+  <li>What is a Cloud config server?</li>
+  <li>What is centralized configuration?</li>
+  <li>Why do we need centralized configuration in microservices architectures?</li>
+  <li>What are the important features of Spring Cloud Config Server?</li>
+</ul>
+
+<h3 id="why-centralized-configuration">Why Centralized Configuration?</h3>
+
+<p>When we talk about microservices architecture, we visualize a large number of small microservices talking to each other. The number of microservices depends on the size of the enterprise.</p>
+
+<p>[<img src="/images/Capture-058-03.png" alt="image info" /></p>
+
+<p>The  interesting part is that each of these microservices can have its own configuration.</p>
+
+<p>Such configuration includes details such as:</p>
+<ul>
+  <li>Application configuration</li>
+  <li>Database configuration</li>
+  <li>Communication Channel Configuration - queues and other infrastructure</li>
+  <li>URLs of other microservices to talk to</li>
+</ul>
+
+<p>In addition, each microservice would have a separate configuration for different environments, such as development, qa and production.</p>
+
+<blockquote>
+  <p>If maintaining a single configuration for a large application is difficult, imagine maintaining configurations for hundreds of microservice in different environments</p>
+</blockquote>
+
+<h3 id="centralized-config-server-to-the-rescue">Centralized Config Server To The Rescue</h3>
+
+<p>Thatâ€™s where a centralized configuration server steps in.</p>
+
+<p>Configuration for all microservices (for all environments) is stored at one place - a centralized configuration store.</p>
+
+<p>When a microservice needs its configuration, it provides an id at launch - a combination of microservice name and the environment.</p>
+
+<p>The centralize config server looks up the configuration and provides the configuration to the microservice.</p>
+
+<blockquote>
+  <p>Ensure that the configuration in centralized config server is secured and has role based access.</p>
+</blockquote>
+
+<h3 id="introducing-spring-cloud-config-server">Introducing Spring Cloud Config Server</h3>
+
+<p>Spring Cloud Config Server is one of the popular implementations of a cloud config server.</p>
+
+<p>Spring Cloud Config Server enables you to store all the configuration for multiple microservices for different environments in a Git or a SVN Repository. A set of folder structures and conventions need to be followed for the setup to work.</p>
+
+<p><img src="/images/Capture-058-02.png" alt="image info" /></p>
+
+<p>A microservice can connect to the config server and identify itself, and also specify the instance it represents. This enables it to get the required configuration.</p>
+
+<p>The setup ensures that the operations team does not need to take time out to configure the individual microservices on a case-by-case basis. All that they need to worry about is to configure the centralized config server, and start putting relevant configuration into the Git repository.</p>
+
+<h4 id="automatically-picking-up-configuration-changes">Automatically picking up configuration changes</h4>
+
+<p>An interesting feature present with the Spring Cloud Config Server, is auto refresh.</p>
+
+<p>Whenever a change is committed to the Git repository, configuration in the application is auto-refreshed.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>In this article, we looked at why we need centralized configuration in microservices based applications. We looked at how the Spring Cloud Config Server manages centralized configuration.</p>
+
+<hr />
+<h3 id="cloud-and-microservices-terminology">Cloud and Microservices Terminology</h3>
+
+<p>This is the article in a series of six articles on terminology used with cloud and microservices:</p>
+<ul>
+  <li><a href="/blog/service-discovery-in-microservices" target="_blank">1 - Microservices Architectures - What is Service Discovery?</a></li>
+  <li><a href="/blog/introduction-to-centralized-configuration-with-spring-cloud-config-server" target="_blank">2 - Microservices Architectures - Centralized Configuration and Config Server</a></li>
+  <li><a href="/blog/introduction-to-api-gateways-with-microservices" target="_blank">3 - Microservices Architectures - API Gateways</a></li>
+  <li><a href="/blog/introduction-to-centralized-logging-with-microservices" target="_blank">4 - Microservices Architectures - Importance of Centralized Logging</a></li>
+  <li><a href="/blog/introduction-to-auto-scaling-or-dynamic-scaling-in-cloud" target="_blank">5 - Microservices Architectures - Introduction to Auto Scaling</a></li>
+  <li><a href="/blog/fault-tolerance-in-microservices" target="_blank">6 - Microservices Architectures - What is Fault Tolerance?</a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/service-discovery-in-microservices" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/introduction-to-api-gateways-with-microservices" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

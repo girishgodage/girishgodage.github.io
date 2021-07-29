@@ -1,0 +1,881 @@
+I"c�<h2 id="angular-10-material-datatable-inline-httpclient-crud-operations-using-restfull-apis">Angular 10 Material Datatable Inline HttpClient CRUD Operations using RestFull APIs</h2>
+
+<blockquote>
+  <p>In this Angular tutorial, we’ll learn how to use HttpClient module in Angular application to make RESTFull API Ajax calls.</p>
+</blockquote>
+
+<p>We’ll set up a <strong>new Angular 10 project</strong> and <strong>create API endpoints</strong> to perform <strong>Create, Read, Update and Delete operations using HTTP</strong> methods using a mock server using the <code>**json-server**</code> package. Using <code>**json-server**</code> we can create a local JSON file which can act as a database for our application. There is no difference between a local mock server and a real database.</p>
+
+<p>We’ll perform <strong>HTTP operation using API endpoints</strong> to <strong>add, edit, delete and get list of items listed in an Angular Material Datatable</strong>.</p>
+
+<p>This Material Datatable will have action column using which user an <strong>Edit or Delete a row</strong>. There will be a form over the table to <strong>Add or Update existing rows</strong> in</p>
+
+<p>After implementation, our application will look like this</p>
+
+<p><img src="/img/angular/12/1.png" alt="image info" /></p>
+
+<p>First, let’s have a look at Angular HttpClient and its features.</p>
+
+<h2 id="what-is-angular-httpclient">What is Angular HttpClient?</h2>
+
+<p>A reactive application like Angular, communicate with server databases to fetch data in form of JSON object using Ajax API calls.</p>
+
+<p>These API Ajex calls use XMLHttpRequest service for old browsers or fetch() methods under the hood.</p>
+
+<p>The HttpClient service provided by Angular’s <code>**@angular/common/http**</code> package provides a simple interface to make HTTP calls with many optimized and efficient browser support features.</p>
+
+<p>Moreover, we can also use RxJS based Observables and operators to handle client-side or server-side errors.</p>
+
+<p>Using Interceptors service we can modify requests and responses of API calls and even cancels them.</p>
+
+<p><strong>Let’s get started!</strong></p>
+
+<h2 id="setup-angular-cli">#Setup Angular CLI</h2>
+
+<p>Angular CLI is the most prefered and official way for creating a new Angular project.</p>
+
+<p>Make sure you have installed the latest version on Angular CLI tool on your system.</p>
+
+<p>Run following npm command to install</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+$ npm install -g @angular/cli
+</code></pre></div></div>
+
+<p>For this tutorial, we have installed <strong>v10.1.6</strong></p>
+
+<h2 id="create-a-new-angular-10-project">#Create a new Angular 10 project</h2>
+
+<p>Next, create a new Angular project by running following ng command in the terminal</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ng new ang-datatable-app
+
+</code></pre></div></div>
+<p>On hitting above command, ng CLI will ask few configurational questions</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+? Would you like to add Angular routing? Yes
+? Which stylesheet format would you like to use? CSS
+</code></pre></div></div>
+
+<p>Now move to the project folder</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+$ cd ang-datatable-app
+</code></pre></div></div>
+
+<p>Run the project by executing below command</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+$ ng serve --open
+</code></pre></div></div>
+<p>As we have created the Angular project successfully, lets mover further to create a dummy mock JSON server.</p>
+
+<h2 id="setup-a-mock-json-server">#Setup a Mock JSON Server</h2>
+
+<p>For testing and learning HttpClient module, we need to test Http methods, which will communicate to the server by calling Rest APIs.</p>
+
+<p>These RESTFull APIs return JSON data which is then consumed by Angular application. This API JSON data may come from any third-party API, Server Database or any local server database.</p>
+
+<p>Here we will create a dummy mock JSON API server using the <code>**json-server**</code> package. using this package we can create a mock server using which we can perform all HTTP methods like <code>**GET**</code>, <code>**POST**</code>, <code>**PUT**</code>, <code>**PATCH**</code> and <code>**DELETE**</code>.</p>
+
+<p>First, install the<code> **json-server**</code> package by running bellow npm command in the terminal window:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ npm install -g json-server
+</code></pre></div></div>
+
+<p>After that create a new folder API in the project root and place JSON file data.json at 
+<strong>~ang-datatable-app/API/data.json</strong></p>
+
+<p>The <strong>data.json</strong> file will work as RESTfull server. We will add some dummy employeess data. So that will act like a database on which we will perform CRUD operations.</p>
+
+<h2 id="start-json-server">#Start JSON Server</h2>
+
+<p>To start the JSON server using json-server, run following command in a new terminal:&lt;</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+$ json-server --watch ./API/data.json
+</code></pre></div></div>
+<p>Now you can access our mock server at <strong>http://localhost:3000/employees</strong></p>
+
+<p>Following are the API URLs available on our server:</p>
+
+<ul>
+  <li>GET /employees - fetch all employees</li>
+  <li>GET /employees/: id - fetch a single employee detail by id</li>
+  <li>POST /employees - create a new employee</li>
+  <li>PUT /employees/: id - update a employee by id</li>
+  <li>PATCH /employees/: id - partially update a employee by  id</li>
+  <li>DELETE /employees/:id - delete a employee by id</li>
+</ul>
+
+<p>As we are ready with our server, next we will import HttpClientModule in Angular project to use HTTP services.</p>
+
+<blockquote>
+  <h1 id="configure-httpclient-in-angular-10-project">Configure HttpClient in Angular 10 project</h1>
+</blockquote>
+
+<p>Before using HTTP services, we need to import <code>**HttpClientModule**</code> from <code>**@angular/common/http**</code> class.</p>
+
+<p>Now open the app.module.ts file, then make the following changes:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// app.module.ts
+
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
+import { HttpClientModule } from '@angular/common/http';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+</code></pre></div></div>
+
+<p>We will add <strong>Angular Material Datatable</strong> to perform CRUD operations on Employees data. So let us install and configure Material UI library in our project.</p>
+
+<h2 id="install-and-setup-angular-material">#Install and Setup Angular Material</h2>
+
+<p>Angular Material is a UI library which provides several easy to use feature components. In this tutorial, we will use Material Datatables to show employees records and perform the various inline operation on employees records.</p>
+
+<p>Run following npm command in terminal to install Material library and answer some configuration answers.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ng add @angular/material
+
+
+? Choose a prebuilt theme name, or "custom" for a custom theme: Indigo/Pink        [ Preview: https://material.angular.io?theme=indigo-pink ]
+? Set up global Angular Material typography styles? Yes 
+? Set up browser animations for Angular Material? Yes
+
+</code></pre></div></div>
+
+<p>To use Material UI components, we need to import modules of components which we are going to use in the application’s module so that these will be available in our class components to use.</p>
+
+<p>As we will be using Material Datatables with pagination, so we need to import <code>**MatTableModule**</code> and <code>**MatPaginatorModule**</code>.</p>
+
+<p>To update and add employees rows we will add Material Form as well, for that we will also import <code>**FormsModule**</code>,<code>**ReactiveFormsModule**</code>, <code>**MatInputModule**</code>, and <code>**MatButtonModule**</code> as well
+in the <strong>app.module.ts</strong> file as shown below:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+// app.module.ts
+
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+
+
+@NgModule({
+  declarations: [
+    AppComponent    
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+
+    // Material Modules 
+    MatTableModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatButtonModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+</code></pre></div></div>
+
+<h2 id="creating-a-service-to-communicate-server-through-http-methods">#Creating a Service to Communicate Server through HTTP methods</h2>
+
+<p>Now we’ll create a new service to separate all HTTP methods which will communicate to server and do CRUD operations.</p>
+
+<p>Let’s create a new serve HttpDataService under services folder by running following ng command in the terminal window:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ng generate service services/http-data
+</code></pre></div></div>
+
+<p>Above <code>**generate**</code> command will create the <code>**HttpDataService**</code> for us at this location <strong>~src/app/services/http-data.service.ts</strong></p>
+
+<p>Also, create an <strong>Interface class</strong> for <em>Employees</em> data by running following command defining the type of values for employee item.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ng generate class models/Employee
+
+</code></pre></div></div>
+
+<p>then replace the following content in the newly created file “~/models/<strong>employee.ts</strong>”</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export class Employee {
+    id: number;
+    userId: string;
+    jobTitleName: string;
+    firstName: string;
+    lastName: string;
+    preferredFullName: string;
+    employeeCode: string;
+    region: string
+    phoneNumber: string;
+    emailAddress: string;
+}
+</code></pre></div></div>
+
+<p>Our service will be going to play an important role in maintaining a connection with the server. Let us dive deep into this file and check what it will have?</p>
+
+<p>Add the server API URL for end-points and define in the <code>**base_path**</code> variable. This is the path which opens up on running our <code>**json-server**</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+  // API path
+  base_path = 'http://localhost:3000/employees';
+</code></pre></div></div>
+<p><em>Note:</em> Make sure your server is still running.</p>
+
+<p>We’ll import these three classes</p>
+
+<p><code>**HttpClient**</code> : This class provides HTTP methods like <code>**get()**</code>, <code>**post()**</code>, <code>**put()**</code> and <code>**delete()**</code>.</p>
+
+<p><code>**HttpHeaders**</code>: For setting request headers in HTTP calls we use this class.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+  // Http Options
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  }
+</code></pre></div></div>
+<p><code>**HttpErrorResponse**</code>: Used to efficiently handle errors from client-side or server-side.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  // Handle API errors
+  handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error.message);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    // return an observable with a user-facing error message
+    return throwError(
+      'Something bad happened; please try again later.');
+  };
+</code></pre></div></div>
+
+<h2 id="rxjs-functions-and-operators-to-the-rescuespan">#RxJs functions and operators to the rescue&lt;/span&gt;</h2>
+<p>&lt;/h4&gt;</p>
+
+<p>The RxJs library provides many useful function and operator which we will use in our service:</p>
+
+<p><code>**Observables**</code>: Observables are used to perform asynchronous tasks like HTTP calls. We can subscribe them to get success or error response. They provide several other features file cancellations and continuous event retrieval, unlike promises.</p>
+
+<p><code>**throwError**</code>: This method is used to intentionally throw an error with a message when an HTTP request fails.</p>
+
+<p><code>**retry()**</code>: The retry operator is used to make HTTP call again for the number of times specified when a call fails due to network server issues.</p>
+
+<p><code>**catchError()**</code>: This method catches the error and throws to errorHandler</p>
+
+<h2 id="defining-crud-methods">#Defining CRUD Methods</h2>
+
+<p>Now we will add the methods to do CRUD operation on emloyees data in our mock server which we created using <code>**json-server**</code>.</p>
+
+<h3 id="create-an-employee">Create an Employee</h3>
+
+<p>The new employee will be created using the <code>**post()**</code> method</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  // Create a new item
+  createItem(item): Observable&lt;Employee&gt; {
+    return this.http
+      .post&lt;Employee&gt;(this.base_path, JSON.stringify(item), this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+</code></pre></div></div>
+
+<p>The <code>**createItem()**</code> method is accepting <code>**item**</code> attribute with employee details to add.</p>
+
+<h3 id="retrieve-employee-details">Retrieve Employee Details</h3>
+
+<p>To fetch single employee details we use <code>**get()**</code> method with employee <code>**id**</code> whose detail needs to be checked.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> // Get single employee data by ID
+  getItem(id): Observable&lt;Employee&gt; {
+    return this.http
+      .get&lt;Employee&gt;(this.base_path + '/' + id)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+</code></pre></div></div>
+
+<h3 id="retrieve-all-employees">Retrieve All Employees</h3>
+
+<p>Similarly, we will make <code>**get**</code> call to fetch all employees list</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  // Get employees data
+  getList(): Observable&lt;Employee&gt; {
+    return this.http
+      .get&lt;Employee&gt;(this.base_path)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+</code></pre></div></div>
+<h3 id="update-single-employee">Update single employee</h3>
+
+<p>The <code>**put()**</code> method will update single employee with id passed</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  // Update item by id
+  updateItem(id, item): Observable&lt;Employee&gt; {
+    return this.http
+      .put&lt;Employee&gt;(this.base_path + '/' + id, JSON.stringify(item), this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+</code></pre></div></div>
+<h3 id="delete-a-single-employee">Delete a single employee</h3>
+
+<p>The <code>**delete()**</code> HTTP method will delete a single record whose id is passed</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+  // Delete item by id
+  deleteItem(id) {
+    return this.http
+      .delete&lt;Employee&gt;(this.base_path + '/' + id, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+</code></pre></div></div>
+
+<p>After combining all explained code the final <strong>http-data.service.ts</strong> file will look like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+// http-data.servie.ts
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Employee } from '../models/employee';
+import { Observable, throwError } from 'rxjs';
+import { retry, catchError } from 'rxjs/operators';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class HttpDataService {
+
+
+  // API path
+  base_path = 'http://localhost:3000/employees';
+
+  constructor(private http: HttpClient) { }
+
+  // Http Options
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  }
+
+  // Handle API errors
+  handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error.message);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    // return an observable with a user-facing error message
+    return throwError(
+      'Something bad happened; please try again later.');
+  };
+
+
+  // Create a new item
+  createItem(item): Observable&lt;Employee&gt; {
+    return this.http
+      .post&lt;Employee&gt;(this.base_path, JSON.stringify(item), this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+  // Get single employee data by ID
+  getItem(id): Observable&lt;Employee&gt; {
+    return this.http
+      .get&lt;Employee&gt;(this.base_path + '/' + id)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+  // Get employees data
+  getList(): Observable&lt;Employee&gt; {
+    return this.http
+      .get&lt;Employee&gt;(this.base_path)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+  // Update item by id
+  updateItem(id, item): Observable&lt;Employee&gt; {
+    return this.http
+      .put&lt;Employee&gt;(this.base_path + '/' + id, JSON.stringify(item), this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+  // Delete item by id
+  deleteItem(id) {
+    return this.http
+      .delete&lt;Employee&gt;(this.base_path + '/' + id, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+}
+
+</code></pre></div></div>
+<h2 id="create-new-pages">#Create new pages</h2>
+
+<p>To show employees data in a table,  we will create a new employees component and update the<strong> app-routing.module.ts</strong> file to open <code>/employees</code> page on application load.</p>
+
+<p>Create the <code>**EmployeesComponent**</code>
+by running below generate command:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+$ ng generate component pages/employees
+</code></pre></div></div>
+
+<p>Setup the App Routing Module
+Now update the <strong>app-routing.module.ts</strong>file with below code.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+// app-routing.module.ts
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { EmployeesComponent } from './pages/employees/employees.component';
+
+
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: '/employees',
+    pathMatch: 'full'
+  },
+  {
+    path: 'employees',
+    component: EmployeesComponent
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+</code></pre></div></div>
+
+<h2 id="using-httpdataservice-in-employees-page">#Using HttpDataService in Employees Page</h2>
+
+<p>As we defined our HttpDataService as <code>**providedIn: 'root'**</code>so we can directly use it in our Angular application. This will share a single instance across the application.</p>
+
+<p>To use service methods in our employee’s page at <strong>~src/app/pages/employees/employees.component.ts</strong>, we need to <code>**impor**t</code> it and then add in component the contractor() method as shown below:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+import { HttpDataService } from 'src/app/services/http-data.service';
+
+@Component({
+  selector: 'app-employees',
+  templateUrl: './employees.component.html',
+  styleUrls: ['./employees.component.css']
+})
+export class EmployeesComponent implements OnInit {
+
+  constructor(private httpDataService: HttpDataService) { }
+
+  ...
+}
+
+</code></pre></div></div>
+<h2 id="adding-angular-material-datatable">#Adding Angular Material Datatable</h2>
+
+<p>Next, we will add a Datatable with Employees columns and an extra Actions column where we will do inline Edit, Delete and Update operations.</p>
+
+<p>For creating the Material datatable, the <code>**mat-table**</code> directive is used. We are also adding pagination by appending the <code>**mat-paginator**</code> directive just after ending <code>**&lt;/table&gt;**</code> tag.</p>
+
+<p>Update the <strong>employees.component.html</strong> file with below code to build a Material datatable:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+        &lt;!-- Form to edit/add row --&gt;
+
+        &lt;table mat-table [dataSource]="dataSource" class="mat-elevation-z8"&gt;
+
+    &lt;ng-container matColumnDef="id"&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt; #Id &lt;/th&gt;
+        &lt;td mat-cell *matCellDef="let element"&gt;  &lt;/td&gt;
+    &lt;/ng-container&gt;
+
+    &lt;ng-container matColumnDef="userId"&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt; User Id &lt;/th&gt;
+        &lt;td mat-cell *matCellDef="let element"&gt;  &lt;/td&gt;
+    &lt;/ng-container&gt;
+
+    &lt;ng-container matColumnDef="jobTitleName"&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt; jobTitle Name &lt;/th&gt;
+        &lt;td mat-cell *matCellDef="let element"&gt;  &lt;/td&gt;
+    &lt;/ng-container&gt;
+
+    &lt;ng-container matColumnDef="firstName"&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt; First Name &lt;/th&gt;
+        &lt;td mat-cell *matCellDef="let element"&gt;  &lt;/td&gt;
+    &lt;/ng-container&gt;
+
+    &lt;ng-container matColumnDef="lastName"&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt; Last Name &lt;/th&gt;
+        &lt;td mat-cell *matCellDef="let element"&gt;  &lt;/td&gt;
+    &lt;/ng-container&gt;
+
+    &lt;ng-container matColumnDef="preferredFullName"&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt; Preferred FullName &lt;/th&gt;
+        &lt;td mat-cell *matCellDef="let element"&gt;  &lt;/td&gt;
+    &lt;/ng-container&gt;
+
+    &lt;ng-container matColumnDef="employeeCode"&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt; Employee Code &lt;/th&gt;
+        &lt;td mat-cell *matCellDef="let element"&gt;  &lt;/td&gt;
+    &lt;/ng-container&gt;
+
+    &lt;ng-container matColumnDef="region"&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt; Region &lt;/th&gt;
+        &lt;td mat-cell *matCellDef="let element"&gt;  &lt;/td&gt;
+    &lt;/ng-container&gt;
+
+    &lt;ng-container matColumnDef="phoneNumber"&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt; Phone Number &lt;/th&gt;
+        &lt;td mat-cell *matCellDef="let element"&gt;  &lt;/td&gt;
+    &lt;/ng-container&gt;
+
+    &lt;ng-container matColumnDef="emailAddress"&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt; Email Address &lt;/th&gt;
+        &lt;td mat-cell *matCellDef="let element"&gt;  &lt;/td&gt;
+    &lt;/ng-container&gt;
+
+    &lt;ng-container matColumnDef="actions"&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt; Actions &lt;/th&gt;
+        &lt;td mat-cell *matCellDef="let element"&gt;
+            &lt;a href="javascript:void(0)" (click)="editItem(element)"&gt;Edit&lt;/a&gt; |
+            &lt;a href="javascript:void(0)" (click)="deleteItem(element.id)"&gt;Delete&lt;/a&gt;
+        &lt;/td&gt;
+    &lt;/ng-container&gt;
+
+    &lt;tr mat-header-row *matHeaderRowDef="displayedColumns"&gt;&lt;/tr&gt;
+    &lt;tr mat-row *matRowDef="let row; columns: displayedColumns;"
+        [ngClass]="{'editable-row': employeeData.id === row.id}"&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons&gt;&lt;/mat-paginator&gt;
+&lt;/div&gt;
+
+</code></pre></div></div>
+
+<p>In the last <code>**actions**</code> column there are two actions to <strong>Edit</strong> with <code>**editEmployee()**</code> method and <strong>Delete</strong> with<code> **deleteEmployee()**</code> method for the row.</p>
+
+<p>To add a new row or update the data in the existing row we will add a form above table.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;form (submit)="onSubmit()" #employeeForm="ngForm"&gt;
+        
+        &lt;mat-form-field&gt;
+            &lt;input matInput placeholder="User Id" name="userId" required [(ngModel)]="employeeData.userId"&gt;
+        &lt;/mat-form-field&gt;
+        &lt;mat-form-field&gt;
+            &lt;input matInput placeholder="Job TitleName" name="jobTitleName" required [(ngModel)]="employeeData.jobTitleName"&gt;
+        &lt;/mat-form-field&gt;
+        &lt;mat-form-field&gt;
+            &lt;input matInput placeholder="first Name" name="firstName" required [(ngModel)]="employeeData.firstName"&gt;
+        &lt;/mat-form-field&gt;
+        &lt;mat-form-field&gt;
+            &lt;input matInput placeholder="Last Name" name="lastName" required [(ngModel)]="employeeData.lastName"&gt;
+        &lt;/mat-form-field&gt;
+        &lt;mat-form-field&gt;
+            &lt;input matInput placeholder="Preferred FullName" name="preferredFullName" required [(ngModel)]="employeeData.preferredFullName"&gt;
+        &lt;/mat-form-field&gt;        
+        &lt;mat-form-field&gt;
+            &lt;input matInput placeholder="Employee Code" name="employeeCode" required [(ngModel)]="employeeData.employeeCode"&gt;
+        &lt;/mat-form-field&gt;
+        &lt;mat-form-field&gt;
+            &lt;input matInput placeholder="Region" name="region" required [(ngModel)]="employeeData.region"&gt;
+        &lt;/mat-form-field&gt;
+        &lt;mat-form-field&gt;
+            &lt;input matInput placeholder="Phone Number" name="phoneNumber" required [(ngModel)]="employeeData.phoneNumber"&gt;
+        &lt;/mat-form-field&gt;
+        &lt;mat-form-field&gt;
+            &lt;input matInput placeholder="Email Address" name="emailAddress" required [(ngModel)]="employeeData.emailAddress"&gt;
+        &lt;/mat-form-field&gt;
+
+        &lt;ng-container *ngIf="isEditMode; else elseTemplate"&gt;
+            &lt;button mat-button color="primary"&gt;Update&lt;/button&gt;
+            &lt;a mat-button color="warn" (click)="cancelEdit()"&gt;Cancel&lt;/a&gt;
+        &lt;/ng-container&gt;
+        &lt;ng-template #elseTemplate&gt;
+            &lt;button mat-button color="primary"&gt;Add&lt;/button&gt;
+        &lt;/ng-template&gt;
+
+    &lt;/form&gt;
+    
+
+</code></pre></div></div>
+
+<p>The text in form submit button will change based on the boolean value in the <code>**isEditMode**</code> variable.</p>
+
+<h2 id="update-component-class">#Update Component Class</h2>
+
+<p>After adding Material datatable and Form, let us update <strong>employees.component.ts</strong> file with required methods.</p>
+
+<p>First, initialize the Template driven form with the <code>**NgForm**</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  @ViewChild('employeeForm', { static: false })
+  employeeForm: NgForm;
+</code></pre></div></div>
+
+<p>Import the <code>Employee</code> class which we created and define a new variable <code>employeeData</code> of type <code>Employee</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+employeeData: Employee;
+
+</code></pre></div></div>
+<p>Then define the <code>**dataSource**</code> and <code>**displayedColumns**</code> with <code>**MatPaginator**</code> class to build our Datatable</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  dataSource = new MatTableDataSource();
+  displayedColumns: string[] = ['id', 'userId', 'jobTitleName', 'firstName','lastName','preferredFullName','employeeCode','region', 'phoneNumber','emailAddress','actions'];
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  
+</code></pre></div></div>
+<p>Then we will add methods to Add, Delete, Edit, Update and Get Employees list in the class file as shown below:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+  getAllEmployees() {
+    this.httpDataService.getList().subscribe((response: any) =&gt; {
+      this.dataSource.data = response;
+    });
+  }
+
+  editItem(element) {
+    this.employeeData = _.cloneDeep(element);
+    this.isEditMode = true;
+  }
+
+  cancelEdit() {
+    this.isEditMode = false;
+    this.employeeForm.resetForm();
+  }
+
+  deleteItem(id) {
+    this.httpDataService.deleteItem(id).subscribe((response: any) =&gt; {
+
+      // Approach #1 to update datatable data on local itself without fetching new data from server
+      this.dataSource.data = this.dataSource.data.filter((o: Employee) =&gt; {
+        return o.id !== id ? o : false;
+      })
+
+      console.log(this.dataSource.data);
+
+      // Approach #2 to re-call getAllEmployees() to fetch updated data
+      // this.getAllEmployees()
+    });
+  }
+
+  addEmployee() {
+    this.httpDataService.createItem(this.employeeData).subscribe((response: any) =&gt; {
+      this.dataSource.data.push({ ...response })
+      this.dataSource.data = this.dataSource.data.map(o =&gt; {
+        return o;
+      })
+    });
+  }
+
+  updateEmployee() {
+    this.httpDataService.updateItem(this.employeeData.id, this.employeeData).subscribe((response: any) =&gt; {
+
+      // Approach #1 to update datatable data on local itself without fetching new data from server
+      this.dataSource.data = this.dataSource.data.map((o: Employee) =&gt; {
+        if (o.id === response.id) {
+          o = response;
+        }
+        return o;
+      })
+
+      // Approach #2 to re-call getAllEmployees() to fetch updated data
+      // this.getAllEmployees()
+
+      this.cancelEdit()
+
+    });
+  }
+...
+
+</code></pre></div></div>
+
+<p>We are calling <code>HttpDataService</code> methods to communicate with our <code>json-server</code>
+After adding the above method the final <strong>employees.component.ts</strong> file will look like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+// employees.component.ts
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { HttpDataService } from 'src/app/services/http-data.service';
+import * as _ from 'lodash';
+import { Employee } from 'src/app/models/employee';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+
+@Component({
+  selector: 'app-employees',
+  templateUrl: './employees.component.html',
+  styleUrls: ['./employees.component.css']
+})
+export class EmployeesComponent implements OnInit {
+
+  @ViewChild('employeeForm', { static: false })
+  employeeForm: NgForm;
+
+  employeeData: Employee;
+
+  dataSource = new MatTableDataSource();
+  displayedColumns: string[] = ['id', 'userId', 'jobTitleName', 'firstName','lastName','preferredFullName','employeeCode','region', 'phoneNumber','emailAddress','actions'];
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+
+  isEditMode = false;
+
+  constructor(private httpDataService: HttpDataService) {
+    this.employeeData = {} as Employee;
+   }
+
+  ngOnInit(): void {
+    // Initializing Datatable pagination
+    this.dataSource.paginator = this.paginator;
+
+    // Fetch All Employees on Page load
+    this.getAllEmployees();
+  }
+
+  getAllEmployees(){
+    this.httpDataService.getList().subscribe((response: any) =&gt; {
+      this.dataSource.data = response;
+    });
+  }
+
+  editItem(element) {
+    this.employeeData = _.cloneDeep(element);
+    this.isEditMode = true;
+  }
+
+  cancelEdit() {
+    this.isEditMode = false;
+    this.employeeForm.resetForm();
+  }
+
+  deleteItem(id) {
+    this.httpDataService.deleteItem(id).subscribe((response: any) =&gt; {
+
+      // Approach #1 to update datatable data on local itself without fetching new data from server
+      this.dataSource.data = this.dataSource.data.filter((o: Employee) =&gt; {
+        return o.id !== id ? o : false;
+      })
+
+      console.log(this.dataSource.data);
+
+      // Approach #2 to re-call getAllEmployees() to fetch updated data
+      // this.getAllEmployees()
+    });
+  }
+
+  addEmployee() {
+    this.httpDataService.createItem(this.employeeData).subscribe((response: any) =&gt; {
+      this.dataSource.data.push({ ...response })
+      this.dataSource.data = this.dataSource.data.map(o =&gt; {
+        return o;
+      })
+    });
+  }
+
+  updateEmployee() {
+    this.httpDataService.updateItem(this.employeeData.id, this.employeeData).subscribe((response: any) =&gt; {
+
+      // Approach #1 to update datatable data on local itself without fetching new data from server
+      this.dataSource.data = this.dataSource.data.map((o: Employee) =&gt; {
+        if (o.id === response.id) {
+          o = response;
+        }
+        return o;
+      })
+
+      // Approach #2 to re-call getAllEmployees() to fetch updated data
+      // this.getAllEmployees()
+
+      this.cancelEdit()
+
+    });
+  }
+
+  onSubmit() {
+    if (this.employeeForm.form.valid) {
+      if (this.isEditMode)
+        this.updateEmployee()
+      else
+        this.addEmployee();
+    } else {
+      console.log('Enter valid data!');
+    }
+  }
+
+}
+
+</code></pre></div></div>
+
+<p>That’s it now run you server by executing <code>**$ json-server --watch ./API/data.json**</code> then run Angular application in another terminal by executing <code>**$ ng serve --open**</code>
+You can get source code of this tutorial in my GitHub repo <a href="https://github.com/girishgodage/ang10MatDatatabeCrud">here</a></p>
+
+<p><strong>Conclusion</strong>: In this tutorial, we get to know how to use Http services to make server communication, use get, post, put and delete methods on data server. We use RxJs methods and operators to handle errors and network issues using <code>retry()</code> . Added Angular Material UI library to show data rows in a Datatable. In the Material Datatable, we performed CRUD operation using Inline approach</p>
+:ET

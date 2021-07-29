@@ -1,0 +1,209 @@
+I"sK<h2 id="ihostedservice-and-backgroundservice">IHostedService and BackgroundService</h2>
+
+<p>This fifth part doesn’t really show a customization. This part is more about a feature you can use to create background services to run tasks asynchronously inside your application. Actually I use this feature to regularly fetch data from a remote service in a small ASP.NET Core application.</p>
+
+<h2 id="about-ihostedservice">About IHostedService</h2>
+
+<p>Hosted service are a new thing in ASP.NET Core 2.0 and can be used to run tasks asynchronously in the background of your application. This can be used to fetch data periodically, do some calculations in the background or to do some cleanups. This can also be used to send preconfigured emails or whatever you need to do in the background.</p>
+
+<p>Hosted services are basically simple classes, which implements the <code class="language-plaintext highlighter-rouge">IHostedService</code> interface.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">SampleHostedService</span> <span class="p">:</span> <span class="n">IHostedService</span>
+<span class="p">{</span>
+	<span class="k">public</span> <span class="n">Task</span> <span class="nf">StartAsync</span><span class="p">(</span><span class="n">CancellationToken</span> <span class="n">cancellationToken</span><span class="p">)</span>
+	<span class="p">{</span>
+	<span class="p">}</span>
+	
+	<span class="k">public</span> <span class="n">Task</span> <span class="nf">StopAsync</span><span class="p">(</span><span class="n">CancellationToken</span> <span class="n">cancellationToken</span><span class="p">)</span>
+	<span class="p">{</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>A <code class="language-plaintext highlighter-rouge">IHostedService</code> needs to implement a <code class="language-plaintext highlighter-rouge">StartAsync()</code> and a <code class="language-plaintext highlighter-rouge">StopAsync()</code> method. The <code class="language-plaintext highlighter-rouge">StartAsync()</code> is the place where you implement the logic to execute. This method gets executed once immediately after the application starts. The method <code class="language-plaintext highlighter-rouge">StopAsync()</code> on the other hand gets executed just before the application stops. This also means, to start a kind of a scheduled service you need to implement it by your own. You will need to implement a loop which executes the code regularly.</p>
+
+<p>To get a <code class="language-plaintext highlighter-rouge">IHostedService</code> executed you need to register it in the ASP.NET Core dependency injection container as a singleton instance:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">&lt;</span><span class="n">IHostedService</span><span class="p">,</span> <span class="n">SampleHostedService</span><span class="p">&gt;();</span>
+</code></pre></div></div>
+
+<p>To see how a hosted service works, I created the next snippet. It writes a log message on start, on stop and every two seconds to the console:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">SampleHostedService</span> <span class="p">:</span> <span class="n">IHostedService</span>
+<span class="p">{</span>
+	<span class="k">private</span> <span class="k">readonly</span> <span class="n">ILogger</span><span class="p">&lt;</span><span class="n">SampleHostedService</span><span class="p">&gt;</span> <span class="n">logger</span><span class="p">;</span>
+	
+	<span class="c1">// inject a logger</span>
+	<span class="k">public</span> <span class="nf">SampleHostedService</span><span class="p">(</span><span class="n">ILogger</span><span class="p">&lt;</span><span class="n">SampleHostedService</span><span class="p">&gt;</span> <span class="n">logger</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="n">logger</span> <span class="p">=</span> <span class="n">logger</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="n">Task</span> <span class="nf">StartAsync</span><span class="p">(</span><span class="n">CancellationToken</span> <span class="n">cancellationToken</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">logger</span><span class="p">.</span><span class="nf">LogInformation</span><span class="p">(</span><span class="s">"Hosted service starting"</span><span class="p">);</span>
+
+		<span class="k">return</span> <span class="n">Task</span><span class="p">.</span><span class="n">Factory</span><span class="p">.</span><span class="nf">StartNew</span><span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="p">=&gt;</span>
+		<span class="p">{</span>
+			<span class="c1">// loop until a cancalation is requested</span>
+			<span class="k">while</span> <span class="p">(!</span><span class="n">cancellationToken</span><span class="p">.</span><span class="n">IsCancellationRequested</span><span class="p">)</span>
+			<span class="p">{</span>
+				<span class="n">logger</span><span class="p">.</span><span class="nf">LogInformation</span><span class="p">(</span><span class="s">"Hosted service executing - {0}"</span><span class="p">,</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">);</span>
+				<span class="k">try</span>
+				<span class="p">{</span>
+					<span class="c1">// wait for 3 seconds</span>
+					<span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="nf">Delay</span><span class="p">(</span><span class="n">TimeSpan</span><span class="p">.</span><span class="nf">FromSeconds</span><span class="p">(</span><span class="m">2</span><span class="p">),</span> <span class="n">cancellationToken</span><span class="p">);</span>
+				<span class="p">}</span>
+				<span class="k">catch</span> <span class="p">(</span><span class="n">OperationCanceledException</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+			<span class="p">}</span>
+		<span class="p">},</span> <span class="n">cancellationToken</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="n">Task</span> <span class="nf">StopAsync</span><span class="p">(</span><span class="n">CancellationToken</span> <span class="n">cancellationToken</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">logger</span><span class="p">.</span><span class="nf">LogInformation</span><span class="p">(</span><span class="s">"Hosted service stopping"</span><span class="p">);</span>
+		<span class="k">return</span> <span class="n">Task</span><span class="p">.</span><span class="n">CompletedTask</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>To test this, I simply created a new ASP.NET Core application, placed this snippet inside, registered the <code class="language-plaintext highlighter-rouge">HostedService</code> and started the application by calling the next command in the console:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet run
+</code></pre></div></div>
+
+<p>This results in the following console output:</p>
+
+<p><img src="images/customize-aspnetcore/hosted-service.png" alt="" /></p>
+
+<p>As you can see the log output is written to the console every two seconds.</p>
+
+<h2 id="about-backgroundservice">About BackgroundService</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">BackgroundService</code> class is new in ASP.NET Core 3.0 and is basically an abstract class that already implements the <code class="language-plaintext highlighter-rouge">IHostedService</code> Interface. It also provides an abstract method <code class="language-plaintext highlighter-rouge">ExecuteAsync()</code> that returns a <code class="language-plaintext highlighter-rouge">Task</code>.</p>
+
+<p>To rewrite the hosted service from the last section it would look like this:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">SampleBackgroundService</span> <span class="p">:</span> <span class="n">BackgroundService</span>
+<span class="p">{</span>
+	<span class="k">private</span> <span class="k">readonly</span> <span class="n">ILogger</span><span class="p">&lt;</span><span class="n">SampleHostedService</span><span class="p">&gt;</span> <span class="n">logger</span><span class="p">;</span>
+	
+	<span class="c1">// inject a logger</span>
+	<span class="k">public</span> <span class="nf">SampleBackgroundService</span><span class="p">(</span><span class="n">ILogger</span><span class="p">&lt;</span><span class="n">SampleHostedService</span><span class="p">&gt;</span> <span class="n">logger</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="n">logger</span> <span class="p">=</span> <span class="n">logger</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">protected</span> <span class="k">override</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">ExecuteAsync</span><span class="p">(</span><span class="n">CancellationToken</span> <span class="n">cancellationToken</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">logger</span><span class="p">.</span><span class="nf">LogInformation</span><span class="p">(</span><span class="s">"Hosted service starting"</span><span class="p">);</span>
+
+		<span class="k">return</span> <span class="n">Task</span><span class="p">.</span><span class="n">Factory</span><span class="p">.</span><span class="nf">StartNew</span><span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="p">=&gt;</span>
+		<span class="p">{</span>
+			<span class="c1">// loop until a cancalation is requested</span>
+			<span class="k">while</span> <span class="p">(!</span><span class="n">cancellationToken</span><span class="p">.</span><span class="n">IsCancellationRequested</span><span class="p">)</span>
+			<span class="p">{</span>
+				<span class="n">logger</span><span class="p">.</span><span class="nf">LogInformation</span><span class="p">(</span><span class="s">"Hosted service executing - {0}"</span><span class="p">,</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">);</span>
+				<span class="k">try</span>
+				<span class="p">{</span>
+					<span class="c1">// wait for 3 seconds</span>
+					<span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="nf">Delay</span><span class="p">(</span><span class="n">TimeSpan</span><span class="p">.</span><span class="nf">FromSeconds</span><span class="p">(</span><span class="m">2</span><span class="p">),</span> <span class="n">cancellationToken</span><span class="p">);</span>
+				<span class="p">}</span>
+				<span class="k">catch</span> <span class="p">(</span><span class="n">OperationCanceledException</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+			<span class="p">}</span>
+		<span class="p">},</span> <span class="n">cancellationToken</span><span class="p">);</span>
+	<span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">override</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">StopAsync</span><span class="p">(</span><span class="n">CancellationToken</span> <span class="n">cancellationToken</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">logger</span><span class="p">.</span><span class="nf">LogInformation</span><span class="p">(</span><span class="s">"Background service stopping"</span><span class="p">);</span>
+        <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="n">CompletedTask</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Even the registration is new. In ASP.NET Core 3.0 the <code class="language-plaintext highlighter-rouge">ServiceCollection</code> has a new extension method to register hosted services or background worker:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">services</span><span class="p">.</span><span class="n">AddHostedService</span><span class="p">&lt;</span><span class="n">Worker</span><span class="p">&gt;();</span>
+</code></pre></div></div>
+
+<h2 id="the-new-worker-service-projects">The new worker service projects</h2>
+
+<p>The new worker services and the generic hosting in ASP.NET Core 3.0 makes it pretty easy to create simple service like applications that only do some stuff without the full blown ASP.NET stack and without a web server. This project is simply created with the following command:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet new worker <span class="nt">-n</span> BackgroundServiceSample <span class="nt">-o</span> BackgroundServiceSample
+</code></pre></div></div>
+
+<p>Basically this created a console application with a <code class="language-plaintext highlighter-rouge">Program.cs</code> and a <code class="language-plaintext highlighter-rouge">Worker.cs</code>. The <code class="language-plaintext highlighter-rouge">Worker.cs</code> is the <code class="language-plaintext highlighter-rouge">BackgrounService</code> and the program looks pretty familiar but without the <code class="language-plaintext highlighter-rouge">WebHostBuilder</code>.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nf">CreateHostBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">).</span><span class="nf">Build</span><span class="p">().</span><span class="nf">Run</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="n">IHostBuilder</span> <span class="nf">CreateHostBuilder</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">=&gt;</span>
+        <span class="n">Host</span><span class="p">.</span><span class="nf">CreateDefaultBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+            <span class="p">.</span><span class="nf">ConfigureServices</span><span class="p">((</span><span class="n">hostContext</span><span class="p">,</span> <span class="n">services</span><span class="p">)</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>
+                <span class="n">services</span><span class="p">.</span><span class="n">AddHostedService</span><span class="p">&lt;</span><span class="n">Worker</span><span class="p">&gt;();</span>
+            <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This creates a <code class="language-plaintext highlighter-rouge">IHostBuilder</code> with a dependency injection enabled. This means we are able to use dependency injection in any kind of application, not only in ASP.NET Core applications.</p>
+
+<p>Than the <code class="language-plaintext highlighter-rouge">Worker</code> gets added to the service collection.</p>
+
+<p>Where is this useful? You can run this app as a Windows service or as a background application in a docker container, which doesn’t need a HTTP endpoint.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>You can now start to do some more complex things with the <code class="language-plaintext highlighter-rouge">IHostedServices</code> and the <code class="language-plaintext highlighter-rouge">BackgroundService</code>. Be careful with background services, because they run all in the same application. Don’t use too much CPU or memory, this could slow down your application.</p>
+
+<p>For bigger applications I would suggest to move such tasks in a separate application that is specialized to execute background tasks. A separate Docker container, a BackroundWorker on Azure, Azure Functions or something like this. However it should be separated from the main application in that case.</p>
+
+<p>In the next chapter I’m going to write about <code class="language-plaintext highlighter-rouge">Middlewares</code> and how you can use them to implement special logic to the request pipeline, or how you are able to serve specific logic on different paths.</p>
+
+<hr />
+<h2 id="sessions">Sessions</h2>
+
+<p>This is series of articles on Building Conf planner app with Asp.net Core:</p>
+
+<ul>
+  <li><a href="/blog/customize-logging" target="_blank">1 - Logging</a></li>
+  <li><a href="/blog/customize-configuration" target="_blank">2 - Configuration</a></li>
+  <li><a href="/blog/customize-dependency-injection" target="_blank">3 - Dependency Injection</a></li>
+  <li><a href="/blog/customize-https" target="_blank">4 - Https</a></li>
+  <li><a href="/blog/customize-hostedservices" target="_blank">5 - Hostedservices</a></li>
+  <li><a href="/blog/customize-middleware" target="_blank">6 - Middlewares</a></li>
+  <li><a href="/blog/customize-outputformatter" target="_blank">7 - Outputformatter</a></li>
+  <li><a href="/blog/customize-modelbinders" target="_blank">8 - Modelbinders </a></li>
+  <li><a href="/blog/customize-actionfilters" target="_blank">9 - Actionfilters</a></li>
+  <li><a href="/blog/customize-taghelpers" target="_blank">10 - Taghelpers</a></li>
+  <li><a href="/blog/customize-webhostbuilder" target="_blank">11 - Webhostbuilder</a></li>
+  <li><a href="/blog/customize-hosting" target="_blank">12 - Hosting </a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/customize-https" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/customize-middleware" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

@@ -1,0 +1,123 @@
+I"Z<blockquote>
+  <h2 id="create-an-azure-ad-b2c-tenant">Create an Azure AD B2C tenant</h2>
+</blockquote>
+
+<p>Before your applications can interact with Azure Active Directory B2C (Azure AD B2C), <strong>they must be registered in a tenant that you manage</strong>.</p>
+
+<p>In this article, you learn how to:</p>
+
+<ul>
+  <li>Create an Azure AD B2C tenant</li>
+  <li>Link your tenant to your subscription</li>
+  <li>Switch to the directory containing your Azure AD B2C tenant</li>
+  <li>Add the Azure AD B2C resource as a Favorite in the Azure portal</li>
+</ul>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>If you don’t have an Azure subscription, create a <a href="https://azure.microsoft.com/free/?WT.mc_id=A261C142F">free account</a> before you begin.</p>
+
+<h2 id="create-an-azure-ad-b2c-tenant-1">Create an Azure AD B2C tenant</h2>
+
+<ol>
+  <li>
+    <p>Sign in to the <a href="https://portal.azure.com/">Azure portal</a>. Sign in with an Azure account that’s been assigned at least the <a href="https://docs.microsoft.com/en-in/azure/role-based-access-control/built-in-roles">Contributor</a> role within the subscription or a resource group within the subscription.</p>
+  </li>
+  <li>
+    <p>Select the directory that contains your subscription.</p>
+  </li>
+</ol>
+
+<p>In the Azure portal toolbar, select the Directory + Subscription icon, and then select the directory that contains your subscription. This directory is different from the one that will contain your Azure AD B2C tenant.</p>
+
+<p><img src="/img/azure/4/portal-01-pick-directory.png" alt="image info" /></p>
+
+<ol>
+  <li>
+    <p>On the Azure portal menu or from the <strong>Home</strong> page, select <strong>Create a resource</strong>.</p>
+  </li>
+  <li>
+    <p>Search for <strong>Azure Active Directory B2C</strong>, and then select <strong>Create</strong>.</p>
+  </li>
+  <li>
+    <p>Select <strong>Create a new Azure AD B2C Tenant</strong>.</p>
+  </li>
+</ol>
+
+<p><img src="/img/azure/4/portal-02-create-tenant.png" alt="image info" /></p>
+
+<ol>
+  <li>On the <strong>Create a directory</strong> page, enter the following:</li>
+</ol>
+
+<ul>
+  <li><strong>Organization name</strong> - Enter a name for your Azure AD B2C tenant.</li>
+  <li><strong>Initial domain name</strong> - Enter a domain name for your Azure AD B2C tenant.</li>
+  <li><strong>Country or region</strong> - Select your country or region from the list. This selection can’t be changed later.</li>
+  <li><strong>Subscription</strong> - Select your subscription from the list.
+    <ul>
+      <li><strong>Resource group</strong> - Select a resource group that will contain the tenant. Or select <strong>Create new</strong>, enter a <strong>Name</strong> for the resource group, select the <strong>Resource group location</strong>, and then select <strong>OK</strong>.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="/img/azure/4/review-and-create-tenant.png" alt="image info" /></p>
+
+<ol>
+  <li>
+    <p>Select <strong>Review + create</strong>.</p>
+  </li>
+  <li>
+    <p>Review your directory settings. Then select <strong>Create</strong>.</p>
+  </li>
+</ol>
+
+<p>You can link multiple Azure AD B2C tenants to a single Azure subscription for billing purposes. To link a tenant, you must be an admin in the Azure AD B2C tenant and be assigned at least a Contributor role within the Azure subscription.</p>
+
+<h2 id="select-your-b2c-tenant-directory">Select your B2C tenant directory</h2>
+
+<p>To start using your new Azure AD B2C tenant, you need to switch to the directory that contains the tenant.</p>
+
+<p>Select the <strong>Directory + subscription</strong> filter in the top menu of the Azure portal, then select the directory that contains your Azure AD B2C tenant.</p>
+
+<p>If at first you don’t see your new Azure B2C tenant in the list, refresh your browser window, then select the <strong>Directory + subscription</strong> filter again in the top menu.</p>
+
+<p><img src="/img/azure/4/portal-07-select-tenant-directory.png" alt="image info" /></p>
+
+<h2 id="add-azure-ad-b2c-as-a-favorite-optional">Add Azure AD B2C as a favorite (optional)</h2>
+
+<p>This optional step makes it easier to select your Azure AD B2C tenant in the following and all subsequent tutorials.</p>
+
+<p>Instead of searching for Azure AD B2C in <strong>All services</strong> every time you want to work with your tenant, you can instead favorite the resource. Then, you can select it from the portal menu’s <strong>Favorites</strong> section to quickly browse to your Azure AD B2C tenant.</p>
+
+<p>You only need to perform this operation once. Before performing these steps, make sure you’ve switched to the directory containing your Azure AD B2C tenant as described in the previous section, <a href="azure-acticedirectoryB2C_CreateTenant#select-your-b2c-tenant-directory">Select your B2C tenant directory</a>.</p>
+
+<ol>
+  <li>
+    <p>Sign in to the <a href="https://portal.azure.com/">Azure portal</a>.</p>
+  </li>
+  <li>
+    <p>In the Azure portal menu, select <strong>All services</strong>.</p>
+  </li>
+  <li>
+    <p>In the <strong>All services</strong> search box, search for Azure AD B2C, hover over the search result, and then select the star icon in the tooltip. Azure AD B2C now appears in the Azure portal under Favorites.</p>
+  </li>
+  <li>
+    <p>If you want to change the position of your new favorite, go to the Azure portal menu, select Azure AD B2C, and then drag it up or down to the desired position.</p>
+  </li>
+</ol>
+
+<p><img src="/img/azure/4/portal-08-b2c-favorite.png" alt="image info" /></p>
+
+<h2 id="next-steps">Next steps</h2>
+
+<p>In this article, you learned how to:</p>
+
+<ul>
+  <li>Create an Azure AD B2C tenant</li>
+  <li>Link your tenant to your subscription</li>
+  <li>Switch to the directory containing your Azure AD B2C tenant</li>
+  <li>Add the Azure AD B2C resource as a Favorite in the Azure portal</li>
+  <li>Next, learn <a href="azure-acticedirectoryB2C_RegisterApp">how to register a web application</a> in your new tenant.</li>
+</ul>
+:ET

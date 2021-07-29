@@ -1,0 +1,221 @@
+I"`,<p>In this article, we focus on learning why creating proper archetypes is important for successful microservices architecture.</p>
+
+<h1 id="what-you-will-learn">What you will learn</h1>
+<ul>
+  <li>What is an archetype?</li>
+  <li>Why do you want to build microservices quickly?</li>
+  <li>How does an archetype help?</li>
+  <li>How can you use an archetype?</li>
+  <li>How can you build an archetype of your own?</li>
+</ul>
+
+<h3 id="why-do-we-need-archetypes">Why Do We Need Archetypes?</h3>
+
+<p>In microservices architectures, we have a number of microservices interacting with each other. And, we keep adding microservices as we evolve.</p>
+
+<p>A few questions arise:</p>
+<ul>
+  <li>How do you ensure that the microservices are consistent i.e. similarly built and deployed? This will ensure that a developer moving from one microservice to another will not have a great deal of learning to do!</li>
+  <li>How do you ensure that you are able to setup a new microservice quickly?</li>
+  <li>How do you ensure that the new microservice is consistent with older microservices?</li>
+</ul>
+
+<p>With microservices architectures, while the functionality of each microservice is different, you want a bit of consistency in how they are built and deployed</p>
+<ul>
+  <li>Programming Language used</li>
+  <li>Frameworks used</li>
+  <li>The way unit tests are written</li>
+  <li>Deployment and Monitoring processes</li>
+  <li>QA &amp; Automation Testing Approaches</li>
+  <li>Integration with Infrastructure components like Naming Server, API Gateways etc</li>
+</ul>
+
+<p>This is where the reference architecture for your microservices comes into the picture. Having a good reference architecture ensures that your microservices are uniform.</p>
+
+<p>How do you ensure that the reference architecture is properly implemented?</p>
+
+<h3 id="enter-archetypes">Enter Archetypes</h3>
+
+<p>Creating an <strong>archetype</strong> standardizes the reference architecture. An archetype is a piece of component code that can create the initial setup of microservice, adhering to the reference architecture.</p>
+
+<p>What would the output of an archetype look like?</p>
+
+<p>It would consist of an example microservice with</p>
+<ul>
+  <li>Framework Integration</li>
+  <li>Configuration of common external components</li>
+  <li>Multiple layer Setup</li>
+  <li>Initial Security Configuration - For Authentication and Authorization</li>
+  <li>Sample Automation Tests for Unit Testing and Integration Testing</li>
+  <li>Infrastructure setup for communication with other microservices</li>
+</ul>
+
+<p>Once you generate a component using the archetype, you can focus on adding business features to your microservice.</p>
+
+<h3 id="reference-archetype-example">Reference Archetype Example</h3>
+
+<p>We have created a reference archetype for a Spring Boot Microservice. Github repo for the project is https://github.com/girishgodage/microservice-reference-archetype.</p>
+
+<h4 id="using-the-archetype-to-create-a-new-project">Using the archetype to create a new project</h4>
+
+<p>Steps are detailed below:</p>
+
+<h5 id="download-or-clone-the-github-repository">Download or Clone the github repository</h5>
+
+<p>You can start with cloning the repository - https://github.com/girishgodage/microservice-reference-archetype. Other option is to download the repository as a zip file using this link - https://github.com/girishgodage/microservice-reference-archetype/archive/master.zip</p>
+
+<h5 id="install-the-archetype">Install the archetype</h5>
+
+<ul>
+  <li>cd to the root of the project and run</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn clean install
+</code></pre></div></div>
+
+<ul>
+  <li>This will install the archetype to your local repository</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[INFO] Installing /girishgodage/git/microservice-archetype/microservice-archetype/target/project-name-archetype-0.0.2-SNAPSHOT.jar to /Users/rangaraokaranam/.m2/repository/com/organization/project/project-name-archetype/0.0.2-SNAPSHOT/project-name-archetype-0.0.2-SNAPSHOT.jar
+</code></pre></div></div>
+
+<h5 id="create-a-new-project-using-the-archetype">Create a new project using the archetype</h5>
+
+<ul>
+  <li>
+    <p>Create a new folder on your hard drive. Let’s call it first-project</p>
+  </li>
+  <li>
+    <p>Execute the following commands</p>
+  </li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd first-project
+mvn archetype:generate -DarchetypeCatalog=local
+</code></pre></div></div>
+
+<ul>
+  <li>archetype plugin asks for a groupId and artifactId as shown below</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Choose a number or apply filter (format: [groupId:]artifactId, case sensitive contains): : 1
+Define value for property 'groupId': com.first
+Define value for property 'artifactId': first-project
+Define value for property 'version' 1.0-SNAPSHOT: : 
+Define value for property 'package' com.first: : 
+Confirm properties configuration:
+groupId: com.first
+artifactId: first-project
+version: 1.0-SNAPSHOT
+package: com.first
+ Y: : Y
+</code></pre></div></div>
+<ul>
+  <li>When the archetype plugin executes successfully, you should see the message shown below:</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[INFO] Project created from Archetype in dir: /girishgodage/git/microservice-archetype/first-project
+</code></pre></div></div>
+
+<h5 id="verify-the-new-project">Verify the new project</h5>
+
+<p>You can do a <code class="language-plaintext highlighter-rouge">mvn clean install</code> on the new project in first-project to check it everything is good.</p>
+
+<p>This is a Spring Boot Project with a couple of controllers and unit/integration tests.</p>
+
+<h3 id="creating-your-own-reference-archetype">Creating Your Own Reference Archetype</h3>
+
+<p>You can also create a reference archetype of your own. The first thing you need to do is to create a reference project - which would serve as the base for creating your archetype.</p>
+
+<h4 id="setting-up-reference-project">Setting up Reference Project</h4>
+
+<ul>
+  <li>We have our reference microservice in the folder microservice-reference. This is a Spring Boot Project with a couple of controllers and unit/integration tests. We use this as the reference project to reverse engineer an archetype.</li>
+  <li>When we create a new project using a maven archetype, the two important inputs are groupId and artifactId. In the reference project we would need to make sure that everything that needs to customized based on these inputs should be using similar values. In the microservice-reference, we use the following as the standard:
+    <ul>
+      <li>groupId - com.organization.project</li>
+      <li>artifactId - project-name</li>
+    </ul>
+  </li>
+  <li>You would need to customize the reference-project to meet your needs or you can create a new reference-project.</li>
+  <li>Ensure that you configure the latest version of maven-archetype-plugin in your microservice-reference</li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	<span class="nt">&lt;build&gt;</span>
+		<span class="nt">&lt;pluginManagement&gt;</span>
+			<span class="nt">&lt;plugins&gt;</span>
+				<span class="nt">&lt;plugin&gt;</span>
+					<span class="nt">&lt;artifactId&gt;</span>maven-archetype-plugin<span class="nt">&lt;/artifactId&gt;</span>
+					<span class="nt">&lt;version&gt;</span>3.0.1<span class="nt">&lt;/version&gt;</span>
+				<span class="nt">&lt;/plugin&gt;</span>
+			<span class="nt">&lt;/plugins&gt;</span>
+		<span class="nt">&lt;/pluginManagement&gt;</span>
+	<span class="nt">&lt;/build&gt;</span>
+</code></pre></div></div>
+
+<h4 id="reverse-engineering-an-archetype-from-microservice-reference">Reverse Engineering an Archetype from microservice-reference</h4>
+<ul>
+  <li>In the command prompt cd to the folder containing this project</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd microservice-reference
+mvn archetype:create-from-project
+</code></pre></div></div>
+
+<ul>
+  <li>You will see the following statements in the log</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[INFO] Setting default groupId: com.organization.project
+[INFO] Setting default artifactId: project-name
+[INFO] Setting default version: 0.0.2-SNAPSHOT
+[INFO] Setting default package: com.organization.project
+</code></pre></div></div>
+
+<p>Archetype project is created in microservice-reference/target/generated-sources/archetype</p>
+
+<h4 id="copy-the-created-archetype-to-the-microservice-archetype-project">Copy the created archetype to the microservice-archetype project</h4>
+
+<ul>
+  <li>Copy the archetype project created in earlier step to the folder microservice-archetype</li>
+</ul>
+
+<h3 id="summary">Summary</h3>
+
+<p>In this article, we talked about the need for an archetype in microservices architecture. Archetype serves a starting point for creating new projects and ensure uniformity across microservices. We looked at an example archetype and got an overview of how to create an archetype.</p>
+
+<hr />
+<h3 id="best-practices-with-cloud-and-microservices">Best Practices with Cloud and Microservices</h3>
+
+<p>This is the first article in a series of six articles on best practices with cloud and microservices:</p>
+<ul>
+  <li><a href="/blog/12-factor-app-cloud-native-microservices-best-practices" target="_blank">1 - The 12 Factor App - Best Practices In Cloud Native Applications and Microservices</a></li>
+  <li><a href="/blog/introduction-to-event-driven-architectures-with-microservices" target="_blank">2 - Microservices Architectures - Event Driven Approach</a></li>
+  <li><a href="/blog/software-best-practices-building-a-vertical-slice" target="_blank">3 - Why do you build a Vertical Slice?</a></li>
+  <li><a href="/blog/messaging-queues-and-asynchronous-communication-in-microservices" target="_blank">4 - Microservice Architecture Best Practices - Messaging Queues</a></li>
+  <li><a href="/blog/creating-archetypes-in-microservices-architectures-best-practices" target="_blank">5 - Build an Archetype</a></li>
+  <li><a href="/blog/asynchronous-communication-with-queues-in-microservices" target="_blank">6 - Asynchronous communication with queues and microservices - A perfect combination?</a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/messaging-queues-and-asynchronous-communication-in-microservices" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/asynchronous-communication-with-queues-in-microservices" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

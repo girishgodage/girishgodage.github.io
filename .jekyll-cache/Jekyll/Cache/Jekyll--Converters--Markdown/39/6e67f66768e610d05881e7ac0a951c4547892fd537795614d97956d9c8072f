@@ -1,0 +1,284 @@
+I"�'<h2 id="introduction">Introduction</h2>
+
+<p>It has always ‘seemed’ easy until you try it. Having deployed other apps to heroku, I encountered series of challenges deploying Angular 11 recently but I pulled through finally. So am writing to explain in details how I did it.</p>
+
+<p>This article will show you guides on deploying your Angular 8/9/10/11 apps easily to Heroku, more importantly, avoiding common pitfalls.</p>
+
+<p>This is not a tutorial to help you learn Angular. It will be assumed you have completed development and ready to deploy. However, we’ll setup basic angular project from start and deploy. This tutorial will cover:</p>
+
+<ul>
+  <li>Creating basic angular project</li>
+  <li>Setting automatic deployment from GitHub to Heroku</li>
+  <li>Deploying Angular app on Heroku server</li>
+</ul>
+
+<h2 id="setup-your-angular-application">Setup Your Angular Application</h2>
+<p>Making use of the Angular CLI, setup a new project by running:</p>
+<pre><code class="language-code">
+    ng new demo-deploy
+
+</code></pre>
+
+<p><img src="/img/deployment/1/CreateAngularApp.png" alt="image info" /></p>
+
+<p>From this, our application will be named demo-deploy . Allow for few minutes to setup the new project and install npm packages.</p>
+
+<h2 id="launch-application">Launch Application</h2>
+
+<p>Change directory into new project and launch it using the commands below. This will open in new browser on port 4200 by default. i.e http://localhost:4200.</p>
+
+<pre><code class="language-code">cd demo-deploy
+ng serve
+
+</code></pre>
+
+<p><img src="/img/deployment/1/angularapp.png" alt="image info" /></p>
+
+<p>Our basic angular app is ready and running — locally. Lets push to github</p>
+
+<h2 id="create-its-github-repo-and-push">Create its GitHub repo and Push</h2>
+<p>Here, we’ll be creating a fresh github repository and pushing our app to it.</p>
+
+<ul>
+  <li>
+    <p>Login to github and create new repository. No need to initialize repository with README</p>
+  </li>
+  <li>
+    <p>Open new tab in your terminal/CMD. Or hit Ctrl+C to stop running app. Then run the following commands:</p>
+  </li>
+</ul>
+
+<pre><code class="language-code">
+    git remote add origin &lt;new_github_repository_url&gt;
+    git add --all
+    git commit -m "initial commit"
+    git push -u origin master
+
+</code></pre>
+
+<p>Now our app is on github.</p>
+
+<h2 id="setup-automatic-deployment-from-github-to-heroku">Setup Automatic Deployment from GitHub to Heroku</h2>
+
+<p>Advantage of this step is so that, once you push a change to your github repository, it automatically pushes the change to your codebase on heroku, which then takes effect live on the web. This means, you’ll only have to push your changes to github and its done.</p>
+
+<p>If you dont have an account yet, create one on heroku website. Its free. Login to your dashboard and create a new app.</p>
+
+<p><img src="/img/deployment/1/CreateHerokuapp.png" alt="image info" /></p>
+
+<p>Click Create app</p>
+
+<p>In the Deploy menu, under Deployment method, select GitHub. If you have not done this already, it will ask you to login your github account so it can connect to it.</p>
+
+<p>Enter the name of the GitHub repository and click Search. Once the repo is shown below, click Connect. Viola!</p>
+
+<p><img src="/img/deployment/1/HerokuGithubConnect.png" alt="image info" /></p>
+
+<p>Uh, wait. Two more simple steps.</p>
+
+<ol>
+  <li>
+    <p>Under Automatic Deploys, select the master branch and click Enable Automatic Deploys.</p>
+  </li>
+  <li>
+    <p>Under Manual Deploys, click Deploy Branch. This is to push our fresh code to heroku.</p>
+  </li>
+</ol>
+
+<p><img src="/img/deployment/1/EnableAutoDeploy.png" alt="image info" /></p>
+
+<p>Okay, we’r done with this stage really. It might take a little while but will show you successfully deployed message once done, like so:</p>
+
+<p><img src="/img/deployment/1/DeployGithubBranch.png" alt="image info" /></p>
+
+<p><img src="/img/deployment/1/DeployError.png" alt="image info" /></p>
+
+<p>If you click View, a new tab will be opened but your app will not display. Next series of steps will guide you on configuring and spinning up your angular app.</p>
+
+<h2 id="configure-your-angular-app-to-deploy-properly-on-heroku">Configure Your Angular App to Deploy Properly on Heroku</h2>
+
+<p>The following are production-ready steps to easily and properly deploy your app without hitches.</p>
+
+<blockquote>
+  <p><strong>Ensure you have the latest version of angular cli and angular compiler cli</strong>.</p>
+</blockquote>
+
+<p>Install them into your application by running this commands in your terminal:</p>
+
+<pre><code class="language-code">npm install @angular/cli@latest @angular/compiler-cli --save-dev
+
+</code></pre>
+
+<p>In your package.json, copy</p>
+
+<pre><code class="language-code">
+"@angular/cli”: “~11.0.5”,
+"@angular/compiler-cli": "~11.0.5",
+
+</code></pre>
+
+<p>from devDependencies to dependencies</p>
+
+<h2 id="create-postinstall-script-in-packagejson">Create postinstall script in package.json</h2>
+
+<p>Under “scripts”, add a “heroku-postinstall” command like so:</p>
+
+<pre><code class="language-code">"heroku-postbuild": "ng build --aot --prod "
+
+</code></pre>
+
+<p>This tells Heroku to build the application using Ahead Of Time (AOT) compiler and make it production-ready. This will create a dist folder where all html and javascript converted version of our app will be launched from.</p>
+
+<h2 id="add-node-and-npm-engines">Add Node and NPM engines</h2>
+
+<p>You will need to add the Node and NPM engines that Heroku will use to run your application. Preferably, it should be same version you have on your machine. So, run <em>node -v</em> and <em>npm -v</em> to get the correct version and include it in your package.json file like so:</p>
+
+<pre><code class="language-code">
+    "engines": {
+    "node": "15.2.0",
+    "npm": "7.0.12"
+  }
+
+</code></pre>
+
+<h2 id="copy-typescript-to-dependencies">Copy typescript to dependencies.</h2>
+
+<p>Copy “typescript”: “~4.0.2” from devDependencies to dependencies to also inform Heroku what typescript version to use.</p>
+
+<h2 id="install-enhanced-resolve-330">Install Enhanced Resolve 3.3.0</h2>
+
+<p>Run the command <strong>npm install enhanced-resolve@3.3.0 –save-dev</strong></p>
+
+<h2 id="install-server-to-run-your-app">Install Server to run your app</h2>
+
+<p>Locally we run ng serve from terminal to run our app on local browser. But we will need to setup an Express server that will run our production ready app (from dist folder created) only to ensure light-weight and fast loading.</p>
+
+<p>Install Express server by running:</p>
+
+<pre><code class="language-code">
+npm install express path --save
+
+</code></pre>
+
+<p>Create a server.js file in the root of the application and paste the following code.</p>
+
+<pre><code class="language-code">
+    //Install express server
+    const express = require('express');
+    const path = require('path');
+
+    const app = express();
+
+    // Serve only the static files form the dist directory
+    app.use(express.static(__dirname + '/dist/&lt;name-of-app&gt;'));
+
+    app.get('/*', function(req,res) {
+        
+    res.sendFile(path.join(__dirname+'/dist/&lt;name-of-app&gt;/index.html'));
+    });
+
+    // Start the app by listening on the default Heroku port
+    app.listen(process.env.PORT || 8080);
+
+</code></pre>
+
+<h2 id="change-start-command">Change start command</h2>
+
+<p>In package.json, change the “start” command to node server.js so it becomes:</p>
+
+<pre><code class="language-code">
+    "start": "node server.js"
+
+</code></pre>
+
+<p>Here’s what the complete package.json looks like. Yours may contain more depending on your application-specific packages.</p>
+
+<pre><code class="language-code">
+{
+  "name": "demo-deploy",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "node server.js",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "heroku-postbuild": "ng build --aot --prod "
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~11.0.5",
+    "@angular/cdk": "^11.0.3",
+    "@angular/cli": "~11.0.5",
+    "@angular/common": "~11.0.5",
+    "@angular/compiler": "~11.0.5",
+    "@angular/compiler-cli": "~11.0.5",
+    "@angular/core": "~11.0.5",
+    "@angular/forms": "~11.0.5",
+    "@angular/platform-browser": "~11.0.5",
+    "@angular/platform-browser-dynamic": "~11.0.5",
+    "@angular/router": "~11.0.5",
+    "express": "^4.17.1",
+    "path": "^0.12.7",
+    "rxjs": "~6.6.0",
+    "tslib": "^2.0.0",
+    "typescript": "~4.0.2",
+    "zone.js": "~0.10.2"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.1100.5",
+    "@angular/cli": "~11.0.5",
+    "@angular/compiler-cli": "~11.0.5",
+    "@types/googlemaps": "3.39.14",
+    "@types/jasmine": "~3.6.0",
+    "@types/node": "^12.11.1",
+    "codelyzer": "^6.0.0",
+    "enhanced-resolve": "^3.3.0",
+    "jasmine-core": "~3.6.0",
+    "jasmine-spec-reporter": "~5.0.0",
+    "karma": "~5.1.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.0.3",
+    "karma-jasmine": "~4.0.0",
+    "karma-jasmine-html-reporter": "^1.5.0",
+    "protractor": "~7.0.0",
+    "ts-node": "~8.3.0",
+    "tslint": "~6.1.0",
+    "typescript": "~4.0.2"
+  },
+  "engines": {
+    "node": "15.2.0",
+    "npm": "7.0.12"
+  }
+}
+
+</code></pre>
+
+<p>Push changes to GitHub:</p>
+
+<pre><code class="language-code">
+    git add .
+    git commit -m "updates to deploy to heroku"
+    git push  
+
+</code></pre>
+
+<p>At this point, your application on Heroku will automatically take the changes from GitHub and update itself.</p>
+
+<p>Also, it’ll look into your package.json and install packages.</p>
+
+<p>It will run the postinstall and then, <em>node server.js</em> to spin up your application.</p>
+
+<p>You can check Activity tab and open Build log to see how it actually runs.</p>
+
+<p>You should not run into any issue. I followed through while writing this post also and.</p>
+
+<p>Viola!! Our Angular app is Ready and LIVE!</p>
+
+<p><img src="/img/deployment/1/DeployedApp.png" alt="image info" /></p>
+
+<p>For following through till this stage, Thank you.</p>
+
+<p>Provide your valuable comment below, also if you encountered any issue or want to suggest better ways.</p>
+:ET

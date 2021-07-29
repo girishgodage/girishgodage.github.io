@@ -1,0 +1,190 @@
+I"�7<p>Software applications are built in layers. There is common functionality that is sometimes needed across layers - logging, performance tracing etc.</p>
+
+<p>How do you implement these common features?</p>
+
+<h3 id="you-will-learn">You will learn?</h3>
+
+<ul>
+  <li>What Is Aspect Oriented Programming?</li>
+  <li>What are the important concepts behind Aspect-Oriented Programming?</li>
+  <li>What are the situations where AOP is used?</li>
+  <li>Why is AOP needed?</li>
+  <li>What are the best Java frameworks to implement AOP?</li>
+</ul>
+
+<h3 id="what-is-aspect-oriented-programming">What Is Aspect Oriented Programming?</h3>
+
+<p>In order to understand what <strong>Aspect Oriented Programming (AOP)</strong> is all about, let’s first talk about <strong>layered architecture</strong>, and  something called <strong>cross-cutting concerns</strong>.</p>
+
+<h4 id="what-is-a-layered-architecture">What is a Layered Architecture</h4>
+
+<p>Whenever we design and develop a large software application, we make use of  a <strong>layered architecture</strong>. For instance, in a web application, it is quite common to see an architecture similar to the following:</p>
+
+<p><img src="/images/Capture-02-01.png" alt="image info" /></p>
+
+<p>Here, we see that the application is organized into a Web layer, a Business layer, and a Data layer.</p>
+
+<h4 id="understanding-cross-cutting-concerns">Understanding Cross Cutting Concerns</h4>
+
+<p>In a layered architecture, there are specific parts that are common to all these different layers. Such parts include:</p>
+
+<ul>
+  <li>Logging</li>
+  <li>Security</li>
+  <li>Performance</li>
+  <li>Auditing</li>
+</ul>
+
+<p>All these features are applicable across layers, hence it makes sense to implement them in a common way.</p>
+
+<p>Let’s say you want to implement logic to find out how much time each method takes to execute, in each of the three layers (Web, Business and Data) above.</p>
+
+<p>That’s where AOP steps in.</p>
+
+<h4 id="an-example-of-aop">An Example Of AOP</h4>
+
+<p>Let’s now look at a simple example where we apply AOP.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	<span class="nd">@Component</span>
+	<span class="kd">class</span> <span class="nc">HiByeService</span> <span class="o">{</span>
+	  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sayHi</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+	    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hi "</span> <span class="o">+</span> <span class="n">name</span><span class="o">);</span>
+	  <span class="o">}</span>
+	
+	  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sayBye</span><span class="o">()</span> <span class="o">{</span>
+	    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Bye"</span><span class="o">);</span>
+	  <span class="o">}</span>
+	
+	  <span class="kd">public</span> <span class="nc">String</span> <span class="nf">returnSomething</span><span class="o">()</span> <span class="o">{</span>
+	    <span class="k">return</span> <span class="s">"Hi Bye"</span><span class="o">;</span>
+	  <span class="o">}</span>
+	<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">`class` ` ` ` ` `HiByeService` ` ` has a few methods such as ` ` `sayHi()` ` `, ` ` `sayBye()` ` ` and ` ` `returnSomething()`</code> defined within it.</p>
+
+<p>We want to do a few computations by taking up each of these methods, by turn at the following stages:</p>
+
+<ul>
+  <li>Do something before the method begins execution</li>
+  <li>Do something after the method completes execution</li>
+  <li>Track how much time the method takes during its execution</li>
+</ul>
+
+<p>Here we take <code class="language-plaintext highlighter-rouge">`HiByeService`</code> as a specific example to work with. The same could be done across several classes that make up such an application.</p>
+
+<p>Let’s take each of these computations and look at them in some detail.</p>
+
+<h4 id="doing-stuff-before-execution">Doing Stuff Before Execution</h4>
+
+<p>Have a look at the following AOP code:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	<span class="nd">@Aspect</span>
+	<span class="nd">@Component</span>
+	<span class="kd">class</span> <span class="nc">MyAspect</span> <span class="o">{</span>
+	  <span class="nd">@Before</span><span class="o">(</span><span class="s">"execution(* HiByeService.*(..))"</span><span class="o">)</span>
+	  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">before</span><span class="o">(</span><span class="nc">JoinPoint</span> <span class="n">joinPoint</span><span class="o">)</span> <span class="o">{</span>
+	    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Before "</span><span class="o">);</span>
+	    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">joinPoint</span><span class="o">.</span><span class="na">getSignature</span><span class="o">().</span><span class="na">getName</span><span class="o">());</span>
+	    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">joinPoint</span><span class="o">.</span><span class="na">getArgs</span><span class="o">()));</span>
+	  <span class="o">}</span>
+</code></pre></div></div>
+
+<p>We first define an <strong>aspect</strong> with the annotation <code class="language-plaintext highlighter-rouge">`@Aspect` ` ` for the ` ` `class` ` ` ` ` `MyAspect` ` `. Within it is another annotation, ` ` `@Before` ` ` that describes the method ` ` `before()` ` `. The idea of this aspect is that whatever logic lies in the ` ` `before()` ` ` body, is executed before any method of ` ` `HiByeService` ` ` is run. Note that in the ` ` `@Before`</code> annotation, a package name could also be mentioned instead of a class name. This aspect would then be executed before any method in the entire package.</p>
+
+<h4 id="doing-stuff-after-execution">Doing Stuff After Execution</h4>
+
+<p>Similar to this, it is also possible to define an aspect to execute after every method within <code class="language-plaintext highlighter-rouge">`HiByeService`</code> is run:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	<span class="nd">@AfterReturning</span><span class="o">(</span><span class="n">pointcut</span> <span class="o">=</span> <span class="s">"execution(* HiByeService.*(..))"</span>
+	                    <span class="o">,</span> <span class="n">returning</span> <span class="o">=</span> <span class="s">"result"</span><span class="o">)</span>
+	  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">after</span><span class="o">(</span><span class="nc">JoinPoint</span> <span class="n">joinPoint</span><span class="o">,</span> <span class="nc">Object</span> <span class="n">result</span><span class="o">)</span> <span class="o">{</span>
+	    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"After "</span><span class="o">);</span>
+	    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">joinPoint</span><span class="o">.</span><span class="na">getSignature</span><span class="o">().</span><span class="na">getName</span><span class="o">());</span>
+	    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">" result is "</span> <span class="o">+</span> <span class="n">result</span><span class="o">);</span>
+	  <span class="o">}</span>
+	<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>For this, you need to define a method with an <code class="language-plaintext highlighter-rouge">`@AfterReturning` ` ` annotation, defined above for the ` ` `after()` ` ` method. This method here takes an extra argument to store the result of execution of the method of ` ` `HiByeService`</code>.</p>
+
+<h4 id="doing-stuff-around-execution">Doing Stuff Around Execution</h4>
+
+<p>An additional thing you can do is define an aspect around the execution of a method:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	<span class="nd">@Around</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"execution(* HiByeService.*(..))"</span><span class="o">)</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">around</span><span class="o">(</span><span class="nc">ProceedingJoinPoint</span> <span class="n">joinPoint</span><span class="o">)</span> 
+	                                      <span class="kd">throws</span> <span class="nc">Throwable</span> <span class="o">{</span>
+	  <span class="kt">long</span> <span class="n">startTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">().</span><span class="na">getTime</span><span class="o">();</span>
+	  <span class="nc">Object</span> <span class="n">result</span> <span class="o">=</span> <span class="n">joinPoint</span><span class="o">.</span><span class="na">proceed</span><span class="o">();</span>
+	  <span class="kt">long</span> <span class="n">endTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">().</span><span class="na">getTime</span><span class="o">();</span>
+	  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Execution Time - "</span> 
+
+	                  <span class="o">+</span> <span class="o">(</span><span class="n">endTime</span> <span class="o">-</span> <span class="n">startTime</span><span class="o">));</span>
+
+	<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>Over here, we have made use of an annotation called <code class="language-plaintext highlighter-rouge">`@Around` ` ` to decorate the ` ` `around()`</code> method.</p>
+
+<p>In this method body, we intercept the call to the method in <code class="language-plaintext highlighter-rouge">`HiByeService`</code> in the following manner:</p>
+
+<ul>
+  <li>We make note of the start time of execution</li>
+  <li>Allow the method to run its course</li>
+  <li>Finally, we make note of the end time of execution</li>
+</ul>
+
+<p>We then output the computed execution time of that method.</p>
+
+<h4 id="how-to-make-use-of-aop">How To Make Use Of AOP</h4>
+
+<p>At a high level, AOP allows you to intercept calls to methods, and perform logic around these calls. We have used annotations to decorate our computations within the aspect.</p>
+
+<p>In our examples above, we have restricted ourselves to a single class. However, we could easily extend it to more classes or packages by <em>varying</em> the <strong>regular expression</strong> we use in the annotations.</p>
+
+<p>For example, we could choose to intercept classes pertaining to the web layer, or classes across all three layers of the example web application.</p>
+
+<h4 id="terms-we-use-in-aop">Terms We Use In AOP</h4>
+
+<p>Let’s now look at some important terms we use when talking about AOP.</p>
+
+<ul>
+  <li><strong>Point Cut</strong> : It refers to the regular expression that defines what methods need to be intercepted by this aspect. It essentially says where the logic within an aspect method is applicable.</li>
+  <li><strong>Advice</strong> : This is nothing but the logic within the aspect method. It describes what we do when the Point Cut expression is matched.</li>
+  <li><strong>Aspect</strong>: The combination of the Point Cut and the Advice</li>
+  <li><strong>Join Point</strong>: This refers to the situation where a method’s execution has been intercepted, and the aspect is in execution</li>
+  <li><strong>Weaving</strong>: The entire process of taking a method, intercepting its execution and applying an aspect to its execution. This is the functionality provided by the AOP framework. Examples of AOP frameworks are <strong>SpringAOP</strong> and <strong>AspectJ</strong>.</li>
+</ul>
+
+<h4 id="aop-in-summary">AOP In Summary</h4>
+
+<p>In this article, we looked at Aspect Oriented Programming (AOP). We talked about cross-cutting concerns, and described the situations where AOP can be used. In particular, we saw examples of how we can define a point cut, and define the logic of an aspect. We focused on how we can specify aspects to run before, after or around the execution of a method. We then examined the important terms that describe AOP concepts.</p>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/programming-basics-introduction-to-object-oriented-programming" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/introduction-to-aspect-oriented-programming-and-cross-cutting-concerns" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

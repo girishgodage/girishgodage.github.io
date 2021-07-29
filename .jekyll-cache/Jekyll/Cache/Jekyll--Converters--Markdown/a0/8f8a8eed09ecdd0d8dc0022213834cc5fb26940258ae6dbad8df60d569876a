@@ -1,0 +1,93 @@
+I"�<blockquote>
+  <h2 id="register-a-web-application-in-azure-active-directory-b2c">Register a web application in Azure Active Directory B2C</h2>
+</blockquote>
+
+<p>Before your applications can interact with Azure Active Directory B2C (Azure AD B2C), they must be registered in a tenant that you manage. This tutorial shows you how to register a web application using the Azure portal.</p>
+
+<p>In this article, you learn how to:</p>
+
+<ul>
+  <li>Register a web application</li>
+  <li>Create a client secret</li>
+</ul>
+
+<p>If you’re using a native app instead (e.g. iOS, Android, mobile &amp; desktop), learn how to register a native client application.</p>
+
+<p>If you don’t have an Azure subscription, create a <a href="https://azure.microsoft.com/free/?WT.mc_id=A261C142F">free account</a> before you begin.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>If you haven’t already created your own <a href="azure-activedirectoryB2C_CreateTenant">Azure AD B2C Tenant</a>, create one now. You can use an existing Azure AD B2C tenant.</p>
+
+<h2 id="register-a-web-application">Register a web application</h2>
+
+<p>To register an application in your Azure AD B2C tenant, you can use new unified App registrations experience</p>
+
+<ol>
+  <li>
+    <p>Sign in to the <a href="https://portal.azure.com/">Azure portal</a>.</p>
+  </li>
+  <li>
+    <p>Select the <strong>Directory + Subscription</strong> icon in the portal toolbar, and then select the directory that contains your Azure AD B2C tenant.</p>
+  </li>
+  <li>
+    <p>In the Azure portal, search for and select <strong>Azure AD B2C</strong>.</p>
+  </li>
+  <li>
+    <p>Select <strong>App registrations</strong>, and then select <strong>New registration</strong>.</p>
+  </li>
+  <li>
+    <p>Enter a <strong>Name</strong> for the application. For example, webapp1.</p>
+  </li>
+  <li>
+    <p>Under <strong>Supported account types</strong>, select <strong>Accounts in any organizational directory or any identity provider. For authenticating users with Azure AD B2C.</strong></p>
+  </li>
+  <li>
+    <p>Under <strong>Redirect URI</strong>, select <strong>Web</strong>, and then enter https://jwt.ms in the URL text box.</p>
+  </li>
+</ol>
+
+<p>The redirect URI is the endpoint to which the user is sent by the authorization server (Azure AD B2C, in this case) after completing its interaction with the user, and to which an access token or authorization code is sent upon successful authorization. In a production application, it’s typically a publicly accessible endpoint where your app is running, like https://contoso.com/auth-response. For testing purposes like this tutorial, you can set it to https://jwt.ms, a Microsoft-owned web application that displays the decoded contents of a token (the contents of the token never leave your browser). During app development, <strong>you might add the endpoint where your application listens locally, like https://localhost:5000</strong>. You can add and modify redirect URIs in your registered applications at any time.</p>
+
+<p>The following restrictions apply to redirect URIs:</p>
+
+<ul>
+  <li>The reply URL must begin with the scheme https.</li>
+  <li>The reply URL is case-sensitive. Its case must match the case of the URL path of your running application. For example, if your application includes as part of its path …/abc/response-oidc, do not specify …/ABC/response-oidc in the reply URL. Because the web browser treats paths as case-sensitive, cookies associated with …/abc/response-oidc may be excluded if redirected to the case-mismatched …/ABC/response-oidc URL.</li>
+</ul>
+
+<ol>
+  <li>
+    <p>Under Permissions, select the Grant admin consent to openid and offline_access permissions check box.</p>
+  </li>
+  <li>
+    <p>Select Register.</p>
+  </li>
+</ol>
+
+<p>Once the application registration is complete, enable the implicit grant flow:</p>
+
+<h2 id="create-a-client-secret">Create a client secret</h2>
+
+<p>If your application exchanges an authorization code for an access token, you need to create an application secret.</p>
+
+<ol>
+  <li>In the <strong>Azure AD B2C - App registrations</strong> page, select the application you created, for example webapp1.</li>
+  <li>In the left menu, under <strong>Manage</strong>, select <strong>Certificates &amp; secrets</strong>.</li>
+  <li>Select <strong>New client secret</strong>.</li>
+  <li>Enter a description for the client secret in the <strong>Description</strong> box. For example, clientsecret1.</li>
+  <li>Under <strong>Expires</strong>, select a duration for which the secret is valid, and then select <strong>Add</strong>.</li>
+  <li>Record the secret’s <strong>Value</strong>. You use this value as the application secret in your application’s code.</li>
+</ol>
+
+<h2 id="next-steps">Next steps</h2>
+<p>In this article, you learned how to:</p>
+
+<ul>
+  <li>Register a web application</li>
+  <li>Create a client secret</li>
+</ul>
+
+<p>Next, learn how to <a href="azure-acticedirectoryB2C_CreateUserFlow">create user flows</a> to enable your users to sign up, sign in, and manage their profiles.</p>
+
+:ET

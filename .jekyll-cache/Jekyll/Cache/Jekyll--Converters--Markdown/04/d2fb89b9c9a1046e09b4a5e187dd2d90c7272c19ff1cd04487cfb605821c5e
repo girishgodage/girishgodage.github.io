@@ -1,0 +1,179 @@
+I"2*<p>Dependency Inversion Principle is one of the important SOLID Principles. Dependency Inversion Principle is implemented by one of the most popular Java frameworks - Spring. What is it all about? How does it help you design good applications?</p>
+
+<h3 id="you-will-learn">You will Learn</h3>
+<ul>
+  <li>What is Dependency Inversion Principle?</li>
+  <li>How are Dependency Inversion Principle and Spring Framework related?</li>
+  <li>A few examples of Dependency Inversion Principle in action</li>
+</ul>
+
+<h3 id="what-is-dependency-inversion-principle-dip">What Is Dependency Inversion principle (DIP)?</h3>
+
+<blockquote>
+  <p>“Depend Upon Abstractions (interfaces), not Implementations (concrete classes)”</p>
+</blockquote>
+
+<p>What does this statement mean? Let’s try understanding that with an example:</p>
+
+<p>Let’s look at an example of what this means:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+abstract class OutputDevice {
+	void copy(String device) {
+		Keyboard keyboard = new Keyboard();
+		int character;
+		while ((character = keyboard.read()) != -1) {
+			if (device.equals("Printer")) {
+				writeToPrinter(character);
+			} else {
+				writeToDevice(character);
+			}
+		}
+	}
+
+	private void writeToDevice(int character) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void writeToPrinter(int c) {
+		// TODO Auto-generated method stub
+		
+	}
+}
+
+
+</code></pre></div></div>
+
+<p>What does the <code class="language-plaintext highlighter-rouge">copy()</code> method do?</p>
+
+<p>It reads a character from the keyboard, and then decides where this character needs to go. If it’s a printer, write to the printer. Else, send it to the disk.</p>
+
+<p>The problem here is that as the number of <code class="language-plaintext highlighter-rouge">OutputDevice</code> types increase, the logic of <code class="language-plaintext highlighter-rouge">copy()</code> needs to change every single time.</p>
+
+<p>Let’s look at an alternate implementation:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	public interface Reader {
+		public char read();
+	}
+
+	public interface Writer {
+		public void write(char ch);
+	}
+
+	void copy(Reader r, Writer w) {
+		int c;
+
+		while((c = r.read()) != EOF) {
+			w.write(c);
+		}
+	}
+
+</code></pre></div></div>
+
+<p>What we have done here is define two separate interfaces, one to provide the <code class="language-plaintext highlighter-rouge">read()</code>, and the other to define the <code class="language-plaintext highlighter-rouge">write()</code> methods.</p>
+
+<p>The responsibility of the <code class="language-plaintext highlighter-rouge">copy()</code> method is quite clear here: it reads from the <code class="language-plaintext highlighter-rouge">Reader</code> <code class="language-plaintext highlighter-rouge">interface</code>, and writes whatever it gets to the <code class="language-plaintext highlighter-rouge">Writer</code> <code class="language-plaintext highlighter-rouge">interface</code>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">copy()</code> now focuses only on the actual operation, and it does so by identifying everything else as its dependencies.</p>
+
+<p>It can now work with any implementation of <code class="language-plaintext highlighter-rouge">Reader</code> and <code class="language-plaintext highlighter-rouge">Writer</code> interfaces.</p>
+
+<h3 id="dip-and-the-spring-framework">DIP and The Spring Framework</h3>
+
+<p>DIP is one of the core principles that the Spring Framework enables. Have a look at this example:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BinarySearchImpl</span> <span class="o">{</span>
+		<span class="kd">public</span> <span class="kt">int</span> <span class="nf">binarySearch</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">numbers</span><span class="o">,</span> <span class="kt">int</span> <span class="n">numberToSearchFor</span><span class="o">)</span> <span class="o">{</span>
+			<span class="nc">BubbleSortAlgorithm</span> <span class="n">bubbleSortAlgorthm</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BubbleSortAlgorithm</span><span class="o">();</span>
+			<span class="kt">int</span><span class="o">[]</span> <span class="n">sortedNumbers</span> <span class="o">=</span> <span class="n">bubbleSortAlgorithm</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">numbers</span><span class="o">);</span>
+
+			<span class="c1">//...</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">BinarySearchImpl</code> directly creates an instance of the <code class="language-plaintext highlighter-rouge">BubbleSortAlgorithm</code>. Note that <code class="language-plaintext highlighter-rouge">BubbleSortAlgorithm</code> is a dependency of <code class="language-plaintext highlighter-rouge">BinarySearchImpl</code>, and as we saw in our previous example, directly accessing it is not a great idea. If you want to switch from a bubble-sort to a quicksort algorithm later, you need to change quite a lot of code inside <code class="language-plaintext highlighter-rouge">BinarySearchImpl</code>.</p>
+
+<p>Better Approach for <code class="language-plaintext highlighter-rouge">BinarySearchImpl</code> is to make use of an interface - sort algorithm. Here is how our modified code would look like:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	<span class="kd">public</span> <span class="n">intrface</span> <span class="nc">SortAlgorithm</span> <span class="o">{</span>
+		<span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">sort</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">numbers</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Component</span>
+	<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BinarySearchImpl</span> <span class="o">{</span>
+		<span class="nd">@Autowired</span>
+		<span class="kd">private</span> <span class="nc">SortAlgorithm</span> <span class="n">sortAlgorithm</span><span class="o">;</span>
+
+		<span class="kd">public</span> <span class="nf">BinarySearchImpl</span><span class="o">(</span><span class="nc">SortAlgorithm</span> <span class="n">sortAlgorithm</span><span class="o">)</span> <span class="o">{</span>
+			<span class="kd">super</span><span class="o">();</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">sortAlgorithm</span> <span class="o">=</span> <span class="n">sortAlgorithm</span><span class="o">;</span>
+		<span class="o">}</span>
+
+		<span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">binarySearch</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">numbers</span><span class="o">,</span> <span class="kt">int</span> <span class="n">numberToSearchFor</span><span class="o">)</span> <span class="o">{</span>
+			<span class="kt">int</span><span class="o">[]</span> <span class="n">sortedNumbers</span> <span class="o">=</span> <span class="n">sortAlgorithm</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">numbers</span><span class="o">);</span>
+			<span class="c1">//...</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>User of the <code class="language-plaintext highlighter-rouge">BinarySearchImpl</code> class, can also pass in a specific implementation of <code class="language-plaintext highlighter-rouge">SortAlgorithm</code>, such as a bubble-sort or a quick-sort implementation.</p>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">BinarySearchImpl</code> is <strong>decoupled</strong> from which <code class="language-plaintext highlighter-rouge">SortAlgorithm</code> to use.</p>
+</blockquote>
+
+<blockquote>
+  <p>If you use the Spring framework, you could use the <code class="language-plaintext highlighter-rouge">@Autowired</code> annotation with the <code class="language-plaintext highlighter-rouge">BinarySearchImpl</code> class, to automatically auto wire an implementation of an available sort algorithm.</p>
+</blockquote>
+
+<blockquote>
+  <p>By applying the DIP, you make your code more testable. The test code could pass in dependency mocks to properly test the code.</p>
+</blockquote>
+
+<h3 id="summary">Summary</h3>
+
+<p>Dependency Inversion is about identifying dependencies and externalizing them. You can use a framework like Spring to simplify Dependency Inversion. DIP makes your code more maintainable, reusable and testable.</p>
+
+<hr />
+
+<h3 id="software-design-principles">Software Design Principles</h3>
+
+<p>This is the article in a series of articles on important Software Design Principles:</p>
+
+<ul>
+  <li><a href="/blog/four-principles-of-simple-design" target="_blank">1 - Introduction to Four Principles Of Simple Design</a></li>
+  <li><a href="/blog/software-design-seperation-of-concerns-with-examples" target="_blank">2 - Software Design - Separation Of Concerns - with examples</a></li>
+  <li><a href="/blog/software-design-solid-principles" target="_blank">3 - Object Oriented Software Design - Solid Principles - with examples</a></li>
+  <li><a href="/blog/software-design-single-responsibility-principle" target="_blank">4 - Software Design - Single Responsibility Principle - with examples</a></li>
+  <li><a href="/blog/software-design-open-closed-principle" target="_blank">5 - Software Design - Open Closed Principle - with examples</a></li>
+  <li><a href="/blog/software-design-dependency-inversion-principle" target="_blank">6 - Software Design - What is Dependency Inversion Principle?</a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/software-design-open-closed-principle" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/software-design-dependency-inversion-principle" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

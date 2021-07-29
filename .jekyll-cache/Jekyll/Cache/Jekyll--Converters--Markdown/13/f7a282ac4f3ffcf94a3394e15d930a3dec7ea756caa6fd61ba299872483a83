@@ -1,0 +1,282 @@
+I"(V<p>Software architects and programmers love low coupling. What is coupling? Why is coupling important? Let’s get started.</p>
+
+<h3 id="you-will-learn">You will learn</h3>
+
+<ul>
+  <li>What is coupling?</li>
+  <li>What are common examples of coupling in software?</li>
+  <li>How can we reduce the amount of coupling between classes, between components, and the like?</li>
+</ul>
+
+<h3 id="example-of-couping">Example of Couping</h3>
+
+<p>Let’s start with an example.</p>
+
+<p>Let’s say a friend of mine is developing a Java component, in the form of a JAR file, for me to use. However, there is an implicit constraint imposed here - I need to use Java (or a JVM Based language) to use the utility JAR file! In other words, developing the component as a Java JAR has <strong>coupled</strong> me to using Java as well. To break free, I need to <strong>decouple</strong>.</p>
+
+<h4 id="how-to-decouple-an-example">How to Decouple? An Example:</h4>
+
+<p>Instead of providing me with a JAR, I could ask my friend to create a web service interface for me to access the same functionality. The concept would look something like this:</p>
+
+<p><img src="/img/sw_design/11/Capture-06-01.png" alt="image info" /></p>
+
+<p>The web service is created around the JAR, and can be accessed from a Java, a PHP, or a .NET application. We can use any kind of application to invoke the web service.</p>
+
+<p>This implies we have effectively decoupled from the underlying technology of the component. We are no longer affected by the fact that the component was developed in Java.</p>
+
+<h3 id="another-example-for-low-coupling---spring-framework">Another Example for Low Coupling - Spring Framework</h3>
+
+<p>Spring Framework has a highly modular structure:</p>
+
+<p><img src="/img/sw_design/11/Capture-06-03.png" alt="image info" /></p>
+
+<p>Suppose we want to use a specific module from this framework; for instance, the Spring JDBC module.</p>
+
+<p>What would happen if Spring tells you that you can only use Spring JDBC if you also use the Beans and Context modules?</p>
+
+<p>You would probably not use it at all, because it introduces additional dependencies such as configuration etc.</p>
+
+<p>Spring does get this right; it does not force you to use Beans or Context along with JDBC. In other words, Spring modules are not coupled with the other ones.</p>
+
+<h3 id="class-level-coupling---the-order-class">Class-level coupling - The <code class="language-plaintext highlighter-rouge">Order</code> class</h3>
+
+<p>Let’s now go one level deeper. Let’s look at Coupling at the level of classes.</p>
+
+<p>Let’s look at a simple shopping cart example:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	<span class="kd">class</span> <span class="nc">ShoppingCartEntry</span> <span class="o">{</span>
+		<span class="kd">public</span> <span class="kt">float</span> <span class="n">price</span><span class="o">;</span>
+		<span class="kd">public</span> <span class="kt">int</span> <span class="n">quantity</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">class</span> <span class="nc">ShoppingCart</span> <span class="o">{</span>
+		<span class="kd">public</span> <span class="nc">ShoppingCartEntry</span><span class="o">[]</span> <span class="n">items</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">class</span> <span class="nc">Order</span> <span class="o">{</span>
+		<span class="kd">private</span> <span class="nc">ShoppingCart</span> <span class="n">cart</span><span class="o">;</span>
+		<span class="kd">private</span> <span class="kt">float</span> <span class="n">salesTax</span><span class="o">;</span>
+
+		<span class="kd">public</span> <span class="nf">Order</span><span class="o">(</span><span class="nc">ShoppingCart</span> <span class="n">cart</span><span class="o">,</span> <span class="kt">float</span> <span class="n">salesTax</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">cart</span> <span class="o">=</span> <span class="n">cart</span><span class="o">;</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">salesTax</span> <span class="o">=</span> <span class="n">salexTax</span><span class="o">;</span>
+		<span class="o">}</span>
+
+		<span class="kd">public</span> <span class="kt">float</span> <span class="nf">orderTotalPrice</span><span class="o">()</span> <span class="o">{</span>
+			<span class="kt">float</span> <span class="n">cartTotalPrice</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+			<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">cart</span><span class="o">.</span><span class="na">items</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+				<span class="n">cartTotalPrice</span> <span class="o">+=</span> <span class="n">cart</span><span class="o">.</span><span class="na">items</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">price</span> <span class="o">*</span> <span class="n">cart</span><span class="o">.</span><span class="na">items</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">quantity</span><span class="o">;</span>
+			<span class="o">}</span>
+			<span class="n">cartTotalPrice</span> <span class="o">+=</span> <span class="n">cartTotalPrice</span> <span class="o">*</span> <span class="n">salesTax</span><span class="o">;</span>
+			<span class="k">return</span> <span class="n">cartTotalPrice</span><span class="o">;</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>You would observe that <code class="language-plaintext highlighter-rouge">orderTotalPrice()</code> knows the internal details of the <code class="language-plaintext highlighter-rouge">ShoppingCart</code> and <code class="language-plaintext highlighter-rouge">ShoppingCartEntry</code> classes:</p>
+
+<ul>
+  <li>It accesses the <code class="language-plaintext highlighter-rouge">items</code> field of <code class="language-plaintext highlighter-rouge">ShoppingCart</code> directly</li>
+  <li>It accesses the <code class="language-plaintext highlighter-rouge">price</code> and <code class="language-plaintext highlighter-rouge">quantity</code> fields of <code class="language-plaintext highlighter-rouge">ShoppingCartEntry</code>, also directly</li>
+</ul>
+
+<p>Scenario : Try and imagine a situation where we change the name of the <code class="language-plaintext highlighter-rouge">price</code> field of <code class="language-plaintext highlighter-rouge">ShoppingCartEntry</code>, to something else.</p>
+
+<p>Approach : Code within <code class="language-plaintext highlighter-rouge">orderTotalPrice()</code> would also need to change.</p>
+
+<p>If you change the type of the <code class="language-plaintext highlighter-rouge">items</code> array (possibly to a list) within <code class="language-plaintext highlighter-rouge">ShoppingCart</code>, that would also lead to a change within <code class="language-plaintext highlighter-rouge">orderTotalPrice()</code>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Order</code> class is <strong>tightly coupled</strong> to the <code class="language-plaintext highlighter-rouge">ShoppingCart</code> and <code class="language-plaintext highlighter-rouge">ShoppingCartEntry</code> classes.</p>
+
+<p>How do we decouple them?</p>
+
+<h4 id="decoupling-the-order-class-example">Decoupling the <code class="language-plaintext highlighter-rouge">Order</code> class Example</h4>
+
+<p>Here is one way of achieving this:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	<span class="kd">class</span> <span class="nc">ShoppingCartEntry</span> <span class="o">{</span>
+		<span class="kt">float</span> <span class="n">price</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">quantity</span><span class="o">;</span>
+
+		<span class="kd">public</span> <span class="kt">float</span> <span class="nf">getTotalPrice</span><span class="o">()</span> <span class="o">{</span>
+			<span class="k">return</span> <span class="n">price</span><span class="o">*</span><span class="n">quantity</span><span class="o">;</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+	<span class="kd">class</span> <span class="nc">CartContents</span> <span class="o">{</span>
+		<span class="nc">ShoppingCartEntry</span><span class="o">[]</span> <span class="n">items</span><span class="o">;</span>
+
+		<span class="kd">public</span> <span class="kt">float</span> <span class="nf">getTotalPrice</span><span class="o">()</span> <span class="o">{</span>
+			<span class="kt">float</span> <span class="n">totalPrice</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+			<span class="k">for</span><span class="o">(</span><span class="nc">ShoppingCartEntry</span> <span class="nl">item:</span><span class="n">items</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">totalPrice</span> <span class="o">+=</span> <span class="n">item</span><span class="o">.</span><span class="na">getTotalPrice</span><span class="o">();</span>
+			<span class="o">}</span>
+			<span class="k">return</span> <span class="n">totalPrice</span><span class="o">;</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+	<span class="kd">class</span> <span class="nc">Order</span> <span class="o">{</span>
+		<span class="nc">CartContents</span> <span class="n">cart</span><span class="o">;</span>
+		<span class="kt">float</span> <span class="n">salesTax</span><span class="o">;</span>
+
+		<span class="kd">public</span> <span class="nf">Order</span><span class="o">(</span><span class="nc">CartContents</span> <span class="n">cart</span><span class="o">,</span> <span class="kt">float</span> <span class="n">salesTax</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">cart</span> <span class="o">=</span> <span class="n">cart</span><span class="o">;</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">salesTax</span> <span class="o">=</span> <span class="n">salesTax</span><span class="o">;</span>
+		<span class="o">}</span>
+
+		<span class="kd">public</span> <span class="kt">float</span> <span class="nf">totalPrice</span><span class="o">()</span> <span class="o">{</span>
+			<span class="k">return</span> <span class="n">cart</span><span class="o">.</span><span class="na">getTotalPrice</span> <span class="o">*</span> <span class="o">(</span><span class="mf">1.0f</span> <span class="o">+</span> <span class="n">salesTax</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>Note the following points:</p>
+
+<ul>
+  <li>Instead of making the <code class="language-plaintext highlighter-rouge">price</code> and <code class="language-plaintext highlighter-rouge">quantity</code> fields accessible, <code class="language-plaintext highlighter-rouge">ShoppingCartEntry</code> now makes a method named <code class="language-plaintext highlighter-rouge">getTotalPrice()</code> available to <code class="language-plaintext highlighter-rouge">CartContents</code>.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">CartContents</code> class does something very similar, by also providing a <code class="language-plaintext highlighter-rouge">getTotalPrice()</code> method for <code class="language-plaintext highlighter-rouge">Order</code> to use.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">Order</code> class now only invokes the <code class="language-plaintext highlighter-rouge">getTotalPrice()</code> methhod exposed by <code class="language-plaintext highlighter-rouge">CartContents</code>, to compute the total cart value in <code class="language-plaintext highlighter-rouge">totalPrice()</code>.</li>
+</ul>
+
+<p>Now,</p>
+
+<ul>
+  <li>If the <code class="language-plaintext highlighter-rouge">price</code> field in <code class="language-plaintext highlighter-rouge">ShoppingCartEntry</code> has its name changed, only <code class="language-plaintext highlighter-rouge">getTotalPrice()</code> within the same class would be affected</li>
+  <li>If the type of <code class="language-plaintext highlighter-rouge">items</code> within <code class="language-plaintext highlighter-rouge">CartContents</code> is changed from an array to a list, again only the <code class="language-plaintext highlighter-rouge">CartContents</code> <code class="language-plaintext highlighter-rouge">getTotalPrice()</code> method needs to be altered.</li>
+  <li>The code within <code class="language-plaintext highlighter-rouge">Order</code> is not affected by either of these changes at all.</li>
+</ul>
+
+<p>We have now completely decoupled <code class="language-plaintext highlighter-rouge">Order</code> from both <code class="language-plaintext highlighter-rouge">ShoppingCartEntry</code> and <code class="language-plaintext highlighter-rouge">CartContents</code>.</p>
+
+<h3 id="another-coupling-example-with-spring-framework">Another Coupling Example with Spring Framework</h3>
+
+<p>Consider the following body of code:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BinarySearchImpl</span> <span class="o">{</span>
+		<span class="kd">public</span> <span class="kt">int</span> <span class="nf">binarySearch</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">numbers</span><span class="o">,</span> <span class="kt">int</span> <span class="n">numberToSearchFor</span><span class="o">)</span> <span class="o">{</span>
+			<span class="nc">BubbleSortAlgorithm</span> <span class="n">bubbleSortAlgorthm</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BubbleSortAlgorithm</span><span class="o">();</span>
+			<span class="kt">int</span><span class="o">[]</span> <span class="n">sortedNumbers</span> <span class="o">=</span> <span class="n">bubbleSortAlgorithm</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">numbers</span><span class="o">);</span>
+
+			<span class="c1">//...</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>You would notice that the <code class="language-plaintext highlighter-rouge">BinarySearchImpl</code> class is directly dependent on the <code class="language-plaintext highlighter-rouge">BubbleSortAlgorithm</code> class. If we need to change the actual sort algorithm, to use quicksort for instance, then a lot of code within <code class="language-plaintext highlighter-rouge">BinarySearchImpl</code> needs to change.</p>
+
+<p>We can solve this issue by making use of <strong>interfaces</strong>. Here is how our modified code would look like:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	<span class="kd">public</span> <span class="n">intrface</span> <span class="nc">SortAlgorithm</span> <span class="o">{</span>
+		<span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">sort</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">numbers</span><span class="o">);</span>
+	<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>If you use the Spring framework, you could use the <code class="language-plaintext highlighter-rouge">@Autowired</code> annotation with the <code class="language-plaintext highlighter-rouge">BinarySearchImpl</code> class, to automatically fetch an implementation of an available sort algorithm:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	<span class="nd">@Component</span>
+	<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BinarySearchImpl</span> <span class="o">{</span>
+		<span class="nd">@Autowired</span>
+		<span class="kd">private</span> <span class="nc">SortAlgorithm</span> <span class="n">sortAlgorithm</span><span class="o">;</span>
+
+		<span class="kd">public</span> <span class="nf">BinarySearchImpl</span><span class="o">(</span><span class="nc">SortAlgorithm</span> <span class="n">sortAlgorithm</span><span class="o">)</span> <span class="o">{</span>
+			<span class="kd">super</span><span class="o">();</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">sortAlgorithm</span> <span class="o">=</span> <span class="n">sortAlgorithm</span><span class="o">;</span>
+		<span class="o">}</span>
+
+		<span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">binarySearch</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">numbers</span><span class="o">,</span> <span class="kt">int</span> <span class="n">numberToSearchFor</span><span class="o">)</span> <span class="o">{</span>
+			<span class="kt">int</span><span class="o">[]</span> <span class="n">sortedNumbers</span> <span class="o">=</span> <span class="n">sortAlgorithm</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">numbers</span><span class="o">);</span>
+			<span class="c1">//...</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>What we have achieved here is reduce the coupling between <code class="language-plaintext highlighter-rouge">BinarySeacrhImpl</code> and a specific sort algorithm.</p>
+
+<h3 id="a-practical-viewpoint-of-coupling">A Practical Viewpoint of Coupling</h3>
+
+<p>A good way of thinking about coupling, is if you change the inner details of a class or a component, do you need to make changes elsewhere as well?</p>
+
+<p>Such dependencies are not desirable. If you intend to reuse code from one place to another, the related dependencies should be as few as possible.</p>
+
+<p>Coupling can occur at multiple levels in an application:</p>
+<ul>
+  <li>Class-level</li>
+  <li>API-level</li>
+  <li>Component-level</li>
+</ul>
+
+<p>Let’s look at an example of coupling at component level:</p>
+
+<h3 id="component-level-coupling">Component-Level Coupling</h3>
+
+<p>Consider the following organization of an enterprise web application:</p>
+
+<p><img src="/img/sw_design/11/Capture-05-02.png" alt="image info" /></p>
+
+<p>If the Security component were coupled with the Logging component, then wherever we need Security, we would also need to access Logging. That’s not good.</p>
+
+<h3 id="coupling-with-layers">Coupling With Layers</h3>
+
+<p>Let’s look at an example of a layered web application:</p>
+
+<p><img src="/img/sw_design/11/Capture-06-04.png" alt="image info" /></p>
+
+<p>It is organized into these three layers. Also assume that from the Web layer Controller, I need to call multiple methods from the Business layer. Let’s say five different methods need to be called for a single such requirement. This is a clear case of coupling.</p>
+
+<p>A very effective way to avoid such layer-to-layer coupling is to use the <strong>Facade Pattern</strong>. You can create a Facade component on top of the Business layer, that manages calls to these five methods. The web layer can then make do with calling a  single method from the Facade component.</p>
+
+<p><em>All in all, decoupling makes the code more reusable and testable.</em></p>
+
+<h3 id="summary">Summary</h3>
+
+<p>In this article, we looked at the concept of coupling at multiple levels: at the class, the component, the API and the layer level. We also looked at how to get around this factor through decoupling, at each of these levels. We identified the key question to ask about coupling:  “If something changes at a particular place, would other things need to change as well? And If I use something, would I be forced to use something else as well?”</p>
+
+<hr />
+
+<h3 id="software-design">Software Design</h3>
+
+<p>This is the article in a series of articles on Software Design:</p>
+
+<ul>
+  <li><a href="/blog/software-design-keep-your-design-simple" target="_blank">1 - How do you keep your design simple?</a></li>
+  <li><a href="/blog/design-patterns-for-beginners-with-java-examples" target="_blank">2 - Design Patterns For Beginners - with Java Examples</a></li>
+  <li><a href="/blog/software-design-what-is-abstraction" target="_blank">3 - What is Abstraction?</a></li>
+  <li><a href="/blog/software-design-encapsulation-with-examples" target="_blank">4 - Encapsulation - with examples</a></li>
+  <li><a href="/blog/software-design-coupling-with-examples" target="_blank">5 - Coupling - with examples</a></li>
+  <li><a href="/blog/software-design-cohesion-with-examples" target="_blank">6 - Cohesion - with examples</a></li>
+  <li><a href="/blog/software-design-introduction-to-evolutionary-design" target="_blank">7 - Introduction to Evolutionary Design</a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/software-design-encapsulation-with-examples" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/software-design-cohesion-with-examples" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

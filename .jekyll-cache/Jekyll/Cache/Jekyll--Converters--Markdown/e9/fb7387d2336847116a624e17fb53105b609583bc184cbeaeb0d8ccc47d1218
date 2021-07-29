@@ -1,0 +1,116 @@
+I"&&<h2 id="https">HTTPS</h2>
+
+<p>HTTPS is on by default now and a first class feature. On Windows the certificate which is needed to enable HTTPS is loaded from the windows certificate store. If you create a project on Linux and Mac the certificate is loaded from a certificate file.</p>
+
+<blockquote>
+  <p>Even if you want to create a project to run it behind an IIS or an NGinX webserver HTTPS is enabled. Usually you would manage the certificate on the IIS or NGinX webserver in that case. But this shouldn’t be a problem and you shouldn’t disable HTTPS in the ASP.NET Core settings.</p>
+
+  <p>To manage the certificate within the ASP.NET Core application directly makes sense if you run services behind the firewall, services which are not accessible from the internet. Services like background services for a micro service based application, or services in a self hosted ASP.NET Core application.</p>
+</blockquote>
+
+<p>There are some scenarios where it makes sense to also load the certificate from a file on Windows. This could be in an application that you will run on docker for Windows, and also on docker for Linux.</p>
+
+<p>Personally I like the flexible way to load the certificate from a file.</p>
+
+<h2 id="setup-kestrel">Setup Kestrel</h2>
+
+<p>As well as in the first two parts of this blog series, we need to override the default <code class="language-plaintext highlighter-rouge">WebHostBuilder</code> a little bit. With ASP.NET Core 3.0 it is possible to replace the default Kestrel based hosting with an hosting based on an <code class="language-plaintext highlighter-rouge">HttpListener</code>. This means the Kestrel webserver is configured somehow to the host builder. You are able to add and configure Kestrel manually by <strong>using</strong> it. That means by calling the <code class="language-plaintext highlighter-rouge">UseKestrel()</code> method on the <code class="language-plaintext highlighter-rouge">IWebHostBuilder</code>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nf">CreateWebHostBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">).</span><span class="nf">Build</span><span class="p">().</span><span class="nf">Run</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="n">IHostBuilder</span> <span class="nf">CreateHostBuilder</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">=&gt;</span>
+        <span class="n">Host</span><span class="p">.</span><span class="nf">CreateDefaultBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+            <span class="p">.</span><span class="nf">ConfigureWebHostDefaults</span><span class="p">(</span><span class="n">webBuilder</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>                
+                <span class="n">webBuilder</span>
+                    <span class="p">.</span><span class="nf">UseKestrel</span><span class="p">(</span><span class="n">options</span> <span class="p">=&gt;</span> 
+                    <span class="p">{</span>	
+                    <span class="p">})</span>
+                    <span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;();</span>
+            <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This method accepts an action to configure the Kestrel webserver. What we actually need to do is to configure the addresses and ports the webserver is listening on. For the HTTPS port we also need to configure how the certificate should be loaded.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">.</span><span class="nf">UseKestrel</span><span class="p">(</span><span class="n">options</span> <span class="p">=&gt;</span> 
+<span class="p">{</span>
+	<span class="n">options</span><span class="p">.</span><span class="nf">Listen</span><span class="p">(</span><span class="n">IPAddress</span><span class="p">.</span><span class="n">Loopback</span><span class="p">,</span> <span class="m">5000</span><span class="p">);</span>
+	<span class="n">options</span><span class="p">.</span><span class="nf">Listen</span><span class="p">(</span><span class="n">IPAddress</span><span class="p">.</span><span class="n">Loopback</span><span class="p">,</span> <span class="m">5001</span><span class="p">,</span> <span class="n">listenOptions</span> <span class="p">=&gt;</span>
+	<span class="p">{</span>
+		<span class="n">listenOptions</span><span class="p">.</span><span class="nf">UseHttps</span><span class="p">(</span><span class="s">"certificate.pfx"</span><span class="p">,</span> <span class="s">"topsecret"</span><span class="p">);</span>
+	<span class="p">});</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>In this snippet we add to addresses and ports to listen on. The second one is defined as secure endpoint configured to use HTTPS. The method <code class="language-plaintext highlighter-rouge">UseHttps()</code> is overloaded multiple times, to load certificates from the windows certificate store as well as from files. In this case we use a file called <code class="language-plaintext highlighter-rouge">certificate.pfx</code> located in the project folder.</p>
+
+<blockquote>
+  <p>Reminder to myself: Replacing the host actually would be an idea for an eleventh part of this series.</p>
+</blockquote>
+
+<p>To create such a certificate file to just play around with this configuration open the certificate store and export the development certificate created by visual studio.</p>
+
+<h2 id="for-your-safety">For your safety</h2>
+
+<p>Use the following line <strong>ONLY</strong> to play around with this configuration:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">listenOptions</span><span class="p">.</span><span class="nf">UseHttps</span><span class="p">(</span><span class="s">"certificate.pfx"</span><span class="p">,</span> <span class="s">"topsecret"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>The problem is the hard coded password. <strong>Never ever</strong> store a password in a code file that gets pushed to any source code repository. Ensure you load the password from the configuration API of ASP.NET Core. Use the user secrets on your local development machine and use environment variables on a server. On Azure use the Application Settings to store the passwords. Passwords will be hidden on the Azure Portal UI, if they are marked as passwords.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>This is just a small customization. Anyway, this helps if you want to share the code between different platforms, if you want to run your application on Docker and don’t want to care about certificate stores, etc.</p>
+
+<p>Usually, if you run your application behind an web server like IIS or NGinX, you don’t need to care about certificates in your ASP.NET Core 3.0 application. But you need to if you host your application inside another application, on Docker or without an IIS or NGinX.</p>
+
+<p>ASP.NET Core 3.0 has a new feature to <strong>run tasks in the background</strong> inside the application. To learn more about that, read the next chapter.</p>
+
+<hr />
+<h2 id="sessions">Sessions</h2>
+
+<p>This is series of articles on Building Conf planner app with Asp.net Core:</p>
+
+<ul>
+  <li><a href="/blog/customize-logging" target="_blank">1 - Logging</a></li>
+  <li><a href="/blog/customize-configuration" target="_blank">2 - Configuration</a></li>
+  <li><a href="/blog/customize-dependency-injection" target="_blank">3 - Dependency Injection</a></li>
+  <li><a href="/blog/customize-https" target="_blank">4 - Https</a></li>
+  <li><a href="/blog/customize-hostedservices" target="_blank">5 - Hostedservices</a></li>
+  <li><a href="/blog/customize-middleware" target="_blank">6 - Middlewares</a></li>
+  <li><a href="/blog/customize-outputformatter" target="_blank">7 - Outputformatter</a></li>
+  <li><a href="/blog/customize-modelbinders" target="_blank">8 - Modelbinders </a></li>
+  <li><a href="/blog/customize-actionfilters" target="_blank">9 - Actionfilters</a></li>
+  <li><a href="/blog/customize-taghelpers" target="_blank">10 - Taghelpers</a></li>
+  <li><a href="/blog/customize-webhostbuilder" target="_blank">11 - Webhostbuilder</a></li>
+  <li><a href="/blog/customize-hosting" target="_blank">12 - Hosting </a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/customize-dependency-injection" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/customize-hostedservices" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

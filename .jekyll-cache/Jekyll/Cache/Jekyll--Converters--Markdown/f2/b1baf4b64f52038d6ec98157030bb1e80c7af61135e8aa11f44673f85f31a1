@@ -1,0 +1,294 @@
+I"?/<h2 id="creating-a-rich-text-editor-in-blazor-using-quill">Creating A Rich Text Editor In Blazor Using Quill</h2>
+
+<p>In this article, using Quill in Blazor, we will demonstrate how to  Create A Rich Text Editor</p>
+
+<p><img src="/img/blazor/2/Blazoreditor.gif" alt="image info" /></p>
+
+<p>You can easily implement a <strong>Rich Text Editor</strong> in your <strong>Blazor</strong> applications using the free open source component called <a href="https://quilljs.com/">Quill</a>.</p>
+
+<h2 id="setup">Setup</h2>
+
+<p>Create a new <strong>Server Side Blazor</strong> project and <em>right-click</em> on the <strong>wwwroot</strong> folder and select <strong>Add</strong> then <strong>New Item…</strong></p>
+
+<p><img src="/img/blazor/2/1.png" alt="image info" /></p>
+
+<p>Create a <strong>JavaScript</strong> file called <strong>BlazorQuill.js</strong>.</p>
+
+<p><img src="/img/blazor/2/2.png" alt="image info" /></p>
+
+<p>For the file, use the following content:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(function () {
+    window.QuillFunctions = {        
+        createQuill: function (quillElement) {
+            var options = {
+                debug: 'info',
+                modules: {
+                    toolbar: '#toolbar'
+                },
+                placeholder: 'Compose an epic...',
+                readOnly: false,
+                theme: 'snow'
+            };
+            // set quill at the object we can call
+            // methods on later
+            new Quill(quillElement, options);
+        }
+    };
+})();
+
+</code></pre></div></div>
+
+<p><img src="/img/blazor/2/3.png" alt="image info" /></p>
+
+<p>Open the <strong>_Host.cshtml</strong> file and add the following <strong>.css</strong> references to the <strong>Head</strong> section (above the <strong>bootstrap .css</strong> lines):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ &lt;!-- Quill stylesheet --&gt;
+    &lt;link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet"&gt;
+    &lt;link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet"&gt;
+
+</code></pre></div></div>
+
+<p>Next, add the following lines to the <strong>Body</strong> section (below the <strong>blazor.server.js</strong> reference):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+&lt;!-- Quill library --&gt;
+    &lt;script src="https://cdn.quilljs.com/1.3.6/quill.js"&gt;&lt;/script&gt;
+    &lt;script src="BlazorQuill.js"&gt;&lt;/script&gt;
+
+</code></pre></div></div>
+
+<p><img src="/img/blazor/2/4.png" alt="image info" /></p>
+
+<p>Open the <strong>Index.razor</strong> file and change <em>all</em> the content to the following:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+@page "/"
+@*Inject JSRuntime to allow JavaScript Interop *@
+@inject IJSRuntime JSRuntime
+@if (EditorEnabled)
+{
+    &lt;div id="toolbar"&gt;
+        &lt;span class="ql-formats"&gt;
+            &lt;select class="ql-font"&gt;
+                &lt;option selected=""&gt;&lt;/option&gt;
+                &lt;option value="serif"&gt;&lt;/option&gt;
+                &lt;option value="monospace"&gt;&lt;/option&gt;
+            &lt;/select&gt;
+            &lt;select class="ql-size"&gt;
+                &lt;option value="small"&gt;&lt;/option&gt;
+                &lt;option selected=""&gt;&lt;/option&gt;
+                &lt;option value="large"&gt;&lt;/option&gt;
+                &lt;option value="huge"&gt;&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/span&gt;
+        &lt;span class="ql-formats"&gt;
+            &lt;button class="ql-bold"&gt;&lt;/button&gt;
+            &lt;button class="ql-italic"&gt;&lt;/button&gt;
+            &lt;button class="ql-underline"&gt;&lt;/button&gt;
+            &lt;button class="ql-strike"&gt;&lt;/button&gt;
+        &lt;/span&gt;
+        &lt;span class="ql-formats"&gt;
+            &lt;select class="ql-color"&gt;&lt;/select&gt;
+            &lt;select class="ql-background"&gt;&lt;/select&gt;
+        &lt;/span&gt;
+        &lt;span class="ql-formats"&gt;
+            &lt;button class="ql-list" value="ordered"&gt;&lt;/button&gt;
+            &lt;button class="ql-list" value="bullet"&gt;&lt;/button&gt;
+            &lt;button class="ql-indent" value="-1"&gt;&lt;/button&gt;
+            &lt;button class="ql-indent" value="+1"&gt;&lt;/button&gt;
+            &lt;select class="ql-align"&gt;
+                &lt;option selected=""&gt;&lt;/option&gt;
+                &lt;option value="center"&gt;&lt;/option&gt;
+                &lt;option value="right"&gt;&lt;/option&gt;
+                &lt;option value="justify"&gt;&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/span&gt;
+        &lt;span class="ql-formats"&gt;
+            &lt;button class="ql-link"&gt;&lt;/button&gt;
+        &lt;/span&gt;
+    &lt;/div&gt;
+}
+&lt;div @ref="@divEditorElement" /&gt;
+@code {
+    private string strSavedContent = "";
+    private ElementReference divEditorElement;
+    private string EditorContent;
+    private string EditorHTMLContent;
+    private bool EditorEnabled = true;
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeAsync&lt;string&gt;(
+                "QuillFunctions.createQuill", divEditorElement);
+        }
+    }   
+}
+
+</code></pre></div></div>
+
+<p><img src="/img/blazor/2/5.png" alt="image info" /></p>
+
+<p>Hit <strong>F5</strong> to <em>run</em> the application.</p>
+
+<p><img src="/img/blazor/2/6.png" alt="image info" /></p>
+
+<p>The <strong>Quill Rich Text Editor</strong> will appear.</p>
+
+<h2 id="programmatically-get-content">Programmatically Get Content</h2>
+
+<p>The Quill control provides the content as <strong>Text</strong>, <strong>HTML</strong>, or its native <a href="https://quilljs.com/docs/delta/">Delta format</a>.</p>
+
+<p>Add the following buttons to the markup section in the <strong>Index.razor</strong> page:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+&lt;br /&gt;
+&lt;button class="btn btn-primary" @onclick="GetText"&gt;Get Text&lt;/button&gt;
+&lt;button class="btn btn-primary" @onclick="GetHTML"&gt;Get HTML&lt;/button&gt;
+&lt;button class="btn btn-primary" @onclick="GetEditorContent"&gt;Get Content&lt;/button&gt;
+&lt;br /&gt;
+ 
+</code></pre></div></div>
+<p>Also add some <strong>Divs</strong> to display the content:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+&lt;br /&gt;
+&lt;div&gt;
+    @EditorContent
+&lt;/div&gt;
+&lt;div&gt;
+    @((MarkupString)@EditorHTMLContent)
+&lt;/div&gt;
+
+</code></pre></div></div>
+
+<p>In the <strong>@code</strong> section implement the methods:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    async Task GetText()
+    {
+        EditorHTMLContent = "";
+        EditorContent = await JSRuntime.InvokeAsync&lt;string&gt;(
+            "QuillFunctions.getQuillText", divEditorElement);
+    }
+    async Task GetHTML()
+    {
+        EditorContent = "";
+        EditorHTMLContent = await JSRuntime.InvokeAsync&lt;string&gt;(
+            "QuillFunctions.getQuillHTML", divEditorElement);
+    }
+    async Task GetEditorContent()
+    {
+        EditorHTMLContent = "";
+        EditorContent = await JSRuntime.InvokeAsync&lt;string&gt;(
+            "QuillFunctions.getQuillContent", divEditorElement);
+    }
+
+</code></pre></div></div>
+
+<p>Finally, in the <strong>BlazorQuill.js</strong> file, add the following code under the <strong>createQuill</strong> method:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>,
+        getQuillContent: function (quillControl) {
+            return JSON.stringify(quillControl.__quill.getContents());
+        },
+        getQuillText: function (quillControl) {
+            return quillControl.__quill.getText();
+        },
+        getQuillHTML: function (quillControl) {
+            return quillControl.__quill.root.innerHTML;
+        }
+</code></pre></div></div>
+
+<p><img src="/img/blazor/2/7.png" alt="image info" /></p>
+
+<p>When we run the application, we can enter <strong>rich text</strong> in the <strong>editor</strong>, and <em>programmatically</em> display it.</p>
+
+<h2 id="saving-and-loading-content">Saving And Loading Content</h2>
+
+<p>If we want to <em>save and load</em> content into the <strong>Quill</strong> editor, for example, to persist to a database, we can implement it in the following way.</p>
+
+<p>Add the following buttons:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+&lt;br /&gt;
+&lt;button class="btn btn-danger" @onclick="SaveContent"&gt;Save Content&lt;/button&gt;
+&lt;button class="btn btn-success" @onclick="LoadContent"&gt;Load Saved Content&lt;/button&gt;
+&lt;br /&gt;
+ 
+</code></pre></div></div>
+
+<p>Add the methods to implement the buttons:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    async Task SaveContent()
+    {
+        strSavedContent = await JSRuntime.InvokeAsync&lt;string&gt;(
+            "QuillFunctions.getQuillContent", divEditorElement);
+    }
+    async Task LoadContent()
+    {
+        var QuillDelta = await JSRuntime.InvokeAsync&lt;object&gt;(
+            "QuillFunctions.loadQuillContent", divEditorElement, strSavedContent);
+    }
+ 
+</code></pre></div></div>
+
+<p>Finally, in the <strong>BlazorQuill.js</strong> file, add the following code under the <strong>getQuillHTML</strong> method:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+        ,
+        loadQuillContent: function (quillControl, quillContent) {
+            content = JSON.parse(quillContent);
+            return quillControl.__quill.setContents(content, 'api');
+        },
+</code></pre></div></div>
+
+<p><img src="/img/blazor/2/8.png" alt="image info" /></p>
+
+<p>When we run the application, we can enter text, and click the <strong>Save Content</strong> button.</p>
+
+<p><img src="/img/blazor/2/9.png" alt="image info" /></p>
+
+<p><em>Clear the content and enter new content…</em></p>
+
+<p><img src="/img/blazor/2/10.png" alt="image info" /></p>
+
+<p>Click Load Saved Content, and have the original content come back.</p>
+
+<h2 id="disable-the-editor">Disable The Editor</h2>
+
+<p>While it is possible to load and save <strong>Text</strong> or <strong>HTML</strong> content from the control and display that content on any page, to display content in the <strong>Quill</strong> editor native Delta format, you have to load that content into the <strong>Quill</strong> editor control.</p>
+
+<p>When you want the content to be read only, you will want to disable the editor. You can do that programmatically by adding a button:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;br /&gt;
+&lt;button class="btn btn-info" @onclick="DisableQuillEditor"&gt;Disable Editor&lt;/button&gt;
+&lt;br /&gt;
+ 
+</code></pre></div></div>
+<p>A method to implement the button:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    async Task DisableQuillEditor()
+    {
+        EditorEnabled = false;
+        await JSRuntime.InvokeAsync&lt;object&gt;(
+            "QuillFunctions.disableQuillEditor", divEditorElement);
+    }
+ 
+</code></pre></div></div>
+<p>…and a method in the <strong>BlazorQuill.js</strong> file:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+        ,
+        disableQuillEditor: function (quillControl) {
+            quillControl.__quill.enable(false);
+        }
+
+</code></pre></div></div>
+
+<p><img src="/img/blazor/2/11.png" alt="image info" /></p>
+
+<p>Clicking the <strong>Disable Editor</strong> button will put the editor in read only mode.</p>
+:ET

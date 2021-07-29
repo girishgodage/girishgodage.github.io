@@ -1,0 +1,821 @@
+I"�-<h1 id="add-ability-to-log-in-to-the-website">Add ability to log in to the website</h1>
+
+<p>In this module we’re going to add the capability for users to register and sign-in on the front-end web app with a username and password. We’ll do this using ASP.NET Core Identity.</p>
+
+<h2 id="scaffold-in-aspnet-core-identity-and-default-ui">Scaffold in ASP.NET Core Identity and Default UI</h2>
+<blockquote>
+  <p>We’ll start by scaffolding the default Identity experience into the front-end web app.</p>
+</blockquote>
+
+<h3 id="adding-identity-using-visual-studio">Adding Identity using Visual Studio</h3>
+<ol>
+  <li>Right-mouse click on the FrontEnd project in Solution Explorer and select “Add” and then “New Scaffolded Item…”
+<img src="/img/aspdotnetcore/confplanner/5/60.png" alt="" /></li>
+  <li>Select the “Identity” category from the left-hand menu and then select “Identity” from the list and click the “Add” button
+<img src="/img/aspdotnetcore/confplanner/5/61.png" alt="" /></li>
+  <li>In the “Add Identity” dialog, click the ‘+’ button to add a data context class. Call it <code class="language-plaintext highlighter-rouge">FrontEnd.Data.IdentityDbContext</code>.</li>
+  <li>In the same dialog, click the ‘+’ button to add a user class. Call it <code class="language-plaintext highlighter-rouge">FrontEnd.Data.User</code>.
+<img src="/img/aspdotnetcore/confplanner/5/64.png" alt="" /></li>
+  <li>Click the “Add” button</li>
+</ol>
+
+<h3 id="adding-identity-using-the-command-line">Adding Identity using the Command Line</h3>
+<ol>
+  <li>Open a command line to the <strong>FrontEnd</strong> project folder</li>
+  <li>If you haven’t done this already, install the command-line scaffolding tool.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet tool install -g dotnet-aspnet-codegenerator
+</code></pre></div>    </div>
+  </li>
+  <li>Add the <code class="language-plaintext highlighter-rouge">Microsoft.VisualStudio.Web.CodeGeneration.Design</code> version <code class="language-plaintext highlighter-rouge">3.0.0</code> package to the project.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 3.0.0
+</code></pre></div>    </div>
+  </li>
+  <li>Run this command to generate the code to use Identity.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet aspnet-codegenerator identity --dbContext FrontEnd.Data.IdentityDbContext --userClass FrontEnd.Data.User --useDefaultUI
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="organize-the-newly-created-files">Organize the newly created files</h2>
+<blockquote>
+  <p>Note the new files added to the project in the “Areas/Identity” folder. We’re going to clean these up a little to better match this project’s conventions.</p>
+</blockquote>
+
+<ol>
+  <li>Delete the <code class="language-plaintext highlighter-rouge">_ValidationScriptsPartial.cshtml</code> file in the <code class="language-plaintext highlighter-rouge">/Areas/Identity/Pages</code> folder, as we already have one in our project’s regular pages folder.</li>
+  <li>Delete the <code class="language-plaintext highlighter-rouge">ScaffoldingReadme.txt</code> file.</li>
+</ol>
+
+<h2 id="add-the-identity-links-to-the-site-header">Add the Identity links to the site header</h2>
+<blockquote>
+  <p>The scaffolded out Identity system includes a Razor partial view that contains the Identity-related UI for the site header, e.g. Login and Register links, user name once logged in, etc. We need to add a call to this partial from our site’s own layout page:</p>
+</blockquote>
+
+<ol>
+  <li>Open the <code class="language-plaintext highlighter-rouge">_Layout.cshtml</code> file and find the following line: <code class="language-plaintext highlighter-rouge">&lt;div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"&gt;</code></li>
+  <li>Immediately after this line, add a call to render the newly added <code class="language-plaintext highlighter-rouge">_LoginPartial.cshtml</code> using the <code class="language-plaintext highlighter-rouge">&lt;partial /&gt;</code> Tag Helper:
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;partial</span> <span class="na">name=</span><span class="s">"_LoginPartial"</span> <span class="nt">/&gt;</span>
+     <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"navbar-nav flex-grow-1"</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+             <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link text-dark"</span> <span class="na">asp-area=</span><span class="s">""</span> <span class="na">asp-page=</span><span class="s">"/Index"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
+         <span class="nt">&lt;/li&gt;</span>
+     <span class="nt">&lt;/ul&gt;</span>
+ <span class="nt">&lt;/div&gt;</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="update-the-app-to-support-admin-users">Update the app to support admin users</h2>
+<blockquote>
+  <p>Identity supports simple customization of the classes representing users, and when using the default Entity Framework Core, these changes will result in automatic schema updates for storage. We can also customize the default Identity UI by just scaffolding in the pages we want to change. Let’s add the ability to create an admin user.</p>
+</blockquote>
+
+<h3 id="customize-the-user-class-to-support-admin-users">Customize the <code class="language-plaintext highlighter-rouge">User</code> class to support admin users</h3>
+<ol>
+  <li>Open the newly created <code class="language-plaintext highlighter-rouge">User</code> class in the <code class="language-plaintext highlighter-rouge">/Areas/Identity/Data</code> folder</li>
+  <li>Add a <code class="language-plaintext highlighter-rouge">bool</code> property called <code class="language-plaintext highlighter-rouge">IsAdmin</code> to indicate whether the user is an admin:
+    <div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">public</span> <span class="k">class</span> <span class="nc">User</span> <span class="p">:</span> <span class="n">IdentityUser</span>
+ <span class="p">{</span>
+     <span class="k">public</span> <span class="kt">bool</span> <span class="n">IsAdmin</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+ <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="generate-the-entity-framework-migration-for-our-identity-schema">Generate the Entity Framework migration for our Identity schema</h3>
+
+<h4 id="visual-studio-package-manager-console">Visual Studio: Package Manager Console</h4>
+
+<ol>
+  <li>
+    <p>In Visual Studio, select the Tools -&gt; NuGet Package Manager -&gt; Package Manager Console</p>
+  </li>
+  <li>Run the following commands in the Package Manager Console
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">Add-Migration CreateIdentitySchema
+Update-Database
+</span></code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/5/65.png" alt="" /></p>
+    <h4 id="command-line">Command line</h4>
+  </li>
+  <li>Run the following commands in the command prompt:
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go"> dotnet build
+ dotnet ef migrations add CreateIdentitySchema
+ dotnet ef database update
+</span></code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="add-the-authentication-middleware">Add the authentication middleware</h3>
+<blockquote>
+  <p>We need to ensure that the request pipeline contains the Authentication middleware before any other middleware that represents resources we want to potentially authorize, e.g. Razor Pages</p>
+  <ol>
+    <li>Open the <code class="language-plaintext highlighter-rouge">Startup.cs</code> file</li>
+    <li>In the <code class="language-plaintext highlighter-rouge">Configure</code> method, add a call to add the Authentication middleware before the Authorization middleware:
+``` c#
+ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+ {
+     if (env.IsDevelopment())
+     {
+         app.UseDeveloperExceptionPage();
+     }
+     else
+     {
+         app.UseExceptionHandler(“/Error”);
+         app.UseHsts();
+     }</li>
+  </ol>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    app.UseHttpsRedirection();
+    app.UseStaticFiles();
+
+    app.UseRouting();
+
+    app.UseAuthentication();
+    app.UseAuthorization();
+
+    app.UseEndpoints(endpoints =&gt;
+    {
+        endpoints.MapRazorPages();
+    });
+}
+```
+</code></pre></div></div>
+
+<h3 id="allow-creation-of-an-admin-user">Allow creation of an admin user</h3>
+<blockquote>
+  <p>Let’s make it so the site allows creation of an admin user when there isn’t one already. The first user to access the site will be deemed the administrator.</p>
+</blockquote>
+
+<ol>
+  <li>Create a new class <code class="language-plaintext highlighter-rouge">AdminService</code> in the <code class="language-plaintext highlighter-rouge">Services</code> folder. This class will be responsible for managing the creation key generation and tracking whether the site should allow creating admin users.
+    <div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">public</span> <span class="k">class</span> <span class="nc">AdminService</span>
+ <span class="p">{</span>
+     <span class="k">private</span> <span class="k">readonly</span> <span class="n">IdentityDbContext</span> <span class="n">_dbContext</span><span class="p">;</span>
+
+     <span class="k">private</span> <span class="kt">bool</span> <span class="n">_adminExists</span><span class="p">;</span>
+
+     <span class="k">public</span> <span class="nf">AdminService</span><span class="p">(</span><span class="n">IdentityDbContext</span> <span class="n">dbContext</span><span class="p">)</span>
+     <span class="p">{</span>
+         <span class="n">_dbContext</span> <span class="p">=</span> <span class="n">dbContext</span><span class="p">;</span>
+     <span class="p">}</span>
+
+     <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="nf">AllowAdminUserCreationAsync</span><span class="p">()</span>
+     <span class="p">{</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">_adminExists</span><span class="p">)</span>
+         <span class="p">{</span>
+             <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+         <span class="p">}</span>
+         <span class="k">else</span>
+         <span class="p">{</span>
+             <span class="k">if</span> <span class="p">(</span><span class="k">await</span> <span class="n">_dbContext</span><span class="p">.</span><span class="n">Users</span><span class="p">.</span><span class="nf">AnyAsync</span><span class="p">(</span><span class="n">user</span> <span class="p">=&gt;</span> <span class="n">user</span><span class="p">.</span><span class="n">IsAdmin</span><span class="p">))</span>
+             <span class="p">{</span>
+                 <span class="c1">// There are already admin users so disable admin creation</span>
+                 <span class="n">_adminExists</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+                 <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+             <span class="p">}</span>
+
+             <span class="c1">// There are no admin users so enable admin creation</span>
+             <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+         <span class="p">}</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Extract an interface from the class and call it <code class="language-plaintext highlighter-rouge">IAdminService</code>
+    <div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">public</span> <span class="k">interface</span> <span class="nc">IAdminService</span>
+ <span class="p">{</span>
+     <span class="n">Task</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="nf">AllowAdminUserCreationAsync</span><span class="p">();</span>
+ <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>In the <code class="language-plaintext highlighter-rouge">Startup</code> class, modify the <code class="language-plaintext highlighter-rouge">ConfigureServices</code> method to add the new service to the DI container:
+    <div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">&lt;</span><span class="n">IAdminService</span><span class="p">,</span> <span class="n">AdminService</span><span class="p">&gt;();</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<blockquote>
+  <p>We now need to override the default Register page to enable creating the admin account when the first user is registered.</p>
+</blockquote>
+
+<ol>
+  <li>Run the Identity scaffolder again, but this time select the <code class="language-plaintext highlighter-rouge">Account\Register</code> page in the list of files to override and select the <code class="language-plaintext highlighter-rouge">IdentityDbContext (FrontEnd.Data)</code></li>
+</ol>
+
+<p><img src="/img/aspdotnetcore/confplanner/5/67.png" alt="" /></p>
+<ul>
+  <li>On command line, run
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet aspnet-codegenerator identity --dbContext FrontEnd.Data.IdentityDbContext --files Account.Register
+</code></pre></div>    </div>
+    <ol>
+      <li>Update the <code class="language-plaintext highlighter-rouge">RegisterModel</code> class in the <code class="language-plaintext highlighter-rouge">Register.cshtml.cs</code> file to accept <code class="language-plaintext highlighter-rouge">IAdminService</code> as a parameter and it them to a local member:
+        <div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="p">[</span><span class="n">AllowAnonymous</span><span class="p">]</span>
+ <span class="k">public</span> <span class="k">class</span> <span class="nc">RegisterModel</span> <span class="p">:</span> <span class="n">PageModel</span>
+ <span class="p">{</span>
+<span class="k">private</span> <span class="k">readonly</span> <span class="n">SignInManager</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;</span> <span class="n">_signInManager</span><span class="p">;</span>        
+<span class="k">private</span> <span class="k">readonly</span> <span class="n">UserManager</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;</span> <span class="n">_userManager</span><span class="p">;</span>
+<span class="k">private</span> <span class="k">readonly</span> <span class="n">ILogger</span><span class="p">&lt;</span><span class="n">RegisterModel</span><span class="p">&gt;</span> <span class="n">_logger</span><span class="p">;</span>
+<span class="k">private</span> <span class="k">readonly</span> <span class="n">IEmailSender</span> <span class="n">_emailSender</span><span class="p">;</span>
+<span class="k">private</span> <span class="k">readonly</span> <span class="n">IAdminService</span> <span class="n">_adminService</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="nf">RegisterModel</span><span class="p">(</span>
+    <span class="n">UserManager</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;</span> <span class="n">userManager</span><span class="p">,</span>
+    <span class="n">SignInManager</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;</span> <span class="n">signInManager</span><span class="p">,</span>
+    <span class="n">ILogger</span><span class="p">&lt;</span><span class="n">RegisterModel</span><span class="p">&gt;</span> <span class="n">logger</span><span class="p">,</span>
+    <span class="n">IEmailSender</span> <span class="n">emailSender</span><span class="p">,</span>
+    <span class="n">IAdminService</span> <span class="n">adminService</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">_userManager</span> <span class="p">=</span> <span class="n">userManager</span><span class="p">;</span>
+    <span class="n">_signInManager</span> <span class="p">=</span> <span class="n">signInManager</span><span class="p">;</span>
+    <span class="n">_logger</span> <span class="p">=</span> <span class="n">logger</span><span class="p">;</span>
+    <span class="n">_emailSender</span> <span class="p">=</span> <span class="n">emailSender</span><span class="p">;</span>
+    <span class="n">_adminService</span> <span class="p">=</span> <span class="n">adminService</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">...</span>
+</code></pre></div>        </div>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<ol>
+  <li>Add code to the <code class="language-plaintext highlighter-rouge">OnPostAsync</code> that marks the new user as an admin if the <code class="language-plaintext highlighter-rouge">IAdminService.AllowAdminUserCreationAsync</code> returns true before creating the user:
+    <div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">if</span> <span class="p">(</span><span class="k">await</span> <span class="n">_adminService</span><span class="p">.</span><span class="nf">AllowAdminUserCreationAsync</span><span class="p">())</span>
+ <span class="p">{</span>
+     <span class="c1">// Set as admin user</span>
+     <span class="n">user</span><span class="p">.</span><span class="n">IsAdmin</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+ <span class="p">}</span>
+
+ <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_userManager</span><span class="p">.</span><span class="nf">CreateAsync</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">Input</span><span class="p">.</span><span class="n">Password</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Update the code that logs a message when users are created to indicate when an admin user is created:
+    <div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">if</span> <span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">IsAdmin</span><span class="p">)</span>
+ <span class="p">{</span>
+     <span class="n">_logger</span><span class="p">.</span><span class="nf">LogInformation</span><span class="p">(</span><span class="s">"Admin user created a new account with password."</span><span class="p">);</span>
+ <span class="p">}</span>
+ <span class="k">else</span>
+ <span class="p">{</span>
+     <span class="n">_logger</span><span class="p">.</span><span class="nf">LogInformation</span><span class="p">(</span><span class="s">"User created a new account with password."</span><span class="p">);</span>
+ <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<blockquote>
+  <p>If you run the app at this point, you’ll see an exception stating that you can’t inject a scoped type into a type registered as a singleton. This is the DI system protecting you from a common anti-pattern that can arise when using IoC containers. Let’s fix the <code class="language-plaintext highlighter-rouge">AdminService</code> to use the scoped <code class="language-plaintext highlighter-rouge">IdentityDbContext</code> correctly.</p>
+</blockquote>
+
+<ol>
+  <li>Open the <code class="language-plaintext highlighter-rouge">AdminService.cs</code> file and change the code to accept an <code class="language-plaintext highlighter-rouge">IServiceProvider</code> instead of the <code class="language-plaintext highlighter-rouge">IdentityDbContext</code> in its constructor:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">public</span> <span class="k">class</span> <span class="nc">AdminService</span> <span class="p">:</span> <span class="n">IAdminService</span>
+ <span class="p">{</span>
+     <span class="k">private</span> <span class="k">readonly</span> <span class="n">IServiceProvider</span> <span class="n">_serviceProvider</span><span class="p">;</span>
+
+     <span class="k">private</span> <span class="kt">bool</span> <span class="n">_adminExists</span><span class="p">;</span>
+
+     <span class="k">public</span> <span class="nf">AdminService</span><span class="p">(</span><span class="n">IServiceProvider</span> <span class="n">serviceProvider</span><span class="p">)</span>
+     <span class="p">{</span>
+         <span class="n">_serviceProvider</span> <span class="p">=</span> <span class="n">serviceProvider</span><span class="p">;</span>
+     <span class="p">}</span>
+
+     <span class="c1">// ...</span>
+</code></pre></div>    </div>
+
+    <p><img src="/img/aspdotnetcore/confplanner/5/68.png" alt="" /></p>
+  </li>
+  <li>Now update the <code class="language-plaintext highlighter-rouge">AllowAdminUserCreationAsync</code> method to create a service scope so we can ask for an instance of the <code class="language-plaintext highlighter-rouge">IdentityDbContext</code> within a scoped context:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="nf">AllowAdminUserCreationAsync</span><span class="p">()</span>
+ <span class="p">{</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">_adminExists</span><span class="p">)</span>
+     <span class="p">{</span>
+         <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+     <span class="p">}</span>
+     <span class="k">else</span>
+     <span class="p">{</span>
+         <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">scope</span> <span class="p">=</span> <span class="n">_serviceProvider</span><span class="p">.</span><span class="nf">CreateScope</span><span class="p">())</span>
+         <span class="p">{</span>
+             <span class="kt">var</span> <span class="n">dbContext</span> <span class="p">=</span> <span class="n">scope</span><span class="p">.</span><span class="n">ServiceProvider</span><span class="p">.</span><span class="n">GetRequiredService</span><span class="p">&lt;</span><span class="n">IdentityDbContext</span><span class="p">&gt;();</span>
+
+             <span class="k">if</span> <span class="p">(</span><span class="k">await</span> <span class="n">dbContext</span><span class="p">.</span><span class="n">Users</span><span class="p">.</span><span class="nf">AnyAsync</span><span class="p">(</span><span class="n">user</span> <span class="p">=&gt;</span> <span class="n">user</span><span class="p">.</span><span class="n">IsAdmin</span><span class="p">))</span>
+             <span class="p">{</span>
+                 <span class="c1">// There are already admin users so disable admin creation</span>
+                 <span class="n">_adminExists</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+                 <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+             <span class="p">}</span>
+
+             <span class="c1">// There are no admin users so enable admin creation</span>
+             <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+         <span class="p">}</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Re-launch the application and now you shouldn’t get an exception.</li>
+</ol>
+
+<p><img src="/img/aspdotnetcore/confplanner/5/69.png" alt="" /></p>
+
+<p><img src="/img/aspdotnetcore/confplanner/5/70.png" alt="" /></p>
+<h1 id="adding-admin-section">Adding admin section</h1>
+
+<h2 id="add-an-admin-policy">Add an admin policy</h2>
+<blockquote>
+  <p>Rather than looking up the user in the database each time the app needs to check if a user is an admin, we can read this information once when the user logs in, then store it as an additional claim on the user identity. We also need to add an authoriation policy to the app that corresponds to this claim, that we can use to protect resources we only want admins to be able to access.</p>
+</blockquote>
+
+<ol>
+  <li>Add a new class <code class="language-plaintext highlighter-rouge">ClaimsPrincipalFactory</code> in the <code class="language-plaintext highlighter-rouge">/Areas/Identity</code> folder and add code that adds an admin claim for users who are admins:
+    <div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">public</span> <span class="k">class</span> <span class="nc">ClaimsPrincipalFactory</span> <span class="p">:</span> <span class="n">UserClaimsPrincipalFactory</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;</span>
+ <span class="p">{</span>
+     <span class="k">private</span> <span class="k">readonly</span> <span class="n">IApiClient</span> <span class="n">_apiClient</span><span class="p">;</span>
+
+     <span class="k">public</span> <span class="nf">ClaimsPrincipalFactory</span><span class="p">(</span><span class="n">IApiClient</span> <span class="n">apiClient</span><span class="p">,</span> <span class="n">UserManager</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;</span> <span class="n">userManager</span><span class="p">,</span> <span class="n">IOptions</span><span class="p">&lt;</span><span class="n">IdentityOptions</span><span class="p">&gt;</span> <span class="n">optionsAccessor</span><span class="p">)</span>
+         <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">userManager</span><span class="p">,</span> <span class="n">optionsAccessor</span><span class="p">)</span>
+     <span class="p">{</span>
+         <span class="n">_apiClient</span> <span class="p">=</span> <span class="n">apiClient</span><span class="p">;</span>
+     <span class="p">}</span>
+
+     <span class="k">protected</span> <span class="k">override</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">ClaimsIdentity</span><span class="p">&gt;</span> <span class="nf">GenerateClaimsAsync</span><span class="p">(</span><span class="n">User</span> <span class="n">user</span><span class="p">)</span>
+     <span class="p">{</span>
+         <span class="kt">var</span> <span class="n">identity</span> <span class="p">=</span> <span class="k">await</span> <span class="k">base</span><span class="p">.</span><span class="nf">GenerateClaimsAsync</span><span class="p">(</span><span class="n">user</span><span class="p">);</span>
+
+         <span class="k">if</span> <span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">IsAdmin</span><span class="p">)</span>
+         <span class="p">{</span>
+             <span class="n">identity</span><span class="p">.</span><span class="nf">MakeAdmin</span><span class="p">();</span>
+         <span class="p">}</span>
+
+         <span class="k">return</span> <span class="n">identity</span><span class="p">;</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Add a new class file <code class="language-plaintext highlighter-rouge">AuthHelpers.cs</code> in the <code class="language-plaintext highlighter-rouge">Infrastructure</code> folder and add the following helper methods for reading and setting the admin claim:
+    <div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">namespace</span> <span class="nn">FrontEnd.Infrastructure</span>
+ <span class="p">{</span>
+     <span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">AuthConstants</span>
+     <span class="p">{</span>
+         <span class="k">public</span> <span class="k">static</span> <span class="k">readonly</span> <span class="kt">string</span> <span class="n">IsAdmin</span> <span class="p">=</span> <span class="k">nameof</span><span class="p">(</span><span class="n">IsAdmin</span><span class="p">);</span>
+         <span class="k">public</span> <span class="k">static</span> <span class="k">readonly</span> <span class="kt">string</span> <span class="n">IsAttendee</span> <span class="p">=</span> <span class="k">nameof</span><span class="p">(</span><span class="n">IsAttendee</span><span class="p">);</span>
+         <span class="k">public</span> <span class="k">static</span> <span class="k">readonly</span> <span class="kt">string</span> <span class="n">TrueValue</span> <span class="p">=</span> <span class="s">"true"</span><span class="p">;</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+
+ <span class="k">namespace</span> <span class="nn">System.Security.Claims</span>
+ <span class="p">{</span>
+     <span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">AuthnHelpers</span>
+     <span class="p">{</span>
+         <span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="nf">IsAdmin</span><span class="p">(</span><span class="k">this</span> <span class="n">ClaimsPrincipal</span> <span class="n">principal</span><span class="p">)</span> <span class="p">=&gt;</span>
+             <span class="n">principal</span><span class="p">.</span><span class="nf">HasClaim</span><span class="p">(</span><span class="n">AuthConstants</span><span class="p">.</span><span class="n">IsAdmin</span><span class="p">,</span> <span class="n">AuthConstants</span><span class="p">.</span><span class="n">TrueValue</span><span class="p">);</span>
+
+         <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">MakeAdmin</span><span class="p">(</span><span class="k">this</span> <span class="n">ClaimsPrincipal</span> <span class="n">principal</span><span class="p">)</span> <span class="p">=&gt;</span>
+             <span class="n">principal</span><span class="p">.</span><span class="n">Identities</span><span class="p">.</span><span class="nf">First</span><span class="p">().</span><span class="nf">MakeAdmin</span><span class="p">();</span>
+
+         <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">MakeAdmin</span><span class="p">(</span><span class="k">this</span> <span class="n">ClaimsIdentity</span> <span class="n">identity</span><span class="p">)</span> <span class="p">=&gt;</span>
+             <span class="n">identity</span><span class="p">.</span><span class="nf">AddClaim</span><span class="p">(</span><span class="k">new</span> <span class="nf">Claim</span><span class="p">(</span><span class="n">AuthConstants</span><span class="p">.</span><span class="n">IsAdmin</span><span class="p">,</span> <span class="n">AuthConstants</span><span class="p">.</span><span class="n">TrueValue</span><span class="p">));</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+
+ <span class="k">namespace</span> <span class="nn">Microsoft.Extensions.DependencyInjection</span>
+ <span class="p">{</span>
+     <span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">AuthzHelpers</span>
+     <span class="p">{</span>
+         <span class="k">public</span> <span class="k">static</span> <span class="n">AuthorizationPolicyBuilder</span> <span class="nf">RequireIsAdminClaim</span><span class="p">(</span><span class="k">this</span> <span class="n">AuthorizationPolicyBuilder</span> <span class="n">builder</span><span class="p">)</span> <span class="p">=&gt;</span>
+             <span class="n">builder</span><span class="p">.</span><span class="nf">RequireClaim</span><span class="p">(</span><span class="n">AuthConstants</span><span class="p">.</span><span class="n">IsAdmin</span><span class="p">,</span> <span class="n">AuthConstants</span><span class="p">.</span><span class="n">TrueValue</span><span class="p">);</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Register the custom <code class="language-plaintext highlighter-rouge">UserClaimsPrincipalFactory&lt;User&gt;</code> in the <code class="language-plaintext highlighter-rouge">IdentityHostingStartup</code> class:</p>
+
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">services</span><span class="p">.</span><span class="n">AddDefaultIdentity</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;()</span>
+         <span class="p">.</span><span class="n">AddEntityFrameworkStores</span><span class="p">&lt;</span><span class="n">IdentityDbContext</span><span class="p">&gt;()</span>
+         <span class="p">.</span><span class="n">AddClaimsPrincipalFactory</span><span class="p">&lt;</span><span class="n">ClaimsPrincipalFactory</span><span class="p">&gt;();</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Add authorization services with an admin policy to the <code class="language-plaintext highlighter-rouge">ConfigureServices()</code> method of <code class="language-plaintext highlighter-rouge">Startup.cs</code> that uses the just-added helper methods to require the admin claim:</p>
+
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">services</span><span class="p">.</span><span class="nf">AddAuthorization</span><span class="p">(</span><span class="n">options</span> <span class="p">=&gt;</span>
+ <span class="p">{</span>
+     <span class="n">options</span><span class="p">.</span><span class="nf">AddPolicy</span><span class="p">(</span><span class="s">"Admin"</span><span class="p">,</span> <span class="n">policy</span> <span class="p">=&gt;</span>
+     <span class="p">{</span>
+         <span class="n">policy</span><span class="p">.</span><span class="nf">RequireAuthenticatedUser</span><span class="p">()</span>
+               <span class="p">.</span><span class="nf">RequireIsAdminClaim</span><span class="p">();</span>
+     <span class="p">});</span>
+ <span class="p">});</span>
+</code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/5/71.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Add <code class="language-plaintext highlighter-rouge">System.Security.Claims</code> to the list of usings in <code class="language-plaintext highlighter-rouge">Index.cshtml.cs</code>, then use the helper method in the page model to determine if the current user is an administrator.</p>
+
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">public</span> <span class="kt">bool</span> <span class="n">IsAdmin</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+ <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">OnGetAsync</span><span class="p">(</span><span class="kt">int</span> <span class="n">day</span> <span class="p">=</span> <span class="m">0</span><span class="p">)</span>
+ <span class="p">{</span>
+     <span class="n">IsAdmin</span> <span class="p">=</span> <span class="n">User</span><span class="p">.</span><span class="nf">IsAdmin</span><span class="p">();</span>
+
+     <span class="c1">// More stuff here</span>
+     <span class="c1">// ...</span>
+ <span class="p">}</span>
+</code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/5/72.png" alt="" /></p>
+  </li>
+  <li>
+    <p>On the <code class="language-plaintext highlighter-rouge">Index</code> razor page, add an edit link to allow admins to edit sessions. You’ll add the following code directly after the session <code class="language-plaintext highlighter-rouge">foreach</code> loop:</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-footer"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-inline mb-0"</span><span class="nt">&gt;</span>
+     @foreach (var speaker in session.Speakers)
+     {
+         <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-inline-item"</span><span class="nt">&gt;</span>
+             <span class="nt">&lt;a</span> <span class="na">asp-page=</span><span class="s">"Speaker"</span> <span class="na">asp-route-id=</span><span class="s">"@speaker.Id"</span><span class="nt">&gt;</span>@speaker.Name<span class="nt">&lt;/a&gt;</span>
+         <span class="nt">&lt;/li&gt;</span>
+     }
+     @if (Model.IsAdmin)
+     {
+         <span class="nt">&lt;li&gt;</span>
+             <span class="nt">&lt;a</span> <span class="na">asp-page=</span><span class="s">"/Admin/EditSession"</span> <span class="na">asp-route-id=</span><span class="s">"@session.Id"</span> <span class="na">class=</span><span class="s">"btn btn-default btn-xs"</span><span class="nt">&gt;</span>Edit<span class="nt">&lt;/a&gt;</span>
+         <span class="nt">&lt;/li&gt;</span>
+     }
+     <span class="nt">&lt;/ul&gt;</span>
+ <span class="nt">&lt;/div&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Add a nested <code class="language-plaintext highlighter-rouge">Admin</code> folder to the <code class="language-plaintext highlighter-rouge">Pages</code> folder then add an <code class="language-plaintext highlighter-rouge">EditSession.cshtml</code> razor page and <code class="language-plaintext highlighter-rouge">EditSession.cshtml.cs</code> page model to it.</li>
+  <li>
+    <p>Next, we’ll protect pages in the <code class="language-plaintext highlighter-rouge">Admin</code> folder with an Admin policy by making the following change to the <code class="language-plaintext highlighter-rouge">services.AddRazorPages()</code> call in <code class="language-plaintext highlighter-rouge">Startup.ConfigureServices</code>:</p>
+
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">services</span><span class="p">.</span><span class="nf">AddRazorPages</span><span class="p">(</span><span class="n">options</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="n">options</span><span class="p">.</span><span class="n">Conventions</span><span class="p">.</span><span class="nf">AuthorizeFolder</span><span class="p">(</span><span class="s">"/Admin"</span><span class="p">,</span> <span class="s">"Admin"</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/5/75.png" alt="" /></p>
+  </li>
+</ol>
+
+<h2 id="add-a-form-for-editing-a-session">Add a form for editing a session</h2>
+<ol>
+  <li>
+    <p>Change <code class="language-plaintext highlighter-rouge">EditSession.cshtml.cs</code> to render the session in the edit form:</p>
+
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">EditSessionModel</span> <span class="p">:</span> <span class="n">PageModel</span>
+<span class="p">{</span>
+   <span class="k">private</span> <span class="k">readonly</span> <span class="n">IApiClient</span> <span class="n">_apiClient</span><span class="p">;</span>
+
+   <span class="k">public</span> <span class="nf">EditSessionModel</span><span class="p">(</span><span class="n">IApiClient</span> <span class="n">apiClient</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">_apiClient</span> <span class="p">=</span> <span class="n">apiClient</span><span class="p">;</span>
+   <span class="p">}</span>
+
+   <span class="k">public</span> <span class="n">Session</span> <span class="n">Session</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+   <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">OnGetAsync</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="kt">var</span> <span class="n">session</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_apiClient</span><span class="p">.</span><span class="nf">GetSessionAsync</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+      <span class="n">Session</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Session</span>
+      <span class="p">{</span>
+          <span class="n">Id</span> <span class="p">=</span> <span class="n">session</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span>
+          <span class="n">TrackId</span> <span class="p">=</span> <span class="n">session</span><span class="p">.</span><span class="n">TrackId</span><span class="p">,</span>
+          <span class="n">Title</span> <span class="p">=</span> <span class="n">session</span><span class="p">.</span><span class="n">Title</span><span class="p">,</span>
+          <span class="n">Abstract</span> <span class="p">=</span> <span class="n">session</span><span class="p">.</span><span class="n">Abstract</span><span class="p">,</span>
+          <span class="n">StartTime</span> <span class="p">=</span> <span class="n">session</span><span class="p">.</span><span class="n">StartTime</span><span class="p">,</span>
+          <span class="n">EndTime</span> <span class="p">=</span> <span class="n">session</span><span class="p">.</span><span class="n">EndTime</span>
+      <span class="p">};</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Add the “{id}” route to the <code class="language-plaintext highlighter-rouge">EditSession.cshtml</code> form:</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code> @page "{id}"
+ @model EditSessionModel
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Add the following edit form to <code class="language-plaintext highlighter-rouge">EditSession.cshtml</code>:</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h3&gt;</span>Edit Session<span class="nt">&lt;/h3&gt;</span>
+
+<span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">class=</span><span class="s">"form-horizontal"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">asp-validation-summary=</span><span class="s">"All"</span> <span class="na">class=</span><span class="s">"text-danger"</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">asp-for=</span><span class="s">"Session.Id"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">asp-for=</span><span class="s">"Session.TrackId"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">asp-for=</span><span class="s">"Session.Title"</span> <span class="na">class=</span><span class="s">"col-md-2 control-label"</span><span class="nt">&gt;&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-10"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">asp-for=</span><span class="s">"Session.Title"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">asp-validation-for=</span><span class="s">"Session.Title"</span> <span class="na">class=</span><span class="s">"text-danger"</span><span class="nt">&gt;&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">asp-for=</span><span class="s">"Session.Abstract"</span> <span class="na">class=</span><span class="s">"col-md-2 control-label"</span><span class="nt">&gt;&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-10"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;textarea</span> <span class="na">asp-for=</span><span class="s">"Session.Abstract"</span> <span class="na">class=</span><span class="s">"form-control"</span><span class="nt">&gt;&lt;/textarea&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">asp-validation-for=</span><span class="s">"Session.Abstract"</span> <span class="na">class=</span><span class="s">"text-danger"</span><span class="nt">&gt;&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">asp-for=</span><span class="s">"Session.StartTime"</span> <span class="na">class=</span><span class="s">"col-md-2 control-label"</span><span class="nt">&gt;&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-10"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">asp-for=</span><span class="s">"Session.StartTime"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">asp-validation-for=</span><span class="s">"Session.StartTime"</span> <span class="na">class=</span><span class="s">"text-danger"</span><span class="nt">&gt;&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">asp-for=</span><span class="s">"Session.EndTime"</span> <span class="na">class=</span><span class="s">"col-md-2 control-label"</span><span class="nt">&gt;&lt;/label&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-10"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">asp-for=</span><span class="s">"Session.EndTime"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">asp-validation-for=</span><span class="s">"Session.EndTime"</span> <span class="na">class=</span><span class="s">"text-danger"</span><span class="nt">&gt;&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-offset-2 col-md-10"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Save<span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">asp-page-handler=</span><span class="s">"Delete"</span> <span class="na">class=</span><span class="s">"btn btn-danger"</span><span class="nt">&gt;</span>Delete<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+
+@section Scripts {
+     <span class="nt">&lt;partial</span> <span class="na">name=</span><span class="s">"_ValidationScriptsPartial"</span> <span class="nt">/&gt;</span>
+}
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Add code to handle the <code class="language-plaintext highlighter-rouge">Save</code> and <code class="language-plaintext highlighter-rouge">Delete</code> button actions in <code class="language-plaintext highlighter-rouge">EditSession.cshtml.cs</code>:</p>
+
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="nf">OnPostAsync</span><span class="p">()</span>
+<span class="p">{</span>
+   <span class="k">if</span> <span class="p">(!</span><span class="n">ModelState</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="k">return</span> <span class="nf">Page</span><span class="p">();</span>
+   <span class="p">}</span>
+
+   <span class="k">await</span> <span class="n">_apiClient</span><span class="p">.</span><span class="nf">PutSessionAsync</span><span class="p">(</span><span class="n">Session</span><span class="p">);</span>
+
+   <span class="k">return</span> <span class="nf">Page</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="nf">OnPostDeleteAsync</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="kt">var</span> <span class="n">session</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_apiClient</span><span class="p">.</span><span class="nf">GetSessionAsync</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+
+   <span class="k">if</span> <span class="p">(</span><span class="n">session</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="k">await</span> <span class="n">_apiClient</span><span class="p">.</span><span class="nf">DeleteSessionAsync</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+   <span class="p">}</span>
+
+   <span class="k">return</span> <span class="nf">Page</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Add a <code class="language-plaintext highlighter-rouge">[BindProperty]</code> attribute to the <code class="language-plaintext highlighter-rouge">Session</code> property in <code class="language-plaintext highlighter-rouge">EditSession.cshtml.cs</code> to make sure properties get bound
+on form posts:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="n">BindProperty</span><span class="p">]</span>
+<span class="k">public</span> <span class="n">Session</span> <span class="n">Session</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>The form should be fully functional.</li>
+</ol>
+
+<h2 id="add-success-message-to-form-post-and-use-the-prg-pattern">Add success message to form post and use the <a href="https://en.wikipedia.org/wiki/Post/Redirect/Get">PRG</a> pattern</h2>
+
+<ol>
+  <li>
+    <p>Add a <code class="language-plaintext highlighter-rouge">TempData</code> decorated <code class="language-plaintext highlighter-rouge">Message</code> property and a <code class="language-plaintext highlighter-rouge">ShowMessage</code> property to <code class="language-plaintext highlighter-rouge">EditSession.cshtml.cs</code>:</p>
+
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="n">TempData</span><span class="p">]</span>
+<span class="k">public</span> <span class="kt">string</span> <span class="n">Message</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="k">public</span> <span class="kt">bool</span> <span class="n">ShowMessage</span> <span class="p">=&gt;</span> <span class="p">!</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">Message</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Set a success message in the <code class="language-plaintext highlighter-rouge">OnPostAsync</code> and <code class="language-plaintext highlighter-rouge">OnPostDeleteAsync</code> methods and change <code class="language-plaintext highlighter-rouge">Page()</code> to <code class="language-plaintext highlighter-rouge">RedirectToPage()</code>:</p>
+
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="nf">OnPostAsync</span><span class="p">()</span>
+<span class="p">{</span>
+   <span class="k">if</span> <span class="p">(!</span><span class="n">ModelState</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="k">return</span> <span class="nf">Page</span><span class="p">();</span>
+   <span class="p">}</span>
+      
+   <span class="n">Message</span> <span class="p">=</span> <span class="s">"Session updated successfully!"</span><span class="p">;</span>
+
+   <span class="k">await</span> <span class="n">_apiClient</span><span class="p">.</span><span class="nf">PutSessionAsync</span><span class="p">(</span><span class="n">Session</span><span class="p">);</span>
+
+   <span class="k">return</span> <span class="nf">RedirectToPage</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="nf">OnPostDeleteAsync</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="kt">var</span> <span class="n">session</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_apiClient</span><span class="p">.</span><span class="nf">GetSessionAsync</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+
+   <span class="k">if</span> <span class="p">(</span><span class="n">session</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+   <span class="p">{</span>
+       <span class="k">await</span> <span class="n">_apiClient</span><span class="p">.</span><span class="nf">DeleteSessionAsync</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+   <span class="p">}</span>
+      
+   <span class="n">Message</span> <span class="p">=</span> <span class="s">"Session deleted successfully!"</span><span class="p">;</span>
+
+   <span class="k">return</span> <span class="nf">RedirectToPage</span><span class="p">(</span><span class="s">"/Index"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/5/77.png" alt="" /></p>
+  </li>
+</ol>
+
+<p><img src="/img/aspdotnetcore/confplanner/5/78.png" alt="" /></p>
+<ol>
+  <li>
+    <p>Update <code class="language-plaintext highlighter-rouge">EditSession.cshtml</code> to show the message after posting. Add the following code directly below the <code class="language-plaintext highlighter-rouge">&lt;h3&gt;</code> tag at the top:</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@if (Model.ShowMessage)
+{
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert alert-success alert-dismissible"</span> <span class="na">role=</span><span class="s">"alert"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"close"</span> <span class="na">data-dismiss=</span><span class="s">"alert"</span> <span class="na">aria-label=</span><span class="s">"Close"</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/span&gt;</span>   <span class="nt">&lt;/button&gt;</span>
+        @Model.Message
+    <span class="nt">&lt;/div&gt;</span>
+}
+</code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/5/79.png" alt="" /></p>
+    <blockquote>
+      <p>TempData-backed properties also flow across pages, so we can update the Index page to show the message value too, e.g. when the session is deleted</p>
+    </blockquote>
+  </li>
+  <li>Copy the message display markup from the top of the <code class="language-plaintext highlighter-rouge">EditSession.cshtml</code> file to the top of the <code class="language-plaintext highlighter-rouge">Index.cshtml</code> file:
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code> @if (Model.ShowMessage)
+ {
+     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert alert-success alert-dismissible"</span> <span class="na">role=</span><span class="s">"alert"</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"close"</span> <span class="na">data-dismiss=</span><span class="s">"alert"</span> <span class="na">aria-label=</span><span class="s">"Close"</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/span&gt;</span>   <span class="nt">&lt;/button&gt;</span>
+         @Model.Message
+     <span class="nt">&lt;/div&gt;</span>
+ }
+</code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/5/80.png" alt="" /></p>
+  </li>
+  <li>Copy the properties from the <code class="language-plaintext highlighter-rouge">EditSession.cshtml.cs</code> Page Model class file to the <code class="language-plaintext highlighter-rouge">Index.cshtml.cs</code> Page Model too:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="p">[</span><span class="n">TempData</span><span class="p">]</span>
+<span class="k">public</span> <span class="kt">string</span> <span class="n">Message</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="k">public</span> <span class="kt">bool</span> <span class="n">ShowMessage</span> <span class="p">=&gt;</span> <span class="p">!</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">Message</span><span class="p">);</span>
+</code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/5/81.png" alt="" /></p>
+  </li>
+  <li>Rebuild and run the app then delete a session and observe it redirect to the home page and display the success message</li>
+</ol>
+
+<h2 id="create-a-tag-helper-for-setting-authorization-requirements-for-ui-elements">Create a Tag Helper for setting authorization requirements for UI elements</h2>
+<p>We’re currently using <code class="language-plaintext highlighter-rouge">if</code> blocks to determine whether to show parts of the UI based the user’s auth policies. We can clean up this code by creating a custom <a href="https://docs.microsoft.com/en-us/aspnet/core/mvc/views/tag-helpers/intro">Tag Helper</a>.</p>
+
+<ol>
+  <li>Create a new folder called <code class="language-plaintext highlighter-rouge">TagHelpers</code> in the root of the <em>FrontEnd</em> project. Right-click on the folder, select <em>Add</em> / <em>New Item…</em> / <em>Razor Tag Helper</em>. Name the Tag Helper <code class="language-plaintext highlighter-rouge">AuthzTagHelper.cs</code>.</li>
+  <li>Modify the <code class="language-plaintext highlighter-rouge">HtmlTargetElement</code> attribute to bind to all elements with an “authz” attribute:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="nf">HtmlTargetElement</span><span class="p">(</span><span class="s">"*"</span><span class="p">,</span> <span class="n">Attributes</span> <span class="p">=</span> <span class="s">"authz"</span><span class="p">)]</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Add an additional <code class="language-plaintext highlighter-rouge">HtmlTargetElement</code> attribute to bind to all elements with an “authz-policy” attribute:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="nf">HtmlTargetElement</span><span class="p">(</span><span class="s">"*"</span><span class="p">,</span> <span class="n">Attributes</span> <span class="p">=</span> <span class="s">"authz-policy"</span><span class="p">)]</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Inject the <code class="language-plaintext highlighter-rouge">AuthorizationService</code> as shown:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="k">readonly</span> <span class="n">IAuthorizationService</span> <span class="n">_authzService</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="nf">AuthzTagHelper</span><span class="p">(</span><span class="n">IAuthorizationService</span> <span class="n">authzService</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">_authzService</span> <span class="p">=</span> <span class="n">authzService</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Add the following properties which will represent the <code class="language-plaintext highlighter-rouge">auth</code> and <code class="language-plaintext highlighter-rouge">authz</code> attributes we’re binding to:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="nf">HtmlAttributeName</span><span class="p">(</span><span class="s">"authz"</span><span class="p">)]</span>
+<span class="k">public</span> <span class="kt">bool</span> <span class="n">RequiresAuthentication</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="p">[</span><span class="nf">HtmlAttributeName</span><span class="p">(</span><span class="s">"authz-policy"</span><span class="p">)]</span>
+<span class="k">public</span> <span class="kt">string</span> <span class="n">RequiredPolicy</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Add a <code class="language-plaintext highlighter-rouge">ViewContext</code> property:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="n">ViewContext</span><span class="p">]</span>
+<span class="k">public</span> <span class="n">ViewContext</span> <span class="n">ViewContext</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Mark the <code class="language-plaintext highlighter-rouge">ProcessAsync</code> method as <code class="language-plaintext highlighter-rouge">async</code>.</li>
+  <li>Add the following code to the <code class="language-plaintext highlighter-rouge">ProcessAsync</code> method:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">override</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">ProcessAsync</span><span class="p">(</span><span class="n">TagHelperContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">TagHelperOutput</span> <span class="n">output</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">requiresAuth</span> <span class="p">=</span> <span class="n">RequiresAuthentication</span> <span class="p">||</span> <span class="p">!</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">RequiredPolicy</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">showOutput</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">AllAttributes</span><span class="p">[</span><span class="s">"authz"</span><span class="p">]</span> <span class="p">!=</span> <span class="k">null</span> <span class="p">&amp;&amp;</span> <span class="p">!</span><span class="n">requiresAuth</span> <span class="p">&amp;&amp;</span> <span class="p">!</span><span class="n">ViewContext</span><span class="p">.</span><span class="n">HttpContext</span><span class="p">.</span><span class="n">User</span><span class="p">.</span><span class="n">Identity</span><span class="p">.</span><span class="n">IsAuthenticated</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// authz="false" &amp; user isn't authenticated</span>
+        <span class="n">showOutput</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(!</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">RequiredPolicy</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="c1">// authz-policy="foo" &amp; user is authorized for policy "foo"</span>
+        <span class="kt">var</span> <span class="n">authorized</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+        <span class="kt">var</span> <span class="n">cachedResult</span> <span class="p">=</span> <span class="n">ViewContext</span><span class="p">.</span><span class="n">ViewData</span><span class="p">[</span><span class="s">"AuthPolicy."</span> <span class="p">+</span> <span class="n">RequiredPolicy</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">cachedResult</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">authorized</span> <span class="p">=</span> <span class="p">(</span><span class="kt">bool</span><span class="p">)</span><span class="n">cachedResult</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">authResult</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_authzService</span><span class="p">.</span><span class="nf">AuthorizeAsync</span><span class="p">(</span><span class="n">ViewContext</span><span class="p">.</span><span class="n">HttpContext</span><span class="p">.</span><span class="n">User</span><span class="p">,</span> <span class="n">RequiredPolicy</span><span class="p">);</span>
+            <span class="n">authorized</span> <span class="p">=</span> <span class="n">authResult</span><span class="p">.</span><span class="n">Succeeded</span><span class="p">;</span>
+            <span class="n">ViewContext</span><span class="p">.</span><span class="n">ViewData</span><span class="p">[</span><span class="s">"AuthPolicy."</span> <span class="p">+</span> <span class="n">RequiredPolicy</span><span class="p">]</span> <span class="p">=</span> <span class="n">authorized</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">showOutput</span> <span class="p">=</span> <span class="n">authorized</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">requiresAuth</span> <span class="p">&amp;&amp;</span> <span class="n">ViewContext</span><span class="p">.</span><span class="n">HttpContext</span><span class="p">.</span><span class="n">User</span><span class="p">.</span><span class="n">Identity</span><span class="p">.</span><span class="n">IsAuthenticated</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// authz="true" &amp; user is authenticated</span>
+        <span class="n">showOutput</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(!</span><span class="n">showOutput</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">output</span><span class="p">.</span><span class="nf">SuppressOutput</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Register the new Tag Helper in the <code class="language-plaintext highlighter-rouge">_ViewImports.cshtml</code> file:
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@namespace FrontEnd.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, FrontEnd
+</code></pre></div>    </div>
+  </li>
+  <li>We can now update the <code class="language-plaintext highlighter-rouge">Index.cshtml</code> page to replace the <code class="language-plaintext highlighter-rouge">if</code> block which controls the Edit button’s display with declarative code using our new Tag Helper. Remove the <code class="language-plaintext highlighter-rouge">if</code> block and add <code class="language-plaintext highlighter-rouge">authz="true</code> to the <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code> which displays the edit button:
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-footer"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-inline mb-0"</span><span class="nt">&gt;</span>
+     @foreach (var speaker in session.Speakers)
+     {
+         <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-inline-item"</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;a</span> <span class="na">asp-page=</span><span class="s">"Speaker"</span> <span class="na">asp-route-id=</span><span class="s">"@speaker.Id"</span><span class="nt">&gt;</span>@speaker.Name<span class="nt">&lt;/a&gt;</span>
+         <span class="nt">&lt;/li&gt;</span>
+     }
+     <span class="nt">&lt;/ul&gt;</span>
+     <span class="nt">&lt;a</span> <span class="na">authz-policy=</span><span class="s">"Admin"</span> <span class="na">asp-page=</span><span class="s">"/Admin/EditSession"</span> <span class="na">asp-route-id=</span><span class="s">"@session.Id"</span> <span class="na">class=</span><span class="s">"btn btn-default btn-xs"</span><span class="nt">&gt;</span>Edit<span class="nt">&lt;/a&gt;</span>
+ <span class="nt">&lt;/div&gt;</span>
+</code></pre></div>    </div>
+    <p><img src="/img/aspdotnetcore/confplanner/5/83.png" alt="" /> 
+ <img src="/img/aspdotnetcore/confplanner/5/85.png" alt="" /> 
+ <img src="/img/aspdotnetcore/confplanner/5/86.png" alt="" />
+ <img src="/img/aspdotnetcore/confplanner/5/87.png" alt="" />
+ <img src="/img/aspdotnetcore/confplanner/5/88.png" alt="" />
+ <img src="/img/aspdotnetcore/confplanner/5/89.png" alt="" />
+ <img src="/img/aspdotnetcore/confplanner/5/90.png" alt="" />
+ <img src="/img/aspdotnetcore/confplanner/5/91.png" alt="" />
+ <img src="/img/aspdotnetcore/confplanner/5/92.png" alt="" /></p>
+  </li>
+</ol>
+
+<hr />
+<h2 id="sessions">Sessions</h2>
+
+<p>This is series of articles on Building Conf planner app with Asp.net Core:</p>
+
+<ul>
+  <li><a href="/blog/CreateBackEndAPIproject" target="_blank">1 - Build the back-end API with basic EF model</a></li>
+  <li><a href="/blog/BuildoutBackEndandRefactor" target="_blank">2 - Finish the back-end API and EF model, refactor into view modelsl</a></li>
+  <li><a href="/blog/Addfront-endrenderagendasetupfront-endmodels" target="_blank">3 - Add front-end, render agenda, set up front-end models</a></li>
+  <li><a href="/blog/Addauthfeatures" target="_blank">4 - Add authentication, add admin policy, allow editing sessions, users can sign-in with Identity, custom auth tag helper</a></li>
+  <li><a href="/blog/Addpersonalagenda" target="_blank">5 - Add user association and personal agenda</a></li>
+  <li><a href="/blog/ProductionReadinessandDeployment" target="_blank">6 - Deployment, Azure and other production environments, configuring environments, diagnostics</a></li>
+  <li><a href="/blog/Challenges" target="_blank">7 - Challenges</a></li>
+  <li><a href="/blog/SPAFrontEnd" target="_blank">8 - SPA front-end </a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/Addfront-endrenderagendasetupfront-endmodels" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/Addpersonalagenda" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

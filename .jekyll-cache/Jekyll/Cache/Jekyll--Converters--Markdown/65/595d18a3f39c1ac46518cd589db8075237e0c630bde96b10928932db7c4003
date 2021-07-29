@@ -1,0 +1,355 @@
+I"MP<h2 id="introduction">Introduction</h2>
+
+<p>In this article, we will create a multilanguage translator using Blazor and the Translate Text Azure Cognitive Service. This translator will be able to translate between all the languages supported by the Translate Text API. Currently, the Translate Text API supports more than 60 languages for translation. The application will accept the text to translate and the target language as the input and returns the translated text and the detected language for the input text as the output.</p>
+
+<p>Take a look at the output shown below.</p>
+
+<p><img src="/img/azure/11/output.gif" alt="image info" /></p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+  <li>Install the latest .NET Core 3.1 SDK from https://dotnet.microsoft.com/download/dotnet-core/3.1</li>
+  <li>Install the latest version of Visual Studio 2019 from https://visualstudio.microsoft.com/downloads/</li>
+  <li>An Azure subscription account. You can create a free Azure account  at https://azure.microsoft.com/en-in/free/</li>
+</ul>
+
+<h2 id="source-code">Source Code</h2>
+<p>You can get the source code from <a href="https://github.com/girishgodage/Blazor-Translator-Azure-Cognitive-Services">GitHub</a>.</p>
+
+<h2 id="create-the-azure-translator-text-cognitive-services-resource">Create the Azure Translator Text Cognitive Services resource</h2>
+
+<p>Log in to the Azure portal and search for the cognitive services in the search bar and click on the result. Refer to the image shown below.</p>
+
+<p><img src="/img/azure/9/SearchCognitive.png" alt="image info" /></p>
+
+<p>On the next screen, click on the Add button. It will open the cognitive services marketplace page. Search for the Translator Text in the search bar and click on the search result. It will open the Translator Text API page. Click on the Create button to create a new Translator Text resource. Refer to the image shown below.</p>
+
+<p><img src="/img/azure/11/CreateTranslatorService.png" alt="image info" /></p>
+
+<p>On the Create page, fill in the details as indicated below.</p>
+
+<ul>
+  <li><strong>Name</strong>: Give a unique name for your resource.</li>
+  <li><strong>Subscription</strong>: Select the subscription type from the dropdown.</li>
+  <li><strong>Pricing tier</strong>: Select the pricing tier as per your choice.</li>
+  <li><strong>Resource group</strong>: Select an existing resource group or create a new one.</li>
+</ul>
+
+<p>Click on the Create button. Refer to the image shown below.</p>
+
+<p><img src="/img/azure/11/CreateTranslatorService_1.png" alt="image info" /></p>
+
+<p><img src="/img/azure/11/CreateTranslatorService_2.png" alt="image info" /></p>
+
+<p>After your resource is successfully deployed, click on the “Go to resource” button. You can see the Key and the endpoint for the newly created Computer Vision resource. Refer to the image shown below.</p>
+
+<p><img src="/img/azure/11/TranslatorKeyNEndPoint.png" alt="image info" /></p>
+
+<p>Make a note of the <strong>key</strong>, we will be using this in the latter part of this article to request the translations from the Translator Text API. The values are masked here for privacy.</p>
+
+<h2 id="create-a-server-side-blazor-application">Create a Server-Side Blazor Application</h2>
+
+<p>Open Visual Studio 2019, click on “Create a new project”. Select “Blazor App” and click on the “Next” button. Refer to the image shown below.</p>
+
+<p><img src="/img/azure/10/Create_BlazorApp.png" alt="image info" /></p>
+
+<p>On the next window, put the project name as <span style="color:yellow;background-color:black;">BlazorTranslator</span> and click on the “Create” button. The next window will ask you to select the type of Blazor app. Select <span style="color:yellow;background-color:black;">Blazor Server App </span> and click on the Create button to create a new server-side Blazor application. Refer to the image shown below.</p>
+
+<p><img src="/img/azure/10/Create_BlazorApp_1.png" alt="image info" /></p>
+
+<h2 id="create-the-models">Create the Models</h2>
+
+<p>Right-click on the <span style="color:yellow;background-color:black;">BlazorTranslator</span> project and select Add » New Folder. Name the folder as Models. Again, right-click on the Models folder and select Add » Class to add a new class file. Put the name of your class as <span style="color:yellow;background-color:black;">LanguageDetails.cs</span> and click Add.</p>
+
+<p>Open <span style="color:yellow;background-color:black;">LanguageDetails.cs</span> and put the following code inside it.</p>
+
+<pre><code class="language-code"> namespace BlazorTranslator.Models
+{
+    public class LanguageDetails
+    {
+        public string Name { get; set; }
+        public string NativeName { get; set; }
+        public string Dir { get; set; }
+    }
+}
+
+</code></pre>
+
+<p>Similarly, add a new class file <span style="color:yellow;background-color:black;">TestResult.cs </span> and put the following code inside it.</p>
+
+<pre><code class="language-code"> using System;
+namespace BlazorTranslator.Models
+{
+    public class TextResult
+    {
+        public string Text { get; set; }
+        public string Script { get; set; }
+    }
+}
+
+</code></pre>
+
+<p>Add a new class file Translation.cs and put the following code inside it.</p>
+
+<pre><code class="language-code">
+    namespace BlazorTranslator.Models
+    {
+        public class Translation
+        {
+            public string Text { get; set; }
+            public TextResult Transliteration { get; set; }
+            public string To { get; set; }
+        }
+    }
+
+</code></pre>
+
+<p>Create a class file <span style="color:yellow;background-color:black;">DetectedLanguage.cs</span> and put the following code inside it.</p>
+
+<pre><code class="language-code">    namespace BlazorTranslator.Models
+    {
+        public class DetectedLanguage
+        {
+            public string Language { get; set; }
+            public float Score { get; set; }
+        }
+    }
+
+</code></pre>
+
+<p>Create a class file <span style="color:yellow;background-color:black;">TranslationResult.cs</span> and put the following code inside it.</p>
+
+<pre><code class="language-code">
+    namespace BlazorTranslator.Models
+    {
+        public class TranslationResult
+        {
+            public DetectedLanguage DetectedLanguage { get; set; }
+            public TextResult SourceText { get; set; }
+            public Translation[] Translations { get; set; }
+        }
+    }
+
+</code></pre>
+
+<p>Finally, create the class file <span style="color:yellow;background-color:black;">AvailableLanguage.cs</span> and put the following code inside it.</p>
+
+<pre><code class="language-code">    using System.Collections.Generic;
+    namespace BlazorTranslator.Models
+    {
+        public class AvailableLanguage
+        {
+        public Dictionary&lt;string, LanguageDetails&gt; Translation { get; set; }
+        }
+    }
+
+</code></pre>
+
+<h2 id="create-the-translation-service">Create the Translation service</h2>
+
+<p>Right-click on the <span style="color:yellow;background-color:black;">BlazorTranslator/Data</span> folder and select Add » Class to add a new class file. Put the name of the file as <span style="color:yellow;background-color:black;">TranslationService.cs</span> and click on Add. Open <span style="color:yellow;background-color:black;">TranslationService.cs</span> file and put the following code inside it.</p>
+
+<pre><code class="language-code">
+    using BlazorTranslator.Models;
+    using Newtonsoft.Json;
+    using System;
+    using System.Net.Http;
+    using System.Text;
+    using System.Threading.Tasks;
+    namespace BlazorTranslator.Data
+    {
+        
+        public class TranslationService
+        {
+            private static readonly string location = "eastus";
+            
+            public async Task&lt;TranslationResult[]&gt; GetTranslatation(string textToTranslate, string targetLanguage)
+            {
+                string subscriptionKey = "52937b775b454b65830ac59e5dc22d9d";
+                string apiEndpoint = "https://api.cognitive.microsofttranslator.com/";
+                string route = $"/translate?api-version=3.0&amp;to={targetLanguage}";
+                string requestUri = apiEndpoint + route;
+                TranslationResult[] translationResult = await TranslateText(subscriptionKey, requestUri, textToTranslate);
+                return translationResult;
+            }
+            async Task&lt;TranslationResult[]&gt; TranslateText(string subscriptionKey, string requestUri, string inputText)
+            {
+                object[] body = new object[] { new { Text = inputText } };
+                var requestBody = JsonConvert.SerializeObject(body);
+                using (var client = new HttpClient())
+                using (var request = new HttpRequestMessage())
+                {
+                    request.Method = HttpMethod.Post;
+                    request.RequestUri = new Uri(requestUri);
+                    request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+                    request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
+                    request.Headers.Add("Ocp-Apim-Subscription-Region", location);
+                    HttpResponseMessage response = await client.SendAsync(request).ConfigureAwait(false);
+                    string result = await response.Content.ReadAsStringAsync();
+                    TranslationResult[] deserializedOutput = JsonConvert.DeserializeObject&lt;TranslationResult[]&gt;(result);
+                    return deserializedOutput;
+                }
+            }
+            public async Task&lt;AvailableLanguage&gt; GetAvailableLanguages()
+            {
+                string endpoint = "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&amp;scope=translation";
+                var client = new HttpClient();
+                using (var request = new HttpRequestMessage())
+                {
+                    request.Method = HttpMethod.Get;
+                    request.RequestUri = new Uri(endpoint);
+                    var response = await client.SendAsync(request).ConfigureAwait(false);
+                    string result = await response.Content.ReadAsStringAsync();
+                    AvailableLanguage deserializedOutput = JsonConvert.DeserializeObject&lt;AvailableLanguage&gt;(result);
+                    return deserializedOutput;
+                }
+            }
+        }
+    }
+
+</code></pre>
+
+<p>We have defined a <span style="color:yellow;background-color:black;">GetTranslatation</span> method which will accept two parameters – the text to translate and the target language. We will set the subscription key for the Azure Translator Text cognitive service and define a variable for the global endpoint for Translator Text. The request URL contains the API endpoint along with the target language.</p>
+
+<p>Inside the <span style="color:yellow;background-color:black;">TranslateText</span> method, we will create a new <span style="color:yellow;background-color:black;">HttpRequestMessage</span>. This HTTP request is a Post request. We will pass the subscription key in the header of the request. The Translator Text API returns a JSON object, which will be deserialized to an array of type <span style="color:yellow;background-color:black;">TranslationResult</span>. The output contains the translated text as well as the language detected for the input text.</p>
+
+<p>The <span style="color:yellow;background-color:black;">GetAvailableLanguages</span> method will return the list of all the language supported by the Translate Text API. We will set the request URI and create a <span style="color:yellow;background-color:black;">HttpRequestMessage</span> which will be a Get request. This request URL will return a JSON object which will be deserialized to an object of type <span style="color:yellow;background-color:black;">AvailableLanguage</span>.</p>
+
+<h2 id="configuring-the-service">Configuring the Service</h2>
+
+<p>To make the service available to the components we need to configure it on the server-side app. Open the <span style="color:yellow;background-color:black;">Startup.cs file</span>. Add the following line inside the <span style="color:yellow;background-color:black;">ConfigureServices</span> method of Startup class.</p>
+
+<pre><code class="language-code">
+    services.AddSingleton&lt;TranslationService&gt;();
+
+</code></pre>
+
+<h2 id="creating-the-blazor-ui-component">Creating the Blazor UI Component</h2>
+
+<p>We will add the Razor page in the <span style="color:yellow;background-color:black;">BlazorTranslator/Pages</span> folder. By default, we have “Counter” and “Fetch Data” pages provided in our application. These default pages will not affect our application but for the sake of this tutorial, we will delete fetchdata and counter pages from <span style="color:yellow;background-color:black;">BlazorTranslator/Pages</span> folder.</p>
+
+<p>Right-click on the <span style="color:yellow;background-color:black;">BlazorTranslator/Pages folder</span> and then select Add » New Item. An “Add New Item” dialog box will open, select “Visual C#” from the left panel, then select “Razor Component” from the templates panel, put the name as <span style="color:yellow;background-color:black;">Translator.razor</span>. Click Add. Refer to the image shown below.</p>
+
+<p><img src="/img/azure/11/AddBlazorComponet.png" alt="image info" /></p>
+
+<p>We will add a code-behind file for this razor page to keep the code and presentation separate. This will allow easy maintenance for the application.  Right-click on the <span style="color:yellow;background-color:black;">BlazorComputerVision/Pages</span> folder and then select Add » Class. Name the class as <span style="color:yellow;background-color:black;">OCR.razor.cs</span>. The Blazor framework is smart enough to tag this class file to the razor file. Refer to the image shown below.</p>
+
+<p><img src="/img/azure/10/OCRStuct.png" alt="image info" /></p>
+
+<p>Open the Translator.razor file and add the following code at the top.</p>
+
+<pre><code class="language-code">
+    @page "/translator"
+    @using BlazorTranslator.Models
+    @using BlazorTranslator.Data
+    @inject TranslationService translationService
+
+</code></pre>
+
+<p>We have defined the route for this component. We are also injecting the <span style="color:yellow;background-color:black;">TranslationService</span> in this component.</p>
+
+<p>Now we will add the following HTML code in this file.</p>
+
+<pre><code class="language-code">
+    &lt;h3&gt;Multilanguage translator using Microsoft Translator API Cognitive Service&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="col-md-6"&gt;
+            &lt;select class="form-control" @bind="inputLanguage"&gt;
+                &lt;option value=""&gt;-- Select input language --&lt;/option&gt;
+                @foreach (KeyValuePair&lt;string, LanguageDetails&gt; lang in LanguageList)
+                {
+                    &lt;option value="@lang.Key"&gt;@lang.Value.Name&lt;/option&gt;
+                }
+            &lt;/select&gt;
+            &lt;textarea placeholder="Enter text to translate" class="form-control translation-box" rows="5" @bind="@inputText"&gt;&lt;/textarea&gt;
+        &lt;/div&gt;
+        &lt;div class="col-md-6"&gt;
+            &lt;select class="form-control" @onchange="SelectLanguage"&gt;
+                &lt;option value=""&gt;-- Select target language --&lt;/option&gt;
+                @foreach (KeyValuePair&lt;string, LanguageDetails&gt; lang in LanguageList)
+                {
+                    &lt;option value="@lang.Key"&gt;@lang.Value.Name&lt;/option&gt;
+                }
+            &lt;/select&gt;
+            &lt;textarea disabled class="form-control translation-box" rows="5"&gt;@outputText&lt;/textarea&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="text-center"&gt;
+        &lt;button class="btn btn-primary btn-lg" @onclick="Translate"&gt;Translate&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>We have defined two dropdown lists one each for input language and the target language. The Azure Translate Text API will detect the input language and we will use that value to populate the dropdown for input language. We have also defined two text areas for the input and the translated text.</p>
+
+<p>Finally, add the following code in the <span style="color:yellow;background-color:black;">@code </span> section of the page.</p>
+
+<pre><code class="language-code">    @code {
+        private TranslationResult[] translations;
+        private AvailableLanguage availableLanguages;
+        private string outputLanguage { get; set; }
+        private string inputLanguage { get; set; }
+        string inputText { get; set; }
+        string outputText { get; set; }
+        private Dictionary&lt;string, LanguageDetails&gt;
+        LanguageList = new Dictionary&lt;string, LanguageDetails&gt;();
+
+        protected override async Task OnInitializedAsync()
+        {
+            availableLanguages = await translationService.GetAvailableLanguages();
+            LanguageList = availableLanguages.Translation;
+        }
+        private void SelectLanguage(ChangeEventArgs langEvent)
+        {
+            this.outputLanguage = langEvent.Value.ToString();
+        }
+        private async Task Translate()
+        {
+            if (!string.IsNullOrEmpty(outputLanguage))
+            {
+                translations = await translationService.GetTranslatation(this.inputText, this.outputLanguage);
+                outputText = translations[0].Translations[0].Text;
+                inputLanguage = translations[0].DetectedLanguage.Language;
+            }
+        }
+    }
+</code></pre>
+
+<p>We are invoking the <span style="color:yellow;background-color:black;">GetAvailableLanguages</span> method from our service inside the <span style="color:yellow;background-color:black;">OnInitializedAsync</span>. This <span style="color:yellow;background-color:black;">OnInitializedAsync</span> is a lifecycle method that will be invoked upon component initialization. This will make sure that the language dropdown will be populated as the page loads.</p>
+
+<p>The <span style="color:yellow;background-color:black;">SelectLanguage</span> method will be set the <span style="color:yellow;background-color:black;">outputLanguage</span> for the translation. The Translate method will invoke the <span style="color:yellow;background-color:black;">GetTranslatation</span> method from the service. We will set the <span style="color:yellow;background-color:black;">outputText</span> and the language detected for the <span style="color:yellow;background-color:black;">inputLanguage</span> as returned from the service.</p>
+
+<h2 id="add-styling-for-the-translator-component">Add styling for the Translator component</h2>
+<p>Navigate to BlazorTranslator\wwwroot\css\site.css file and put the following style definition inside it.</p>
+
+<pre><code class="language-code">
+    .translation-box {
+        margin: 15px 0px;
+    }
+</code></pre>
+
+<h2 id="adding-link-to-navigation-menu">Adding Link to Navigation menu</h2>
+<p>The last step is to add the link of our Translator component in the navigation menu. Open BlazorTranslator/Shared/NavMenu.razor file and add the following code into it.</p>
+
+<pre><code class="language-code">
+    &lt;li class="nav-item px-3"&gt;
+    &lt;NavLink class="nav-link" href="translator"&gt;
+        &lt;span class="oi oi-list-rich" aria-hidden="true"&gt;&lt;/span&gt; Translator
+    &lt;/NavLink&gt;
+    &lt;/li&gt;
+</code></pre>
+<p>Remove the navigation links for Counter and Fetch-data components as they are not required for this application.</p>
+
+<h2 id="execution-demo">Execution Demo</h2>
+
+<p>Press F5 to launch the application. Click on the Translator button on the nav menu in the left. You can perform the multilanguage translation as shown in the image below.</p>
+
+<p><img src="/img/azure/11/output.gif" alt="image info" /></p>
+
+<h2 id="summary">Summary</h2>
+
+<p>We have created a Translator Text Cognitive Services resource on Azure. We have used the Translator Text API to create a multilanguage translator using Blazor. This translator supports more than 60 languages for translation. We fetched the list of supported languages for translation from the global API endpoint for Translator Text.</p>
+
+<p>Get the Source code from <a href="https://github.com/girishgodage/Blazor-Translator-Azure-Cognitive-Services">GitHub</a> and play around to get a better understanding.</p>
+:ET

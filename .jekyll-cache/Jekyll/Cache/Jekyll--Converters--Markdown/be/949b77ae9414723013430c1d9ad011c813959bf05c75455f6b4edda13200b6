@@ -1,0 +1,107 @@
+I"�<p>In this article, we talk about Service Discovery. Why is it important in microservices architecture, and how to set it up for your application?</p>
+
+<h3 id="what-you-will-learn">What you will learn</h3>
+<ul>
+  <li>What is Service Discovery?</li>
+  <li>Why is Service Discovery important in microservices architecture?</li>
+  <li>How do you implement Service Discovery?</li>
+  <li>What is Eureka?</li>
+</ul>
+
+<h3 id="what-is-service-discovery">What Is Service Discovery?</h3>
+
+<p>When we talk about a microservices architecture, we refer to a system with a large number of small services, working with each other:</p>
+
+<p><img src="/images/Capture-051-02.png" alt="image info" /></p>
+
+<p>An important feature of such architectures is <strong>auto-scaling</strong>. The number of instances of a microservice varies based on the system load. Initially, you could have 5 instances of Microservice5, which go up later to 20, 100 or 1000!</p>
+
+<p>Two important questions arise</p>
+<ul>
+  <li>How does Microservice4 know how many instances of Microservice5 are present, at a given time?</li>
+  <li>In addition, how does it distribute the load among all of them?</li>
+</ul>
+
+<h4 id="hardcoding-urls-is-not-an-option">Hardcoding URLs is not an Option</h4>
+
+<p>One way to do this is to hard-code the URLs of Microservice5 instances, within Microservice4. That means every time the number of Microservice5 instances changes (with addition of new, or deletion of existing), the configuration within Microservice4 needs to change. This is a big headache.</p>
+
+<h4 id="using-service-discovery">Using Service Discovery</h4>
+
+<p>Ideally, you want to change the number of instances of Microservice5 based on the load, and make Microservice4 dynamically aware of the instances.</p>
+
+<p>That’s where the concept of <strong>Service Discovery</strong> comes into the picture.</p>
+
+<p>The component that provides this service is generally called a <strong>naming server</strong>.</p>
+
+<p>All instances of all the microservices, register themselves with the naming server. Whenever a microservice wants to talk to another microservices, it asks the naming server about the available instances.</p>
+
+<p>In the example above, whenever a new instance of Microservice5 is launched, it registers with the naming server. When Microservice4 wants to talk to Microservice5, it asks the naming server - what are the available instances of Microservice5?</p>
+
+<h3 id="another-example-of-service-discovery">Another example of Service Discovery</h3>
+
+<p>Using Service Discovery to identify microservice instances, helps keep things dynamic.</p>
+
+<p>Let’s say there is a service for currency conversion:</p>
+
+<p><img src="/images/Capture-051-03.png" alt="image info" /></p>
+
+<p>The CurrencyConversionService (CCS) talks to the ForexService. At a certain point of time, these services have two instances each:</p>
+
+<p><img src="/images/Capture-051-04.png" alt="image info" /></p>
+
+<p>However, there could be a time where there are 5 instances of the ForexService (FS):</p>
+
+<p><img src="/images/Capture-051-05.png" alt="image info" /></p>
+
+<p>In that case, CurrencyConversionService needs to make sure that the load is evenly distributed across all the ForexService instances. It needs to answer two important questions:</p>
+
+<ul>
+  <li>How does the CurrencyConversionService know how many instances of ForexService are active?</li>
+  <li>How does the CurrencyConversionService distribute the load among those active instances?</li>
+</ul>
+
+<p><img src="/images/Capture-051-06.png" alt="image info" /></p>
+
+<p>When a CCS microservice instance is brought up, it registers with Eureka. The same thing happens with all instances of FS as well.</p>
+
+<p>When a CCS instance needs to talk to a FS instance, it requests information from Eureka. Eureka would then return the URLS of the two FS instances active at that time. Here, the application makes use of a client-side load distribution framework called Ribbon. Ribbon ensures proper load distribution over the two FS instances, for events coming in from the CCS.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>In this video, we talked about microservice Service Discovery. We saw that microservices need to be able to communicate with each other. The number of instances of a microservice changes over time, depending on the load. Service Discovery enables us to dynamically adapt to new instances and distribute load among microservices.</p>
+
+<hr />
+<h3 id="cloud-and-microservices-terminology">Cloud and Microservices Terminology</h3>
+
+<p>This is the article in a series of six articles on terminology used with cloud and microservices:</p>
+<ul>
+  <li><a href="/blog/service-discovery-in-microservices" target="_blank">1 - Microservices Architectures - What is Service Discovery?</a></li>
+  <li><a href="/blog/introduction-to-centralized-configuration-with-spring-cloud-config-server" target="_blank">2 - Microservices Architectures - Centralized Configuration and Config Server</a></li>
+  <li><a href="/blog/introduction-to-api-gateways-with-microservices" target="_blank">3 - Microservices Architectures - API Gateways</a></li>
+  <li><a href="/blog/introduction-to-centralized-logging-with-microservices" target="_blank">4 - Microservices Architectures - Importance of Centralized Logging</a></li>
+  <li><a href="/blog/introduction-to-auto-scaling-or-dynamic-scaling-in-cloud" target="_blank">5 - Microservices Architectures - Introduction to Auto Scaling</a></li>
+  <li><a href="/blog/fault-tolerance-in-microservices" target="_blank">6 - Microservices Architectures - What is Fault Tolerance?</a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/service-discovery-in-microservices" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/introduction-to-centralized-configuration-with-spring-cloud-config-server" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

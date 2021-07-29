@@ -1,0 +1,281 @@
+I"�?<p>In this article, we look to get an introduction to what the Spring framework is, and why it is so widely used.</p>
+
+<h2 id="you-will-learn">You will learn</h2>
+<ul>
+  <li>What is Spring Framework?</li>
+  <li>What are the important problems that Spring Framework solves?</li>
+  <li>How does Spring Framework make building enterprise applications easier?</li>
+  <li>What are important features of Spring Framework?</li>
+  <li>What are important concepts to understand in Spring Framework?</li>
+  <li>Why Is The Spring Framework Important?</li>
+  <li>What are the best practices in using Spring Framework?</li>
+  <li>What are Spring Projects?</li>
+  <li>What are Spring Modules?</li>
+</ul>
+
+<h3 id="what-is-spring">What Is Spring?</h3>
+
+<p>Here’s the description from the Spring web site:</p>
+
+<blockquote>
+  <p>The Spring framework provides comprehensive infrastructural support to develop Java applications.  Spring handles the infrastructure, so you can develop your application.</p>
+</blockquote>
+
+<p>What does this mean?</p>
+
+<p>Let’s look at some of the important features of Spring framework with examples.</p>
+
+<h3 id="writing-loosely-coupled-code">Writing Loosely Coupled Code</h3>
+
+<p>When we write application code, we don’t want it to be tightly coupled.</p>
+
+<h4 id="what-is-tight-coupling">What Is Tight Coupling?</h4>
+
+<p>Tightly coupled code could look like the following:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ComplexAlgorithmImpl</span> <span class="o">{</span>
+		<span class="nc">BubbleSortAlgorithm</span> <span class="n">bubbleSortAlgorithm</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BubbleSortAlgorithm</span><span class="o">();</span>
+		<span class="c1">//...</span>
+	<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">ComplexAlgorithmImpl</code> is tightly coupled to the <code class="language-plaintext highlighter-rouge">BubbleSortAlgorithm</code>.</p>
+
+<p>If you need to change the sort algorithm from <code class="language-plaintext highlighter-rouge">BubbleSortAlgorithm</code> to <code class="language-plaintext highlighter-rouge">QuickSortAlgorithm</code>, then the code of <code class="language-plaintext highlighter-rouge">ComplexAlgorithmImpl</code> needs to change as well.</p>
+
+<h4 id="what-is-loose-coupling">What Is Loose Coupling?</h4>
+
+<p>Is there a better way to manage change, than what we see over here?  turns out there is - use an interface named <code class="language-plaintext highlighter-rouge">SortAlgorithm</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">SortAlgorithm</span> <span class="o">{</span>
+		<span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">sort</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">numbers</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BubbleSortAlgorithm</span> <span class="kd">implements</span> <span class="nc">SortAlgorithm</span> <span class="o">{</span>
+		<span class="c1">//...</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">class</span> <span class="nc">QuickSortAlgorithm</span> <span class="kd">implements</span> <span class="nc">SortAlgorithm</span> <span class="o">{</span>
+		<span class="c1">//...</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Component</span>
+	<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ComplexAlgorithmImpl</span> <span class="o">{</span>
+		<span class="nd">@Autowired</span>
+		<span class="kd">private</span> <span class="nc">SortAlgorithm</span> <span class="n">sortAlgorithm</span><span class="o">;</span>
+		<span class="c1">//...</span>
+	<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">ComplexAlgorithmImpl</code> is no longer tightly coupled to any particular sort algorithm.</p>
+
+<p>Whenever you need to instantiate a <code class="language-plaintext highlighter-rouge">ComplexAlgorithmImpl</code>, this is how  you proceed:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	<span class="nc">ComplexAlgorithmImpl</span> <span class="n">binarySearch</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ComplexAlgorithmImpl</span><span class="o">(</span><span class="k">new</span> <span class="nc">QuickSortAlgorithm</span><span class="o">());</span>
+
+</code></pre></div></div>
+
+<p>The exact sort algorithm to be used can be passed as an input parameter to the constructor.</p>
+
+<h4 id="what-does-the-spring-framework-do">What does the Spring Framework do?</h4>
+
+<p>Where does the Spring framework come into the picture?</p>
+
+<p>Look at the snippet below:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	<span class="nd">@Component</span>
+	<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ComplexAlgorithmImpl</span> <span class="o">{</span>
+		<span class="nd">@Autowired</span>
+		<span class="kd">private</span> <span class="nc">SortAlgorithm</span> <span class="n">sortAlgorithm</span><span class="o">;</span>
+		<span class="c1">//...</span>
+	<span class="o">}</span>
+
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	<span class="nd">@Component</span>
+	<span class="kd">public</span> <span class="kd">class</span> <span class="nc">QuickSortAlgorithm</span> <span class="kd">implements</span> <span class="nc">SortAlgorithm</span> <span class="o">{</span>
+		<span class="c1">//...</span>
+	<span class="o">}</span>
+</code></pre></div></div>
+
+<p>We defined the components and identified their dependencies by using Spring specific annotations.</p>
+
+<p>We are defining <code class="language-plaintext highlighter-rouge">ComplexAlgorithmImpl</code> as a spring bean, and <code class="language-plaintext highlighter-rouge">SortAlgorithm</code> as a dependency. We are also providing an implementation of <code class="language-plaintext highlighter-rouge">SortAlgorithm</code> - <code class="language-plaintext highlighter-rouge">QuickSortAlgorithm</code> as a spring bean.</p>
+
+<p>When Spring Framework looks at this code, it create a QuickSortAlgorithm bean and injects it into ComplexAlgorithmImpl bean. This is called <strong>Dependency Injection</strong>.</p>
+
+<h3 id="advantages-of-loose-coupling">Advantages Of Loose Coupling</h3>
+
+<p>If you want to switch to a new <code class="language-plaintext highlighter-rouge">SortAlgorithm</code> implementation, then loose coupling makes it very easy to make the change. The code inside <code class="language-plaintext highlighter-rouge">ComplexAlgorithmImpl</code> does not need to change at all.</p>
+
+<p>You need to remove the <code class="language-plaintext highlighter-rouge">@Component</code> annotation from <code class="language-plaintext highlighter-rouge">QuickSortAlgorithm</code> and place it at the definition of the new implementation.</p>
+
+<p>The other thing you are now able to do is write a unit test for <code class="language-plaintext highlighter-rouge">ComplexAlgorithmImpl</code>, without worrying about the sort logic.</p>
+
+<p>You can create a stub algorithm that implements <code class="language-plaintext highlighter-rouge">SortAlgorithm</code>, and use that in tests for <code class="language-plaintext highlighter-rouge">ComplexAlgorithmImpl</code>. The test would now focus on the business logic of the component, not its dependencies.</p>
+
+<h3 id="another-example-of-loose-coupling">Another Example Of Loose Coupling</h3>
+
+<p>Have a look at the following code:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	<span class="nd">@RestController</span>
+	<span class="kd">public</span> <span class="kd">class</span> <span class="nc">WelcomeController</span> <span class="o">{</span>
+		<span class="kd">private</span> <span class="nc">WelcomeService</span> <span class="n">service</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WelcomeService</span><span class="o">();</span>
+		
+		<span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"/welcome"</span><span class="o">)</span>
+		<span class="kd">public</span> <span class="nc">String</span> <span class="nf">welcome</span><span class="o">()</span> <span class="o">{</span>
+			<span class="k">return</span> <span class="n">service</span><span class="o">.</span><span class="na">retrieveWelcomeMessage</span><span class="o">();</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">WelcomeController</code> is directly creating an instance of the <code class="language-plaintext highlighter-rouge">WelcomeService</code>, and so it is tightly coupled to it.</p>
+
+<p>If you were to use the Spring framework to decouple the two, you do something like:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+	<span class="nd">@Component</span>
+	<span class="kd">public</span> <span class="kd">class</span> <span class="nc">WelcomeService</span> <span class="o">{</span>
+		<span class="c1">//...</span>
+	<span class="o">}</span>
+
+	<span class="nd">@RestController</span>
+	<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Welcome</span> <span class="nc">Controller</span> <span class="o">{</span>
+	<span class="o">{</span>
+		<span class="nd">@Autowired</span>
+		<span class="nc">WelcomeService</span> <span class="n">service</span><span class="o">;</span>
+
+		<span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"/welcome"</span><span class="o">)</span>
+		<span class="kd">public</span> <span class="nc">String</span> <span class="nf">welcome</span><span class="o">()</span> <span class="o">{</span>
+			<span class="k">return</span> <span class="n">service</span><span class="o">.</span><span class="na">retrieveWelcomeMessage</span><span class="o">();</span>
+		<span class="o">}</span>		
+	<span class="o">}</span>	
+
+</code></pre></div></div>
+
+<p>Now, Spring auto-wires in the <code class="language-plaintext highlighter-rouge">WelcomeService</code> dependency to the <code class="language-plaintext highlighter-rouge">WelcomeController</code> component. When writing a unit test for this component, we can use a <code class="language-plaintext highlighter-rouge">WelcomeService</code> stub instead of an actual dependency.</p>
+
+<h3 id="solving-other-problems-using-spring">Solving Other Problems Using Spring</h3>
+
+<p>The Spring framework can be used to solve a host of other problems in Java applications.
+Let’s look at a few of them.</p>
+
+<h4 id="reducing-duplication-in-code">Reducing Duplication In Code</h4>
+
+<p>Spring provides a whole range of modules such as:</p>
+
+<ul>
+  <li>SpringMVC</li>
+  <li>SpringJDBC</li>
+  <li>SpringORM</li>
+  <li>SpringAOP</li>
+  <li>SpringJMS</li>
+  <li>SpringTest</li>
+</ul>
+
+<p>All these frameworks make it easy to write your Java code. They bring in a set of abstractions, that reduce boilerplate code.</p>
+
+<h4 id="improving-integration-with-other-frameworks">Improving Integration With Other Frameworks</h4>
+
+<p>Spring does not try to provide solutions for problems that have already been solved. It provides excellent integration with frameworks such as</p>
+<ul>
+  <li>Hibernate for ORM</li>
+  <li>iBatis for object mapping</li>
+  <li>JUnit and Mockito for unit testing</li>
+</ul>
+
+<h3 id="what-does-the-spring-framework-do-1">What Does The Spring Framework Do?</h3>
+
+<p>The Spring framework facilitates the following:</p>
+
+<ul>
+  <li>Allows the programmers to focus on the business logic. The key feature is dependency management, and it provides excellent interfacing with external frameworks, by adding layers on top of them.</li>
+  <li>Enables testability, as it enables us to write decoupled code.</li>
+  <li>Allows for inversion of control, through dependency injection. A component is no longer tied to specific dependencies. Instead, the dependency is injected in from outside, during instantiation of the component. The Spring framework takes care of the actual injection.</li>
+</ul>
+
+<h3 id="best-practices-with-spring">Best Practices With Spring</h3>
+
+<h4 id="use-spring-initializr">Use Spring Initializr</h4>
+
+<p>Spring Initializr is a Spring project generation tool. Visit the following website - start.spring.io:</p>
+
+<p><img src="/images/Capture-081-02.png" alt="image info" /></p>
+
+<p>You only need to provide the Group Id, the Artifact Id, and the framework dependencies of the project. After that, you can generate the project and get started with Spring.</p>
+
+<h4 id="consider-spring-boot">Consider Spring Boot</h4>
+
+<p>Spring Boot makes it very easy to use the Spring framework.</p>
+
+<h4 id="write-unit-tests">Write Unit Tests</h4>
+
+<p>Always make sure you write great unit tests, because Spring makes it easy for you.</p>
+
+<h3 id="challenges-with-spring-framework">Challenges With Spring Framework</h3>
+
+<p>Spring is difficult for a starting programmer to understand. However, once you understand it, you cannot stop using it!</p>
+
+<h3 id="understand-spring-modules">Understand Spring Modules</h3>
+
+<p>Modules in Spring offer specialized functionality which can be used within a Spring application. Popular ones are:</p>
+
+<ul>
+  <li>SpringMVC</li>
+  <li>SpringJDBC</li>
+  <li>SpringORM</li>
+  <li>SpringAOP</li>
+  <li>SpringJMS</li>
+  <li>SpringTest</li>
+</ul>
+
+<h3 id="explore-spring-projects">Explore Spring Projects</h3>
+
+<p>There are a wide variety of projects that have been done, under the umbrella of the Spring Framework. Popular ones include Spring Cloud, and Spring Web Services.</p>
+
+<p>In this article, we had an introductory look at the Spring Framework. We saw that Spring is a Java framework that makes life easy for a programmer. Spring improves the testability of the application code, and also makes it easy to interface it with external frameworks. Spring comes with its own umbrella of projects, and a rich set of modules as well.</p>
+
+<hr />
+<h3 id="spring-framework">Spring Framework</h3>
+
+<p>This is the first article in a series of articles on Spring Framework:</p>
+
+<ul>
+  <li><a href="/blog/introduction-to-the-spring-framework" target="_blank">1 - Introduction To Spring Framework</a></li>
+  <li><a href="/blog/spring-framework-what-is-a-dependency" target="_blank">2 - What Is A Dependency?</a></li>
+  <li><a href="/blog/spring-framework-dependency-injection-inversion-of-control" target="_blank">3 - What Is Dependency Injection?</a></li>
+  <li><a href="/blog/spring-and-spring-boot-what-is-component-scan" target="_blank">4 - What Is Component Scan?</a></li>
+  <li><a href="/blog/spring-framework-architectures-and-modules" target="_blank">5 - Architecture of Spring Framework - Modularity and Spring Modules</a></li>
+  <li><a href="/blog/spring-projects-with-examples" target="_blank">6 - What Are Spring Projects?</a></li>
+  <li><a href="/blog/spring-basics-introduction-to-spring-batch" target="_blank">7 - Introduction To Spring Batch</a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/introduction-to-the-spring-framework" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/spring-framework-what-is-a-dependency" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET

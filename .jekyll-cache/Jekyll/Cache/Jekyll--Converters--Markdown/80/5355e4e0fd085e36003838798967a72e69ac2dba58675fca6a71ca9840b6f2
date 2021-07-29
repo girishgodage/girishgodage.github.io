@@ -1,0 +1,116 @@
+I"�@<h3 id="what-is-database-migration-understanding-needs-and-challenges">What is Database Migration? Understanding Needs and Challenges</h3>
+
+<p>Adopting emerging technologies have helped businesses in leveraging their overall performance. Database Migration is one of those. If you are planning a migration, what are the challenges involved during database migration? What is the need to do it? Let me walk you through the essentialities before performing database migration.</p>
+
+<p><img src="/img/database/1/DBM-Feature.png" alt="image info" /></p>
+
+<p>Applications using database would require updates over time to support new features or fix the scaling problem with the queries. If you are also planning for database migration, let me tell you one thing. Database migration can be one of the easiest tasks if the application size is small. But, for bigger applications, you need to write migrations, which seems a bit tedious.</p>
+
+<p>For instance, Coursera with a then user base of about 1.6 million users migrated the database, from MongoDB to MySQL servers running on Amazon RDS, without any downtime – scheduled or unscheduled. As said by <strong>Frank Chen</strong>, who was involved in the migration process, <strong><em>“We did parallel writes into both MongoDB and MySQL for a time, running a migration script to migrate the old data into MySQL servers. Once this was done, we flipped the switch to read data from both MySQL and MongoDB in order to ensure consistency. We then finally made a switch to read from MySQL as our primary database.”</em></strong></p>
+
+<p>Well, the time to migrate a database depends on the complexity of the database.  Database migration can be considered as part of application modernization. It can be a challenging task to modernize the application as there are many moving parts and you need to understand all of them. Even if you are thorough with your source database engine, if you switch engines you need to know the nitty-gritty of the target database engine. Or rather, need to be an expert in the target database engine.</p>
+
+<p>Some popular database migration service providers allow you to migrate data from the source database to the target database. During the migration process, the service tracks changes that are being made on the source database. This is done so that the two databases remain synced – changes done in the source can be applied to the target database. There is no need for the source and the target database to be of the same engine type.”</p>
+
+<ul>
+  <li><strong>What is Database Migration?</strong></li>
+  <li><strong>Challenges in Database Migration</strong></li>
+  <li><strong>What is the need for Database Migration?</strong></li>
+  <li><strong>How does data migration work?</strong></li>
+  <li><strong>How can We help?</strong></li>
+</ul>
+
+<h2 id="what-is-database-migration">What is database migration?</h2>
+<p>Database migration, in simple words, means moving data from one platform to another. Otherwise, it is a complex, multiphase process, which usually includes assessment, database schema conversion (if you are changing engines), script conversion, data migration, functional testing, performance tuning, and many other steps.</p>
+
+<p>With the rise in popularity of Git, the trend of writing web-based applications using object-relational mapping (ORM) libraries also became well-known. The main objective was: if developers can make changes in code that are easy to roll back using Git, they could also be able to do the same things when it comes to schema changes. Well, any new feature involves code and schema changes. Therefore, many popular frameworks added ORM and database migration (also known as schema migration) as part of their offerings.</p>
+
+<p>But, database migration is a concept that is not restricted to popular web frameworks. There are many other standalone libraries that ease the database migration process.</p>
+
+<p>Migrating databases involves a lot of effort. But, what exactly happens during the database migration? What are the challenges faced while migrating the database? Let’s explore.</p>
+
+<h3 id="challenges-in-database-migration">Challenges in database migration</h3>
+<p>As said, database migration can be a very complex task. The common challenges that are being faced during the migration process are known to many but they often don’t know how to overcome these. Some of the common challenges are as follows:</p>
+
+<h3 id="1-identification-of-various-databases">1. Identification of Various Databases</h3>
+<p>With the passage of time, every company gathers some amount of data. If your company has been operational for a while, there is a possibility that the data is housed in various databases across different levels within the organization. The biggest challenge in migrating the databases is identifying the location of the databases in your environment. Also, after identification, it is a tough task to decide how to normalize and convert the schemas.</p>
+
+<h3 id="2-data-analysis-at-the-earliest">2. Data Analysis at the earliest</h3>
+<p>Sometimes, information can be hidden in obscure places, due to constraints in computer systems. This happens because there aren’t specific fields to hold all elements of the data or users may not be aware of the purpose of the available fields. Consequently, the information transferred during the migration will be incomplete, inaccurate and outdated, often discovered very late in the day, even after the project has been completed. The outcome might not have enough time or the right resources to be able to identify and correct this data. It is better to perform thorough data analysis at the earliest possible occasion, usually when planning and designing the data migration. It can help you in unveiling these hidden errors.</p>
+
+<h3 id="3-devising-a-migration-strategy">3. Devising a migration strategy</h3>
+<p>Database Migration is a strategic process. It is fraught with a lot of risks. Devising a plan for safe, secure and efficient migration of databases is really important for the migration to be successful. Well, for many teams deciding whether to pursue a “big bang” migration – a single step process or to leverage a more methodical, incremental approach called a <strong>“trickle” or “parallel run”</strong> migration.</p>
+
+<p>There are various factors that can influence the migration strategy such as allocated budget, timeline or time constraints, and available human resources to execute the migration.</p>
+
+<p>“According to research, enterprise database migration projects can cost up to $875K and experience more than $250K in cost overruns.”</p>
+
+<p>Financial and time implications can add another layer of complexity to the planning and strategy process.</p>
+
+<h3 id="4-lack-of-integrated-process">4. Lack of Integrated Process</h3>
+<p>A typical process of data migration involves different people using myriad technologies. For instance, the use of spreadsheets to document data, which are usually prone to human errors and are difficult to be translated doing data analysis or performing data transformations. The use of various technologies can sometimes lead to failure in the transfer of data and its design between the analysis, development, testing and implementation phases. Sometimes things get lost in translation which eventually increases the cost and wastes a lot of time. For this, organizations should look to utilize the platform at its full potential. It should be able to successfully link the critical inputs and outputs from each of the stages to help in reducing the error and save time and money.</p>
+
+<h3 id="5-data-cleaning-and-coding">5. Data cleaning and coding</h3>
+<p>Data stored in databases might be in different formats that would have come from varied sources. The data coming from various places needs to be cleansed, normalized or transformed. This should be done in such a manner that allows you to analyze it together with data from other sources. In such cases, you might need to adapt to your data model to account for a mix of structured or unstructured data, or for any discrepancies that might occur while moving from one database to another.</p>
+
+<h3 id="6-not-evaluating-final-results-in-a-timely-manner">6. Not evaluating final results in a timely manner</h3>
+<p>This can only happen in the testing stage. The users can see the actual data that will be loaded into the new system at the end of design and development. At this point, the incompatibility of the data in the new system is one of the worst outcomes that can arise. An organization can work without finding a solution to the problem, but speaking frankly this is not the best practice. Early and agile testing phases can be introduced to avoid delays in the project. Further, getting your users involved in evolving the test cases as they see the actual prototypes of the data output.</p>
+
+<h3 id="7-lack-of-collaboration">7. Lack of collaboration</h3>
+<p>As mentioned, data migration involves different people who use different technologies. In some cases, a mix of your employees and some external engineers would work on database migration. It might happen that some of these people may not be in the same location. Working at different locations in silos might impact the overall efficiency, create more data silos and can lead to misinterpretations. While working together, it can be difficult to deal with situations when things go wrong. Most people try to blame rather than resolving issues. Making use of collaborative tools helps the parties involved in the migration in observing the same picture of data as it moves through various project stages, leaving little or no room for assumptions and misunderstandings.</p>
+
+<h3 id="8-emphasize-on-data-analytics">8. Emphasize on data analytics</h3>
+<p>A data migration project is a challenging and high-risk task. It would be better to introduce data experts in your migration projects right from the start. This will ensure they make sense of disparate data sources and guiding the data transformation that would be appropriate for the audience who will be using it in the target system.</p>
+
+<p>It makes sense to seek experts but it is usually applied to the management and technical aspects of data migration. However, these experts, who are usually hidden in business don’t appear until late in the day. Also, those with access to data are unable to decode it, while those that are unable to obtain access to it, sometimes because the system is not ready.</p>
+
+<p>Well, if these hurdles are dealt with during the planning stage and are overcome early before the data is transformed or transferred, you can be sure of success.</p>
+
+<h3 id="9-securing-data-and-systems">9. Securing data and systems</h3>
+<p>Data migration isn’t just time-consuming and costly but also has the potential for increased risk without the right protocols and plans in place. In any migration, there is a treasure trove of high-value intellectual property that has the risk of being leaked, lost or otherwise accessed by unauthorized users (either inadvertently or with malicious intent). Any of the instances could mean significant damage to the company reputation, customer churn or even potential lawsuits or punitive fines.</p>
+
+<p>For instance, Twitter migrated from MySQL to its custom database Manhattan. The lesson that they learned,</p>
+
+<p>“Over the years, as we’ve migrated data from MySQL to Manhattan to take advantage of better availability, lower latency, and easier development, we’ve also adopted additional storage engines (LSM, b+tree…) to better serve our traffic patterns. Additionally, we’ve learned from incidents and have started protecting our storage layers from abuse by sending a backpressure signal and enabling query filtering.”</p>
+
+<h2 id="what-is-the-need-for-database-migration">What is the need for Database Migration?</h2>
+<p>A company has a lot of reasons to decide on migrating the database. Let us explore a few:</p>
+
+<h3 id="1-save-costs">1. Save Costs:</h3>
+<p>Companies migrate databases in order to save money. They will move an on-premise database to a cloud database. This helps in saving on infrastructure as well as the manpower and expertise needed to support it.</p>
+
+<h3 id="2-adopting-new-technology">2. Adopting new technology</h3>
+<p>This is the common reason for migration, where the company would shift from an outdated system or a legacy one to a system that is designed for the current day data needs. In this era of big data, adopting new storage techniques is a necessity. For instance, a company might choose to move from a legacy SQL database to a data lake or another flexible system.</p>
+
+<h3 id="3-reduce-redundancy">3. Reduce Redundancy</h3>
+
+<p>Data migration is required in order to move all the data in the company to a single place. This will help in minimizing redundant data. Also, the data stored in one place can be easily accessible by all the divisions of the company. Sometimes, this happens after acquisition when the systems need to be combined. It can also happen when different systems are siloed throughout a company. For instance, different departments in your organization have different databases and there is no sync between them. It becomes really difficult to gain insights from your data when you have different databases that are incompatible.</p>
+
+<h3 id="4-security-fixes">4. Security Fixes</h3>
+<p>As per the research, it is found that the databases are one of the most vulnerable entities to cyberattacks. This is because they are the easiest to get into through networks. Most of the organizations fail to upgrade their databases regularly as they do other systems. This eventually leaves a wide gap for the hackers to enter and reveal or steal information.</p>
+
+<p>Mike Dietrich of Oracle states, “The news is full of reports [about] hacked and cracked systems. It is essential to have the most current security fixes”.</p>
+
+<p>Most of the database upgrades come with security options, which implies that the only way to protect your database is to get it updated on a regular basis. For instance, when Oracle upgraded to 12g version, many users were happy with improved productivity that the features provided. A Senior Oracle Instructor at New Horizon University pointed out that the new version allowed pluggable databases. The organizing categories and individual entries are much easier and quicker. Organizing databases readily implies that the information is fetched easily, thereby, enhancing productivity.</p>
+
+<h2 id="how-does-database-migration-work">How does database migration work?</h2>
+<p>If you are planning to migrate your database, then you should gather all the information required to successfully complete the project. I have segmented the information into three,</p>
+
+<ul>
+  <li>
+    <h4 id="pre-migration-steps">Pre-migration steps</h4>
+    <p>These steps should be taken before actually migrating the database, which will include the basic planning, structuring, understanding the requirements and finalizing the move.</p>
+  </li>
+  <li>
+    <h4 id="migration-steps">Migration Steps</h4>
+    <p>These are the steps that are to be taken while implementing database migration. These steps should be accomplished with proper accountability taking utmost care about data governance roles, risks related to migration, etc.</p>
+  </li>
+  <li>
+    <h4 id="post-migration-steps">Post-migration steps</h4>
+    <p>Once database migration is complete, there might be some issues that would have gone unnoticed during the process. These steps would be necessarily taken to ensure that the migration process gets over in an error-free manner.</p>
+  </li>
+</ul>
+
+<h2 id="how-can-we-help">How can We help?</h2>
+<p>We are a leading tech company, helping businesses leverage their performance by developing custom software solutions for them. We have a team of skilled professionals who can help you in successfully migrating database – starting from the assessment of an existing database to making a roadmap for the database migration. We ensure that the necessary precautionary steps are taken in order to avoid any data loss during the migration of the database. Our team can consult you in the technologies that are best suited for the type of database that your company owns or will require. After successfully migrating the database, we validate the data stored in the database and repair if any discrepancies have been encountered while performing the migration.</p>
+:ET

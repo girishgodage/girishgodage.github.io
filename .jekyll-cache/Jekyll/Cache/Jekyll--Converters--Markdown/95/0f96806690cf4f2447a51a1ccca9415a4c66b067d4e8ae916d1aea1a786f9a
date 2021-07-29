@@ -1,0 +1,496 @@
+I"m�<h3 id="serverless-architecture">Serverless Architecture:</h3>
+
+<p>Read this comprehensive guide to understand Serverless Technology. Get to know what is function-as-a-service, how do serverless architecture works, its benefits &amp; drawbacks and an in-depth case study on PhotoVogue.</p>
+
+<p><img src="/img/awscloud/3/serverless-application-2.png" alt="image info" /></p>
+
+<p>Since the launch of serverless architecture in 2014, it is continuously redining the ways in which we develop and deploy our software products. One such revolutionary story surfaced while I was interacting with one of our client, a startup CTO.</p>
+
+<p>“I recall how hard was it to build a prototype for production system which resulted in launching things even before they were ready, poorly managed continuous integration/development processes and bug fix systems that were created by an intern who left almost a year ago.</p>
+
+<p>But now, due to serverless architecture, <strong>I can spontaneously take up an idea</strong>, transform into a scalable solution and outlast the business decision being taken to develop it!”</p>
+
+<p>Being a startup CTO, this is a huge win when faster time-to-market is a key factor for thriving in the competing economy. However, serverless architecture brings more than just faster time-to-market and you’ll definitely need some help in getting started with this new concept.</p>
+
+<p>Let’s get started and examine how serverless architecture is exactly defined!</p>
+
+<p><strong>Table of Contents</strong></p>
+<ul>
+  <li>What is Serverless Architecture?</li>
+  <li>FaaS: Function as a Service</li>
+  <li>What about microservices?</li>
+  <li>How does the serverless app works?</li>
+  <li>Case Study: Unpacking Serverless Architecture</li>
+  <li>Benefits of serverless</li>
+  <li>Drawbacks of serverless</li>
+  <li>Conclusion</li>
+</ul>
+
+<h3 id="what-is-serverless-architecture">What is Serverless Architecture?</h3>
+<p>“Serverless computation is going to fundamentally not only change the economics of what is back-end computing, but it’s going to be the core of the future of distributed computing.” — <strong>Satya Nadella, CEO Microsoft</strong></p>
+
+<blockquote>
+  <p>Methodology, mindset, culture–the heart of serverless is the approach. But taking the approach to its logical extreme yields technologies. This tech can be called serverless &amp; they should become &gt; the yardstick by which other technologies are measured (i.e., define the spectrum)
+ — Ben Kehoe (@ben11kehoe) December 21, 2018</p>
+</blockquote>
+
+<p>The world is still revolving around servers even with the rise of cloud computing. But it isn’t going to last for a longer time. Cloud apps are shifting into the serverless world and it will indeed bring about dramatic changes in how we create and distribute software and applications.</p>
+
+<p><strong>Once Upon a Server Time</strong></p>
+
+<p>Before the cloud-y days (pun intended), servers were one of the major parts, for developers,  when it came to building an application or software. You needed a budget, good plan, connect the dots, supply the power and provide them with a house.</p>
+
+<p>You’d have to buy or lease the servers, arrange the power, supplies, cooling, cabling- and then construct them all up in a data centre or a colocation facility.</p>
+
+<p>Over time, the colocation facilities started providing extra facilities like racks, power, internet access, etc. But it wasn’t sufficient.</p>
+
+<p>And it still required a lot of detailed planning, a huge amount of time and, most importantly, money. Hence, <strong>a shift was inevitable!</strong></p>
+
+<p><strong>Entering the Cloud</strong>
+Infrastructure-as-a-service (IaaS) came to the rescue!</p>
+
+<p>Since the last 2 years, the way you do computing has been changed drastically. It’s not about ‘Why cloud?’ or ‘How cloud?’ anymore.</p>
+
+<p><strong>IaaS served a perfect recipe for cost improvement</strong>, agility and scalability with added spices of reliability and perfect architecture. (I’m now hungry, maybe!)</p>
+
+<p>With a limitless supply of virtual machines, no upfront cost and a little bit of effort, developers were able to fire up servers with their choice of operating system and they’re off running.</p>
+
+<p>Moreover, <strong>the total cost of ownership has reduced dramatically.</strong></p>
+
+<p>I remember buying servers at the cost of hundreds of dollars for my first company with the investment of a lot of efforts in their maintenance. For the second company, I leased the servers for years but still had to put a considerable amount of efforts.</p>
+
+<p>For the third company, I leased them by month and for my current company, I’ve leased them by the hour, as per demand, on pennies.</p>
+
+<p>But this was from the perspective of architecture and pricing. Anyways, the overall <strong>concept of ‘application/software’</strong> in the cloud is quickly evolving. It’s no longer about building on a web. It’s more about building a distributed system of loosely coupled components in the cloud.</p>
+
+<p>The user apps and back-end data storage are still prevailing, but the processing is increasingly taking place asynchronously outside of an app framework. And hence, the worldview is increasingly around tasks and process flows, not applications and servers.</p>
+
+<p>Moreover, their units of measures for compute cycles is in seconds and minutes, not hours. In short, <strong>apps are becoming serverless</strong></p>
+
+<p><strong>Thinking Serverless</strong>
+For the past 14 months or so, I’ve been working on serverless technology and let me tell you, it’s a very large break from the way we build our software/applications and deploy them.</p>
+
+<p>But the phrase ‘serverless’ doesn’t mean servers are no longer involved. It just means that developers no longer have to worry about managing them. Without thinking much about their maintenance, computing resources get used as services.</p>
+
+<p>Though, serverless can be understood as an amalgamation of two distinct points as follows:</p>
+
+<p><strong>#1. BaaS</strong>: First meaning of serverless could be taken as the <strong>use of 3rd party services/applications (in the cloud) to handle the server-side logic and state</strong>. For example, consider a mobile app with quite a broad ecosystem of cloud-based databases, authentication services, etc.</p>
+
+<p><strong>#2. FaaS</strong>: Second meaning of serverless could be taken as the <strong>use of 3rd party stateless compute containers to handle the server-side logic</strong>. These containers are event-triggered and may last for only one invocation i.e. ephemeral.</p>
+
+<p>In this blog, you would be coming across FaaS quite frequently as it is a newer technology that is bringing about a significant change in the way we think about technical architecture and has been at the core of serverless.</p>
+
+<p>Though, <strong>both BaaS and FaaS are interrelated and overlapping</strong>. For example, Auth0 started off as a BaaS ‘Authentication-as-a-Service’ but with Auth Webtask they have entered the FaaS space.</p>
+
+<h3 id="faas-function-as-a-service">FaaS: Function-as-a-Service</h3>
+<p>FaaS is a new and improved way to build and deploy your server-side software which is more focused around deploying individual functions or operations.</p>
+
+<p>FaaS is where you hear a lot of buzz about serverless comes from. I remember one of our developer saying that <strong>serverless is,in fact, FaaS</strong>. If you are thinking the same, well let me correct you, you’re missing out the complete picture.</p>
+
+<p>Anyways, <strong>let’s get back to what is function-as-a-service about?</strong></p>
+
+<p><strong>FaaS is inherently an event-driven approach</strong>. But let’s understand it better by taking an example.</p>
+
+<p>When we traditionally deploy a server-side application, we start with microservices. Digging deep, we start with host instance, usually a virtual machine instance or a container.</p>
+
+<p>We then deploy our application within the host. If, in case, our host is a VM or a container, then out the application is an operating system process. Usually, our application contains the code for multiple interrelated operations as shown in the below figure.</p>
+
+<p><img src="/img/awscloud/3/traditional-server-side-1.png" alt="image info" /></p>
+
+<p>FaaS changes this model of deployment. We would shift our focus from both host instance and application process of our model to the individual operations or functions that express our application’s logic. We upload those functions, one-by-one, to a vendor-supplied FaaS platform.</p>
+
+<p><img src="/img/awscloud/3/faas-platform-1.png" alt="image info" /></p>
+
+<p>These <strong>functions are not continuously active in a server</strong> process though, sitting idle until they need to be run as they would be in a traditional system.</p>
+
+<p>Instead, the <strong>FaaS platform is configured in such a manner that it responds to a specific event for each operation</strong>. When that event occurs, the vendor platform initiates the function and then calls it to the triggering event.</p>
+
+<p><img src="/img/awscloud/3/faas-function-lifecycle-1-1.png" alt="image info" /></p>
+
+<p>Once the function has finished executing, the <strong>FaaS platform is free to tear it down</strong>. Alternatively, as an optimization, it might keep it for a while until there is another event to be processed.</p>
+
+<p>As I said earlier, this is an event-driven approach. Moreover, FaaS vendor also integrates with various synchronous (HTTP API Gateway)  and asynchronous (hosted message) event sources apart from providing a platform to host and execute the code.</p>
+
+<h3 id="what-about-microservices">What about Microservices?</h3>
+
+<p>I am sure you must be wondering where microservices would go?</p>
+
+<p>They are here to stay! Do not worry!</p>
+
+<p>This approach to digital transformation representing <strong>monolithic —&gt; microservices —&gt; serverless</strong> is driven by the need for greater agility and scalability. To keep up with the competition, the organizations need to update its technology stack quickly, eventually making the software a differentiating factor.</p>
+
+<p>Thus microservices architecture emerged as a key <strong>method of providing development teams with flexibility</strong> and other benefits, such as the ability to deliver applications at warp speed using infrastructure as a service (IaaS) and platform as a service (PaaS) environments.</p>
+
+<p>The concept of this idea was to break the monolithic applications into smaller services each with its own business logic. With a monolithic architecture, a single faulty service can bring down the entire app server and all the services running on it.</p>
+
+<p>While in a microservice each service runs in its own container and thus application architects can develop, manage and scale these services independently.</p>
+
+<p>The microservices can be scaled and deployed separately and written in different programming languages. But a key decision many organizations face when deploying their microservices architecture is choosing between IaaS and PaaS environments.</p>
+
+<p>Microservices involve source code management, a build server, code repository, image repository, cluster manager, container scheduler, dynamic service discovery, software load balancer and a cloud load balancer. It also needs a mature agile and DevOps team to support continuous delivery.</p>
+
+<p>As explained earlier <strong>FaaS takes the step further by making an application more granular to the level of functions and events</strong>. Thus, it is pretty clear that the unit of work is getting smaller and smaller.</p>
+
+<p>We’ve gone from monoliths to microservices to functions. FaaS also improves the shortcoming of PaaS model ie. scaling and friction between development and operations.</p>
+
+<p><strong>Scaling a microservice hosted on PaaS is challenging and complex</strong>. The architecture might have elements written in different programming languages, deployed across multiple clouds and on-premise locations, running on different containers.</p>
+
+<p>When demand increases for the app, all the underlying components have to be coordinated to scale, or you have to be able to identify which individual elements need to scale to address the surge in demand.</p>
+
+<p>Even if you set up your PaaS application to auto-scale you won’t be doing this to the level of individual requests unless you know the traffic trend. So a FaaS application is much more efficient when it comes to costs.</p>
+
+<p><img src="/img/awscloud/3/complexity.png" alt="image info" /></p>
+
+<p>But still, there will be always space for both microservices and FaaS to co-exist because there are certain things which you can’t do with functions at all. For example, an API/Microservice will always be to respond faster since it can keep connections to databases and other things open and ready.</p>
+
+<p>Moreover, one more thing to note here is that by <strong>grouping a bundle of functions together behind an API gateway, you’ve created a microservice</strong>. This shows that both of these can co-exist in a nice way.</p>
+
+<p>This high-level flow remains the same as the traditional approach. The key difference is that, in case of a function, the container is created and destroyed by algorithms used in FaaS platforms and the operational team have no control over that.</p>
+
+<p>And hence, it is here to stay!</p>
+
+<p>But with ease of function and reduced cost comes increasing complexity about which we will discuss later in the blog.</p>
+
+<h3 id="how-does-serverless-app-works">How does Serverless App Works?</h3>
+<p>Serverless might look like a bright sunny day but it isn’t that sunny after all. It has brought about a big difference when it comes to application architecture.</p>
+
+<p>Moreover, <strong>the change with serverless isn’t gradual</strong>, but with a jolt. FaaS drives a totally different type of application architecture through a fundamentally event-driven model, a much more granular form of deployment.</p>
+
+<p>So,</p>
+
+<ul>
+  <li><strong>How does serverless app work in actual?</strong></li>
+  <li><strong>What does serverless architecture look like?</strong></li>
+  <li><strong>How is it different from non-serverless architecture?</strong></li>
+</ul>
+
+<p>These are the questions that we’re going to tackle in this chapter. Let’s dive deeper and understand the serverless architecture and its working.</p>
+
+<h3 id="reference-application">Reference Application</h3>
+<p>Let’s make some assumptions about our reference application.</p>
+
+<ul>
+  <li><strong>It is a multi-user app.</strong></li>
+  <li><strong>It has a mobile-friendly user interface.</strong></li>
+  <li><strong>User management and authentication are required.</strong></li>
+</ul>
+
+<p>We’ve certainly overlooked some other features that you might expect in a basic app, but the point of this exercise is not to actually build an app but to compare a serverless application architecture with a legacy, non-serverless architecture.</p>
+
+<h3 id="monolithic-architecture">Monolithic Architecture</h3>
+<p>Given those requirements, a monolithic architecture for our app might look something like the below figure.</p>
+
+<p><img src="/img/awscloud/3/monolithic-Architecture.png" alt="image info" /></p>
+
+<p>serverless architecture</p>
+
+<ul>
+  <li><strong>A native mobile app for iOS or Android</strong></li>
+  <li><strong>A backend is written in Java &amp; HTML</strong></li>
+  <li><strong>A relational database</strong></li>
+</ul>
+
+<p>In this architecture, a mobile app is responsible for handling app interface and input from the user, but it delegates most actual logic to the backend. From the perspective of code, the mobile app is lightweight and quite simple. It uses HTTP to make a request to multiple API endpoints served by the backend Java application.</p>
+
+<p>Authentication and user management are encapsulated with the Java application code. Moreover, it also interacts with the relational database in order to store user data.</p>
+
+<h3 id="why-change">Why Change?</h3>
+<p>You might say, <strong>“I am perfectly fine with this architecture as it meets all my requirements, so why just not stop there and call it a good?”</strong></p>
+
+<p>To which I will reply that there are multiple challenges and operational pitfalls which I will discuss in this section to which you might relate. Go on!</p>
+
+<p>In building this app, you’ll need to have hands-on expertise in iOS and Java, don’t you? Apart from that, you need to have good experience in configuring, deploying and operating Java application servers as well as a relational database. Moreover, think about their host systems, whether container-based or running directly on virtual or physical hardware?</p>
+
+<p>We’ve not yet touched scalability, security or high availability, all of which are critical aspects of the modern production system. The bottom line- <strong>all these complexities, at one point in time, will become friction</strong> when you’ll be fixing bugs, adding features or trying to rapidly prototype new ideas.</p>
+
+<p>And hence, you need a change!</p>
+
+<h3 id="serverless-architecture-1">Serverless Architecture</h3>
+<p>A serverless architecture of our basic application would look something like the below figure.</p>
+
+<p><img src="/img/awscloud/3/user-flow-768x632.png" alt="image info" /></p>
+
+<p>According to this architecture, while the user interface will still remain a part of the native mobile app, user authentication and management will be handled by a BaaS service like AWS Cognito. These services can be called directly from the mobile app to handle user-facing tasks like registration and authentication.</p>
+
+<p>Moreover, the same BaaS can be used by other backend components to retrieve user information.</p>
+
+<p>With <strong>user management and authentication now handle by BaaS</strong>, the logic which was previously handled by backend Java application is simplified. You can use another amazing serverless component, AWS API Gateway, to handle routing HTTP requests between a mobile app and your backend in a secure and scalable manner.</p>
+
+<p>Each distinct operation can be encapsulated in a function. A FaaS platform such as AWS Lambda takes each of these functions and runs them in parallel ‘containers’ that can be monitored and scaled separately.</p>
+
+<p>Those backend FaaS functions can interact seamlessly with a NoSQL, BaaS database like AWS DynamoDB. In fact, one drastic change is that <strong>we no longer store any session state within our server-side application code</strong>, and instead will persist in NoSQL store.</p>
+
+<p>While it may seem to you like a minute change but believe me, it will help you significantly with scaling.</p>
+
+<h3 id="what-got-better">What got better?</h3>
+<p>You might say, “There is no significant difference in terms of complexity and it has, in fact, more specific application components that our traditional monolithic architecture?”</p>
+
+<p>To which I will reply that <strong>the code we will write now will be solely focused on the logic of the app</strong>. What’s more? Our components are now decoupled and separate, due to that, we can switch them or add new logic very fast without the inherent friction in the non-serverless architecture.</p>
+
+<p><strong>Scaling, high availability and security are the areas all backed up with the serverless architecture</strong>. This means that as the popularity of your app grows, you needn’t worry about renting more powerful servers, or failure in a database or troubleshoot a firewall configuration.</p>
+
+<p>In short, <strong>labour cost has reduced</strong>, as well as, the risk and resources cost of running it. All of its constituent components will scale flexibly. What’s more? If you have an idea for a new feature, our lead time is highly decreased, hence, we can start getting feedback and work on it efficiently.</p>
+
+<p>Pretty exciting, right?</p>
+
+<p>We have more discussion on benefits and drawbacks of serverless. Stay tuned!</p>
+
+<p>Before that, let’s discover more about serverless architecture through serverless architecture case study.</p>
+
+<h3 id="case-study-unpacking-serverless-architecture">Case Study: Unpacking Serverless Architecture</h3>
+
+<p>When PhotoVogue, part of Vogue Italia,  launched in 2011, it was woefully unprepared to become the next rags-to-riches online photography platform.</p>
+
+<p>Within a year, <strong>the popularity increased and skyrocketing traffic overwhelmed the Italy based company</strong>. Moreover, the user experience went lethargic and its pre-existing backend limited the scalability.</p>
+
+<p>Liking it to open-heart surgery, Marco Vigano, Head of Digital Development at Conde Nast Italia, was forced to perform an emergency migration from local server to AWS in just 3 months. <strong>PhotoVogue’s quick switch to the serverless likely saved it from death-by-desertion after its homebrew server failed to keep the pace.</strong></p>
+
+<p>This trend has further decreased time-to-market and delivers the scaling necessary for Uber, Pokemon Go, Airbnb, ‘Clash of Clans’ and numerous other apps characterised by large user bases and real-time data. With more than 4 million apps struggling for attention on Apple’s App Store and Google’s Play Store, developers are turning to serverless for a competitive advantage.</p>
+
+<p>Sounds like a fascinating story? Let’s have a closer look!</p>
+
+<h3 id="about-the-platform">About the Platform</h3>
+
+<p><strong>PhotoVogue is an online photography platform</strong>. It is a part of Vogue Italia which is owned by Conde Nast Italia. It allows upcoming photographers to showcase their work.</p>
+
+<p>It also gives them the chance to have their photos published in Vogue or to be picked up by photography agencies. Each picture is curated by Vogue’s editorial staff and it ensures that highest quality photographs appear online</p>
+
+<p><strong>The Challenge</strong>
+Let’s have a look at some of the key challenges faced by the PhotoVogue team.</p>
+
+<ul>
+  <li>It currently showcases images from around <strong>130,000 photographers</strong> from around the world. This jumbo collection houses more than <strong>400,000 images</strong>, each of which can be <strong>up to 50 MB in size</strong>.</li>
+  <li>With the growing demand, it failed to meet user demands. Moreover, the pre-existing IT infrastructure restricted the growth of the site.</li>
+  <li>The need for providing better and faster experience to both photographers and editorial staff wasn’t feasible at all.</li>
+</ul>
+
+<p><strong>The Solution</strong>
+Vigano identified AWS as the perfect cloud provider that suited the firm requirements which provided them with an amazing solution.</p>
+
+<ul>
+  <li>
+    <p>It offered flexible scalability, ease of maintenance and cost-effectiveness than the pre-existing physical infrastructure that supported PhotoVogue.</p>
+  </li>
+  <li>
+    <p>Presently, it uses Amazon Simple Storage Service (Amazon S3) to store all its photos where its ability to generate a URL enabled users to upload their photos really fast.</p>
+  </li>
+</ul>
+
+<p>But, <strong>do they even use FaaS? Or any serverless components?</strong> Yes!</p>
+
+<p><img src="/img/awscloud/3/Figure-9.png" alt="image info" /></p>
+
+<ul>
+  <li>
+    <p>From Amazon S3, an <strong>AWS Lambda function is triggered,</strong> which automatically <strong>converts the uploaded image into multiple digital formats</strong>– such as GIF, JPEG, PNG and TIFF- and allows the images to be edited by PhotoVogue staff.</p>
+  </li>
+  <li>
+    <p>The Amazon API Gateway is used as the caching layer for the REST API, and Amazon CloudFront facilitates the content delivery network (CDN).</p>
+  </li>
+</ul>
+
+<p><strong>The Benefits</strong>
+“With Amazon API Gateway and AWS Lambda, the user experience is up to 90% faster. That’s for both photographers uploading images and the editorial team processing them.”- <strong>Marco Viagano, Head of Digital Development.</strong></p>
+
+<p>Not just that, he has more things to say!</p>
+
+<ul>
+  <li><strong>Quicker provisioning of resources supports growth.</strong> “With the traditional infrastructure, it would take days to set up which now can be done in hours. IT is no longer holding back the business, in fact, we can grow faster.”</li>
+  <li><strong>Making savings, enabling innovation, boosting revenue.</strong> “We’ve cut IT costs by around 30%. We used to spend more time in maintaining the infrastructure which now has reduced drastically and hence we can explore new services.”</li>
+  <li><strong>Successful events further promoted the online platform.</strong> In November 2016, PhotoVogue held an event in Milan. “During the event, we experienced about 20% more uploads than normal daily traffic and we dealt with it seamlessly.”</li>
+</ul>
+
+<p>Wow!</p>
+
+<h3 id="benefits-of-serverless-technology">Benefits of Serverless Technology</h3>
+<p>Now, it’s time to move on to the benefits that serverless brings on the table. Since, serverless in still in evolution, some of the benefits that we will be considering might not be available after 2 years.</p>
+
+<p>Moreover, this is an unproven concept and hence, before moving on to serverless, you should definitely consider its significant facets. I hope that discussing benefits and drawbacks will you in clearing the confused air regarding serverless.</p>
+
+<p><strong>Reduced Infrastructure Costs</strong>
+Before you set up your servers, there are various things that you need to consider. Some of them might look like below:</p>
+
+<ul>
+  <li>How many and on what type of hosts our servers are going to run on?</li>
+  <li>How much CPU &amp; RAM your database needs?</li>
+  <li>How many instances will you be provided to support scaling?</li>
+  <li>What about high availability?</li>
+</ul>
+
+<p>Once you figure out all these things, comes the time of planning, allocation and provisioning. Tiresome, isn’t it?</p>
+
+<p>Indeed! And most of the time we overestimate things and end up paying for all those resources that we never use in the future. Sounds familiar?</p>
+
+<p>On the other side, the magnanimous benefit that serverless brings to the table is that we don’t plan, allocate or provision resources. We let the vendors facilitate us precisely the amount of capacity we need at any point in time.</p>
+
+<p><strong>If we don’t have any load, we don’t use any and hence, we don’t pay for any!</strong> As simple as that! If we only have 1 TB of data, we don’t need the capacity to store 100 TB. We trust our vendors that service will be provided, on demand, and this is equally true for FaaS &amp; BaaS services both.</p>
+
+<p>For example, AWS Lambda is charged by 100 milliseconds of use, 36,000 times more precise than the hourly billing of EC2.</p>
+
+<p><strong>Flexible Scaling</strong>
+All of this reduction in infrastructure cost comes with the added benefit of automatic scaling.</p>
+
+<p>Let me remind you, with serverless, <strong>horizontal scaling is completely automatic, elastic and managed by the provider</strong>. But how does this all happen? Let’s take an example!</p>
+
+<p>When your platform receives the first event to trigger a function, it will initiate the container to run your code. If another event is triggered while the previous one is still in process, it will initiate another container to run your code. This automation will enable horizontal scaling until there are enough containers to run your code.</p>
+
+<p>Pretty flexible, right?</p>
+
+<p>Reduced Scaling Costs
+Due to this pay-as-you-go model, you save a lot with high scalability. Isn’t this a huge economic win?</p>
+
+<p><strong>#1. Infrequent requests:</strong></p>
+
+<p>If you’re using a server application, that processes 2 requests every single minute and takes 100 ms to process each request. This means, your CPU usage over an hour is 0.1%. This is highly inefficient and only if you’d wish that much other application could use your server as well.</p>
+
+<p><strong>But serverless encaptures this efficiency and gives you the benefit in the form of reduced cost</strong>. In this case, if you’d be paying for just 200ms of computing every minute, which is 0.15% of your overall time.</p>
+
+<p>Such benefits in cost prove to be an amazing democratizer. As production teams have the extremely tiny amount of operational cost to bear to try out something new. In fact, if your total workload is relatively small, you have to provide nothing considering the ‘free tier’ services from some vendors.</p>
+
+<p><strong>#2. Fluctuating traffic:</strong></p>
+
+<p>Let’s assume that your website traffic spikes once in a while. The basic traffic that you receive during the day is around 10 requests/sec. but that increases to 10 times by 100 requests/sec. every 5 min. for 10 sec.</p>
+
+<p><strong>Let’s assume that during the peak hours your servers get exhausted and at the same time you don’t want to reduce your response time</strong>. Do you have any solution? I do.</p>
+
+<p>If you’re functioning in a traditional environment, you may need to upgrade your hardware by the factor of 10 to handle the sudden increase in traffic.</p>
+
+<p>Auto-scaling isn’t a favourable option here as it is highly unlikely to predict the time taken by the new instances of servers to come up, and moreover, by the time those servers are ready, the traffic spike phase will be over.</p>
+
+<p><img src="/img/awscloud/3/serverless-graph.png" alt="image info" /></p>
+
+<p>However, with serverless, this doesn’t seem to be an issue. You have to do nothing whether your traffic is uniform or it is at peak. All you do is <strong>pay for the extra compute capacity that you use during the spike phase</strong>. And hence, this is a huge cost saving for your company.</p>
+
+<p>But wait! You’ll receive significant economic benefits only if your traffic is inconsistent. If you have stable traffic and you’re using FaaS, you may end up paying more than you should. Hence, do your math first!</p>
+
+<h3 id="ease-of-operation-management">Ease of Operation Management</h3>
+<p>As I said earlier, scaling is automatic and hence, FaaS has more benefits than just scaling costs. You ask me how? Let me explain.</p>
+
+<p><strong>#1. Benefit of auto-scaling</strong></p>
+
+<p>Consider a case where you’re manually managing your app server where you will need a specific person to add and remove instances to an array of servers. While with FaaS, you don’t have to worry about that as your vendor do all the things related to scaling.</p>
+
+<p>Moreover, this lets you get out of the bubble of worrying about <strong>how many concurrent requests you can handle until you run out of memory with a performance hit?</strong></p>
+
+<p><strong>#2. Reduction in packaging and deployment complexity</strong></p>
+
+<p>Packaging and deploying an API gateways aren’t simple, admit that! At the same time, FaaS functions are pretty simple in comparison to deploying an entire server.  If you are just getting started with FaaS, you don’t even need to package anything, <strong>write your code in the vendor console and you’re ready to go!</strong></p>
+
+<p>If your team is quite efficient- this benefit could be as huge as- a fully serverless solution aka zero system administration.</p>
+
+<h3 id="lower-risk-of-failure">Lower Risk of Failure</h3>
+<p>The chances of problems to occur increases when your team manages multiple systems and components. However, this is not the case with serverless. With serverless, <strong>you outsource the management and operation part, plus, you outsource having to solve any problems that occur in those systems.</strong></p>
+
+<p>This brings the added benefit as you rely on the expertise of others in solving unpredictable problems rather than solving it yourself. This sounds like a good idea because many elements of the technical ‘stack’ are the ones that we rarely alter. When a problem occurs, we may not know how to solve them which leads to prolonged and indeterminate downtime.</p>
+
+<p>With serverless, there is a considerable decrease in the number of techniques that you’ll have to manage directly. And moreover, you’ll be dealing with the ones which are frequently used by your team which makes it much easier to handle.</p>
+
+<p>And hence, <strong>there are rare chances of failure when you go serverless.</strong></p>
+
+<h3 id="shorter-lead-time">Shorter Lead Time</h3>
+<p>To provide enough space for innovation in our production environment, short lead time is as important as short cycle time. Lead Time means, the time from the foundation of a new product or feature to having it deployed in a minimum viable way to a production environment.</p>
+
+<p>The fact that serverless architecture totally wipes out the inherent complexity of building, launching, scaling and operations is very amazing in itself. Not only that, it gives you space enough that you can change the way you deliver your product in a totally upside down manner.</p>
+
+<p>And this is <strong>why I am so excited about serverless</strong> because of the ability it unleashes in a production environment. Plus, we can focus more now delivering awesome products to our customers!</p>
+
+<p>I said enough! Let’s say what people have to say about it!AWS</p>
+
+<p>“Now is a pretty great time to have your data stack on AWS. I’ve rarely felt so empowered to build a ton of things with almost literally ZERO infrastructure concerns. Serverless + data engineering is quite the combo.” <strong>Chris, Director of Data Engineering at Textio</strong></p>
+
+<p>“We are starting to see applications built in a ridiculously short time period” <strong>Adrian Cockcroft, VP at AWS Cloud Architecture Strategy</strong></p>
+
+<h3 id="drawbacks-of-serverless-technology">Drawbacks of Serverless Technology</h3>
+<p><strong>**Built-in Drawbacks</strong></p>
+
+<p><strong>#1. Vendor lock-in:</strong></p>
+
+<p>Serverless, in other words, means outsourcing your services to a 3rd party vendor. Moreover, that means that you won’t be having much control over many key aspects of system downtime, forced API upgrades, loss of functionality and much more.</p>
+
+<p>This seems to be an inherent limitation that serverless applications face. Through multiple choice of integration patterns, APIs and documents, different vendors enforce different levels of lock-in models.</p>
+
+<p>What lock-in means is that if you want to move from one vendor to another, you’ll need to update your operational tools, change your code and may even require changing the architecture. The fear of vendor lock-in is one of the major drawbacks of serverless.</p>
+
+<p><strong>#2. Statelessness:</strong></p>
+
+<p>This is a huge benefit which enables scaling easily as a matter of increasing concurrency but managing it is quite tricky. And moreover, it comes with the drawback of inconsistent performance which we will discuss later.</p>
+
+<p>Apart from the components that are designed to store data,<strong>most of the other serverless parts are stateless</strong>. By definition, the information in stateless functions doesn’t persist beyond their immediate lifespan. And hence, this gives the birth to complexity while we consider the interaction of these components with another.</p>
+
+<p>With the implementation of FaaS functions, you can have a code in your app but the cache is rarely of any use. As soon as your cache is ‘heated’ for the initial usage, it is likely to be thrown away as the FaaS instance is torn down.</p>
+
+<p><strong>#3. Local testing:</strong></p>
+
+<p>This is <strong>one of the most mind-numbing difficulties of serverless application architectures</strong>. In case of non-serverless applications, developers have local options on-hand where they can test the application and observer whether it will work or not during and after the deployment. However, with serverless architecture,<strong>end-to-end testing of application is quite more difficult.</strong></p>
+
+<p>Because, at present, most of the vendors aren’t providing with the local implementation which, in turn, forces developers to use the regular production implementation. This means remote testing for all your integrations. Sounds like a big deal? It is.</p>
+
+<p>Because the <strong>units of integration with FaaS functions are a lot smaller than with other architecture</strong>. These typically consist of separate pieces and hence managing them is quite challenging. And therefore, we rely on remote testing a lot more than we do for other types of architectural style</p>
+
+<p><strong>#4. ‘Cold/Warm’ start: Serverless performance is quite inconsistent</strong></p>
+
+<p>One of the most common issues is how long does it take for a FaaS function to start which is referred to as a cold start. On the AWS Lambda, this means initialisation of our code as well as initialization of our container which houses the code. The cold starts happens when lambda function hasn’t been invoked for a while or if its configurations have been altered.</p>
+
+<p>Once it has been invoked, the container can handle events without going through that same process and these ‘warm’ invocations of the Lambda functions are quite faster. <strong>It is recommended that 99.99% of events should be processed by a warm container.</strong></p>
+
+<p>However, the uncertainty between ‘cold’ and ‘warm’ is difficult to predict which leads to inconsistent serverless performance issues.</p>
+
+<p><strong>#5. Security:</strong></p>
+
+<p>As soon as you consider the serverless approach, you are exposed to a whole new level of security issues which can be summed up in the following points:</p>
+
+<ul>
+  <li>
+    <p>With serverless, <strong>data is now in transit between various functions</strong>. Each time we transit data from one place to another, the chances of the data to be leaked and tampered with increases since the surface area increases.</p>
+  </li>
+  <li>
+    <p>With <strong>greater flexibility, comes the greater opportunities for attackers</strong> to get to your system. The only way to tackle this is to treat each function with its own security protocols.</p>
+  </li>
+  <li>
+    <p>No wonder, <strong>serverless has made the motoring extremely hard</strong>. With more number of functions, comes the hardship of monitoring them. Remember, you may create tons of functions due to its low operational cost, but keep in mind the total cost of ownership, including the increased risk of having unused, vulnerable and stale code in production.</p>
+  </li>
+</ul>
+
+<h3 id="production-drawbacks">Production Drawbacks</h3>
+<p><strong>#1. Deployment:</strong></p>
+
+<p>The interaction between the underlying platform and the application is facilitated via API calls. Since serverless applications are, in fact, a bundle of many small individual components, deploying an entire application is typically not a good idea.</p>
+
+<p>Due to this basic difference in the architecture, it is often a <strong>challenging task to align the deployments of large-scale serverless applications.</strong></p>
+
+<p><strong>#2. Execution:</strong></p>
+
+<p>One of the publicly criticised limitations of serverless is <strong>limited execution environment of FaaS function</strong>. Unlike legacy servers, they don’t have an indefinite amount of resources and they are executed on limited CPU, I/O resources, memory and discs.</p>
+
+<p>For instance, AWS Lambda functions come with an inherited memory of 1.5 GB and will be terminated after a maximum of 5 minutes. As the FaaS platform is evolving, you can expect some expansion in the execution environment. Moreover, designing the architecture within the limit of this environment will add you the benefit of more scalable architecture.</p>
+
+<p><strong>#3. Monitoring:</strong></p>
+
+<p>While you may not like the limited execution environment but at the same time monitoring of these metrics is out of your concern. However, metrics responsible for business functionality still needs to be monitored.</p>
+
+<p>But the limit to which the monitoring is well supported of these functions is a mix-and-match. For example, <strong>AWS Lambda has multiple ways of monitoring can be performed but some of these are poorly documented</strong>. Also, there is a considerable lack of support at present in distributed monitoring. And hence, once all of these functions are in the commonplace, serverless systems will come off as an easy operation.</p>
+
+<p><strong>#4. Remote testing:</strong></p>
+
+<p>The ability to perform remote testing comes along with its inherent inability of local testing. This is due to the fact that certain vendors make the remote testing possible but up to a very lesser extent. For example, <strong>you can do remote testing at component level but not at the serverless application level.</strong></p>
+
+<p>It is quite exhaustive to test a series of serverless components without setting up an account with the vendor to make sure that testing isn’t affecting the production resources and also, that the limitations provided by the platform are equally met.</p>
+
+<p><strong>#5. Debugging:</strong></p>
+
+<p>At present, we are stuck on the debugging part as we have to accept whatever the vendor provides us. This might be okay in certain cases but AWS Lambda provides you with extremely basic functionalities and hence it is a big turnoff.</p>
+
+<p>What we are looking for really is integration with 3rd party services for debugging and open APIs.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+<p>The aim of this blog is to clear the confusing clouds over the mind of people who are not sure about serverless adoption! But I am sure all those techies who are ready to roll their sleeve and eager to embrace &amp; experiment as the way to an amazing product, will say ‘Yes!’</p>
+
+<p>Though serverless architecture might not come off as a perfect solution to all your worries, it surely will decrease them. But be careful before you plunge yourself into the world of serverless and FaaS. <strong>While there are gold mines to be plundered (deployment, scaling), there are dragons as well (serverless security, debugging).</strong></p>
+
+<p>From the business perspective, <strong>the best benefit I can see is the space to experiment new features with reduced time-to-market</strong>, which is the most critical point in today’s world where new technology is released every day.</p>
+
+<p>Serverless systems are still in its infancy stage and it will be wonderful to witness how they solve and fit into our architectural requirements.</p>
+
+<p>Until then, subscribe to our blog and keep yourself one step ahead with updates on serverless technology and much more!</p>
+
+:ET

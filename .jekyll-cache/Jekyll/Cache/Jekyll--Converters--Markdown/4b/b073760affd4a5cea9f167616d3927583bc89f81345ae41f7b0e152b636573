@@ -1,0 +1,508 @@
+I"G�<h1 id="production-readiness-and-deployment">Production Readiness and Deployment</h1>
+
+<h2 id="adding-ef-healthchecks-to-the-backend">Adding EF Healthchecks to the BackEnd</h2>
+<ol>
+  <li>Add a reference to the NuGet package <code class="language-plaintext highlighter-rouge">Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore</code> version <code class="language-plaintext highlighter-rouge">3.0.0</code>.
+    <blockquote>
+      <p>This can be done from the command line using <code class="language-plaintext highlighter-rouge">dotnet add package Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore --version 3.0.0</code></p>
+    </blockquote>
+  </li>
+  <li>Add a DbContext health check in <code class="language-plaintext highlighter-rouge">Startup.cs</code> by adding the following code to <code class="language-plaintext highlighter-rouge">ConfigureServices</code>:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">services</span><span class="p">.</span><span class="nf">AddHealthChecks</span><span class="p">()</span>
+        <span class="p">.</span><span class="n">AddDbContextCheck</span><span class="p">&lt;</span><span class="n">ApplicationDbContext</span><span class="p">&gt;();</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Wire up health checks by modifying the <code class="language-plaintext highlighter-rouge">UseEndpoints</code> to add a call to <code class="language-plaintext highlighter-rouge">endpoints.MapHealthChecks("/health");</code>. This will configure the health checks on the <code class="language-plaintext highlighter-rouge">/health</code> end point.</li>
+  <li>Test the end point by navigating to <code class="language-plaintext highlighter-rouge">/health</code>, it should return the text <code class="language-plaintext highlighter-rouge">Healthy</code>.</li>
+</ol>
+
+<h2 id="adding-ef-healthchecks-to-the-frontend">Adding EF Healthchecks to the FrontEnd</h2>
+<ol>
+  <li>Add a reference to the NuGet package <code class="language-plaintext highlighter-rouge">Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore</code> version <code class="language-plaintext highlighter-rouge">3.0.0</code>.
+    <blockquote>
+      <p>This can be done from the command line using <code class="language-plaintext highlighter-rouge">dotnet add package Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore --version 3.0.0</code></p>
+    </blockquote>
+
+    <blockquote>
+      <p>Note: The <code class="language-plaintext highlighter-rouge">FrontEnd</code> and <code class="language-plaintext highlighter-rouge">BackEnd</code> projects have different versions of this package because they reference different versions of EntityFrameworkCore.</p>
+    </blockquote>
+  </li>
+  <li>Add a DbContext health check in <code class="language-plaintext highlighter-rouge">Startup.cs</code> by adding the following code to <code class="language-plaintext highlighter-rouge">ConfigureServices</code>:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">services</span><span class="p">.</span><span class="nf">AddHealthChecks</span><span class="p">()</span>
+        <span class="p">.</span><span class="n">AddDbContextCheck</span><span class="p">&lt;</span><span class="n">IdentityDbContext</span><span class="p">&gt;();</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Wire up health checks by modifying the <code class="language-plaintext highlighter-rouge">UseEndpoints</code> to add a call to <code class="language-plaintext highlighter-rouge">endpoints.MapHealthChecks("/health");</code>. This will configure the health checks on the <code class="language-plaintext highlighter-rouge">/health</code> end point.</li>
+  <li>Test the end point by navigating to <code class="language-plaintext highlighter-rouge">/health</code>, it should return the text <code class="language-plaintext highlighter-rouge">Healthy</code>.</li>
+</ol>
+
+<h2 id="adding-a-custom-health-check-to-test-for-backend-availability">Adding a custom health check to test for BackEnd availability</h2>
+<ol>
+  <li>Add a <code class="language-plaintext highlighter-rouge">CheckHealthAsync</code> method to <code class="language-plaintext highlighter-rouge">IApiClient</code>.
+    <div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">interface</span> <span class="nc">IApiClient</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="n">Task</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="nf">CheckHealthAsync</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Implement the <code class="language-plaintext highlighter-rouge">CheckHealthAsync</code> method in <code class="language-plaintext highlighter-rouge">ApiClient</code> by adding the following code:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="nf">CheckHealthAsync</span><span class="p">()</span>
+ <span class="p">{</span>
+     <span class="k">try</span>
+     <span class="p">{</span>
+         <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_httpClient</span><span class="p">.</span><span class="nf">GetStringAsync</span><span class="p">(</span><span class="s">"/health"</span><span class="p">);</span>
+
+         <span class="k">return</span> <span class="kt">string</span><span class="p">.</span><span class="nf">Equals</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s">"Healthy"</span><span class="p">,</span> <span class="n">StringComparison</span><span class="p">.</span><span class="n">OrdinalIgnoreCase</span><span class="p">);</span>
+     <span class="p">}</span>
+     <span class="k">catch</span>
+     <span class="p">{</span>
+         <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Create a <code class="language-plaintext highlighter-rouge">HealthChecks</code> folder under the root folder in the FrontEnd project.</li>
+  <li>Create a file called <code class="language-plaintext highlighter-rouge">BackendHealthCheck.cs</code> with the following implementation:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+ <span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+ <span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+ <span class="k">using</span> <span class="nn">System.Threading</span><span class="p">;</span>
+ <span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+ <span class="k">using</span> <span class="nn">FrontEnd.Services</span><span class="p">;</span>
+ <span class="k">using</span> <span class="nn">Microsoft.Extensions.Diagnostics.HealthChecks</span><span class="p">;</span>
+
+ <span class="k">namespace</span> <span class="nn">FrontEnd.HealthChecks</span>
+ <span class="p">{</span>
+     <span class="k">public</span> <span class="k">class</span> <span class="nc">BackendHealthCheck</span> <span class="p">:</span> <span class="n">IHealthCheck</span>
+     <span class="p">{</span>
+         <span class="k">private</span> <span class="k">readonly</span> <span class="n">IApiClient</span> <span class="n">_client</span><span class="p">;</span>
+
+         <span class="k">public</span> <span class="nf">BackendHealthCheck</span><span class="p">(</span><span class="n">IApiClient</span> <span class="n">client</span><span class="p">)</span>
+         <span class="p">{</span>
+             <span class="n">_client</span> <span class="p">=</span> <span class="n">client</span><span class="p">;</span>
+         <span class="p">}</span>
+
+         <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">HealthCheckResult</span><span class="p">&gt;</span> <span class="nf">CheckHealthAsync</span><span class="p">(</span><span class="n">HealthCheckContext</span> <span class="n">context</span><span class="p">,</span> <span class="n">CancellationToken</span> <span class="n">cancellationToken</span> <span class="p">=</span> <span class="k">default</span><span class="p">(</span><span class="n">CancellationToken</span><span class="p">))</span>
+         <span class="p">{</span>
+             <span class="k">if</span> <span class="p">(</span><span class="k">await</span> <span class="n">_client</span><span class="p">.</span><span class="nf">CheckHealthAsync</span><span class="p">())</span>
+             <span class="p">{</span>
+                 <span class="k">return</span> <span class="n">HealthCheckResult</span><span class="p">.</span><span class="nf">Healthy</span><span class="p">();</span>
+             <span class="p">}</span>
+
+             <span class="k">return</span> <span class="n">HealthCheckResult</span><span class="p">.</span><span class="nf">Unhealthy</span><span class="p">();</span>
+         <span class="p">}</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Register the <code class="language-plaintext highlighter-rouge">BackendHealthCheck</code> in <code class="language-plaintext highlighter-rouge">ConfigureServices</code>:
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">services</span><span class="p">.</span><span class="nf">AddHealthChecks</span><span class="p">()</span>
+         <span class="p">.</span><span class="n">AddCheck</span><span class="p">&lt;</span><span class="n">BackendHealthCheck</span><span class="p">&gt;(</span><span class="s">"backend"</span><span class="p">)</span>
+         <span class="p">.</span><span class="n">AddDbContextCheck</span><span class="p">&lt;</span><span class="n">IdentityDbContext</span><span class="p">&gt;();</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Test the end point by navigating to <code class="language-plaintext highlighter-rouge">/health</code>, it should return the text <code class="language-plaintext highlighter-rouge">Healthy</code>.</li>
+</ol>
+
+<h2 id="publishing-locally">Publishing locally</h2>
+
+<p>https://docs.microsoft.com/en-us/aspnet/core/publishing/#publish-to-a-folder</p>
+
+<h2 id="publishing-to-production-azure-app-service">Publishing to Production (Azure App Service)</h2>
+
+<ul>
+  <li><a href="https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vs">Visual Studio</a></li>
+</ul>
+
+<ol>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Right Click Backend</td>
+          <td>Publish</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Select App Service, make sure the publish drop down is set to “Create Profile”, click “Create Profile”</li>
+  <li>Fill in Name, Resource Group, Hosting Plan</li>
+  <li>Click “Create SQL Database”, fill in name, press “New…” to create Database server, fill in fields click “OK”</li>
+  <li>Click “Create”</li>
+  <li>On the publish page click “Edit”. Click Settings. Open Databases and check the box for the default database. Click Migrations and check the box to apply migrations on publish. Click Save.</li>
+  <li>
+    <p>Click the “Publish” button. When the app launches, find the Sessions section, scroll to /api/sessions/upload. Click the post button to upload your session data</p>
+  </li>
+  <li>In the FrontEnd application, open the AppSettings.json and replace the ServiceUrl with the URL from your backend in App Service.</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Right Click Frontend</td>
+          <td>Publish</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Select App Service, make sure the publish drop down is set to “Create Profile”, click “Create Profile”</li>
+  <li>Fill in name, same resource group as above and same hosting plan as above.</li>
+  <li>Click “Create Database”, fill in name, select the same database server from above, fill in the same password as above and change the Connection string name to “IdentityDbContextConnection”. Press OK.</li>
+  <li>Click “Create”.</li>
+  <li>On the publish page click “Edit”. Click Settings. Open Databases and check the box for the default database. Click Migrations and check the box to apply migrations on publish. Click Save.</li>
+  <li>Click the “Publish” button.</li>
+</ol>
+
+<ul>
+  <li><a href="https://docs.microsoft.com/en-us/aspnet/core/publishing/azure-continuous-deployment">Git</a></li>
+</ul>
+
+<h2 id="publishing-using-docker">Publishing using Docker</h2>
+
+<p><strong>Prerequisites</strong></p>
+
+<ul>
+  <li><a href="https://www.docker.com/docker-windows">Docker for Windows</a> or <a href="https://www.docker.com/docker-mac">Docker for Mac</a></li>
+  <li><a href="https://docs.microsoft.com/aspnet/core/host-and-deploy/docker/visual-studio-tools-for-docker">Visual Studio Tools for Docker with ASP.NET Core</a></li>
+</ul>
+
+<p><strong>Enable Database Errors and switch to SQL since that is what runs in the container</strong></p>
+
+<p>For both the front end and backend make the following code chanages:</p>
+<ol>
+  <li>Add the package “Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore”</li>
+  <li>
+    <p>Add the database error page in Startup.cs, after app.UseDeveloperExceptionPage() add app.UseDatabaseErrorPage():</p>
+
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">app</span><span class="p">.</span><span class="nf">UseDeveloperExceptionPage</span><span class="p">();</span>
+ <span class="n">app</span><span class="p">.</span><span class="nf">UseDatabaseErrorPage</span><span class="p">();</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>In the backend project, in Startup.cs, comment out the code to support SQLite:</p>
+
+    <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))</span>
+<span class="c1">//{</span>
+    <span class="n">options</span><span class="p">.</span><span class="nf">UseSqlServer</span><span class="p">(</span><span class="n">Configuration</span><span class="p">.</span><span class="nf">GetConnectionString</span><span class="p">(</span><span class="s">"DefaultConnection"</span><span class="p">));</span>
+<span class="c1">//}</span>
+<span class="c1">//else</span>
+<span class="c1">//{</span>
+<span class="c1">//    options.UseSqlite("Data Source=conferences.db");</span>
+<span class="c1">//}</span>
+</code></pre></div>    </div>
+    <h3 id="using-visual-studio">Using Visual Studio</h3>
+  </li>
+</ol>
+
+<p>Add Docker support to the <strong>BackEnd</strong> project by right clicking the project file and selecting Add &gt; Docker Support</p>
+
+<p>A <strong>Dockerfile</strong> is added to the <strong>BackEnd</strong> project.</p>
+
+<div class="language-Dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> mcr.microsoft.com/dotnet/core/aspnet:3.0-buster-slim AS base</span>
+<span class="k">WORKDIR</span><span class="s"> /app</span>
+<span class="k">EXPOSE</span><span class="s"> 80</span>
+<span class="k">EXPOSE</span><span class="s"> 443</span>
+
+<span class="k">FROM</span><span class="s"> mcr.microsoft.com/dotnet/core/sdk:3.0-buster AS build</span>
+<span class="k">WORKDIR</span><span class="s"> /src</span>
+<span class="k">COPY</span><span class="s"> ["BackEnd/BackEnd.csproj", "BackEnd/"]</span>
+<span class="k">COPY</span><span class="s"> ["ConferenceDTO/ConferenceDTO.csproj", "ConferenceDTO/"]</span>
+<span class="k">RUN </span>dotnet restore <span class="s2">"BackEnd/BackEnd.csproj"</span>
+<span class="k">COPY</span><span class="s"> . .</span>
+<span class="k">WORKDIR</span><span class="s"> "/src/BackEnd"</span>
+<span class="k">RUN </span>dotnet build <span class="s2">"BackEnd.csproj"</span> <span class="nt">-c</span> Release <span class="nt">-o</span> /app/build
+
+<span class="k">FROM</span><span class="s"> build AS publish</span>
+<span class="k">RUN </span>dotnet publish <span class="s2">"BackEnd.csproj"</span> <span class="nt">-c</span> Release <span class="nt">-o</span> /app/publish
+
+<span class="k">FROM</span><span class="s"> base AS final</span>
+<span class="k">WORKDIR</span><span class="s"> /app</span>
+<span class="k">COPY</span><span class="s"> --from=publish /app/publish .</span>
+<span class="k">ENTRYPOINT</span><span class="s"> ["dotnet", "BackEnd.dll"]</span>
+</code></pre></div></div>
+<p>Add Container Orchestration support to the project, right click the project file and selecting Add &gt; Container Orchestration Support Select Docker Comppose and click OK. This creates a <strong>docker-compose</strong> project with a docker.compose.yml file.</p>
+
+<p>Repeat the same step for the <strong>FrontEnd</strong> project. The Dockerfile is added to the project for it.</p>
+
+<p>Add Docker support to the <strong>FrontEnd</strong> project by right clicking the project file and selecting Add &gt; Docker Support</p>
+
+<div class="language-Dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> mcr.microsoft.com/dotnet/core/aspnet:3.0-buster-slim AS base</span>
+<span class="k">WORKDIR</span><span class="s"> /app</span>
+<span class="k">EXPOSE</span><span class="s"> 80</span>
+<span class="k">EXPOSE</span><span class="s"> 443</span>
+
+<span class="k">FROM</span><span class="s"> mcr.microsoft.com/dotnet/core/sdk:3.0-buster AS build</span>
+<span class="k">WORKDIR</span><span class="s"> /src</span>
+<span class="k">COPY</span><span class="s"> ["FrontEnd/FrontEnd.csproj", "FrontEnd/"]</span>
+<span class="k">COPY</span><span class="s"> ["ConferenceDTO/ConferenceDTO.csproj", "ConferenceDTO/"]</span>
+<span class="k">RUN </span>dotnet restore <span class="s2">"FrontEnd/FrontEnd.csproj"</span>
+<span class="k">COPY</span><span class="s"> . .</span>
+<span class="k">WORKDIR</span><span class="s"> "/src/FrontEnd"</span>
+<span class="k">RUN </span>dotnet build <span class="s2">"FrontEnd.csproj"</span> <span class="nt">-c</span> Release <span class="nt">-o</span> /app/build
+
+<span class="k">FROM</span><span class="s"> build AS publish</span>
+<span class="k">RUN </span>dotnet publish <span class="s2">"FrontEnd.csproj"</span> <span class="nt">-c</span> Release <span class="nt">-o</span> /app/publish
+
+<span class="k">FROM</span><span class="s"> base AS final</span>
+<span class="k">WORKDIR</span><span class="s"> /app</span>
+<span class="k">COPY</span><span class="s"> --from=publish /app/publish .</span>
+<span class="k">ENTRYPOINT</span><span class="s"> ["dotnet", "FrontEnd.dll"]</span>
+</code></pre></div></div>
+<p>Add Container Orchestration support to the project, right click the project file and selecting Add &gt; Container Orchestration Support Select Docker Comppose and click OK.</p>
+
+<p>The <strong>docker-compose.yml</strong> file is updated to reflect that there are two projects to build images.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3.4'</span>
+
+<span class="na">services</span><span class="pi">:</span>
+
+  <span class="na">frontend</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">${DOCKER_REGISTRY-}frontend</span>
+    <span class="na">build</span><span class="pi">:</span>
+      <span class="na">context</span><span class="pi">:</span> <span class="s">.</span>
+      <span class="na">dockerfile</span><span class="pi">:</span> <span class="s">FrontEnd/Dockerfile</span>
+
+  <span class="na">backend</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">${DOCKER_REGISTRY-}backend</span>
+    <span class="na">build</span><span class="pi">:</span>
+      <span class="na">context</span><span class="pi">:</span> <span class="s">.</span>
+      <span class="na">dockerfile</span><span class="pi">:</span> <span class="s">BackEnd/Dockerfile</span>
+</code></pre></div></div>
+
+<h4 id="linking--networking">Linking / Networking</h4>
+
+<p>In the previous architecture, there were some setting and manual orchestration to start up and wire the applications together.</p>
+
+<ul>
+  <li><strong>BackEnd</strong> tested for OS type and set the application to use SQL Server or SQLite</li>
+  <li><strong>FrontEnd</strong> application had the API url set in the <em>appsetting.json</em> file.</li>
+</ul>
+
+<p>Using Docker, adding a container for SQL Server and linking the containers in the compose file simplifies this.</p>
+
+<h4 id="adding-sql-server">Adding SQL Server</h4>
+
+<p>Open the docker-compose.yml file and add the following entry. <em>Note the $ is doubled for escaping</em></p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="na">db</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s2">"</span><span class="s">microsoft/mssql-server-linux"</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="na">SA_PASSWORD</span><span class="pi">:</span> <span class="s2">"</span><span class="s">ConferencePlanner1234$$"</span>
+      <span class="na">ACCEPT_EULA</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Y</span>
+</code></pre></div></div>
+
+<p>Since the <strong>BackEnd</strong> application must have connectivity and cannot start until the database container is ready. Add the <strong>depends_on</strong> entry to the <strong>backend</strong> definition in the compose file.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="na">backend</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">backend</span>
+    <span class="na">build</span><span class="pi">:</span>
+      <span class="na">context</span><span class="pi">:</span> <span class="s">.</span>
+      <span class="na">dockerfile</span><span class="pi">:</span> <span class="s">BackEnd/Dockerfile</span>
+    <span class="na">depends_on</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">db</span>
+</code></pre></div></div>
+
+<p>Finally, change the connection string for the database in the BackEnd\appsettings.json file.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="dl">"</span><span class="s2">ConnectionStrings</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">DefaultConnection</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Server=db;Initial Catalog=ConferencePlanner;User=sa;Password=ConferencePlanner1234$;MultipleActiveResultSets=true</span><span class="dl">"</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<h5 id="linking--networking-frontend--backend">Linking / Networking FrontEnd &amp; BackEnd</h5>
+
+<p>In the <strong>docker-compose.yml</strong> file, add the <strong>links</strong> section to the <strong>frontend</strong> definition. This sets up the host name in the Docker networking allowing for the web application to call the API by name. <code class="language-plaintext highlighter-rouge">http://backend</code></p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="na">frontend</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">frontend</span>
+    <span class="na">build</span><span class="pi">:</span>
+      <span class="na">context</span><span class="pi">:</span> <span class="s">.</span>
+      <span class="na">dockerfile</span><span class="pi">:</span> <span class="s">FrontEnd/Dockerfile</span>
+    <span class="na">links</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">backend</span>
+</code></pre></div></div>
+
+<p>Change the value for the <strong>ServiceUrl</strong> in FrontEnd/appsetting.json</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">ServiceUrl</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">http://backend/</span><span class="dl">"</span><span class="p">,</span>
+</code></pre></div></div>
+
+<p>Remove or comment out the <code class="language-plaintext highlighter-rouge">app.UseHttpsRedirection();</code> in BackEnd\Startuo.cs.</p>
+
+<h4 id="starting-and-debugging">Starting and Debugging</h4>
+
+<p>Once the changes are complete, F5 to build start the application in Docker. Debugging is still available in all projects, but now the application is running in containers.</p>
+
+<p>Changes can be made to Razor pages and seen immediately without rebuilds, however and *.cs file changes require rebuilds.</p>
+
+<h3 id="using-vs-code-or-other-editors">Using VS Code or other editors</h3>
+
+<p>Create and add the following Dockerfile for the BackEnd application.</p>
+
+<div class="language-Dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> mcr.microsoft.com/dotnet/core/aspnet:3.0-buster-slim AS base</span>
+<span class="k">WORKDIR</span><span class="s"> /app</span>
+<span class="k">EXPOSE</span><span class="s"> 80</span>
+<span class="k">EXPOSE</span><span class="s"> 443</span>
+
+<span class="k">FROM</span><span class="s"> mcr.microsoft.com/dotnet/core/sdk:3.0-buster AS build</span>
+<span class="k">WORKDIR</span><span class="s"> /src</span>
+<span class="k">COPY</span><span class="s"> ["BackEnd/BackEnd.csproj", "BackEnd/"]</span>
+<span class="k">COPY</span><span class="s"> ["ConferenceDTO/ConferenceDTO.csproj", "ConferenceDTO/"]</span>
+<span class="k">RUN </span>dotnet restore <span class="s2">"BackEnd/BackEnd.csproj"</span>
+<span class="k">COPY</span><span class="s"> . .</span>
+<span class="k">WORKDIR</span><span class="s"> "/src/BackEnd"</span>
+<span class="k">RUN </span>dotnet build <span class="s2">"BackEnd.csproj"</span> <span class="nt">-c</span> Release <span class="nt">-o</span> /app/build
+
+<span class="k">FROM</span><span class="s"> build AS publish</span>
+<span class="k">RUN </span>dotnet publish <span class="s2">"BackEnd.csproj"</span> <span class="nt">-c</span> Release <span class="nt">-o</span> /app/publish
+
+<span class="k">FROM</span><span class="s"> base AS final</span>
+<span class="k">WORKDIR</span><span class="s"> /app</span>
+<span class="k">COPY</span><span class="s"> --from=publish /app/publish .</span>
+</code></pre></div></div>
+
+<p>Create and add the following Dockerfile for the FrontEnd application.</p>
+
+<div class="language-Dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> mcr.microsoft.com/dotnet/core/aspnet:3.0-buster-slim AS base</span>
+<span class="k">WORKDIR</span><span class="s"> /app</span>
+<span class="k">EXPOSE</span><span class="s"> 80</span>
+<span class="k">EXPOSE</span><span class="s"> 443</span>
+
+<span class="k">FROM</span><span class="s"> mcr.microsoft.com/dotnet/core/sdk:3.0-buster AS build</span>
+<span class="k">WORKDIR</span><span class="s"> /src</span>
+<span class="k">COPY</span><span class="s"> ["BackEnd/BackEnd.csproj", "BackEnd/"]</span>
+<span class="k">COPY</span><span class="s"> ["ConferenceDTO/ConferenceDTO.csproj", "ConferenceDTO/"]</span>
+<span class="k">RUN </span>dotnet restore <span class="s2">"BackEnd/BackEnd.csproj"</span>
+<span class="k">COPY</span><span class="s"> . .</span>
+<span class="k">WORKDIR</span><span class="s"> "/src/BackEnd"</span>
+<span class="k">RUN </span>dotnet build <span class="s2">"BackEnd.csproj"</span> <span class="nt">-c</span> Release <span class="nt">-o</span> /app/build
+
+<span class="k">FROM</span><span class="s"> build AS publish</span>
+<span class="k">RUN </span>dotnet publish <span class="s2">"BackEnd.csproj"</span> <span class="nt">-c</span> Release <span class="nt">-o</span> /app/publish
+
+<span class="k">FROM</span><span class="s"> base AS final</span>
+<span class="k">WORKDIR</span><span class="s"> /app</span>
+<span class="k">COPY</span><span class="s"> --from=publish /app/publish .</span>
+</code></pre></div></div>
+
+<p>At the root of the ConferencePlanner solution, add the following <strong>docker-compose.yml</strong> file.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3.4'</span>
+
+<span class="na">services</span><span class="pi">:</span>
+
+  <span class="na">frontend</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">${DOCKER_REGISTRY-}frontend</span>
+    <span class="na">build</span><span class="pi">:</span>
+      <span class="na">context</span><span class="pi">:</span> <span class="s">.</span>
+      <span class="na">dockerfile</span><span class="pi">:</span> <span class="s">FrontEnd/Dockerfile</span>
+
+  <span class="na">backend</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">${DOCKER_REGISTRY-}backend</span>
+    <span class="na">build</span><span class="pi">:</span>
+      <span class="na">context</span><span class="pi">:</span> <span class="s">.</span>
+      <span class="na">dockerfile</span><span class="pi">:</span> <span class="s">BackEnd/Dockerfile</span>
+    <span class="na">depends_on</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">db</span> 
+
+  <span class="na">db</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s2">"</span><span class="s">microsoft/mssql-server-linux"</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="na">SA_PASSWORD</span><span class="pi">:</span> <span class="s2">"</span><span class="s">ConferencePlanner1234$$"</span>
+      <span class="na">ACCEPT_EULA</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Y"</span>
+</code></pre></div></div>
+<p>At the root of the ConferencePlanner solution, add the following <strong>docker-compose.override.yml</strong> file.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3.4'</span>
+
+<span class="na">services</span><span class="pi">:</span>
+  <span class="na">backend</span><span class="pi">:</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">ASPNETCORE_ENVIRONMENT=Development</span>
+      <span class="pi">-</span> <span class="s">ASPNETCORE_URLS=https://+:443;http://+:80</span>
+      <span class="pi">-</span> <span class="s">ASPNETCORE_HTTPS_PORT=44370</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">63145:80"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">44370:443"</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro</span>
+      <span class="pi">-</span> <span class="s">${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro</span>
+  <span class="na">frontend</span><span class="pi">:</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">ASPNETCORE_ENVIRONMENT=Development</span>
+      <span class="pi">-</span> <span class="s">ASPNETCORE_URLS=https://+:443;http://+:80</span>
+      <span class="pi">-</span> <span class="s">ASPNETCORE_HTTPS_PORT=44384</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">56004:80"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">44384:443"</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro</span>
+      <span class="pi">-</span> <span class="s">${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro</span>
+</code></pre></div></div>
+
+<h4 id="sql-server-configuration">SQL Server Configuration</h4>
+
+<p>Change the connection string for the database in the BackEnd\appsettings.json file.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="dl">"</span><span class="s2">ConnectionStrings</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">DefaultConnection</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Server=db;Initial Catalog=ConferencePlanner;User=sa;Password=ConferencePlanner1234$;MultipleActiveResultSets=true</span><span class="dl">"</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="linking--networking-frontend--backend-1">Linking / Networking FrontEnd &amp; Backend</h4>
+
+<p>Change the value for the <strong>ServiceUrl</strong> in FrontEnd/appsetting.json</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">ServiceUrl</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">http://backend/</span><span class="dl">"</span><span class="p">,</span>
+</code></pre></div></div>
+
+<p>Remove or comment out the <code class="language-plaintext highlighter-rouge">app.UseHttpsRedirection();</code> in BackEnd\Startuo.cs.</p>
+
+<h4 id="building-and-running">Building and Running</h4>
+
+<ul>
+  <li>Build the Docker images <code class="language-plaintext highlighter-rouge">docker-compose build</code></li>
+  <li>Run <code class="language-plaintext highlighter-rouge">docker-compose up -d</code> to start the application</li>
+  <li>Run <code class="language-plaintext highlighter-rouge">docker-compose down</code> to stop the application</li>
+  <li>Open the application at <a href="http://localhost:5002">http://localhost:5002</a></li>
+</ul>
+
+<hr />
+<h2 id="sessions">Sessions</h2>
+
+<p>This is series of articles on Building Conf planner app with Asp.net Core:</p>
+
+<ul>
+  <li><a href="/blog/CreateBackEndAPIproject" target="_blank">1 - Build the back-end API with basic EF model</a></li>
+  <li><a href="/blog/BuildoutBackEndandRefactor" target="_blank">2 - Finish the back-end API and EF model, refactor into view modelsl</a></li>
+  <li><a href="/blog/Addfront-endrenderagendasetupfront-endmodels" target="_blank">3 - Add front-end, render agenda, set up front-end models</a></li>
+  <li><a href="/blog/Addauthfeatures" target="_blank">4 - Add authentication, add admin policy, allow editing sessions, users can sign-in with Identity, custom auth tag helper</a></li>
+  <li><a href="/blog/Addpersonalagenda" target="_blank">5 - Add user association and personal agenda</a></li>
+  <li><a href="/blog/ProductionReadinessandDeployment" target="_blank">6 - Deployment, Azure and other production environments, configuring environments, diagnostics</a></li>
+  <li><a href="/blog/Challenges" target="_blank">7 - Challenges</a></li>
+  <li><a href="/blog/SPAFrontEnd" target="_blank">8 - SPA front-end </a></li>
+</ul>
+
+<!--Section: Lesson UI-->
+<section class="text-center">
+    <hr />
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/Addpersonalagenda" class="btn  btn-sm" id="round-button">
+                <i class="fas fa-arrow-left mr-2"></i>Previous Lesson
+            </a>
+        </div>
+     
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <a target="_blank" href="/blog/Challenges" class="btn btn-sm" id="round-button">Next Lesson
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>       
+    </div>
+
+</section>
+
+:ET
